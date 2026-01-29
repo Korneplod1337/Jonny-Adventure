@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=3 uid="uid://basguvogwyxpl"]
+
+[ext_resource type="Texture2D" uid="uid://15hlpa8yftmc" path="res://image/interface/HUD/Сердца/blackH2.png" id="1_exdr0"]
+[ext_resource type="Texture2D" uid="uid://c7222ss5icdd7" path="res://image/interface/HUD/Сердца/blackH1.png" id="2_echqx"]
+[ext_resource type="Texture2D" uid="uid://bse78j7vqtgym" path="res://image/interface/HUD/Сердца/blueH2.png" id="3_2rwrn"]
+[ext_resource type="Texture2D" uid="uid://c3r58l3dwja1q" path="res://image/interface/HUD/Сердца/blueH1.png" id="4_vbs26"]
+[ext_resource type="Texture2D" uid="uid://blus88fhb8h3r" path="res://image/interface/HUD/Сердца/HH1.png" id="5_feigw"]
+[ext_resource type="Texture2D" uid="uid://jwxw7ptbany0" path="res://image/interface/HUD/Сердца/HH2.png" id="6_2j6a8"]
+[ext_resource type="Texture2D" uid="uid://nh8d0ard3e8g" path="res://image/interface/HUD/Сердца/green_h2.png" id="7_nagne"]
+[ext_resource type="Texture2D" uid="uid://ci1mpsbris4mh" path="res://image/interface/HUD/Сердца/green_h1.png" id="8_ndrl2"]
+[ext_resource type="Texture2D" uid="uid://bf40en6t384h6" path="res://image/interface/HUD/Сердца/red_h2.png" id="9_bhwwj"]
+[ext_resource type="Texture2D" uid="uid://coc7t36chbrg1" path="res://image/interface/HUD/Сердца/red_h1.png" id="10_jkaix"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_feigw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_exdr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_echqx")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2rwrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vbs26")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_feigw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2j6a8")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_nagne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ndrl2")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_bhwwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jkaix")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}]
+
+[node name="HeartIcon" type="Control"]
+custom_minimum_size = Vector2(35, 70)
+layout_mode = 3
+anchor_right = 0.031
+anchor_bottom = 0.063
+offset_right = 51.3201
+offset_bottom = 44.64
+size_flags_horizontal = 0
+size_flags_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 38)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_feigw")
+animation = &"red"

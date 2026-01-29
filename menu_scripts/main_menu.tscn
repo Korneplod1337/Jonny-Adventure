@@ -1,0 +1,678 @@
+[gd_scene format=3 uid="uid://ckbshuddtl78y"]
+
+[ext_resource type="Texture2D" uid="uid://dw38br8xqx7we" path="res://image/main_menu/menu.png" id="1_auw0j"]
+[ext_resource type="Script" uid="uid://d0fo1ay0nvvan" path="res://menu_scripts/main_control_.gd" id="2_72qvv"]
+[ext_resource type="Texture2D" uid="uid://dvekr3gt7b1dr" path="res://image/main_menu/button_new_game_not.png" id="2_pv6v7"]
+[ext_resource type="Texture2D" uid="uid://h1dtng0oyql3" path="res://image/main_menu/button_settings_not.png" id="3_fjq68"]
+[ext_resource type="Texture2D" uid="uid://wyl7yqe7lix2" path="res://image/main_menu/button_new_game_select.png" id="4_575cf"]
+[ext_resource type="Texture2D" uid="uid://dk7bcmlp2w4q6" path="res://image/main_menu/button_settings_select.png" id="6_4qcnf"]
+[ext_resource type="Texture2D" uid="uid://bgxs6ayb7gcl5" path="res://image/main_menu/button_quit_not.png" id="7_misp6"]
+[ext_resource type="Texture2D" uid="uid://c8x3scnwolylk" path="res://image/main_menu/button_quit_select.png" id="8_5vq2t"]
+[ext_resource type="Texture2D" uid="uid://bbhx6fvqpjv17" path="res://image/main_menu/button_achivement.png" id="9_stq6n"]
+[ext_resource type="Texture2D" uid="uid://bv6yakr4clr3q" path="res://image/main_menu/button_stats.png" id="10_pk0f2"]
+[ext_resource type="Texture2D" uid="uid://dlevc6jlrano1" path="res://image/main_menu/settings.png" id="10_y1oxc"]
+[ext_resource type="Script" uid="uid://c5uyjuvfhrlr7" path="res://menu_scripts/settings_control.gd" id="11_c0arg"]
+[ext_resource type="Script" uid="uid://krw2epkapjrr" path="res://menu_scripts/reset.gd" id="11_fvbif"]
+[ext_resource type="Texture2D" uid="uid://b4yxtbwd6eiqm" path="res://image/main_menu/settings_out_button1.png" id="12_4tbtp"]
+[ext_resource type="AudioStream" uid="uid://dnrgmuhx5ejnx" path="res://sound/main-menu.ogg" id="12_hxuja"]
+[ext_resource type="Texture2D" uid="uid://canf2kceq7uo3" path="res://image/main_menu/settings_video_low1.png" id="12_l726t"]
+[ext_resource type="Script" uid="uid://d13ckchek7pdn" path="res://menu_scripts/button_sound.gd" id="12_ru6ym"]
+[ext_resource type="Texture2D" uid="uid://b7d2a85dky3ij" path="res://image/main_menu/settings_out_button2.png" id="13_1aqqx"]
+[ext_resource type="Texture2D" uid="uid://dqom4krvjlc81" path="res://image/main_menu/settings_video_med1.png" id="13_alhms"]
+[ext_resource type="Texture2D" uid="uid://bxcynylx1d1b1" path="res://image/main_menu/settings_video_low2.png" id="13_pdvo5"]
+[ext_resource type="Texture2D" uid="uid://dph4vhlmxsoj0" path="res://image/main_menu/settings_sound_0.png" id="13_xg1mu"]
+[ext_resource type="Texture2D" uid="uid://cbh25u535577a" path="res://image/main_menu/settings_video_high1.png" id="14_3sut6"]
+[ext_resource type="Texture2D" uid="uid://clhm0dr1n12hv" path="res://image/main_menu/settings_sound_1.png" id="14_lt70l"]
+[ext_resource type="Texture2D" uid="uid://4sw0qtm7kgkv" path="res://image/main_menu/settings_video_med2.png" id="15_bewgb"]
+[ext_resource type="Texture2D" uid="uid://c33hopsoiym5u" path="res://image/main_menu/settings_sound_2.png" id="15_m6dkg"]
+[ext_resource type="Texture2D" uid="uid://b0s2mrco2dpsw" path="res://image/main_menu/settings_sound_3.png" id="16_44wrn"]
+[ext_resource type="Texture2D" uid="uid://lthmbfanprir" path="res://image/main_menu/settings_sound_4.png" id="17_g6as0"]
+[ext_resource type="Texture2D" uid="uid://10i2c01si4vo" path="res://image/main_menu/settings_video_high2.png" id="17_qs6ui"]
+[ext_resource type="Texture2D" uid="uid://dv6dpipr618oo" path="res://image/main_menu/settings_sound_5.png" id="18_n6dfu"]
+[ext_resource type="Texture2D" uid="uid://b12f5sklq12pw" path="res://image/main_menu/settings_sound_6.png" id="19_ofdyd"]
+[ext_resource type="Texture2D" uid="uid://cx7jvquuk0tho" path="res://image/main_menu/settings_sound_7.png" id="20_gb7ws"]
+[ext_resource type="Texture2D" uid="uid://oxevf35yf0ff" path="res://image/main_menu/settings_sound_8.png" id="21_k7yeo"]
+[ext_resource type="Texture2D" uid="uid://cbhv6ifnwp54u" path="res://image/main_menu/settings_sound_9.png" id="22_lhmyd"]
+[ext_resource type="Texture2D" uid="uid://5hlgib0r8f7o" path="res://image/main_menu/settings_sound_10.png" id="23_cb4mk"]
+[ext_resource type="Texture2D" uid="uid://u8kxka5hnml2" path="res://image/main_menu/achievement_background.png" id="32_djfv0"]
+[ext_resource type="Script" uid="uid://bqjwamvh8krhb" path="res://menu_scripts/ach_menu_canvas.gd" id="32_ecv6d"]
+[ext_resource type="Script" uid="uid://brlutts5y51k5" path="res://menu_scripts/achiv_menu.gd" id="33_lhxuk"]
+[ext_resource type="FontFile" uid="uid://cv3kwiaeereef" path="res://Fonts/JonnyAdventureFont.ttf" id="35_om5lu"]
+[ext_resource type="Script" uid="uid://cds3efabo8m26" path="res://menu_scripts/stats_menu.gd" id="37_8d7ws"]
+[ext_resource type="Texture2D" uid="uid://dbvn7ugovwo3j" path="res://image/main_menu/stats_menu_bg.png" id="37_f6qc3"]
+[ext_resource type="Texture2D" uid="uid://c1r6kf1x6pafn" path="res://image/main_menu/out_button_alt1.png" id="38_epd2p"]
+[ext_resource type="Texture2D" uid="uid://chiajevgnvrgt" path="res://image/main_menu/out_button_alt2.png" id="39_ou8mj"]
+[ext_resource type="Script" uid="uid://jkbxm721krv1" path="res://menu_scripts/stats_stat_text.gd" id="41_oohye"]
+[ext_resource type="Script" uid="uid://ch6qi7g7c3fro" path="res://menu_scripts/char_select_menu.gd" id="43_bkji5"]
+[ext_resource type="Texture2D" uid="uid://dfpxr52njifvw" path="res://image/main_menu/char_select.png" id="44_jpo0d"]
+[ext_resource type="Texture2D" uid="uid://c2jlnwfa82bhs" path="res://image/main_menu/char_select_1.png" id="45_t7jce"]
+[ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="46_1exqm"]
+[ext_resource type="Texture2D" uid="uid://c3bwnpxit5dj2" path="res://image/main_menu/char_select_2.png" id="47_ao1gk"]
+[ext_resource type="Texture2D" uid="uid://lfap8uqvcfdd" path="res://image/main_menu/char_select_1_select.png" id="47_x8o75"]
+[ext_resource type="Texture2D" uid="uid://dy6jdi84g4y1b" path="res://image/main_menu/char_select_2_select.png" id="48_kmf6r"]
+[ext_resource type="Script" uid="uid://jyn34jplqxu6" path="res://menu_scripts/diff_select_menu.gd" id="49_qyqc0"]
+[ext_resource type="Texture2D" uid="uid://c77qfd3xuppte" path="res://image/main_menu/diff_select.png" id="50_jsmax"]
+[ext_resource type="Texture2D" uid="uid://cyfup3waq75i0" path="res://image/main_menu/button_easy.png" id="51_e4x8i"]
+[ext_resource type="Texture2D" uid="uid://cfj7b58oiepqr" path="res://image/main_menu/button_med.png" id="52_a0i4q"]
+[ext_resource type="Texture2D" uid="uid://dmqedacjsdbpd" path="res://image/main_menu/button_hard.png" id="53_pw383"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ni8h3"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_xg1mu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lt70l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m6dkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_44wrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_g6as0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_n6dfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ofdyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_gb7ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_k7yeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_lhmyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_cb4mk")
+}],
+"loop": true,
+"name": &"volume",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4y6pp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_el8jf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4jy8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xbu0t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1tgcs"]
+
+[node name="MainMenu" type="Node2D" unique_id=1398218460]
+
+[node name="start_menu" type="CanvasLayer" parent="." unique_id=673823800]
+
+[node name="background" type="Sprite2D" parent="start_menu" unique_id=2003022335]
+scale = Vector2(2, 2)
+texture = ExtResource("1_auw0j")
+centered = false
+
+[node name="Control_main" type="Control" parent="start_menu" unique_id=1294939938]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = -19.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("2_72qvv")
+
+[node name="Button_NewGame" type="Button" parent="start_menu/Control_main" unique_id=22861616]
+layout_mode = 1
+offset_left = -228.0
+offset_top = 66.0
+offset_right = -100.0
+offset_bottom = 182.0
+focus_mode = 0
+icon = ExtResource("2_pv6v7")
+flat = true
+
+[node name="Select_NewGame" type="Sprite2D" parent="start_menu/Control_main/Button_NewGame" unique_id=1926639719]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("4_575cf")
+centered = false
+
+[node name="Button_Settings" type="Button" parent="start_menu/Control_main" unique_id=739826699]
+layout_mode = 0
+offset_left = -68.0
+offset_top = 94.0
+offset_right = 68.0
+offset_bottom = 182.0
+focus_mode = 0
+icon = ExtResource("3_fjq68")
+flat = true
+
+[node name="Select_Settings" type="Sprite2D" parent="start_menu/Control_main/Button_Settings" unique_id=956673802]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("6_4qcnf")
+centered = false
+
+[node name="Button_Quit" type="Button" parent="start_menu/Control_main" unique_id=920908777]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 94.0
+offset_right = 240.0
+offset_bottom = 194.0
+focus_mode = 0
+icon = ExtResource("7_misp6")
+flat = true
+
+[node name="Select_Quit" type="Sprite2D" parent="start_menu/Control_main/Button_Quit" unique_id=441596983]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("8_5vq2t")
+centered = false
+
+[node name="Button_achivement" type="Button" parent="start_menu/Control_main" unique_id=1869073856]
+layout_mode = 0
+offset_left = -68.0
+offset_right = 68.0
+offset_bottom = 88.0
+focus_mode = 0
+flat = true
+
+[node name="Select_achivement" type="Sprite2D" parent="start_menu/Control_main/Button_achivement" unique_id=68510486]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("9_stq6n")
+centered = false
+
+[node name="Button_stats" type="Button" parent="start_menu/Control_main" unique_id=1483819785]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 236.0
+offset_bottom = 88.0
+focus_mode = 0
+icon = ExtResource("10_pk0f2")
+flat = true
+
+[node name="Select_stats" type="Sprite2D" parent="start_menu/Control_main/Button_stats" unique_id=564091291]
+visible = false
+
+[node name="Button" type="Button" parent="start_menu/Control_main" unique_id=92415567]
+layout_mode = 0
+offset_left = 75.0
+offset_top = -105.0
+offset_right = 275.0
+offset_bottom = -75.0
+scale = Vector2(1.2, 1.2)
+theme_override_fonts/font = ExtResource("35_om5lu")
+text = "Reset stats and achivments"
+script = ExtResource("11_fvbif")
+
+[node name="settings_menu" type="Node" parent="." unique_id=981361797]
+
+[node name="Settings_layer" type="CanvasLayer" parent="settings_menu" unique_id=468677436]
+visible = false
+
+[node name="background" type="Sprite2D" parent="settings_menu/Settings_layer" unique_id=1222538529]
+scale = Vector2(2, 2)
+texture = ExtResource("10_y1oxc")
+centered = false
+
+[node name="Settings_Control" type="Control" parent="settings_menu/Settings_layer" unique_id=148701866]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_c0arg")
+
+[node name="Button_video" type="Button" parent="settings_menu/Settings_layer/Settings_Control" unique_id=1236393768]
+layout_mode = 0
+offset_right = 623.0
+offset_bottom = 240.0
+focus_mode = 0
+flat = true
+
+[node name="Button_low" type="Button" parent="settings_menu/Settings_layer/Settings_Control/Button_video" unique_id=190081672]
+visible = false
+layout_mode = 0
+offset_left = 750.0
+offset_top = 60.0
+offset_right = 958.0
+offset_bottom = 144.0
+scale = Vector2(2, 2)
+focus_mode = 0
+icon = ExtResource("12_l726t")
+flat = true
+
+[node name="Select_Button_low" type="Sprite2D" parent="settings_menu/Settings_layer/Settings_Control/Button_video/Button_low" unique_id=826302868]
+visible = false
+position = Vector2(104, 42)
+texture = ExtResource("13_pdvo5")
+
+[node name="Button_medium" type="Button" parent="settings_menu/Settings_layer/Settings_Control/Button_video" unique_id=375634000]
+visible = false
+layout_mode = 0
+offset_left = 750.0
+offset_top = 274.0
+offset_right = 958.0
+offset_bottom = 358.0
+scale = Vector2(2, 2)
+focus_mode = 0
+icon = ExtResource("13_alhms")
+flat = true
+
+[node name="Select_Button_med" type="Sprite2D" parent="settings_menu/Settings_layer/Settings_Control/Button_video/Button_medium" unique_id=1540398126]
+visible = false
+position = Vector2(104, 42)
+texture = ExtResource("15_bewgb")
+
+[node name="Button_high" type="Button" parent="settings_menu/Settings_layer/Settings_Control/Button_video" unique_id=1073759636]
+visible = false
+layout_mode = 0
+offset_left = 750.0
+offset_top = 488.0
+offset_right = 958.0
+offset_bottom = 572.0
+scale = Vector2(2, 2)
+focus_mode = 0
+icon = ExtResource("14_3sut6")
+flat = true
+
+[node name="Select_Button_high" type="Sprite2D" parent="settings_menu/Settings_layer/Settings_Control/Button_video/Button_high" unique_id=930189729]
+visible = false
+position = Vector2(104, 42)
+texture = ExtResource("17_qs6ui")
+
+[node name="Button_sound" type="Button" parent="settings_menu/Settings_layer/Settings_Control" unique_id=1237682604]
+layout_mode = 0
+offset_top = 250.0
+offset_right = 623.0
+offset_bottom = 526.0
+focus_mode = 0
+flat = true
+script = ExtResource("12_ru6ym")
+
+[node name="Sound_bar" type="AnimatedSprite2D" parent="settings_menu/Settings_layer/Settings_Control/Button_sound" unique_id=1610751475]
+visible = false
+position = Vector2(962, 113)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ni8h3")
+animation = &"volume"
+
+[node name="VScrollBar" type="VScrollBar" parent="settings_menu/Settings_layer/Settings_Control/Button_sound" unique_id=903421388]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 387.0
+offset_top = 279.0
+offset_right = 432.0
+offset_bottom = 524.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(2, 2)
+theme_override_styles/scroll = SubResource("StyleBoxTexture_4y6pp")
+theme_override_styles/scroll_focus = SubResource("StyleBoxTexture_el8jf")
+theme_override_styles/grabber = SubResource("StyleBoxTexture_w4jy8")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxTexture_xbu0t")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_1tgcs")
+max_value = 10.0
+step = 1.0
+value = 4.0
+
+[node name="Button_back" type="Button" parent="settings_menu/Settings_layer/Settings_Control" unique_id=1420469648]
+layout_mode = 0
+offset_top = 560.0
+offset_right = 100.0
+offset_bottom = 640.0
+scale = Vector2(2, 2)
+focus_mode = 0
+icon = ExtResource("12_4tbtp")
+flat = true
+
+[node name="Select_Button_back" type="Sprite2D" parent="settings_menu/Settings_layer/Settings_Control/Button_back" unique_id=1103912102]
+visible = false
+position = Vector2(36, 40)
+texture = ExtResource("13_1aqqx")
+
+[node name="Achivements_menu" type="CanvasLayer" parent="." unique_id=1832615005]
+visible = false
+script = ExtResource("32_ecv6d")
+
+[node name="Achiv_Background" type="Sprite2D" parent="Achivements_menu" unique_id=1466235816]
+scale = Vector2(2, 2)
+texture = ExtResource("32_djfv0")
+centered = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Achivements_menu" unique_id=960533796]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -628.0
+offset_top = -349.0
+offset_right = 628.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Achivements_menu/ScrollContainer" unique_id=1294409420]
+layout_mode = 2
+columns = 2
+script = ExtResource("33_lhxuk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Achivements_menu/ScrollContainer/GridContainer" unique_id=1985484986]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Achivements_menu/ScrollContainer/GridContainer/HBoxContainer" unique_id=819024503]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Achivements_menu/ScrollContainer/GridContainer/HBoxContainer" unique_id=2015521105]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("35_om5lu")
+
+[node name="exit_button" type="Button" parent="Achivements_menu" unique_id=1239502326]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -102.0
+offset_right = 72.0
+offset_bottom = -34.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+icon = ExtResource("12_4tbtp")
+flat = true
+
+[node name="exit_button_sprite" type="Sprite2D" parent="Achivements_menu/exit_button" unique_id=2019022943]
+visible = false
+position = Vector2(36, 34)
+texture = ExtResource("13_1aqqx")
+
+[node name="stats_menu" type="CanvasLayer" parent="." unique_id=369153518]
+visible = false
+script = ExtResource("37_8d7ws")
+
+[node name="stats_bg" type="Sprite2D" parent="stats_menu" unique_id=677535107]
+scale = Vector2(2, 2)
+texture = ExtResource("37_f6qc3")
+centered = false
+
+[node name="exit_button" type="Button" parent="stats_menu" unique_id=36543351]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -132.0
+offset_right = 92.0
+offset_bottom = -44.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+icon = ExtResource("38_epd2p")
+flat = true
+
+[node name="exit_button_sprite" type="Sprite2D" parent="stats_menu/exit_button" unique_id=829336852]
+visible = false
+position = Vector2(46, 44)
+texture = ExtResource("39_ou8mj")
+
+[node name="GridContainer" type="GridContainer" parent="stats_menu" unique_id=1528533640]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 1262.0
+offset_bottom = 592.0
+columns = 2
+script = ExtResource("41_oohye")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="stats_menu/GridContainer" unique_id=1888537429]
+layout_mode = 2
+
+[node name="Char_select_menu" type="CanvasLayer" parent="." unique_id=504680637]
+visible = false
+script = ExtResource("43_bkji5")
+
+[node name="char_bg" type="Sprite2D" parent="Char_select_menu" unique_id=1365344464]
+scale = Vector2(2, 2)
+texture = ExtResource("44_jpo0d")
+centered = false
+
+[node name="Jonny_ch" type="Button" parent="Char_select_menu" unique_id=1752976681]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -411.0
+offset_top = -243.0
+offset_right = -367.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+icon = ExtResource("45_t7jce")
+flat = true
+
+[node name="Label" type="Label" parent="Char_select_menu/Jonny_ch" unique_id=870111154]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = 3.5
+offset_right = -11.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.5, 2.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 16
+text = "Jonny"
+horizontal_alignment = 1
+
+[node name="jonny_select" type="Sprite2D" parent="Char_select_menu/Jonny_ch" unique_id=1012898202]
+visible = false
+texture = ExtResource("47_x8o75")
+centered = false
+offset = Vector2(5, 5)
+
+[node name="Jonnytta_ch" type="Button" parent="Char_select_menu" unique_id=316749002]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -243.0
+offset_right = 1.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+icon = ExtResource("47_ao1gk")
+flat = true
+
+[node name="Label" type="Label" parent="Char_select_menu/Jonnytta_ch" unique_id=828256921]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.5
+offset_top = -4.0
+offset_right = -12.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.5, 2.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+text = "Pashe 
+(femboy)"
+horizontal_alignment = 1
+language = "en"
+
+[node name="jonnytta_select" type="Sprite2D" parent="Char_select_menu/Jonnytta_ch" unique_id=1699087262]
+visible = false
+texture = ExtResource("48_kmf6r")
+centered = false
+offset = Vector2(5, 5)
+
+[node name="exit" type="Button" parent="Char_select_menu" unique_id=21732195]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -105.0
+offset_right = 72.0
+offset_bottom = -37.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+icon = ExtResource("12_4tbtp")
+flat = true
+
+[node name="exit_select" type="Sprite2D" parent="Char_select_menu/exit" unique_id=1985578197]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("13_1aqqx")
+centered = false
+
+[node name="Diff_select_menu" type="CanvasLayer" parent="." unique_id=942898487]
+visible = false
+script = ExtResource("49_qyqc0")
+
+[node name="diff_bg" type="Sprite2D" parent="Diff_select_menu" unique_id=774562015]
+scale = Vector2(2, 2)
+texture = ExtResource("50_jsmax")
+centered = false
+
+[node name="exit" type="Button" parent="Diff_select_menu" unique_id=205465609]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -105.0
+offset_right = 72.0
+offset_bottom = -37.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+icon = ExtResource("12_4tbtp")
+flat = true
+
+[node name="exit_select" type="Sprite2D" parent="Diff_select_menu/exit" unique_id=16307067]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("13_1aqqx")
+centered = false
+
+[node name="easy" type="Button" parent="Diff_select_menu" unique_id=561447871]
+offset_left = 134.0
+offset_top = 437.0
+offset_right = 320.0
+offset_bottom = 547.0
+scale = Vector2(2, 2)
+icon = ExtResource("51_e4x8i")
+flat = true
+
+[node name="med" type="Button" parent="Diff_select_menu" unique_id=1629490339]
+offset_left = 497.0
+offset_top = 440.0
+offset_right = 683.0
+offset_bottom = 550.0
+scale = Vector2(2, 2)
+icon = ExtResource("52_a0i4q")
+flat = true
+
+[node name="hard" type="Button" parent="Diff_select_menu" unique_id=1221430370]
+offset_left = 890.0
+offset_top = 447.0
+offset_right = 1040.0
+offset_bottom = 556.0
+scale = Vector2(2, 2)
+icon = ExtResource("53_pw383")
+flat = true
+
+[node name="Main_menu_music" type="AudioStreamPlayer" parent="." unique_id=1161254603]
+stream = ExtResource("12_hxuja")
+parameters/looping = true
+
+[connection signal="mouse_entered" from="start_menu/Control_main/Button_NewGame" to="start_menu/Control_main" method="_on_button_new_game_mouse_entered"]
+[connection signal="mouse_exited" from="start_menu/Control_main/Button_NewGame" to="start_menu/Control_main" method="_on_button_new_game_mouse_exited"]
+[connection signal="pressed" from="start_menu/Control_main/Button_NewGame" to="start_menu/Control_main" method="_on_button_new_game_pressed"]
+[connection signal="mouse_entered" from="start_menu/Control_main/Button_Settings" to="start_menu/Control_main" method="_on_button_settings_mouse_entered"]
+[connection signal="mouse_exited" from="start_menu/Control_main/Button_Settings" to="start_menu/Control_main" method="_on_button_settings_mouse_exited"]
+[connection signal="pressed" from="start_menu/Control_main/Button_Settings" to="start_menu/Control_main" method="_on_button_settings_pressed"]
+[connection signal="mouse_entered" from="start_menu/Control_main/Button_Quit" to="start_menu/Control_main" method="_on_button_quit_mouse_entered"]
+[connection signal="mouse_exited" from="start_menu/Control_main/Button_Quit" to="start_menu/Control_main" method="_on_button_quit_mouse_exited"]
+[connection signal="pressed" from="start_menu/Control_main/Button_Quit" to="start_menu/Control_main" method="_on_button_quit_pressed"]
+[connection signal="mouse_entered" from="start_menu/Control_main/Button_achivement" to="start_menu/Control_main" method="_on_button_achivement_mouse_entered"]
+[connection signal="mouse_exited" from="start_menu/Control_main/Button_achivement" to="start_menu/Control_main" method="_on_button_achivement_mouse_exited"]
+[connection signal="pressed" from="start_menu/Control_main/Button_achivement" to="start_menu/Control_main" method="_on_button_achivement_pressed"]
+[connection signal="mouse_entered" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_entered"]
+[connection signal="mouse_exited" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_exited"]
+[connection signal="pressed" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_pressed"]
+[connection signal="pressed" from="start_menu/Control_main/Button" to="start_menu/Control_main/Button" method="_on_pressed"]
+[connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_video" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_video_pressed"]
+[connection signal="mouse_entered" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_low" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_low_mouse_entered"]
+[connection signal="mouse_exited" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_low" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_low_mouse_exited"]
+[connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_low" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_low_pressed"]
+[connection signal="mouse_entered" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_medium" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_medium_mouse_entered"]
+[connection signal="mouse_exited" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_medium" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_medium_mouse_exited"]
+[connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_medium" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_medium_pressed"]
+[connection signal="mouse_entered" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_high" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_high_mouse_entered"]
+[connection signal="mouse_exited" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_high" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_high_mouse_exited"]
+[connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_high" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_high_pressed"]
+[connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_sound" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_sound_pressed"]
+[connection signal="value_changed" from="settings_menu/Settings_layer/Settings_Control/Button_sound/VScrollBar" to="settings_menu/Settings_layer/Settings_Control/Button_sound" method="_on_value_changed"]
+[connection signal="mouse_entered" from="settings_menu/Settings_layer/Settings_Control/Button_back" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_back_mouse_entered"]
+[connection signal="mouse_exited" from="settings_menu/Settings_layer/Settings_Control/Button_back" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_back_mouse_exited"]
+[connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_back" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_back_pressed"]
+[connection signal="mouse_entered" from="Achivements_menu/exit_button" to="Achivements_menu" method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="Achivements_menu/exit_button" to="Achivements_menu" method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="Achivements_menu/exit_button" to="Achivements_menu" method="_on_exit_button_pressed"]
+[connection signal="mouse_entered" from="stats_menu/exit_button" to="stats_menu" method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="stats_menu/exit_button" to="stats_menu" method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="stats_menu/exit_button" to="stats_menu" method="_on_exit_button_pressed"]
+[connection signal="mouse_entered" from="Char_select_menu/Jonny_ch" to="Char_select_menu" method="_on_jonny_ch_mouse_entered"]
+[connection signal="mouse_exited" from="Char_select_menu/Jonny_ch" to="Char_select_menu" method="_on_jonny_ch_mouse_exited"]
+[connection signal="pressed" from="Char_select_menu/Jonny_ch" to="Char_select_menu" method="_on_jonny_ch_pressed"]
+[connection signal="mouse_entered" from="Char_select_menu/Jonnytta_ch" to="Char_select_menu" method="_on_jonnytta_ch_mouse_entered"]
+[connection signal="mouse_exited" from="Char_select_menu/Jonnytta_ch" to="Char_select_menu" method="_on_jonnytta_ch_mouse_exited"]
+[connection signal="pressed" from="Char_select_menu/Jonnytta_ch" to="Char_select_menu" method="_on_jonnytta_ch_pressed"]
+[connection signal="mouse_entered" from="Char_select_menu/exit" to="Char_select_menu" method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Char_select_menu/exit" to="Char_select_menu" method="_on_exit_mouse_exited"]
+[connection signal="pressed" from="Char_select_menu/exit" to="Char_select_menu" method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="Diff_select_menu/exit" to="Diff_select_menu" method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Diff_select_menu/exit" to="Diff_select_menu" method="_on_exit_mouse_exited"]
+[connection signal="pressed" from="Diff_select_menu/exit" to="Diff_select_menu" method="_on_exit_pressed"]
+[connection signal="pressed" from="Diff_select_menu/easy" to="Diff_select_menu" method="_on_easy_pressed"]
+[connection signal="pressed" from="Diff_select_menu/med" to="Diff_select_menu" method="_on_med_pressed"]
+[connection signal="pressed" from="Diff_select_menu/hard" to="Diff_select_menu" method="_on_hard_pressed"]

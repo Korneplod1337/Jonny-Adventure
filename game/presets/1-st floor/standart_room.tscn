@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bpievu6gfe5d0"]
+
+[ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/rock.tscn" id="1_jseag"]
+[ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/background/background1.png" id="1_rbiir"]
+[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_sehpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sehpn"]
+size = Vector2(1280, 720)
+
+[node name="StartRoom" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_rbiir")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-207, -240)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-400, -88, -401, 566, 813, 566, 813, -88)
+
+[node name="CameraBounds" type="Area2D" parent="."]
+visible = false
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds"]
+shape = SubResource("RectangleShape2D_sehpn")
+
+[node name="Rock3" parent="." instance=ExtResource("1_jseag")]
+position = Vector2(-1, 0)
+scale = Vector2(0.547542, 8.26888)
+
+[node name="Door_Up" parent="." instance=ExtResource("3_sehpn")]
+position = Vector2(-3, -318)
+scale = Vector2(2, 2)
+dir = Vector2(0, -1)
+
+[node name="Door_Down" parent="." instance=ExtResource("3_sehpn")]
+position = Vector2(-1, 321)
+scale = Vector2(2, 2)
+dir = Vector2(0, 1)
+
+[node name="Door_Left" parent="." instance=ExtResource("3_sehpn")]
+position = Vector2(-604, -1)
+scale = Vector2(2, 2)
+dir = Vector2(-1, 0)
+
+[node name="Door_Right" parent="." instance=ExtResource("3_sehpn")]
+position = Vector2(604, -1)
+scale = Vector2(2, 2)
+dir = Vector2(1, 0)

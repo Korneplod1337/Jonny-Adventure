@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bx6n81v4l7b8a"]
+
+[ext_resource type="Texture2D" uid="uid://bp55xyng4vysl" path="res://image/enemy/Angry_Jonny.png" id="1_78b7b"]
+[ext_resource type="Script" uid="uid://drffttooudxmu" path="res://game/enemy/enemy_test_2.gd" id="1_svwm6"]
+[ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="3_c2jts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svwm6"]
+size = Vector2(28, 48)
+
+[sub_resource type="LabelSettings" id="LabelSettings_punh0"]
+font = ExtResource("3_c2jts")
+font_size = 32
+
+[node name="EnemyTest2" type="CharacterBody2D" unique_id=464290923]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_svwm6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1777460795]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_svwm6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1414418699]
+scale = Vector2(2, 2)
+texture = ExtResource("1_78b7b")
+
+[node name="Label" type="Label" parent="." unique_id=1638107935]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -114.0
+offset_right = 59.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "Last hit =
+DPS: "
+label_settings = SubResource("LabelSettings_punh0")

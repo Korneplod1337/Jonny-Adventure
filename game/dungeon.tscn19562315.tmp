@@ -1,0 +1,17 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwwkyopaqrfbo"]
+
+[ext_resource type="Script" uid="uid://wlgeadj0uym" path="res://game/dungeon.gd" id="1_u4sk0"]
+[ext_resource type="PackedScene" uid="uid://bpievu6gfe5d0" path="res://game/presets/1-st floor/standart_room.tscn" id="2_0t1uw"]
+[ext_resource type="PackedScene" uid="uid://ctxdqxo8mr54o" path="res://game/player/player.tscn" id="2_axop1"]
+[ext_resource type="PackedScene" uid="uid://cmlobl77iwbor" path="res://game/presets/1-st floor/start_room.tscn" id="3_0t1uw"]
+[ext_resource type="PackedScene" uid="uid://dijhk4kigm72k" path="res://game/presets/1-st floor/test room1.tscn" id="3_luatc"]
+[ext_resource type="PackedScene" uid="uid://b777y3m4083ll" path="res://game/presets/1-st floor/test_room2.tscn" id="4_3jp2u"]
+
+[node name="Dungeon" type="Node"]
+script = ExtResource("1_u4sk0")
+total_rooms = 5
+player_scene = ExtResource("2_axop1")
+standard_room_presets = Array[PackedScene]([ExtResource("2_0t1uw")])
+start_room_preset = ExtResource("3_0t1uw")
+shop_room_preset = ExtResource("3_luatc")
+boss_room_preset = ExtResource("4_3jp2u")

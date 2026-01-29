@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6wspcubwe0qh"]
+
+[ext_resource type="Texture2D" uid="uid://c663mldoa0dpa" path="res://image/main_menu/spetcial_thx_low.png" id="1_criws"]
+[ext_resource type="Script" uid="uid://dhlo3v487d2cp" path="res://menu_scripts/start.gd" id="1_mooht"]
+
+[node name="Start" type="Node2D"]
+script = ExtResource("1_mooht")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_criws")
+centered = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

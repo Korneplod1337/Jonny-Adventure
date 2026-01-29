@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://w44vcoqbcqy8"]
+
+[ext_resource type="Script" uid="uid://doux8j83sh0ml" path="res://game/presets/shrines/shrine_test.gd" id="1_ankqj"]
+[ext_resource type="Texture2D" uid="uid://4tvtgrnndhvs" path="res://image/shrine1.png" id="2_hnwl0"]
+[ext_resource type="Texture2D" uid="uid://cbe5jhfb6a70t" path="res://image/shrine2.png" id="3_hrdi4"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/Interact_objects/Ineractable.tscn" id="4_mml3l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6c05r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"Fire_rate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"fire_rate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"hp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"luck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"magic",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"move_speed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"range",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnwl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrdi4")
+}],
+"loop": true,
+"name": &"spread",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwp4v"]
+size = Vector2(88, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fydls"]
+size = Vector2(49, 66)
+
+[node name="ShrineTest" type="Node2D" unique_id=1541189603]
+script = ExtResource("1_ankqj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=434765893]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_6c05r")
+animation = &"spread"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1748129473]
+
+[node name="Interactable" parent="." unique_id=515258723 instance=ExtResource("4_mml3l")]
+interact_name = "use shrine"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactable" unique_id=697456273]
+shape = SubResource("RectangleShape2D_rwp4v")
+
+[node name="collision" type="StaticBody2D" parent="." unique_id=1523569493]
+collision_layer = 16
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=1173996129]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_fydls")

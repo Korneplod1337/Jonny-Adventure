@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b0gas5hwfpisf"]
+
+[ext_resource type="Texture2D" uid="uid://c1o4g262w322a" path="res://image/rooms/rock.png" id="1_jjbbp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_367um"]
+size = Vector2(64, 40)
+
+[node name="Rock_test" type="Node2D" unique_id=1046045028]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=828769915]
+collision_layer = 17
+collision_mask = 17
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1198677730]
+shape = SubResource("RectangleShape2D_367um")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=171219873]
+texture = ExtResource("1_jjbbp")

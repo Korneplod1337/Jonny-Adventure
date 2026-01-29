@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cmlobl77iwbor"]
+
+[ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/background/background1.png" id="1_et5k3"]
+[ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/rock.tscn" id="1_jseag"]
+[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
+[ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/enemy test2.tscn" id="4_cjhlh"]
+[ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine_test.tscn" id="5_sejrf"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/EmenyWorm.tscn" id="6_r5ugo"]
+[ext_resource type="Texture2D" uid="uid://c21xigd6v3qw6" path="res://image/Новый контент.png" id="7_nbcw0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
+size = Vector2(1280, 720)
+
+[node name="StartRoom" type="Node2D" unique_id=757044430]
+
+[node name="CameraBounds" type="Area2D" parent="." unique_id=1720013523]
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=332360121]
+shape = SubResource("RectangleShape2D_85tg8")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1940620195]
+scale = Vector2(2, 2)
+texture = ExtResource("1_et5k3")
+
+[node name="Rock" parent="." unique_id=724279530 instance=ExtResource("1_jseag")]
+position = Vector2(-256, 113)
+scale = Vector2(0.997563, 1)
+
+[node name="Rock2" parent="." unique_id=882224253 instance=ExtResource("1_jseag")]
+position = Vector2(158, 125)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=962677030]
+position = Vector2(-207.06, -240)
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1340424052]
+build_mode = 1
+polygon = PackedVector2Array(-401, -88, -401, 566, 813, 566, 813, -88)
+
+[node name="Door_Up" parent="." unique_id=976948045 instance=ExtResource("3_et5k3")]
+position = Vector2(-3, -318)
+scale = Vector2(2, 2)
+dir = Vector2(0, -1)
+
+[node name="Door_Down" parent="." unique_id=468466240 instance=ExtResource("3_et5k3")]
+position = Vector2(-1, 321)
+scale = Vector2(2, 2)
+dir = Vector2(0, 1)
+
+[node name="Door_Left" parent="." unique_id=867576507 instance=ExtResource("3_et5k3")]
+position = Vector2(-604, -1)
+scale = Vector2(2, 2)
+dir = Vector2(-1, 0)
+
+[node name="Door_Right" parent="." unique_id=1947595542 instance=ExtResource("3_et5k3")]
+position = Vector2(496, -1)
+scale = Vector2(2, 2)
+dir = Vector2(1, 0)
+
+[node name="EnemyTest2" parent="." unique_id=1789486187 instance=ExtResource("4_cjhlh")]
+position = Vector2(304, -118)
+
+[node name="ShrineTest" parent="." unique_id=2017981582 instance=ExtResource("5_sejrf")]
+position = Vector2(-269, -279)
+
+[node name="EmenyWorm" parent="." unique_id=1527446258 instance=ExtResource("6_r5ugo")]
+position = Vector2(-371, -13)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=525106090]
+position = Vector2(-24, -47)
+scale = Vector2(2, 2)
+texture = ExtResource("7_nbcw0")
