@@ -5,8 +5,8 @@ var ST = StatManager
 @onready var hp_list := {
 	"red": max(0, base_max_hp),
 	"green": 0,
-	"blue": 2,   # щит/овер, НЕ ограничен max_hp
-	"black": 0,
+	"blue": 0,   # щит/овер, НЕ ограничен max_hp
+	"black": 2,
 	}
 
 const base_max_hp: 				int = 4    #6

@@ -7,10 +7,12 @@ enum ShrineType {
 	damage, spread, range, fire_rate
 }
 
-@export var shrine_type: int = 0
+@export var shrine_type: int = -1
+@export var flip := false
 var selected_type: ShrineType
 
 func _ready() -> void:
+	Shrn_animation.flip_h = flip
 	interactable.interact = _on_interact
 	if shrine_type == -1: 
 		selected_type = ShrineType.values()[randi() % ShrineType.size()] 
@@ -22,11 +24,8 @@ func _ready() -> void:
 func _on_interact():
 	var player = get_tree().get_first_node_in_group("player")
 	if GameState.coins > 0:
-		if selected_type == ShrineType.hp:
-			Shrn_animation.animation = 'hp_active'
-			Shrn_animation.play()
-		else:
-			Shrn_animation.frame = 1
+		Shrn_animation.animation = ShrineType.keys()[selected_type] + '_active'
+		Shrn_animation.play()
 		interactable.is_interactable = false
 		GameState.add_coins(-1)
 		var stat_name: String

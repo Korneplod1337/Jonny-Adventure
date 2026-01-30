@@ -63,6 +63,7 @@ position = Vector2(304, -118)
 
 [node name="ShrineTest" parent="." unique_id=2017981582 instance=ExtResource("5_sejrf")]
 position = Vector2(-534, 223)
+shrine_type = 1
 
 [node name="EmenyWorm" parent="." unique_id=1527446258 instance=ExtResource("6_r5ugo")]
 position = Vector2(-371, -13)

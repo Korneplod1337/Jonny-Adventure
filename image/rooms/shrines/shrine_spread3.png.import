@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c21xigd6v3qw6"
-path="res://.godot/imported/Новый контент.png-24e17cb1417f05deee189e671bbab50b.ctex"
+uid="uid://kchc8t1u13m"
+path="res://.godot/imported/shrine_spread3.png-2abcc67b1035ce77234403fb1564d54d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Новый контент.png"
-dest_files=["res://.godot/imported/Новый контент.png-24e17cb1417f05deee189e671bbab50b.ctex"]
+source_file="res://image/rooms/shrines/shrine_spread3.png"
+dest_files=["res://.godot/imported/shrine_spread3.png-2abcc67b1035ce77234403fb1564d54d.ctex"]
 
 [params]
 

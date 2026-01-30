@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://n5dvgu5we2gn"]
+[gd_scene format=3 uid="uid://n5dvgu5we2gn"]
 
 [ext_resource type="Script" uid="uid://bswrq17r14ngm" path="res://game/HUD/hud.gd" id="1_uvy8x"]
 [ext_resource type="Texture2D" uid="uid://dwjxxrdxpcxne" path="res://image/ttttt.png" id="2_n73n3"]
@@ -93,9 +93,9 @@ paragraph_spacing = 1.0
 font = ExtResource("4_heuq7")
 font_size = 40
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lec8a"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o46sh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lec8a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kacrq"]
 
@@ -423,67 +423,67 @@ font_size = 40
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p0ac8"]
 
-[node name="Hud" type="CanvasLayer" groups=["HUD"]]
+[node name="Hud" type="CanvasLayer" unique_id=48015350 groups=["HUD"]]
 process_mode = 3
 script = ExtResource("1_uvy8x")
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="." unique_id=1434518823]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="LeftUpVBoxContainer" type="VBoxContainer" parent="HUD"]
+[node name="LeftUpVBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1866199654]
 layout_mode = 1
 offset_left = 20.0
 offset_right = 77.0
 offset_bottom = 90.0
 
-[node name="Container" type="Container" parent="HUD/LeftUpVBoxContainer"]
+[node name="Container" type="Container" parent="HUD/LeftUpVBoxContainer" unique_id=1060090584]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="HpContainersRow" type="HBoxContainer" parent="HUD/LeftUpVBoxContainer"]
+[node name="HpContainersRow" type="HBoxContainer" parent="HUD/LeftUpVBoxContainer" unique_id=1074507758]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="HUD/LeftUpVBoxContainer/HpContainersRow"]
+[node name="TextureRect" type="TextureRect" parent="HUD/LeftUpVBoxContainer/HpContainersRow" unique_id=655561906]
 layout_mode = 2
 texture = ExtResource("2_n73n3")
 
-[node name="Container2" type="Container" parent="HUD/LeftUpVBoxContainer"]
+[node name="Container2" type="Container" parent="HUD/LeftUpVBoxContainer" unique_id=1296185592]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="CoinsContainer" type="GridContainer" parent="HUD/LeftUpVBoxContainer"]
+[node name="CoinsContainer" type="GridContainer" parent="HUD/LeftUpVBoxContainer" unique_id=1254590635]
 layout_mode = 2
 columns = 3
 
-[node name="Container2" type="Container" parent="HUD/LeftUpVBoxContainer/CoinsContainer"]
+[node name="Container2" type="Container" parent="HUD/LeftUpVBoxContainer/CoinsContainer" unique_id=11956178]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="CoinsIcon" type="TextureRect" parent="HUD/LeftUpVBoxContainer/CoinsContainer"]
+[node name="CoinsIcon" type="TextureRect" parent="HUD/LeftUpVBoxContainer/CoinsContainer" unique_id=1208699354]
 visible = false
 layout_mode = 2
 texture = ExtResource("3_n73n3")
 expand_mode = 3
 
-[node name="CoinsIcon2" type="TextureRect" parent="HUD/LeftUpVBoxContainer/CoinsContainer"]
+[node name="CoinsIcon2" type="TextureRect" parent="HUD/LeftUpVBoxContainer/CoinsContainer" unique_id=1819976693]
 layout_mode = 2
 texture = ExtResource("4_ht4al")
 expand_mode = 3
 
-[node name="CoinsLabel" type="Label" parent="HUD/LeftUpVBoxContainer/CoinsContainer"]
+[node name="CoinsLabel" type="Label" parent="HUD/LeftUpVBoxContainer/CoinsContainer" unique_id=2063942587]
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_ht4al")
 
-[node name="MoneyTimer" type="Timer" parent="HUD/LeftUpVBoxContainer/CoinsContainer"]
+[node name="MoneyTimer" type="Timer" parent="HUD/LeftUpVBoxContainer/CoinsContainer" unique_id=216175420]
 wait_time = 5.0
 one_shot = true
 
-[node name="StatsPanel" type="ItemList" parent="HUD"]
+[node name="StatsPanel" type="ItemList" parent="HUD" unique_id=1890772466]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -495,8 +495,8 @@ offset_top = -352.0
 offset_right = 387.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lec8a")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_o46sh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lec8a")
 theme_override_styles/hovered = SubResource("StyleBoxEmpty_kacrq")
 theme_override_styles/hovered_selected = SubResource("StyleBoxEmpty_me0bp")
 theme_override_styles/hovered_selected_focus = SubResource("StyleBoxEmpty_tnnfl")
@@ -505,48 +505,48 @@ theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_htpw1")
 theme_override_styles/cursor_unfocused = SubResource("StyleBoxEmpty_vl7y8")
 theme_override_styles/cursor = SubResource("StyleBoxEmpty_e4o0i")
 
-[node name="Pink_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel"]
+[node name="Pink_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel" unique_id=258939604]
 position = Vector2(226, 94)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dtij2")
 
-[node name="Green_stat" type="AnimatedSprite2D" parent="HUD/StatsPanel"]
+[node name="Green_stat" type="AnimatedSprite2D" parent="HUD/StatsPanel" unique_id=1495316552]
 position = Vector2(142, 178)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_s8x7n")
 
-[node name="Red_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel"]
+[node name="Red_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel" unique_id=926115245]
 position = Vector2(556, 94)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ff4nn")
 
-[node name="Yellow_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel"]
+[node name="Yellow_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel" unique_id=108870687]
 position = Vector2(640, 178)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_55ank")
 
-[node name="Blue_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel"]
+[node name="Blue_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel" unique_id=872915542]
 position = Vector2(310, 178)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ekhi8")
 
-[node name="Brown_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel"]
+[node name="Brown_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel" unique_id=1850855961]
 position = Vector2(226, 262)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_c7wur")
 frame_progress = 0.00955081
 
-[node name="Purple_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel"]
+[node name="Purple_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel" unique_id=1814289315]
 position = Vector2(472, 178)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_tb6tn")
 
-[node name="Sea_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel"]
+[node name="Sea_Stat" type="AnimatedSprite2D" parent="HUD/StatsPanel" unique_id=2030490406]
 position = Vector2(556, 262)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_p0ac8")
 
-[node name="InventoryList" type="ItemList" parent="HUD"]
+[node name="InventoryList" type="ItemList" parent="HUD" unique_id=1484417758]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.996875
@@ -561,7 +561,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_cbaby")
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemsGridContainer" type="GridContainer" parent="HUD/InventoryList"]
+[node name="ItemsGridContainer" type="GridContainer" parent="HUD/InventoryList" unique_id=892028582]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -571,13 +571,13 @@ offset_right = 124.0
 offset_bottom = 382.0
 grow_horizontal = 2
 
-[node name="PauseMenu" type="Panel" parent="HUD"]
+[node name="PauseMenu" type="Panel" parent="HUD" unique_id=1100991669]
 visible = false
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="TextureRect" type="TextureRect" parent="HUD/PauseMenu"]
+[node name="TextureRect" type="TextureRect" parent="HUD/PauseMenu" unique_id=981054997]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -593,7 +593,7 @@ grow_vertical = 2
 texture = ExtResource("86_ff4nn")
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonPlay" type="Button" parent="HUD/PauseMenu"]
+[node name="ButtonPlay" type="Button" parent="HUD/PauseMenu" unique_id=1343040764]
 layout_mode = 0
 offset_left = 860.0
 offset_top = 593.0
@@ -601,7 +601,7 @@ offset_right = 959.0
 offset_bottom = 640.0
 text = "play"
 
-[node name="ButtonRestart" type="Button" parent="HUD/PauseMenu"]
+[node name="ButtonRestart" type="Button" parent="HUD/PauseMenu" unique_id=465305806]
 layout_mode = 0
 offset_left = 964.0
 offset_top = 593.0
@@ -609,7 +609,7 @@ offset_right = 1063.0
 offset_bottom = 640.0
 text = "restart"
 
-[node name="ButtonMain" type="Button" parent="HUD/PauseMenu"]
+[node name="ButtonMain" type="Button" parent="HUD/PauseMenu" unique_id=1437202536]
 layout_mode = 0
 offset_left = 1068.0
 offset_top = 593.0
@@ -617,7 +617,7 @@ offset_right = 1167.0
 offset_bottom = 640.0
 text = "main menu"
 
-[node name="DeathMenu" type="Panel" parent="HUD" groups=["HUD"]]
+[node name="DeathMenu" type="Panel" parent="HUD" unique_id=1050572832 groups=["HUD"]]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -632,7 +632,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="HUD/DeathMenu"]
+[node name="TextureRect" type="TextureRect" parent="HUD/DeathMenu" unique_id=32371733]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -648,7 +648,7 @@ grow_vertical = 2
 scale = Vector2(2.2, 2.2)
 texture = ExtResource("87_ekhi8")
 
-[node name="Restart_button" type="Button" parent="HUD/DeathMenu"]
+[node name="Restart_button" type="Button" parent="HUD/DeathMenu" unique_id=1822508038]
 layout_mode = 0
 offset_left = -38.0
 offset_top = 130.0
@@ -656,7 +656,7 @@ offset_right = 130.0
 offset_bottom = 185.0
 flat = true
 
-[node name="ButtonMainmenu" type="Button" parent="HUD/DeathMenu"]
+[node name="ButtonMainmenu" type="Button" parent="HUD/DeathMenu" unique_id=161240724]
 layout_mode = 0
 offset_left = -55.0
 offset_top = 194.0
@@ -664,18 +664,18 @@ offset_right = 120.0
 offset_bottom = 272.0
 flat = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/DeathMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/DeathMenu" unique_id=189215706]
 layout_mode = 0
 offset_left = -49.0
 offset_top = -15.0
 offset_right = 197.0
 offset_bottom = 133.0
 
-[node name="DistanceLabel" type="Label" parent="HUD/DeathMenu/VBoxContainer"]
+[node name="DistanceLabel" type="Label" parent="HUD/DeathMenu/VBoxContainer" unique_id=2069245999]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_ekhi8")
 
-[node name="Achivements" type="Panel" parent="HUD"]
+[node name="Achivements" type="Panel" parent="HUD" unique_id=2095020457]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -689,11 +689,11 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_p0ac8")
 
-[node name="Sprite2D" type="Sprite2D" parent="HUD/Achivements"]
+[node name="Sprite2D" type="Sprite2D" parent="HUD/Achivements" unique_id=197494518]
 scale = Vector2(2, 2)
 centered = false
 
-[node name="achiv_timer" type="Timer" parent="HUD/Achivements"]
+[node name="achiv_timer" type="Timer" parent="HUD/Achivements" unique_id=895284252]
 wait_time = 4.0
 one_shot = true
 
