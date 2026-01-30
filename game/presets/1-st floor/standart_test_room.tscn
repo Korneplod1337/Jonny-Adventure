@@ -73,22 +73,22 @@ position = Vector2(-5, 52)
 scale = Vector2(1.49359, 0.733615)
 
 [node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("3_yij7n")]
-position = Vector2(-3, -318)
+position = Vector2(0, -309)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("3_yij7n")]
-position = Vector2(-1, 321)
+position = Vector2(0, 307)
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("3_yij7n")]
-position = Vector2(-604, -1)
+position = Vector2(-590, -3)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("3_yij7n")]
-position = Vector2(604, -1)
+position = Vector2(591, 0)
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 

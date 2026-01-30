@@ -7,46 +7,46 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sehpn"]
 size = Vector2(1280, 720)
 
-[node name="StartRoom" type="Node2D"]
+[node name="StartRoom" type="Node2D" unique_id=603362692]
 
-[node name="BG" type="Sprite2D" parent="."]
+[node name="BG" type="Sprite2D" parent="." unique_id=1780623582]
 scale = Vector2(2, 2)
 texture = ExtResource("1_rbiir")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=513164537]
 position = Vector2(-207, -240)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1641492913]
 build_mode = 1
 polygon = PackedVector2Array(-400, -88, -401, 566, 813, 566, 813, -88)
 
-[node name="CameraBounds" type="Area2D" parent="."]
+[node name="CameraBounds" type="Area2D" parent="." unique_id=1177103682]
 visible = false
 input_pickable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=225693049]
 shape = SubResource("RectangleShape2D_sehpn")
 
-[node name="Rock3" parent="." instance=ExtResource("1_jseag")]
+[node name="Rock3" parent="." unique_id=1094485145 instance=ExtResource("1_jseag")]
 position = Vector2(-1, 0)
 scale = Vector2(0.547542, 8.26888)
 
-[node name="Door_Up" parent="." instance=ExtResource("3_sehpn")]
+[node name="Door_Up" parent="." unique_id=503841439 instance=ExtResource("3_sehpn")]
 position = Vector2(-3, -318)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
-[node name="Door_Down" parent="." instance=ExtResource("3_sehpn")]
-position = Vector2(-1, 321)
+[node name="Door_Down" parent="." unique_id=1693951162 instance=ExtResource("3_sehpn")]
+position = Vector2(-1, 309)
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
-[node name="Door_Left" parent="." instance=ExtResource("3_sehpn")]
-position = Vector2(-604, -1)
+[node name="Door_Left" parent="." unique_id=308207908 instance=ExtResource("3_sehpn")]
+position = Vector2(-593, -1)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
-[node name="Door_Right" parent="." instance=ExtResource("3_sehpn")]
-position = Vector2(604, -1)
+[node name="Door_Right" parent="." unique_id=1424844174 instance=ExtResource("3_sehpn")]
+position = Vector2(588, -1)
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)

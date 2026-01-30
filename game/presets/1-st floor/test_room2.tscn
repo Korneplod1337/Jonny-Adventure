@@ -78,22 +78,22 @@ build_mode = 1
 polygon = PackedVector2Array(-401, -88, -401, 566, 813, 566, 813, -88)
 
 [node name="Door_Up" parent="." unique_id=650211907 instance=ExtResource("3_wgx1u")]
-position = Vector2(0, -328)
+position = Vector2(-1, -318)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=60275189 instance=ExtResource("3_wgx1u")]
-position = Vector2(0, 326)
+position = Vector2(0, 312)
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1774901095 instance=ExtResource("3_wgx1u")]
-position = Vector2(-608, -1)
+position = Vector2(-593, -1)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=970584351 instance=ExtResource("3_wgx1u")]
-position = Vector2(605, 0)
+position = Vector2(589, 0)
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 

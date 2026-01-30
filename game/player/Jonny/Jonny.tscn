@@ -131,16 +131,18 @@ script = ExtResource("1_fwoqh")
 shot_scene = ExtResource("2_3ep63")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=222282461]
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_g617h")
 animation = &"afk_default"
 
 [node name="AnimatedShot" type="AnimatedSprite2D" parent="." unique_id=2140154797]
-position = Vector2(0, -14)
+position = Vector2(0, -25.945946)
 sprite_frames = SubResource("SpriteFrames_epc1c")
 animation = &"down"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=619690835]
-polygon = PackedVector2Array(-10, -24, -10, 24, 10, 24, 10, -24)
+position = Vector2(0, -11.8918915)
+polygon = PackedVector2Array(-10, 0, -10, 24, 10, 24, 10, 0)
 
 [node name="immune_Timer" type="Timer" parent="." unique_id=1440095197]
 wait_time = 0.3
@@ -154,6 +156,7 @@ one_shot = true
 limit_smoothed = true
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
+position = Vector2(0, -11.351351)
 
 [connection signal="timeout" from="immune_Timer" to="." method="_on_immune_timer_timeout"]
 [connection signal="timeout" from="shot_Timer" to="." method="_on_shot_timer_timeout"]

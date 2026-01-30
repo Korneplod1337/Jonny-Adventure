@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/enemy test2.tscn" id="4_cjhlh"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine_test.tscn" id="5_sejrf"]
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/EmenyWorm.tscn" id="6_r5ugo"]
-[ext_resource type="Texture2D" uid="uid://c21xigd6v3qw6" path="res://image/Новый контент.png" id="7_nbcw0"]
+[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coin.tscn" id="7_nbcw0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -36,25 +36,25 @@ collision_layer = 16
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1340424052]
 build_mode = 1
-polygon = PackedVector2Array(-401, -88, -401, 566, 813, 566, 813, -88)
+polygon = PackedVector2Array(-360.94, -48, -360.94, 526, 773.06, 526, 773.06, -48)
 
 [node name="Door_Up" parent="." unique_id=976948045 instance=ExtResource("3_et5k3")]
-position = Vector2(-3, -318)
+position = Vector2(-2, -278)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=468466240 instance=ExtResource("3_et5k3")]
-position = Vector2(-1, 321)
+position = Vector2(1, 275)
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=867576507 instance=ExtResource("3_et5k3")]
-position = Vector2(-604, -1)
+position = Vector2(-557, -2)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=1947595542 instance=ExtResource("3_et5k3")]
-position = Vector2(496, -1)
+position = Vector2(553, 1)
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
@@ -62,12 +62,10 @@ dir = Vector2(1, 0)
 position = Vector2(304, -118)
 
 [node name="ShrineTest" parent="." unique_id=2017981582 instance=ExtResource("5_sejrf")]
-position = Vector2(-269, -279)
+position = Vector2(-534, 223)
 
 [node name="EmenyWorm" parent="." unique_id=1527446258 instance=ExtResource("6_r5ugo")]
 position = Vector2(-371, -13)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=525106090]
-position = Vector2(-24, -47)
-scale = Vector2(2, 2)
-texture = ExtResource("7_nbcw0")
+[node name="Coin" parent="." unique_id=398995973 instance=ExtResource("7_nbcw0")]
+position = Vector2(168, -51)

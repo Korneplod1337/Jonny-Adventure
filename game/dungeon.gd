@@ -6,7 +6,7 @@ var generator := DungeonGenerator.new()
 enum RoomType {START, STANDARD, SHOP, BOSS} # Типы комнат в генераторе
 
 @export var floors_config: Array[Dictionary] = [
-	{"total_rooms": 4, "shop_rooms": 1},  # Этаж 1
+	{"total_rooms": 3, "shop_rooms": 0},  # Этаж 1
 	{"total_rooms": 8, "shop_rooms": 1},  # Этаж 2
 ]
 var current_floor: int = 0
@@ -165,7 +165,7 @@ func teleport_player(door: Node, body: Node2D) -> void:
 	if opposite_name != "":
 		spawn_door = target_scene.get_node_or_null(opposite_name)
 
-	var spawn_pos: Vector2 = target_scene.global_position
+	var spawn_pos: Vector2 = door.global_position
 	if spawn_door != null:
 		spawn_pos = spawn_door.global_position
 
