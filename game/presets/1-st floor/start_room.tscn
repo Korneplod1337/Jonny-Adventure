@@ -62,11 +62,11 @@ dir = Vector2(1, 0)
 position = Vector2(304, -118)
 
 [node name="ShrineTest" parent="." unique_id=2017981582 instance=ExtResource("5_sejrf")]
-position = Vector2(-534, 223)
-shrine_type = 1
+position = Vector2(-534, 222)
+shrine_type = 0
 
 [node name="EmenyWorm" parent="." unique_id=1527446258 instance=ExtResource("6_r5ugo")]
 position = Vector2(-371, -13)
 
 [node name="Coin" parent="." unique_id=398995973 instance=ExtResource("7_nbcw0")]
-position = Vector2(168, -51)
+position = Vector2(-256, 193)

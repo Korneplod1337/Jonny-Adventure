@@ -10,12 +10,24 @@
 [ext_resource type="Texture2D" uid="uid://clnsmgkv73cq5" path="res://image/rooms/shrines/shrine_dmg3.png" id="5_cybcr"]
 [ext_resource type="Texture2D" uid="uid://s23d7rih5xtn" path="res://image/rooms/shrines/shrine_hp3.png" id="5_hrdi4"]
 [ext_resource type="Texture2D" uid="uid://djx41igk4nb3i" path="res://image/rooms/shrines/shrine_hp2.png" id="5_mml3l"]
+[ext_resource type="Texture2D" uid="uid://nffw16vpdfj5" path="res://image/rooms/shrines/shrine_fire_rate1.png" id="8_omw2r"]
+[ext_resource type="Texture2D" uid="uid://wnnua6uw7s4w" path="res://image/rooms/shrines/shrine_fire_rate2.png" id="9_2tnob"]
+[ext_resource type="Texture2D" uid="uid://bqtgfeeavm8wt" path="res://image/rooms/shrines/shrine_fire_rate3.png" id="10_fbl4l"]
 [ext_resource type="Texture2D" uid="uid://bqtrkwfyofj6v" path="res://image/rooms/shrines/shrine_spread1.png" id="11_3lbhn"]
+[ext_resource type="Texture2D" uid="uid://cj1n4d14ojwap" path="res://image/rooms/shrines/shrine_luck1.png" id="11_30nv8"]
 [ext_resource type="Texture2D" uid="uid://by0ww6du4mjyh" path="res://image/rooms/shrines/shrine_speed1.png" id="11_db3m8"]
+[ext_resource type="Texture2D" uid="uid://bmfudcu0ilfcl" path="res://image/rooms/shrines/shrine_luck2.png" id="12_05gwu"]
 [ext_resource type="Texture2D" uid="uid://drbmiu8ifhci7" path="res://image/rooms/shrines/shrine_spread2.png" id="12_nhpsd"]
 [ext_resource type="Texture2D" uid="uid://ckp07118cv83n" path="res://image/rooms/shrines/shrine_speed2.png" id="12_x3s17"]
 [ext_resource type="Texture2D" uid="uid://kchc8t1u13m" path="res://image/rooms/shrines/shrine_spread3.png" id="13_bead5"]
 [ext_resource type="Texture2D" uid="uid://b86wnp7u85si6" path="res://image/rooms/shrines/shrine_speed3.png" id="13_dtky1"]
+[ext_resource type="Texture2D" uid="uid://ys46daf8st3l" path="res://image/rooms/shrines/shrine_luck3.png" id="13_sxitj"]
+[ext_resource type="Texture2D" uid="uid://dyyan3k8c7yb5" path="res://image/rooms/shrines/shrine_magic1.png" id="14_h3lv3"]
+[ext_resource type="Texture2D" uid="uid://b1gvpdlvwvpir" path="res://image/rooms/shrines/shrine_magic2.png" id="15_j5pge"]
+[ext_resource type="Texture2D" uid="uid://dh2l4guu41doy" path="res://image/rooms/shrines/shrine_magic3.png" id="16_88yil"]
+[ext_resource type="Texture2D" uid="uid://dub7pi8apy7td" path="res://image/rooms/shrines/shrine_range1.png" id="23_ucbk4"]
+[ext_resource type="Texture2D" uid="uid://dsbw5w5jluhjj" path="res://image/rooms/shrines/shrine_range2.png" id="24_lomis"]
+[ext_resource type="Texture2D" uid="uid://ca33hwcs8k3ff" path="res://image/rooms/shrines/shrine_range3.png" id="25_0wj7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwp4v"]
 size = Vector2(88, 94.66667)
@@ -57,10 +69,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hnwl0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_hrdi4")
+"texture": ExtResource("8_omw2r")
 }],
 "loop": true,
 "name": &"fire_rate",
@@ -68,10 +77,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hnwl0")
+"texture": ExtResource("9_2tnob")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_hrdi4")
+"texture": ExtResource("10_fbl4l")
 }],
 "loop": true,
 "name": &"fire_rate_active",
@@ -98,10 +107,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hnwl0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_hrdi4")
+"texture": ExtResource("11_30nv8")
 }],
 "loop": true,
 "name": &"luck",
@@ -109,21 +115,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hnwl0")
+"texture": ExtResource("12_05gwu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_hrdi4")
+"texture": ExtResource("13_sxitj")
 }],
 "loop": true,
 "name": &"luck_active",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hnwl0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_hrdi4")
+"texture": ExtResource("14_h3lv3")
 }],
 "loop": true,
 "name": &"magic",
@@ -131,10 +134,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hnwl0")
+"texture": ExtResource("15_j5pge")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_hrdi4")
+"texture": ExtResource("16_88yil")
 }],
 "loop": true,
 "name": &"magic_active",
@@ -161,10 +164,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hnwl0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_hrdi4")
+"texture": ExtResource("23_ucbk4")
 }],
 "loop": true,
 "name": &"range",
@@ -172,10 +172,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hnwl0")
+"texture": ExtResource("24_lomis")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_hrdi4")
+"texture": ExtResource("25_0wj7s")
 }],
 "loop": true,
 "name": &"range_active",
@@ -224,8 +224,7 @@ shape = SubResource("RectangleShape2D_fydls")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=434765893]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6c05r")
-animation = &"move_speed_active"
-frame = 1
-frame_progress = 0.39941153
+animation = &"luck_active"
+frame_progress = 0.8208819
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1748129473]
