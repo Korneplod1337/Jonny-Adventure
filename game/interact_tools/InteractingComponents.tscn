@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw14oijigxyr4"]
+[gd_scene format=3 uid="uid://dw14oijigxyr4"]
 
-[ext_resource type="Script" uid="uid://csroranh8vp3n" path="res://game/Interact_objects/interacting_components.gd" id="1_sfd41"]
+[ext_resource type="Script" uid="uid://csroranh8vp3n" path="res://game/interact_tools/interacting_components.gd" id="1_sfd41"]
 [ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="2_h2ijg"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pahk"]
 radius = 39.0

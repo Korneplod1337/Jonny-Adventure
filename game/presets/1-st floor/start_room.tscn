@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine_test.tscn" id="5_sejrf"]
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/EmenyWorm.tscn" id="6_r5ugo"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coin.tscn" id="7_nbcw0"]
+[ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/Items/test_item.tscn" id="8_sw7ps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -44,7 +45,7 @@ scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=468466240 instance=ExtResource("3_et5k3")]
-position = Vector2(1, 275)
+position = Vector2(1, 269)
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
@@ -63,10 +64,15 @@ position = Vector2(304, -118)
 
 [node name="ShrineTest" parent="." unique_id=2017981582 instance=ExtResource("5_sejrf")]
 position = Vector2(-534, 222)
-shrine_type = 0
 
 [node name="EmenyWorm" parent="." unique_id=1527446258 instance=ExtResource("6_r5ugo")]
 position = Vector2(-371, -13)
 
 [node name="Coin" parent="." unique_id=398995973 instance=ExtResource("7_nbcw0")]
 position = Vector2(-256, 193)
+
+[node name="TestItem" parent="." unique_id=1430574395 instance=ExtResource("8_sw7ps")]
+position = Vector2(285, 50)
+
+[node name="TestItem2" parent="." unique_id=473564250 instance=ExtResource("8_sw7ps")]
+position = Vector2(311, 97)

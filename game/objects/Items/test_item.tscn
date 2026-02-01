@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://duqt5c8r3bui4"]
+
+[ext_resource type="Script" uid="uid://5vjc2vbyhtm3" path="res://game/objects/Items/test_item.gd" id="1_c55ww"]
+[ext_resource type="Texture2D" uid="uid://dwjxxrdxpcxne" path="res://image/ttttt.png" id="2_338ft"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_hw6qn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[node name="TestItem" type="Area2D" unique_id=1430574395]
+script = ExtResource("1_c55ww")
+item_icon = ExtResource("2_338ft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302434300]
+texture = ExtResource("2_338ft")
+
+[node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_hw6qn")]
+interact_name = "teke test item"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
+shape = SubResource("CircleShape2D_lh7he")

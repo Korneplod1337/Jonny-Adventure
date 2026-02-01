@@ -415,7 +415,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbaby"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekhi8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ekhi8"]
 font = ExtResource("4_heuq7")
@@ -549,7 +549,7 @@ sprite_frames = SubResource("SpriteFrames_p0ac8")
 [node name="InventoryList" type="ItemList" parent="HUD" unique_id=1484417758]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.996875
+anchor_left = 0.6984375
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -558,18 +558,19 @@ offset_top = -360.0
 offset_bottom = 360.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_cbaby")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ekhi8")
+max_text_lines = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemsGridContainer" type="GridContainer" parent="HUD/InventoryList" unique_id=892028582]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -124.0
-offset_right = 124.0
-offset_bottom = 382.0
-grow_horizontal = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -284.0
+offset_bottom = 427.0
+grow_horizontal = 0
+columns = 5
 
 [node name="PauseMenu" type="Panel" parent="HUD" unique_id=1100991669]
 visible = false

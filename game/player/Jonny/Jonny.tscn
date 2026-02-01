@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bmidc6krxal0l" path="res://game/player/Base_Jonny_textures/shot_down.png" id="15_usp30"]
 [ext_resource type="Texture2D" uid="uid://bg0r320ov4hsr" path="res://game/player/Base_Jonny_textures/shot_left.png" id="16_0e4oy"]
 [ext_resource type="Texture2D" uid="uid://bhhrmf6kbryw3" path="res://game/player/Base_Jonny_textures/shot_rightt.png" id="17_eeltd"]
-[ext_resource type="PackedScene" uid="uid://dw14oijigxyr4" path="res://game/Interact_objects/InteractingComponents.tscn" id="17_gh012"]
+[ext_resource type="PackedScene" uid="uid://dw14oijigxyr4" path="res://game/interact_tools/InteractingComponents.tscn" id="17_gh012"]
 [ext_resource type="Texture2D" uid="uid://cup4rr84336xg" path="res://game/player/Base_Jonny_textures/shot_up.png" id="18_088ty"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g617h"]

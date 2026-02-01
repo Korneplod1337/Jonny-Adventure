@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bmr2p245fgr3l"]
+
+[ext_resource type="Script" uid="uid://dnatxjwmr4ssc" path="res://game/HUD/slot.gd" id="1_sf1jt"]
+[ext_resource type="Theme" uid="uid://c626wtnojhto8" path="res://image/interface/new_theme.tres" id="2_sf1jt"]
+[ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="3_pmhrg"]
+
+[node name="Slot" type="Control" unique_id=2046426771]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1232.0
+offset_bottom = -672.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_sf1jt")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=257606357]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 20.0
+scale = Vector2(2, 2)
+
+[node name="ToolTipPanel" type="Panel" parent="." unique_id=965864509]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 1
+offset_left = -200.0
+offset_right = -100.0
+offset_bottom = 60.0
+scale = Vector2(2, 2)
+theme = ExtResource("2_sf1jt")
+
+[node name="Label" type="Label" parent="ToolTipPanel" unique_id=2052513640]
+layout_mode = 1
+offset_left = 8.5
+offset_top = 8.0
+offset_right = 92.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("3_pmhrg")
+theme_override_font_sizes/font_size = 16
+text = "cdsfdsfdf5444444 444444 44444 4444 444444444444444444"
+autowrap_mode = 3

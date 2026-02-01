@@ -112,6 +112,10 @@ animations = [{
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1tgcs"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_fvbif"]
+font = ExtResource("46_1exqm")
+font_color = Color(0, 0, 0, 1)
+
 [node name="MainMenu" type="Node2D" unique_id=1398218460]
 
 [node name="start_menu" type="CanvasLayer" parent="." unique_id=673823800]
@@ -447,7 +451,6 @@ script = ExtResource("41_oohye")
 layout_mode = 2
 
 [node name="Char_select_menu" type="CanvasLayer" parent="." unique_id=504680637]
-visible = false
 script = ExtResource("43_bkji5")
 
 [node name="char_bg" type="Sprite2D" parent="Char_select_menu" unique_id=1365344464]
@@ -481,13 +484,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -57.0
-offset_top = 3.5
-offset_right = -11.0
-offset_bottom = 21.5
+offset_left = -45.0
+offset_top = 1.5
+offset_right = 1.0
+offset_bottom = 19.5
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(2.5, 2.5)
+scale = Vector2(2, 2)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
 theme_override_font_sizes/font_size = 16
@@ -526,17 +529,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -62.5
-offset_top = -4.0
-offset_right = -12.5
-offset_bottom = 29.0
+offset_left = -49.5
+offset_top = 2.5
+offset_right = 0.5
+offset_bottom = 35.5
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(2.5, 2.5)
+scale = Vector2(2, 2)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
 text = "Pashe 
 (femboy)"
+label_settings = SubResource("LabelSettings_fvbif")
 horizontal_alignment = 1
 language = "en"
 

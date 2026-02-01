@@ -25,8 +25,8 @@ func _process(_delta: float) -> void:
 
 
 func _sort_by_nearest(area1, area2):
-	var area1_dist = global_position.distance_to(area1.gloval_position)
-	var area2_dist = global_position.distance_to(area2.gloval_position)
+	var area1_dist = global_position.distance_to(area1.global_position)
+	var area2_dist = global_position.distance_to(area2.global_position)
 	return area1_dist < area2_dist
 
 

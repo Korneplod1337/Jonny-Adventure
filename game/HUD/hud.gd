@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+const font: FontFile = preload("uid://cv3kwiaeereef")
 var ui_open := false
 
 func _ready() -> void:
@@ -13,6 +14,7 @@ func _ready() -> void:
 	stats_panel.visible = false
 	inventory_panel.visible = false
 	
+		# подключения к игроку
 	var player := get_tree().get_first_node_in_group("player")
 	if player:
 		player.hp_visual_changed.connect(_on_hp_visual_changed)
@@ -20,9 +22,10 @@ func _ready() -> void:
 		
 		player.stats_changed.connect(_on_player_stats_changed)
 		_on_player_stats_changed(player.move_speed_level,\
-		player.luck_level, player.damage_level,\
-		player.spread_level, player.range_level, player.hit_points_level,\
-		player.fire_rate_level, player.magic_level)
+			player.luck_level, player.damage_level,\
+			player.spread_level, player.range_level, player.hit_points_level,\
+			player.fire_rate_level, player.magic_level)
+	
 	else: print('Худ не нашёл Игрока')
 	AchievementManager.achievement_unlocked.connect(_show_new_achievement)
 
@@ -101,6 +104,26 @@ func _toggle_pause() -> void:
 	pause_menu.visible = tree.paused
 
 
+# Предметы инвентарь
+const SlotScene: PackedScene = preload("uid://bmr2p245fgr3l")
+
+@onready var items: Array[Dictionary] = []
+
+func add_item(icon: Texture2D, tooltip: String):
+	items.append({"icon": icon, "tooltip": tooltip})
+	_render_inventory()
+
+func _render_inventory():
+	for child in items_container.get_children():
+		child.queue_free()
+	for item_data in items:
+		var slot = SlotScene.instantiate() as InventorySlot
+		slot.set_icon(item_data.icon)
+		slot.set_tooltip(item_data.tooltip)
+		items_container.add_child(slot)
+
+
+
 # Отображение подбора монетки
 func _on_coins_changed(new_value: int) -> void:
 	coins_label.text = str(new_value)
@@ -117,13 +140,15 @@ func _toggle_full_ui() -> void:
 	stats_panel.visible = ui_open
 	inventory_panel.visible = ui_open
 	_on_coins_changed(GameState.coins)
+	if ui_open:
+		_render_inventory()
 
 # Ачивки
 func _show_new_achievement(data: String):
 	$HUD/Achivements.show()
 	$HUD/Achivements/Sprite2D.texture = load(data)
 	$HUD/Achivements/achiv_timer.start()
-	
+
 func _on_achiv_timer_timeout() -> void:
 	$HUD/Achivements.hide()
 
@@ -131,10 +156,11 @@ func _on_achiv_timer_timeout() -> void:
 const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var hearts_row: HBoxContainer = $HUD/LeftUpVBoxContainer/HpContainersRow
 
+@onready var inventory_panel: Control = $HUD/InventoryList
+@onready var items_container: GridContainer = $HUD/InventoryList/ItemsGridContainer
 
 @onready var death_menu: Control = $HUD/DeathMenu
 @onready var distance_label: Label = $HUD/DeathMenu/VBoxContainer/DistanceLabel
-
 @onready var pause_menu: Control = $HUD/PauseMenu
 
 @onready var coins_container: GridContainer = $HUD/LeftUpVBoxContainer/CoinsContainer
@@ -143,7 +169,6 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var coins_icon_active = $HUD/LeftUpVBoxContainer/CoinsContainer/CoinsIcon
 @onready var coins_icon_passive = $HUD/LeftUpVBoxContainer/CoinsContainer/CoinsIcon2
 @onready var stats_panel: Control = $HUD/StatsPanel
-@onready var inventory_panel: Control = $HUD/InventoryList
 
 @onready var hit_points_stat: AnimatedSprite2D = $HUD/StatsPanel/Brown_Stat
 @onready var luck_stat: AnimatedSprite2D = $HUD/StatsPanel/Green_stat
