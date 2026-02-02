@@ -215,7 +215,7 @@ flat = true
 [node name="Select_stats" type="Sprite2D" parent="start_menu/Control_main/Button_stats" unique_id=564091291]
 visible = false
 
-[node name="Button" type="Button" parent="start_menu/Control_main" unique_id=92415567]
+[node name="ResetButton" type="Button" parent="start_menu/Control_main" unique_id=92415567]
 layout_mode = 0
 offset_left = 75.0
 offset_top = -105.0
@@ -451,6 +451,7 @@ script = ExtResource("41_oohye")
 layout_mode = 2
 
 [node name="Char_select_menu" type="CanvasLayer" parent="." unique_id=504680637]
+visible = false
 script = ExtResource("43_bkji5")
 
 [node name="char_bg" type="Sprite2D" parent="Char_select_menu" unique_id=1365344464]
@@ -643,7 +644,7 @@ parameters/looping = true
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_exited"]
 [connection signal="pressed" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_pressed"]
-[connection signal="pressed" from="start_menu/Control_main/Button" to="start_menu/Control_main/Button" method="_on_pressed"]
+[connection signal="pressed" from="start_menu/Control_main/ResetButton" to="start_menu/Control_main/ResetButton" method="_on_pressed"]
 [connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_video" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_video_pressed"]
 [connection signal="mouse_entered" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_low" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_low_mouse_entered"]
 [connection signal="mouse_exited" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_low" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_low_mouse_exited"]

@@ -11,5 +11,6 @@ func _on_pressed() -> void:
 
 const FILES_TO_WIPE := [
 	"user://stats.cfg",
-	"user://achievements.cfg"
+	"user://achievements.cfg",
+	"user://items.cfg"
 ]

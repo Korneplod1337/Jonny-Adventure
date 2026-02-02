@@ -68,8 +68,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("o"):
 		ST.upgrade_stat(self, 'hp', 1)
 	if Input.is_action_just_pressed("i"):
-		ST.upgrade_stat(self, 'hp', -1)
-
+		ItemManager.spawn("treasure", [1], self.global_position)
 
 
 func _process(delta: float) -> void: 
