@@ -144,10 +144,12 @@ func teleport_player(door: Node, body: Node2D) -> void:
 	var target_pos: Vector2 = door.target_room_pos
 	var target_room: Room = rooms.get(target_pos)
 	if target_room == null:
+		print('teleport room empty')
 		return
 
 	var target_scene: Node2D = target_room.scene
 	if target_scene == null:
+		print('teleport scene empty')
 		return
 
 	var opposite_dir := -last_door_dir
@@ -173,8 +175,9 @@ func teleport_player(door: Node, body: Node2D) -> void:
 	spawn_door.call_deferred("set_temporarily_inactive")
 	
 	body.global_position = spawn_pos
+	print(body.global_position, ' ', spawn_pos)
 
-	if body.has_method("set_room"):
+	if body.has_method("set_room"): #камера тп
 		body.set_room(target_scene)
 
 

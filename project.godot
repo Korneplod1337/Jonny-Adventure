@@ -15,11 +15,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Jonny_adventure"
+config/version="0.0.0.7"
 run/main_scene="res://start.tscn"
 config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://image/dark angry.png"
 config/icon="res://image/Icon.png"
+boot_splash/minimum_display_time=100
 
 [autoload]
 

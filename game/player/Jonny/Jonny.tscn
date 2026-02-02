@@ -124,25 +124,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fm61y"]
+size = Vector2(20, 24.054054)
+
 [node name="Player" type="CharacterBody2D" unique_id=2016157039 groups=["player"]]
 scale = Vector2(1.85, 1.85)
 collision_mask = 23
 script = ExtResource("1_fwoqh")
 shot_scene = ExtResource("2_3ep63")
+move_speed_level = 10.0
+luck_level = 10.0
+magic_level = 10.0
+damage_level = 10.0
+spread_level = 10.0
+fire_rate_level = 10.0
+
+[node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
+position = Vector2(0, -11.837838)
+scale = Vector2(0.9999998, 0.9999998)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=222282461]
-position = Vector2(0, -1.6216221)
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_g617h")
 animation = &"afk_default"
 
 [node name="AnimatedShot" type="AnimatedSprite2D" parent="." unique_id=2140154797]
-position = Vector2(0, -16)
+position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_epc1c")
 animation = &"down"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=619690835]
-position = Vector2(0, -2.1621618)
-polygon = PackedVector2Array(-10, 0, -10, 24, 10, 24, 10, 0)
 
 [node name="immune_Timer" type="Timer" parent="." unique_id=1440095197]
 wait_time = 0.3
@@ -155,8 +164,9 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=409068140]
 limit_smoothed = true
 
-[node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
-position = Vector2(0, -1.0810814)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1105773883]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_fm61y")
 
 [connection signal="timeout" from="immune_Timer" to="." method="_on_immune_timer_timeout"]
 [connection signal="timeout" from="shot_Timer" to="." method="_on_shot_timer_timeout"]

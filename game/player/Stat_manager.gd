@@ -8,7 +8,7 @@ func get_stat(p: Node, stat: String) -> float :
 			hp += int(clamp((p.hp_bonus * 0.5), -10.0, 10.0))
 			return hp
 		"move_speed":
-			var speed = p.base_move_speed + lerp(0.0, 315.0, (p.move_speed_level - 1.0) / 9.0)
+			var speed = p.base_move_speed + lerp(0.0, 270.0, (p.move_speed_level - 1.0) / 9.0)
 			speed *= clamp((1 + p.speed_bonus * 0.05), 0.4, 1.6)
 			return speed
 		"luck":

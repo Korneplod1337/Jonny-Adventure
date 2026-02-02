@@ -2,15 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/background/background1.png" id="1_et5k3"]
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/rock.tscn" id="1_jseag"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="2_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/enemy test2.tscn" id="4_cjhlh"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine_test.tscn" id="5_sejrf"]
-[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/EmenyWorm.tscn" id="6_r5ugo"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coin.tscn" id="7_nbcw0"]
 [ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/Items/test_item.tscn" id="8_sw7ps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsolu"]
+size = Vector2(1136.44, 39.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw7ps"]
+size = Vector2(41.03, 654.5)
 
 [node name="StartRoom" type="Node2D" unique_id=757044430]
 
@@ -20,24 +26,41 @@ input_pickable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=332360121]
 shape = SubResource("RectangleShape2D_85tg8")
 
-[node name="BG" type="Sprite2D" parent="." unique_id=1940620195]
+[node name="BG_floor" type="Sprite2D" parent="." unique_id=1940620195]
 scale = Vector2(2, 2)
 texture = ExtResource("1_et5k3")
 
-[node name="Rock" parent="." unique_id=724279530 instance=ExtResource("1_jseag")]
-position = Vector2(-256, 113)
-scale = Vector2(0.997563, 1)
-
-[node name="Rock2" parent="." unique_id=882224253 instance=ExtResource("1_jseag")]
-position = Vector2(158, 125)
+[node name="BG_bounds" type="Sprite2D" parent="." unique_id=326775904]
+scale = Vector2(2, 2)
+texture = ExtResource("2_sw7ps")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=962677030]
 position = Vector2(-207.06, -240)
 collision_layer = 16
+collision_mask = 23
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1340424052]
-build_mode = 1
-polygon = PackedVector2Array(-360.94, -48, -360.94, 526, 773.06, 526, 773.06, -48)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1507287982]
+position = Vector2(207, -67.2)
+shape = SubResource("RectangleShape2D_lsolu")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=594798197]
+position = Vector2(207.28, 547.4)
+shape = SubResource("RectangleShape2D_lsolu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1238806990]
+position = Vector2(795.545, 239.75)
+shape = SubResource("RectangleShape2D_sw7ps")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=345058929]
+position = Vector2(-381.94, 239)
+shape = SubResource("RectangleShape2D_sw7ps")
+
+[node name="Rock" parent="." unique_id=724279530 instance=ExtResource("1_jseag")]
+position = Vector2(-363, 101)
+scale = Vector2(0.997563, 1)
+
+[node name="Rock2" parent="." unique_id=882224253 instance=ExtResource("1_jseag")]
+position = Vector2(320, 188)
 
 [node name="Door_Up" parent="." unique_id=976948045 instance=ExtResource("3_et5k3")]
 position = Vector2(-2, -278)
@@ -45,17 +68,17 @@ scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=468466240 instance=ExtResource("3_et5k3")]
-position = Vector2(1, 269)
+position = Vector2(0, 270)
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=867576507 instance=ExtResource("3_et5k3")]
-position = Vector2(-557, -2)
+position = Vector2(-549, -2)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=1947595542 instance=ExtResource("3_et5k3")]
-position = Vector2(553, 1)
+position = Vector2(550, 0)
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
@@ -63,16 +86,25 @@ dir = Vector2(1, 0)
 position = Vector2(304, -118)
 
 [node name="ShrineTest" parent="." unique_id=2017981582 instance=ExtResource("5_sejrf")]
-position = Vector2(-534, 222)
-
-[node name="EmenyWorm" parent="." unique_id=1527446258 instance=ExtResource("6_r5ugo")]
-position = Vector2(-371, -13)
+position = Vector2(-535, 224)
 
 [node name="Coin" parent="." unique_id=398995973 instance=ExtResource("7_nbcw0")]
-position = Vector2(-256, 193)
+position = Vector2(-419, 216)
 
 [node name="TestItem" parent="." unique_id=1430574395 instance=ExtResource("8_sw7ps")]
-position = Vector2(285, 50)
+position = Vector2(416, 82)
 
 [node name="TestItem2" parent="." unique_id=473564250 instance=ExtResource("8_sw7ps")]
 position = Vector2(311, 97)
+
+[node name="TestItem3" parent="." unique_id=1087372359 instance=ExtResource("8_sw7ps")]
+position = Vector2(318, 66)
+
+[node name="TestItem4" parent="." unique_id=623104339 instance=ExtResource("8_sw7ps")]
+position = Vector2(362, 48)
+
+[node name="TestItem5" parent="." unique_id=625256709 instance=ExtResource("8_sw7ps")]
+position = Vector2(374, 111)
+
+[node name="Coin2" parent="." unique_id=1871507262 instance=ExtResource("7_nbcw0")]
+position = Vector2(-348, 206)

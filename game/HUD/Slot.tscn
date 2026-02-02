@@ -5,25 +5,27 @@
 [ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="3_pmhrg"]
 
 [node name="Slot" type="Control" unique_id=2046426771]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(72, 72)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1232.0
-offset_bottom = -672.0
+offset_right = -1208.0
+offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_sf1jt")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=257606357]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 0
-offset_right = 30.0
-offset_bottom = 20.0
-scale = Vector2(2, 2)
+offset_right = 24.0
+offset_bottom = 24.0
+scale = Vector2(3, 3)
 
 [node name="ToolTipPanel" type="Panel" parent="." unique_id=965864509]
+visible = false
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
 offset_left = -200.0

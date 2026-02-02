@@ -6,7 +6,7 @@ var ST = StatManager
 	"red": max(0, base_max_hp),
 	"green": 0,
 	"blue": 0,   # щит/овер, НЕ ограничен max_hp
-	"black": 2,
+	"black": 0,
 	}
 
 const base_max_hp: 				int = 4    #6
@@ -60,7 +60,6 @@ func _ready() -> void:
 	_emit_stats_changed()
 	 # Вызвать это когда меняем стат
 
-
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("button_K"):
 		take_damage(1)
@@ -71,32 +70,18 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("i"):
 		ST.upgrade_stat(self, 'hp', -1)
 
-	
-	
-func _process(delta: float) -> void:
-	input_vector = Vector2(0, 0)
-	# передвижениe 
-	if Input.is_action_pressed("move_right"):
-		input_vector.x += 1
-	if Input.is_action_pressed("move_left"):
-		input_vector.x -= 1
-	if Input.is_action_pressed("move_down"):
-		input_vector.y += 1
-	if Input.is_action_pressed("move_up"):
-		input_vector.y -= 1
-		
-	if input_vector != Vector2.ZERO:
-		input_vector = input_vector.normalized() * move_speed
-	velocity = input_vector
 
+
+func _process(delta: float) -> void: 
+	total_time_alive += delta
+	total_distance_travelled += now_move_direction.length() * delta
 	
+	#ходьба
+	velocity = Vector2(Input.get_axis('move_left', 'move_right'),
+		Input.get_axis('move_up', 'move_down')).normalized() * move_speed
 	move_and_slide()
 	now_move_direction = get_real_velocity()
 	
-	total_time_alive += delta
-	total_distance_travelled += now_move_direction.length() * delta
-
-	# анимации передвижения 😂😂😂
 	if (now_move_direction.x < 1 and now_move_direction.x > -1) \
 	and (now_move_direction.y < 1 and now_move_direction.y > -1):
 		$AnimatedSprite2D.animation = "afk_default"
@@ -118,25 +103,15 @@ func _process(delta: float) -> void:
 			$AnimatedSprite2D.animation = "walk_down"
 			$AnimatedShot.animation = "down"
 		last_move_dir = now_move_direction.y
-
+	
 	# Анимации стрельбы
-	if Input.is_action_pressed("fire_up"):
-		shot_direction =  Vector2(0,-1)
-		$AnimatedShot.animation = "up"
-		shooting = true
-	if Input.is_action_pressed("fire_right"):
-		shot_direction =  Vector2(1,0)
-		$AnimatedShot.play("right")
-		shooting = true
-	if Input.is_action_pressed("fire_down"):
-		shot_direction =  Vector2(0,1)
-		$AnimatedShot.play("down")
-		shooting = true
-	if Input.is_action_pressed("fire_left"):
-		shot_direction =  Vector2(-1,0)
-		$AnimatedShot.play("left")
-		shooting = true
-
+	shot_direction = Input.get_vector("fire_left", "fire_right", "fire_up", "fire_down")
+	shooting = shot_direction != Vector2.ZERO
+	if shooting:
+		var anim_dir = "left" if shot_direction.x < 0 else "right" if shot_direction.x > 0\
+		 else "up" if shot_direction.y < 0 else "down"
+		$AnimatedShot.play(anim_dir)
+	
 	# Уход на перезарядку
 	if can_shoot and shooting:
 		fire(shot_direction)

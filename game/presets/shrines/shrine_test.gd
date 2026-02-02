@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _on_interact():
 	var player = get_tree().get_first_node_in_group("player")
-	if GameState.coins > 0:
+	if GameState.coins > 0 and interactable.is_interactable:
 		Shrn_animation.animation = ShrineType.keys()[selected_type] + '_active'
 		Shrn_animation.play()
 		interactable.is_interactable = false

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5vjc2vbyhtm3" path="res://game/objects/Items/test_item.gd" id="1_c55ww"]
 [ext_resource type="Texture2D" uid="uid://dwjxxrdxpcxne" path="res://image/ttttt.png" id="2_338ft"]
+[ext_resource type="Texture2D" uid="uid://b6yj2s2fwb0eu" path="res://image/interface/HUD/test item 24x24.png" id="2_hw6qn"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_hw6qn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
@@ -12,7 +13,7 @@ radius = 40.04997
 
 [node name="TestItem" type="Area2D" unique_id=1430574395]
 script = ExtResource("1_c55ww")
-item_icon = ExtResource("2_338ft")
+item_icon = ExtResource("2_hw6qn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
 shape = SubResource("CircleShape2D_oisx2")

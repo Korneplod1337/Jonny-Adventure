@@ -11,8 +11,10 @@ func _on_interact():
 	if not player:
 		print('предмет не видит игрока')
 	
-	StatManager.upgrade_stat(player, 'hp', 4) 
+	#Эффект
+	StatManager.upgrade_stat(player, 'hp', 1) 
 	
+	#
 	var hud = get_tree().get_first_node_in_group("HUD")
 	hud.add_item(item_icon, item_tooltip)
 	
@@ -20,6 +22,3 @@ func _on_interact():
 
 func _set_item_icon(new_icon: Texture2D):
 	item_icon = new_icon
-	# Опционально: preview на земле
-	#if has_node("../Sprite2D"):
-	#	get_node("../Sprite2D").texture = new_icon

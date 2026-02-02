@@ -567,10 +567,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -284.0
-offset_bottom = 427.0
+offset_left = -288.0
+offset_bottom = 547.0
 grow_horizontal = 0
-columns = 5
+columns = 4
 
 [node name="PauseMenu" type="Panel" parent="HUD" unique_id=1100991669]
 visible = false
