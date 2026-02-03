@@ -14,6 +14,7 @@ radius = 40.04997
 [node name="TestItem" type="Area2D" unique_id=1430574395]
 script = ExtResource("1_c55ww")
 item_icon = ExtResource("2_hw6qn")
+item_id = "hpup"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
 shape = SubResource("CircleShape2D_oisx2")

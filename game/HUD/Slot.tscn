@@ -26,6 +26,7 @@ scale = Vector2(3, 3)
 
 [node name="ToolTipPanel" type="Panel" parent="." unique_id=965864509]
 visible = false
+z_index = 100
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
 offset_left = -200.0

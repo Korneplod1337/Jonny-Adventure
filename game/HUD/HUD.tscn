@@ -86,6 +86,7 @@
 [ext_resource type="Texture2D" uid="uid://deq7l4jhy0bif" path="res://image/interface/stats/sky_gem9.png" id="74_oiata"]
 [ext_resource type="Texture2D" uid="uid://b3qu7lc4kuq3n" path="res://image/interface/stats/sky_gem10.png" id="75_dxf50"]
 [ext_resource type="Texture2D" uid="uid://dpqppxbtdi3ol" path="res://image/main_menu/stop_menu.png" id="86_ff4nn"]
+[ext_resource type="Theme" uid="uid://c626wtnojhto8" path="res://image/interface/new_theme.tres" id="86_p0ac8"]
 [ext_resource type="Texture2D" uid="uid://ww3vynkop1x4" path="res://image/interface/HUD/death_menu.png" id="87_ekhi8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ht4al"]
@@ -548,28 +549,36 @@ sprite_frames = SubResource("SpriteFrames_p0ac8")
 
 [node name="InventoryList" type="ItemList" parent="HUD" unique_id=1484417758]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.6984375
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -248.0
+offset_left = -633.0
 offset_top = -360.0
 offset_bottom = 360.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ekhi8")
 max_text_lines = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="ItemsGridContainer" type="GridContainer" parent="HUD/InventoryList" unique_id=892028582]
+[node name="ItemsScroll" type="ScrollContainer" parent="HUD/InventoryList" unique_id=1972940559]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -288.0
-offset_bottom = 547.0
+offset_left = -633.0
+offset_right = -3.0
+offset_bottom = 680.0
 grow_horizontal = 0
+theme = ExtResource("86_p0ac8")
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="ItemsGridContainer" type="GridContainer" parent="HUD/InventoryList/ItemsScroll" unique_id=892028582]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 2
 columns = 4
 
 [node name="PauseMenu" type="Panel" parent="HUD" unique_id=1100991669]

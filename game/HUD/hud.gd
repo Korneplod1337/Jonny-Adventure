@@ -107,10 +107,11 @@ func _toggle_pause() -> void:
 # Предметы инвентарь
 const SlotScene: PackedScene = preload("uid://bmr2p245fgr3l")
 
+
 @onready var items: Array[Dictionary] = []
 
 func add_item(icon: Texture2D, tooltip: String):
-	items.append({"icon": icon, "tooltip": tooltip})
+	items.insert(0, {"icon": icon, "tooltip": tooltip})
 	_render_inventory()
 
 func _render_inventory():
@@ -121,6 +122,7 @@ func _render_inventory():
 		slot.set_icon(item_data.icon)
 		slot.set_tooltip(item_data.tooltip)
 		items_container.add_child(slot)
+	
 
 
 
@@ -157,7 +159,8 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var hearts_row: HBoxContainer = $HUD/LeftUpVBoxContainer/HpContainersRow
 
 @onready var inventory_panel: Control = $HUD/InventoryList
-@onready var items_container: GridContainer = $HUD/InventoryList/ItemsGridContainer
+@onready var items_container: GridContainer = $HUD/InventoryList/ItemsScroll/ItemsGridContainer
+@onready var items_scroll: ScrollContainer = $HUD/InventoryList/ItemsScroll
 
 @onready var death_menu: Control = $HUD/DeathMenu
 @onready var distance_label: Label = $HUD/DeathMenu/VBoxContainer/DistanceLabel

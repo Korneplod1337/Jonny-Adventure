@@ -1,16 +1,74 @@
 [gd_resource type="Theme" format=3 uid="uid://c626wtnojhto8"]
 
-[ext_resource type="Texture2D" uid="uid://7ynrxursa4cd" path="res://image/interface/HUD/style.png" id="1_vn61q"]
+[ext_resource type="Texture2D" uid="uid://7ynrxursa4cd" path="res://image/interface/HUD/style/style.png" id="1_dnh2d"]
+[ext_resource type="Texture2D" uid="uid://bplqmt5343xm1" path="res://image/interface/HUD/style/scrol_test1.svg" id="2_dnh2d"]
 [ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="2_rw3gs"]
+[ext_resource type="Texture2D" uid="uid://c27203bfum6jq" path="res://image/interface/HUD/style/scrol_test2.svg" id="3_v46i8"]
+[ext_resource type="Texture2D" uid="uid://dycp31coe0t0e" path="res://image/interface/HUD/style/scrol_test3.svg" id="4_oxf80"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p55jf"]
-texture = ExtResource("1_vn61q")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6av8"]
+texture = ExtResource("1_dnh2d")
 texture_margin_left = 69.63783
 texture_margin_top = 35.036392
 texture_margin_right = 70.71807
 texture_margin_bottom = 70.131516
 region_rect = Rect2(2, 2, 92, 92)
 
+[sub_resource type="ImageTexture" id="ImageTexture_rw3gs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnh2d"]
+texture = ExtResource("2_dnh2d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oxf80"]
+texture = ExtResource("3_v46i8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6vx87"]
+texture = ExtResource("4_oxf80")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vx87"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6av8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
 [resource]
 default_font = ExtResource("2_rw3gs")
-Panel/styles/panel = SubResource("StyleBoxTexture_p55jf")
+Panel/styles/panel = SubResource("StyleBoxTexture_r6av8")
+VScrollBar/icons/decrement = SubResource("ImageTexture_rw3gs")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_rw3gs")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_rw3gs")
+VScrollBar/icons/increment = SubResource("ImageTexture_rw3gs")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_rw3gs")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_rw3gs")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_dnh2d")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_oxf80")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_6vx87")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_6vx87")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_r6av8")
