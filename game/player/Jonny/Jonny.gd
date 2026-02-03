@@ -1,6 +1,5 @@
 extends CharacterBody2D
 var ST = StatManager
-@export var shot_scene: PackedScene
 
 @onready var hp_list := {
 	"red": max(0, base_max_hp),
@@ -235,6 +234,8 @@ var shot_direction := Vector2(0,0)
 var shot_angle: float
 var can_shoot: bool = true
 var shooting: bool = false
+@export var shot_scene: PackedScene
+
 
 func fire (shot_dir: Vector2) -> void:
 	var shot = shot_scene.instantiate()

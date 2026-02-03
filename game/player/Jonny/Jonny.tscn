@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://bg0r320ov4hsr" path="res://game/player/Base_Jonny_textures/shot_left.png" id="16_0e4oy"]
 [ext_resource type="Texture2D" uid="uid://bhhrmf6kbryw3" path="res://game/player/Base_Jonny_textures/shot_rightt.png" id="17_eeltd"]
 [ext_resource type="PackedScene" uid="uid://dw14oijigxyr4" path="res://game/interact_tools/InteractingComponents.tscn" id="17_gh012"]
-[ext_resource type="Script" uid="uid://c1tdmo5x4ishm" path="res://game/player/Jonny/PlayerEquip.gd" id="18_3pvxu"]
 [ext_resource type="Texture2D" uid="uid://cup4rr84336xg" path="res://game/player/Base_Jonny_textures/shot_up.png" id="18_088ty"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g617h"]
@@ -132,13 +131,13 @@ size = Vector2(20, 24.054054)
 scale = Vector2(1.85, 1.85)
 collision_mask = 23
 script = ExtResource("1_fwoqh")
-shot_scene = ExtResource("2_3ep63")
 move_speed_level = 10.0
 luck_level = 10.0
 magic_level = 10.0
 damage_level = 10.0
 spread_level = 10.0
 fire_rate_level = 10.0
+shot_scene = ExtResource("2_3ep63")
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
 visible = false
@@ -169,9 +168,6 @@ limit_smoothed = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1105773883]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_fm61y")
-
-[node name="PlayerEquip" type="Node2D" parent="." unique_id=322029676]
-script = ExtResource("18_3pvxu")
 
 [connection signal="timeout" from="immune_Timer" to="." method="_on_immune_timer_timeout"]
 [connection signal="timeout" from="shot_Timer" to="." method="_on_shot_timer_timeout"]
