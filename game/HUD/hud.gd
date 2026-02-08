@@ -6,6 +6,7 @@ var ui_open := false
 func _ready() -> void:
 	death_menu.visible = false
 	pause_menu.visible = false
+	equip_panel.visible = false
 		#Деньги
 	GameState.coins_changed.connect(_on_coins_changed) 
 	_on_coins_changed(GameState.coins) 
@@ -161,6 +162,10 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var items_scroll: ScrollContainer = $HUD/InventoryList/ItemsScroll
 
 @onready var equip_panel: Panel = $HUD/EquipPanel
+@onready var HeadSlot: InventorySlot = $HUD/EquipPanel/HeadSlot/Slot
+@onready var ChestSlot: InventorySlot = $HUD/EquipPanel/ChestSlot/Slot
+@onready var WeaponSlot: InventorySlot = $HUD/EquipPanel/WeaponSlot/Slot
+@onready var BootsSlot: InventorySlot = $HUD/EquipPanel/BootsSlot/Slot
 
 
 @onready var death_menu: Control = $HUD/DeathMenu

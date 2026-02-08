@@ -1,7 +1,5 @@
 extends Area2D
 
-
-
 var speed: float = 300.0
 @export var animaited_speed = 2
 var direction: Vector2 = Vector2.RIGHT

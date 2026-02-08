@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bwiytmmsxjtk5"]
 
-[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Weapon/BaseShot_equip.gd" id="1_1cang"]
-[ext_resource type="PackedScene" uid="uid://cwdv6wwd2kqyr" path="res://game/objects/Weapon/BaseShot.tscn" id="2_xt80e"]
+[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/Weapon/BaseShot_equip.gd" id="1_1cang"]
+[ext_resource type="PackedScene" uid="uid://cwdv6wwd2kqyr" path="res://game/objects/Equipment/Weapon/BaseShot.tscn" id="2_xt80e"]
+[ext_resource type="Texture2D" uid="uid://b5280qdpgacbg" path="res://image/effect_sprites/test_Spit_bullet.png" id="2_xtrd6"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_xtrd6"]
 [ext_resource type="Texture2D" uid="uid://3hhrpek856pa" path="res://image/effect_sprites/Spit_bullet.png" id="4_i0cvw"]
 
@@ -23,10 +24,9 @@ animations = [{
 }]
 
 [node name="JonnyShot" type="Area2D" unique_id=241584314]
-collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_1cang")
-equip_icon = ExtResource("4_i0cvw")
+equip_icon = ExtResource("2_xtrd6")
 projectile = ExtResource("2_xt80e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]

@@ -110,7 +110,7 @@ func spawn(pool_type: String, tiers: Array[int], pos: Vector2) -> void:
 	inst.position = pos
 	get_tree().current_scene.add_child(inst)
 
-func debug_spawn(id: String, pos: Vector2) -> void:
+func certain_spawn(id: String, pos: Vector2) -> void:
 	for pool in POOLS.values():
 		for item in pool:
 			if item.id == id:

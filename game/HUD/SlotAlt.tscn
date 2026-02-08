@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://bmr2p245fgr3l"]
+[gd_scene format=3 uid="uid://pl317cum6l7a"]
 
-[ext_resource type="Script" uid="uid://dnatxjwmr4ssc" path="res://game/HUD/slot.gd" id="1_sf1jt"]
-[ext_resource type="Theme" uid="uid://c626wtnojhto8" path="res://image/interface/new_theme.tres" id="2_sf1jt"]
-[ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="3_pmhrg"]
+[ext_resource type="Script" uid="uid://dnatxjwmr4ssc" path="res://game/HUD/slot.gd" id="1_blh3v"]
+[ext_resource type="Theme" uid="uid://c626wtnojhto8" path="res://image/interface/new_theme.tres" id="2_7l738"]
+[ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="3_rcop1"]
 
 [node name="Slot" type="Control" unique_id=2046426771]
 custom_minimum_size = Vector2(72, 72)
@@ -14,8 +14,7 @@ offset_right = -1208.0
 offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-script = ExtResource("1_sf1jt")
+script = ExtResource("1_blh3v")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=257606357]
 custom_minimum_size = Vector2(24, 24)
@@ -29,19 +28,27 @@ visible = false
 z_index = 100
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
-offset_left = -200.0
-offset_right = -100.0
-offset_bottom = 60.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = -120.5
+offset_right = 100.0
+offset_bottom = -60.5
+grow_horizontal = 0
 scale = Vector2(2, 2)
-theme = ExtResource("2_sf1jt")
+theme = ExtResource("2_7l738")
 
 [node name="Label" type="Label" parent="ToolTipPanel" unique_id=2052513640]
 layout_mode = 1
-offset_left = 7.25
-offset_top = 6.25
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.5
+offset_top = -54.0
 offset_right = 93.25
-offset_bottom = 77.0
-theme_override_fonts/font = ExtResource("3_pmhrg")
+offset_bottom = -5.5
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_rcop1")
 theme_override_font_sizes/font_size = 16
-text = "Empty_item"
+text = "empty_slot"
 autowrap_mode = 3

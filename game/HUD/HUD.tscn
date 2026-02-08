@@ -89,6 +89,7 @@
 [ext_resource type="Theme" uid="uid://c626wtnojhto8" path="res://image/interface/new_theme.tres" id="86_p0ac8"]
 [ext_resource type="Texture2D" uid="uid://d0yvy0t0gpvn3" path="res://image/interface/equip/equip_slots.png" id="87_1wbpx"]
 [ext_resource type="Texture2D" uid="uid://ww3vynkop1x4" path="res://image/interface/HUD/death_menu.png" id="87_ekhi8"]
+[ext_resource type="PackedScene" uid="uid://pl317cum6l7a" path="res://game/HUD/SlotAlt.tscn" id="89_w87tb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ht4al"]
 paragraph_spacing = 1.0
@@ -607,12 +608,36 @@ offset_top = 14.0
 offset_right = 218.0
 offset_bottom = 118.0
 
+[node name="Slot" parent="HUD/EquipPanel/HeadSlot" unique_id=2046426771 instance=ExtResource("89_w87tb")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+
 [node name="ChestSlot" type="Control" parent="HUD/EquipPanel" unique_id=1295850683]
 anchors_preset = 0
 offset_left = 46.0
 offset_top = 145.0
 offset_right = 150.0
 offset_bottom = 249.0
+
+[node name="Slot" parent="HUD/EquipPanel/ChestSlot" unique_id=1272873514 instance=ExtResource("89_w87tb")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
 
 [node name="WeaponSlot" type="Control" parent="HUD/EquipPanel" unique_id=2035859051]
 anchors_preset = 0
@@ -621,12 +646,36 @@ offset_top = 178.0
 offset_right = 274.0
 offset_bottom = 282.0
 
+[node name="Slot" parent="HUD/EquipPanel/WeaponSlot" unique_id=1661001455 instance=ExtResource("89_w87tb")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+
 [node name="BootsSlot" type="Control" parent="HUD/EquipPanel" unique_id=1045121802]
 anchors_preset = 0
 offset_left = 22.0
 offset_top = 273.0
 offset_right = 126.0
 offset_bottom = 377.0
+
+[node name="Slot" parent="HUD/EquipPanel/BootsSlot" unique_id=349606862 instance=ExtResource("89_w87tb")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
 
 [node name="PauseMenu" type="Panel" parent="HUD" unique_id=1100991669]
 visible = false

@@ -3,15 +3,15 @@ extends Node
 # Пулы эквипмента
 const POOLS := {
 	"treasure": [
-		{"id": "Jonny_shot",   "scene": preload("res://game/objects/Items/test_item.tscn"),
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), #эквип
 		 "tier": 1, "weight": 10.0},
-		{"id": "test_shot", "scene": preload("res://game/objects/Items/test_item.tscn"),
+		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
 		 "tier": 2, "weight": 10.0},
-		{"id": "test_shot2", "scene": preload("res://game/objects/Items/test_item.tscn"),
+		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 1, "weight": 10.0},
 	],
 	"shop": [
-		{"id": "test_shot3", "scene": preload("res://game/objects/Items/test_item.tscn"),
+		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 1, "weight": 10.0},
 	],
 }
@@ -63,7 +63,7 @@ func spawn(pool_type: String, tiers: Array[int], pos: Vector2) -> void:
 	inst.position = pos
 	get_tree().current_scene.add_child(inst)
 
-func debug_spawn(id: String, pos: Vector2) -> void:
+func certain_spawn(id: String, pos: Vector2) -> void:
 	for pool in POOLS.values():
 		for equipment in pool:
 			if equipment.id == id:
@@ -71,8 +71,3 @@ func debug_spawn(id: String, pos: Vector2) -> void:
 				inst.position = pos
 				get_tree().current_scene.add_child(inst)
 				return
-
-
-func weapon(player) :#  -> PackedScene:
-	pass
-	

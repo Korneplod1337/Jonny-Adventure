@@ -235,6 +235,7 @@ var shot_angle: float
 var can_shoot: bool = true
 var shooting: bool = false
 @export var shot_scene: PackedScene
+var shot_id: String = ''
 
 
 func fire (shot_dir: Vector2) -> void:

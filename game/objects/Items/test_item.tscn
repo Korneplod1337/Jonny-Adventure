@@ -23,7 +23,7 @@ shape = SubResource("CircleShape2D_oisx2")
 texture = ExtResource("2_338ft")
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_hw6qn")]
-interact_name = "teke test item"
+interact_name = "take test item"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
 shape = SubResource("CircleShape2D_lh7he")
