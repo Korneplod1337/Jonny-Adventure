@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8ijjnl0t8u0p"
-path="res://.godot/imported/spit_kill4.png-0bfc5fccf3916e571303575582c8bf98.ctex"
+uid="uid://o6vmljnnrhwn"
+path="res://.godot/imported/alt_Spit_bullet3.png-4e380fc2203f3634c1fd4ef1de73313c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/effect_sprites/spit_kill4.png"
-dest_files=["res://.godot/imported/spit_kill4.png-0bfc5fccf3916e571303575582c8bf98.ctex"]
+source_file="res://image/effect_sprites/alt_Spit_bullet3.png"
+dest_files=["res://.godot/imported/alt_Spit_bullet3.png-4e380fc2203f3634c1fd4ef1de73313c.ctex"]
 
 [params]
 

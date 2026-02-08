@@ -18,7 +18,7 @@ func _on_interact():
 	#
 	var hud = get_tree().get_first_node_in_group("HUD")
 	hud.add_item(item_icon, item_tooltip)
-	ItemManager.ItemData.mark_picked(item_id)
+	ItemManager.mark_picked(item_id)
 	queue_free()
 
 func _set_item_icon(new_icon: Texture2D):

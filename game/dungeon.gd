@@ -175,7 +175,6 @@ func teleport_player(door: Node, body: Node2D) -> void:
 	spawn_door.call_deferred("set_temporarily_inactive")
 	
 	body.global_position = spawn_pos
-	print(body.global_position, ' ', spawn_pos)
 
 	if body.has_method("set_room"): #камера тп
 		body.set_room(target_scene)

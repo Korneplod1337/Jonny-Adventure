@@ -30,7 +30,6 @@ func _ready() -> void:
 	AchievementManager.achievement_unlocked.connect(_show_new_achievement)
 
 
-
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("tab_button"):
 		_toggle_full_ui()
@@ -85,7 +84,7 @@ func _on_player_stats_changed(move_speed_level: float,\
 	hit_points_stat.frame	= int(hit_points_level)		- 1
 	fire_rate_stat.frame	= int(fire_rate_level)		- 1
 	magic_stat.frame		= int(magic_level)			- 1
-	
+
 
 # Смерть и пауза
 func show_death_menu(total_time_alive: float, distance_travelled: float) -> void:
@@ -106,8 +105,6 @@ func _toggle_pause() -> void:
 
 # Предметы инвентарь
 const SlotScene: PackedScene = preload("uid://bmr2p245fgr3l")
-
-
 @onready var items: Array[Dictionary] = []
 
 func add_item(icon: Texture2D, tooltip: String):
@@ -141,6 +138,7 @@ func _toggle_full_ui() -> void:
 	ui_open = not ui_open
 	stats_panel.visible = ui_open
 	inventory_panel.visible = ui_open
+	equip_panel.visible = ui_open
 	_on_coins_changed(GameState.coins)
 	if ui_open:
 		_render_inventory()
@@ -161,6 +159,9 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var inventory_panel: Control = $HUD/InventoryList
 @onready var items_container: GridContainer = $HUD/InventoryList/ItemsScroll/ItemsGridContainer
 @onready var items_scroll: ScrollContainer = $HUD/InventoryList/ItemsScroll
+
+@onready var equip_panel: Panel = $HUD/EquipPanel
+
 
 @onready var death_menu: Control = $HUD/DeathMenu
 @onready var distance_label: Label = $HUD/DeathMenu/VBoxContainer/DistanceLabel

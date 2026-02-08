@@ -5,7 +5,7 @@ var ST = StatManager
 	"red": max(0, base_max_hp),
 	"green": 0,
 	"blue": 0,   # щит/овер, НЕ ограничен max_hp
-	"black": 0,
+	"black": 2,
 	}
 
 const base_max_hp: 				int = 4    #6
@@ -64,8 +64,8 @@ func _input(_event: InputEvent) -> void:
 		take_damage(1)
 	if Input.is_action_just_pressed("button_L"):
 		heal(1)
-	if Input.is_action_just_pressed("o"):
-		ST.upgrade_stat(self, 'hp', 1)
+	#if Input.is_action_just_pressed("o"):
+	#	ST.upgrade_stat(self, 'hp', 1)
 	if Input.is_action_just_pressed("i"):
 		ItemManager.spawn("treasure", [1], self.global_position)
 
@@ -238,6 +238,9 @@ var shooting: bool = false
 
 
 func fire (shot_dir: Vector2) -> void:
+	if not shot_scene:
+		return
+		
 	var shot = shot_scene.instantiate()
 	shot.position = global_position
 	
@@ -250,7 +253,6 @@ func fire (shot_dir: Vector2) -> void:
 	
 	shot.damage = damage
 	shot.atk_range = atk_range
-	print(300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05))
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
 	
 	get_tree().current_scene.add_child(shot)

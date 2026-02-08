@@ -1,58 +1,12 @@
 extends Node
 
-class ItemData:
-	static var unlocked_items: Dictionary = {}
-	static var picked_items: Dictionary = {}
-	static var SAVE_PATH := "user://items.cfg"
-	static var DEFAULT_UNLOCKED := ["hpup", "shield"]
+# Статические данные (замена класса ItemData)
+var unlocked_items: Dictionary = {}
+var picked_items: Dictionary = {}
+var SAVE_PATH := "user://items.cfg"
+var DEFAULT_UNLOCKED := ["hpup", "shield"]
 
-	static func _init() -> void:
-		load_config()
-
-	static func unlock_item(id: String) -> void:
-		unlocked_items[id] = true
-		save_config()
-
-	static func mark_picked(id: String) -> void:
-		if unlocked_items.get(id):
-			picked_items[id] = true
-			save_config()
-
-	static func is_unlocked(id: String) -> bool:
-		return unlocked_items.get(id, false)
-
-	static func is_picked(id: String) -> bool:
-		return picked_items.get(id, false)
-
-	static func save_config() -> void:
-		var cfg := ConfigFile.new()
-		for k in unlocked_items:
-			cfg.set_value("unlocks", k, true)
-		for k in picked_items:
-			cfg.set_value("picked", k, true)
-		cfg.save(SAVE_PATH)
-
-	static func load_config() -> void:
-		var cfg := ConfigFile.new()
-		var err := cfg.load(SAVE_PATH)
-
-		# дефолтные разблокированные
-		for id in DEFAULT_UNLOCKED:
-			unlocked_items[id] = true
-
-		if err == OK:
-			for sec in ["unlocks", "picked"]:
-				for k in cfg.get_section_keys(sec):
-					match sec:
-						"unlocks":
-							unlocked_items[k] = true
-						"picked":
-							picked_items[k] = true
-		else:
-			# первый запуск — сразу создаём файл с дефолтами
-			save_config()
-
-# Пулы
+# Пулы предметов
 const POOLS := {
 	"treasure": [
 		{"id": "hpup",  "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 1},
@@ -66,8 +20,50 @@ const POOLS := {
 
 var rng := RandomNumberGenerator.new()
 
+func unlock_item(id: String) -> void:
+	unlocked_items[id] = true
+	save_config()
+
+func mark_picked(id: String) -> void:
+	if unlocked_items.get(id):
+		picked_items[id] = true
+		save_config()
+
+func is_unlocked(id: String) -> bool:
+	return unlocked_items.get(id, false)
+
+func is_picked(id: String) -> bool:
+	return picked_items.get(id, false)
+
+func save_config() -> void:
+	var cfg := ConfigFile.new()
+	for k in unlocked_items:
+		cfg.set_value("unlocks", k, true)
+	for k in picked_items:
+		cfg.set_value("picked", k, true)
+	cfg.save(SAVE_PATH)
+
+func load_config() -> void:
+	var cfg := ConfigFile.new()
+	var err := cfg.load(SAVE_PATH)
+
+	# Дефолтные разблокированные всегда добавляем
+	for id in DEFAULT_UNLOCKED:
+		unlocked_items[id] = true
+
+	if err == OK:
+		for sec in ["unlocks", "picked"]:
+			for k in cfg.get_section_keys(sec):
+				match sec:
+					"unlocks":
+						unlocked_items[k] = true
+					"picked":
+						picked_items[k] = true
+	else:
+		save_config()
+
 func _ready() -> void:
-	ItemData._init()
+	load_config()
 
 func random_pick(pool_type: String, tiers: Array[int]) -> Dictionary:
 	var pool: Array = POOLS.get(pool_type, []).filter(
@@ -78,17 +74,17 @@ func random_pick(pool_type: String, tiers: Array[int]) -> Dictionary:
 
 	var candidates: Array = []
 	for item in pool:
-		if not ItemData.is_unlocked(item.id):
+		if not is_unlocked(item.id):
 			continue
 		var w := 1.0
-		if ItemData.is_picked(item.id):
+		if is_picked(item.id):
 			w += 1.0
 		candidates.append({"item": item, "weight": w})
 
-	# fallback: если по какой-то причине нет кандидатов, но есть unlocked
+	# Fallback: любой unlocked из пула
 	if candidates.is_empty():
 		for item in pool:
-			if ItemData.is_unlocked(item.id):
+			if is_unlocked(item.id):
 				return item
 		return {}
 
@@ -103,7 +99,7 @@ func random_pick(pool_type: String, tiers: Array[int]) -> Dictionary:
 		if r <= acc:
 			return c.item
 
-	return candidates[0].item  # безопасный финальный fallback
+	return candidates[0].item
 
 func spawn(pool_type: String, tiers: Array[int], pos: Vector2) -> void:
 	var item := random_pick(pool_type, tiers)
@@ -113,9 +109,6 @@ func spawn(pool_type: String, tiers: Array[int], pos: Vector2) -> void:
 	var inst = item.scene.instantiate()
 	inst.position = pos
 	get_tree().current_scene.add_child(inst)
-
-func unlock_item(id: String) -> void:
-	ItemData.unlock_item(id)
 
 func debug_spawn(id: String, pos: Vector2) -> void:
 	for pool in POOLS.values():
