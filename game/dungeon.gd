@@ -3,11 +3,18 @@ extends Node
 const DungeonGenerator = 	preload("uid://btqj5883lt4m8")
 const Room = 				preload("uid://dyph656r88f3r")
 var generator := DungeonGenerator.new()
-enum RoomType {START, STANDARD, SHOP, BOSS} # Типы комнат в генераторе
+enum RoomType { START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE, 
+				TREASURE, BANK, GAMBLING, BOSS, SECRET}
 
 @export var floors_config: Array[Dictionary] = [
-	{"total_rooms": 3, "shop_rooms": 0},  # Этаж 1
-	{"total_rooms": 8, "shop_rooms": 1},  # Этаж 2
+	{"total_rooms": 4, "shop_rooms": 0}, 
+	{"total_rooms": 8, "shop_rooms": 1}, 
+	{"total_rooms": 8, "shop_rooms": 1},
+	{"total_rooms": 12, "shop_rooms": 1},
+	{"total_rooms": 12, "shop_rooms": 1},
+	{"total_rooms": 16, "shop_rooms": 1},
+	{"total_rooms": 16, "shop_rooms": 1},
+	{"total_rooms": 20, "shop_rooms": 1},
 ]
 var current_floor: int = 0
 
@@ -44,6 +51,8 @@ var directions := [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 
 
 func _ready():
+	seed(1)
+	seed(Time.get_unix_time_from_system())
 	GameState.obnulenie()
 	$Arcade_music.play()
 	rooms = generator.generate(
@@ -173,7 +182,6 @@ func teleport_player(door: Node, body: Node2D) -> void:
 
 	# временно отключаем эту дверь
 	spawn_door.call_deferred("set_temporarily_inactive")
-	
 	body.global_position = spawn_pos
 
 	if body.has_method("set_room"): #камера тп
@@ -196,11 +204,17 @@ func print_map():
 		for x in range(min_x, max_x + 1):
 			var key = Vector2(x,y)
 			if rooms.has(key):
-				match rooms[key].type:
-					RoomType.START: line_room += "()"
-					RoomType.STANDARD: line_room += "S"
-					RoomType.SHOP: line_room += "M"
-					RoomType.BOSS: line_room += "B"
+				match rooms[key].type: 
+					RoomType.START: 			line_room += "()"
+					RoomType.STANDARD: 		line_room += "S"
+					RoomType.SHOP: 			line_room += "M"
+					RoomType.ARMORY: 		line_room += "A"
+					RoomType.BLOOD_TRIBUTE:	line_room += "K"
+					RoomType.TREASURE: 		line_room += "T"
+					RoomType.BANK: 			line_room += "J"
+					RoomType.GAMBLING: 		line_room += "G"
+					RoomType.BOSS: 			line_room += "B"
+					RoomType.SECRET: 		line_room += "H"
 				if rooms[key].exits.has(Vector2(1,0)):
 					line_room += "-"
 				else:

@@ -1,12 +1,27 @@
 [gd_scene format=4 uid="uid://bpievu6gfe5d0"]
 
-[ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/rock.tscn" id="1_jseag"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/background/tile background_1.png" id="1_vl8wk"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="2_n8til"]
-[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_sehpn"]
+[ext_resource type="Script" uid="uid://bibm5uonv7k0b" path="res://game/presets/1-st floor/RoomScript_Shop.gd.gd" id="1_js3av"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/background/tile background_1.png" id="1_r7gxh"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="2_m46y2"]
+[ext_resource type="Texture2D" uid="uid://cn65588s28bg8" path="res://image/background/shop_anim1.png" id="4_qnwil"]
+[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_ugfuj"]
+[ext_resource type="Texture2D" uid="uid://ixr642ptkps" path="res://image/background/shop_anim2.png" id="5_js3av"]
+[ext_resource type="Texture2D" uid="uid://dvxewsi4ls4ni" path="res://image/background/shop_anim3.png" id="6_snfph"]
+[ext_resource type="Texture2D" uid="uid://drxeb4k5gc40e" path="res://image/background/shop_anim4.png" id="7_j776u"]
+[ext_resource type="Texture2D" uid="uid://d2mp4er7dobdy" path="res://image/background/shop_anim5.png" id="8_8hjf4"]
+[ext_resource type="Texture2D" uid="uid://cpt5fhvsf5c5x" path="res://image/background/shop_anim6.png" id="9_xcomp"]
+[ext_resource type="Texture2D" uid="uid://bt3hf6uugg4yu" path="res://image/background/shop_anim7.png" id="10_oihif"]
+[ext_resource type="Texture2D" uid="uid://p3iwx6iaec47" path="res://image/background/shop_anim8.png" id="11_6ho21"]
+[ext_resource type="Texture2D" uid="uid://cgu5vmvghypxq" path="res://image/background/shop_anim9.png" id="12_thwyy"]
+[ext_resource type="Texture2D" uid="uid://ckam41xksrg8k" path="res://image/background/shop_anim10.png" id="13_4maij"]
+[ext_resource type="Texture2D" uid="uid://cjbjwo5c3ro70" path="res://image/background/shop_anim11.png" id="14_kr8mt"]
+[ext_resource type="Texture2D" uid="uid://bvsscy1b2qucp" path="res://image/background/shop_anim12.png" id="15_qcgyd"]
+[ext_resource type="Texture2D" uid="uid://dhotvuq8to5ao" path="res://image/background/shop_anim13.png" id="16_cuhc6"]
+[ext_resource type="Texture2D" uid="uid://bip77fw4bevsy" path="res://image/background/shop_anim14.png" id="17_vcv7s"]
+[ext_resource type="PackedScene" uid="uid://pk82t1kne84x" path="res://game/presets/treasure_table.tscn" id="19_snfph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8vbt"]
-texture = ExtResource("1_vl8wk")
+texture = ExtResource("1_r7gxh")
 separation = Vector2i(2, 2)
 0:0/0 = 0
 1:0/0 = 0
@@ -54,7 +69,61 @@ size = Vector2(41.03, 654.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sehpn"]
 size = Vector2(1280, 720)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_shi8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qnwil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_js3av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_snfph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j776u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8hjf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xcomp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oihif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6ho21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_thwyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4maij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_kr8mt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qcgyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_cuhc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_vcv7s")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_js3av"]
+size = Vector2(505, 243)
+
 [node name="StartRoom" type="Node2D" unique_id=603362692]
+script = ExtResource("1_js3av")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1243871375]
 position = Vector2(-8, -16)
@@ -63,56 +132,70 @@ tile_set = SubResource("TileSet_2dsaq")
 
 [node name="BG_bounds" type="Sprite2D" parent="." unique_id=1836620252]
 scale = Vector2(2, 2)
-texture = ExtResource("2_n8til")
+texture = ExtResource("2_m46y2")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1488042869]
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1488042869]
 position = Vector2(-207.06, -240)
 collision_layer = 16
 collision_mask = 23
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1515277416]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=1515277416]
 position = Vector2(207, -67.2)
 shape = SubResource("RectangleShape2D_vl8wk")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1204437448]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Walls" unique_id=1204437448]
 position = Vector2(207.28, 547.4)
 shape = SubResource("RectangleShape2D_vl8wk")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=452769358]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls" unique_id=452769358]
 position = Vector2(795.545, 239.75)
 shape = SubResource("RectangleShape2D_n8til")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=676563928]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls" unique_id=676563928]
 position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_n8til")
 
 [node name="CameraBounds" type="Area2D" parent="." unique_id=1177103682]
 visible = false
+collision_layer = 0
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=225693049]
 shape = SubResource("RectangleShape2D_sehpn")
 
-[node name="Rock3" parent="." unique_id=1094485145 instance=ExtResource("1_jseag")]
-position = Vector2(-1, 0)
-scale = Vector2(0.8, 6)
-
-[node name="Door_Up" parent="." unique_id=503841439 instance=ExtResource("3_sehpn")]
-position = Vector2(0, -300)
+[node name="Door_Up" parent="." unique_id=503841439 instance=ExtResource("4_ugfuj")]
+position = Vector2(-580, 0)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
-[node name="Door_Down" parent="." unique_id=1693951162 instance=ExtResource("3_sehpn")]
-position = Vector2(0, 300)
+[node name="Door_Down" parent="." unique_id=1693951162 instance=ExtResource("4_ugfuj")]
+position = Vector2(-470, 300)
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
-[node name="Door_Left" parent="." unique_id=308207908 instance=ExtResource("3_sehpn")]
-position = Vector2(-585, 0)
+[node name="Door_Left" parent="." unique_id=308207908 instance=ExtResource("4_ugfuj")]
+position = Vector2(-580, 180)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
-[node name="Door_Right" parent="." unique_id=1424844174 instance=ExtResource("3_sehpn")]
-position = Vector2(580, 0)
+[node name="Door_Right" parent="." unique_id=1424844174 instance=ExtResource("4_ugfuj")]
+position = Vector2(0, 300)
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1139766159]
+position = Vector2(314, -160)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_shi8m")
+
+[node name="Sher_bounds" type="StaticBody2D" parent="." unique_id=1758529750]
+collision_mask = 0
+
+[node name="Sher_collision" type="CollisionShape2D" parent="Sher_bounds" unique_id=453661200]
+position = Vector2(318.5, -169.5)
+shape = SubResource("RectangleShape2D_js3av")
+
+[node name="StaticBody2D" parent="." unique_id=772107184 instance=ExtResource("19_snfph")]
+position = Vector2(500, 40)
+
+[connection signal="body_entered" from="CameraBounds" to="." method="bounds_body_entered"]

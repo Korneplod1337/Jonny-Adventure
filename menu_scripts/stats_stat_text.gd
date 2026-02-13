@@ -8,8 +8,6 @@ func _ready() -> void:
 	add_theme_constant_override("h_separation", 50)  # Горизонтально между колонками
 	add_theme_constant_override("v_separation", 10)
 	
-func  _process(_delta: float) -> void:
-	pass
 
 func update_stats_list():
 	for child in stats_container.get_children():

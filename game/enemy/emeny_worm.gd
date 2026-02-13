@@ -28,15 +28,15 @@ signal _enemy_die(int)
 
 func _ready() -> void:
 	if DungeonManager.difficulty == 'hard':
-		move_step_distance = 250  		* GameState.enemy_ms_multiplayer
-		move_speed = 300 				* GameState.enemy_ms_multiplayer
-		base_hp = 550 					* GameState.enemy_hp_multiplayer
-		damage = clampi(4 				* GameState.enemy_dmg_multiplayer, 1, 3)
+		move_step_distance = 250  		* GameState.enemy_ms_multiplier
+		move_speed = 300 				* GameState.enemy_ms_multiplier
+		base_hp = 550 					* GameState.enemy_hp_multiplier
+		damage = clampi(4 				* GameState.enemy_dmg_multiplier, 1, 3)
 	elif DungeonManager.difficulty == 'med':
-		move_step_distance = 150 		* GameState.enemy_ms_multiplayer
-		move_speed = 150 				* GameState.enemy_ms_multiplayer
-		base_hp = 50 					* GameState.enemy_hp_multiplayer
-		damage = clampi(1 				* GameState.enemy_dmg_multiplayer, 1, 3)
+		move_step_distance = 150 		* GameState.enemy_ms_multiplier
+		move_speed = 150 				* GameState.enemy_ms_multiplier
+		base_hp = 50 					* GameState.enemy_hp_multiplier
+		damage = clampi(1 				* GameState.enemy_dmg_multiplier, 1, 3)
 	else:
 		pass
 

@@ -6,7 +6,8 @@ var stats = {
 	"kills": {"value": 0.0, "disc": "Kills"},
 	"lifetime": {"value": 0.0, "disc": "Lifetime"},
 	"distance_traveled": {"value": 0.0, "disc": "Distance traveled"},
-	"items_equipped": {"value": 0.0, "disc": "Items equipped"}
+	"items_equipped": {"value": 0.0, "disc": "Items equipped"},
+	"visited_shops": {"value": 0.0, "disc": "Shops u entered"}
 }
 signal stat_changed(stat_name: String, new_value: float)
 

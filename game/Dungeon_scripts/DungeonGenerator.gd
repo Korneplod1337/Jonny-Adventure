@@ -2,10 +2,11 @@ extends Resource
 class_name DungeonGenerator
 
 const Room = preload("res://game/Dungeon_scripts/Room.gd")
-enum RoomType { START, STANDARD, SHOP, BOSS }
+enum RoomType { START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
+				TREASURE, BANK, GAMBLING, BOSS, SECRET}
 
 # либо как поле класса / ресурса
-var directions := [
+const directions := [
 	Vector2(1, 0),
 	Vector2(-1, 0),
 	Vector2(0, 1),

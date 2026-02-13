@@ -14,7 +14,8 @@ const POOLS := {
 		{"id": "shield", "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 1},
 	],
 	"shop": [
-		{"id": "ring", "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 3},
+		{"id": "ring", "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 1},
+		{"id": "hpup",  "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 1},
 	],
 }
 
@@ -101,13 +102,15 @@ func random_pick(pool_type: String, tiers: Array[int]) -> Dictionary:
 
 	return candidates[0].item
 
-func spawn(pool_type: String, tiers: Array[int], pos: Vector2) -> void:
+func spawn(pool_type: String, tiers: Array[int], pos: Vector2, cost:int = -1) -> void:
 	var item := random_pick(pool_type, tiers)
 	if item.is_empty():
 		print("No unlocked items for pool:", pool_type, "tiers:", tiers)
 		return
 	var inst = item.scene.instantiate()
 	inst.position = pos
+	if cost != -1:
+		inst.cost = cost
 	get_tree().current_scene.add_child(inst)
 
 func certain_spawn(id: String, pos: Vector2) -> void:
@@ -116,5 +119,6 @@ func certain_spawn(id: String, pos: Vector2) -> void:
 			if item.id == id:
 				var inst = item.scene.instantiate()
 				inst.position = pos
+				inst.cost = 0
 				get_tree().current_scene.add_child(inst)
 				return

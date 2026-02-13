@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlhahqejp67se"]
+[gd_scene format=3 uid="uid://dlhahqejp67se"]
 
 [ext_resource type="Script" uid="uid://bmj7jtsmllyis" path="res://game/presets/doors/door.gd" id="1_hf35o"]
 [ext_resource type="Texture2D" uid="uid://y3qn4sv1dgst" path="res://image/rects/door_rect.png" id="2_fnhlo"]
@@ -6,15 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ileth"]
 size = Vector2(26, 26)
 
-[node name="Door_test" type="Node2D" groups=["Door"]]
+[node name="Door_test" type="Node2D" unique_id=1759071911 groups=["Door"]]
 script = ExtResource("1_hf35o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1844131882]
 texture = ExtResource("2_fnhlo")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1511028521]
+collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1057465627]
 shape = SubResource("RectangleShape2D_ileth")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

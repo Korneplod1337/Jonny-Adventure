@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/rock.tscn" id="1_7kv4s"]
 [ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/background/tile background_1.png" id="1_gk7ie"]
-[ext_resource type="Script" uid="uid://cxt5f8lgqi4k7" path="res://game/presets/1-st floor/test_room_1.gd" id="1_wnpcq"]
+[ext_resource type="Script" uid="uid://cxt5f8lgqi4k7" path="res://game/presets/1-st floor/RoomScript_noEnemy.gd" id="1_wnpcq"]
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="2_wnpcq"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_yij7n"]
 

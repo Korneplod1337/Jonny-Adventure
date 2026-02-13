@@ -12,9 +12,9 @@ radius = 19.0
 radius = 40.04997
 
 [node name="TestItem" type="Area2D" unique_id=1430574395]
+collision_layer = 0
 script = ExtResource("1_c55ww")
 item_icon = ExtResource("2_hw6qn")
-item_id = "hpup"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
 shape = SubResource("CircleShape2D_oisx2")
@@ -23,7 +23,6 @@ shape = SubResource("CircleShape2D_oisx2")
 texture = ExtResource("2_338ft")
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_hw6qn")]
-interact_name = "take test item"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
 shape = SubResource("CircleShape2D_lh7he")
