@@ -3,10 +3,23 @@ extends Node
 const DungeonGenerator = 	preload("uid://btqj5883lt4m8")
 const Room = 				preload("uid://dyph656r88f3r")
 var generator := DungeonGenerator.new()
+
+var hud_instance: Node = null
+
+@export var player_scene: Dictionary = {
+	"Jonny": 		preload("uid://ctxdqxo8mr54o"),
+	"Jonnytta": 		preload("uid://ctxdqxo8mr54o"),
+	"": 			preload("uid://ctxdqxo8mr54o"),
+	}
+var char_name := DungeonManager.selected_character
+var player : CharacterBody2D = player_scene[char_name].instantiate()
+
+
+var current_floor: int = 0
 enum RoomType { START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE, 
 				TREASURE, BANK, GAMBLING, BOSS, SECRET}
 
-@export var floors_config: Array[Dictionary] = [
+var floors_config: Array[Dictionary] = [
 	{"total_rooms": 4, "shop_rooms": 0}, 
 	{"total_rooms": 8, "shop_rooms": 1}, 
 	{"total_rooms": 8, "shop_rooms": 1},
@@ -16,26 +29,66 @@ enum RoomType { START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
 	{"total_rooms": 16, "shop_rooms": 1},
 	{"total_rooms": 20, "shop_rooms": 1},
 ]
-var current_floor: int = 0
 
+@onready var room_presets_by_floor: Array[Dictionary] = [
+	{  # Этаж 1
+		"standard": standard_room_presets_floor1,
+		"start": start_room_preset,
+		"shop": shop_room_preset,
+		"boss": boss_room_preset,
+	},
+	{  # Этаж 2
+		"standard": standard_room_presets_floor2,
+		"start": start_room_preset,
+		"shop": shop_room_preset,
+		"boss": boss_room_preset,
+	},
+	{  # Этаж 3
+		"standard": standard_room_presets_floor1,
+		"start": start_room_preset,
+		"shop": shop_room_preset,
+		"boss": boss_room_preset,
+	},
+	{  # Этаж 4
+		"standard": standard_room_presets_floor1,
+		"start": start_room_preset,
+		"shop": shop_room_preset,
+		"boss": boss_room_preset,
+	},
+	{  # Этаж 5
+		"standard": standard_room_presets_floor1,
+		"start": start_room_preset,
+		"shop": shop_room_preset,
+		"boss": boss_room_preset,
+	},
+	{  # Этаж 6
+		"standard": standard_room_presets_floor1,
+		"start": start_room_preset,
+		"shop": shop_room_preset,
+		"boss": boss_room_preset,
+	},
+	{  # Этаж 7
+		"standard": standard_room_presets_floor1,
+		"start": start_room_preset,
+		"shop": shop_room_preset,
+		"boss": boss_room_preset,
+	},
+	{  # Этаж 8
+		"standard": standard_room_presets_floor1,
+		"start": start_room_preset,
+		"shop": shop_room_preset,
+		"boss": boss_room_preset,
+	},
+]
 
-# Сцены пресетов
-var hud_instance: Node = null
-@export var player_scene: Dictionary = {
-	"Jonny": 		preload("uid://ctxdqxo8mr54o"),
-	"Jonnytta": 		preload("uid://ctxdqxo8mr54o"),
-	"": 			preload("uid://ctxdqxo8mr54o"),
-	}
-var char_name := DungeonManager.selected_character
-var player : CharacterBody2D = player_scene[char_name].instantiate()
 
 @export var standard_room_presets_floor1: Array[PackedScene]
 @export var standard_room_presets_floor2: Array[PackedScene]
 
-
 @export var start_room_preset: PackedScene
 @export var shop_room_preset: PackedScene
 @export var boss_room_preset: PackedScene
+
 
 
 # Размер комнаты в мире и отступ между комнатами
@@ -44,9 +97,7 @@ var player : CharacterBody2D = player_scene[char_name].instantiate()
 var last_door_dir: Vector2 = Vector2.ZERO
 
 
-# Все сгенерированные комнаты: ключ — Vector2 позиции, значение — Room
-var rooms := {}
-# Возможные направления для генерации соседей
+var rooms := {} # Все сгенерированные комнаты: ключ — Vector2 позиции, значение — Room
 var directions := [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 
 
@@ -68,14 +119,14 @@ func _ready():
 
 
 func instance_room(room: Room) -> Node:
-	
-	var standard_room_presets = standard_room_presets_floor1 if current_floor == 0 else standard_room_presets_floor2
+	var presets = room_presets_by_floor[current_floor]
 
 	match room.type:
 		RoomType.START:
 			return start_room_preset.instantiate()
 		RoomType.STANDARD:
-			return standard_room_presets[randi() % standard_room_presets.size()].instantiate()
+			var standard_presets = presets["standard"]
+			return standard_presets[randi() % standard_presets.size()].instantiate()
 		RoomType.SHOP:
 			return shop_room_preset.instantiate()
 		RoomType.BOSS:
