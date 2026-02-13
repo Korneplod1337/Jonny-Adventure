@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bdtj13hn54rfh" path="res://image/enemy/test _enemy3.png" id="4_s5mru"]
 [ext_resource type="Texture2D" uid="uid://c812uj2ae1ykd" path="res://image/enemy/test _enemy4.png" id="5_427lg"]
 
-
 [sub_resource type="Curve" id="Curve_kjktk"]
 _limits = [0.5, 1.5, 0.0, 1.0]
 bake_resolution = 50

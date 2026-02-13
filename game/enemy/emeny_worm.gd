@@ -28,10 +28,10 @@ signal _enemy_die(int)
 
 func _ready() -> void:
 	if DungeonManager.difficulty == 'hard':
-		move_step_distance = 250  		* GameState.enemy_ms_multiplier
-		move_speed = 300 				* GameState.enemy_ms_multiplier
-		base_hp = 550 					* GameState.enemy_hp_multiplier
-		damage = clampi(4 				* GameState.enemy_dmg_multiplier, 1, 3)
+		move_step_distance = 300  		* GameState.enemy_ms_multiplier
+		move_speed = 250 				* GameState.enemy_ms_multiplier
+		base_hp = 150 					* GameState.enemy_hp_multiplier
+		damage = clampi(2 				* GameState.enemy_dmg_multiplier, 1, 3)
 	elif DungeonManager.difficulty == 'med':
 		move_step_distance = 150 		* GameState.enemy_ms_multiplier
 		move_speed = 150 				* GameState.enemy_ms_multiplier
@@ -132,13 +132,13 @@ func die() -> void:
 
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "die":
-		var luck: float = 0.0
-		#if player and player.has_method("get_luck"):
-		#	luck = player.get_luck()
-		#if randf() < luck:
-		spawn_coin()
+		var luck := 0.0
+		if player:
+			luck = StatManager.get_stat(player, 'luck')
+			if randf() < luck:
+				spawn_coin()
 		queue_free()
-		StatsManager.add_statistic_progress('kills', 1) #хуйня переделать
+		StatsManager.add_statistic_progress('kills', 1)
 
 
 func spawn_coin() -> void:

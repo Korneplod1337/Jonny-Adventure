@@ -120,7 +120,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js3av"]
-size = Vector2(505, 243)
+size = Vector2(505, 211)
 
 [node name="StartRoom" type="Node2D" unique_id=603362692]
 script = ExtResource("1_js3av")
@@ -192,7 +192,7 @@ sprite_frames = SubResource("SpriteFrames_shi8m")
 collision_mask = 0
 
 [node name="Sher_collision" type="CollisionShape2D" parent="Sher_bounds" unique_id=453661200]
-position = Vector2(318.5, -169.5)
+position = Vector2(318, -185)
 shape = SubResource("RectangleShape2D_js3av")
 
 [node name="StaticBody2D" parent="." unique_id=772107184 instance=ExtResource("19_snfph")]

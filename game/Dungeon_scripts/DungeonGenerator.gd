@@ -13,8 +13,9 @@ const directions := [
 	Vector2(0, -1),
 ]
 
-
-func generate(total_rooms: int, shop_rooms: int) -> Dictionary:
+# shop - shop armory, buff = bank treasure, dop = blood gambling secret
+func generate(total_rooms: int, shop_rooms: int = 0,
+			buff_rooms: int = 0, dop_rooms: int = 0) -> Dictionary:
 	var rooms := {}
 	var start = Room.new()
 	start.pos = Vector2(0,0)
@@ -50,19 +51,50 @@ func generate(total_rooms: int, shop_rooms: int) -> Dictionary:
 	
 	# Ищем самую далёкую комнату от старта — под босса
 	var farthest: Room = rooms.values()[0]
-	if farthest.type != RoomType.STANDARD:# Ищем самую далёкую среди стандартных
+	if farthest.type != RoomType.STANDARD: # Ищем самую далёкую среди стандартных
 		var others := rooms.values().filter(func(r): return r.type == RoomType.STANDARD)
 		if others.size() > 0:
 			farthest = others.reduce(func(a, b):
 				return a if a.pos.distance_to(Vector2(0,0)) > b.pos.distance_to(Vector2(0,0)) else b)
 	farthest.type = RoomType.BOSS
 	
-	# Выбираем несколько стандартных комнат как магазины
-	var placed := 0
+	# Выбираем несколько стандартных комнат как магазины (shop, armory)
 	var candidates := rooms.values().filter(func(r): return r.type == RoomType.STANDARD)
-	while placed < shop_rooms and candidates.size() > 0:
+	if shop_rooms >= 2:
+		shop_rooms = 2
 		var r = candidates[randi() % candidates.size()]
 		r.type = RoomType.SHOP
+		candidates.erase(r)
+		candidates = rooms.values().filter(func(r): return r.type == RoomType.STANDARD)
+		r = candidates[randi() % candidates.size()]
+		r.type = RoomType.ARMORY
+		candidates.erase(r)
+	elif shop_rooms == 1:
+		var r = candidates[randi() % candidates.size()]
+		r.type = [RoomType.SHOP, RoomType.ARMORY][randi() % 2]
+		candidates.erase(r)
+	else:
+		print('С магазинами траблы в DungeonGenerator или их 0')
+	
+	# Выбираем несколько стандартных комнат как buff (bank, treasure)
+	if buff_rooms >= 2:
+		var r = candidates[randi() % candidates.size()]
+		r.type = RoomType.BANK
+		candidates.erase(r)
+		buff_rooms -= 1
+	var placed := 0
+	candidates = rooms.values().filter(func(r): return r.type == RoomType.STANDARD)
+	while placed < buff_rooms and candidates.size() > 0:
+		var r = candidates[randi() % candidates.size()]
+		r.type = RoomType.TREASURE
+		candidates.erase(r)
+		placed += 1
+	
+	placed = 0
+	candidates = rooms.values().filter(func(r): return r.type == RoomType.STANDARD)
+	while placed < dop_rooms and candidates.size() > 0:
+		var r = candidates[randi() % candidates.size()]
+		r.type = [RoomType.BLOOD_TRIBUTE, RoomType.GAMBLING, RoomType.SECRET][randi()%3]
 		candidates.erase(r)
 		placed += 1
 	

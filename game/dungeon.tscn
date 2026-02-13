@@ -10,9 +10,10 @@
 [node name="Dungeon" type="Node" unique_id=1730459875]
 script = ExtResource("1_u4sk0")
 standard_room_presets_floor1 = Array[PackedScene]([ExtResource("3_luatc")])
-start_room_preset = ExtResource("3_0t1uw")
-shop_room_preset = ExtResource("2_0t1uw")
-boss_room_preset = ExtResource("4_3jp2u")
+start_room_preset = Array[PackedScene]([ExtResource("3_0t1uw")])
+shop_room_preset = Array[PackedScene]([ExtResource("2_0t1uw")])
+boss_room_preset = Array[PackedScene]([ExtResource("4_3jp2u")])
+armory_room_preset = Array[PackedScene]([ExtResource("2_0t1uw")])
 
 [node name="Arcade_music" type="AudioStreamPlayer" parent="." unique_id=687942417]
 stream = ExtResource("7_luatc")

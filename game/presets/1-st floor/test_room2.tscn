@@ -123,12 +123,40 @@ scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
 [node name="EmenyWorm" parent="." unique_id=234496380 instance=ExtResource("3_tgard")]
+position = Vector2(-106, 4)
 
 [node name="EmenyWorm2" parent="." unique_id=1655288545 instance=ExtResource("3_tgard")]
-position = Vector2(48, 58)
+position = Vector2(-2, 62)
 
 [node name="EmenyWorm3" parent="." unique_id=563344151 instance=ExtResource("3_tgard")]
-position = Vector2(-60, 58)
+position = Vector2(-105, 61)
+
+[node name="EmenyWorm4" parent="." unique_id=1758608652 instance=ExtResource("3_tgard")]
+position = Vector2(492, -221)
+
+[node name="EmenyWorm5" parent="." unique_id=536499945 instance=ExtResource("3_tgard")]
+position = Vector2(492, 240)
+
+[node name="EmenyWorm6" parent="." unique_id=1939568998 instance=ExtResource("3_tgard")]
+position = Vector2(-474, -228.00002)
+
+[node name="EmenyWorm7" parent="." unique_id=1232763516 instance=ExtResource("3_tgard")]
+position = Vector2(-507, 225)
+
+[node name="EmenyWorm8" parent="." unique_id=1115215154 instance=ExtResource("3_tgard")]
+position = Vector2(100, 63)
+
+[node name="EmenyWorm9" parent="." unique_id=1879289174 instance=ExtResource("3_tgard")]
+position = Vector2(102, 4.9999847)
+
+[node name="EmenyWorm10" parent="." unique_id=1650336248 instance=ExtResource("3_tgard")]
+position = Vector2(101, -49)
+
+[node name="EmenyWorm11" parent="." unique_id=2109435202 instance=ExtResource("3_tgard")]
+position = Vector2(-110, -53.000015)
+
+[node name="EmenyWorm12" parent="." unique_id=1036364311 instance=ExtResource("3_tgard")]
+position = Vector2(-5, -47.000015)
 
 [connection signal="body_entered" from="Detecter_player" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="Detecter_player" to="." method="_on_player_detection_area_body_exited"]

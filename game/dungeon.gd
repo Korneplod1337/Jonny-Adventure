@@ -20,75 +20,40 @@ enum RoomType { START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
 				TREASURE, BANK, GAMBLING, BOSS, SECRET}
 
 var floors_config: Array[Dictionary] = [
-	{"total_rooms": 4, "shop_rooms": 0}, 
-	{"total_rooms": 8, "shop_rooms": 1}, 
-	{"total_rooms": 8, "shop_rooms": 1},
-	{"total_rooms": 12, "shop_rooms": 1},
-	{"total_rooms": 12, "shop_rooms": 1},
-	{"total_rooms": 16, "shop_rooms": 1},
-	{"total_rooms": 16, "shop_rooms": 1},
-	{"total_rooms": 20, "shop_rooms": 1},
+{"total_rooms": 4, 	"shop_rooms": randi()%2, "buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 6, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
+{"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 15, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%3}, 
+{"total_rooms": 16, 	"shop_rooms": 2, 		"buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
 ]
 
-@onready var room_presets_by_floor: Array[Dictionary] = [
-	{  # Этаж 1
-		"standard": standard_room_presets_floor1,
-		"start": start_room_preset,
-		"shop": shop_room_preset,
-		"boss": boss_room_preset,
-	},
-	{  # Этаж 2
-		"standard": standard_room_presets_floor2,
-		"start": start_room_preset,
-		"shop": shop_room_preset,
-		"boss": boss_room_preset,
-	},
-	{  # Этаж 3
-		"standard": standard_room_presets_floor1,
-		"start": start_room_preset,
-		"shop": shop_room_preset,
-		"boss": boss_room_preset,
-	},
-	{  # Этаж 4
-		"standard": standard_room_presets_floor1,
-		"start": start_room_preset,
-		"shop": shop_room_preset,
-		"boss": boss_room_preset,
-	},
-	{  # Этаж 5
-		"standard": standard_room_presets_floor1,
-		"start": start_room_preset,
-		"shop": shop_room_preset,
-		"boss": boss_room_preset,
-	},
-	{  # Этаж 6
-		"standard": standard_room_presets_floor1,
-		"start": start_room_preset,
-		"shop": shop_room_preset,
-		"boss": boss_room_preset,
-	},
-	{  # Этаж 7
-		"standard": standard_room_presets_floor1,
-		"start": start_room_preset,
-		"shop": shop_room_preset,
-		"boss": boss_room_preset,
-	},
-	{  # Этаж 8
-		"standard": standard_room_presets_floor1,
-		"start": start_room_preset,
-		"shop": shop_room_preset,
-		"boss": boss_room_preset,
-	},
-]
-
+@onready var room_presets_by_floor: Array = [
+	standard_room_presets_floor1,
+	standard_room_presets_floor1,
+	standard_room_presets_floor2,
+	standard_room_presets_floor2,
+	standard_room_presets_floor3,
+	standard_room_presets_floor3,
+	standard_room_presets_floor4,
+	standard_room_presets_floor4]
 
 @export var standard_room_presets_floor1: Array[PackedScene]
 @export var standard_room_presets_floor2: Array[PackedScene]
+@export var standard_room_presets_floor3: Array[PackedScene]
+@export var standard_room_presets_floor4: Array[PackedScene]
 
-@export var start_room_preset: PackedScene
-@export var shop_room_preset: PackedScene
-@export var boss_room_preset: PackedScene
-
+@export var start_room_preset: 		Array[PackedScene]
+@export var shop_room_preset: 		Array[PackedScene]
+@export var boss_room_preset: 		Array[PackedScene]
+@export var armory_room_preset: 		Array[PackedScene]
+@export var blood_room_preset: 		Array[PackedScene]
+@export var treasure_room_preset: 	Array[PackedScene]
+@export var bank_room_preset: 		Array[PackedScene]
+@export var gambling_room_preset: 	Array[PackedScene]
+@export var secret_room_preset: 		Array[PackedScene]
 
 
 # Размер комнаты в мире и отступ между комнатами
@@ -102,13 +67,14 @@ var directions := [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 
 
 func _ready():
-	seed(1)
 	seed(Time.get_unix_time_from_system())
 	GameState.obnulenie()
 	$Arcade_music.play()
 	rooms = generator.generate(
 		floors_config[current_floor]['total_rooms'], 
-		floors_config[current_floor]['shop_rooms'])
+		floors_config[current_floor]['shop_rooms'], 
+		floors_config[current_floor]['buff_rooms'], 
+		floors_config[current_floor]['dop_rooms'])
 	var start_instance := spawn_rooms()
 	spawn_player_in_start(start_instance)
 	print_map()
@@ -119,18 +85,29 @@ func _ready():
 
 
 func instance_room(room: Room) -> Node:
-	var presets = room_presets_by_floor[current_floor]
-
 	match room.type:
 		RoomType.START:
-			return start_room_preset.instantiate()
+			return start_room_preset		[current_floor / 2].instantiate()
+		RoomType.BOSS:
+			return boss_room_preset		[current_floor].instantiate()
 		RoomType.STANDARD:
-			var standard_presets = presets["standard"]
+			var standard_presets = room_presets_by_floor[current_floor]
 			return standard_presets[randi() % standard_presets.size()].instantiate()
 		RoomType.SHOP:
-			return shop_room_preset.instantiate()
-		RoomType.BOSS:
-			return boss_room_preset.instantiate()
+			return shop_room_preset		[current_floor / 2].instantiate()
+		RoomType.GAMBLING:
+			return gambling_room_preset	[current_floor / 2].instantiate()
+		RoomType.ARMORY:
+			return armory_room_preset	[current_floor / 2].instantiate()
+		RoomType.TREASURE:
+			return treasure_room_preset	[current_floor / 2].instantiate()
+		RoomType.BLOOD_TRIBUTE:
+			return blood_room_preset		[current_floor / 2].instantiate()
+		RoomType.BANK:
+			return bank_room_preset		[current_floor / 2].instantiate()
+		RoomType.SECRET:
+			return secret_room_preset	[current_floor / 2].instantiate()
+		
 	return null
 
 

@@ -17,25 +17,25 @@ func get_stat(p: Node, stat: String) -> float :
 			return luck
 		"magic":
 			var magic = p.base_magic + lerp(0.0, 0.9, (p.magic_level - 1.0) / 9.0)
-			magic *= clamp((1 + p.magic_bonus * 0.05), 0.1, 4.0)
+			magic *= clamp((1 + p.magic_bonus * 0.05), 0.0, 4.0)
 			return magic
 		"damage":
 			var damage = p.base_damage + lerp(0.0, 27.0, (p.damage_level - 1.0) / 9.0)
-			damage *= clamp((1 + p.damage_bonus * 0.05), 0.1, 4.0)
+			damage *= clamp((1 + p.damage_bonus * 0.1), 0.1, 10.0)
 			return damage
 		"spread":
 			var spread_deg: float = lerp(36.0, 0.0, (p.spread_level - 1.0) / 9.0)
 			spread_deg += p.base_spread 
-			spread_deg *= clamp((1 - p.accuracy_bonus * 0.05), 0.1, 4.0)
+			spread_deg *= clamp((1 - p.accuracy_bonus * 0.05), 0.01, 4.0)
 			return spread_deg
 		"range":
 			var range_val = p.base_range + lerp(0.0, 360.0, (p.range_level - 1.0) / 9.0)
-			range_val *= clamp((1 + p.range_bonus * 0.05), 0.1, 4.0)
+			range_val *= clamp((1 + p.range_bonus * 0.05), 0.2, 4.0)
 			return range_val
 		"fire_rate":
 			var fire_rate = lerp(0.54, 0.0, (p.fire_rate_level - 1.0) / 9.0)
 			fire_rate += p.base_fire_rate
-			fire_rate *= clamp((1 - p.fire_rate_bonus * 0.05), 0.1, 4.0)
+			fire_rate *= clamp((1 - p.fire_rate_bonus * 0.05), 0.05, 4.0)
 			return fire_rate
 		_:
 			push_warning("Unknown stat in getter: %s" % stat)
