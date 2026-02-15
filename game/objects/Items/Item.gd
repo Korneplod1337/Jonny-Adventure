@@ -2,8 +2,10 @@ extends Area2D
 @onready var interactable: Area2D = $Interactable
 @export var item_icon: Texture2D: set = _set_item_icon  # иконка для инвентаря
 var item_tooltip: String = "this is test item" # текст для инвентаря
+var item_tooltip2: String = "item test is this secret text" # текст для инвентаря продвинутый
 var item_id: String = 'hpup'
-@export var cost: int = 1
+var cost: int = 1
+
 
 func _ready() -> void:
 	interactable.interact = _on_interact
@@ -27,7 +29,7 @@ func _on_interact():
 		
 		#
 		var hud = get_tree().get_first_node_in_group("HUD")
-		hud.add_item(item_icon, item_tooltip)
+		hud.add_item(item_icon, item_tooltip, item_tooltip2)
 		ItemManager.mark_picked(item_id)
 		queue_free()
 

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/enemy test2.tscn" id="4_cjhlh"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="5_sejrf"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/pickUps/Coin.tscn" id="7_nbcw0"]
-[ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/Items/test_item.tscn" id="8_sw7ps"]
+[ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/Items/Item.tscn" id="8_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/BaseShot_equip.tscn" id="9_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://bhswv1jdia8i8" path="res://game/objects/Equipment/Weapon/TestShot_equip.tscn" id="10_yfw41"]
 [ext_resource type="PackedScene" uid="uid://pk82t1kne84x" path="res://game/presets/treasure_table.tscn" id="11_lvq4b"]
@@ -94,12 +94,6 @@ position = Vector2(-535, 224)
 [node name="Coin" parent="." unique_id=398995973 instance=ExtResource("7_nbcw0")]
 position = Vector2(-419, 216)
 
-[node name="TestItem2" parent="." unique_id=473564250 instance=ExtResource("8_sw7ps")]
-position = Vector2(311, 97)
-
-[node name="TestItem3" parent="." unique_id=1087372359 instance=ExtResource("8_sw7ps")]
-position = Vector2(355, 60)
-
 [node name="Coin2" parent="." unique_id=1871507262 instance=ExtResource("7_nbcw0")]
 position = Vector2(-348, 206)
 
@@ -114,3 +108,9 @@ position = Vector2(-188, 33)
 
 [node name="StaticBody2D2" parent="." unique_id=772107184 instance=ExtResource("11_lvq4b")]
 position = Vector2(180, 110)
+
+[node name="Item" parent="." unique_id=1430574395 instance=ExtResource("8_sw7ps")]
+position = Vector2(317, 58)
+
+[node name="TestItem" parent="." unique_id=103007360 instance=ExtResource("8_sw7ps")]
+position = Vector2(243, 92)

@@ -9,13 +9,13 @@ var DEFAULT_UNLOCKED := ["hpup", "shield"]
 # Пулы предметов
 const POOLS := {
 	"treasure": [
-		{"id": "hpup",  "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 1},
-		{"id": "potion", "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 2},
-		{"id": "shield", "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 1},
+		{"id": "hpup",  "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
+		{"id": "potion", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
+		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
 	],
 	"shop": [
-		{"id": "ring", "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 1},
-		{"id": "hpup",  "scene": preload("res://game/objects/Items/test_item.tscn"), "tier": 1},
+		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
+		{"id": "hpup",  "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
 	],
 }
 

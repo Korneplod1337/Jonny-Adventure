@@ -108,8 +108,8 @@ func _toggle_pause() -> void:
 const SlotScene: PackedScene = preload("uid://bmr2p245fgr3l")
 @onready var items: Array[Dictionary] = []
 
-func add_item(icon: Texture2D, tooltip: String):
-	items.insert(0, {"icon": icon, "tooltip": tooltip})
+func add_item(icon: Texture2D, tooltip: String, tooltip2: String):
+	items.insert(0, {"icon": icon, "tooltip": tooltip, "tooltip2": tooltip2})
 	_render_inventory()
 
 func _render_inventory():
@@ -118,7 +118,10 @@ func _render_inventory():
 	for item_data in items:
 		var slot = SlotScene.instantiate() as InventorySlot
 		slot.set_icon(item_data.icon)
-		slot.set_tooltip(item_data.tooltip)
+		if GameState.AlchemistsGlasses:
+			slot.set_tooltip(item_data.tooltip2)
+		else:
+			slot.set_tooltip(item_data.tooltip)
 		items_container.add_child(slot)
 	
 
