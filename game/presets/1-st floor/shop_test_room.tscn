@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://bvsscy1b2qucp" path="res://image/background/shop_anim12.png" id="15_qcgyd"]
 [ext_resource type="Texture2D" uid="uid://dhotvuq8to5ao" path="res://image/background/shop_anim13.png" id="16_cuhc6"]
 [ext_resource type="Texture2D" uid="uid://bip77fw4bevsy" path="res://image/background/shop_anim14.png" id="17_vcv7s"]
-[ext_resource type="PackedScene" uid="uid://pk82t1kne84x" path="res://game/presets/treasure_table.tscn" id="19_snfph"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8vbt"]
 texture = ExtResource("1_r7gxh")
@@ -116,7 +115,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 2.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js3av"]
@@ -194,8 +193,5 @@ collision_mask = 0
 [node name="Sher_collision" type="CollisionShape2D" parent="Sher_bounds" unique_id=453661200]
 position = Vector2(318, -185)
 shape = SubResource("RectangleShape2D_js3av")
-
-[node name="StaticBody2D" parent="." unique_id=772107184 instance=ExtResource("19_snfph")]
-position = Vector2(500, 40)
 
 [connection signal="body_entered" from="CameraBounds" to="." method="bounds_body_entered"]

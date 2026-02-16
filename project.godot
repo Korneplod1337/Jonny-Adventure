@@ -14,8 +14,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Jonny_adventure"
-config/version="0.0.0.7"
+config/name="Jonny adventure"
+config/description="Swag?"
+config/version="0.0.0.9"
 run/main_scene="res://start.tscn"
 config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -25,8 +26,8 @@ boot_splash/minimum_display_time=100
 
 [autoload]
 
-AchievementManager="*res://AchievementManager.gd"
-StatsManager="*res://StatsManager.gd"
+AchievementManager="*res://z_global_scripts/AchievementManager.gd"
+StatsManager="*res://z_global_scripts/StatsManager.gd"
 DungeonManager="*res://game/Dungeon_scripts/DungeonManager.gd"
 GameState="*res://game/Dungeon_scripts/GameState.gd"
 StatManager="*res://game/player/Stat_manager.gd"
@@ -48,14 +49,16 @@ project/assembly_name="Jonny_adventure"
 [file_customization]
 
 folder_colors={
-"res://game/player/Base_Jonny_textures/": "orange",
 "res://image/achievements/": "purple",
 "res://image/background/": "yellow",
 "res://image/effect_sprites/": "blue",
 "res://image/enemy/": "red",
 "res://image/interface/": "orange",
+"res://image/items/": "green",
 "res://image/main_menu/": "yellow",
-"res://image/pickups/": "purple"
+"res://image/pickups/": "purple",
+"res://image/players/": "orange",
+"res://image/players/Base_Jonny_textures/": "orange"
 }
 
 [input]

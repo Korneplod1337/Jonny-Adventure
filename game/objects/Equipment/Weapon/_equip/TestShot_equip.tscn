@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bhswv1jdia8i8"]
+
+[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/Weapon/_equip/BaseShot_equip.gd" id="1_nud1i"]
+[ext_resource type="Texture2D" uid="uid://cxel76tem1o83" path="res://image/effect_sprites/alt_Spit_bullet.png" id="2_x54r0"]
+[ext_resource type="PackedScene" uid="uid://bhfqxrdvcm408" path="res://game/objects/Equipment/Weapon/scene/TestShot.tscn" id="3_x54r0"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_k0lwg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0twu3"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojoxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x54r0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="JonnyShot" type="Area2D" unique_id=241584314]
+collision_mask = 0
+script = ExtResource("1_nud1i")
+equip_icon = ExtResource("2_x54r0")
+equip_tooltip = "Test3 weapon"
+equip_id = "test_shot"
+projectile = ExtResource("3_x54r0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
+shape = SubResource("CircleShape2D_qqy2x")
+
+[node name="Interactable" parent="." unique_id=918212545 instance=ExtResource("4_k0lwg")]
+interact_name = "Swap weapon2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1006580381]
+shape = SubResource("CircleShape2D_0twu3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ojoxv")

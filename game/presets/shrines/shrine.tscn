@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://w44vcoqbcqy8"]
 
 [ext_resource type="Script" uid="uid://doux8j83sh0ml" path="res://game/presets/shrines/shrine.gd" id="1_ankqj"]
-[ext_resource type="Texture2D" uid="uid://4tvtgrnndhvs" path="res://image/shrine1.png" id="2_hnwl0"]
-[ext_resource type="Texture2D" uid="uid://cbe5jhfb6a70t" path="res://image/shrine2.png" id="3_hrdi4"]
 [ext_resource type="Texture2D" uid="uid://be50sm0ghr6dl" path="res://image/rooms/shrines/shrine_dmg1.png" id="3_rwp4v"]
 [ext_resource type="Texture2D" uid="uid://dnwwfptdkpo0l" path="res://image/rooms/shrines/shrine_hp1.png" id="4_hrdi4"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_mml3l"]
@@ -55,17 +53,6 @@ animations = [{
 "loop": true,
 "name": &"damage_active",
 "speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_hnwl0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_hrdi4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -224,7 +211,6 @@ shape = SubResource("RectangleShape2D_fydls")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=434765893]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6c05r")
-animation = &"spread_active"
-frame_progress = 0.8245749
+animation = &"damage"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1748129473]

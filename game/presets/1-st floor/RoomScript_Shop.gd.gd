@@ -7,12 +7,48 @@ var active_doors: Array[Node] = []
 
 
 func _ready() -> void:
+	tabels_spawn()
 	call_deferred("init_room")
+
+
+func tabels_spawn():
+	var TableScene = preload("uid://pk82t1kne84x")
+
+	var table1 = TableScene.instantiate()
+	table1.position = self.position + Vector2(100, 0)
+	table1.cost = 2
+	table1.tier = [0] as Array[int]
+	get_tree().current_scene.add_child(table1)
+
+	var table2 = TableScene.instantiate()
+	table2.position = self.position + Vector2(200, 0)
+	table2.cost = 3
+	table2.tier = [1] as Array[int]
+	get_tree().current_scene.add_child(table2)
+	
+	var table3 = TableScene.instantiate()
+	table3.position = self.position + Vector2(300, 0)
+	table3.cost = 5
+	table3.tier = [1] as Array[int]
+	get_tree().current_scene.add_child(table3)
+	
+	var table4 = TableScene.instantiate()
+	table4.position = self.position + Vector2(400, 0)
+	table4.cost = 10
+	table4.tier = [1] as Array[int]
+	get_tree().current_scene.add_child(table4)
+	
+	var table5 = TableScene.instantiate()
+	table5.position = self.position + Vector2(500, 0)
+	table5.cost = 15
+	table5.tier = [1] as Array[int]
+	get_tree().current_scene.add_child(table5)
 
 
 func init_room() -> void:
 	randomize()
 	_shuffle_tilemap_layer()
+	
 	await get_tree().process_frame
 
 func _shuffle_tilemap_layer() -> void:
@@ -67,6 +103,7 @@ func _pick_weighted(weighted_tiles: Array) -> Vector2i:
 			return t.coord
 
 	return weighted_tiles.back().coord
+
 
 var enteredFlag = true
 
