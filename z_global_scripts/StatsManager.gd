@@ -3,11 +3,12 @@ extends Node
 const SAVE_PATH = "user://stats.cfg"
 
 var stats = {
-	"kills": {"value": 0.0, "disc": "Kills"},
-	"lifetime": {"value": 0.0, "disc": "Lifetime"},
-	"distance_traveled": {"value": 0.0, "disc": "Distance traveled"},
-	"items_equipped": {"value": 0.0, "disc": "Items equipped"},
-	"visited_shops": {"value": 0.0, "disc": "Shops u entered"}
+	"kills": 			{"value": 0.0, "disc": "Kills"},
+	"lifetime": 			{"value": 0.0, "disc": "Lifetime"},
+	"distance_traveled":	{"value": 0.0, "disc": "Distance traveled"},
+	"items_equipped": 	{"value": 0.0, "disc": "Items equipped"},
+	"visited_shops": 	{"value": 0.0, "disc": "Shops u entered"},
+	"items_purchased": 	{"value": 0.0, "disc": "Sherochka's loyalty"},
 }
 signal stat_changed(stat_name: String, new_value: float)
 

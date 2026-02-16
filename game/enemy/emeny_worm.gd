@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var coin_scene: PackedScene
 @export var move_step_distance: float = 100.0
 @export var move_speed: float = 100.0
-@export var cooldown_time: float = 1.0
+@export var cooldown_time: float = 1.5
 @export var base_hp: int = 50
 @export var damage: int = 1
 @export var dash_curve: Curve
@@ -30,13 +30,15 @@ func _ready() -> void:
 	if DungeonManager.difficulty == 'hard':
 		move_step_distance = 300  		* GameState.enemy_ms_multiplier
 		move_speed = 250 				* GameState.enemy_ms_multiplier
-		base_hp = 150 					* GameState.enemy_hp_multiplier
+		base_hp = 108 					* GameState.enemy_hp_multiplier
 		damage = clampi(2 				* GameState.enemy_dmg_multiplier, 1, 3)
+		cooldown_time = 1.0 				* GameState.enemy_cooldown_multiplier
 	elif DungeonManager.difficulty == 'med':
 		move_step_distance = 150 		* GameState.enemy_ms_multiplier
 		move_speed = 150 				* GameState.enemy_ms_multiplier
 		base_hp = 50 					* GameState.enemy_hp_multiplier
 		damage = clampi(1 				* GameState.enemy_dmg_multiplier, 1, 3)
+		cooldown_time = 1.0 				* GameState.enemy_cooldown_multiplier
 	else:
 		pass
 

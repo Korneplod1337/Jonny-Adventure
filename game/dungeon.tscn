@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://dwwkyopaqrfbo"]
 
 [ext_resource type="Script" uid="uid://wlgeadj0uym" path="res://game/dungeon.gd" id="1_u4sk0"]
-[ext_resource type="PackedScene" uid="uid://bpievu6gfe5d0" path="res://game/presets/1-st floor/shop_test_room.tscn" id="2_0t1uw"]
-[ext_resource type="PackedScene" uid="uid://cmlobl77iwbor" path="res://game/presets/1-st floor/start_room.tscn" id="3_0t1uw"]
-[ext_resource type="PackedScene" uid="uid://dijhk4kigm72k" path="res://game/presets/1-st floor/standart_test_room.tscn" id="3_luatc"]
-[ext_resource type="PackedScene" uid="uid://b777y3m4083ll" path="res://game/presets/1-st floor/test_room2.tscn" id="4_3jp2u"]
+[ext_resource type="PackedScene" uid="uid://bpievu6gfe5d0" path="res://game/presets/1-st floor/shops and treasures/shop_test_room.tscn" id="2_0t1uw"]
+[ext_resource type="PackedScene" uid="uid://cmlobl77iwbor" path="res://game/presets/1-st floor/start/start_room.tscn" id="3_0t1uw"]
+[ext_resource type="PackedScene" uid="uid://dijhk4kigm72k" path="res://game/presets/1-st floor/standart/standart_test_room.tscn" id="3_luatc"]
+[ext_resource type="PackedScene" uid="uid://b777y3m4083ll" path="res://game/presets/1-st floor/bosses/test_room2.tscn" id="4_3jp2u"]
+[ext_resource type="AudioStream" uid="uid://dnrgmuhx5ejnx" path="res://sound/main-menu.ogg" id="7_3jp2u"]
 [ext_resource type="AudioStream" uid="uid://cr5m1btuh65g" path="res://sound/arcade.ogg" id="7_luatc"]
 
 [node name="Dungeon" type="Node" unique_id=1730459875]
@@ -15,6 +16,12 @@ shop_room_preset = Array[PackedScene]([ExtResource("2_0t1uw")])
 boss_room_preset = Array[PackedScene]([ExtResource("4_3jp2u")])
 armory_room_preset = Array[PackedScene]([ExtResource("2_0t1uw")])
 
-[node name="Arcade_music" type="AudioStreamPlayer" parent="." unique_id=687942417]
+[node name="Arcade_music3" type="AudioStreamPlayer" parent="." unique_id=687942417]
 stream = ExtResource("7_luatc")
+parameters/looping = true
+
+[node name="Arcade_music" type="AudioStreamPlayer" parent="." unique_id=578727270]
+stream = ExtResource("7_3jp2u")
+volume_db = 1.0
+pitch_scale = 1.2
 parameters/looping = true

@@ -17,6 +17,7 @@ func obnulenie() -> void:
 var enemy_ms_multiplier: float = 1.0
 var enemy_hp_multiplier: float = 1.0
 var enemy_dmg_multiplier: float = 1.0
+var enemy_cooldown_multiplier: float = 1.0
 
 # игрок
 var AlchemistsGlasses := false

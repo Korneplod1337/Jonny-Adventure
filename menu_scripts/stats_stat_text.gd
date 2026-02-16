@@ -24,7 +24,8 @@ func update_stats_list():
 		
 		label.text = str(stat['disc']) + " - " + str(int(stat['value']))
 		label.add_theme_color_override("font_color", Color("MIDNIGHT_BLUE"))
-		label.add_theme_font_size_override('font_size', 60) 
+		label.add_theme_font_size_override('font_size', 48)
 		
 		hbox.add_child(label)
+		
 		stats_container.add_child(hbox)
