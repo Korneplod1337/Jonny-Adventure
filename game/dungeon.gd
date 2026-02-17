@@ -16,7 +16,7 @@ var player : CharacterBody2D = player_scene[char_name].instantiate()
 
 
 var current_floor: int = 0
-enum RoomType { START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE, 
+enum RoomType {	START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE, 
 				TREASURE, BANK, GAMBLING, BOSS, SECRET}
 
 var floors_config: Array[Dictionary] = [

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bpievu6gfe5d0"]
 
-[ext_resource type="Script" uid="uid://bibm5uonv7k0b" path="res://game/presets/1-st floor/shops and treasures/RoomScript_Shop.gd.gd" id="1_js3av"]
+[ext_resource type="Script" uid="uid://bibm5uonv7k0b" path="res://game/presets/1-st floor/shops and treasures/RoomScript_Shop.gd" id="1_js3av"]
 [ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/background/tile background_1.png" id="1_r7gxh"]
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="2_m46y2"]
 [ext_resource type="Texture2D" uid="uid://cn65588s28bg8" path="res://image/background/shop_anim1.png" id="4_qnwil"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bvsscy1b2qucp" path="res://image/background/shop_anim12.png" id="15_qcgyd"]
 [ext_resource type="Texture2D" uid="uid://dhotvuq8to5ao" path="res://image/background/shop_anim13.png" id="16_cuhc6"]
 [ext_resource type="Texture2D" uid="uid://bip77fw4bevsy" path="res://image/background/shop_anim14.png" id="17_vcv7s"]
+[ext_resource type="Texture2D" uid="uid://6vxuja34lrgv" path="res://image/background/shop_anim15.png" id="19_x4c0w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8vbt"]
 texture = ExtResource("1_r7gxh")
@@ -116,6 +117,14 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_x4c0w")
+}],
+"loop": false,
+"name": &"love",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js3av"]

@@ -15,9 +15,11 @@ var achievements = {
 	"progress": 0, "goal": 1, "unlocked": false,
 	"unlocked_icon": "res://image/achievements/menu_achiv/first_item.png", "popup_window": "res://image/achievements/hud_achiv/first_item.png"},
 	
+	"shop_loyality": {"name": "Sherocka lover", "desc": "up shop loyality to max", 
+	"progress": 0, "goal": 100, "unlocked": false,
+	"unlocked_icon": "", "popup_window": ""},
 	
-	
-	"name": {"name": "Far_away", "desc": "Put_on_the_1-st_item", 
+	"name": {"name": "Alpha test", "desc": "Survive until game released", 
 	"progress": 0, "goal": 1, "unlocked": false,
 	"unlocked_icon": "", "popup_window": ""},
 	
@@ -26,7 +28,8 @@ var achievements = {
 var stat_to_achievements = {
 	"kills": ["first_kill"],
 	"distance_traveled": ["long_distance"],
-	"items_equipped": ["first_item"]
+	"items_equipped": ["first_item"],
+	"sher_loyalty": ["shop_loyality"],
 }
 
 signal achievement_unlocked(data: String)

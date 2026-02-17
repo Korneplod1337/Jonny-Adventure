@@ -104,13 +104,15 @@ func random_pick(pool_type: String, tiers: Array[int]) -> Dictionary:
 
 	return candidates[0].item
 
-func spawn(pool_type: String, tiers: Array[int], pos: Vector2, cost:int = -1) -> void:
+func spawn(	pool_type: String, 	tiers: Array[int], 
+			pos: Vector2, 		cost:int = -1)	 -> void:
 	var item := random_pick(pool_type, tiers)
 	if item.is_empty():
 		print("No unlocked items for pool:", pool_type, "tiers:", tiers)
 		return
 	var inst = item.scene.instantiate()
 	inst.position = pos
+	inst.where = pool_type
 	if cost != -1:
 		inst.cost = cost
 	get_tree().current_scene.add_child(inst)

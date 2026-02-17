@@ -5,8 +5,7 @@ var item_tooltip: String = "this is test item" # текст для инвент�
 var item_tooltip2: String = "item test is this secret text" # текст для инвентаря продвинутый
 var item_id: String = 'hpup'
 var cost: int = 1
-
-
+var where := 'nowhere'
 func _ready() -> void:
 	interactable.interact = _on_interact
 	cost = cost * GameState.cost_multiplier
@@ -27,7 +26,16 @@ func _on_interact():
 		#Эффект
 		StatManager.upgrade_stat(player, 'hp', 1) 
 		
-		#
+		
+		#stat
+		match where:
+			'shop':
+				StatsManager.add_statistic_progress('sher_loyalty', 1)
+			'armor':
+				StatsManager.add_statistic_progress('armory_loyalty', 1)
+		StatsManager.add_statistic_progress('items_equipped', 1)
+		
+		# hud
 		var hud = get_tree().get_first_node_in_group("HUD")
 		hud.add_item(item_icon, item_tooltip, item_tooltip2)
 		ItemManager.mark_picked(item_id)

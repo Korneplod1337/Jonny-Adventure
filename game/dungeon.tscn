@@ -22,6 +22,6 @@ parameters/looping = true
 
 [node name="Arcade_music" type="AudioStreamPlayer" parent="." unique_id=578727270]
 stream = ExtResource("7_3jp2u")
-volume_db = 1.0
-pitch_scale = 1.2
+volume_db = 4.0
+pitch_scale = 0.4
 parameters/looping = true
