@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7j1j85wvbsm1"
-path="res://.godot/imported/money6.png-19b63eddfcadf8228d1374fcc1cef6f1.ctex"
+uid="uid://pfjswefdff0w"
+path="res://.godot/imported/treasure_chest2.png-e0aa6adfca3fceb74f6ab4f0d51d659e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/pickups/money6.png"
-dest_files=["res://.godot/imported/money6.png-19b63eddfcadf8228d1374fcc1cef6f1.ctex"]
+source_file="res://image/objects/treasure_chest2.png"
+dest_files=["res://.godot/imported/treasure_chest2.png-e0aa6adfca3fceb74f6ab4f0d51d659e.ctex"]
 
 [params]
 

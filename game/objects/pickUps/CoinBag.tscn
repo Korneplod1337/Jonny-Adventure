@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bt02g3ohw7ksf"]
+
+[ext_resource type="Script" uid="uid://dm0qunqvclkrt" path="res://game/objects/pickUps/coin_bag.gd" id="1_n4jjm"]
+[ext_resource type="Texture2D" uid="uid://ccc8qmi01p3gf" path="res://image/money/Coin_bag1.png" id="2_3a2iy"]
+[ext_resource type="Texture2D" uid="uid://ceehrbx4dg7bm" path="res://image/money/Coin_bag2.png" id="3_iw5ej"]
+[ext_resource type="Texture2D" uid="uid://mvqn0bijx5jq" path="res://image/money/Coin_bag3.png" id="4_5bxqj"]
+[ext_resource type="Texture2D" uid="uid://d3e7ssvcwkik5" path="res://image/money/Coin_bag4.png" id="5_jnet8"]
+[ext_resource type="Texture2D" uid="uid://lgvsxlcpitja" path="res://image/money/Coin_bag5.png" id="6_intkw"]
+[ext_resource type="Texture2D" uid="uid://dq3b3lefyyvks" path="res://image/money/Coin_bag6.png" id="7_ub6xs"]
+[ext_resource type="Texture2D" uid="uid://csvtgh1sbp2xt" path="res://image/money/Coin_bag7.png" id="8_g88ws"]
+[ext_resource type="Texture2D" uid="uid://dldwsagiy6dvo" path="res://image/money/Coin_bag8.png" id="9_aogyg"]
+[ext_resource type="Texture2D" uid="uid://b30jj25bfiu6m" path="res://image/money/Coin_bag9.png" id="10_thfyc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wx5h1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3a2iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iw5ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5bxqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jnet8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_intkw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ub6xs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_g88ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_aogyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_thfyc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m66pe"]
+height = 24.0
+
+[node name="CoinBag" type="Node2D" unique_id=108492217]
+scale = Vector2(2, 2)
+script = ExtResource("1_n4jjm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1728736179]
+sprite_frames = SubResource("SpriteFrames_wx5h1")
+speed_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1227463376]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1626930000]
+shape = SubResource("CapsuleShape2D_m66pe")

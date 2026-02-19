@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgkufgp0eqq6b"
-path="res://.godot/imported/money12.png-77cd95230b104dfc76a834ad349a9703.ctex"
+uid="uid://btvyo5tab182y"
+path="res://.godot/imported/big_chest1.png-1a405b4fa6fdae8649e2a201cbbb468c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/pickups/money12.png"
-dest_files=["res://.godot/imported/money12.png-77cd95230b104dfc76a834ad349a9703.ctex"]
+source_file="res://image/objects/big_chest1.png"
+dest_files=["res://.godot/imported/big_chest1.png-1a405b4fa6fdae8649e2a201cbbb468c.ctex"]
 
 [params]
 

@@ -30,7 +30,7 @@ AchievementManager="*res://z_global_scripts/AchievementManager.gd"
 StatsManager="*res://z_global_scripts/StatsManager.gd"
 DungeonManager="*res://game/Dungeon_scripts/DungeonManager.gd"
 GameState="*res://game/Dungeon_scripts/GameState.gd"
-StatManager="*res://game/player/Stat_manager.gd"
+StatManager="*res://game/player/StatManager.gd"
 ItemManager="*uid://dpl2e0lbx4t7t"
 EquipManager="*uid://cbmrdchj7jmvb"
 
@@ -56,7 +56,8 @@ folder_colors={
 "res://image/interface/": "orange",
 "res://image/items/": "green",
 "res://image/main_menu/": "yellow",
-"res://image/pickups/": "purple",
+"res://image/money/": "yellow",
+"res://image/objects/": "pink",
 "res://image/players/": "orange",
 "res://image/players/Base_Jonny_textures/": "orange"
 }

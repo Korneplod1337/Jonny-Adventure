@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwx3i1ipmjmkq"
-path="res://.godot/imported/money1.png-b822f8fe06c00ba3c00cddc05a8676db.ctex"
+uid="uid://bwmyo1ly6dmhp"
+path="res://.godot/imported/money8.png-a01fcda98a6090cf6c9aefc6a750a783.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/pickups/money1.png"
-dest_files=["res://.godot/imported/money1.png-b822f8fe06c00ba3c00cddc05a8676db.ctex"]
+source_file="res://image/money/money8.png"
+dest_files=["res://.godot/imported/money8.png-a01fcda98a6090cf6c9aefc6a750a783.ctex"]
 
 [params]
 

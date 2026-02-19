@@ -5,6 +5,7 @@ var unlocked_items: Dictionary = {}
 var picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
 var DEFAULT_UNLOCKED := ["hpup", "shield", "heal"]
+var DEFAULT_PICK := ["hpup"]
 
 # Пулы предметов
 const POOLS := {
@@ -53,6 +54,8 @@ func load_config() -> void:
 	# Дефолтные разблокированные всегда добавляем
 	for id in DEFAULT_UNLOCKED:
 		unlocked_items[id] = true
+	for id in DEFAULT_PICK:
+		picked_items[id] = true
 
 	if err == OK:
 		for sec in ["unlocks", "picked"]:
@@ -68,7 +71,7 @@ func load_config() -> void:
 func _ready() -> void:
 	load_config()
 
-func random_pick(pool_type: String, tiers: Array[int]) -> Dictionary:
+func random_pick(pool_type: String, tiers: Array) -> Dictionary:
 	var pool: Array = POOLS.get(pool_type, []).filter(
 		func(i): return i.tier in tiers
 	)
@@ -104,7 +107,7 @@ func random_pick(pool_type: String, tiers: Array[int]) -> Dictionary:
 
 	return candidates[0].item
 
-func spawn(	pool_type: String, 	tiers: Array[int], 
+func spawn(	pool_type: String, 	tiers: Array, 
 			pos: Vector2, 		cost:int = -1)	 -> void:
 	var item := random_pick(pool_type, tiers)
 	if item.is_empty():

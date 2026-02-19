@@ -20,7 +20,7 @@ enum RoomType {	START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
 				TREASURE, BANK, GAMBLING, BOSS, SECRET}
 
 var floors_config: Array[Dictionary] = [
-{"total_rooms": 4, 	"shop_rooms": 1 , "buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 4, 	"shop_rooms": 1 , 		"buff_rooms": 1, 			"dop_rooms": 0}, 
 {"total_rooms": 6, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 {"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
 {"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
