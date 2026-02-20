@@ -39,6 +39,7 @@ func _ready():
 	StatsManager.stat_changed.connect(_on_stat_changed)
 
 func _on_stat_changed(stat_name: String, new_value: float):
+	return
 	if stat_to_achievements.has(stat_name):
 		for ach_key in stat_to_achievements[stat_name]:
 			check_achievement(ach_key, new_value)

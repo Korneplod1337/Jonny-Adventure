@@ -31,6 +31,7 @@ func save_statistic():
 	config.save(SAVE_PATH)
 
 func add_statistic_progress(key: String, value: float):
+	return
 	if stats.has(key):
 		stats[key]["value"] += value
 		stat_changed.emit(key, stats[key]["value"])

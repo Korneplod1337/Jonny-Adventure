@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bt02g3ohw7ksf"]
 
-[ext_resource type="Script" uid="uid://dm0qunqvclkrt" path="res://game/objects/pickUps/coin_bag.gd" id="1_n4jjm"]
+[ext_resource type="Script" uid="uid://dm0qunqvclkrt" path="res://game/objects/Coins/coin_bag.gd" id="1_n4jjm"]
 [ext_resource type="Texture2D" uid="uid://ccc8qmi01p3gf" path="res://image/money/Coin_bag1.png" id="2_3a2iy"]
 [ext_resource type="Texture2D" uid="uid://ceehrbx4dg7bm" path="res://image/money/Coin_bag2.png" id="3_iw5ej"]
 [ext_resource type="Texture2D" uid="uid://mvqn0bijx5jq" path="res://image/money/Coin_bag3.png" id="4_5bxqj"]
@@ -50,7 +50,7 @@ animations = [{
 height = 24.0
 
 [node name="CoinBag" type="Node2D" unique_id=108492217]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_n4jjm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1728736179]
@@ -61,3 +61,5 @@ speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1626930000]
 shape = SubResource("CapsuleShape2D_m66pe")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

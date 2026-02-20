@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ci05xlan24oqs"]
 
 [ext_resource type="Texture2D" uid="uid://dwx3i1ipmjmkq" path="res://image/money/money1.png" id="1_hvhu3"]
-[ext_resource type="Script" uid="uid://4pbtcxgn4uda" path="res://game/objects/pickUps/coin.gd" id="1_nsmod"]
+[ext_resource type="Script" uid="uid://4pbtcxgn4uda" path="res://game/objects/Coins/coin.gd" id="1_nsmod"]
 [ext_resource type="Texture2D" uid="uid://b6ok54y25d3pd" path="res://image/money/money2.png" id="2_nsmod"]
 [ext_resource type="Texture2D" uid="uid://cjf2e0wkyoeej" path="res://image/money/money3.png" id="3_kdcui"]
 [ext_resource type="Texture2D" uid="uid://75qnyf25rfeb" path="res://image/money/money4.png" id="4_3cumt"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cf5qoea8lgfxf" path="res://image/money/money10.png" id="10_3u5la"]
 [ext_resource type="Texture2D" uid="uid://ckbeav2q1tdah" path="res://image/money/money11.png" id="11_i3cuf"]
 [ext_resource type="Texture2D" uid="uid://bgkufgp0eqq6b" path="res://image/money/money12.png" id="12_882eu"]
+
 
 
 

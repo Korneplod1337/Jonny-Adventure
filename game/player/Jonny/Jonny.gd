@@ -2,13 +2,13 @@ extends CharacterBody2D
 var ST = StatManager
 
 @onready var hp_list := {
-	"red": max(0, base_max_hp),
+	"red": max(0, StatManager.get_stat(self, 'hp')),
 	"green": 0,
 	"blue": 0,   # щит/овер, НЕ ограничен max_hp
 	"black": 2,
 	}
 
-const base_max_hp: 				int = 4    #6
+const base_max_hp: 				int = 3    #6
 const base_move_speed:			float = 300.0
 const base_luck: 				float = 0.2
 const base_magic: 				float = 0.0

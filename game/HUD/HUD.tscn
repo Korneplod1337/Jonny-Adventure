@@ -94,7 +94,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_ht4al"]
 paragraph_spacing = 1.0
 font = ExtResource("4_heuq7")
-font_size = 40
+font_size = 48
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o46sh"]
 

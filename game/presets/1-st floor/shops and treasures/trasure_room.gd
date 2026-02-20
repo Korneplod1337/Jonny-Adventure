@@ -3,7 +3,7 @@ extends Node2D
 var enemy_count: int
 var active_doors: Array[Node] = []
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
-const TableScene := preload("uid://pk82t1kne84x")
+const ChestScene := preload("uid://tsiccout8ibv")
 var tiers_array := [[1], [1], [1, 2], [1, 2], [1, 2, 3], [2, 3], [2, 3, 4], [3, 4]]
 
 func _ready() -> void:
@@ -72,9 +72,9 @@ func tabels_spawn() -> void:
 	var dungeon = get_tree().current_scene
 	var current_floor = dungeon.current_floor
 	
-	var table = TableScene.instantiate()
-	table.position = self.position
-	table.tier = tiers_array[current_floor]
-	table.pool = 'treasure'
-	table.set_scale(Vector2i(2, 2))
-	get_tree().current_scene.add_child(table)
+	var Chest = ChestScene.instantiate()
+	Chest.position = self.position
+	Chest.tier = tiers_array[current_floor]
+	Chest.pool = 'treasure'
+	#Chest.set_scale(Vector2i(2, 2))
+	get_tree().current_scene.add_child(Chest)

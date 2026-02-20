@@ -25,7 +25,7 @@ func _on_interact():
 		
 		#Эффект
 		StatManager.upgrade_stat(player, 'hp', 1) 
-		
+		player.heal(1)
 		
 		#stat
 		match where:

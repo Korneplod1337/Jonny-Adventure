@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/enemy test2.tscn" id="4_cjhlh"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="5_sejrf"]
-[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/pickUps/Coin.tscn" id="7_nbcw0"]
+[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coins/Coin.tscn" id="7_nbcw0"]
 [ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/Items/Item.tscn" id="8_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/_equip/BaseShot_equip.tscn" id="9_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://bhswv1jdia8i8" path="res://game/objects/Equipment/Weapon/_equip/TestShot_equip.tscn" id="10_yfw41"]
+[ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/Coins/CoinBag.tscn" id="12_pjn5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -93,9 +94,6 @@ position = Vector2(-535, 224)
 [node name="Coin" parent="." unique_id=398995973 instance=ExtResource("7_nbcw0")]
 position = Vector2(-402, 211)
 
-[node name="Coin2" parent="." unique_id=1871507262 instance=ExtResource("7_nbcw0")]
-position = Vector2(-345, 217)
-
 [node name="JonnyShot" parent="." unique_id=241584314 instance=ExtResource("9_sw7ps")]
 position = Vector2(-329, -52)
 
@@ -110,3 +108,6 @@ position = Vector2(357, 71)
 
 [node name="TestItem" parent="." unique_id=103007360 instance=ExtResource("8_sw7ps")]
 position = Vector2(321, 100)
+
+[node name="CoinBag" parent="." unique_id=108492217 instance=ExtResource("12_pjn5v")]
+position = Vector2(-316, 221.00002)
