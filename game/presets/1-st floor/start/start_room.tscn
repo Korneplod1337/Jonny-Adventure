@@ -97,17 +97,11 @@ position = Vector2(-402, 211)
 [node name="JonnyShot" parent="." unique_id=241584314 instance=ExtResource("9_sw7ps")]
 position = Vector2(-329, -52)
 
-[node name="JonnyShot2" parent="." unique_id=325242676 instance=ExtResource("9_sw7ps")]
-position = Vector2(-293, -110)
-
 [node name="JonnyShot3" parent="." unique_id=797629340 instance=ExtResource("10_yfw41")]
 position = Vector2(-236, -147)
 
 [node name="Item" parent="." unique_id=1430574395 instance=ExtResource("8_sw7ps")]
 position = Vector2(357, 71)
-
-[node name="TestItem" parent="." unique_id=103007360 instance=ExtResource("8_sw7ps")]
-position = Vector2(321, 100)
 
 [node name="CoinBag" parent="." unique_id=108492217 instance=ExtResource("12_pjn5v")]
 position = Vector2(-316, 221.00002)

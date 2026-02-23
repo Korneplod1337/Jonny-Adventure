@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dji5i7hh2o3ff"
-path="res://.godot/imported/first_item.png-4fdbb1a24358ec2bdab5b4936ad5698f.ctex"
+uid="uid://x0vdvdroqs28"
+path="res://.godot/imported/armory_anim_alt6.png-f71ce1a7d6104c332d87517200b7891f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/achievements/hud_achiv/first_item.png"
-dest_files=["res://.godot/imported/first_item.png-4fdbb1a24358ec2bdab5b4936ad5698f.ctex"]
+source_file="res://image/background/armory_anim_alt6.png"
+dest_files=["res://.godot/imported/armory_anim_alt6.png-f71ce1a7d6104c332d87517200b7891f.ctex"]
 
 [params]
 

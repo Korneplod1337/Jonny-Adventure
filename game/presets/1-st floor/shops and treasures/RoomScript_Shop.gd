@@ -18,7 +18,7 @@ func tabels_spawn():
 	var table1 = TableScene.instantiate()
 	table1.position = self.position + Vector2(100, 0)
 	table1.cost = 2
-	table1.tier = [0] as Array[int]
+	table1.tier = [1] as Array[int]
 	table1.pool = 'shop'
 	get_tree().current_scene.add_child(table1)
 	

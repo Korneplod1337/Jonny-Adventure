@@ -5,6 +5,7 @@ var speed: float = 300.0
 var direction: Vector2 = Vector2.RIGHT
 var atk_range: float = 200.0
 var damage: int = 25
+var extra_reload: float = -0.2 # только для слёз меньше 0
 
 var distance_travelled := 0.0
 

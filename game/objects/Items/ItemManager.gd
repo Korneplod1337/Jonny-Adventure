@@ -10,14 +10,14 @@ var DEFAULT_PICK := ["hpup"]
 # Пулы предметов
 const POOLS := {
 	"treasure": [
-		{"id": "hpup",  "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
+		{"id": "hpup",   "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
 		{"id": "potion", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
 		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
 	],
 	"shop": [
-		{"id": "heal", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 0},
+		{"id": "heal", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
 		{"id": "hpup", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
-		{"id": "shield",  "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
+		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
 		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 3},
 	],
 }

@@ -74,7 +74,7 @@ func tabels_spawn() -> void:
 	
 	var Chest = ChestScene.instantiate()
 	Chest.position = self.position
-	Chest.tier = tiers_array[current_floor]
-	Chest.pool = 'treasure'
+	Chest.item_tier = tiers_array[current_floor + 1]
+	Chest.equip_tier = tiers_array[current_floor + 1]
 	#Chest.set_scale(Vector2i(2, 2))
 	get_tree().current_scene.add_child(Chest)

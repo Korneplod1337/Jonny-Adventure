@@ -15,7 +15,7 @@ const base_magic: 				float = 0.0
 const base_damage: 				float = 25.0
 const base_spread: 				float = 14.0
 const base_range: 				float = 200.0
-const base_fire_rate: 			float = 0.2 #КРИТЫ????
+const base_fire_rate: 			float = 0.2
 
 var hp_bonus: 		int = 0
 var speed_bonus: 	int = 0
@@ -24,7 +24,7 @@ var magic_bonus: 	int = 0
 var damage_bonus: 	int = 0
 var accuracy_bonus: 	int = 0
 var range_bonus: 	int = 0
-var fire_rate_bonus: int = 0
+var fire_rate_bonus:	int = 0
 
 @export var hit_points_level: 	float = 1.0
 @export var move_speed_level: 	float = 2.0   # 1–10, 9 лвл прокачки
@@ -44,6 +44,7 @@ var fire_rate_bonus: int = 0
 @onready var atk_range: float	= ST.get_stat(self, "range")
 @onready var fire_rate:float		= ST.get_stat(self, "fire_rate")
 
+var extra_fire_rate:float = 0
 
 signal stats_changed(move_speed_level, luck_level, damage_level, spread_level,\
  range_level, hit_points_level, fire_rate_level, magic_level)
@@ -243,7 +244,7 @@ func fire (shot_dir: Vector2) -> void:
 		return
 		
 	var shot = shot_scene.instantiate()
-	shot.position = global_position
+	shot.position = global_position + Vector2(0, -25)
 	
 	var angle := shot_dir.angle()
 	angle += deg_to_rad(randf_range(-spread/2, spread/2))
@@ -256,6 +257,7 @@ func fire (shot_dir: Vector2) -> void:
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
 	
+	extra_fire_rate = shot.extra_reload
 	get_tree().current_scene.add_child(shot)
 
 # таймер (лоховской)
@@ -266,7 +268,8 @@ func _on_shot_timer_timeout() -> void:
 # Скорострельность
 func start_reload():
 		can_shoot = false
-		$shot_Timer.wait_time = fire_rate
+		print($shot_Timer.wait_time, ' ', fire_rate, ' ', extra_fire_rate)
+		$shot_Timer.wait_time = fire_rate + extra_fire_rate
 		$shot_Timer.start()
 
 # Сигнал изменения статов

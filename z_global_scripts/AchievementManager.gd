@@ -13,11 +13,11 @@ var achievements = {
 	
 	"first_item": {"name": "Iron luck", "desc": "Put on the 1-st item",
 	"progress": 0, "goal": 1, "unlocked": false,
-	"unlocked_icon": "res://image/achievements/menu_achiv/first_item.png", "popup_window": "res://image/achievements/hud_achiv/first_item.png"},
+	"unlocked_icon": "res://image/achievements/menu_achiv/first_item.png", "popup_window": "res://image/achievements/hud_achiv/first_item_hud.png"},
 	
 	"shop_loyality": {"name": "Sherocka lover", "desc": "up shop loyality to max", 
 	"progress": 0, "goal": 100, "unlocked": false,
-	"unlocked_icon": "", "popup_window": ""},
+	"unlocked_icon": "res://image/achievements/menu_achiv/shop_loyality.png", "popup_window": "res://image/achievements/hud_achiv/shop_loyality_hud.png"},
 	
 	"name": {"name": "Alpha test", "desc": "Survive until game released", 
 	"progress": 0, "goal": 1, "unlocked": false,

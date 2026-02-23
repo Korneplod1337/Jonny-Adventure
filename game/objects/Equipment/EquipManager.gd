@@ -2,15 +2,21 @@ extends Node
 
 # Пулы эквипмента
 const POOLS := {
+	"weapon": [
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
+		 "tier": 1, "weight": 10.0},
+	],
 	"treasure": [
 		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), #эквип
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 1, "weight": 10.0},
 	],
-	"shop": [
+	"armory": [
 		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 1, "weight": 10.0},
 	],
@@ -21,7 +27,7 @@ var rng := RandomNumberGenerator.new()
 func _ready() -> void:
 	rng.randomize()
 
-func random_pick(pool_type: String, tiers: Array[int]) -> Dictionary:
+func random_pick(pool_type: String, tiers: Array) -> Dictionary:
 	# Фильтруем по типу пула и тиру
 	var pool: Array = POOLS.get(pool_type, []).filter(
 		func(e): return e.tier in tiers
@@ -54,7 +60,7 @@ func random_pick(pool_type: String, tiers: Array[int]) -> Dictionary:
 
 	return candidates[0].equipment
 
-func spawn(pool_type: String, tiers: Array[int], pos: Vector2) -> void:
+func spawn(pool_type: String, tiers: Array, pos: Vector2) -> void:
 	var equipment := random_pick(pool_type, tiers)
 	if equipment.is_empty():
 		print("No equipment for pool:", pool_type, "tiers:", tiers)
