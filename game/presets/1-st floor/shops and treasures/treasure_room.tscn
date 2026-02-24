@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://ctpm02rpg8gfx"]
 
-[ext_resource type="Script" uid="uid://bxsr2a7o5bixa" path="res://game/presets/1-st floor/shops and treasures/trasure_room.gd" id="1_e03qb"]
+[ext_resource type="Script" uid="uid://bxsr2a7o5bixa" path="res://game/presets/1-st floor/shops and treasures/treasure_room.gd" id="1_e03qb"]
 [ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/background/tile background_1.png" id="2_qlwtk"]
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="3_ijfgf"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_nrwhi"]

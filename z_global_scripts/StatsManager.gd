@@ -8,8 +8,8 @@ var stats = {
 	"distance_traveled":	{"value": 0.0, "disc": "Distance traveled"},
 	"items_equipped": 	{"value": 0.0, "disc": "Items equipped"},
 	"visited_shops": 	{"value": 0.0, "disc": "Shops u entered"},
-	"sher_loyalty": 		{"value": 0.0, "disc": "Sherochka's loyalty"},
-	"armory_loyalty": 	{"value": 0.0, "disc": "Sherochka's loyalty"},
+	"shop_loyalty": 		{"value": 0.0, "disc": "Sherochka's loyalty"},
+	"armory_loyalty": 	{"value": 0.0, "disc": "Pepyaka's loyalty"},
 }
 signal stat_changed(stat_name: String, new_value: float)
 

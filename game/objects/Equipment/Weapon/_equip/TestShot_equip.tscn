@@ -26,7 +26,6 @@ animations = [{
 collision_mask = 0
 script = ExtResource("1_nud1i")
 equip_icon = ExtResource("2_x54r0")
-equip_tooltip = "Test3 weapon"
 equip_id = "test_shot"
 projectile = ExtResource("3_x54r0")
 

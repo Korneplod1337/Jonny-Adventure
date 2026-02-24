@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cmlobl77iwbor" path="res://game/presets/1-st floor/start/start_room.tscn" id="3_0t1uw"]
 [ext_resource type="PackedScene" uid="uid://dijhk4kigm72k" path="res://game/presets/1-st floor/standart/standart_room.tscn" id="3_luatc"]
 [ext_resource type="PackedScene" uid="uid://b777y3m4083ll" path="res://game/presets/1-st floor/bosses/test_room2.tscn" id="4_3jp2u"]
-[ext_resource type="PackedScene" uid="uid://ctpm02rpg8gfx" path="res://game/presets/1-st floor/shops and treasures/trasure_room.tscn" id="6_3jp2u"]
+[ext_resource type="PackedScene" uid="uid://b7qvxj2i104cp" path="res://game/presets/1-st floor/shops and treasures/armory_room.tscn" id="6_2xsro"]
+[ext_resource type="PackedScene" uid="uid://ctpm02rpg8gfx" path="res://game/presets/1-st floor/shops and treasures/treasure_room.tscn" id="6_3jp2u"]
 [ext_resource type="AudioStream" uid="uid://dnrgmuhx5ejnx" path="res://sound/main-menu.ogg" id="7_3jp2u"]
 [ext_resource type="AudioStream" uid="uid://cr5m1btuh65g" path="res://sound/arcade.ogg" id="7_luatc"]
 
@@ -15,7 +16,7 @@ standard_room_presets_floor1 = Array[PackedScene]([ExtResource("3_luatc")])
 start_room_preset = Array[PackedScene]([ExtResource("3_0t1uw")])
 shop_room_preset = Array[PackedScene]([ExtResource("2_0t1uw")])
 boss_room_preset = Array[PackedScene]([ExtResource("4_3jp2u")])
-armory_room_preset = Array[PackedScene]([ExtResource("2_0t1uw")])
+armory_room_preset = Array[PackedScene]([ExtResource("6_2xsro")])
 treasure_room_preset = Array[PackedScene]([ExtResource("6_3jp2u")])
 bank_room_preset = Array[PackedScene]([ExtResource("6_3jp2u")])
 

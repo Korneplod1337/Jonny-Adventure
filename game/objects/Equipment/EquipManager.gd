@@ -60,13 +60,15 @@ func random_pick(pool_type: String, tiers: Array) -> Dictionary:
 
 	return candidates[0].equipment
 
-func spawn(pool_type: String, tiers: Array, pos: Vector2) -> void:
+func spawn(pool_type: String, tiers: Array, pos: Vector2, cost:int = -1) -> void:
 	var equipment := random_pick(pool_type, tiers)
 	if equipment.is_empty():
 		print("No equipment for pool:", pool_type, "tiers:", tiers)
 		return
 	var inst = equipment.scene.instantiate()
 	inst.position = pos
+	if cost != -1:
+		inst.cost = cost
 	get_tree().current_scene.add_child(inst)
 
 func certain_spawn(id: String, pos: Vector2) -> void:
@@ -75,5 +77,6 @@ func certain_spawn(id: String, pos: Vector2) -> void:
 			if equipment.id == id:
 				var inst = equipment.scene.instantiate()
 				inst.position = pos
+				inst.cost = 0
 				get_tree().current_scene.add_child(inst)
 				return

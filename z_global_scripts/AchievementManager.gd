@@ -19,6 +19,10 @@ var achievements = {
 	"progress": 0, "goal": 100, "unlocked": false,
 	"unlocked_icon": "res://image/achievements/menu_achiv/shop_loyality.png", "popup_window": "res://image/achievements/hud_achiv/shop_loyality_hud.png"},
 	
+	"armory_loyality": {"name": "Pepyaka's friend", "desc": "up armory loyality to max", 
+	"progress": 0, "goal": 100, "unlocked": false,
+	"unlocked_icon": "", "popup_window": ""},
+	
 	"name": {"name": "Alpha test", "desc": "Survive until game released", 
 	"progress": 0, "goal": 1, "unlocked": false,
 	"unlocked_icon": "", "popup_window": ""},
@@ -29,7 +33,8 @@ var stat_to_achievements = {
 	"kills": ["first_kill"],
 	"distance_traveled": ["long_distance"],
 	"items_equipped": ["first_item"],
-	"sher_loyalty": ["shop_loyality"],
+	"shop_loyalty": ["shop_loyality"],
+	"armory_loyality": ["armory_loyality"],
 }
 
 signal achievement_unlocked(data: String)

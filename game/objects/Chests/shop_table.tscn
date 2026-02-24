@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pk82t1kne84x"]
 
-[ext_resource type="Texture2D" uid="uid://jgk1e7ecuatb" path="res://image/objects/shop-table.png" id="1_fxta0"]
-[ext_resource type="Script" uid="uid://dxf57jwevf136" path="res://game/objects/Chests/treasure_table.gd" id="1_qetox"]
+[ext_resource type="Script" uid="uid://dxf57jwevf136" path="res://game/objects/Chests/shop_table.gd" id="1_pafju"]
+[ext_resource type="Texture2D" uid="uid://jgk1e7ecuatb" path="res://image/objects/shop-table.png" id="2_yjvil"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xa3qg"]
 radius = 11.0
@@ -10,11 +10,11 @@ height = 26.0
 [node name="TreasureTableBody" type="StaticBody2D" unique_id=772107184]
 scale = Vector2(2, 2)
 collision_layer = 16
-script = ExtResource("1_qetox")
+script = ExtResource("1_pafju")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1209309703]
 position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_xa3qg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1201272220]
-texture = ExtResource("1_fxta0")
+texture = ExtResource("2_yjvil")
