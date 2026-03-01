@@ -127,6 +127,7 @@ animations = [{
 size = Vector2(20, 24.054054)
 
 [node name="Player" type="CharacterBody2D" unique_id=2016157039 groups=["player"]]
+position = Vector2(0.99999994, 0)
 scale = Vector2(1.85, 1.85)
 collision_mask = 23
 script = ExtResource("1_fwoqh")
@@ -137,7 +138,7 @@ magic_level = 3.0
 damage_level = 3.0
 spread_level = 3.0
 range_level = 3.0
-fire_rate_level = 10.0
+fire_rate_level = 3.0
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
 position = Vector2(0, -11.837838)

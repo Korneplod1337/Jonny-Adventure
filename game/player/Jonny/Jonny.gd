@@ -15,7 +15,7 @@ const base_magic: 				float = 0.0
 const base_damage: 				float = 25.0
 const base_spread: 				float = 14.0
 const base_range: 				float = 200.0
-const base_fire_rate: 			float = 0.2
+const base_fire_rate: 			float = 0.5
 
 var hp_bonus: 		int = 0
 var speed_bonus: 	int = 0
@@ -258,6 +258,7 @@ func fire (shot_dir: Vector2) -> void:
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
 	
 	extra_fire_rate = shot.extra_reload
+	fire_rate = ST.get_stat(self, "fire_rate")
 	get_tree().current_scene.add_child(shot)
 
 # таймер (лоховской)
@@ -268,9 +269,9 @@ func _on_shot_timer_timeout() -> void:
 # Скорострельность
 func start_reload():
 		can_shoot = false
-		print($shot_Timer.wait_time, ' ', fire_rate, ' ', extra_fire_rate)
-		$shot_Timer.wait_time = fire_rate + extra_fire_rate
+		$shot_Timer.wait_time = fire_rate
 		$shot_Timer.start()
+		print($shot_Timer.wait_time, ' ', fire_rate, ' ', extra_fire_rate)
 
 # Сигнал изменения статов
 func _emit_stats_changed() -> void: 

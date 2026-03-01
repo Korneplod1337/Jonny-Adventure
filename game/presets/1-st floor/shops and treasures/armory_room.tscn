@@ -105,7 +105,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_wutbi")
 }],
-"loop": true,
+"loop": false,
 "name": &"buy",
 "speed": 6.0
 }, {

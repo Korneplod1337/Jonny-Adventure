@@ -125,17 +125,17 @@ var enteredFlag = true
 func bounds_body_entered(body: Node2D) -> void:
 	if enteredFlag and body.is_in_group('player'):
 		print(body, 'entered in armory= ', enteredFlag)
+		animated_sprite_2d.animation = 'default'
 		animated_sprite_2d.play()
 		StatsManager.add_statistic_progress('visited_shops', 1)
 		enteredFlag = false
 		for child in get_parent().get_children():
-			print(child)
 			_connect_item_signals(child)
 
 func _connect_item_signals(node):
 	if node.has_signal("equip_taken"):
 		node.equip_taken.connect(_equip_taken_anim)
-		print('Connect !!!')
+		print('Armory Connect !!!')
 
 func _equip_taken_anim():
 	animated_sprite_2d.play('buy')

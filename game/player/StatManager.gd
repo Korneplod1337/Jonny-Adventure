@@ -37,9 +37,10 @@ func get_stat(p: Node, stat: String) -> float :
 			range_val *= clamp((1 + p.range_bonus * 0.05), 0.2, 4.0)
 			return range_val
 		"fire_rate":
-			var fire_rate = p.base_fire_rate + lerp(0.54, 0.0, (p.fire_rate_level - 1.0) / 9.0)
-			fire_rate *= (1 - p.fire_rate_bonus * 0.05)
-			fire_rate = clamp(fire_rate, 0.21, 4.0)
+			var fire_rate = p.base_fire_rate + lerp(1.0, 0.1, (p.fire_rate_level - 1.0) / 9.0)
+			print(fire_rate, ' ', (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.04 * p.extra_fire_rate))
+			fire_rate *= (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.03 * p.extra_fire_rate)
+			#print(fire_rate, '- Итого')
 			return fire_rate
 		_:
 			push_warning("Unknown stat in getter: %s" % stat)
