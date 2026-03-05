@@ -71,13 +71,31 @@ func _input(_event: InputEvent) -> void:
 		ItemManager.spawn("treasure", [1], self.global_position)
 
 
+@export var on_ice: bool = true
+
 func _process(delta: float) -> void: 
 	total_time_alive += delta
 	total_distance_travelled += now_move_direction.length() * delta
-	
 	#ходьба
+	'''
 	velocity = Vector2(Input.get_axis('move_left', 'move_right'),
 		Input.get_axis('move_up', 'move_down')).normalized() * move_speed
+	'''
+	
+	var dir := Vector2(
+		Input.get_axis("move_left", "move_right"),
+		Input.get_axis("move_up", "move_down")
+	).normalized()
+	
+	var target := dir * move_speed
+	
+	if on_ice:
+		velocity = velocity.move_toward(target, delta * move_speed)
+		if dir == Vector2.ZERO:
+			velocity = velocity.move_toward(Vector2.ZERO, delta * move_speed)
+	else:
+		velocity = dir * move_speed
+
 	move_and_slide()
 	now_move_direction = get_real_velocity()
 	
@@ -139,13 +157,22 @@ func take_damage(phy_damage: int = 0,
 			remaining -= used
 		if hp_list["red"] + hp_list["green"] + hp_list["blue"] + hp_list["black"] <= 0: 
 			print('die')
-			_die()
-	
+			die()
 	if mag_damage:
-		pass
+		var remaining := mag_damage
+		for t in ["green", "red"]:
+			if remaining <= 0:
+				break
+			var used :int = min(remaining, hp_list[t])
+			hp_list[t] -= used
+			remaining -= used
+		if hp_list["red"] + hp_list["green"] <= 0: 
+			print('die')
+			die()
 	if clr_damage:
 		pass
 	
+
 	invulnerable = true
 	imuneTimer.start()
 	$AnimatedSprite2D.modulate.a = 0.4
@@ -170,7 +197,7 @@ func _add_live_hp(typ: String, amount: int) -> void:
 	var add :int = min(amount, free_slots)
 	hp_list[typ] += add
 
-func _die() -> void:
+func die() -> void:
 	var hud := get_tree().get_first_node_in_group("HUD")
 	if hud:
 		hud.show_death_menu(total_time_alive, total_distance_travelled)
@@ -183,9 +210,9 @@ func _on_immune_timer_timeout() -> void:
 
 
 func _emit_hp_visual_changed() -> void:
-	hp_visual_changed.emit(build_hp_array()) #для худа
+	hp_visual_changed.emit(_build_hp_array()) #для худа
 
-func build_hp_array() -> Array:
+func _build_hp_array() -> Array:
 	var hp_array: Array = []
 	
 	var live_types: Array[String] = ["green", "red"]
@@ -271,13 +298,14 @@ func start_reload():
 		can_shoot = false
 		$shot_Timer.wait_time = fire_rate
 		$shot_Timer.start()
-		print($shot_Timer.wait_time, ' ', fire_rate, ' ', extra_fire_rate)
+		#print($shot_Timer.wait_time, ' ', fire_rate, ' ', extra_fire_rate)
 
 # Сигнал изменения статов
 func _emit_stats_changed() -> void: 
 	_emit_hp_visual_changed()
 	emit_signal("stats_changed", move_speed_level, luck_level, damage_level,\
 	 spread_level, range_level, hit_points_level, fire_rate_level, magic_level)
+
 
 
 # камера
@@ -312,3 +340,7 @@ var total_time_alive: float = 0.0
 
 @onready var imuneTimer = $immune_Timer
 var invulnerable: bool = false
+
+
+func update_level_buffs() -> void:
+	on_ice = GameState.level_bufs[4][1]

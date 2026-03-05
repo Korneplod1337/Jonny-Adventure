@@ -1,13 +1,14 @@
-[gd_scene format=4 uid="uid://dijhk4kigm72k"]
+[gd_scene format=4 uid="uid://fg4d6t0fkyqp"]
 
-[ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/rock.tscn" id="1_7kv4s"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/background/tile background_1.png" id="1_gk7ie"]
-[ext_resource type="Script" uid="uid://cxt5f8lgqi4k7" path="res://game/presets/1-st floor/RoomScript_noEnemy.gd" id="1_wnpcq"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="2_wnpcq"]
-[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_yij7n"]
+[ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/1-st floor/RoomScript.gd" id="1_visyd"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/background/tile background_1.png" id="2_7m85q"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="3_1tq2v"]
+[ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/rock.tscn" id="4_1jsc2"]
+[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_8amni"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/EmenyWorm.tscn" id="6_7m85q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
-texture = ExtResource("1_gk7ie")
+texture = ExtResource("2_7m85q")
 separation = Vector2i(2, 2)
 0:0/0 = 0
 1:0/0 = 0
@@ -56,7 +57,7 @@ size = Vector2(41.03, 654.5)
 size = Vector2(1280, 720)
 
 [node name="TestRoom1" type="Node2D" unique_id=2062400061]
-script = ExtResource("1_wnpcq")
+script = ExtResource("1_visyd")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1114126759]
 position = Vector2(-8, -16)
@@ -65,7 +66,7 @@ tile_set = SubResource("TileSet_2tq2k")
 
 [node name="BG_bounds" type="Sprite2D" parent="." unique_id=1926935037]
 scale = Vector2(2, 2)
-texture = ExtResource("2_wnpcq")
+texture = ExtResource("3_1tq2v")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1184620657]
 position = Vector2(-207.06, -240)
@@ -88,26 +89,26 @@ shape = SubResource("RectangleShape2D_ic6a2")
 position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_ic6a2")
 
-[node name="Rock3" parent="." unique_id=2114911849 instance=ExtResource("1_7kv4s")]
+[node name="Rock3" parent="." unique_id=2114911849 instance=ExtResource("4_1jsc2")]
 position = Vector2(-5, 52)
 scale = Vector2(1.49359, 0.733615)
 
-[node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("3_yij7n")]
+[node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("5_8amni")]
 position = Vector2(0, -300)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
-[node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("3_yij7n")]
+[node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("5_8amni")]
 position = Vector2(0, 300)
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
-[node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("3_yij7n")]
+[node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("5_8amni")]
 position = Vector2(-585, 0)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
-[node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("3_yij7n")]
+[node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("5_8amni")]
 position = Vector2(585, 0)
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
@@ -118,3 +119,9 @@ input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=1583514558]
 shape = SubResource("RectangleShape2D_yij7n")
+
+[node name="EmenyWorm" parent="." unique_id=1655288545 instance=ExtResource("6_7m85q")]
+position = Vector2(370, -118)
+
+[node name="EmenyWorm_extra" parent="." unique_id=1697991086 instance=ExtResource("6_7m85q")]
+visible = false

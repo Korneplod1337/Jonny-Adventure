@@ -20,7 +20,7 @@ enum RoomType {	START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
 				TREASURE, BANK, GAMBLING, BOSS, SECRET}
 
 var floors_config: Array[Dictionary] = [
-{"total_rooms": 4, 	"shop_rooms": 1 , 		"buff_rooms": 1, 			"dop_rooms": 0}, 
+{"total_rooms": 5, 	"shop_rooms": 0 , 		"buff_rooms": 1, 			"dop_rooms": 0}, 
 {"total_rooms": 6, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 {"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
 {"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
@@ -69,6 +69,10 @@ var directions := [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
 func _ready():
 	seed(Time.get_unix_time_from_system())
 	GameState.obnulenie()
+	GameState._clear_level_bufs()
+	if randi() % 100 > 60:
+		GameState.random_level_bufs()
+		
 	$Arcade_music.play()
 	rooms = generator.generate(
 		floors_config[current_floor]['total_rooms'], 
@@ -81,6 +85,7 @@ func _ready():
 	var hud_scene := preload("uid://n5dvgu5we2gn")
 	hud_instance = hud_scene.instantiate()
 	add_child(player)
+	player.update_level_buffs()
 	add_child(hud_instance)
 
 
@@ -133,7 +138,6 @@ func spawn_rooms() -> Node:
 func spawn_player_in_start(start_instance: Node) -> void:
 	player.global_position = start_instance.global_position
 	player.set_room(start_instance)
-
 
 func configure_doors_for_room(room: Room, scene: Node2D) -> void:
 # направление -> имя узла двери в пресете
@@ -260,7 +264,7 @@ func print_map():
 		output += line_conn.rstrip(" \t") + "\n"
 	print(output)
 
-func regenerate_floor(new_floor: int) -> void:
+func regenerate_floor(new_floor: int) -> void: # проверить
 	current_floor = new_floor
 	clear_rooms()
 	rooms = generator.generate(

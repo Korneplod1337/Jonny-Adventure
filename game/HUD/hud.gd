@@ -19,7 +19,7 @@ func _ready() -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	if player:
 		player.hp_visual_changed.connect(_on_hp_visual_changed)
-		_on_hp_visual_changed(player.build_hp_array())
+		_on_hp_visual_changed(player._build_hp_array())
 		
 		player.stats_changed.connect(_on_player_stats_changed)
 		_on_player_stats_changed(player.move_speed_level,\
@@ -29,6 +29,7 @@ func _ready() -> void:
 	
 	else: print('Худ не нашёл Игрока')
 	AchievementManager.achievement_unlocked.connect(_show_new_achievement)
+	bufs_render()
 
 
 func _process(_delta) -> void:
@@ -125,6 +126,22 @@ func _render_inventory():
 		items_container.add_child(slot)
 	
 
+func bufs_render() -> void:
+	var buff_name = GameState.get_level_bufs()[0]
+	if buff_name != 'Nothing':
+		effect_label.text = buff_name
+		effect_timer.start()
+		effect_label.label_settings.set_font_color(GameState.get_level_bufs()[1])
+		effect_label.show()
+		if buff_name == 'Toxic':
+			toxic_color.show()
+	else:
+		_on_effect_timer_timeout()
+		toxic_color.hide()
+		print('bufs_render nothing')
+
+func _on_effect_timer_timeout() -> void:
+	effect_label.hide()
 
 
 # Отображение подбора монетки
@@ -190,6 +207,13 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var spread_stat: AnimatedSprite2D = $HUD/StatsPanel/Yellow_Stat
 @onready var magic_stat: AnimatedSprite2D = $HUD/StatsPanel/Pink_Stat
 @onready var move_speed_stat: AnimatedSprite2D = $HUD/StatsPanel/Blue_Stat
+
+@onready var effect_label: Label = $HUD/Effect/Effect_Label
+@onready var effect_timer: Timer = $HUD/Effect/Effect_timer
+@onready var toxic_color = $HUD/Toxic
+
+
+
 
 #Временные кнопки
 func _on_button_play_pressed() -> void:

@@ -20,7 +20,40 @@ var enemy_dmg_multiplier: float = 1.0
 var enemy_cooldown_multiplier: float = 1.0
 
 # игрок
-var AlchemistsGlasses := false
+var AlchemistsGlasses := false #больше инфы
 
 # мир
 var cost_multiplier: float = 1.0
+
+#уровень
+'''запутанное пространство двери
+нашествие + 50 код-ву
+смертельность
+токсичность
+ледяное
+'''
+
+
+@onready var level_bufs :Array = [
+ ["Confusing space", 	false, Color.LAWN_GREEN],
+ ["Invasion", 			false, Color.RED],
+ ["Deathly", 			false, Color.RED],
+ ["Toxic", 				false, Color.YELLOW],
+ ["Ice", 				false, Color.LAWN_GREEN]
+]
+
+func random_level_bufs() -> void:
+	#level_bufs[3][1] = true
+	level_bufs[randi() % len(level_bufs)][1] = true
+
+func _clear_level_bufs() -> void:
+	for i in level_bufs:
+		i[1] = false
+
+func get_level_bufs() -> Array:
+	for i in level_bufs:
+		if i[1] == true:
+			return [i[0], i[2]]
+	return ['Nothing', 'Nothing']
+
+#босс

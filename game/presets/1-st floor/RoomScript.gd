@@ -13,9 +13,14 @@ func init_room() -> void:
 	randomize()
 	_shuffle_tilemap_layer()
 	await get_tree().process_frame
-	connect_enemies()
 	cache_active_doors()
 	hide_doors()
+	
+	if GameState.level_bufs[1][1] == true:   # Invasion
+		for enemy in get_tree().get_nodes_in_group("Enemy"):
+			enemy.visible = true
+	connect_enemies()
+
 
 func _shuffle_tilemap_layer() -> void:
 	var used_cells: Array[Vector2i] = tile_map_layer.get_used_cells()
@@ -70,12 +75,29 @@ func _pick_weighted(weighted_tiles: Array) -> Vector2i:
 
 	return weighted_tiles.back().coord
 
+'''
+func connect_enemies() -> void:
+	enemy_count = 0
+
+	for enemy in get_children():
+		if enemy.is_in_group('Enemy'):
+			if not is_ancestor_of(enemy) and not enemy.is_visible_in_tree():
+				continue
+
+			enemy_count += 1
+
+			if enemy.has_signal("_enemy_die"):
+				enemy._enemy_die.connect(_on_enemy_die)
+'''
 
 # хуйня с дверьми и врагами (рот её ебал)
 func connect_enemies() -> void:
 	enemy_count = 0
 
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		if not enemy.is_visible_in_tree():
+			enemy.queue_free()
+			continue
 		if not is_ancestor_of(enemy):
 			continue
 
@@ -110,5 +132,7 @@ func _update_door_collision(door: Node, hide: bool) -> void:
 
 func _on_enemy_die(damage: int) -> void:
 	enemy_count -= damage
+	print('enemy left: ', enemy_count)
+
 	if enemy_count <= 0:
 		show_doors()

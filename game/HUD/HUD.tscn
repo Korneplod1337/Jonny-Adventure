@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bswrq17r14ngm" path="res://game/HUD/hud.gd" id="1_uvy8x"]
 [ext_resource type="Texture2D" uid="uid://dwjxxrdxpcxne" path="res://image/ttttt.png" id="2_n73n3"]
+[ext_resource type="Texture2D" uid="uid://bdxb6w4nfuvpb" path="res://image/background/bg_effect/bg_toxic.png" id="2_w87tb"]
 [ext_resource type="Texture2D" uid="uid://dnee1bpxbti0u" path="res://image/interface/money_brush.png" id="3_n73n3"]
 [ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="4_heuq7"]
 [ext_resource type="Texture2D" uid="uid://brtmnwq34r1v1" path="res://image/interface/money_brush_low_opacity.png" id="4_ht4al"]
@@ -90,6 +91,15 @@
 [ext_resource type="Texture2D" uid="uid://d0yvy0t0gpvn3" path="res://image/interface/equip/equip_slots.png" id="87_1wbpx"]
 [ext_resource type="Texture2D" uid="uid://ww3vynkop1x4" path="res://image/interface/HUD/death_menu.png" id="87_ekhi8"]
 [ext_resource type="PackedScene" uid="uid://pl317cum6l7a" path="res://game/HUD/SlotAlt.tscn" id="89_w87tb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m045i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m045i"]
+font_size = 128
+outline_size = 8
+outline_color = Color(0.1764706, 0.19215687, 0, 1)
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 0.06666667)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ht4al"]
 paragraph_spacing = 1.0
@@ -437,6 +447,43 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+
+[node name="Toxic" type="Sprite2D" parent="HUD" unique_id=1212187630]
+visible = false
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("2_w87tb")
+
+[node name="Effect" type="Control" parent="HUD" unique_id=1124951337]
+anchors_preset = 0
+offset_right = 1282.0
+offset_bottom = 718.0
+
+[node name="Effect_Label" type="Label" parent="HUD/Effect" unique_id=265485823]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -531.5
+offset_top = -112.75
+offset_right = 531.5
+offset_bottom = 112.75
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("86_p0ac8")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m045i")
+text = "Nothing"
+label_settings = SubResource("LabelSettings_m045i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Effect_timer" type="Timer" parent="HUD/Effect" unique_id=1100577359]
+wait_time = 2.0
+one_shot = true
 
 [node name="LeftUpVBoxContainer" type="VBoxContainer" parent="HUD" unique_id=1866199654]
 layout_mode = 1
@@ -803,6 +850,7 @@ centered = false
 wait_time = 4.0
 one_shot = true
 
+[connection signal="timeout" from="HUD/Effect/Effect_timer" to="." method="_on_effect_timer_timeout"]
 [connection signal="timeout" from="HUD/LeftUpVBoxContainer/CoinsContainer/MoneyTimer" to="." method="_on_timer_Money_timeout"]
 [connection signal="pressed" from="HUD/PauseMenu/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="HUD/PauseMenu/ButtonRestart" to="." method="_on_button_restart_pressed"]

@@ -6,17 +6,21 @@ var direction: Vector2 = Vector2.RIGHT
 var atk_range: float = 200.0
 var damage: int = 25
 var extra_reload: float = 1.5 # только для слёз множитель больше 1 1,6 MAX
+const self_damage_multiplier: float = 1
+const self_speed_multiplier: float = 1
+const self_range_multiplier: float = 1
+
 
 var distance_travelled := 0.0
 
 var exploded := false
 
 func _physics_process(delta):
-	var movement = direction.normalized() * speed * delta
+	var movement = direction.normalized() * speed * delta * self_speed_multiplier
 	position += movement
 	distance_travelled += movement.length()
 	
-	if distance_travelled >= atk_range and not exploded:
+	if distance_travelled >= atk_range * self_range_multiplier and not exploded:
 		exploded = true
 		explosion()
 
@@ -26,7 +30,7 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		return
 	if body.has_method("hit"):
-		body.hit(damage)
+		body.hit(damage * self_damage_multiplier)
 	exploded = true
 	explosion()
 

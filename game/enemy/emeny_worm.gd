@@ -31,7 +31,7 @@ func _ready() -> void:
 		move_step_distance = 300  		* GameState.enemy_ms_multiplier
 		move_speed = 250 				* GameState.enemy_ms_multiplier
 		base_hp = 108 					* GameState.enemy_hp_multiplier
-		damage = clampi(2 				* GameState.enemy_dmg_multiplier, 1, 3)
+		damage = clampi(1 				* GameState.enemy_dmg_multiplier, 1, 3)
 		cooldown_time = 1.0 				* GameState.enemy_cooldown_multiplier
 	elif DungeonManager.difficulty == 'med':
 		move_step_distance = 150 		* GameState.enemy_ms_multiplier
@@ -41,7 +41,8 @@ func _ready() -> void:
 		cooldown_time = 1.0 				* GameState.enemy_cooldown_multiplier
 	else:
 		pass
-
+	if GameState.level_bufs[2][1]:  # Deathly
+		damage *= 2
 	current_hp = base_hp
 	cooldown_timer.wait_time = cooldown_time  # РЫВКИ
 	
@@ -53,9 +54,12 @@ func _physics_process(delta: float) -> void:
 		return
 	if not player:
 		player = get_tree().get_first_node_in_group("player")
-		return
+		return             #переделать
 	if player_in_hit_range:
-		player.take_damage(damage, 0, 0)
+		if GameState.level_bufs[3][1]:
+			player.take_damage(0, damage, 0)
+		else:
+			player.take_damage(damage, 0, 0)
 
 	# РЫВОК с Curve
 	if is_dashing:

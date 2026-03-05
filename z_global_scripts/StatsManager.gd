@@ -7,6 +7,7 @@ var stats = {
 	"lifetime": 			{"value": 0.0, "disc": "Lifetime"},
 	"distance_traveled":	{"value": 0.0, "disc": "Distance traveled"},
 	"items_equipped": 	{"value": 0.0, "disc": "Items equipped"},
+	"items_unlock": 		{"value": 0.0, "disc": "Items unlocked"},
 	"visited_shops": 	{"value": 0.0, "disc": "Shops u entered"},
 	"shop_loyalty": 		{"value": 0.0, "disc": "Sherochka's loyalty"},
 	"armory_loyalty": 	{"value": 0.0, "disc": "Pepyaka's loyalty"},
