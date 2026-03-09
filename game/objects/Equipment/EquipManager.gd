@@ -1,25 +1,44 @@
 extends Node
 
 # Пулы эквипмента
+'''
+Тир 0- бафы 4-х атакующих квадрантов
+Тир 1- начальные оружки/слабый эквип
+Тир 2- обычные оружки/обычный эквип
+Тир 3- имбовые оружки/имба эквип 
+'''
+
 const POOLS := {
-	"weapon": [
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"),
-		 "tier": 1, "weight": 10.0},
-		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
-		 "tier": 1, "weight": 10.0},
-	],
 	"treasure": [
 		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), #эквип
-		 "tier": 1, "weight": 10.0},
+		 "tier": 0, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 2, "weight": 10.0},
+		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
+		 "tier": 3, "weight": 10.0},
 	],
 	"armory": [
-		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), #эквип
+		 "tier": 0, "weight": 10.0},
+		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
 		 "tier": 1, "weight": 10.0},
+		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
+		 "tier": 3, "weight": 10.0},
 	],
+	"weapon": [
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), #эквип
+		 "tier": 0, "weight": 10.0},
+		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
+		 "tier": 3, "weight": 10.0},
+	]
 }
 
 var rng := RandomNumberGenerator.new()

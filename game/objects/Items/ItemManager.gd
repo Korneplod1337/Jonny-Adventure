@@ -6,20 +6,37 @@ var picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
 var DEFAULT_UNLOCKED := ["hpup", "shield", "heal"]
 var DEFAULT_PICK := ["hpup"]
+'''
+Тир 0- дорогие бафы 4-х квадрантов, хилки
+Тир 1- обычные предметы
+Тир 2- сильные предметы
+Тир 3- меняющие геймплей предметы
+Тир 4- хуй пойми что, решафлы 
+'''
 
 # Пулы предметов
 const POOLS := {
 	"treasure": [
-		{"id": "hpup",   "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
-		{"id": "potion", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
-		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
-	],
-	"shop": [
-		{"id": "heal", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
+		{"id": "heal", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 0},
 		{"id": "hpup", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
 		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
 		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 3},
+		{"id": "cool_ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 4}
 	],
+	"shop": [
+		{"id": "heal", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 0},
+		{"id": "hpup", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
+		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
+		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 3},
+		{"id": "cool_ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 4},
+	],
+	"chest": [
+		{"id": "heal", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 0},
+		{"id": "hpup", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
+		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
+		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 3},
+		{"id": "cool_ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 4},
+	]
 }
 
 var rng := RandomNumberGenerator.new()
@@ -38,6 +55,21 @@ func is_unlocked(id: String) -> bool:
 
 func is_picked(id: String) -> bool:
 	return picked_items.get(id, false)
+
+func get_item_unlock_counts() -> String:
+	var unique_items = {}
+	for pool in POOLS.values():
+		for item in pool:
+			unique_items[item.id] = true
+	
+	var total = unique_items.size()
+	var unlocked_count = 0
+	
+	for id in unique_items.keys():
+		if is_unlocked(id):
+			unlocked_count += 1
+			
+	return str(unlocked_count) + '/' + str(total)
 
 func save_config() -> void:
 	var cfg := ConfigFile.new()

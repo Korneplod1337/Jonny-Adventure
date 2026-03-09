@@ -21,8 +21,10 @@ func update_stats_list():
 		var label = Label.new()
 		var font = load("res://Fonts/JonnyAdventureFont.ttf")
 		label.add_theme_font_override('font', font)
-		
-		label.text = str(stat['disc']) + " - " + str(int(stat['value']))
+		if stat['disc'] == "Items unlocked":
+			label.text = str(stat['disc']) + " - " + ItemManager.get_item_unlock_counts()
+		else:
+			label.text = str(stat['disc']) + " - " + str(int(stat['value']))
 		label.add_theme_color_override("font_color", Color("MIDNIGHT_BLUE"))
 		label.add_theme_font_size_override('font_size', 48)
 		

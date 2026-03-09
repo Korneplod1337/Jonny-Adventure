@@ -25,6 +25,7 @@ func load_statistic():
 				stats[key]["value"] = config.get_value("stats", key, 0)
 
 
+
 func save_statistic():
 	var config = ConfigFile.new()
 	for key in stats.keys():

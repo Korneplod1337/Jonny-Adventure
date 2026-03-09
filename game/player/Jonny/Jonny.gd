@@ -24,7 +24,7 @@ var magic_bonus: 	int = 0
 var damage_bonus: 	int = 0
 var accuracy_bonus: 	int = 0
 var range_bonus: 	int = 0
-var fire_rate_bonus:	int = 0
+var fire_rate_bonus:	int = 10
 
 @export var hit_points_level: 	float = 1.0
 @export var move_speed_level: 	float = 2.0   # 1–10, 9 лвл прокачки
