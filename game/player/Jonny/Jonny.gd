@@ -265,6 +265,7 @@ var shooting: bool = false
 @export var shot_scene: PackedScene
 var shot_id: String = ''
 
+var shot_enchantment: EnchantmentResource
 
 func fire (shot_dir: Vector2) -> void:
 	if not shot_scene:
@@ -283,6 +284,9 @@ func fire (shot_dir: Vector2) -> void:
 	shot.damage = damage
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
+	
+	if shot_enchantment:
+		shot.enchantment = shot_enchantment.duplicate(true)
 	
 	extra_fire_rate = shot.extra_reload
 	fire_rate = ST.get_stat(self, "fire_rate")

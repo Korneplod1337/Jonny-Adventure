@@ -15,6 +15,8 @@ var distance_travelled := 0.0
 
 var exploded := false
 
+var enchantment: EnchantmentResource
+
 func _physics_process(delta):
 	var movement = direction.normalized() * speed * delta * self_speed_multiplier
 	position += movement
@@ -31,6 +33,8 @@ func _on_body_entered(body):
 		return
 	if body.has_method("hit"):
 		body.hit(damage * self_damage_multiplier)
+	if enchantment:
+		enchantment.apply_on_hit(body)
 	exploded = true
 	explosion()
 

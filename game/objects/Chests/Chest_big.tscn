@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dhty76ckflr50"]
 
-[ext_resource type="Script" uid="uid://b4j0jdcykmlbe" path="res://game/objects/Chests/chest_big.gd" id="1_bmmbm"]
+[ext_resource type="Script" uid="uid://b4j0jdcykmlbe" path="res://game/objects/chests/chest_big.gd" id="1_bmmbm"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="2_vj4gw"]
 [ext_resource type="Texture2D" uid="uid://btvyo5tab182y" path="res://image/objects/big_chest1.png" id="3_vj4gw"]
 [ext_resource type="Texture2D" uid="uid://cdg17lgd72qks" path="res://image/objects/big_chest2.png" id="4_3gvxw"]

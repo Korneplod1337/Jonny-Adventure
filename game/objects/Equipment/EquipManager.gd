@@ -1,5 +1,10 @@
 extends Node
 
+const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
+	preload("uid://8pwbn1wjmvu1"), # ice_shot
+	
+]
+
 # Пулы эквипмента
 '''
 Тир 0- бафы 4-х атакующих квадрантов
@@ -79,23 +84,46 @@ func random_pick(pool_type: String, tiers: Array) -> Dictionary:
 
 	return candidates[0].equipment
 
-func spawn(pool_type: String, tiers: Array, pos: Vector2, cost:int = -1) -> void:
+func roll_enchantment() -> EnchantmentResource:
+	var template: EnchantmentResource = ENCHANTMENT_TEMPLATES[rng.randi_range(0, ENCHANTMENT_TEMPLATES.size() - 1)]
+	var e: EnchantmentResource = template.duplicate(true)
+	e.level = rng.randi_range(1, 3)
+	
+
+	print(e)
+	print(e is IceEnchantment)
+	print(e.get_tooltip_text())
+
+
+	
+	if randi() % 100 > 0: #80
+		return e
+	return null
+
+func spawn(pool_type: String, tiers: Array, pos: Vector2, cost: int = -1) -> void:
 	var equipment := random_pick(pool_type, tiers)
 	if equipment.is_empty():
-		print("No equipment for pool:", pool_type, "tiers:", tiers)
+		print("No equipment for pool:", pool_type, " tiers:", tiers)
 		return
+
 	var inst = equipment.scene.instantiate()
 	inst.position = pos
+	inst.enchantment = roll_enchantment()
+
 	if cost != -1:
 		inst.cost = cost
+
 	get_tree().current_scene.add_child(inst)
 
-func certain_spawn(id: String, pos: Vector2) -> void:
+
+func certain_spawn(id: String, pos: Vector2, enchantment: EnchantmentResource = null) -> void:
 	for pool in POOLS.values():
 		for equipment in pool:
 			if equipment.id == id:
 				var inst = equipment.scene.instantiate()
 				inst.position = pos
 				inst.cost = 0
+				if enchantment:
+					inst.enchantment = enchantment.duplicate(true)
 				get_tree().current_scene.add_child(inst)
 				return

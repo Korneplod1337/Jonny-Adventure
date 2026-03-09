@@ -1,8 +1,11 @@
 extends CharacterBody2D
-
 @export var coin_scene: PackedScene
+
 @export var move_step_distance: float = 100.0
 @export var move_speed: float = 100.0
+var base_move_speed := move_speed
+var slow_token: int = 0
+
 @export var cooldown_time: float = 1.5
 @export var base_hp: int = 50
 @export var damage: int = 1
@@ -39,8 +42,11 @@ func _ready() -> void:
 		base_hp = 50 					* GameState.enemy_hp_multiplier
 		damage = clampi(1 				* GameState.enemy_dmg_multiplier, 1, 3)
 		cooldown_time = 1.0 				* GameState.enemy_cooldown_multiplier
-	else:
-		pass
+	
+	base_move_speed = move_speed
+	current_hp = base_hp
+	cooldown_timer.wait_time = cooldown_time
+	
 	if GameState.level_bufs[2][1]:  # Deathly
 		damage *= 2
 	current_hp = base_hp
@@ -77,7 +83,6 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-
 func choose_direction_and_dash() -> void:
 	var dir = (player.global_position - global_position).normalized()
 	if dir.length() == 0: return
@@ -88,6 +93,20 @@ func choose_direction_and_dash() -> void:
 	dash_distance_travelled = 0.0
 	sprite.frame = 1
 	
+	
+func apply_slow(mult: float, duration: float) -> void:
+	slow_token += 1
+	var my_token := slow_token
+
+	move_speed = move_speed * mult
+	_reset_slow_later(my_token, duration, mult)
+
+func _reset_slow_later(token: int, duration: float, mult: float) -> void:
+	await get_tree().create_timer(duration).timeout
+	if token != slow_token:
+		return
+	move_speed = base_move_speed
+
 
 # СИГНАЛЫ
 func _on_field_view_area_body_entered(body: Node2D) -> void:
@@ -145,7 +164,6 @@ func _on_sprite_animation_finished() -> void:
 				spawn_coin()
 		queue_free()
 		StatsManager.add_statistic_progress('kills', 1)
-
 
 func spawn_coin() -> void:
 	var coin := coin_scene.instantiate()

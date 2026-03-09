@@ -34,7 +34,7 @@ func set_tooltip(text: String):
 		
 	else:
 		_pending_tooltip = text
-
+		
 
 func _on_hover():
 	tooltip_panel.visible = true
