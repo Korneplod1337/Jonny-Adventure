@@ -44,7 +44,7 @@ var cost_multiplier: float = 1.0
 
 func random_level_bufs() -> void:
 	if randi() % 100 > 50:
-		level_bufs[0][1] = true
+		level_bufs[1][1] = true
 		#level_bufs[randi() % len(level_bufs)][1] = true
 
 func _clear_level_bufs() -> void:

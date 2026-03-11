@@ -10,12 +10,19 @@ func get_slow_multiplier() -> float:
 	match level:
 		1: return 0.9
 		2: return 0.8
-		3: return 0.65
+		3: return 0.7
 		_: return 0.9
+
+func get_slow_duration() -> float:
+	match level:
+		1: return 2.5
+		2: return 2.0
+		3: return 1.5
+		_: return 2.0
 
 func apply_on_hit(target: Node) -> void:
 	if target.has_method("apply_slow"):
-		target.apply_slow(get_slow_multiplier(), duration)
+		target.apply_slow(get_slow_multiplier(), get_slow_duration())
 
 func get_tooltip_text() -> String:
 	match level:

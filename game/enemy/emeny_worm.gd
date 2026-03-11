@@ -97,7 +97,8 @@ func choose_direction_and_dash() -> void:
 func apply_slow(mult: float, duration: float) -> void:
 	slow_token += 1
 	var my_token := slow_token
-
+	mult = mult - StatManager.get_stat(player, 'magic')/4
+	print(mult, duration)
 	move_speed = move_speed * mult
 	_reset_slow_later(my_token, duration, mult)
 

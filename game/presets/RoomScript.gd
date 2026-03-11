@@ -4,10 +4,8 @@ var enemy_count: int
 var active_doors: Array[Node] = []
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 
-
 func _ready() -> void:
 	call_deferred("init_room")
-
 
 func init_room() -> void:
 	randomize()

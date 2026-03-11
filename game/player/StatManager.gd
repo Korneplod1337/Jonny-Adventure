@@ -1,6 +1,6 @@
 extends Node
 
-
+# макусимум бафов 20
 func get_stat(p: Node, stat: String) -> float :
 	match stat:
 		"hp": 
