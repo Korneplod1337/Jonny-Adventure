@@ -12,6 +12,9 @@ func _ready() -> void:
 func init_room() -> void:
 	randomize()
 	_shuffle_tilemap_layer()
+	if GameState.level_bufs[0][1]:
+		shuffle_doors()
+	
 	await get_tree().process_frame
 	cache_active_doors()
 	hide_doors()
@@ -136,3 +139,20 @@ func _on_enemy_die(damage: int) -> void:
 
 	if enemy_count <= 0:
 		show_doors()
+
+
+func shuffle_doors() -> void:
+	var doors: Array[Node2D] = []
+	var positions: Array[Vector2] = []
+
+	for child in get_children():
+		if child.is_in_group("Door") and child is Node2D:
+			doors.append(child)
+
+	for door in doors:
+		positions.append(door.position)
+
+	positions.shuffle()
+
+	for i in range(doors.size()):
+		doors[i].position = positions[i]
