@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://4n7hnx6frmbp"]
+
+[ext_resource type="Texture2D" uid="uid://b13bplyg515pj" path="res://image/circle.png" id="1_r4evv"]
+[ext_resource type="Script" uid="uid://c7bi4jrq3704r" path="res://game/enemy/base_enemy.gd" id="1_yry4g"]
+[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coins/Coin.tscn" id="2_2eqer"]
+[ext_resource type="Texture2D" uid="uid://7l0gm7uwen52" path="res://image/Icon.jpg" id="2_yry4g"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/effect_icons.gd" id="4_uckop"]
+[ext_resource type="Texture2D" uid="uid://b7cqj7inw8y02" path="res://image/effect_sprites/status_bar/snowflake.png" id="5_y8iyg"]
+[ext_resource type="Texture2D" uid="uid://dry1e6wipf5yq" path="res://image/effect_sprites/status_bar/poison.png" id="6_06vgp"]
+[ext_resource type="Texture2D" uid="uid://dew1qqwfm2ex5" path="res://image/effect_sprites/status_bar/fire1.png" id="7_cnrvr"]
+
+[sub_resource type="Curve" id="Curve_xfrs4"]
+_data = [Vector2(0.44444442, 0.5176399), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r4evv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yry4g")
+}],
+"loop": false,
+"name": &"die",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
+size = Vector2(49, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
+radius = 984.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
+size = Vector2(68, 35)
+
+[node name="BaseEnemy" type="CharacterBody2D" unique_id=2133096440]
+collision_layer = 4
+collision_mask = 22
+script = ExtResource("1_yry4g")
+coin_scene = ExtResource("2_2eqer")
+dash_curve = SubResource("Curve_xfrs4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
+sprite_frames = SubResource("SpriteFrames_17ibq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+position = Vector2(2.5, 4)
+shape = SubResource("RectangleShape2D_ps82n")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=272051664]
+visible = false
+shape = SubResource("CircleShape2D_2eqer")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_hoiul")
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1995691531]
+wait_time = 0.2
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=186013657]
+one_shot = true
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1652671866]
+script = ExtResource("4_uckop")
+spacing = 25.0
+freeze_icon = ExtResource("5_y8iyg")
+poison_icon = ExtResource("6_06vgp")
+fire_icon = ExtResource("7_cnrvr")
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

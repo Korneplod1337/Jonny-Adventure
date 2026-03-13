@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://bevlvruxr34ip"]
 
 [ext_resource type="Script" uid="uid://dw23pof411khw" path="res://game/enemy/emeny_worm.gd" id="1_swa76"]
-[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="2_kjktk"]
+[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coins/Coin.tscn" id="2_kjktk"]
 [ext_resource type="Texture2D" uid="uid://ui6t1g66fml7" path="res://image/enemy/test _enemy2.png" id="3_ahxes"]
 [ext_resource type="Texture2D" uid="uid://bdtj13hn54rfh" path="res://image/enemy/test _enemy3.png" id="4_s5mru"]
 [ext_resource type="Texture2D" uid="uid://c812uj2ae1ykd" path="res://image/enemy/test _enemy4.png" id="5_427lg"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/effect_icons.gd" id="6_s5mru"]
+[ext_resource type="Texture2D" uid="uid://b7cqj7inw8y02" path="res://image/effect_sprites/status_bar/snowflake.png" id="7_427lg"]
+[ext_resource type="Texture2D" uid="uid://dry1e6wipf5yq" path="res://image/effect_sprites/status_bar/poison.png" id="8_427lg"]
+[ext_resource type="Texture2D" uid="uid://dew1qqwfm2ex5" path="res://image/effect_sprites/status_bar/fire1.png" id="9_0d423"]
 
 [sub_resource type="Curve" id="Curve_kjktk"]
 _limits = [0.5, 1.5, 0.0, 1.0]
@@ -81,6 +85,16 @@ one_shot = true
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=2010852584]
 one_shot = true
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=521838655]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1584987421]
+script = ExtResource("6_s5mru")
+spacing = 25.0
+freeze_icon = ExtResource("7_427lg")
+poison_icon = ExtResource("8_427lg")
+fire_icon = ExtResource("9_0d423")
 
 [connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
 [connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
