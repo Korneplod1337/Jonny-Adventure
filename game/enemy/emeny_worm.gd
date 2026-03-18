@@ -1,193 +1,62 @@
-extends CharacterBody2D
-@export var coin_scene: PackedScene
+extends BaseEnemy
 
 @export var move_step_distance: float = 100.0
-@export var move_speed: float = 100.0
-var base_move_speed := move_speed
-var slow_token: int = 0
-
-@export var cooldown_time: float = 1.5
-@export var base_hp: int = 50
-@export var damage: int = 1
 @export var dash_curve: Curve
-
-var player_in_hit_range: bool = false
-var player_in_vision: bool = false
-var active: bool = false
-
-var current_hp: int
-var is_dead: bool = false
 
 var dash_distance_travelled: float = 0.0
 var target_direction: Vector2 = Vector2.ZERO
 var is_dashing: bool = false
 
-@onready var player: Node2D = get_tree().get_first_node_in_group("player")
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var cooldown_timer: Timer = $CooldownTimer
-@onready var blind_timer: Timer = $BlindTimer
 
-signal _enemy_die(int)
+func _setup_enemy_stats() -> void:
+	if DungeonManager.difficulty == "hard":
+		move_step_distance = 	300 		* GameState.enemy_ms_multiplier
+		move_speed = 			250 		* GameState.enemy_ms_multiplier
+		base_hp = 				100 		* GameState.enemy_hp_multiplier
+		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
+		cooldown_time = 		1.0 			* GameState.enemy_cooldown_multiplier
+	elif DungeonManager.difficulty == "med":
+		move_step_distance = 	150 		* GameState.enemy_ms_multiplier
+		move_speed = 			150 		* GameState.enemy_ms_multiplier
+		base_hp = 				60 		* GameState.enemy_hp_multiplier
+		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
+		cooldown_time = 		1.0 			* GameState.enemy_cooldown_multiplier
+	else:
+		base_hp = 				6 		* GameState.enemy_hp_multiplier
+	super._setup_enemy_stats()
 
-@onready var effect_icons = $EffectAnchor/EffectIcons
 
-func _ready() -> void:
-	if DungeonManager.difficulty == 'hard':
-		move_step_distance = 300  		* GameState.enemy_ms_multiplier
-		move_speed = 250 				* GameState.enemy_ms_multiplier
-		base_hp = 108 					* GameState.enemy_hp_multiplier
-		damage = clampi(1 				* GameState.enemy_dmg_multiplier, 1, 3)
-		cooldown_time = 1.0 				* GameState.enemy_cooldown_multiplier
-	elif DungeonManager.difficulty == 'med':
-		move_step_distance = 150 		* GameState.enemy_ms_multiplier
-		move_speed = 150 				* GameState.enemy_ms_multiplier
-		base_hp = 50 					* GameState.enemy_hp_multiplier
-		damage = clampi(1 				* GameState.enemy_dmg_multiplier, 1, 3)
-		cooldown_time = 1.0 				* GameState.enemy_cooldown_multiplier
-	
-	base_move_speed = move_speed
-	current_hp = base_hp
-	cooldown_timer.wait_time = cooldown_time
-	
-	if GameState.level_bufs[2][1]:  # Deathly
-		damage *= 2
-	current_hp = base_hp
-	cooldown_timer.wait_time = cooldown_time  # РЫВКИ
-	
-	sprite.animation_finished.connect(_on_sprite_animation_finished)
-	sprite.frame = 0
-
-func _physics_process(delta: float) -> void:
-	if not active or is_dead:
-		return
-	if not player:
-		player = get_tree().get_first_node_in_group("player")
-		return             #переделать
-	if player_in_hit_range:
-		if GameState.level_bufs[3][1]:
-			player.take_damage(0, damage, 0)
-		else:
-			player.take_damage(damage, 0, 0)
-
-	# РЫВОК с Curve
+func _custom_physics(delta: float) -> void:
 	if is_dashing:
-		var progress = dash_distance_travelled / move_step_distance  # 0 to 1
+		var progress = dash_distance_travelled / move_step_distance
 		if progress >= 1.0:
 			is_dashing = false
 			sprite.frame = 0
 			dash_distance_travelled = 0.0
+			velocity = Vector2.ZERO
 			cooldown_timer.start()
 			return
-	
+
 		var curve_multiplier = dash_curve.sample(progress)
 		velocity = target_direction * move_speed * curve_multiplier
-		dash_distance_travelled += velocity.length() * delta  # Точно накапливаем дистанцию
+		dash_distance_travelled += velocity.length() * delta
 		move_and_slide()
 		return
 
+	velocity = Vector2.ZERO
+
+
+func enemy_action() -> void:
+	choose_direction_and_dash()
+
+
 func choose_direction_and_dash() -> void:
 	var dir = (player.global_position - global_position).normalized()
-	if dir.length() == 0: return
-	
+	if dir.length() == 0:
+		return
+
 	target_direction = dir
 	sprite.flip_h = target_direction.x < 0
 	is_dashing = true
 	dash_distance_travelled = 0.0
 	sprite.frame = 1
-	
-	
-func apply_slow(mult: float, duration: float) -> void:
-	slow_token += 1
-	var my_token := slow_token
-	mult = mult - StatManager.get_stat(player, "magic") / 4
-	move_speed = move_speed * mult
-	
-	_add_effect("freeze")
-	_add_effect("poison")
-
-	_reset_slow_later(my_token, duration)
-
-func _reset_slow_later(token: int, duration: float) -> void:
-	await get_tree().create_timer(duration).timeout
-	if token != slow_token:
-		return
-	move_speed = base_move_speed
-	_remove_effect("freeze")
-
-
-
-
-var active_effects: Array[StringName] = []
-func _add_effect(effect: StringName) -> void:
-	if not active_effects.has(effect):
-		active_effects.append(effect)
-	effect_icons.show_effects(active_effects)
-
-func _remove_effect(effect: StringName) -> void:
-	active_effects.erase(effect)
-	effect_icons.show_effects(active_effects)
-
-
-
-
-# СИГНАЛЫ
-func _on_field_view_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_vision = true
-		if blind_timer.is_stopped() and not active:
-			blind_timer.start()
-
-func _on_field_view_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_vision = false
-		active = false  # не видит игрока и спит
-		blind_timer.stop()
-		cooldown_timer.stop()
-
-func _on_blind_timer_timeout() -> void:
-	if player_in_vision:
-		active = true
-		cooldown_timer.start()
-
-func _on_cooldown_timer_timeout() -> void:
-	choose_direction_and_dash()
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_hit_range = true
-
-func _on_hit_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_hit_range = false
-
-func hit(amount: int) -> void:
-	current_hp -= amount
-	if current_hp <= 0:
-		die()
-
-func die() -> void:
-	is_dead = true
-	
-	$CollisionShape2D.call_deferred("set_disabled", true)
-	$HitArea/CollisionShape2D.call_deferred("set_disabled", true)
-	$FieldViewArea.hide()
-	$HitArea.hide()
-	cooldown_timer.stop()
-	blind_timer.stop()
-	sprite.play("die")
-	_enemy_die.emit(1)
-
-func _on_sprite_animation_finished() -> void:
-	if sprite.animation == "die":
-		var luck := 0.0
-		if player:
-			luck = StatManager.get_stat(player, 'luck')
-			if randf() < luck:
-				spawn_coin()
-		queue_free()
-		StatsManager.add_statistic_progress('kills', 1)
-
-func spawn_coin() -> void:
-	var coin := coin_scene.instantiate()
-	coin.global_position = global_position
-	get_tree().current_scene.call_deferred("add_child", coin)

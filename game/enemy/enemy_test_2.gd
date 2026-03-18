@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends BaseEnemy
 @onready var label: Label = $Label
 
 var damage_last_hit: float = 0.0
@@ -7,7 +7,9 @@ var total_damage_recent: float = 0.0  # Сумма урона за послед�
 var no_damage_timer: float = 0.0      # Счетчик без хита
 var hit_time: float = 0.0
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	super(delta)
+	player = get_tree().get_first_node_in_group("player")
 	no_damage_timer += delta
 	hit_time += delta
 	if no_damage_timer >= 2.0:
@@ -18,9 +20,13 @@ func _process(delta: float) -> void:
 	update_label()
 
 func _ready() -> void:
+	super()
 	update_label()
 
-func hit(damage: float) -> void:
+func hit(damage: float, clear:= false) -> void:
+	if not clear:
+		if poison > 0:
+			damage *= poison_protection
 	label.show()
 	damage_last_hit = damage
 	total_damage_recent += damage

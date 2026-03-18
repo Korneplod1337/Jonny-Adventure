@@ -4,7 +4,8 @@ extends Node2D
 @export var spacing: float = 18.0
 @export var freeze_icon: Texture2D
 @export var poison_icon: Texture2D
-@export var fire_icon: Texture2D
+@export var fire_icon0: Texture2D
+@export var fire_icon1: Texture2D
 
 func show_effects(active_effects: Array) -> void:
 	for child in get_children():
@@ -20,9 +21,12 @@ func show_effects(active_effects: Array) -> void:
 			"poison":
 				if poison_icon:
 					textures.append(poison_icon)
+			"fire0":
+				if fire_icon0:
+					textures.append(fire_icon0)
 			"fire1":
-				if freeze_icon:
-					textures.append(fire_icon)
+				if fire_icon1:
+					textures.append(fire_icon1)
 
 	if textures.is_empty():
 		return

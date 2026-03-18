@@ -138,7 +138,8 @@ magic_level = 3.0
 damage_level = 3.0
 spread_level = 3.0
 range_level = 3.0
-fire_rate_level = 3.0
+fire_rate_level = 5.0
+on_ice = false
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
 position = Vector2(0, -11.837838)

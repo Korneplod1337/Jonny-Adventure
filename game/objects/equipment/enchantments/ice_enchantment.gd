@@ -2,18 +2,21 @@ class_name IceEnchantment
 extends EnchantmentResource
 
 @export var duration: float = 2.0
+'''
+Лёд - замедляет на мультиплеер (0.8) * магия на кол-во секунд (2)
+'''
 
 func _init() -> void:
 	enchant_name = "Ice"
 
-func get_slow_multiplier() -> float:
+func get_multiplier() -> float:
 	match level:
 		1: return 0.9
 		2: return 0.8
 		3: return 0.7
 		_: return 0.9
 
-func get_slow_duration() -> float:
+func get_duration() -> float:
 	match level:
 		1: return 2.5
 		2: return 2.0
@@ -22,7 +25,7 @@ func get_slow_duration() -> float:
 
 func apply_on_hit(target: Node) -> void:
 	if target.has_method("apply_slow"):
-		target.apply_slow(get_slow_multiplier(), get_slow_duration())
+		target.apply_slow(get_multiplier(), get_duration())
 
 func get_tooltip_text() -> String:
 	match level:

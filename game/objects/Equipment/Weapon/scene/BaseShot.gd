@@ -31,10 +31,10 @@ func _on_body_entered(body):
 		return
 	if body.name == "Player":
 		return
-	if body.has_method("hit"):
-		body.hit(damage * self_damage_multiplier)
 	if enchantment:
 		enchantment.apply_on_hit(body)
+	if body.has_method("hit"):
+		body.hit(damage * self_damage_multiplier)
 	exploded = true
 	explosion()
 

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="PoisonEnchantment" format=3 uid="uid://1t58a5xdtapu"]
+
+[ext_resource type="Script" uid="uid://srj364idcmjk" path="res://game/objects/equipment/enchantments/poison_enchantment.gd" id="1_gfpvr"]
+
+[resource]
+script = ExtResource("1_gfpvr")

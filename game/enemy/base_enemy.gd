@@ -1,15 +1,20 @@
+class_name BaseEnemy
 extends CharacterBody2D
+
 @export var coin_scene: PackedScene
 
-@export var move_step_distance: float = 100.0
 @export var move_speed: float = 100.0
 var base_move_speed := move_speed
 var slow_token: int = 0
+var poison: float = 0
+var poison_protection: float = 1
 
 @export var cooldown_time: float = 1.5
 @export var base_hp: int = 50
 @export var damage: int = 1
-@export var dash_curve: Curve
+
+@export var use_base_move_towards_player: bool = false
+@export var base_move_stop_distance: float = 8.0
 
 var player_in_hit_range: bool = false
 var player_in_vision: bool = false
@@ -18,93 +23,85 @@ var active: bool = false
 var current_hp: int
 var is_dead: bool = false
 
-var dash_distance_travelled: float = 0.0
-var target_direction: Vector2 = Vector2.ZERO
-var is_dashing: bool = false
-
 @onready var player: Node2D = get_tree().get_first_node_in_group("player")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var blind_timer: Timer = $BlindTimer
+@onready var poison_timer: Timer = $PoisonTimer
 
 signal _enemy_die(int)
 
 @onready var effect_icons = $EffectAnchor/EffectIcons
 
+
 func _ready() -> void:
-	if DungeonManager.difficulty == 'hard':
-		move_step_distance = 300  		* GameState.enemy_ms_multiplier
-		move_speed = 250 				* GameState.enemy_ms_multiplier
-		base_hp = 108 					* GameState.enemy_hp_multiplier
-		damage = clampi(1 				* GameState.enemy_dmg_multiplier, 1, 3)
-		cooldown_time = 1.0 				* GameState.enemy_cooldown_multiplier
-	elif DungeonManager.difficulty == 'med':
-		move_step_distance = 150 		* GameState.enemy_ms_multiplier
-		move_speed = 150 				* GameState.enemy_ms_multiplier
-		base_hp = 50 					* GameState.enemy_hp_multiplier
-		damage = clampi(1 				* GameState.enemy_dmg_multiplier, 1, 3)
-		cooldown_time = 1.0 				* GameState.enemy_cooldown_multiplier
-	
+	_setup_enemy_stats()
+
 	base_move_speed = move_speed
 	current_hp = base_hp
 	cooldown_timer.wait_time = cooldown_time
-	
-	if GameState.level_bufs[2][1]:  # Deathly
-		damage *= 2
-	current_hp = base_hp
-	cooldown_timer.wait_time = cooldown_time  # РЫВКИ
-	
+
 	sprite.animation_finished.connect(_on_sprite_animation_finished)
 	sprite.frame = 0
+
 
 func _physics_process(delta: float) -> void:
 	if not active or is_dead:
 		return
 	if not player:
 		player = get_tree().get_first_node_in_group("player")
-		return             #переделать
+		return
+
 	if player_in_hit_range:
 		if GameState.level_bufs[3][1]:
 			player.take_damage(0, damage, 0)
 		else:
 			player.take_damage(damage, 0, 0)
 
-	# РЫВОК с Curve
-	if is_dashing:
-		var progress = dash_distance_travelled / move_step_distance  # 0 to 1
-		if progress >= 1.0:
-			is_dashing = false
-			sprite.frame = 0
-			dash_distance_travelled = 0.0
-			cooldown_timer.start()
-			return
-	
-		var curve_multiplier = dash_curve.sample(progress)
-		velocity = target_direction * move_speed * curve_multiplier
-		dash_distance_travelled += velocity.length() * delta  # Точно накапливаем дистанцию
+	if use_base_move_towards_player:
+		_base_move_towards_player(delta)
+		return
+
+	_custom_physics(delta)
+
+
+func _base_move_towards_player(_delta: float) -> void:
+	if not player:
+		velocity = Vector2.ZERO
+		return
+
+	var dir := player.global_position - global_position
+	if dir.length() <= base_move_stop_distance:
+		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 
-func choose_direction_and_dash() -> void:
-	var dir = (player.global_position - global_position).normalized()
-	if dir.length() == 0: return
-	
-	target_direction = dir
-	sprite.flip_h = target_direction.x < 0
-	is_dashing = true
-	dash_distance_travelled = 0.0
-	sprite.frame = 1
-	
-	
+	dir = dir.normalized()
+	velocity = dir * move_speed
+	sprite.flip_h = dir.x < 0
+	move_and_slide()
+
+
+func _setup_enemy_stats() -> void:
+	if GameState.level_bufs[2][1]:  # Deathly
+		damage *= 2
+
+
+func _custom_physics(_delta: float) -> void:
+	velocity = Vector2.ZERO
+
+
+func enemy_action() -> void:
+	pass
+
+
 func apply_slow(mult: float, duration: float) -> void:
 	slow_token += 1
 	var my_token := slow_token
 	mult = mult - StatManager.get_stat(player, "magic") / 4
-	move_speed = move_speed * mult
-	
-	_add_effect("freeze")
-	_add_effect("poison")
+	move_speed = base_move_speed * mult
 
+	_add_effect("freeze")
 	_reset_slow_later(my_token, duration)
 
 func _reset_slow_later(token: int, duration: float) -> void:
@@ -115,7 +112,37 @@ func _reset_slow_later(token: int, duration: float) -> void:
 	_remove_effect("freeze")
 
 
+func apply_poison(effect: float, damage_low: float) -> void:
+	print('add poison effect: ', poison,' ', effect)
+	poison += effect * (1 + StatManager.get_stat(player, 'magic'))
+	poison_protection = damage_low
+	print(poison)
+	
+	_add_effect("poison")
+	if poison_timer.is_stopped():
+		poison_timer.start(2)
 
+func _on_poison_timer_timeout() -> void:
+	print('poison dmg ', poison)
+	hit(poison, true)
+	poison /= 2
+	if poison <= 20:
+		poison = 0
+		poison_protection = 1
+		_remove_effect("poison")
+		poison_timer.stop()
+		return
+	poison_timer.start(2)
+	print('poison now: ', poison, 'hp: ', current_hp)
+	
+
+func apply_fire(mult: float, duration: float) -> void:
+	pass
+
+func _reset_fire_later(token: int, duration: float) -> void:
+	await get_tree().create_timer(duration).timeout
+	pass
+	
 
 var active_effects: Array[StringName] = []
 func _add_effect(effect: StringName) -> void:
@@ -143,6 +170,7 @@ func _on_field_view_area_body_exited(body: Node2D) -> void:
 		active = false  # не видит игрока и спит
 		blind_timer.stop()
 		cooldown_timer.stop()
+		velocity = Vector2.ZERO
 
 func _on_blind_timer_timeout() -> void:
 	if player_in_vision:
@@ -150,7 +178,7 @@ func _on_blind_timer_timeout() -> void:
 		cooldown_timer.start()
 
 func _on_cooldown_timer_timeout() -> void:
-	choose_direction_and_dash()
+	enemy_action()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -160,14 +188,18 @@ func _on_hit_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_hit_range = false
 
-func hit(amount: int) -> void:
+func hit(amount: float, clear:= false) -> void:
+	if not clear:
+		if poison > 0:
+			amount *= poison_protection
 	current_hp -= amount
 	if current_hp <= 0:
 		die()
 
 func die() -> void:
 	is_dead = true
-	
+	velocity = Vector2.ZERO
+
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	$HitArea/CollisionShape2D.call_deferred("set_disabled", true)
 	$FieldViewArea.hide()
@@ -181,11 +213,11 @@ func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "die":
 		var luck := 0.0
 		if player:
-			luck = StatManager.get_stat(player, 'luck')
+			luck = StatManager.get_stat(player, "luck")
 			if randf() < luck:
 				spawn_coin()
 		queue_free()
-		StatsManager.add_statistic_progress('kills', 1)
+		StatsManager.add_statistic_progress("kills", 1)
 
 func spawn_coin() -> void:
 	var coin := coin_scene.instantiate()

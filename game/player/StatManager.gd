@@ -19,7 +19,7 @@ func get_stat(p: Node, stat: String) -> float :
 			return luck
 		"magic":
 			var magic = p.base_magic + lerp(0.0, 0.9, (p.magic_level - 1.0) / 9.0)
-			magic *= (1 + p.magic_bonus * 0.05)
+			magic *= (1 + p.magic_bonus * 0.1)
 			magic = clamp(magic, 0.0, 4.0)
 			return magic
 		"damage":

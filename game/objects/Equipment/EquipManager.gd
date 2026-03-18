@@ -1,7 +1,8 @@
 extends Node
 
 const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
-	preload("uid://8pwbn1wjmvu1"), # ice_shot
+	preload("uid://8pwbn1wjmvu1"), # ice enchant
+	preload("uid://1t58a5xdtapu"), # poison
 	
 ]
 
@@ -91,7 +92,6 @@ func roll_enchantment() -> EnchantmentResource:
 	
 
 	print(e)
-	print(e is IceEnchantment)
 	print(e.get_tooltip_text())
 
 
