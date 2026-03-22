@@ -32,7 +32,8 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		return
 	if enchantment:
-		enchantment.apply_on_hit(body)
+		enchantment.apply_on_hit(body, (body.global_position - global_position).normalized())
+		#print('body', body.global_position, ' ',global_position, ' ', body.global_position - global_position)
 	if body.has_method("hit"):
 		body.hit(damage * self_damage_multiplier)
 	exploded = true

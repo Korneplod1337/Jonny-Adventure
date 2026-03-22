@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/enemy test2.tscn" id="4_cjhlh"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="5_sejrf"]
-[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="7_nbcw0"]
-[ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/items/Item.tscn" id="8_sw7ps"]
-[ext_resource type="Script" uid="uid://srj364idcmjk" path="res://game/objects/equipment/enchantments/poison_enchantment.gd" id="9_cdchw"]
-[ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/equipment/weapon/_equip/BaseShot_equip.tscn" id="9_sw7ps"]
-[ext_resource type="PackedScene" uid="uid://bhswv1jdia8i8" path="res://game/objects/equipment/weapon/_equip/TestShot_equip.tscn" id="10_yfw41"]
-[ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="12_pjn5v"]
+[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coins/Coin.tscn" id="7_nbcw0"]
+[ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/Items/Item.tscn" id="8_sw7ps"]
+[ext_resource type="Script" uid="uid://fh1fkq16e7td" path="res://game/objects/Equipment/enchantments/knockback_enchantment.gd" id="9_cdchw"]
+[ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/_equip/BaseShot_equip.tscn" id="9_sw7ps"]
+[ext_resource type="PackedScene" uid="uid://bhswv1jdia8i8" path="res://game/objects/Equipment/Weapon/_equip/TestShot_equip.tscn" id="10_yfw41"]
+[ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/Coins/CoinBag.tscn" id="12_pjn5v"]
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/EmenyWorm.tscn" id="13_wkjof"]
 [ext_resource type="PackedScene" uid="uid://4n7hnx6frmbp" path="res://game/enemy/BaseEnemy.tscn" id="14_cdchw"]
 
@@ -26,7 +26,7 @@ size = Vector2(41.03, 654.5)
 
 [sub_resource type="Resource" id="Resource_3rats"]
 script = ExtResource("9_cdchw")
-metadata/_custom_type_script = "uid://srj364idcmjk"
+metadata/_custom_type_script = "uid://fh1fkq16e7td"
 
 [node name="StartRoom" type="Node2D" unique_id=757044430]
 
@@ -116,6 +116,8 @@ position = Vector2(-316, 221.00002)
 
 [node name="EmenyWorm" parent="." unique_id=1655288545 instance=ExtResource("13_wkjof")]
 position = Vector2(383, -24)
+base_hp = 500
 
 [node name="CharacterBody2D" parent="." unique_id=2133096440 instance=ExtResource("14_cdchw")]
 position = Vector2(214, -88)
+base_hp = 500

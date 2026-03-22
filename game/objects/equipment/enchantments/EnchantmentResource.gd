@@ -4,7 +4,7 @@ extends Resource
 var enchant_name: String = "Enchantment"
 @export_range(1, 3, 1) var level: int = 1
 
-func apply_on_hit(_target: Node) -> void:
+func apply_on_hit(_target: Node, _projectile_direction: Vector2 = Vector2(0, 0)) -> void:
 	pass
 
 func get_title() -> String:

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="FireEnchantment" format=3 uid="uid://c8hfht7lr6kje"]
+
+[ext_resource type="Script" uid="uid://ckx2a4l5tjdp" path="res://game/objects/Equipment/enchantments/fire_enchantment.gd" id="1_d0s4j"]
+
+[resource]
+script = ExtResource("1_d0s4j")

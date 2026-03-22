@@ -22,7 +22,7 @@ func _setup_enemy_stats() -> void:
 		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
 		cooldown_time = 		1.0 			* GameState.enemy_cooldown_multiplier
 	else:
-		base_hp = 				6 		* GameState.enemy_hp_multiplier
+		base_hp = 				base_hp	* GameState.enemy_hp_multiplier
 	super._setup_enemy_stats()
 
 

@@ -1,7 +1,6 @@
 class_name PoisonEnchantment
 extends EnchantmentResource
 
-@export var duration: float = 2.0
 '''
 Яд - накладывает складывающийся эффект (25) * магия 
 и уменьшает кол-во эффектов в 2 раза, пока не станет меньше 20 (enemy)
@@ -24,8 +23,8 @@ func get_damage_low() -> float:
 		3: return 0.1
 		_: return 0.8
 
-func apply_on_hit(target: Node) -> void:
-	if target.has_method("apply_slow"):
+func apply_on_hit(target: Node, _projectile_direction: Vector2 = Vector2(0, 0)) -> void:
+	if target.has_method("apply_poison"):
 		target.apply_poison(get_effect(), get_damage_low())
 
 func get_tooltip_text() -> String:

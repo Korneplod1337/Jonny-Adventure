@@ -14,7 +14,7 @@ var poison_protection: float = 1
 @export var damage: int = 1
 
 @export var use_base_move_towards_player: bool = false
-@export var base_move_stop_distance: float = 8.0
+var base_move_stop_distance: float = 8.0
 
 var player_in_hit_range: bool = false
 var player_in_vision: bool = false
@@ -32,6 +32,10 @@ var is_dead: bool = false
 signal _enemy_die(int)
 
 @onready var effect_icons = $EffectAnchor/EffectIcons
+var knockback_velocity: Vector2 = Vector2.ZERO
+var hitstun: float = 0.0  # Время в секундах паузы движения (0.3-0.5 сек)
+@export var knockback_friction: float = 400.0  # Скорость затухания толчка
+@export var hitstun_duration: float = 0.2  # Длительность hitstun
 
 
 func _ready() -> void:
@@ -57,12 +61,21 @@ func _physics_process(delta: float) -> void:
 			player.take_damage(0, damage, 0)
 		else:
 			player.take_damage(damage, 0, 0)
+	#Отталкивание
+	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
+	if hitstun > 0:
+		hitstun -= delta
+		move_and_slide()
+	else:
+		knockback_velocity = Vector2.ZERO  # Останавливаем остатки
+	velocity += knockback_velocity  # Добавляем knockback к общему velocity
+	if hitstun <= 0:
+		
+		if use_base_move_towards_player:
+			_base_move_towards_player(delta)
+			return
 
-	if use_base_move_towards_player:
-		_base_move_towards_player(delta)
-		return
-
-	_custom_physics(delta)
+		_custom_physics(delta)
 
 
 func _base_move_towards_player(_delta: float) -> void:
@@ -136,13 +149,28 @@ func _on_poison_timer_timeout() -> void:
 	print('poison now: ', poison, 'hp: ', current_hp)
 	
 
-func apply_fire(mult: float, duration: float) -> void:
-	pass
+func apply_fire(effect: float, duration: float) -> void:
+	print('add fire effect: ', effect)
+	if 'fire1' not in active_effects and 'fire0' not in active_effects:
+		_add_effect('fire0')
+	elif 'fire0' in active_effects:
+		_remove_effect('fire0')
+		_add_effect('fire1')
+		_reset_fire_later(effect, duration)
 
-func _reset_fire_later(token: int, duration: float) -> void:
+
+func _reset_fire_later(effect: float, duration: float) -> void:
 	await get_tree().create_timer(duration).timeout
-	pass
+	hit(effect * (StatManager.get_stat(player, 'damage')/20)
+				 * (1 + StatManager.get_stat(player, 'magic')) /2, true)
+	_remove_effect('fire1')
 	
+func apply_knockback(direction: Vector2, force: float) -> void:
+	knockback_velocity = direction.normalized() * force * (1 + StatManager.get_stat(player, 'magic')/4)
+	print("Knockback applied: ", knockback_velocity)
+	hitstun = hitstun_duration
+
+
 
 var active_effects: Array[StringName] = []
 func _add_effect(effect: StringName) -> void:
