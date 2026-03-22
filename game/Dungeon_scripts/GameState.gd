@@ -26,14 +26,6 @@ var AlchemistsGlasses := false #больше инфы
 var cost_multiplier: float = 1.0
 
 #уровень
-'''запутанное пространство двери
-нашествие + 50% кол-ву
-смертельность
-токсичность
-ледяное
-'''
-
-
 @onready var level_bufs :Array = [
  ["Confusing space", 	false, Color.LAWN_GREEN],
  ["Invasion", 			false, Color.RED],

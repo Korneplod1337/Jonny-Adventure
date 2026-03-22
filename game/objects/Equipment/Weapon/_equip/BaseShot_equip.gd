@@ -16,12 +16,10 @@ func _ready() -> void:
 	if enchantment:
 		enchant_text = " [" + enchantment.get_title() + "]"
 		#enchant_text = enchantment.get_name_text()
-	
 	if cost < 1:
 		interactable.interact_name = 'Take ' + enchant_text + 'test weapon'
 	else:
 		interactable.interact_name = 'Take ' + enchant_text + 'test weapon by %s coins' %cost
-		
 
 
 func _on_interact():
@@ -31,19 +29,16 @@ func _on_interact():
 		return
 	if GameState.coins < cost:
 		return
-
 	GameState.add_coins(-cost)
-	# Оружие менятся у игрока, нужно бы переместить в менеджер
+	
 	if player.shot_scene:
 		EquipManager.certain_spawn(player.shot_id, self.global_position, player.shot_enchantment) #player.global_position
-		
 		#Эффект
 		# StatManager.upgrade_stat(player, 'hp', 1) 
 	
 	player.shot_scene = projectile
 	player.shot_id = equip_id
 	player.shot_enchantment = enchantment.duplicate(true) if enchantment else null
-	
 	
 	equip_taken.emit() # сигнал
 	
@@ -53,7 +48,6 @@ func _on_interact():
 	if enchantment:
 		tooltip += enchantment.get_tooltip_text()
 	hud.WeaponSlot.set_tooltip(tooltip)
-	
 	# hud.add_equip(equip_icon, equip_tooltip)
 	queue_free()
 

@@ -17,14 +17,14 @@ const base_spread: 				float = 14.0
 const base_range: 				float = 200.0
 const base_fire_rate: 			float = 0.5
 
-var hp_bonus: 		int = 0
-var speed_bonus: 	int = 0
-var luck_bonus: 		int = 0
-var magic_bonus: 	int = 0
-var damage_bonus: 	int = 0
-var accuracy_bonus: 	int = 0
-var range_bonus: 	int = 0
-var fire_rate_bonus:	int = 10
+var hp_bonus: 				int = 0
+var speed_bonus: 			int = 0
+var luck_bonus: 				int = 0
+var magic_bonus: 			int = 40
+var damage_bonus: 			int = 0
+var accuracy_bonus: 			int = 0
+var range_bonus: 			int = 0
+var fire_rate_bonus:			int = 10
 
 @export var hit_points_level: 	float = 1.0
 @export var move_speed_level: 	float = 2.0   # 1–10, 9 лвл прокачки

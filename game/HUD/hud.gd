@@ -100,9 +100,10 @@ func show_death_menu(total_time_alive: float, distance_travelled: float) -> void
 	StatsManager.add_statistic_progress("distance_traveled", distance_travelled)
 
 func _toggle_pause() -> void:
-	var tree := get_tree()
-	tree.paused = not tree.paused
-	pause_menu.visible = tree.paused
+	if not death_menu.visible:
+		var tree := get_tree()
+		tree.paused = not tree.paused
+		pause_menu.visible = tree.paused
 
 
 # Предметы инвентарь

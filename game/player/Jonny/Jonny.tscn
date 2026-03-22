@@ -128,13 +128,13 @@ size = Vector2(20, 24.054054)
 
 [node name="Player" type="CharacterBody2D" unique_id=2016157039 groups=["player"]]
 position = Vector2(0.99999994, 0)
-scale = Vector2(1.85, 1.85)
+scale = Vector2(1.9, 1.9)
 collision_mask = 23
 script = ExtResource("1_fwoqh")
 hit_points_level = 2.0
 move_speed_level = 3.0
 luck_level = 3.0
-magic_level = 3.0
+magic_level = 10.0
 damage_level = 3.0
 spread_level = 3.0
 range_level = 3.0
@@ -142,7 +142,7 @@ fire_rate_level = 5.0
 on_ice = false
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
-position = Vector2(0, -11.837838)
+position = Vector2(0, -10)
 scale = Vector2(0.9999998, 0.9999998)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=222282461]

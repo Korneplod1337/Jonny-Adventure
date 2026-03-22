@@ -1,4 +1,5 @@
 extends Area2D
+class_name BaseShot
 
 var speed: float = 300.0
 @export var animaited_speed = 2
@@ -6,9 +7,9 @@ var direction: Vector2 = Vector2.RIGHT
 var atk_range: float = 200.0
 var damage: int = 25
 var extra_reload: float = 1.5 # только для слёз множитель больше 1 1,6 MAX
-const self_damage_multiplier: float = 1
-const self_speed_multiplier: float = 1
-const self_range_multiplier: float = 1
+var self_damage_multiplier: float = 1
+var self_speed_multiplier: float = 1
+var self_range_multiplier: float = 1
 
 
 var distance_travelled := 0.0
@@ -33,7 +34,6 @@ func _on_body_entered(body):
 		return
 	if enchantment:
 		enchantment.apply_on_hit(body, (body.global_position - global_position).normalized())
-		#print('body', body.global_position, ' ',global_position, ' ', body.global_position - global_position)
 	if body.has_method("hit"):
 		body.hit(damage * self_damage_multiplier)
 	exploded = true
