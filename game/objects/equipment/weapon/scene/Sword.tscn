@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://didc6fkb0fgjo"]
+
+[ext_resource type="Script" uid="uid://xm1t1w44e3ge" path="res://game/objects/equipment/weapon/scene/sword.gd" id="1_mgnax"]
+[ext_resource type="Texture2D" uid="uid://drn78hnnqhmhp" path="res://image/equip/weapon/sword2.png" id="2_wqank"]
+[ext_resource type="Texture2D" uid="uid://dehf5rlq2xh0x" path="res://image/equip/weapon/sword1.png" id="3_kkm3i"]
+[ext_resource type="Texture2D" uid="uid://b24ugfnkhya2c" path="res://image/equip/weapon/sword3.png" id="4_puqhp"]
+[ext_resource type="Texture2D" uid="uid://clodq8ya82jub" path="res://image/equip/weapon/sword4.png" id="5_17ym6"]
+[ext_resource type="Texture2D" uid="uid://e0hkrtwltjfe" path="res://image/equip/weapon/sword5.png" id="6_mspag"]
+[ext_resource type="Texture2D" uid="uid://c8rj7xntvgehy" path="res://image/equip/weapon/sword6.png" id="7_8rusp"]
+[ext_resource type="Texture2D" uid="uid://c5ddspskiywuv" path="res://image/equip/weapon/sword7.png" id="8_8o7m6"]
+[ext_resource type="Texture2D" uid="uid://2nut8h5yvgau" path="res://image/equip/weapon/sword8.png" id="9_le7kd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptov3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wqank")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kkm3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_puqhp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_17ym6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mspag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8rusp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8o7m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_le7kd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3x0x"]
+size = Vector2(13.527901, 36)
+
+[node name="Sword" type="Area2D" unique_id=1259747639]
+script = ExtResource("1_mgnax")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=513681404]
+position = Vector2(63, 45)
+sprite_frames = SubResource("SpriteFrames_ptov3")
+frame = 1
+frame_progress = 0.61109596
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1792244404]
+position = Vector2(63, 22)
+rotation = 0.45783716
+shape = SubResource("RectangleShape2D_w3x0x")

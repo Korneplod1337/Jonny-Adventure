@@ -53,6 +53,7 @@ folder_colors={
 "res://image/background/": "yellow",
 "res://image/effect_sprites/": "blue",
 "res://image/enemy/": "red",
+"res://image/equip/": "green",
 "res://image/interface/": "orange",
 "res://image/items/": "green",
 "res://image/main_menu/": "yellow",

@@ -37,7 +37,7 @@ func _on_interact():
 		# StatManager.upgrade_stat(player, 'hp', 1) 
 	
 	player.shot_scene = projectile
-	player.shot_id = equip_id
+	#player.shot_id = equip_id
 	player.shot_enchantment = enchantment.duplicate(true) if enchantment else null
 	
 	equip_taken.emit() # сигнал

@@ -263,7 +263,7 @@ var shot_angle: float
 var can_shoot: bool = true
 var shooting: bool = false
 @export var shot_scene: PackedScene
-var shot_id: String = ''
+#var shot_id: String = ''
 
 var shot_enchantment: EnchantmentResource
 
@@ -272,7 +272,7 @@ func fire (shot_dir: Vector2) -> void:
 		return
 		
 	var shot = shot_scene.instantiate()
-	shot.position = global_position + Vector2(0, -25)
+	shot.position = global_position + Vector2(0, -10)
 	
 	var angle := shot_dir.angle()
 	angle += deg_to_rad(randf_range(-spread/2, spread/2))
