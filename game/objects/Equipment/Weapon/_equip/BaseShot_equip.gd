@@ -1,10 +1,12 @@
+class_name BaseShot_equip
 extends Area2D
 @onready var interactable: Area2D = $Interactable
 @export var equip_icon: Texture2D: set = _set_equip_icon  # иконка для инвентаря
 @export var equip_id: String = 'Jonny_shot'
 @export var projectile: PackedScene
 signal equip_taken
-var equip_tooltip: String = "Test weapon" # текст для инвентаря
+@export var equip_tooltip: String = "Jonny weapon" # текст для инвентаря
+@export var interact_name: String = "Jonny weapon"
 var cost: int = 0
 
 @export var enchantment: EnchantmentResource
@@ -17,9 +19,10 @@ func _ready() -> void:
 		enchant_text = " [" + enchantment.get_title() + "]"
 		#enchant_text = enchantment.get_name_text()
 	if cost < 1:
-		interactable.interact_name = 'Take ' + enchant_text + 'test weapon'
+		interactable.interact_name = 'Take ' + enchant_text + interact_name
 	else:
-		interactable.interact_name = 'Take ' + enchant_text + 'test weapon by %s coins' %cost
+		interactable.interact_name = 'Take ' + enchant_text \
+		+ interact_name + ' by %s coins' %cost
 
 
 func _on_interact():
@@ -37,7 +40,7 @@ func _on_interact():
 		# StatManager.upgrade_stat(player, 'hp', 1) 
 	
 	player.shot_scene = projectile
-	#player.shot_id = equip_id
+	player.shot_id = equip_id
 	player.shot_enchantment = enchantment.duplicate(true) if enchantment else null
 	
 	equip_taken.emit() # сигнал

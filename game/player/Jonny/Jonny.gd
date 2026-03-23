@@ -20,11 +20,11 @@ const base_fire_rate: 			float = 0.5
 var hp_bonus: 				int = 0
 var speed_bonus: 			int = 0
 var luck_bonus: 				int = 0
-var magic_bonus: 			int = 40
+var magic_bonus: 			int = 0
 var damage_bonus: 			int = 0
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 10
+var fire_rate_bonus:			int = 0
 
 @export var hit_points_level: 	float = 1.0
 @export var move_speed_level: 	float = 2.0   # 1–10, 9 лвл прокачки
@@ -263,7 +263,7 @@ var shot_angle: float
 var can_shoot: bool = true
 var shooting: bool = false
 @export var shot_scene: PackedScene
-#var shot_id: String = ''
+var shot_id: String = ''
 
 var shot_enchantment: EnchantmentResource
 

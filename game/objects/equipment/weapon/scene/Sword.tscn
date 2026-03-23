@@ -14,10 +14,10 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_wqank")
+"texture": ExtResource("3_kkm3i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_kkm3i")
+"texture": ExtResource("2_wqank")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_puqhp")
@@ -37,24 +37,26 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_le7kd")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3x0x"]
-size = Vector2(13.527901, 36)
+size = Vector2(10, 34)
 
 [node name="Sword" type="Area2D" unique_id=1259747639]
+collision_layer = 2
+collision_mask = 20
 script = ExtResource("1_mgnax")
 
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=513681404]
-position = Vector2(63, 45)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ptov3")
-frame = 1
-frame_progress = 0.61109596
+offset = Vector2(35, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1792244404]
-position = Vector2(63, 22)
-rotation = 0.45783716
+position = Vector2(50, -34)
+rotation = 0.5235988
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_w3x0x")

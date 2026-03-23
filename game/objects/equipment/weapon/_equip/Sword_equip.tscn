@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dke6t1j0r80ny"]
+
+[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/equipment/weapon/_equip/BaseShot_equip.gd" id="1_ymej7"]
+[ext_resource type="Texture2D" uid="uid://dh6plw0xhnj7r" path="res://image/equip/weapon/sword_equip.png" id="2_hf0ea"]
+[ext_resource type="Texture2D" uid="uid://dehf5rlq2xh0x" path="res://image/equip/weapon/sword1.png" id="2_ymej7"]
+[ext_resource type="PackedScene" uid="uid://didc6fkb0fgjo" path="res://game/objects/equipment/weapon/scene/Sword.tscn" id="3_os33u"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_8lxy5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0twu3"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojoxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ymej7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sword" type="Area2D" unique_id=241584314]
+collision_mask = 0
+script = ExtResource("1_ymej7")
+equip_icon = ExtResource("2_hf0ea")
+equip_id = "Sword"
+projectile = ExtResource("3_os33u")
+equip_tooltip = "Sword"
+interact_name = "sword"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
+shape = SubResource("CircleShape2D_qqy2x")
+
+[node name="Interactable" parent="." unique_id=918212545 instance=ExtResource("4_8lxy5")]
+interact_name = "Swap on sword"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1006580381]
+shape = SubResource("CircleShape2D_0twu3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+position = Vector2(8, 9)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ojoxv")
+offset = Vector2(0, 5)

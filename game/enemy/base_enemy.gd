@@ -47,6 +47,8 @@ func _ready() -> void:
 
 	sprite.animation_finished.connect(_on_sprite_animation_finished)
 	sprite.frame = 0
+	
+	player = get_tree().get_first_node_in_group("player")
 
 
 func _physics_process(delta: float) -> void:

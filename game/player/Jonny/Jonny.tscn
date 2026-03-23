@@ -134,11 +134,11 @@ script = ExtResource("1_fwoqh")
 hit_points_level = 2.0
 move_speed_level = 3.0
 luck_level = 3.0
-magic_level = 10.0
+magic_level = 3.0
 damage_level = 3.0
 spread_level = 3.0
 range_level = 3.0
-fire_rate_level = 5.0
+fire_rate_level = 10.0
 on_ice = false
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
