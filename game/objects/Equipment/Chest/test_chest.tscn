@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bgibadaeek4on"]
+
+[ext_resource type="Script" uid="uid://tx5fxindd6gf" path="res://game/objects/Equipment/Chest/test_chest.gd" id="1_5vgi5"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="2_7joja"]
+[ext_resource type="Texture2D" uid="uid://b13bplyg515pj" path="res://image/circle.png" id="3_53xn4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjk28"]
+radius = 54.08327
+
+[node name="Area2D" type="Area2D" unique_id=1914859512]
+script = ExtResource("1_5vgi5")
+type = "chest"
+equip_icon = ExtResource("3_53xn4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191125084]
+shape = SubResource("CircleShape2D_amy5j")
+
+[node name="Interactable" parent="." unique_id=663750920 instance=ExtResource("2_7joja")]
+interact_name = "Swap on test_chest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=384725513]
+shape = SubResource("CircleShape2D_kjk28")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
+texture = ExtResource("3_53xn4")

@@ -21,6 +21,7 @@ var enemy_cooldown_multiplier: float = 1.0
 
 # игрок
 var AlchemistsGlasses := false #больше инфы
+var test_chest := false
 
 # мир
 var cost_multiplier: float = 1.0

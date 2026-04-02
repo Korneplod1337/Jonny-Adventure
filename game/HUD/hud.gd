@@ -125,7 +125,6 @@ func _render_inventory():
 		else:
 			slot.set_tooltip(item_data.tooltip)
 		items_container.add_child(slot)
-	
 
 func bufs_render() -> void:
 	var buff_name = GameState.get_level_bufs()[0]

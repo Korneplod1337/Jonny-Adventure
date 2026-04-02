@@ -46,6 +46,10 @@ var fire_rate_bonus:			int = 0
 
 var extra_fire_rate:float = 0
 
+var head_id: String
+var chest_id: String
+var boots_id: String
+
 signal stats_changed(move_speed_level, luck_level, damage_level, spread_level,\
  range_level, hit_points_level, fire_rate_level, magic_level)
 signal hp_visual_changed(hp_array: Array)
@@ -282,6 +286,7 @@ func fire (shot_dir: Vector2) -> void:
 	#+ shot_dir.normalized()/3
 	
 	shot.damage = damage
+	
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
 	

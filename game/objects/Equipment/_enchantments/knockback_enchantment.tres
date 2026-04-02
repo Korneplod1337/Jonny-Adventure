@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="KnockbackEnchantment" format=3 uid="uid://b5olpo70xaavd"]
 
-[ext_resource type="Script" uid="uid://fh1fkq16e7td" path="res://game/objects/Equipment/enchantments/knockback_enchantment.gd" id="1_mlei4"]
+[ext_resource type="Script" uid="uid://fh1fkq16e7td" path="res://game/objects/Equipment/_enchantments/knockback_enchantment.gd" id="1_mlei4"]
 
 [resource]
 script = ExtResource("1_mlei4")

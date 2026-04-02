@@ -1,6 +1,7 @@
 class_name BaseShot_equip
 extends Area2D
 @onready var interactable: Area2D = $Interactable
+const type := 'weapon'
 @export var equip_icon: Texture2D: set = _set_equip_icon  # иконка для инвентаря
 @export var equip_id: String = 'Jonny_shot'
 @export var projectile: PackedScene
@@ -34,22 +35,21 @@ func _on_interact():
 		return
 	GameState.add_coins(-cost)
 	
+	var hud = get_tree().get_first_node_in_group("HUD")
+	var tooltip := equip_tooltip
+	if enchantment:
+		tooltip += enchantment.get_tooltip_text()
+	
 	if player.shot_scene:
-		EquipManager.certain_spawn(player.shot_id, self.global_position, player.shot_enchantment) #player.global_position
-		#Эффект
-		# StatManager.upgrade_stat(player, 'hp', 1) 
+		EquipManager.certain_spawn(player.shot_id, self.global_position, player.shot_enchantment) 
+		#player.global_position 
 	
 	player.shot_scene = projectile
 	player.shot_id = equip_id
 	player.shot_enchantment = enchantment.duplicate(true) if enchantment else null
+	equip_taken.emit()
 	
-	equip_taken.emit() # сигнал
-	
-	var hud = get_tree().get_first_node_in_group("HUD")
 	hud.WeaponSlot.set_icon(equip_icon)
-	var tooltip := equip_tooltip
-	if enchantment:
-		tooltip += enchantment.get_tooltip_text()
 	hud.WeaponSlot.set_tooltip(tooltip)
 	# hud.add_equip(equip_icon, equip_tooltip)
 	queue_free()

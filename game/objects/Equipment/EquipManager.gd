@@ -3,7 +3,8 @@ extends Node
 const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 	preload("uid://8pwbn1wjmvu1"), # ice enchant
 	preload("uid://1t58a5xdtapu"), # poison
-	
+	preload("uid://b5olpo70xaavd"), # punch
+	preload("uid://c8hfht7lr6kje"), # fire
 ]
 
 # Пулы эквипмента
@@ -16,7 +17,7 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 
 const POOLS := {
 	"treasure": [
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), #эквип
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # сундук
 		 "tier": 0, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
 		 "tier": 1, "weight": 10.0},
@@ -26,17 +27,19 @@ const POOLS := {
 		 "tier": 3, "weight": 10.0},
 	],
 	"armory": [
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), #эквип
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # магазин
 		 "tier": 0, "weight": 10.0},
-		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
+		
+		{"id": "test_chest", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 1, "weight": 10.0},
+		
 		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 3, "weight": 10.0},
 	],
 	"weapon": [
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), #эквип
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # Оружейный кейс
 		 "tier": 0, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
 		 "tier": 1, "weight": 10.0},
@@ -90,11 +93,8 @@ func roll_enchantment() -> EnchantmentResource:
 	var e: EnchantmentResource = template.duplicate(true)
 	e.level = rng.randi_range(1, 3)
 	
-
 	print(e)
 	print(e.get_tooltip_text())
-
-
 	
 	if randi() % 100 > 0: #80
 		return e
@@ -108,14 +108,16 @@ func spawn(pool_type: String, tiers: Array, pos: Vector2, cost: int = -1) -> voi
 
 	var inst = equipment.scene.instantiate()
 	inst.position = pos
-	inst.enchantment = roll_enchantment()
+	if inst.type == 'weapon':
+		inst.enchantment = roll_enchantment()
 
 	if cost != -1:
 		inst.cost = cost
 
 	get_tree().current_scene.add_child(inst)
 
-
+# certain_spawn спавнить любой предмет по его id на определённой позиции с нужным зачарованием
+# !И! выключает эффект этого предмета, независимо от того надет он или нет
 func certain_spawn(id: String, pos: Vector2, enchantment: EnchantmentResource = null) -> void:
 	for pool in POOLS.values():
 		for equipment in pool:
@@ -125,5 +127,7 @@ func certain_spawn(id: String, pos: Vector2, enchantment: EnchantmentResource = 
 				inst.cost = 0
 				if enchantment:
 					inst.enchantment = enchantment.duplicate(true)
+				if inst.type != 'weapon':
+					inst.effect_off()
 				get_tree().current_scene.add_child(inst)
 				return

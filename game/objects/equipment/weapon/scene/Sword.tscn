@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://didc6fkb0fgjo"]
 
-[ext_resource type="Script" uid="uid://xm1t1w44e3ge" path="res://game/objects/equipment/weapon/scene/sword.gd" id="1_mgnax"]
+[ext_resource type="Script" uid="uid://xm1t1w44e3ge" path="res://game/objects/Equipment/Weapon/scene/sword.gd" id="1_mgnax"]
 [ext_resource type="Texture2D" uid="uid://drn78hnnqhmhp" path="res://image/equip/weapon/sword2.png" id="2_wqank"]
 [ext_resource type="Texture2D" uid="uid://dehf5rlq2xh0x" path="res://image/equip/weapon/sword1.png" id="3_kkm3i"]
 [ext_resource type="Texture2D" uid="uid://b24ugfnkhya2c" path="res://image/equip/weapon/sword3.png" id="4_puqhp"]
