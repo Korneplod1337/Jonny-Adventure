@@ -164,14 +164,12 @@ func apply_fire(effect: float, duration: float) -> void:
 func _reset_fire_later(effect: float, duration: float) -> void:
 	await get_tree().create_timer(duration).timeout
 	hit(effect * (StatManager.get_stat(player, 'damage')/20)
-				 * (1 + StatManager.get_stat(player, 'magic')) /2, true)
+				* (1 + StatManager.get_stat(player, 'magic')) /2, true)
 	_remove_effect('fire1')
 	
 func apply_knockback(direction: Vector2, force: float) -> void:
 	knockback_velocity = direction.normalized() * force * (1 + StatManager.get_stat(player, 'magic')/4)
-	print("Knockback applied: ", knockback_velocity)
 	hitstun = hitstun_duration
-
 
 
 var active_effects: Array[StringName] = []

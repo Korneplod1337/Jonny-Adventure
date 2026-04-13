@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://duqt5c8r3bui4"]
 
-[ext_resource type="Script" uid="uid://5vjc2vbyhtm3" path="res://game/objects/items/Item.gd" id="1_4xlni"]
+[ext_resource type="Script" uid="uid://5vjc2vbyhtm3" path="res://game/objects/Items/Item.gd" id="1_4xlni"]
 [ext_resource type="Texture2D" uid="uid://b6yj2s2fwb0eu" path="res://image/interface/HUD/test item 24x24.png" id="2_n8bc5"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_5urvi"]
 [ext_resource type="Texture2D" uid="uid://dwjxxrdxpcxne" path="res://image/ttttt.png" id="3_n8bc5"]

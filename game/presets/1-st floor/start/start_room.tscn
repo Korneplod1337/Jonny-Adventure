@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="5_sejrf"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coins/Coin.tscn" id="7_nbcw0"]
 [ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/Items/Item.tscn" id="8_sw7ps"]
-[ext_resource type="Script" uid="uid://fh1fkq16e7td" path="res://game/objects/Equipment/_enchantments/knockback_enchantment.gd" id="9_cdchw"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/_equip/BaseShot_equip.tscn" id="9_sw7ps"]
+[ext_resource type="Script" uid="uid://bi5babybdmi53" path="res://game/objects/Equipment/_enchantments/ice_enchantment.gd" id="9_vp6t4"]
 [ext_resource type="PackedScene" uid="uid://bhswv1jdia8i8" path="res://game/objects/Equipment/Weapon/_equip/TestShot_equip.tscn" id="10_yfw41"]
 [ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/Coins/CoinBag.tscn" id="12_pjn5v"]
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/EmenyWorm.tscn" id="13_wkjof"]
@@ -26,15 +26,10 @@ size = Vector2(1136.44, 39.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw7ps"]
 size = Vector2(41.03, 654.5)
 
-[sub_resource type="Resource" id="Resource_3rats"]
-script = ExtResource("9_cdchw")
-level = 3
-metadata/_custom_type_script = "uid://fh1fkq16e7td"
-
-[sub_resource type="Resource" id="Resource_vp6t4"]
-script = ExtResource("9_cdchw")
-level = 3
-metadata/_custom_type_script = "uid://fh1fkq16e7td"
+[sub_resource type="Resource" id="Resource_o7186"]
+script = ExtResource("9_vp6t4")
+level = 2
+metadata/_custom_type_script = "uid://bi5babybdmi53"
 
 [node name="StartRoom" type="Node2D" unique_id=757044430]
 
@@ -110,7 +105,7 @@ position = Vector2(-402, 211)
 
 [node name="JonnyShot" parent="." unique_id=241584314 instance=ExtResource("9_sw7ps")]
 position = Vector2(-329, -52)
-enchantment = SubResource("Resource_3rats")
+enchantment = SubResource("Resource_o7186")
 
 [node name="Item" parent="." unique_id=1430574395 instance=ExtResource("8_sw7ps")]
 position = Vector2(357, 71)
@@ -128,13 +123,9 @@ base_hp = 500
 
 [node name="JonnyShot2" parent="." unique_id=777621458 instance=ExtResource("15_3rats")]
 position = Vector2(-148, 85)
-enchantment = SubResource("Resource_vp6t4")
 
 [node name="TestShot" parent="." unique_id=2115693297 instance=ExtResource("10_yfw41")]
 position = Vector2(-231, -158)
-
-[node name="Area2D" parent="." unique_id=1914859512 instance=ExtResource("16_vp6t4")]
-position = Vector2(43, 164)
 
 [node name="Area2D2" parent="." unique_id=1866258090 instance=ExtResource("16_vp6t4")]
 position = Vector2(106, 213)

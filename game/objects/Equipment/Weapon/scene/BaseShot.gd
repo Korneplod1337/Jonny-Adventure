@@ -10,7 +10,7 @@ var extra_reload: float = 1.5 # только для слёз множитель 
 var self_damage_multiplier: float = 1
 var self_speed_multiplier: float = 1
 var self_range_multiplier: float = 1
-
+var type: String = 'drop'
 
 var distance_travelled := 0.0
 

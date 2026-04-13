@@ -10,7 +10,7 @@ radius = 19.026299
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjk28"]
 radius = 54.08327
 
-[node name="Area2D" type="Area2D" unique_id=1914859512]
+[node name="test_chest" type="Area2D" unique_id=1914859512]
 script = ExtResource("1_5vgi5")
 type = "chest"
 equip_icon = ExtResource("3_53xn4")

@@ -1,5 +1,7 @@
 class_name Base_equip
 extends Area2D
+var GS = GameState
+
 @onready var interactable: Area2D = $Interactable
 
 @export_enum('chest', 'boots', 'head') var type: String
@@ -18,16 +20,16 @@ func _ready() -> void:
 		interactable.interact_name = 'Take ' + enchant_text + interact_name
 	else:
 		interactable.interact_name = 'Take ' + enchant_text \
-		+ interact_name + ' by %s coins' %cost
+		+ interact_name + ' by %s coins' % ((cost - GS.cost_plus) * GS.cost_multiplier)
 
 func _on_interact():
 	var player = get_tree().get_first_node_in_group("player")
 	if not player: 
 		print('эквип не видит игрока')
 		return
-	if GameState.coins < cost:
+	if GS.coins < (cost - GS.cost_plus) * GS.cost_multiplier:
 		return
-	GameState.add_coins(-cost)
+	GS.add_coins((-cost - GS.cost_plus) * GS.cost_multiplier)
 	
 	var hud = get_tree().get_first_node_in_group("HUD")
 	var tooltip := equip_tooltip

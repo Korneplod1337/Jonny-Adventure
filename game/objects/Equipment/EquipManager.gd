@@ -2,9 +2,9 @@ extends Node
 
 const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 	preload("uid://8pwbn1wjmvu1"), # ice enchant
-	preload("uid://1t58a5xdtapu"), # poison
-	preload("uid://b5olpo70xaavd"), # punch
-	preload("uid://c8hfht7lr6kje"), # fire
+	#preload("uid://1t58a5xdtapu"), # poison
+	#preload("uid://b5olpo70xaavd"), # punch
+	#preload("uid://c8hfht7lr6kje"), # fire
 ]
 
 # Пулы эквипмента
@@ -113,6 +113,8 @@ func spawn(pool_type: String, tiers: Array, pos: Vector2, cost: int = -1) -> voi
 
 	if cost != -1:
 		inst.cost = cost
+	#else :
+		#inst.cost = 0
 
 	get_tree().current_scene.add_child(inst)
 

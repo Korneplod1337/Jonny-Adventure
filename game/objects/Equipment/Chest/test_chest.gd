@@ -1,7 +1,7 @@
 extends Base_equip
 
 func effect_on() -> void:
-	GameState.test_chest = true
+	GS.equip_update('test_chest')
 
 func effect_off() -> void:
-	GameState.test_chest = false
+	GS.equip_update('test_chest')

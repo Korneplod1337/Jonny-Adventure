@@ -6,7 +6,7 @@ class_name SwordShot
 
 
 func _ready() -> void:
-	# Melee weapons don't "fly" like projectiles
+	type = 'melee'
 	speed = 0
 	self.scale = Vector2(clampi(0.4 + atk_range/300, 0.6, 4), clampi(0.4 +atk_range/300, 0.6, 4))
 	# Rotate the entire sword node based on direction from player
@@ -82,4 +82,7 @@ func _on_animation_finished() -> void:
 	queue_free()
 
 func explosion() -> void:
+	pass
+
+func _on_explosion_finished():
 	pass

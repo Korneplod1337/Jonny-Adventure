@@ -279,13 +279,14 @@ func fire (shot_dir: Vector2) -> void:
 	shot.position = global_position + Vector2(0, -10)
 	
 	var angle := shot_dir.angle()
-	angle += deg_to_rad(randf_range(-spread/2, spread/2))
+	if shot.type == 'drop':
+		angle += deg_to_rad(randf_range(-spread/2, spread/2))
 	var final_dir := Vector2.RIGHT.rotated(angle)
 	
 	shot.direction = final_dir + now_move_direction.normalized()/3 
 	#+ shot_dir.normalized()/3
 	
-	shot.damage = damage
+	shot.damage = damage * GameState.damage_multiplayer
 	
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
