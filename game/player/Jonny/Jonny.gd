@@ -279,7 +279,7 @@ func fire (shot_dir: Vector2) -> void:
 	shot.position = global_position + Vector2(0, -10)
 	
 	var angle := shot_dir.angle()
-	if shot.type == 'drop':
+	if shot.use_spread:
 		angle += deg_to_rad(randf_range(-spread/2, spread/2))
 	var final_dir := Vector2.RIGHT.rotated(angle)
 	
@@ -293,10 +293,10 @@ func fire (shot_dir: Vector2) -> void:
 	
 	if shot_enchantment:
 		shot.enchantment = shot_enchantment.duplicate(true)
+	get_tree().current_scene.add_child(shot)
 	
 	extra_fire_rate = shot.extra_reload
 	fire_rate = ST.get_stat(self, "fire_rate")
-	get_tree().current_scene.add_child(shot)
 
 # таймер (лоховской)
 func _on_shot_timer_timeout() -> void:

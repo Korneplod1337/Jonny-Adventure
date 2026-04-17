@@ -45,7 +45,7 @@ const POOLS := {
 		 "tier": 1, "weight": 10.0},
 		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
 		 "tier": 2, "weight": 10.0},
-		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
+		{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
 		 "tier": 3, "weight": 10.0},
 	]
 }

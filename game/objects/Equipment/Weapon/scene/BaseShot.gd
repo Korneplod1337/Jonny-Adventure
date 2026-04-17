@@ -5,18 +5,22 @@ var speed: float = 300.0
 @export var animaited_speed = 2
 var direction: Vector2 = Vector2.RIGHT
 var atk_range: float = 200.0
-var damage: int = 25
-var extra_reload: float = 1.5 # только для слёз множитель больше 1 1,6 MAX
+var damage: int
+var extra_reload: float = 1.0 # только для слёз множитель больше 1 1,6 MAX
+@export var use_spread: bool = true
 var self_damage_multiplier: float = 1
 var self_speed_multiplier: float = 1
 var self_range_multiplier: float = 1
-var type: String = 'drop'
+
 
 var distance_travelled := 0.0
 
 var exploded := false
 
 var enchantment: EnchantmentResource
+
+func _ready() -> void:
+	var player := get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta):
 	var movement = direction.normalized() * speed * delta * self_speed_multiplier

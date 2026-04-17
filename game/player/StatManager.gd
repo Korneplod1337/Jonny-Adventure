@@ -15,7 +15,7 @@ func get_stat(p: Node, stat: String) -> float :
 		"luck":
 			var luck = p.base_luck + lerp(0.0, 0.63, (p.luck_level - 1.0) / 9.0)
 			luck *= (1 + p.luck_bonus * 0.05)
-			luck = clamp(luck, 0.1, 4.0)
+			luck = clamp(luck, 0.1, 2.0)
 			return luck
 		"magic":
 			var magic = p.base_magic + lerp(0.0, 0.9, (p.magic_level - 1.0) / 9.0)
@@ -38,9 +38,9 @@ func get_stat(p: Node, stat: String) -> float :
 			return range_val
 		"fire_rate":
 			var fire_rate = p.base_fire_rate + lerp(1.0, 0.1, (p.fire_rate_level - 1.0) / 9.0)
-			#print(fire_rate, ' ', (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.04 * p.extra_fire_rate))
+			print(fire_rate, ' ', (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.04 * p.extra_fire_rate))
 			fire_rate *= (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.03 * p.extra_fire_rate)
-			#print(fire_rate, '- Итого')
+			print(fire_rate, '- Итого')
 			return fire_rate
 		_:
 			push_warning("Unknown stat in getter: %s" % stat)

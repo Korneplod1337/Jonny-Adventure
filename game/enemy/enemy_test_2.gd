@@ -32,7 +32,7 @@ func hit(damage: float, clear:= false) -> void:
 	total_damage_recent += damage
 	no_damage_timer = 0.0
 	dps = total_damage_recent / hit_time
-	print(total_damage_recent, hit_time)
+	print(total_damage_recent, ' / ', hit_time)
 
 
 func update_label() -> void:

@@ -4,9 +4,7 @@ class_name SwordShot
 @onready var anim_sprite: AnimatedSprite2D = $shot_Animated
 @onready var col_shape: CollisionShape2D = $CollisionShape2D
 
-
 func _ready() -> void:
-	type = 'melee'
 	speed = 0
 	self.scale = Vector2(clampi(0.4 + atk_range/300, 0.6, 4), clampi(0.4 +atk_range/300, 0.6, 4))
 	# Rotate the entire sword node based on direction from player

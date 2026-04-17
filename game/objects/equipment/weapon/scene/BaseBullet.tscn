@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dxohwm4smvnn4"]
+
+[ext_resource type="Script" uid="uid://ckprl4uxfjr7r" path="res://game/objects/equipment/weapon/scene/bullet.gd" id="1_otytm"]
+[ext_resource type="Texture2D" uid="uid://dglks3425by50" path="res://image/items/Equip_magic_bullet.png" id="2_spsiv"]
+[ext_resource type="Texture2D" uid="uid://4560yaxovs8" path="res://image/effect_sprites/crit/crit1.png" id="3_cy1e0"]
+[ext_resource type="Texture2D" uid="uid://b2dakoanrycx" path="res://image/effect_sprites/crit/crit2.png" id="4_tdi7n"]
+[ext_resource type="Texture2D" uid="uid://hh7epeobhm88" path="res://image/effect_sprites/crit/crit3.png" id="5_t61so"]
+[ext_resource type="Texture2D" uid="uid://dt7rhc54sbxcw" path="res://image/effect_sprites/crit/crit4.png" id="6_odhd8"]
+[ext_resource type="Texture2D" uid="uid://binbanvlipmin" path="res://image/effect_sprites/crit/crit5.png" id="7_v4lx3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_spsiv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wc4bq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cy1e0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tdi7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t61so")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_odhd8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v4lx3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="shot" type="Area2D" unique_id=278677877]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_otytm")
+use_spread = false
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
+position = Vector2(-1, -1)
+sprite_frames = SubResource("SpriteFrames_xhdno")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
+shape = SubResource("CircleShape2D_34718")
+
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=289088615]
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wc4bq")
+frame = 1
+frame_progress = 0.17776881
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

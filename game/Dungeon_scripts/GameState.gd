@@ -7,15 +7,9 @@ func add_coins(amount: int) -> void:
 	coins += amount
 	emit_signal("coins_changed", coins)
 
-func obnulenie() -> void:
-	coins = 0
-	"Всё, что обнуляется между играми сюда по идее"
-
-# враги
-var enemy_ms_multiplier: float = 1.0
-var enemy_hp_multiplier: float = 1.0
-var enemy_dmg_multiplier: float = 1.0
-var enemy_cooldown_multiplier: float = 1.0
+# мир
+var cost_multiplier := 1.0
+var cost_plus := 0.0
 
 # игрок
 func  equip_update(equip: String) -> void:
@@ -29,14 +23,9 @@ func  equip_update(equip: String) -> void:
 		_:
 			print('equip_update fail!')
 
-
 var damage_multiplayer := 1.0
 var AlchemistsGlasses := false #больше инфы
 var test_chest := false
-
-# мир
-var cost_multiplier := 1.0
-var cost_plus := 0.0
 
 
 #уровень
@@ -63,4 +52,25 @@ func get_level_bufs() -> Array:
 			return [i[0], i[2]]
 	return ['Nothing', 'Nothing']
 
+
+# враги
+var enemy_ms_multiplier: float = 1.0
+var enemy_hp_multiplier: float = 1.0
+var enemy_dmg_multiplier: float = 1.0
+var enemy_cooldown_multiplier: float = 1.0
 #босс
+
+
+
+func obnulenie() -> void:
+	coins = 0
+	"Всё, что обнуляется между играми сюда по идее"
+	damage_multiplayer = 1.0
+	AlchemistsGlasses = false
+	test_chest = false
+	enemy_ms_multiplier = 1.0
+	enemy_hp_multiplier = 1.0
+	enemy_dmg_multiplier = 1.0
+	enemy_cooldown_multiplier = 1.0
+	cost_multiplier = 1.0
+	cost_plus = 0.0
