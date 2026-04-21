@@ -8,7 +8,8 @@ var base_crit_bonus: float = 50
 var crit_sprite = -1
 
 func _ready() -> void:
-	pass
+	extra_reload= 0.5
+
 
 func _on_body_entered(body):
 	if exploded:

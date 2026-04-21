@@ -25,6 +25,7 @@ var is_dead: bool = false
 
 @onready var player: Node2D = get_tree().get_first_node_in_group("player")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+var animated_speed := GameState.animated_world_speed
 @onready var cooldown_timer: Timer = $CooldownTimer
 @onready var blind_timer: Timer = $BlindTimer
 @onready var poison_timer: Timer = $PoisonTimer
@@ -47,6 +48,7 @@ func _ready() -> void:
 
 	sprite.animation_finished.connect(_on_sprite_animation_finished)
 	sprite.frame = 0
+	sprite.speed_scale = animated_speed
 	
 	player = get_tree().get_first_node_in_group("player")
 

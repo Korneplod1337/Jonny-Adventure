@@ -24,7 +24,7 @@ var magic_bonus: 			int = 0
 var damage_bonus: 			int = 0
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 0
+var fire_rate_bonus:			int = 10
 
 @export var hit_points_level: 	float = 1.0
 @export var move_speed_level: 	float = 2.0   # 1–10, 9 лвл прокачки
@@ -58,6 +58,7 @@ var input_vector = Vector2(0, 0)
 var now_move_direction := Vector2.ZERO
 var last_move_dir := 1
 
+var animated_speed := 1
 
 func _ready() -> void:
 	$AnimatedSprite2D.play()
@@ -137,6 +138,9 @@ func _process(delta: float) -> void:
 	if can_shoot and shooting:
 		fire(shot_direction)
 		start_reload()
+		
+		animated_speed = GameState.animated_world_speed
+		$AnimatedSprite2D.speed_scale = animated_speed
 
 
 # ЗДОРОВЬЕ

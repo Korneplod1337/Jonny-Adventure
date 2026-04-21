@@ -10,6 +10,7 @@ func add_coins(amount: int) -> void:
 # мир
 var cost_multiplier := 1.0
 var cost_plus := 0.0
+var animated_world_speed := 1
 
 # игрок
 func  equip_update(equip: String) -> void:

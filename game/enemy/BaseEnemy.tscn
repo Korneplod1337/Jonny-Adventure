@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b13bplyg515pj" path="res://image/circle.png" id="1_r4evv"]
 [ext_resource type="Script" uid="uid://c7bi4jrq3704r" path="res://game/enemy/base_enemy.gd" id="1_yry4g"]
-[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="2_2eqer"]
+[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coins/Coin.tscn" id="2_2eqer"]
 [ext_resource type="Texture2D" uid="uid://7l0gm7uwen52" path="res://image/Icon.jpg" id="2_yry4g"]
 [ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/effect_icons.gd" id="4_uckop"]
 [ext_resource type="Texture2D" uid="uid://b7cqj7inw8y02" path="res://image/effect_sprites/status_bar/snowflake.png" id="5_y8iyg"]

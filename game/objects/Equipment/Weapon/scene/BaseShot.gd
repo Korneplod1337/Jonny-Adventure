@@ -2,7 +2,7 @@ extends Area2D
 class_name BaseShot
 
 var speed: float = 300.0
-@export var animaited_speed = 2
+var animaited_speed = 1
 var direction: Vector2 = Vector2.RIGHT
 var atk_range: float = 200.0
 var damage: int
@@ -20,6 +20,7 @@ var exploded := false
 var enchantment: EnchantmentResource
 
 func _ready() -> void:
+	animaited_speed = GameState.animated_world_speed
 	var player := get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta):
