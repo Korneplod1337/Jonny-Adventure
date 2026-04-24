@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bwiytmmsxjtk5"]
 
-[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/equipment/weapon/_equip/BaseShot_equip.gd" id="1_1cang"]
-[ext_resource type="PackedScene" uid="uid://cwdv6wwd2kqyr" path="res://game/objects/equipment/weapon/scene/BaseShot.tscn" id="2_xt80e"]
-[ext_resource type="Texture2D" uid="uid://b5280qdpgacbg" path="res://image/effect_sprites/test_Spit_bullet.png" id="2_xtrd6"]
+[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/Weapon/_equip/BaseShot_equip.gd" id="1_1cang"]
+[ext_resource type="PackedScene" uid="uid://cwdv6wwd2kqyr" path="res://game/objects/Equipment/Weapon/scene/BaseShot.tscn" id="2_xt80e"]
+[ext_resource type="Texture2D" uid="uid://b5280qdpgacbg" path="res://image/equip/weapon/test_Spit_bullet.png" id="2_xtrd6"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_xtrd6"]
-[ext_resource type="Texture2D" uid="uid://3hhrpek856pa" path="res://image/effect_sprites/Spit_bullet.png" id="4_i0cvw"]
+[ext_resource type="Texture2D" uid="uid://3hhrpek856pa" path="res://image/equip/weapon/Spit_bullet.png" id="4_i0cvw"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299

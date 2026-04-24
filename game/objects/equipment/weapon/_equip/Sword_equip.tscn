@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/Weapon/_equip/BaseShot_equip.gd" id="1_ymej7"]
 [ext_resource type="Texture2D" uid="uid://dh6plw0xhnj7r" path="res://image/equip/weapon/sword_equip.png" id="2_hf0ea"]
-[ext_resource type="Texture2D" uid="uid://dehf5rlq2xh0x" path="res://image/equip/weapon/sword1.png" id="2_ymej7"]
+[ext_resource type="Texture2D" uid="uid://dehf5rlq2xh0x" path="res://image/effect_sprites/weapon_effects/sword1.png" id="2_ymej7"]
 [ext_resource type="PackedScene" uid="uid://didc6fkb0fgjo" path="res://game/objects/Equipment/Weapon/scene/Sword.tscn" id="3_m2e6i"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_8lxy5"]
 

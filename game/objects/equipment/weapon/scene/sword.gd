@@ -79,7 +79,7 @@ func _on_frame_changed() -> void:
 func _on_animation_finished() -> void:
 	queue_free()
 
-func explosion() -> void:
+func explosion(a) -> void:
 	pass
 
 func _on_explosion_finished():

@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://cwdv6wwd2kqyr"]
 
 [ext_resource type="Script" uid="uid://dsccy0lu1l5fy" path="res://game/objects/Equipment/Weapon/scene/JonnyShot.gd" id="1_pfflx"]
-[ext_resource type="Texture2D" uid="uid://br43g0v1chqni" path="res://image/effect_sprites/spit_kills1.png" id="2_q8ro8"]
-[ext_resource type="Texture2D" uid="uid://bj4ghikaxht1x" path="res://image/effect_sprites/spit_kills2.png" id="3_17rnw"]
-[ext_resource type="Texture2D" uid="uid://bj6pch5cf4anf" path="res://image/effect_sprites/spit_kills3.png" id="4_j1ojm"]
-[ext_resource type="Texture2D" uid="uid://crrc0c3o7d6ns" path="res://image/effect_sprites/spit_kills4.png" id="5_pynuf"]
-[ext_resource type="Texture2D" uid="uid://c0y6yuy0dro2r" path="res://image/effect_sprites/spit_kills5.png" id="6_axccd"]
+[ext_resource type="Texture2D" uid="uid://br43g0v1chqni" path="res://image/effect_sprites/weapon_effects/spit_kills1.png" id="2_q8ro8"]
+[ext_resource type="Texture2D" uid="uid://bj4ghikaxht1x" path="res://image/effect_sprites/weapon_effects/spit_kills2.png" id="3_17rnw"]
+[ext_resource type="Texture2D" uid="uid://bj6pch5cf4anf" path="res://image/effect_sprites/weapon_effects/spit_kills3.png" id="4_j1ojm"]
+[ext_resource type="Texture2D" uid="uid://crrc0c3o7d6ns" path="res://image/effect_sprites/weapon_effects/spit_kills4.png" id="5_pynuf"]
+[ext_resource type="Texture2D" uid="uid://c0y6yuy0dro2r" path="res://image/effect_sprites/weapon_effects/spit_kills5.png" id="6_axccd"]
+[ext_resource type="Texture2D" uid="uid://blcox3ow4g6pw" path="res://image/effect_sprites/weapon_effects/spit_miss1.png" id="7_b18pk"]
+[ext_resource type="Texture2D" uid="uid://c6psi30kus7mm" path="res://image/effect_sprites/weapon_effects/spit_miss2.png" id="8_q1xht"]
+[ext_resource type="Texture2D" uid="uid://0m4m21cog7th" path="res://image/effect_sprites/weapon_effects/spit_miss3.png" id="9_jn07t"]
+[ext_resource type="Texture2D" uid="uid://clcdak1c1rdc6" path="res://image/effect_sprites/weapon_effects/spit_miss4.png" id="10_kk8ku"]
+[ext_resource type="Texture2D" uid="uid://d0qmx54486nlp" path="res://image/effect_sprites/weapon_effects/spit_miss5.png" id="11_lp2mf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -27,6 +32,26 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_b18pk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_q1xht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jn07t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kk8ku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lp2mf")
+}],
+"loop": false,
+"name": &"miss",
 "speed": 10.0
 }]
 

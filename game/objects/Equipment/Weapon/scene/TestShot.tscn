@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://bhfqxrdvcm408"]
 
 [ext_resource type="Script" uid="uid://k4foybuf3npk" path="res://game/objects/Equipment/Weapon/scene/TestShot.gd" id="1_35mg3"]
-[ext_resource type="Texture2D" uid="uid://f3gnono0xcfb" path="res://image/effect_sprites/alt_Spit_bullet1.png" id="2_a6evw"]
-[ext_resource type="Texture2D" uid="uid://wq48um3cilcg" path="res://image/effect_sprites/alt_Spit_bullet2.png" id="3_428o0"]
-[ext_resource type="Texture2D" uid="uid://o6vmljnnrhwn" path="res://image/effect_sprites/alt_Spit_bullet3.png" id="4_10mf5"]
-[ext_resource type="Texture2D" uid="uid://bx2nsk8wwusqg" path="res://image/effect_sprites/alt_Spit_bullet4.png" id="5_l7eub"]
-[ext_resource type="Texture2D" uid="uid://dyhhuqpyeqkm2" path="res://image/effect_sprites/alt_Spit_bullet5.png" id="6_sf4gd"]
+[ext_resource type="Texture2D" uid="uid://f3gnono0xcfb" path="res://image/effect_sprites/weapon_effects/alt_Spit_bullet1.png" id="2_a6evw"]
+[ext_resource type="Texture2D" uid="uid://wq48um3cilcg" path="res://image/effect_sprites/weapon_effects/alt_Spit_bullet2.png" id="3_428o0"]
+[ext_resource type="Texture2D" uid="uid://o6vmljnnrhwn" path="res://image/effect_sprites/weapon_effects/alt_Spit_bullet3.png" id="4_10mf5"]
+[ext_resource type="Texture2D" uid="uid://bx2nsk8wwusqg" path="res://image/effect_sprites/weapon_effects/alt_Spit_bullet4.png" id="5_l7eub"]
+[ext_resource type="Texture2D" uid="uid://dyhhuqpyeqkm2" path="res://image/effect_sprites/weapon_effects/alt_Spit_bullet5.png" id="6_sf4gd"]
+[ext_resource type="Texture2D" uid="uid://6ipkyjfjkeua" path="res://image/effect_sprites/weapon_effects/alt_spit_miss1.png" id="7_gqs1y"]
+[ext_resource type="Texture2D" uid="uid://dutbek0cpnwld" path="res://image/effect_sprites/weapon_effects/alt_spit_miss2.png" id="8_dqe5g"]
+[ext_resource type="Texture2D" uid="uid://nqeb51kjldgl" path="res://image/effect_sprites/weapon_effects/alt_spit_miss3.png" id="9_yntoa"]
+[ext_resource type="Texture2D" uid="uid://cr5kh8rftq6fa" path="res://image/effect_sprites/weapon_effects/alt_spit_miss4.png" id="10_8gbbg"]
+[ext_resource type="Texture2D" uid="uid://bwrqh3hp6fuks" path="res://image/effect_sprites/weapon_effects/alt_spit_miss5.png" id="11_1qy3r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -28,6 +33,26 @@ animations = [{
 "loop": false,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gqs1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dqe5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yntoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8gbbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1qy3r")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
@@ -41,6 +66,7 @@ script = ExtResource("1_35mg3")
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_xhdno")
+animation = &"miss"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
 shape = SubResource("CircleShape2D_34718")

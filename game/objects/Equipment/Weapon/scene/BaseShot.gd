@@ -30,7 +30,7 @@ func _physics_process(delta):
 	
 	if distance_travelled >= atk_range * self_range_multiplier and not exploded:
 		exploded = true
-		explosion()
+		explosion(1)
 
 func _on_body_entered(body):
 	if exploded:
@@ -42,14 +42,19 @@ func _on_body_entered(body):
 	if body.has_method("hit"):
 		body.hit(damage * self_damage_multiplier)
 	exploded = true
-	explosion()
+	explosion(0)
 
 
 
-func explosion():
+func explosion(animation_index):
+	print('animation_index ', animation_index)
 	speed = 0
 	$shot_Animated.speed_scale = animaited_speed
-	$shot_Animated.play("default")
+	if animation_index == 0:
+		$shot_Animated.play("default")
+	elif animation_index == 1:
+		$shot_Animated.play("miss")
+
 	if not $shot_Animated.is_connected("animation_finished", Callable(self, "_on_explosion_finished")):
 		$shot_Animated.connect("animation_finished", Callable(self, "_on_explosion_finished"))
 

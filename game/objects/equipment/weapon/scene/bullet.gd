@@ -30,7 +30,7 @@ func _on_body_entered(body):
 		crit.show()
 	
 	exploded = true
-	explosion()
+	explosion(0)
 
 
 func _get_damage_with_crits() -> int:

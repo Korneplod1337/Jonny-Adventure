@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://clqoo37e0j35j"]
 
-[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/equipment/weapon/_equip/BaseShot_equip.gd" id="1_ivsho"]
-[ext_resource type="Texture2D" uid="uid://dglks3425by50" path="res://image/items/Equip_magic_bullet.png" id="2_eia6w"]
-[ext_resource type="PackedScene" uid="uid://dxohwm4smvnn4" path="res://game/objects/equipment/weapon/scene/BaseBullet.tscn" id="3_ivsho"]
+[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/Weapon/_equip/BaseShot_equip.gd" id="1_ivsho"]
+[ext_resource type="Texture2D" uid="uid://p26708rh65t2" path="res://image/equip/weapon/pistol.png" id="2_fro2o"]
+[ext_resource type="PackedScene" uid="uid://dxohwm4smvnn4" path="res://game/objects/Equipment/Weapon/scene/BaseBullet.tscn" id="3_ivsho"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_igyj1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
@@ -15,7 +15,7 @@ radius = 54.08327
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_eia6w")
+"texture": ExtResource("2_fro2o")
 }],
 "loop": true,
 "name": &"default",
@@ -25,7 +25,7 @@ animations = [{
 [node name="JonnyShot" type="Area2D" unique_id=241584314]
 collision_mask = 0
 script = ExtResource("1_ivsho")
-equip_icon = ExtResource("2_eia6w")
+equip_icon = ExtResource("2_fro2o")
 equip_id = "Base_Gun"
 projectile = ExtResource("3_ivsho")
 equip_tooltip = "Base_Gun"

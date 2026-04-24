@@ -1,22 +1,63 @@
 [gd_scene format=3 uid="uid://dxohwm4smvnn4"]
 
-[ext_resource type="Script" uid="uid://ckprl4uxfjr7r" path="res://game/objects/equipment/weapon/scene/bullet.gd" id="1_otytm"]
-[ext_resource type="Texture2D" uid="uid://dglks3425by50" path="res://image/items/Equip_magic_bullet.png" id="2_spsiv"]
+[ext_resource type="Script" uid="uid://ckprl4uxfjr7r" path="res://game/objects/Equipment/Weapon/scene/bullet.gd" id="1_otytm"]
+[ext_resource type="Texture2D" uid="uid://dnme0xaahn8ig" path="res://image/effect_sprites/weapon_effects/shot_bullet_kills1.png" id="2_crsvh"]
+[ext_resource type="Texture2D" uid="uid://vk1iy0vcdyh2" path="res://image/effect_sprites/weapon_effects/shot_bullet_kills2.png" id="3_b340n"]
 [ext_resource type="Texture2D" uid="uid://4560yaxovs8" path="res://image/effect_sprites/crit/crit1.png" id="3_cy1e0"]
 [ext_resource type="Texture2D" uid="uid://b2dakoanrycx" path="res://image/effect_sprites/crit/crit2.png" id="4_tdi7n"]
+[ext_resource type="Texture2D" uid="uid://mnhi6mfgvlij" path="res://image/effect_sprites/weapon_effects/shot_bullet_kills3.png" id="4_ysqhk"]
+[ext_resource type="Texture2D" uid="uid://nmkiayw876q4" path="res://image/effect_sprites/weapon_effects/shot_bullet_kills4.png" id="5_rgckw"]
 [ext_resource type="Texture2D" uid="uid://hh7epeobhm88" path="res://image/effect_sprites/crit/crit3.png" id="5_t61so"]
+[ext_resource type="Texture2D" uid="uid://dv0u5qa1hmsx1" path="res://image/effect_sprites/weapon_effects/shot_bullet_kills5.png" id="6_bues8"]
 [ext_resource type="Texture2D" uid="uid://dt7rhc54sbxcw" path="res://image/effect_sprites/crit/crit4.png" id="6_odhd8"]
+[ext_resource type="Texture2D" uid="uid://dwbn8ki7jpy2a" path="res://image/effect_sprites/weapon_effects/shot_bullet_miss1.png" id="7_5dqi8"]
 [ext_resource type="Texture2D" uid="uid://binbanvlipmin" path="res://image/effect_sprites/crit/crit5.png" id="7_v4lx3"]
+[ext_resource type="Texture2D" uid="uid://c1w4d77j04esy" path="res://image/effect_sprites/weapon_effects/shot_bullet_miss2.png" id="8_s71aa"]
+[ext_resource type="Texture2D" uid="uid://c5r3s1objydsd" path="res://image/effect_sprites/weapon_effects/shot_bullet_miss3.png" id="9_yncuk"]
+[ext_resource type="Texture2D" uid="uid://cdd5fbu1i14yk" path="res://image/effect_sprites/weapon_effects/shot_bullet_miss4.png" id="10_yd3f7"]
+[ext_resource type="Texture2D" uid="uid://b3tj2guikv3oa" path="res://image/effect_sprites/weapon_effects/shot_bullet_miss5.png" id="11_cbovc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_spsiv")
+"texture": ExtResource("2_crsvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b340n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ysqhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rgckw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bues8")
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5dqi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s71aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yncuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yd3f7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cbovc")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
@@ -51,8 +92,9 @@ script = ExtResource("1_otytm")
 use_spread = false
 
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
-position = Vector2(-1, -1)
+position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_xhdno")
+animation = &"miss"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
 shape = SubResource("CircleShape2D_34718")
