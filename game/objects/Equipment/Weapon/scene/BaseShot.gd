@@ -12,7 +12,6 @@ var self_damage_multiplier: float = 1
 var self_speed_multiplier: float = 1
 var self_range_multiplier: float = 1
 
-
 var distance_travelled := 0.0
 
 var exploded := false
@@ -22,6 +21,7 @@ var enchantment: EnchantmentResource
 func _ready() -> void:
 	animaited_speed = GameState.animated_world_speed
 	var player := get_tree().get_first_node_in_group("player")
+	rotation = direction.angle()
 
 func _physics_process(delta):
 	var movement = direction.normalized() * speed * delta * self_speed_multiplier
@@ -47,7 +47,6 @@ func _on_body_entered(body):
 
 
 func explosion(animation_index):
-	print('animation_index ', animation_index)
 	speed = 0
 	$shot_Animated.speed_scale = animaited_speed
 	if animation_index == 0:

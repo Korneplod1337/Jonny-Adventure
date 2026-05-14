@@ -1,7 +1,6 @@
 class_name BaseShot_equip
 extends Area2D
 @onready var interactable: Area2D = $Interactable
-const type := 'weapon'
 @export var equip_icon: Texture2D: set = _set_equip_icon  # иконка для инвентаря
 @export var equip_id: String = 'Jonny_shot'
 @export var projectile: PackedScene
@@ -9,6 +8,7 @@ signal equip_taken
 @export var equip_tooltip: String = "Jonny weapon" # текст для инвентаря
 @export var interact_name: String = "Jonny weapon"
 var cost: int = 0
+var type = 'weapon'
 
 @export var enchantment: EnchantmentResource
 
