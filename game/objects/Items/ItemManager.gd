@@ -4,7 +4,7 @@ extends Node
 var unlocked_items: Dictionary = {}
 var picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
-var DEFAULT_UNLOCKED := ["hpup", "shield", "heal"]
+var DEFAULT_UNLOCKED := ["hpup", "shield", "heal", 'lvlup']
 var DEFAULT_PICK := ["hpup"]
 '''
 Тир 0- дорогие бафы 4-х квадрантов, хилки
@@ -24,7 +24,8 @@ const POOLS := {
 		{"id": "cool_ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 4}
 	],
 	"shop": [
-		{"id": "heal", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 0},
+		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0},
+		
 		{"id": "hpup", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
 		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
 		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 3},

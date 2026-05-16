@@ -11,10 +11,15 @@ var crit_sprite = -1
 # ДРОБОВИК
 @export var pellet_count := 1
 @export var spread_angle := 30.0
+@export var damage_mult : float = 1
+@export var range_mult : float = 1
 var spawned_spread := false
 
 
 func _ready() -> void:
+	self_speed_multiplier = 1.5
+	self_damage_multiplier = damage_mult
+	self_range_multiplier = range_mult 
 	extra_reload = 0.5
 	super()
 	# Создание дополнительных дробинок

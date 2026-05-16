@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://ywfb4cg1rk1u"]
+
+[ext_resource type="Script" uid="uid://hlras5a2umwl" path="res://game/objects/items/ItemLvlupRandom.gd" id="1_fin6f"]
+[ext_resource type="Texture2D" uid="uid://7fhc16cg2h05" path="res://image/items/items_hud/LevelupHP.png" id="3_t7ebr"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_bigru"]
+[ext_resource type="Texture2D" uid="uid://dus878il2v07n" path="res://image/items/items_hud/LevelupLuck.png" id="4_oy1dd"]
+[ext_resource type="Texture2D" uid="uid://dyi8ytour8ky5" path="res://image/items/items_hud/LevelupSpeed.png" id="5_4bxb3"]
+[ext_resource type="Texture2D" uid="uid://cvfgwy1ru51bg" path="res://image/items/items_hud/LevelupRange.png" id="6_tdhfw"]
+[ext_resource type="Texture2D" uid="uid://ca1s4ovk6kape" path="res://image/items/items_hud/LevelupDamage.png" id="7_h103j"]
+[ext_resource type="Texture2D" uid="uid://c13oxrgkhxdh3" path="res://image/items/items_hud/LevelupAtkSpeed.png" id="8_5s3dr"]
+[ext_resource type="Texture2D" uid="uid://oitcfy1i85or" path="res://image/items/items_hud/LevelupSpread.png" id="9_ky1xb"]
+[ext_resource type="Texture2D" uid="uid://d1ckltoandiqt" path="res://image/items/items_hud/LevelupMagic.png" id="10_12ikl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4x2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_t7ebr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oy1dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4bxb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_12ikl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h103j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5s3dr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ky1xb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tdhfw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Item LvlUP" type="Area2D" unique_id=1430574395]
+collision_layer = 0
+script = ExtResource("1_fin6f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("4_bigru")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=87217535]
+position = Vector2(2, 2)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_m4x2y")

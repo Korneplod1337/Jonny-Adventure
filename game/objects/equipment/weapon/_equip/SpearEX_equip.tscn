@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dwqy4pk0blosi"]
+
+[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/equipment/weapon/_equip/BaseShot_equip.gd" id="1_tpwxy"]
+[ext_resource type="Texture2D" uid="uid://x30namew1orx" path="res://image/equip/weapon/SpearEX_equip.png" id="2_tpwxy"]
+[ext_resource type="PackedScene" uid="uid://btyptmeihg371" path="res://game/objects/equipment/weapon/scene/SpearEX.tscn" id="3_t54bf"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_nve1j"]
+[ext_resource type="Texture2D" uid="uid://0y7um10qlovh" path="res://image/effect_sprites/weapon_effects/SpearEX4.png" id="5_omxrh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0twu3"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojoxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_omxrh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EXSpear_equip" type="Area2D" unique_id=241584314]
+collision_mask = 0
+script = ExtResource("1_tpwxy")
+equip_icon = ExtResource("2_tpwxy")
+equip_id = "EXSpear"
+projectile = ExtResource("3_t54bf")
+equip_tooltip = "EX-spear"
+interact_name = "EX-spear"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
+shape = SubResource("CircleShape2D_qqy2x")
+
+[node name="Interactable" parent="." unique_id=918212545 instance=ExtResource("4_nve1j")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1006580381]
+shape = SubResource("CircleShape2D_0twu3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+position = Vector2(-4, 5)
+rotation = -0.7853982
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ojoxv")

@@ -43,9 +43,17 @@ const POOLS := {
 		 "tier": 0, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
 		 "tier": 1, "weight": 10.0},
+		
 		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
+		 "tier": 3, "weight": 10.0},
+		
 		{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
+		 "tier": 3, "weight": 10.0},
+		{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
 		 "tier": 3, "weight": 10.0},
 	]
 }
