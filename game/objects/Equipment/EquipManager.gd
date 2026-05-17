@@ -15,11 +15,13 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 Тир 3- имбовые оружки/имба эквип 
 '''
 
-const POOLS := {
+var POOLS := {
 	"treasure": [
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # сундук
-		 "tier": 0, "weight": 10.0},
-		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
+		{"id": "Jonny_shot", "scene": preload("uid://bwiytmmsxjtk5"), # сундук
+		 "tier": 1, "weight": 10.0},
+		{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
+		 "tier": 3, "weight": 0.0},
+		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 2, "weight": 10.0},
@@ -27,11 +29,15 @@ const POOLS := {
 		 "tier": 3, "weight": 10.0},
 	],
 	"armory": [
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # магазин
-		 "tier": 0, "weight": 10.0},
+		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
+		 "tier": 1, "weight": 10.0},
+		#{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # магазин
+		 #"tier": 1, "weight": 10.0},
+		{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
+		 "tier": 1, "weight": 0.0},
 		
 		{"id": "test_chest", "scene": preload("uid://bgibadaeek4on"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 2, "weight": 10.0},
 		
 		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 2, "weight": 10.0},
@@ -40,8 +46,8 @@ const POOLS := {
 	],
 	"weapon": [
 		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # Оружейный кейс
-		 "tier": 0, "weight": 10.0},
-		{"id": "test_shot", "scene": preload("uid://bhswv1jdia8i8"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
 		
 		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
@@ -49,7 +55,7 @@ const POOLS := {
 		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 3, "weight": 0.0},
 		
 		{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
 		 "tier": 3, "weight": 10.0},
@@ -62,11 +68,14 @@ var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
 	rng.randomize()
+	update_unlocks()
 
 func random_pick(pool_type: String, tiers: Array) -> Dictionary:
+	update_unlocks()
+	
 	# Фильтруем по типу пула и тиру
 	var pool: Array = POOLS.get(pool_type, []).filter(
-		func(e): return e.tier in tiers
+		func(e): return e["tier"] in tiers
 	)
 	if pool.is_empty():
 		return {}
@@ -104,7 +113,7 @@ func roll_enchantment() -> EnchantmentResource:
 	print(e)
 	print(e.get_tooltip_text())
 	
-	if randi() % 100 > 0: #80
+	if randi() % 100 > 80: #80 / 0
 		return e
 	return null
 
@@ -114,7 +123,7 @@ func spawn(pool_type: String, tiers: Array, pos: Vector2, cost: int = -1) -> voi
 		print("No equipment for pool:", pool_type, " tiers:", tiers)
 		return
 
-	var inst = equipment.scene.instantiate()
+	var inst = equipment["scene"].instantiate()
 	inst.position = pos
 	if inst.type == 'weapon':
 		inst.enchantment = roll_enchantment()
@@ -131,8 +140,8 @@ func spawn(pool_type: String, tiers: Array, pos: Vector2, cost: int = -1) -> voi
 func certain_spawn(id: String, pos: Vector2, enchantment: EnchantmentResource = null) -> void:
 	for pool in POOLS.values():
 		for equipment in pool:
-			if equipment.id == id:
-				var inst = equipment.scene.instantiate()
+			if equipment["id"] == id:
+				var inst = equipment["scene"].instantiate()
 				inst.position = pos
 				inst.cost = 0
 				if enchantment:
@@ -141,3 +150,16 @@ func certain_spawn(id: String, pos: Vector2, enchantment: EnchantmentResource = 
 					inst.effect_off()
 				get_tree().current_scene.add_child(inst)
 				return
+
+
+func update_unlocks() -> void:
+	var unlocked = AchievementManager.achievements["bad_spear_kills"]["unlocked"]
+	
+	for pool_name in POOLS.keys():
+		var pool = POOLS[pool_name]
+		for equipment in pool:
+			if equipment["id"] == "EXSpear":
+				equipment["weight"] = 10.0 if unlocked else 0.0
+				
+	
+	

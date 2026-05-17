@@ -1,8 +1,8 @@
-﻿[gd_scene format=3 uid="uid://dwqy4pk0blosi"]
+[gd_scene format=3 uid="uid://dwqy4pk0blosi"]
 
-[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/weapon/_equip/BaseShot_equip.gd" id="1_tpwxy"]
-[ext_resource type="Texture2D" uid="uid://x30namew1orx" path="res://image/equip/weapon/SpearEX_equip.png" id="2_tpwxy"]
-[ext_resource type="PackedScene" uid="uid://btyptmeihg371" path="res://game/objects/Equipment/weapon/scene/SpearEX.tscn" id="3_t54bf"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_ibnpk"]
+[ext_resource type="Texture2D" uid="uid://x30namew1orx" path="res://image/equip/weapon/SpearEX_equip.png" id="2_csgex"]
+[ext_resource type="PackedScene" uid="uid://btyptmeihg371" path="res://game/objects/Equipment/Weapon/scene/SpearEX.tscn" id="3_b5g8e"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_nve1j"]
 [ext_resource type="Texture2D" uid="uid://0y7um10qlovh" path="res://image/effect_sprites/weapon_effects/SpearEX4.png" id="5_omxrh"]
 
@@ -25,10 +25,10 @@ animations = [{
 
 [node name="EXSpear_equip" type="Area2D" unique_id=241584314]
 collision_mask = 0
-script = ExtResource("1_tpwxy")
-equip_icon = ExtResource("2_tpwxy")
+script = ExtResource("1_ibnpk")
+equip_icon = ExtResource("2_csgex")
 equip_id = "EXSpear"
-projectile = ExtResource("3_t54bf")
+projectile = ExtResource("3_b5g8e")
 equip_tooltip = "EX-spear"
 interact_name = "EX-spear"
 

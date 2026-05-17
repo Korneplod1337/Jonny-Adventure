@@ -1,6 +1,6 @@
-﻿[gd_scene format=3 uid="uid://d3qsudothx22b"]
+[gd_scene format=3 uid="uid://d3qsudothx22b"]
 
-[ext_resource type="Script" uid="uid://bjwmgr4kycef8" path="res://game/objects/Equipment/weapon/scene/spear.gd" id="1_h3lk2"]
+[ext_resource type="Script" uid="uid://bjwmgr4kycef8" path="res://game/objects/Equipment/Weapon/scene/spear.gd" id="1_h3lk2"]
 [ext_resource type="Texture2D" uid="uid://cwhoswgj6l8pi" path="res://image/effect_sprites/weapon_effects/Spear1.png" id="2_top30"]
 [ext_resource type="Texture2D" uid="uid://du484hex8o57d" path="res://image/effect_sprites/weapon_effects/Spear2.png" id="3_tsb6h"]
 [ext_resource type="Texture2D" uid="uid://bnygwcvqftt4w" path="res://image/effect_sprites/weapon_effects/Spear3.png" id="4_1a564"]

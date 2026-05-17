@@ -1,6 +1,6 @@
-﻿[gd_scene format=3 uid="uid://btyptmeihg371"]
+[gd_scene format=3 uid="uid://btyptmeihg371"]
 
-[ext_resource type="Script" uid="uid://fca7kol6tutu" path="res://game/objects/Equipment/weapon/scene/spearEX.gd" id="1_25hft"]
+[ext_resource type="Script" uid="uid://fca7kol6tutu" path="res://game/objects/Equipment/Weapon/scene/spearEX.gd" id="1_25hft"]
 [ext_resource type="Texture2D" uid="uid://db6qo24vce00r" path="res://image/effect_sprites/weapon_effects/SpearEX1.png" id="2_25hft"]
 [ext_resource type="Texture2D" uid="uid://cqcvy83xs2q2j" path="res://image/effect_sprites/weapon_effects/SpearEX2.png" id="3_vcsq7"]
 [ext_resource type="Texture2D" uid="uid://c0o5qpb174klj" path="res://image/effect_sprites/weapon_effects/SpearEX3.png" id="4_1vbu1"]

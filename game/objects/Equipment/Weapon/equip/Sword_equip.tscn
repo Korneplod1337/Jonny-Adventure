@@ -1,9 +1,9 @@
-﻿[gd_scene format=3 uid="uid://dke6t1j0r80ny"]
+[gd_scene format=3 uid="uid://dke6t1j0r80ny"]
 
-[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/weapon/_equip/BaseShot_equip.gd" id="1_ymej7"]
-[ext_resource type="Texture2D" uid="uid://dh6plw0xhnj7r" path="res://image/equip/weapon/sword_equip.png" id="2_hf0ea"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_xjqbx"]
+[ext_resource type="Texture2D" uid="uid://dh6plw0xhnj7r" path="res://image/equip/weapon/sword_equip.png" id="2_70gwx"]
 [ext_resource type="Texture2D" uid="uid://dehf5rlq2xh0x" path="res://image/effect_sprites/weapon_effects/sword1.png" id="2_ymej7"]
-[ext_resource type="PackedScene" uid="uid://didc6fkb0fgjo" path="res://game/objects/Equipment/weapon/scene/Sword.tscn" id="3_m2e6i"]
+[ext_resource type="PackedScene" uid="uid://didc6fkb0fgjo" path="res://game/objects/Equipment/Weapon/scene/Sword.tscn" id="3_xo03t"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_8lxy5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
@@ -25,10 +25,10 @@ animations = [{
 
 [node name="Sword_equip" type="Area2D" unique_id=241584314]
 collision_mask = 0
-script = ExtResource("1_ymej7")
-equip_icon = ExtResource("2_hf0ea")
+script = ExtResource("1_xjqbx")
+equip_icon = ExtResource("2_70gwx")
 equip_id = "Sword"
-projectile = ExtResource("3_m2e6i")
+projectile = ExtResource("3_xo03t")
 equip_tooltip = "Sword"
 interact_name = "sword"
 

@@ -1,8 +1,8 @@
-﻿[gd_scene format=3 uid="uid://clqoo37e0j35j"]
+[gd_scene format=3 uid="uid://clqoo37e0j35j"]
 
-[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/weapon/_equip/BaseShot_equip.gd" id="1_ivsho"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_e5ydc"]
 [ext_resource type="Texture2D" uid="uid://p26708rh65t2" path="res://image/equip/weapon/pistol.png" id="2_fro2o"]
-[ext_resource type="PackedScene" uid="uid://dxohwm4smvnn4" path="res://game/objects/Equipment/weapon/scene/BaseBullet.tscn" id="3_ivsho"]
+[ext_resource type="PackedScene" uid="uid://dxohwm4smvnn4" path="res://game/objects/Equipment/Weapon/scene/BaseBullet.tscn" id="3_g68qo"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_igyj1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
@@ -24,11 +24,11 @@ animations = [{
 
 [node name="JonnyShot" type="Area2D" unique_id=241584314]
 collision_mask = 0
-script = ExtResource("1_ivsho")
+script = ExtResource("1_e5ydc")
 equip_icon = ExtResource("2_fro2o")
 equip_id = "Base_Gun"
-projectile = ExtResource("3_ivsho")
-equip_tooltip = "Base gun"
+projectile = ExtResource("3_g68qo")
+equip_tooltip = "Base Gun"
 interact_name = "pistol"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]

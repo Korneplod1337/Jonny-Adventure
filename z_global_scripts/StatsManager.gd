@@ -11,13 +11,15 @@ var stats = {
 	"visited_shops": 	{"value": 0.0, "disc": "Shops u entered"},
 	"shop_loyalty": 		{"value": 0.0, "disc": "Sherochka's loyalty"},
 	"armory_loyalty": 	{"value": 0.0, "disc": "Pepyaka's loyalty"},
+	"Mega_crit": 		{"value": 0.0, "disc": "Count of megacrits"},
+	"bad_spear_kills": 	{"value": 0.0, "disc": "Kills by weak spear"},
 }
 signal stat_changed(stat_name: String, new_value: float)
 
-func _ready():
+func _ready() -> void:
 	load_statistic()
 
-func load_statistic():
+func load_statistic() -> void:
 	var config = ConfigFile.new()
 	if config.load(SAVE_PATH) == OK:
 		for key in stats.keys():
@@ -26,14 +28,14 @@ func load_statistic():
 
 
 
-func save_statistic():
+func save_statistic() -> void:
 	var config = ConfigFile.new()
 	for key in stats.keys():
 		config.set_value("stats", key, stats[key]["value"])
 	config.save(SAVE_PATH)
 
-func add_statistic_progress(key: String, value: float):
-	#return
+func add_statistic_progress(key: String, value: float) -> void:
+	return
 	if stats.has(key):
 		stats[key]["value"] += value
 		stat_changed.emit(key, stats[key]["value"])

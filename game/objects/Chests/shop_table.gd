@@ -9,4 +9,7 @@ func _ready() -> void:
 		'shop':
 			ItemManager.spawn(pool, tier, self.global_position + Vector2(0, -20), cost)
 		'armory':
-			EquipManager.spawn(pool, tier, self.global_position + Vector2(0, -20), cost)
+			if tier == [0]:
+				ItemManager.spawn(pool, tier, self.global_position + Vector2(0, -20), cost)
+			else:
+				EquipManager.spawn(pool, tier, self.global_position + Vector2(0, -20), cost)

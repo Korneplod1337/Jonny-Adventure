@@ -39,7 +39,7 @@ var test_chest := false
 ]
 
 func random_level_bufs() -> void:
-	if randi() % 100 > 50:
+	if randi() % 100 > 70:
 		level_bufs[1][1] = true
 		#level_bufs[randi() % len(level_bufs)][1] = true
 

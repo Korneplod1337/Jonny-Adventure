@@ -21,13 +21,22 @@ var achievements = {
 	
 	"armory_loyality": {"name": "Pepyaka's friend", "desc": "up armory loyality to max", 
 	"progress": 0, "goal": 100, "unlocked": false,
-	"unlocked_icon": "", "popup_window": ""},
+	"unlocked_icon": "", "popup_window": ""},   # !!!!!!!!
 	
 	"name": {"name": "Alpha test", "desc": "Survive until game released", 
 	"progress": 0, "goal": 1, "unlocked": false,
 	"unlocked_icon": "", "popup_window": ""},
 	
+	"Mega_crit": {"name": "Mega Crit", "desc": "Roll five-x critical shot", 
+	"progress": 0, "goal": 1, "unlocked": false,
+	"unlocked_icon": 'res://image/achievements/menu_achiv/mega_crit.png', "popup_window": "res://image/achievements/hud_achiv/mega_crrit_hud.png"},
+	
+	"bad_spear_kills": {"name": "Spear!", "desc": "hit enemy by weak spear", 
+	"progress": 0, "goal": 2, "unlocked": false,
+	"unlocked_icon": 'res://image/achievements/menu_achiv/Spear_unlock.png', "popup_window": "res://image/achievements/hud_achiv/Spear_unlock_hud.png"},
+	
 	}
+	
 	
 var stat_to_achievements = {
 	"kills": ["first_kill"],
@@ -35,6 +44,9 @@ var stat_to_achievements = {
 	"items_equipped": ["first_item"],
 	"shop_loyalty": ["shop_loyality"],
 	"armory_loyality": ["armory_loyality"],
+	"Mega_crit": ["Mega_crit"],
+	"bad_spear_kills": ["bad_spear_kills"],
+	#"Mega_crit": ["Mega_crit"],
 }
 
 signal achievement_unlocked(data: String)
@@ -57,13 +69,13 @@ func check_achievement(key: String, stat_value: float):
 		achievement_unlocked.emit(data)
 		save_achievements()
 
-func load_achievements():
+func load_achievements() -> void:
 	var config = ConfigFile.new()
 	if config.load(SAVE_PATH) != OK: return
 	for key in achievements.keys():
 		achievements[key]["unlocked"] = config.get_value("achievements", key + "_unlocked", false)
 
-func save_achievements():
+func save_achievements() -> void:
 	var config = ConfigFile.new()
 	for key in achievements.keys():
 		config.set_value("achievements", key + "_unlocked", achievements[key]["unlocked"])

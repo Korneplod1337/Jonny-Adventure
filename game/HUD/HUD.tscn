@@ -847,7 +847,7 @@ scale = Vector2(2, 2)
 centered = false
 
 [node name="achiv_timer" type="Timer" parent="HUD/Achivements" unique_id=895284252]
-wait_time = 4.0
+wait_time = 6.0
 one_shot = true
 
 [connection signal="timeout" from="HUD/Effect/Effect_timer" to="." method="_on_effect_timer_timeout"]

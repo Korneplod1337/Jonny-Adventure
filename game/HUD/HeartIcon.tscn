@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://basguvogwyxpl"]
+[gd_scene format=3 uid="uid://basguvogwyxpl"]
 
 [ext_resource type="Texture2D" uid="uid://15hlpa8yftmc" path="res://image/interface/HUD/Сердца/blackH2.png" id="1_exdr0"]
 [ext_resource type="Texture2D" uid="uid://c7222ss5icdd7" path="res://image/interface/HUD/Сердца/blackH1.png" id="2_echqx"]
@@ -69,7 +69,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="HeartIcon" type="Control"]
+[node name="HeartIcon" type="Control" unique_id=1550479529]
 custom_minimum_size = Vector2(35, 70)
 layout_mode = 3
 anchor_right = 0.031
@@ -80,7 +80,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1196885323]
 position = Vector2(24, 38)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_feigw")

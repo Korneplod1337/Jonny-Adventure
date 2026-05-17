@@ -20,7 +20,7 @@ var enchantment: EnchantmentResource
 
 func _ready() -> void:
 	animaited_speed = GameState.animated_world_speed
-	var player := get_tree().get_first_node_in_group("player")
+	#var player := get_tree().get_first_node_in_group("player")
 	rotation = direction.angle()
 
 func _physics_process(delta):

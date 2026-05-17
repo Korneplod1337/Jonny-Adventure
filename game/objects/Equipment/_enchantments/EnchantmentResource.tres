@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" uid="uid://cfyjbfu5fwkwj" path="res://game/objects/Equipment/_enchantments/EnchantmentResource.gd" id="1_ss1h0"]
 
-
 [resource]
 script = ExtResource("1_ss1h0")

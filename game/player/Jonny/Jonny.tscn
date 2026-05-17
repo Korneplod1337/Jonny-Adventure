@@ -131,6 +131,7 @@ position = Vector2(0.99999994, 0)
 scale = Vector2(1.9, 1.9)
 collision_mask = 23
 script = ExtResource("1_fwoqh")
+hit_points_level = 2.0
 luck_level = 2.0
 magic_level = 2.0
 damage_level = 2.0

@@ -15,28 +15,28 @@ var DEFAULT_PICK := ["hpup"]
 '''
 
 # Пулы предметов
-const POOLS := {
+var POOLS := {
 	"treasure": [
-		{"id": "heal", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 0},
-		{"id": "hpup", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
-		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
-		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 3},
-		{"id": "cool_ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 4}
+		{"id": "heal", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 0},
+		{"id": "hpup", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 1},
+		{"id": "shield", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 2},
+		{"id": "ring", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 3},
+		{"id": "cool_ring", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 4}
 	],
 	"shop": [
 		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0},
 		
-		{"id": "hpup", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
-		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
-		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 3},
-		{"id": "cool_ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 4},
+		{"id": "hpup", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 1},
+		{"id": "shield", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 2},
+		{"id": "ring", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 3},
+		{"id": "cool_ring", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 4},
 	],
 	"chest": [
-		{"id": "heal", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 0},
-		{"id": "hpup", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 1},
-		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
-		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 3},
-		{"id": "cool_ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 4},
+		{"id": "heal", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 0},
+		{"id": "hpup", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 1},
+		{"id": "shield", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 2},
+		{"id": "ring", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 3},
+		{"id": "cool_ring", "scene": preload("res://game/objects/items/Item.tscn"), "tier": 4},
 	],
 	"armory": [
 		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0}

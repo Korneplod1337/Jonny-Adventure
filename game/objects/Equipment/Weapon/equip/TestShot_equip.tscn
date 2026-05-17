@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dyq3vlj4jlml5"]
+
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_qcawo"]
+[ext_resource type="Texture2D" uid="uid://cxel76tem1o83" path="res://image/equip/weapon/alt_Spit_bullet.png" id="2_bqapk"]
+[ext_resource type="PackedScene" uid="uid://bhfqxrdvcm408" path="res://game/objects/Equipment/Weapon/scene/TestShot.tscn" id="3_h44u8"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_vuclf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqatu"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwcm1"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oqfxe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bqapk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TestShot" type="Area2D" unique_id=652461765]
+collision_mask = 0
+script = ExtResource("1_qcawo")
+equip_icon = ExtResource("2_bqapk")
+equip_id = "test_shot"
+projectile = ExtResource("3_h44u8")
+equip_tooltip = "Test weapon"
+interact_name = "test weapon"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=615229045]
+shape = SubResource("CircleShape2D_hqatu")
+
+[node name="Interactable" parent="." unique_id=1597460607 instance=ExtResource("4_vuclf")]
+interact_name = "Swap weapon2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=2049084370]
+shape = SubResource("CircleShape2D_iwcm1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1909338811]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_oqfxe")
