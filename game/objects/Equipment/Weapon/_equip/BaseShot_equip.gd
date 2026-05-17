@@ -1,5 +1,6 @@
-class_name BaseShot_equip
 extends Area2D
+class_name BaseShot_equip
+
 @onready var interactable: Area2D = $Interactable
 @export var equip_icon: Texture2D: set = _set_equip_icon  # иконка для инвентаря
 @export var equip_id: String = 'Jonny_shot'

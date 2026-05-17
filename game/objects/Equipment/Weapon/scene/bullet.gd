@@ -100,6 +100,8 @@ func _get_damage_with_crits() -> int:
 			total_crit += crit_bonus
 			chance -= 0.2
 			print('crit! ', crit_sprite)
+			if crit_sprite == 4:
+				StatsManager.add_statistic_progress("Mega_crit", 1)
 		else:
 			break
 

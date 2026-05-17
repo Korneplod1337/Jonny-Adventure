@@ -23,3 +23,15 @@ func _on_frame_changed() -> void:
 			col_shape.position = Vector2(48+42, 0)
 		6: 
 			col_shape.position = Vector2(42+42, 0)
+
+
+func _on_body_entered(body: Node) -> void:
+	if exploded:
+		return
+	if body.name == "Player":
+		return
+	if body.has_method("hit"):
+		body.hit(damage * self_damage_multiplier)
+		if enchantment:
+			enchantment.apply_on_hit(body, (body.global_position - global_position).normalized())
+		
