@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ywfb4cg1rk1u"]
+﻿[gd_scene format=3 uid="uid://ywfb4cg1rk1u"]
 
-[ext_resource type="Script" uid="uid://hlras5a2umwl" path="res://game/objects/items/ItemLvlupRandom.gd" id="1_fin6f"]
+[ext_resource type="Script" uid="uid://hlras5a2umwl" path="res://game/objects/Items/ItemLvlupRandom.gd" id="1_fin6f"]
 [ext_resource type="Texture2D" uid="uid://7fhc16cg2h05" path="res://image/items/items_hud/LevelupHP.png" id="3_t7ebr"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_bigru"]
 [ext_resource type="Texture2D" uid="uid://dus878il2v07n" path="res://image/items/items_hud/LevelupLuck.png" id="4_oy1dd"]

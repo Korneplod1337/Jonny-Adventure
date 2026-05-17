@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dxohwm4smvnn4"]
+﻿[gd_scene format=3 uid="uid://dxohwm4smvnn4"]
 
-[ext_resource type="Script" uid="uid://ckprl4uxfjr7r" path="res://game/objects/equipment/weapon/scene/bullet.gd" id="1_otytm"]
+[ext_resource type="Script" uid="uid://ckprl4uxfjr7r" path="res://game/objects/Equipment/weapon/scene/bullet.gd" id="1_otytm"]
 [ext_resource type="Texture2D" uid="uid://dnme0xaahn8ig" path="res://image/effect_sprites/weapon_effects/shot_bullet_kills1.png" id="2_crsvh"]
 [ext_resource type="Texture2D" uid="uid://vk1iy0vcdyh2" path="res://image/effect_sprites/weapon_effects/shot_bullet_kills2.png" id="3_b340n"]
 [ext_resource type="Texture2D" uid="uid://4560yaxovs8" path="res://image/effect_sprites/crit/crit1.png" id="3_cy1e0"]

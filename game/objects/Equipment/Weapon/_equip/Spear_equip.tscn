@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://d153rj7fiouha"]
+﻿[gd_scene format=3 uid="uid://d153rj7fiouha"]
 
-[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/equipment/weapon/_equip/BaseShot_equip.gd" id="1_l1nbd"]
-[ext_resource type="PackedScene" uid="uid://d3qsudothx22b" path="res://game/objects/equipment/weapon/scene/Spear.tscn" id="3_mwlje"]
+[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/weapon/_equip/BaseShot_equip.gd" id="1_l1nbd"]
+[ext_resource type="PackedScene" uid="uid://d3qsudothx22b" path="res://game/objects/Equipment/weapon/scene/Spear.tscn" id="3_mwlje"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_ffnto"]
 [ext_resource type="Texture2D" uid="uid://cwhoswgj6l8pi" path="res://image/effect_sprites/weapon_effects/Spear1.png" id="5_e7qfi"]
 [ext_resource type="Texture2D" uid="uid://c0522hbal5blh" path="res://image/equip/weapon/Spear_equip.png" id="5_l1nbd"]

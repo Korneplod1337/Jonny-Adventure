@@ -37,7 +37,10 @@ const POOLS := {
 		{"id": "shield", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 2},
 		{"id": "ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 3},
 		{"id": "cool_ring", "scene": preload("res://game/objects/Items/Item.tscn"), "tier": 4},
-	]
+	],
+	"armory": [
+		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0}
+	],
 }
 
 var rng := RandomNumberGenerator.new()

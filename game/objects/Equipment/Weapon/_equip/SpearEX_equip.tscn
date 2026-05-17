@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dwqy4pk0blosi"]
+﻿[gd_scene format=3 uid="uid://dwqy4pk0blosi"]
 
-[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/equipment/weapon/_equip/BaseShot_equip.gd" id="1_tpwxy"]
+[ext_resource type="Script" uid="uid://ba6tknds124ko" path="res://game/objects/Equipment/weapon/_equip/BaseShot_equip.gd" id="1_tpwxy"]
 [ext_resource type="Texture2D" uid="uid://x30namew1orx" path="res://image/equip/weapon/SpearEX_equip.png" id="2_tpwxy"]
-[ext_resource type="PackedScene" uid="uid://btyptmeihg371" path="res://game/objects/equipment/weapon/scene/SpearEX.tscn" id="3_t54bf"]
+[ext_resource type="PackedScene" uid="uid://btyptmeihg371" path="res://game/objects/Equipment/weapon/scene/SpearEX.tscn" id="3_t54bf"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_nve1j"]
 [ext_resource type="Texture2D" uid="uid://0y7um10qlovh" path="res://image/effect_sprites/weapon_effects/SpearEX4.png" id="5_omxrh"]
 
