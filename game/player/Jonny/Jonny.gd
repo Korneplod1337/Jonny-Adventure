@@ -1,6 +1,19 @@
 extends CharacterBody2D
 var ST = StatManager
 
+@onready var head_sprite: AnimatedSprite2D = $Head
+@onready var chest_sprite: AnimatedSprite2D = $Chest
+@onready var boots_sprite: AnimatedSprite2D = $Boots
+@onready var body_parts := [
+	$AnimatedSprite2D,
+	$Chest,
+	$Boots
+]
+@onready var head_parts := [
+	$AnimatedShot,
+	$Head
+]
+
 @onready var hp_list := {
 	"red": max(0, StatManager.get_stat(self, 'hp')),
 	"green": 0,
@@ -62,8 +75,8 @@ var animated_speed := 1
 
 func _ready() -> void:
 	$AnimatedSprite2D.play()
-	_emit_stats_changed()
-	 # Вызвать это когда меняем стат
+	_emit_stats_changed()	 # Вызвать это когда меняем стат
+	update_equipment_visuals()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("button_K"):
@@ -104,27 +117,81 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	now_move_direction = get_real_velocity()
 	
-	if (now_move_direction.x < 1 and now_move_direction.x > -1) \
-	and (now_move_direction.y < 1 and now_move_direction.y > -1):
-		$AnimatedSprite2D.animation = "afk_default"
-		if last_move_dir > 0:
-			$AnimatedShot.animation = "down"
+# =========================
+# BODY ANIMATION
+	if velocity.length() < 1:
+		play_body("afk_default")
+	else:
+		if abs(velocity.x) < abs(velocity.y):
+			if velocity.y < 0:
+				play_body("walk_up")
+			else:
+				play_body("walk_down")
+			last_move_dir = velocity.y
 		else:
-			$AnimatedShot.animation = "up"
-	elif velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk_h"
-		$AnimatedShot.animation = "right"
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-		if velocity.x < 0:
-			$AnimatedShot.animation = "left"
-	elif velocity.y != 0:
-		if velocity.y < 0:
-			$AnimatedSprite2D.animation = "walk_up"
-			$AnimatedShot.animation = "up"
+			play_body("walk_h")
+			flip_body(velocity.x < 0)
+# =========================
+# HEAD ANIMATION
+	shot_direction = Input.get_vector(
+		"fire_left",
+		"fire_right",
+		"fire_up",
+		"fire_down"
+	)
+	shooting = shot_direction != Vector2.ZERO
+	# Если стреляем — смотрим туда
+	if shooting:
+		if abs(shot_direction.x) > abs(shot_direction.y):
+			if shot_direction.x < 0:
+				play_head("left")
+			else:
+				play_head("right")
 		else:
-			$AnimatedSprite2D.animation = "walk_down"
-			$AnimatedShot.animation = "down"
-		last_move_dir = now_move_direction.y
+			if shot_direction.y < 0:
+				play_head("up")
+			else:
+				play_head("down")
+	# Если НЕ стреляем — смотрим по движению
+	else:
+		if velocity.length() < 1:
+			if last_move_dir > 0:
+				play_head("down")
+			else:
+				play_head("up")
+		else:
+			if abs(velocity.x) >= abs(velocity.y):
+				if velocity.x < 0:
+					play_head("left")
+				else:
+					play_head("right")
+			else:
+				if velocity.y < 0:
+					play_head("up")
+				else:
+					play_head("down")
+	
+	#if (now_move_direction.x < 1 and now_move_direction.x > -1) \
+	#and (now_move_direction.y < 1 and now_move_direction.y > -1):
+		#$AnimatedSprite2D.animation = "afk_default"
+		#if last_move_dir > 0:
+			#$AnimatedShot.animation = "down"
+		#else:
+			#$AnimatedShot.animation = "up"
+	#elif velocity.x != 0:
+		#$AnimatedSprite2D.animation = "walk_h"
+		#$AnimatedShot.animation = "right"
+		#$AnimatedSprite2D.flip_h = velocity.x < 0
+		#if velocity.x < 0:
+			#$AnimatedShot.animation = "left"
+	#elif velocity.y != 0:
+		#if velocity.y < 0:
+			#$AnimatedSprite2D.animation = "walk_up"
+			#$AnimatedShot.animation = "up"
+		#else:
+			#$AnimatedSprite2D.animation = "walk_down"
+			#$AnimatedShot.animation = "down"
+		#last_move_dir = now_move_direction.y
 	
 	# Анимации стрельбы
 	shot_direction = Input.get_vector("fire_left", "fire_right", "fire_up", "fire_down")
@@ -132,7 +199,7 @@ func _process(delta: float) -> void:
 	if shooting:
 		var anim_dir = "left" if shot_direction.x < 0 else "right" if shot_direction.x > 0\
 		 else "up" if shot_direction.y < 0 else "down"
-		$AnimatedShot.play(anim_dir)
+		play_head(anim_dir)
 	
 	# Уход на перезарядку
 	if can_shoot and shooting:
@@ -142,6 +209,35 @@ func _process(delta: float) -> void:
 		animated_speed = GameState.animated_world_speed
 		$AnimatedSprite2D.speed_scale = animated_speed
 
+func play_body(anim: String):
+	for p in body_parts:
+		p.play(anim)
+func flip_body(state: bool):
+	for p in body_parts:
+		p.flip_h = state
+func play_head(anim: String):
+	for p in head_parts:
+		p.play(anim)
+
+func update_equipment_visuals():
+	# HEAD
+	if head_id != "":
+		head_sprite.sprite_frames = EquipManager.equip_visuals[head_id]
+		head_sprite.visible = true
+	else:
+		head_sprite.visible = false
+	# CHEST
+	if chest_id != "":
+		chest_sprite.sprite_frames = EquipManager.equip_visuals[chest_id]
+		chest_sprite.visible = true
+	else:
+		chest_sprite.visible = false
+	# BOOTS
+	if boots_id != "":
+		boots_sprite.sprite_frames = EquipManager.equip_visuals[boots_id]
+		boots_sprite.visible = true
+	else:
+		boots_sprite.visible = false
 
 # ЗДОРОВЬЕ
 func take_damage(phy_damage: int = 0,

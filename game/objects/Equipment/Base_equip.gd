@@ -41,18 +41,21 @@ func _on_interact():
 				EquipManager.certain_spawn(player.chest_id, self.global_position)
 				#player.global_position
 			player.chest_id = equip_id
+			player.update_equipment_visuals()
 			hud_slot = hud.ChestSlot
 		'boots':
 			if player.boots_id:
 				EquipManager.certain_spawn(player.boots_id, self.global_position)
 				#player.global_position
 			player.boots_id = equip_id
+			player.update_equipment_visuals()
 			hud_slot = hud.BootsSlot
 		'head':
 			if player.head_id:
 				EquipManager.certain_spawn(player.head_id, self.global_position)
 				#player.global_position
 			player.head_id = equip_id
+			player.update_equipment_visuals()
 			hud_slot = hud.HeadSlot
 	
 	equip_taken.emit()
@@ -65,11 +68,9 @@ func _on_interact():
 func _set_equip_icon(new_icon: Texture2D):
 	equip_icon = new_icon
 
-
 func effect_on() -> void:
 	print('empty effect on')
 	pass
-
 
 func effect_off() -> void:
 	print('empty effect off')

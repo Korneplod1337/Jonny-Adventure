@@ -126,6 +126,75 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm61y"]
 size = Vector2(20, 24.054054)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4d6h"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fm61y"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"afk_default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_h",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3pvxu"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"afk_default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_h",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=2016157039 groups=["player"]]
 position = Vector2(0.99999994, 0)
 scale = Vector2(1.9, 1.9)
@@ -147,7 +216,7 @@ scale = Vector2(0.9999998, 0.9999998)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=222282461]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_g617h")
-animation = &"afk_default"
+animation = &"walk_down"
 
 [node name="AnimatedShot" type="AnimatedSprite2D" parent="." unique_id=2140154797]
 z_index = 1
@@ -169,6 +238,19 @@ limit_smoothed = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1105773883]
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_fm61y")
+
+[node name="Head" type="AnimatedSprite2D" parent="." unique_id=436909774]
+position = Vector2(0, -35)
+sprite_frames = SubResource("SpriteFrames_h4d6h")
+animation = &"right"
+
+[node name="Chest" type="AnimatedSprite2D" parent="." unique_id=845721799]
+sprite_frames = SubResource("SpriteFrames_fm61y")
+animation = &"walk_h"
+
+[node name="Boots" type="AnimatedSprite2D" parent="." unique_id=13519053]
+sprite_frames = SubResource("SpriteFrames_3pvxu")
+animation = &"afk_default"
 
 [connection signal="timeout" from="immune_Timer" to="." method="_on_immune_timer_timeout"]
 [connection signal="timeout" from="shot_Timer" to="." method="_on_shot_timer_timeout"]

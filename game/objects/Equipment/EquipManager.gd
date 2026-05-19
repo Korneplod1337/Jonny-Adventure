@@ -64,6 +64,21 @@ var POOLS := {
 	]
 }
 
+
+var equip_visuals := {
+	# HEAD
+	"test_chest1":
+		preload("uid://bupakre411yu6"),
+	"test_chest2":
+		preload("uid://bupakre411yu6"),
+	# CHEST
+	"test_chest":
+		preload("uid://bupakre411yu6"),
+	# BOOTS
+	"test_chest3":
+		preload("uid://bupakre411yu6"),
+}
+
 var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
