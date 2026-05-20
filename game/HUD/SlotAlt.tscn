@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://pl317cum6l7a"]
 
-[ext_resource type="Script" uid="uid://dnatxjwmr4ssc" path="res://game/HUD/slot.gd" id="1_blh3v"]
+[ext_resource type="Script" uid="uid://bv384qvqyn0dt" path="res://game/HUD/slotAlt.gd" id="1_blh3v"]
 [ext_resource type="Theme" uid="uid://c626wtnojhto8" path="res://image/interface/new_theme.tres" id="2_7l738"]
 [ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="3_rcop1"]
 

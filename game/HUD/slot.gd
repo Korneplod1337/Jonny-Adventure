@@ -41,21 +41,13 @@ func _on_hover():
 	tooltip_panel.visible = true
 	tooltip_panel.global_position = global_position + Vector2(-tooltip_panel.size.x * 2, 0)
 	set_tooltip(_pending_tooltip)
+	# await get_tree().process_frame
 
-	await get_tree().process_frame
-
-	# Берём размер именно вьюпорта, а не окна
-	var viewport_size: Vector2 = get_viewport().get_visible_rect().size  # вместо DisplayServer.window_get_size()[web:11]
-
-	# Считаем «низ» тултипа
+	var viewport_size: Vector2 = get_viewport().get_visible_rect().size 
 	var tooltip_bottom := tooltip_panel.global_position.y + tooltip_panel.size.y + 150
-
-	# Если вылезли за низ вьюпорта — поднимаем на величину перелёта
 	var overflow := tooltip_bottom - viewport_size.y
 	if overflow > 0:
 		tooltip_panel.global_position.y -= overflow
 
 func _off_hover():
 	tooltip_panel.visible = false
-	#tooltip_panel.offset_top = 0
-	#tooltip_panel.offset_bottom = 0

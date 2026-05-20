@@ -182,10 +182,10 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var items_scroll: ScrollContainer = $HUD/InventoryList/ItemsScroll
 
 @onready var equip_panel: Panel = $HUD/EquipPanel
-@onready var HeadSlot: InventorySlot = $HUD/EquipPanel/HeadSlot/Slot
-@onready var ChestSlot: InventorySlot = $HUD/EquipPanel/ChestSlot/Slot
-@onready var WeaponSlot: InventorySlot = $HUD/EquipPanel/WeaponSlot/Slot
-@onready var BootsSlot: InventorySlot = $HUD/EquipPanel/BootsSlot/Slot
+@onready var HeadSlot: InventorySlotAlt = $HUD/EquipPanel/HeadSlot/Slot
+@onready var ChestSlot: InventorySlotAlt = $HUD/EquipPanel/ChestSlot/Slot
+@onready var WeaponSlot: InventorySlotAlt = $HUD/EquipPanel/WeaponSlot/Slot
+@onready var BootsSlot: InventorySlotAlt = $HUD/EquipPanel/BootsSlot/Slot
 
 
 @onready var death_menu: Control = $HUD/DeathMenu
