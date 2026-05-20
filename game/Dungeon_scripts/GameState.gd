@@ -25,7 +25,7 @@ func  equip_update(equip: String) -> void:
 			print('equip_update fail!')
 
 var damage_multiplayer := 1.0
-var AlchemistsGlasses := false #больше инфы
+var AlchemistsGlasses := true #больше инфы
 var test_chest := false
 
 
@@ -67,7 +67,7 @@ func obnulenie() -> void:
 	coins = 0
 	"Всё, что обнуляется между играми сюда по идее"
 	damage_multiplayer = 1.0
-	AlchemistsGlasses = false
+	#AlchemistsGlasses = false
 	test_chest = false
 	enemy_ms_multiplier = 1.0
 	enemy_hp_multiplier = 1.0

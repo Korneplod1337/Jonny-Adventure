@@ -86,7 +86,7 @@ func _input(_event: InputEvent) -> void:
 	#if Input.is_action_just_pressed("o"):
 	#	ST.upgrade_stat(self, 'hp', 1)
 	if Input.is_action_just_pressed("i"):
-		ItemManager.spawn("treasure", [1], self.global_position)
+		ItemManager.spawn("treasure", [0], self.global_position)
 
 
 @export var on_ice: bool = true

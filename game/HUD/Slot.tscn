@@ -25,7 +25,6 @@ offset_bottom = 24.0
 scale = Vector2(3, 3)
 
 [node name="ToolTipPanel" type="Panel" parent="." unique_id=965864509]
-visible = false
 z_index = 100
 custom_minimum_size = Vector2(100, 60)
 layout_mode = 1
@@ -40,7 +39,7 @@ layout_mode = 1
 offset_left = 7.25
 offset_top = 6.25
 offset_right = 93.25
-offset_bottom = 77.0
+offset_bottom = 51.25
 theme_override_fonts/font = ExtResource("3_pmhrg")
 theme_override_font_sizes/font_size = 16
 text = "Empty_item"

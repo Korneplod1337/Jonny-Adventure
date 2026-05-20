@@ -20,14 +20,14 @@ func _ready() -> void:
 		interactable.interact_name = 'Take ' + enchant_text + interact_name
 	else:
 		interactable.interact_name = 'Take ' + enchant_text \
-		+ interact_name + ' by %s coins' % ((cost - GS.cost_plus) * GS.cost_multiplier)
+		+ interact_name + ' by %s coins' % ((cost + GS.cost_plus) * GS.cost_multiplier)
 
 func _on_interact():
 	var player = get_tree().get_first_node_in_group("player")
 	if not player: 
 		print('эквип не видит игрока')
 		return
-	if GS.coins < (cost - GS.cost_plus) * GS.cost_multiplier:
+	if GS.coins < (cost + GS.cost_plus) * GS.cost_multiplier:
 		return
 	GS.add_coins((-cost - GS.cost_plus) * GS.cost_multiplier)
 	

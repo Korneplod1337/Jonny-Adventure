@@ -656,6 +656,7 @@ offset_right = 218.0
 offset_bottom = 118.0
 
 [node name="Slot" parent="HUD/EquipPanel/HeadSlot" unique_id=2046426771 instance=ExtResource("89_w87tb")]
+custom_minimum_size = Vector2(88, 88)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -675,6 +676,7 @@ offset_right = 150.0
 offset_bottom = 249.0
 
 [node name="Slot" parent="HUD/EquipPanel/ChestSlot" unique_id=1272873514 instance=ExtResource("89_w87tb")]
+custom_minimum_size = Vector2(88, 88)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -713,6 +715,7 @@ offset_right = 126.0
 offset_bottom = 377.0
 
 [node name="Slot" parent="HUD/EquipPanel/BootsSlot" unique_id=349606862 instance=ExtResource("89_w87tb")]
+custom_minimum_size = Vector2(88, 88)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

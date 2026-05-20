@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://m6oyxodimxew"]
+
+[ext_resource type="Script" uid="uid://c5ygd3qpekbo2" path="res://game/objects/items/scripts/ItemStoryBook.gd" id="1_khpax"]
+[ext_resource type="Texture2D" uid="uid://c1cy83awugxf0" path="res://image/items/items_hud/ItemStoryBook.png" id="2_jvvpq"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_ph536"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[node name="Story book" type="Area2D" unique_id=1430574395]
+collision_layer = 0
+script = ExtResource("1_khpax")
+item_icon = ExtResource("2_jvvpq")
+item_tooltip = "Story book"
+item_tooltip2 = "It seems that after reading this book, it takes me back to my childhood"
+item_id = "storybook"
+effect_power = 0.8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302434300]
+scale = Vector2(2, 2)
+texture = ExtResource("2_jvvpq")
+
+[node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_ph536")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
+shape = SubResource("CircleShape2D_lh7he")

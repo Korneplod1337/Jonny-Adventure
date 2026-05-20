@@ -5,13 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="2_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/enemy test2.tscn" id="4_cjhlh"]
-[ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="5_sejrf"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="7_nbcw0"]
-[ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/items/Item.tscn" id="8_sw7ps"]
+[ext_resource type="PackedScene" uid="uid://duqt5c8r3bui4" path="res://game/objects/items/scenes/Item.tscn" id="8_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.tscn" id="9_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="12_pjn5v"]
 [ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/BaseGun_equip.tscn" id="14_cdchw"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_3rats"]
+[ext_resource type="PackedScene" uid="uid://ywfb4cg1rk1u" path="res://game/objects/items/scenes/ItemLvlupRandom.tscn" id="15_vp6t4"]
+[ext_resource type="PackedScene" uid="uid://m6oyxodimxew" path="res://game/objects/items/scenes/ItemStoryBook.tscn" id="16_n8c84"]
+[ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/ItemHealSmall.tscn" id="16_o7186"]
 [ext_resource type="PackedScene" uid="uid://bgibadaeek4on" path="res://game/objects/Equipment/Chest/test_chest.tscn" id="16_vp6t4"]
 [ext_resource type="PackedScene" uid="uid://d153rj7fiouha" path="res://game/objects/Equipment/Weapon/equip/Spear_equip.tscn" id="17_o7186"]
 
@@ -90,11 +92,8 @@ dir = Vector2(1, 0)
 [node name="EnemyTest2" parent="." unique_id=1789486187 instance=ExtResource("4_cjhlh")]
 position = Vector2(457, -140)
 
-[node name="ShrineTest" parent="." unique_id=2017981582 instance=ExtResource("5_sejrf")]
-position = Vector2(-535, 224)
-
 [node name="Coin" parent="." unique_id=398995973 instance=ExtResource("7_nbcw0")]
-position = Vector2(-402, 211)
+position = Vector2(-22, 36)
 
 [node name="JonnyShot" parent="." unique_id=241584314 instance=ExtResource("9_sw7ps")]
 position = Vector2(-324, -132)
@@ -103,7 +102,7 @@ position = Vector2(-324, -132)
 position = Vector2(357, 71)
 
 [node name="CoinBag" parent="." unique_id=108492217 instance=ExtResource("12_pjn5v")]
-position = Vector2(-316, 221.00002)
+position = Vector2(71, 8)
 
 [node name="JonnyShot2" parent="." unique_id=777621458 instance=ExtResource("15_3rats")]
 position = Vector2(-438, -130)
@@ -116,3 +115,15 @@ position = Vector2(-212, -132)
 
 [node name="Spear_equip" parent="." unique_id=918358518 instance=ExtResource("17_o7186")]
 position = Vector2(-94, -136)
+
+[node name="test_chest" parent="." unique_id=1914859512 instance=ExtResource("16_vp6t4")]
+position = Vector2(13, 158)
+
+[node name="Item LvlUP" parent="." unique_id=1840063494 instance=ExtResource("15_vp6t4")]
+position = Vector2(-180, 7)
+
+[node name="TestItem" parent="." unique_id=1539246569 instance=ExtResource("16_o7186")]
+position = Vector2(209, 63)
+
+[node name="Story book" parent="." unique_id=1164516496 instance=ExtResource("16_n8c84")]
+position = Vector2(185, -30)

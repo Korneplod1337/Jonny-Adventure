@@ -1,13 +1,9 @@
 extends Item
-class_name lvlup
 
 var rand : int
 
 func _ready() -> void:
 	randomize_stat()
-	item_tooltip = "this is strange gem" # текст для инвентаря
-	item_tooltip2 = "this is strange gem" # текст для инвентаря продвинутый
-	item_id = 'lvlup'
 	cost += 3
 	interactable.interact = _on_interact
 	cost = cost * GameState.cost_multiplier

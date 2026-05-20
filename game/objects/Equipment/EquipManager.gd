@@ -17,16 +17,12 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 
 var POOLS := {
 	"treasure": [
-		{"id": "Jonny_shot", "scene": preload("uid://bwiytmmsxjtk5"), # сундук
-		 "tier": 1, "weight": 10.0},
-		{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
-		 "tier": 3, "weight": 0.0},
-		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
-		 "tier": 1, "weight": 10.0},
-		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
+		{"id": "test_chest", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 2, "weight": 10.0},
-		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
-		 "tier": 3, "weight": 10.0},
+		
+		
+		
+		
 	],
 	"armory": [
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
