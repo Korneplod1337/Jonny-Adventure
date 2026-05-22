@@ -17,7 +17,7 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 
 var POOLS := {
 	"treasure": [
-		{"id": "test_chest", "scene": preload("uid://bgibadaeek4on"),
+		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 2, "weight": 10.0},
 		
 		
@@ -68,7 +68,7 @@ var equip_visuals := {
 	"test_chest2":
 		preload("uid://bupakre411yu6"),
 	# CHEST
-	"test_chest":
+	"Death_shield":
 		preload("uid://bupakre411yu6"),
 	# BOOTS
 	"test_chest3":

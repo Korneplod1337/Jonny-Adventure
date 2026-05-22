@@ -70,8 +70,8 @@ func _set_equip_icon(new_icon: Texture2D):
 
 func effect_on() -> void:
 	print('empty effect on')
-	pass
+	
 
 func effect_off() -> void:
 	print('empty effect off')
-	pass
+	

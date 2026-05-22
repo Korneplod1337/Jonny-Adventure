@@ -120,7 +120,10 @@ func _process(delta: float) -> void:
 # =========================
 # BODY ANIMATION
 	if velocity.length() < 1:
-		play_body("afk_default")
+		if last_move_dir > 0:
+			play_body("afk_default")
+		else:
+			play_body("afk_up")
 	else:
 		if abs(velocity.x) < abs(velocity.y):
 			if velocity.y < 0:
@@ -208,6 +211,8 @@ func _process(delta: float) -> void:
 		
 		animated_speed = GameState.animated_world_speed
 		$AnimatedSprite2D.speed_scale = animated_speed
+		$Chest.speed_scale = animated_speed
+		$Boots.speed_scale = animated_speed
 
 func play_body(anim: String):
 	for p in body_parts:
@@ -220,6 +225,8 @@ func play_head(anim: String):
 		p.play(anim)
 
 func update_equipment_visuals():
+	for p in body_parts:
+		p.frame = 0
 	# HEAD
 	if head_id != "":
 		head_sprite.sprite_frames = EquipManager.equip_visuals[head_id]
