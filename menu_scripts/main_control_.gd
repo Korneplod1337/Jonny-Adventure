@@ -46,7 +46,7 @@ func _on_button_stats_pressed() -> void:
 	get_parent().get_parent().get_node('start_menu').hide()
 	get_parent().get_parent().get_node('stats_menu').show()
 	
-	
+
 func _on_button_stats_mouse_entered() -> void:
 	$Button_stats/Select_stats.show()
 func _on_button_stats_mouse_exited() -> void:
@@ -56,3 +56,29 @@ func _on_button_stats_mouse_exited() -> void:
 func _on_button_new_game_pressed() -> void:
 	get_parent().get_parent().get_node('start_menu').hide()
 	get_parent().get_parent().get_node('Char_select_menu').show()
+
+
+@onready var line_edit: LineEdit = $"../LineEdit"
+
+var secret_codes := {
+	"bobrinaya ohota": "achiv",
+	"dlc skin": "skin",
+	"dlc artbook": "artbook"
+}
+
+func _SecretCode_pressed() -> void:
+	var code := line_edit.text.strip_edges().to_lower()
+	if secret_codes.has(code):
+		match secret_codes[code]:
+			"achiv":
+				pass
+			
+			"skin":
+				pass
+			
+			"artbook":
+				pass
+		print("Верный код")
+	
+	else:
+		print("Неверный код")

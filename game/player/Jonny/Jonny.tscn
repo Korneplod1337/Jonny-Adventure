@@ -224,13 +224,12 @@ sprite_frames = SubResource("SpriteFrames_g617h")
 animation = &"afk_up"
 
 [node name="AnimatedShot" type="AnimatedSprite2D" parent="." unique_id=2140154797]
-z_index = 1
 position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_epc1c")
 animation = &"down"
 
 [node name="immune_Timer" type="Timer" parent="." unique_id=1440095197]
-wait_time = 0.3
+wait_time = 0.2
 one_shot = true
 
 [node name="shot_Timer" type="Timer" parent="." unique_id=563273745]
@@ -250,9 +249,10 @@ sprite_frames = SubResource("SpriteFrames_h4d6h")
 animation = &"right"
 
 [node name="Chest" type="AnimatedSprite2D" parent="." unique_id=845721799]
-position = Vector2(0, -12)
+z_index = 1
+position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_fm61y")
-animation = &"walk_down"
+animation = &"afk_default"
 
 [node name="Boots" type="AnimatedSprite2D" parent="." unique_id=13519053]
 sprite_frames = SubResource("SpriteFrames_3pvxu")

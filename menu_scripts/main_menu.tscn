@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://canf2kceq7uo3" path="res://image/main_menu/settings_video_low1.png" id="12_l726t"]
 [ext_resource type="Script" uid="uid://d13ckchek7pdn" path="res://menu_scripts/button_sound.gd" id="12_ru6ym"]
 [ext_resource type="Texture2D" uid="uid://b7d2a85dky3ij" path="res://image/main_menu/settings_out_button2.png" id="13_1aqqx"]
+[ext_resource type="Theme" uid="uid://c626wtnojhto8" path="res://image/interface/new_theme.tres" id="13_5uchu"]
 [ext_resource type="Texture2D" uid="uid://dqom4krvjlc81" path="res://image/main_menu/settings_video_med1.png" id="13_alhms"]
 [ext_resource type="Texture2D" uid="uid://bxcynylx1d1b1" path="res://image/main_menu/settings_video_low2.png" id="13_pdvo5"]
 [ext_resource type="Texture2D" uid="uid://dph4vhlmxsoj0" path="res://image/main_menu/settings_sound_0.png" id="13_xg1mu"]
@@ -225,6 +226,24 @@ scale = Vector2(1.2, 1.2)
 theme_override_fonts/font = ExtResource("35_om5lu")
 text = "Reset stats and achivments"
 script = ExtResource("11_fvbif")
+
+[node name="LineEdit" type="LineEdit" parent="start_menu" unique_id=1442888934]
+offset_right = 339.0
+offset_bottom = 45.0
+theme = ExtResource("13_5uchu")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Type your secret code here"
+max_length = 16
+emoji_menu_enabled = false
+
+[node name="Button" type="Button" parent="start_menu/LineEdit" unique_id=745506018]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 4.0
+offset_right = 410.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 32
+text = "activate"
 
 [node name="settings_menu" type="Node" parent="." unique_id=981361797]
 
@@ -645,6 +664,7 @@ parameters/looping = true
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_exited"]
 [connection signal="pressed" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_pressed"]
 [connection signal="pressed" from="start_menu/Control_main/ResetButton" to="start_menu/Control_main/ResetButton" method="_on_pressed"]
+[connection signal="pressed" from="start_menu/LineEdit/Button" to="start_menu/Control_main" method="_SecretCode_pressed"]
 [connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_video" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_video_pressed"]
 [connection signal="mouse_entered" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_low" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_low_mouse_entered"]
 [connection signal="mouse_exited" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_low" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_low_mouse_exited"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgibadaeek4on"]
 
 [ext_resource type="Script" uid="uid://tx5fxindd6gf" path="res://game/objects/Equipment/Chest/Death_shield.gd" id="1_gedd3"]
-[ext_resource type="Texture2D" uid="uid://dwnudqcp2rpxf" path="res://image/equip/chest/Death_shield4.png" id="2_5j40r"]
+[ext_resource type="Texture2D" uid="uid://rku4g72cvcl1" path="res://image/equip/chest/Death_shield6.png" id="2_gedd3"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_fn3ng"]
 [ext_resource type="Texture2D" uid="uid://ceec737xjy3jp" path="res://image/equip/chest/Death_shield1.png" id="4_pkwew"]
 
@@ -14,7 +14,7 @@ radius = 54.08327
 [node name="Death_shield" type="Area2D" unique_id=1914859512]
 script = ExtResource("1_gedd3")
 type = "chest"
-equip_icon = ExtResource("2_5j40r")
+equip_icon = ExtResource("2_gedd3")
 equip_id = "Death_shield"
 equip_tooltip = "Death shield"
 interact_name = "Death shield"

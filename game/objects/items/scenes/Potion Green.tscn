@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ujleakh3r3l0"]
+
+[ext_resource type="Script" uid="uid://bmnr7i5tm0m53" path="res://game/objects/items/scripts/Poison Green.gd" id="1_wv7rv"]
+[ext_resource type="Texture2D" uid="uid://32pl3bc1x8pu" path="res://image/items/items_hud/ItemHealthPotionAlt.png" id="2_3y4gd"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_hxr60"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[node name="Green potion" type="Area2D" unique_id=1430574395]
+collision_layer = 0
+script = ExtResource("1_wv7rv")
+item_icon = ExtResource("2_3y4gd")
+item_tooltip = "Green potion"
+item_tooltip2 = "This potion makes me feel very nice"
+item_id = "healalt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302434300]
+scale = Vector2(2, 2)
+texture = ExtResource("2_3y4gd")
+
+[node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_hxr60")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
+shape = SubResource("CircleShape2D_lh7he")

@@ -18,7 +18,8 @@ var DEFAULT_PICK := ["hpup"]
 var POOLS := {
 	"treasure": [
 		{"id": "heal", "scene": preload("uid://baga6mxgrpf1s"), "tier": 0},
-		{"id": "hpup", "scene": preload("uid://duqt5c8r3bui4"), "tier": 1},
+		{"id": "healalt", "scene": preload("uid://ujleakh3r3l0"), "tier": 0},
+		{"id": "healblack", "scene": preload("uid://c83w3v5l3edwc"), "tier": 0},
 		{"id": "storybook", "scene": preload("uid://m6oyxodimxew"), "tier": 2},
 		
 		{"id": "shield", "scene": preload("uid://baga6mxgrpf1s"), "tier": 2},

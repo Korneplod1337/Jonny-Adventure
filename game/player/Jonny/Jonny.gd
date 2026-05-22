@@ -1,5 +1,8 @@
 extends CharacterBody2D
+class_name Jonny
+
 var ST = StatManager
+var player_name = 'Jonny'
 
 @onready var head_sprite: AnimatedSprite2D = $Head
 @onready var chest_sprite: AnimatedSprite2D = $Chest
@@ -7,17 +10,15 @@ var ST = StatManager
 @onready var body_parts := [
 	$AnimatedSprite2D,
 	$Chest,
-	$Boots
-]
+	$Boots ]
 @onready var head_parts := [
 	$AnimatedShot,
-	$Head
-]
+	$Head]
 
 @onready var hp_list := {
 	"red": max(0, StatManager.get_stat(self, 'hp')),
 	"green": 0,
-	"blue": 0,   # щит/овер, НЕ ограничен max_hp
+	"blue": 2,   # щит/овер, НЕ ограничен max_hp
 	"black": 2,
 	}
 
@@ -80,7 +81,7 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("button_K"):
-		take_damage(1)
+		take_damage(0, 0, 1)
 	if Input.is_action_just_pressed("button_L"):
 		heal(1)
 	#if Input.is_action_just_pressed("o"):
@@ -281,7 +282,22 @@ func take_damage(phy_damage: int = 0,
 			print('die')
 			die()
 	if clr_damage:
-		pass
+		var remaining := clr_damage
+		for d in ["blue"]:
+			if remaining <= 0:
+				break
+			var used: int = min(remaining, hp_list[d])
+			hp_list[d] -= used
+			remaining -= used
+		for t in ["red"]:
+			if remaining <= 0:
+				break
+			var used :int = min(remaining, hp_list[t])
+			hp_list[t] -= used
+			remaining -= used
+		if hp_list["red"] <= 0: 
+			print('die')
+			die()
 	
 
 	invulnerable = true
