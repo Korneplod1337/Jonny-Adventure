@@ -17,7 +17,7 @@ item_icon = ExtResource("2_jvvpq")
 item_tooltip = "Story book"
 item_tooltip2 = "It seems that after reading this book, it takes me back to my childhood"
 item_id = "storybook"
-effect_power = 0.8
+effect_power = 0.85
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
 shape = SubResource("CircleShape2D_oisx2")
