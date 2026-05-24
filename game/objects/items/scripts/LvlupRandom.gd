@@ -8,7 +8,7 @@ func _ready() -> void:
 	interactable.interact = _on_interact
 	cost = cost * GameState.cost_multiplier
 	if cost < 1:
-		interactable.interact_name = 'Take lvlup FOR FREE yey'
+		interactable.interact_name = 'lvlup'
 	else:
 		interactable.interact_name = 'Take lvlup by %s coins' %cost
 

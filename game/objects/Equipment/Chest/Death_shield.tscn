@@ -31,3 +31,4 @@ shape = SubResource("CircleShape2D_kjk28")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
 scale = Vector2(2, 2)
 texture = ExtResource("4_pkwew")
+offset = Vector2(0, -2)

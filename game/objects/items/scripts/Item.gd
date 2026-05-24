@@ -10,7 +10,7 @@ var player : CharacterBody2D
 @export var item_tooltip: String = 	"this is test item" 				# текст для инвентаря
 @export var item_tooltip2: String = 	"item test is this secret text" 	# текст для инвентаря продвинутый
 @export var item_id: String = 'hpup'
-var cost: int = 0
+@export var cost: int = 0
 
 @export var effect_power: float = 1
 
@@ -18,9 +18,9 @@ func _ready() -> void:
 	interactable.interact = _on_interact
 	cost = cost * GameState.cost_multiplier
 	if cost < 1:
-		interactable.interact_name = 'Take item FOR FREE yey'
+		interactable.interact_name = item_tooltip
 	else:
-		interactable.interact_name = 'Take item by %s coins' %((cost + GS.cost_plus) * GS.cost_multiplier)
+		interactable.interact_name = "%s by %s coins" % [item_tooltip, (cost + GS.cost_plus) * GS.cost_multiplier]
 
 func _on_interact():
 	player = get_tree().get_first_node_in_group("player")

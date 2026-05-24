@@ -18,8 +18,8 @@ var player_name = 'Jonny'
 @onready var hp_list := {
 	"red": max(0, StatManager.get_stat(self, 'hp')),
 	"green": 0,
-	"blue": 2,   # щит/овер, НЕ ограничен max_hp
-	"black": 2,
+	"blue": 0,  # magic shield
+	"black": 2, #s hield
 	}
 
 const base_max_hp: 				int = 3    #6
@@ -81,7 +81,7 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("button_K"):
-		take_damage(0, 0, 1)
+		take_damage(1)
 	if Input.is_action_just_pressed("button_L"):
 		heal(1)
 	#if Input.is_action_just_pressed("o"):

@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dldwsagiy6dvo" path="res://image/money/Coin_bag8.png" id="9_aogyg"]
 [ext_resource type="Texture2D" uid="uid://b30jj25bfiu6m" path="res://image/money/Coin_bag9.png" id="10_thfyc"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m66pe"]
+height = 24.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wx5h1"]
 animations = [{
 "frames": [{
@@ -46,22 +49,19 @@ animations = [{
 "speed": 4.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m66pe"]
-height = 24.0
-
 [node name="CoinBag" type="Node2D" unique_id=108492217]
 scale = Vector2(3, 3)
 script = ExtResource("1_n4jjm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1227463376]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1626930000]
+shape = SubResource("CapsuleShape2D_m66pe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1728736179]
 sprite_frames = SubResource("SpriteFrames_wx5h1")
 frame = 6
 frame_progress = 0.49926138
 speed_scale = 2.0
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1227463376]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1626930000]
-shape = SubResource("CapsuleShape2D_m66pe")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
