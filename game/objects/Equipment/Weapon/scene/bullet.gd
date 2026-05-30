@@ -73,14 +73,8 @@ func _on_body_entered(body):
 	luck = StatManager.get_stat(player, 'luck')
 	spread = StatManager.get_stat(player, 'spread')
 
-	if enchantment:
-		enchantment.apply_on_hit(
-			body,
-			(body.global_position - global_position).normalized()
-		)
-
 	if body.has_method("hit"):
-		body.hit(_get_damage_with_crits())
+		_deal_hit(body, _get_damage_with_crits())
 
 	if crit_sprite >= 0:
 		crit.frame = crit_sprite

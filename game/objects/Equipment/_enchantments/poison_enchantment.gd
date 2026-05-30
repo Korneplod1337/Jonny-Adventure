@@ -25,7 +25,7 @@ func get_damage_low() -> float:
 
 func apply_on_hit(target: Node, _projectile_direction: Vector2 = Vector2(0, 0)) -> void:
 	if target.has_method("apply_poison"):
-		target.apply_poison(get_effect(), get_damage_low())
+		target.apply_poison(get_effect())
 
 func get_tooltip_text() -> String:
 	match level:

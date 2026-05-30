@@ -29,6 +29,7 @@ DungeonManager="*res://game/Dungeon_scripts/DungeonManager.gd"
 GameState="*res://game/Dungeon_scripts/GameState.gd"
 StatManager="*res://game/player/StatManager.gd"
 ItemManager="*uid://dpl2e0lbx4t7t"
+DamageDealer="*res://game/combat/DamageDealer.gd"
 
 [display]
 

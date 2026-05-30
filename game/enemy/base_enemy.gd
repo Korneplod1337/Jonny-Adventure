@@ -7,7 +7,7 @@ extends CharacterBody2D
 var base_move_speed := move_speed
 var slow_token: int = 0
 var poison: float = 0
-var poison_protection: float = 1
+var effect_protection: float = 1
 
 @export var cooldown_time: float = 1.5
 @export var base_hp: int = 50
@@ -129,10 +129,9 @@ func _reset_slow_later(token: int, duration: float) -> void:
 	_remove_effect("freeze")
 
 
-func apply_poison(effect: float, damage_low: float) -> void:
+func apply_poison(effect: float) -> void:
 	print('add poison effect: ', poison,' ', effect)
 	poison += effect * (1 + StatManager.get_stat(player, 'magic'))
-	poison_protection = damage_low
 	print(poison)
 	
 	_add_effect("poison")
@@ -145,7 +144,6 @@ func _on_poison_timer_timeout() -> void:
 	poison /= 2
 	if poison <= 20:
 		poison = 0
-		poison_protection = 1
 		_remove_effect("poison")
 		poison_timer.stop()
 		return
@@ -220,8 +218,7 @@ func _on_hit_area_body_exited(body: Node2D) -> void:
 
 func hit(amount: float, clear:= false) -> void:
 	if not clear:
-		if poison > 0:
-			amount *= poison_protection
+		amount *= effect_protection
 	current_hp -= amount
 	if current_hp <= 0:
 		die()

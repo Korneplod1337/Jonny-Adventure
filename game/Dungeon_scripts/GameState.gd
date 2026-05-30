@@ -12,21 +12,7 @@ var cost_multiplier := 1.0
 var cost_plus := 0.0
 var animated_world_speed := 1
 
-# игрок
-func  equip_update(equip: String) -> void:
-	match equip:
-		"Death_shield":
-			Death_shield = not Death_shield
-			if Death_shield:
-				damage_multiplayer *= 2
-			else:
-				damage_multiplayer /= 2
-		_:
-			print('equip_update fail!')
-
-var damage_multiplayer := 1.0
 var AlchemistsGlasses := true #больше инфы
-var Death_shield := false
 
 
 #уровень
@@ -63,12 +49,12 @@ var enemy_cooldown_multiplier: float = 1.0
 
 
 
+#обнуление
 func obnulenie() -> void:
 	coins = 0
 	"Всё, что обнуляется между играми сюда по идее"
-	damage_multiplayer = 1.0
+	DamageDealer.clear_modifiers()
 	#AlchemistsGlasses = false
-	Death_shield = false
 	enemy_ms_multiplier = 1.0
 	enemy_hp_multiplier = 1.0
 	enemy_dmg_multiplier = 1.0

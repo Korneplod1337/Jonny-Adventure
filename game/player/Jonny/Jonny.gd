@@ -409,7 +409,7 @@ func fire (shot_dir: Vector2) -> void:
 	shot.direction = final_dir + now_move_direction.normalized()/3 
 	#+ shot_dir.normalized()/3
 	
-	shot.damage = damage * GameState.damage_multiplayer
+	shot.damage = damage
 	
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)

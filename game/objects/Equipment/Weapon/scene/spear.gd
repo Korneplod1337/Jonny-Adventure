@@ -31,7 +31,5 @@ func _on_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		return
 	if body.has_method("hit"):
-		body.hit(damage * self_damage_multiplier)
-		if enchantment:
-			enchantment.apply_on_hit(body, (body.global_position - global_position).normalized())
+		_deal_hit(body, _get_final_damage())
 	StatsManager.add_statistic_progress('bad_spear_kills', 1)

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b2iw2atdj0500"]
+
+[ext_resource type="Texture2D" uid="uid://drswvrr5cdef6" path="res://image/effect_sprites/explosion/explosion1.png" id="1_iypuq"]
+[ext_resource type="Script" uid="uid://ropm2d26aj03" path="res://game/combat/explosion.gd" id="1_mpjjf"]
+[ext_resource type="Texture2D" uid="uid://dflpxdonmnqby" path="res://image/effect_sprites/explosion/explosion2.png" id="2_mpjjf"]
+[ext_resource type="Texture2D" uid="uid://bish78qylx2yh" path="res://image/effect_sprites/explosion/explosion3.png" id="3_bshnt"]
+[ext_resource type="Texture2D" uid="uid://oar0w7ocffyb" path="res://image/effect_sprites/explosion/explosion4.png" id="4_3r17b"]
+[ext_resource type="Texture2D" uid="uid://b05flxve1cjqq" path="res://image/effect_sprites/explosion/explosion5.png" id="5_2tunu"]
+[ext_resource type="Texture2D" uid="uid://dp4omfpop25mx" path="res://image/effect_sprites/explosion/explosion6.png" id="6_ffwsm"]
+[ext_resource type="Texture2D" uid="uid://2h5gmc0odwi" path="res://image/effect_sprites/explosion/explosion7.png" id="7_3goin"]
+[ext_resource type="Texture2D" uid="uid://vs8kmomsihei" path="res://image/effect_sprites/explosion/explosion8.png" id="8_yg4ay"]
+[ext_resource type="Texture2D" uid="uid://bcug0lqcaf5xa" path="res://image/effect_sprites/explosion/explosion9.png" id="9_2pf4k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a4lbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iypuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mpjjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bshnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3r17b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2tunu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ffwsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3goin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yg4ay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2pf4k")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbexy"]
+radius = 15.0
+
+[node name="explosion" type="Area2D" unique_id=1836825507]
+script = ExtResource("1_mpjjf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1410377282]
+sprite_frames = SubResource("SpriteFrames_a4lbv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=905754221]
+shape = SubResource("CircleShape2D_pbexy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
