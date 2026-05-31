@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://d153rj7fiouha" path="res://game/objects/Equipment/Weapon/equip/Spear_equip.tscn" id="17_o7186"]
 [ext_resource type="PackedScene" uid="uid://c83w3v5l3edwc" path="res://game/objects/items/scenes/Potion Death.tscn" id="18_n8c84"]
 [ext_resource type="PackedScene" uid="uid://bvy7i2nw65tyy" path="res://game/objects/items/scenes/Potion Red Big.tscn" id="18_xf56v"]
+[ext_resource type="PackedScene" uid="uid://bi5g2vqe6xdek" path="res://game/objects/Equipment/head/Kaliya_star_hat.tscn" id="19_xf56v"]
+[ext_resource type="PackedScene" uid="uid://c1fiyctd2xrli" path="res://game/objects/Equipment/boots/Poison_boots.tscn" id="20_uwsn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -31,21 +33,25 @@ size = Vector2(41.03, 654.5)
 [node name="StartRoom" type="Node2D" unique_id=757044430]
 
 [node name="CameraBounds" type="Area2D" parent="." unique_id=1720013523]
+z_index = -5
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=332360121]
+z_index = -5
 shape = SubResource("RectangleShape2D_85tg8")
 
 [node name="BG_floor" type="Sprite2D" parent="." unique_id=1940620195]
+z_index = -10
 scale = Vector2(2, 2)
 texture = ExtResource("1_et5k3")
 
 [node name="BG_bounds" type="Sprite2D" parent="." unique_id=326775904]
+z_index = -5
 scale = Vector2(2, 2)
 texture = ExtResource("2_sw7ps")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=962677030]
-position = Vector2(-207.06, -240)
+position = Vector2(-207, -240)
 collision_layer = 16
 collision_mask = 23
 
@@ -139,3 +145,9 @@ cost = 2
 
 [node name="Potion Heal Big" parent="." unique_id=1430574395 instance=ExtResource("18_xf56v")]
 position = Vector2(344, 72)
+
+[node name="Kaliya\'s Star Hat" parent="." unique_id=1433431969 instance=ExtResource("19_xf56v")]
+position = Vector2(-153, 180)
+
+[node name="Poison_boots" parent="." unique_id=1522439678 instance=ExtResource("20_uwsn1")]
+position = Vector2(-33, 161)

@@ -16,15 +16,17 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 '''
 
 var POOLS := {
-	"treasure": [
+	"treasure": [ #временно только шмотки
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Poison_boots", "scene": preload("uid://c1fiyctd2xrli"),
 		 "tier": 2, "weight": 10.0},
 		
 		
-		
-		
 	],
-	"armory": [
+	"armory": [#временно только оружие
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
 		#{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # магазин
@@ -63,16 +65,19 @@ var POOLS := {
 
 var equip_visuals := {
 	# HEAD
-	"test_chest1":
-		preload("uid://bupakre411yu6"),
+	"Kaliya_star_hat":
+		preload("uid://cpdenuif162v0"),
 	"test_chest2":
 		preload("uid://bupakre411yu6"),
+	
 	# CHEST
 	"Death_shield":
 		preload("uid://bupakre411yu6"),
+	
 	# BOOTS
-	"test_chest3":
-		preload("uid://bupakre411yu6"),
+	"Poison_boots":
+		preload("uid://bo8mktvnh36np"),
+	
 }
 
 var rng := RandomNumberGenerator.new()

@@ -154,7 +154,7 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"afk_up",
-"speed": 1.0
+"speed": 5.0
 }, {
 "frames": [],
 "loop": true,
@@ -215,13 +215,14 @@ fire_rate_level = 2.0
 on_ice = false
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
+z_index = 20
 position = Vector2(0, -10)
 scale = Vector2(0.9999998, 0.9999998)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=222282461]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_g617h")
-animation = &"afk_up"
+animation = &"afk_default"
 
 [node name="AnimatedShot" type="AnimatedSprite2D" parent="." unique_id=2140154797]
 position = Vector2(0, -26)
@@ -244,19 +245,19 @@ scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_fm61y")
 
 [node name="Head" type="AnimatedSprite2D" parent="." unique_id=436909774]
-position = Vector2(0, -35)
+position = Vector2(0, -34)
 sprite_frames = SubResource("SpriteFrames_h4d6h")
-animation = &"right"
+animation = &"down"
 
 [node name="Chest" type="AnimatedSprite2D" parent="." unique_id=845721799]
-z_index = 1
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_fm61y")
-animation = &"afk_default"
+animation = &"afk_up"
 
 [node name="Boots" type="AnimatedSprite2D" parent="." unique_id=13519053]
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_3pvxu")
-animation = &"walk_up"
+animation = &"afk_default"
 
 [connection signal="timeout" from="immune_Timer" to="." method="_on_immune_timer_timeout"]
 [connection signal="timeout" from="shot_Timer" to="." method="_on_shot_timer_timeout"]

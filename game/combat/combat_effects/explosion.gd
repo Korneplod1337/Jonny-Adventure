@@ -2,9 +2,9 @@ extends Area2D
 class_name CombatExplosion
 
 @export var base_collision_radius: float = 15.0
-@export var magic_damage_per_point: float = 15.0
+@export var magic_damage_per_point: float = 150.0
 
-var radius: float = 80.0
+var radius: float = 40.0
 var _damaged: Array[Node] = []
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D

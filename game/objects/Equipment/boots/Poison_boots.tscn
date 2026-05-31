@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c1fiyctd2xrli"]
+
+[ext_resource type="Script" uid="uid://c18mmxrwmlpjj" path="res://game/objects/Equipment/boots/Poison_boots.gd" id="1_yxyj2"]
+[ext_resource type="Texture2D" uid="uid://b57kp4lta8blt" path="res://image/equip/boots/poison_boots11.png" id="2_yxyj2"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_cm0lv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjk28"]
+radius = 54.08327
+
+[node name="Poison_boots" type="Area2D" unique_id=1914859512]
+script = ExtResource("1_yxyj2")
+type = "boots"
+equip_icon = ExtResource("2_yxyj2")
+equip_id = "Poison_boots"
+equip_tooltip = "Poison boots"
+interact_name = "Poison boots"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191125084]
+shape = SubResource("CircleShape2D_amy5j")
+
+[node name="Interactable" parent="." unique_id=663750920 instance=ExtResource("3_cm0lv")]
+interact_name = "Swap on test_chest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=384725513]
+shape = SubResource("CircleShape2D_kjk28")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
+position = Vector2(0, -34)
+scale = Vector2(2, 2)
+texture = ExtResource("2_yxyj2")
+offset = Vector2(0, -2)

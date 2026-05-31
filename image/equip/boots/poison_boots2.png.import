@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l2sutew7miot"
-path="res://.godot/imported/left_go2.png-1efe9c0246853c69ccde928153d1f0ab.ctex"
+uid="uid://b71mobt8nak2d"
+path="res://.godot/imported/poison_boots2.png-f4460e351809783895402c5eac71cbc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/players/Base_Jonny_textures/left_go2.png"
-dest_files=["res://.godot/imported/left_go2.png-1efe9c0246853c69ccde928153d1f0ab.ctex"]
+source_file="res://image/equip/boots/poison_boots2.png"
+dest_files=["res://.godot/imported/poison_boots2.png-f4460e351809783895402c5eac71cbc2.ctex"]
 
 [params]
 

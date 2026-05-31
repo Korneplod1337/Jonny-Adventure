@@ -2,7 +2,7 @@ extends Node
 var _modifiers: Array[HitModifier] = []
 var _modifier_ids: Dictionary = {}
 
-const EXPLOSION_SCENE := preload("res://game/combat/explosion.tscn")
+const EXPLOSION_SCENE := preload("uid://b2iw2atdj0500")
 
 
 func get_hit_contact_point(from_node: Node, target: Node, weapon_point: Vector2) -> Vector2:

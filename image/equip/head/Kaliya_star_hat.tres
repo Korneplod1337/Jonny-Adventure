@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cpdenuif162v0"]
+
+[ext_resource type="Texture2D" uid="uid://b46i5uw418yb7" path="res://image/equip/head/Kaliya_star_hat3.png" id="2_ryxgc"]
+[ext_resource type="Texture2D" uid="uid://dbke85mmkvrix" path="res://image/equip/head/Kaliya_star_hat2.png" id="3_enr5s"]
+[ext_resource type="Texture2D" uid="uid://8tu2ix7cchkm" path="res://image/equip/head/Kaliya_star_hat5.png" id="4_b7o7e"]
+[ext_resource type="Texture2D" uid="uid://cew55xwttrqy" path="res://image/equip/head/Kaliya_star_hat4.png" id="4_xx1bg"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_enr5s")
+}],
+"loop": true,
+"name": &"down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xx1bg")
+}],
+"loop": true,
+"name": &"left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ryxgc")
+}],
+"loop": true,
+"name": &"right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_b7o7e")
+}],
+"loop": true,
+"name": &"up",
+"speed": 1.0
+}]

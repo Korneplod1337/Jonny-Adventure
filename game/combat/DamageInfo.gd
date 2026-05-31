@@ -11,8 +11,8 @@ var direction: Vector2 = Vector2.RIGHT
 var enchantment: EnchantmentResource = null
 
 var aoe_radius: float = 0.0
-var explosive: bool = true
-var explosive_radius: float = 50.0
+var explosive: bool = false
+var explosive_radius: float = 0.0
 var lightning: bool = false
 
 

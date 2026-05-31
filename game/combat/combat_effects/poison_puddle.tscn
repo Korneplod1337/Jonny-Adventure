@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://wpfs5eq5fwa4"]
+
+[ext_resource type="Script" uid="uid://bumykil8pl017" path="res://game/combat/combat_effects/poison_puddle.gd" id="1_y6o6s"]
+[ext_resource type="Texture2D" uid="uid://dm7igatg8y2c2" path="res://image/effect_sprites/Poison puddle/Poison puddle.png" id="2_isagw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_isagw"]
+radius = 11.045361
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b0wt7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_isagw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_isagw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_isagw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_isagw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_isagw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_isagw")
+}],
+"loop": false,
+"name": &"end",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_isagw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_isagw")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 2.0
+}]
+
+[node name="Poison puddle" type="Area2D" unique_id=1721338808]
+z_index = -1
+collision_mask = 4
+script = ExtResource("1_y6o6s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761060348]
+shape = SubResource("CircleShape2D_isagw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1523135904]
+sprite_frames = SubResource("SpriteFrames_b0wt7")
+
+[node name="Timer" type="Timer" parent="." unique_id=981893037]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_damage_timer_timeout"]
