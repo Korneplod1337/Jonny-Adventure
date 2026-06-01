@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bi5g2vqe6xdek"]
 
 [ext_resource type="Script" uid="uid://bhaab8v67fvk4" path="res://game/objects/Equipment/head/Kaliya_star_hat.gd" id="1_4t1b2"]
+[ext_resource type="Texture2D" uid="uid://dyxqpnl12vsu8" path="res://image/equip/head/Kaliya_star_hat6.png" id="2_wojok"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="2_x8n7e"]
 [ext_resource type="Texture2D" uid="uid://dgh6dkowbf6o0" path="res://image/equip/head/Kaliya_star_hat1.png" id="4_x8n7e"]
 
@@ -13,7 +14,7 @@ radius = 54.08327
 [node name="Kaliya\'s Star Hat" type="Area2D" unique_id=1914859512]
 script = ExtResource("1_4t1b2")
 type = "head"
-equip_icon = ExtResource("4_x8n7e")
+equip_icon = ExtResource("2_wojok")
 equip_id = "Kaliya_star_hat"
 equip_tooltip = "Kaliya's Star Hat"
 interact_name = "Star Hat"
