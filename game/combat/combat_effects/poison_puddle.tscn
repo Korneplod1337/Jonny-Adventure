@@ -1,7 +1,19 @@
 [gd_scene format=3 uid="uid://wpfs5eq5fwa4"]
 
 [ext_resource type="Script" uid="uid://bumykil8pl017" path="res://game/combat/combat_effects/poison_puddle.gd" id="1_y6o6s"]
-[ext_resource type="Texture2D" uid="uid://dm7igatg8y2c2" path="res://image/effect_sprites/Poison puddle/Poison puddle.png" id="2_isagw"]
+[ext_resource type="Texture2D" uid="uid://ckbul7npovc7d" path="res://image/effect_sprites/Poison puddle/Poison puddle4.png" id="2_ljg6b"]
+[ext_resource type="Texture2D" uid="uid://cuflacupmxhlo" path="res://image/effect_sprites/Poison puddle/Poison puddle5.png" id="3_fl8m6"]
+[ext_resource type="Texture2D" uid="uid://do6w1mfa2k8xv" path="res://image/effect_sprites/Poison puddle/Poison puddle6.png" id="4_xckcp"]
+[ext_resource type="Texture2D" uid="uid://c21jyer5rumde" path="res://image/effect_sprites/Poison puddle/Poison puddle7.png" id="5_w3mwf"]
+[ext_resource type="Texture2D" uid="uid://dbol4lcakcg62" path="res://image/effect_sprites/Poison puddle/Poison puddle8.png" id="6_714nx"]
+[ext_resource type="Texture2D" uid="uid://b3vol02v8c0g2" path="res://image/effect_sprites/Poison puddle/Poison puddle9.png" id="7_ujtqf"]
+[ext_resource type="Texture2D" uid="uid://bogi18ea3yeqe" path="res://image/effect_sprites/Poison puddle/Poison puddle10.png" id="8_t4hsv"]
+[ext_resource type="Texture2D" uid="uid://bg1sp8128mc1b" path="res://image/effect_sprites/Poison puddle/Poison puddle11.png" id="9_8liub"]
+[ext_resource type="Texture2D" uid="uid://bijqm51qd1oeu" path="res://image/effect_sprites/Poison puddle/Poison puddle12.png" id="10_grqso"]
+[ext_resource type="Texture2D" uid="uid://b47armg4o8jpp" path="res://image/effect_sprites/Poison puddle/Poison puddle13.png" id="11_y8yo8"]
+[ext_resource type="Texture2D" uid="uid://kl8q6tjiaknh" path="res://image/effect_sprites/Poison puddle/Poison puddle1.png" id="12_sd7xu"]
+[ext_resource type="Texture2D" uid="uid://bgflk8c8cygb1" path="res://image/effect_sprites/Poison puddle/Poison puddle2.png" id="13_djuby"]
+[ext_resource type="Texture2D" uid="uid://dotttfelog4f2" path="res://image/effect_sprites/Poison puddle/Poison puddle3.png" id="14_idia7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_isagw"]
 radius = 11.045361
@@ -10,42 +22,57 @@ radius = 11.045361
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_isagw")
+"texture": ExtResource("2_ljg6b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_isagw")
+"texture": ExtResource("3_fl8m6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_isagw")
+"texture": ExtResource("4_xckcp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_isagw")
+"texture": ExtResource("5_w3mwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_714nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ujtqf")
 }],
 "loop": true,
 "name": &"default",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_isagw")
+"texture": ExtResource("8_t4hsv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_isagw")
+"texture": ExtResource("9_8liub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_grqso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_y8yo8")
 }],
 "loop": false,
 "name": &"end",
-"speed": 2.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_isagw")
+"texture": ExtResource("12_sd7xu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_isagw")
+"texture": ExtResource("13_djuby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_idia7")
 }],
 "loop": false,
 "name": &"spawn",
-"speed": 2.0
+"speed": 4.0
 }]
 
 [node name="Poison puddle" type="Area2D" unique_id=1721338808]
@@ -58,6 +85,9 @@ shape = SubResource("CircleShape2D_isagw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1523135904]
 sprite_frames = SubResource("SpriteFrames_b0wt7")
+animation = &"end"
+frame = 3
+frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="." unique_id=981893037]
 
