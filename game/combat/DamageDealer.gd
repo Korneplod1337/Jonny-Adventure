@@ -24,9 +24,13 @@ func get_hit_contact_point(from_node: Node, target: Node, weapon_point: Vector2)
 	return _closest_point_on_body(target_2d, weapon_point)
 
 
-func deal_damage(from_node: Node, primary_target: Node, info: DamageInfo) -> void:
+func apply_hit_modifiers(info: DamageInfo) -> void:
 	for modifier in _modifiers:
 		modifier.apply(info)
+
+
+func deal_damage(from_node: Node, primary_target: Node, info: DamageInfo) -> void:
+	apply_hit_modifiers(info)
 
 	if info.explosive and info.explosive_radius > 0.0:
 		_deal_single(primary_target, info)

@@ -7,41 +7,41 @@ func get_stat(p: Node, stat: String) -> float :
 			var hp = int(p.base_max_hp + lerp(0.0, 9.0, (p.hit_points_level - 1.0) / 9.0))
 			hp += int(p.hp_bonus * 0.5)
 			hp = clamp(hp, -10.0, 10.0)
-			return hp
+			return hp 
 		"move_speed":
 			var speed = p.base_move_speed + lerp(0.0, 270.0, (p.move_speed_level - 1.0) / 9.0)
 			speed *= clamp((1 + p.speed_bonus * 0.05), 0.4, 1.6)
-			return speed
+			return speed 
 		"luck":
 			var luck = p.base_luck + lerp(0.0, 0.63, (p.luck_level - 1.0) / 9.0)
 			luck *= (1 + p.luck_bonus * 0.05)
 			luck = clamp(luck, 0.1, 2.0)
-			return luck
+			return luck 
 		"magic":
 			var magic = p.base_magic + lerp(0.0, 0.9, (p.magic_level - 1.0) / 9.0)
 			magic *= (1 + p.magic_bonus * 0.1)
 			magic = clamp(magic, 0.0, 4.0)
-			return magic
+			return magic 
 		"damage":
 			var damage = p.base_damage + lerp(0.0, 27.0, (p.damage_level - 1.0) / 9.0)
 			damage *= (1 + p.damage_bonus * 0.1)
 			damage = clamp(damage, 0.1, 1000.0)
-			return damage
+			return damage 
 		"spread":
 			var spread_deg: float = p.base_spread + lerp(36.0, 0.0, (p.spread_level - 1.0) / 9.0)
 			spread_deg *= (1 - p.accuracy_bonus * 0.05)
 			spread_deg = clamp(spread_deg, 0.01, 180.0)
-			return spread_deg
-		"range":
+			return spread_deg 
+		"range": 
 			var range_val = p.base_range + lerp(0.0, 360.0, (p.range_level - 1.0) / 9.0)
 			range_val *= clamp((1 + p.range_bonus * 0.05), 0.2, 4.0)
-			return range_val
+			return range_val 
 		"fire_rate":
 			var fire_rate = p.base_fire_rate + lerp(1.0, 0.1, (p.fire_rate_level - 1.0) / 9.0)
 			print(fire_rate, ' ', (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.04 * p.extra_fire_rate))
 			fire_rate *= (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.03 * p.extra_fire_rate)
 			print(fire_rate, '- Итого')
-			return fire_rate
+			return fire_rate 
 		_:
 			push_warning("Unknown stat in getter: %s" % stat)
 			return 1

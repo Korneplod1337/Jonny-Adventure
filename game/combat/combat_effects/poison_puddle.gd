@@ -2,7 +2,7 @@ extends Area2D
 class_name CombatPoisonPuddle
 
 @export var base_collision_radius: float = 15.0
-@export var magic_damage_per_point: float = 150.0
+@export var magic_damage_per_point: float = 15.0
 @export var lifetime: float = 2.0
 
 var radius: float = 50.0
@@ -47,7 +47,7 @@ func _tick_damage() -> void:
 func _damage_body(body: Node) -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	var magic := StatManager.get_stat(player, "magic") if player else 0.0
-	var amount := magic * magic_damage_per_point
+	var amount := (1 + magic) * magic_damage_per_point
 	if amount <= 0.0:
 		return
 	body.hit(amount, true)

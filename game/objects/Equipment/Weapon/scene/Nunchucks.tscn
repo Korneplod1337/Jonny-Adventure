@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dmdxdedi4e367"]
+
+[ext_resource type="Script" uid="uid://dbjho3b6wf03d" path="res://game/objects/Equipment/Weapon/scene/nunchucks.gd" id="1_pbitw"]
+[ext_resource type="Texture2D" uid="uid://c8nblps0gfodl" path="res://image/effect_sprites/weapon_effects/nunchucks1.png" id="2_tbm7a"]
+[ext_resource type="Texture2D" uid="uid://cl5ddbwfovy3h" path="res://image/effect_sprites/weapon_effects/nunchucks2.png" id="3_0tw8e"]
+[ext_resource type="Texture2D" uid="uid://dahdyjjqdgkis" path="res://image/effect_sprites/weapon_effects/nunchucks3.png" id="4_7tmo2"]
+[ext_resource type="Texture2D" uid="uid://dki3451j07141" path="res://image/effect_sprites/weapon_effects/nunchucks4.png" id="5_jsyqx"]
+[ext_resource type="Texture2D" uid="uid://dnegm2n01hyac" path="res://image/effect_sprites/weapon_effects/nunchucks5.png" id="6_c2rb7"]
+[ext_resource type="Texture2D" uid="uid://d1yh8tmjn0pud" path="res://image/effect_sprites/weapon_effects/nunchucks6.png" id="7_t5ht2"]
+[ext_resource type="Texture2D" uid="uid://cubxwedbf4yg2" path="res://image/effect_sprites/weapon_effects/nunchucks7.png" id="8_kqq1x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptov3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tbm7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0tw8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7tmo2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jsyqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c2rb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t5ht2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kqq1x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 25.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ygq3i"]
+radius = 32.01562
+
+[node name="Nunchucks" type="Area2D" unique_id=1259747639]
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_pbitw")
+use_spread = false
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=513681404]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ptov3")
+offset = Vector2(35, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1792244404]
+position = Vector2(72, 0)
+shape = SubResource("CircleShape2D_ygq3i")
+
+[node name="Timer" type="Timer" parent="." unique_id=784686683]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

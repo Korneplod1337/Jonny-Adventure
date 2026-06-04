@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://6ngyovpkns22"]
+
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_qnn7y"]
+[ext_resource type="Texture2D" uid="uid://byp7ykoiqldhf" path="res://image/effect_sprites/weapon_effects/CardWeapon1.png" id="2_t814i"]
+[ext_resource type="PackedScene" uid="uid://cr512ns8ox0cc" path="res://game/objects/Equipment/Weapon/scene/CardWeapon.tscn" id="3_qnn7y"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_ywrc0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0twu3"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojoxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t814i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CardWeapon_equip" type="Area2D" unique_id=241584314]
+collision_mask = 0
+script = ExtResource("1_qnn7y")
+equip_icon = ExtResource("2_t814i")
+equip_id = "CardWeapon"
+projectile = ExtResource("3_qnn7y")
+equip_tooltip = "CardWeapon"
+interact_name = "Card"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
+shape = SubResource("CircleShape2D_qqy2x")
+
+[node name="Interactable" parent="." unique_id=918212545 instance=ExtResource("4_ywrc0")]
+interact_name = "Swap weapon"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1006580381]
+shape = SubResource("CircleShape2D_0twu3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ojoxv")

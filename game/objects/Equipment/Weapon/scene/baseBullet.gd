@@ -52,6 +52,7 @@ func _spawn_spread():
 		bullet.self_speed_multiplier = self_speed_multiplier
 		bullet.self_range_multiplier = self_range_multiplier
 		bullet.enchantment = enchantment
+		bullet.penetration = penetration
 		bullet.use_spread = use_spread
 		bullet.pellet_count = pellet_count
 		bullet.spread_angle = spread_angle
@@ -74,7 +75,13 @@ func _on_body_entered(body):
 	spread = StatManager.get_stat(player, 'spread')
 
 	if body.has_method("hit"):
-		_deal_hit(body, _get_damage_with_crits())
+		if _register_pierce_hit(body, _get_damage_with_crits()):
+			if crit_sprite >= 0:
+				crit.frame = crit_sprite
+				crit.show()
+			exploded = true
+			explosion(0)
+		return
 
 	if crit_sprite >= 0:
 		crit.frame = crit_sprite

@@ -13,10 +13,12 @@ var self_speed_multiplier: float = 1
 var self_range_multiplier: float = 1
 
 var distance_travelled := 0.0
-
 var exploded := false
 
 var enchantment: EnchantmentResource
+
+var penetration: int = 0 ## Число врагов, сквозь которых снаряд проходит, не исчезая (0 — остановка на первом).
+var _enemy_hit_count: int = 0
 
 func _ready() -> void:
 	animaited_speed = GameState.animated_world_speed
@@ -38,7 +40,10 @@ func _on_body_entered(body):
 	if body.name == "Player":
 		return
 	if body.has_method("hit"):
-		_deal_hit(body, _get_final_damage())
+		if _register_pierce_hit(body, _get_final_damage()):
+			exploded = true
+			explosion(0)
+		return
 	exploded = true
 	explosion(0)
 
@@ -57,9 +62,23 @@ func _build_damage_info(target: Node, amount: float) -> DamageInfo:
 	var weapon_point := _get_weapon_hit_point()
 	info.hit_position = DamageDealer.get_hit_contact_point(self, target, weapon_point)
 	info.enchantment = enchantment
+	info.penetration = penetration
 	if target is Node2D:
 		info.direction = (target.global_position - weapon_point).normalized()
 	return info
+
+
+func _get_effective_penetration() -> int:
+	var info := DamageInfo.new()
+	info.penetration = penetration
+	DamageDealer.apply_hit_modifiers(info)
+	return info.penetration
+
+
+func _register_pierce_hit(target: Node, amount: float) -> bool:
+	_deal_hit(target, amount)
+	_enemy_hit_count += 1
+	return _enemy_hit_count > _get_effective_penetration()
 
 
 func _deal_hit(target: Node, amount: float) -> void:

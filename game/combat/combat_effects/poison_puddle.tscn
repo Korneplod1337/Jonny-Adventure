@@ -41,7 +41,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -58,7 +58,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"end",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -72,7 +72,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"spawn",
-"speed": 4.0
+"speed": 5.0
 }]
 
 [node name="Poison puddle" type="Area2D" unique_id=1721338808]
@@ -85,9 +85,6 @@ shape = SubResource("CircleShape2D_isagw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1523135904]
 sprite_frames = SubResource("SpriteFrames_b0wt7")
-animation = &"end"
-frame = 3
-frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="." unique_id=981893037]
 

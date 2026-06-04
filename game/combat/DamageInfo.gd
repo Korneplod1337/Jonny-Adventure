@@ -14,6 +14,8 @@ var aoe_radius: float = 0.0
 var explosive: bool = false
 var explosive_radius: float = 0.0
 var lightning: bool = false
+## Сколько врагов снаряд может пройти насквозь после удара (0 = остановка на первом).
+var penetration: int = 0
 
 
 func duplicate_info() -> DamageInfo:
@@ -28,4 +30,5 @@ func duplicate_info() -> DamageInfo:
 	copy.explosive = explosive
 	copy.explosive_radius = explosive_radius
 	copy.lightning = lightning
+	copy.penetration = penetration
 	return copy

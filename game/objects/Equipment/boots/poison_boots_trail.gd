@@ -26,8 +26,9 @@ func _process(delta: float) -> void:
 
 	_distance_since_last += moved
 	var magic := StatManager.get_stat(_player, "magic")
-	if _distance_since_last >= step_distance / (1.0 + magic):
-		_spawn_puddle(_prev_foot_pos)
+	var range := StatManager.get_stat(_player, "range") # 1440‬
+	if _distance_since_last >= step_distance / (1 + magic / 1.5):
+		_spawn_puddle(_prev_foot_pos, magic, range)
 		_distance_since_last = 0.0
 
 	_prev_foot_pos = _foot_position()
@@ -37,7 +38,9 @@ func _foot_position() -> Vector2:
 	return _player.global_position + Vector2(0, 16.0 * _player.scale.y)
 
 
-func _spawn_puddle(at_position: Vector2) -> void:
+func _spawn_puddle(at_position: Vector2, magic: float, range: float) -> void:
 	var puddle: CombatPoisonPuddle = POISON_PUDDLE_SCENE.instantiate()
 	puddle.global_position = at_position
+	puddle.lifetime = 2 + magic/2
+	puddle.radius = 50 * (1 + range/1500)
 	get_tree().current_scene.add_child(puddle)

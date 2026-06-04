@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cr512ns8ox0cc"]
+
+[ext_resource type="Script" uid="uid://cfgae1grhip2b" path="res://game/objects/Equipment/Weapon/scene/cardWeapon.gd" id="1_mi86g"]
+[ext_resource type="Texture2D" uid="uid://byp7ykoiqldhf" path="res://image/effect_sprites/weapon_effects/CardWeapon1.png" id="2_e8pk3"]
+[ext_resource type="Texture2D" uid="uid://67nmexyifowp" path="res://image/effect_sprites/weapon_effects/CardWeapon2.png" id="3_mi86g"]
+[ext_resource type="Texture2D" uid="uid://dqdx62auh7rk7" path="res://image/effect_sprites/weapon_effects/CardWeapon3.png" id="4_scalb"]
+[ext_resource type="Texture2D" uid="uid://bor7ixcl8llre" path="res://image/effect_sprites/weapon_effects/CardWeapon4.png" id="5_1s76c"]
+[ext_resource type="Texture2D" uid="uid://bx8vidks5ghg5" path="res://image/effect_sprites/weapon_effects/CardWeapon5.png" id="6_2k0i3"]
+[ext_resource type="Texture2D" uid="uid://vglenctg1s28" path="res://image/effect_sprites/weapon_effects/CardWeapon6.png" id="7_mmxhk"]
+[ext_resource type="Texture2D" uid="uid://cjeaw7wf8oh7d" path="res://image/effect_sprites/weapon_effects/CardWeapon7.png" id="8_mi86g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e8pk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mi86g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_scalb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1s76c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e8pk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2k0i3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mmxhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mi86g")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi86g"]
+size = Vector2(28, 40)
+
+[sub_resource type="Curve" id="Curve_mi86g"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5049834, -0.0030864477), -5.969172, -5.969172, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CardWeapon" type="Area2D" unique_id=278677877]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_mi86g")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_xhdno")
+animation = &"miss"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
+scale = Vector2(0.75, 0.75)
+shape = SubResource("RectangleShape2D_mi86g")
+
+[node name="CurveLine2D" type="Line2D" parent="." unique_id=890067631]
+width_curve = SubResource("Curve_mi86g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

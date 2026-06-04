@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://bvy7i2nw65tyy" path="res://game/objects/items/scenes/Potion Red Big.tscn" id="18_xf56v"]
 [ext_resource type="PackedScene" uid="uid://bi5g2vqe6xdek" path="res://game/objects/Equipment/head/Kaliya_star_hat.tscn" id="19_xf56v"]
 [ext_resource type="PackedScene" uid="uid://c1fiyctd2xrli" path="res://game/objects/Equipment/boots/Poison_boots.tscn" id="20_uwsn1"]
+[ext_resource type="PackedScene" uid="uid://buh4o48vfo1ln" path="res://game/objects/Equipment/Weapon/equip/Nunchucks_equip.tscn" id="21_8rj6y"]
+[ext_resource type="PackedScene" uid="uid://6ngyovpkns22" path="res://game/objects/Equipment/Weapon/equip/CardWeapon_equip.tscn" id="22_oiiu3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -151,3 +153,9 @@ position = Vector2(-153, 180)
 
 [node name="Poison_boots" parent="." unique_id=1522439678 instance=ExtResource("20_uwsn1")]
 position = Vector2(-33, 161)
+
+[node name="Nunchucks_equip" parent="." unique_id=753643143 instance=ExtResource("21_8rj6y")]
+position = Vector2(93, -87)
+
+[node name="CardWeapon_equip" parent="." unique_id=1620466500 instance=ExtResource("22_oiiu3")]
+position = Vector2(-86, 23)

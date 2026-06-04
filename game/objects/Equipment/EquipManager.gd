@@ -26,11 +26,11 @@ var POOLS := {
 		
 		
 	],
-	"armory": [#временно только оружие
+	"armory": [#временно хуета
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
-		#{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # магазин
-		 #"tier": 1, "weight": 10.0},
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # магазин
+		 "tier": 1, "weight": 10.0},
 		{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
 		 "tier": 1, "weight": 0.0},
 		
@@ -48,16 +48,21 @@ var POOLS := {
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
 		
-		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
-		 "tier": 2, "weight": 10.0},
 		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 1, "weight": 10.0},
 		{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
 		 "tier": 3, "weight": 0.0},
+		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Nunchucks", "scene": preload("uid://buh4o48vfo1ln"),
+		 "tier": 2, "weight": 0.0},
 		
 		{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 2, "weight": 10.0},
 		{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
+		 "tier": 3, "weight": 10.0},
+		
+		{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
 		 "tier": 3, "weight": 10.0},
 	]
 }
