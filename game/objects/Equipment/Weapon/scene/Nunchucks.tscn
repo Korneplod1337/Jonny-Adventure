@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dmdxdedi4e367"]
 
 [ext_resource type="Script" uid="uid://dbjho3b6wf03d" path="res://game/objects/Equipment/Weapon/scene/nunchucks.gd" id="1_pbitw"]
-[ext_resource type="Texture2D" uid="uid://c8nblps0gfodl" path="res://image/effect_sprites/weapon_effects/nunchucks1.png" id="2_tbm7a"]
-[ext_resource type="Texture2D" uid="uid://cl5ddbwfovy3h" path="res://image/effect_sprites/weapon_effects/nunchucks2.png" id="3_0tw8e"]
-[ext_resource type="Texture2D" uid="uid://dahdyjjqdgkis" path="res://image/effect_sprites/weapon_effects/nunchucks3.png" id="4_7tmo2"]
-[ext_resource type="Texture2D" uid="uid://dki3451j07141" path="res://image/effect_sprites/weapon_effects/nunchucks4.png" id="5_jsyqx"]
-[ext_resource type="Texture2D" uid="uid://dnegm2n01hyac" path="res://image/effect_sprites/weapon_effects/nunchucks5.png" id="6_c2rb7"]
-[ext_resource type="Texture2D" uid="uid://d1yh8tmjn0pud" path="res://image/effect_sprites/weapon_effects/nunchucks6.png" id="7_t5ht2"]
-[ext_resource type="Texture2D" uid="uid://cubxwedbf4yg2" path="res://image/effect_sprites/weapon_effects/nunchucks7.png" id="8_kqq1x"]
+[ext_resource type="Texture2D" uid="uid://c8nblps0gfodl" path="res://image/equip/weapon_effects/nunchucks1.png" id="2_tbm7a"]
+[ext_resource type="Texture2D" uid="uid://cl5ddbwfovy3h" path="res://image/equip/weapon_effects/nunchucks2.png" id="3_0tw8e"]
+[ext_resource type="Texture2D" uid="uid://dahdyjjqdgkis" path="res://image/equip/weapon_effects/nunchucks3.png" id="4_7tmo2"]
+[ext_resource type="Texture2D" uid="uid://dki3451j07141" path="res://image/equip/weapon_effects/nunchucks4.png" id="5_jsyqx"]
+[ext_resource type="Texture2D" uid="uid://dnegm2n01hyac" path="res://image/equip/weapon_effects/nunchucks5.png" id="6_c2rb7"]
+[ext_resource type="Texture2D" uid="uid://d1yh8tmjn0pud" path="res://image/equip/weapon_effects/nunchucks6.png" id="7_t5ht2"]
+[ext_resource type="Texture2D" uid="uid://cubxwedbf4yg2" path="res://image/equip/weapon_effects/nunchucks7.png" id="8_kqq1x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ptov3"]
 animations = [{

@@ -63,13 +63,17 @@ func _on_button_new_game_pressed() -> void:
 var secret_codes := {
 	"bobrinaya ohota": "achiv",
 	"dlc skin": "skin",
-	"dlc artbook": "artbook"
+	"dlc artbook": "artbook",
+	"пасхалка stats": "ivent"
 }
 
 func _SecretCode_pressed() -> void:
 	var code := line_edit.text.strip_edges().to_lower()
 	if secret_codes.has(code):
 		match secret_codes[code]:
+			"ivent":
+				$"../secret code".show()
+				
 			"achiv":
 				pass
 			
@@ -78,7 +82,18 @@ func _SecretCode_pressed() -> void:
 			
 			"artbook":
 				pass
-		print("Верный код")
+		print("Верный код (no)")
 	
 	else:
 		print("Неверный код")
+
+
+func _on_button_tutorial_button_down() -> void:
+	#get_parent().get_parent().get_node('start_menu').hide()
+	#get_parent().get_parent().get_node('Tutorial_select_menu').show()
+	pass
+
+func _on_button_tutorial_mouse_entered() -> void:
+	$Button_tutorial/Select_tutorial.show()
+func _on_button_tutorial_mouse_exited() -> void:
+	$Button_tutorial/Select_tutorial.hide()

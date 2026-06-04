@@ -60,6 +60,11 @@ folder_colors={
 "res://image/players/Base_Jonny_textures/": "orange"
 }
 
+[global_group]
+
+Enemy=""
+player=""
+
 [input]
 
 space={

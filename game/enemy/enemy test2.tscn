@@ -22,7 +22,7 @@ radius = 984.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqygm"]
 size = Vector2(38, 76.5)
 
-[node name="EnemyTest2" type="CharacterBody2D" unique_id=464290923]
+[node name="EnemyTest2" type="CharacterBody2D" unique_id=464290923 groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_svwm6")

@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bhfqxrdvcm408"]
+
+[ext_resource type="Script" uid="uid://k4foybuf3npk" path="res://game/objects/Equipment/Weapon/scene/JonnyShotAlt.gd" id="1_en02f"]
+[ext_resource type="Texture2D" uid="uid://f3gnono0xcfb" path="res://image/equip/weapon_effects/alt_Spit_bullet1.png" id="2_vk2an"]
+[ext_resource type="Texture2D" uid="uid://wq48um3cilcg" path="res://image/equip/weapon_effects/alt_Spit_bullet2.png" id="3_xna66"]
+[ext_resource type="Texture2D" uid="uid://o6vmljnnrhwn" path="res://image/equip/weapon_effects/alt_Spit_bullet3.png" id="4_8ykn8"]
+[ext_resource type="Texture2D" uid="uid://bx2nsk8wwusqg" path="res://image/equip/weapon_effects/alt_Spit_bullet4.png" id="5_xhmj8"]
+[ext_resource type="Texture2D" uid="uid://dyhhuqpyeqkm2" path="res://image/equip/weapon_effects/alt_Spit_bullet5.png" id="6_0vak1"]
+[ext_resource type="Texture2D" uid="uid://6ipkyjfjkeua" path="res://image/equip/weapon_effects/alt_spit_miss1.png" id="7_3dqff"]
+[ext_resource type="Texture2D" uid="uid://dutbek0cpnwld" path="res://image/equip/weapon_effects/alt_spit_miss2.png" id="8_dls78"]
+[ext_resource type="Texture2D" uid="uid://nqeb51kjldgl" path="res://image/equip/weapon_effects/alt_spit_miss3.png" id="9_1ioe3"]
+[ext_resource type="Texture2D" uid="uid://cr5kh8rftq6fa" path="res://image/equip/weapon_effects/alt_spit_miss4.png" id="10_xf2dl"]
+[ext_resource type="Texture2D" uid="uid://bwrqh3hp6fuks" path="res://image/equip/weapon_effects/alt_spit_miss5.png" id="11_hmkfi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vk2an")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xna66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8ykn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xhmj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0vak1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3dqff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dls78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1ioe3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xf2dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hmkfi")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
+
+[node name="JonnyShotAlt" type="Area2D" unique_id=278677877]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_en02f")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
+position = Vector2(-1, -1)
+sprite_frames = SubResource("SpriteFrames_xhdno")
+animation = &"miss"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
+shape = SubResource("CircleShape2D_34718")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

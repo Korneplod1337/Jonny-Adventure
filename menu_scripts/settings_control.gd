@@ -16,7 +16,8 @@ func _on_button_video_pressed() -> void:
 	$Button_video/Button_low.show()
 	$Button_video/Button_medium.show()
 	$Button_video/Button_high.show()
-	
+	$Button_sound/button_sound_low.hide()
+	$Button_sound/button_sound_high.hide()
 	
 func _on_button_sound_pressed() -> void:
 	$Button_video/Button_low.hide()
@@ -24,7 +25,8 @@ func _on_button_sound_pressed() -> void:
 	$Button_video/Button_high.hide()
 	$Button_sound/Sound_bar.show()
 	$Button_sound/VScrollBar.show()
-	
+	$Button_sound/button_sound_low.show()
+	$Button_sound/button_sound_high.show()
 
 func _on_button_back_pressed() -> void:
 	get_parent().get_parent().get_node('Settings_layer').hide()

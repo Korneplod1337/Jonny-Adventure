@@ -16,7 +16,7 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 '''
 
 var POOLS := {
-	"treasure": [ #временно только шмотки
+	"treasure": [ ## временно только шмотки
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
@@ -24,9 +24,9 @@ var POOLS := {
 		{"id": "Poison_boots", "scene": preload("uid://c1fiyctd2xrli"),
 		 "tier": 2, "weight": 10.0},
 		
-		
+	
 	],
-	"armory": [#временно хуета
+	"armory": [ ## временно хуета
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # магазин
@@ -47,6 +47,10 @@ var POOLS := {
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
+		{"id": "tome_of_fairy_tales", "scene": preload("uid://2dtjjer8eim8"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
+		 "tier": 3, "weight": 10.0},
 		
 		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
 		 "tier": 1, "weight": 10.0},
@@ -62,8 +66,6 @@ var POOLS := {
 		{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
 		 "tier": 3, "weight": 10.0},
 		
-		{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
-		 "tier": 3, "weight": 10.0},
 	]
 }
 

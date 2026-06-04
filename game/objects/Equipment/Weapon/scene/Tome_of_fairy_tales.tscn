@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://mipf8xtfare7"]
+
+[ext_resource type="Script" uid="uid://c7u13q4l8kvfy" path="res://game/objects/Equipment/Weapon/scene/tome_of_fairy_tales.gd" id="1_q5ia4"]
+[ext_resource type="Texture2D" uid="uid://brsj06146fnwk" path="res://image/equip/weapon_effects/tome_of_fairy_tales5.png" id="2_dofce"]
+[ext_resource type="Texture2D" uid="uid://djyamlofkh4ik" path="res://image/equip/weapon_effects/tome_of_fairy_tales6.png" id="3_uhy7m"]
+[ext_resource type="Texture2D" uid="uid://rao6ptdk2o0y" path="res://image/equip/weapon_effects/tome_of_fairy_tales7.png" id="4_j0r6n"]
+[ext_resource type="Texture2D" uid="uid://dtgm01e16vy0n" path="res://image/equip/weapon_effects/tome_of_fairy_tales8.png" id="5_xwsfe"]
+[ext_resource type="Texture2D" uid="uid://ctg8ge7kamgb6" path="res://image/equip/weapon_effects/tome_of_fairy_tales1.png" id="6_oykbr"]
+[ext_resource type="Texture2D" uid="uid://ciak8k7sed3oe" path="res://image/equip/weapon_effects/tome_of_fairy_tales2.png" id="7_i7qgp"]
+[ext_resource type="Texture2D" uid="uid://dwg0h0kseibcg" path="res://image/equip/weapon_effects/tome_of_fairy_tales3.png" id="8_gltx4"]
+[ext_resource type="Texture2D" uid="uid://c3o0ggl020hgu" path="res://image/equip/weapon_effects/tome_of_fairy_tales4.png" id="9_mcnh4"]
+[ext_resource type="Texture2D" uid="uid://2r6ufks7m1q0" path="res://image/equip/weapon_effects/tome_of_fairy_tales9.png" id="10_qar05"]
+[ext_resource type="Texture2D" uid="uid://bt0y18gldcipi" path="res://image/equip/weapon_effects/tome_of_fairy_tales10.png" id="11_imqte"]
+[ext_resource type="Texture2D" uid="uid://cd168augk10np" path="res://image/equip/weapon_effects/tome_of_fairy_tales11.png" id="12_vnur8"]
+[ext_resource type="Texture2D" uid="uid://vbwxo66ucpfs" path="res://image/equip/weapon_effects/tome_of_fairy_tales12.png" id="13_2pqcr"]
+[ext_resource type="Texture2D" uid="uid://c1xrd65tgjw3c" path="res://image/equip/weapon_effects/tome_of_fairy_tales13.png" id="14_gwnpi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dofce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uhy7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j0r6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xwsfe")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_oykbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i7qgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gltx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mcnh4")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_qar05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_imqte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_vnur8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2pqcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gwnpi")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
+radius = 7.0
+
+[node name="tome of fairy tales" type="Area2D" unique_id=278677877]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_q5ia4")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
+sprite_frames = SubResource("SpriteFrames_xhdno")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
+shape = SubResource("CircleShape2D_34718")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

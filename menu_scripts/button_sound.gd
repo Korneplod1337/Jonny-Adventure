@@ -12,11 +12,24 @@ func _ready() -> void:
 
 
 func _on_value_changed(value: float) -> void:  # Если трогают ползунок звука
+	value = clampf(value, $VScrollBar.min_value, $VScrollBar.max_value)
+	$VScrollBar.set_value_no_signal(value)
 	$Sound_bar.set_frame_and_progress(value, 0.0)
 	set_global_volume(value)
-	
-	config.set_value("settings", "volume", $VScrollBar.get_value())
+	config.set_value("settings", "volume", value)
 	config.save("user://settings.cfg")
+
+
+func _on_button_sound_low_button_down() -> void:
+	set_pressed(false)
+	_on_value_changed($VScrollBar.get_value() - $VScrollBar.step)
+
+
+func _on_button_sound_high_button_down() -> void:
+	set_pressed(false)
+	_on_value_changed($VScrollBar.get_value() + $VScrollBar.step)
+	
+
 
 
 func set_global_volume(value: float):  # value от 0 до 10     Ставит уровень громкости

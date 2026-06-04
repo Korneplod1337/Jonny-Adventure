@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://btyptmeihg371"]
 
 [ext_resource type="Script" uid="uid://fca7kol6tutu" path="res://game/objects/Equipment/Weapon/scene/spearEX.gd" id="1_25hft"]
-[ext_resource type="Texture2D" uid="uid://db6qo24vce00r" path="res://image/effect_sprites/weapon_effects/SpearEX1.png" id="2_25hft"]
-[ext_resource type="Texture2D" uid="uid://cqcvy83xs2q2j" path="res://image/effect_sprites/weapon_effects/SpearEX2.png" id="3_vcsq7"]
-[ext_resource type="Texture2D" uid="uid://c0o5qpb174klj" path="res://image/effect_sprites/weapon_effects/SpearEX3.png" id="4_1vbu1"]
-[ext_resource type="Texture2D" uid="uid://0y7um10qlovh" path="res://image/effect_sprites/weapon_effects/SpearEX4.png" id="5_s5g0r"]
-[ext_resource type="Texture2D" uid="uid://bctnbccvsweqr" path="res://image/effect_sprites/weapon_effects/SpearEX5.png" id="6_pcs5j"]
-[ext_resource type="Texture2D" uid="uid://boa4x8qxra2bq" path="res://image/effect_sprites/weapon_effects/SpearEX6.png" id="7_1yaci"]
-[ext_resource type="Texture2D" uid="uid://dwu4jya75dhfa" path="res://image/effect_sprites/weapon_effects/SpearEX7.png" id="8_ora36"]
+[ext_resource type="Texture2D" uid="uid://db6qo24vce00r" path="res://image/equip/weapon_effects/SpearEX1.png" id="2_25hft"]
+[ext_resource type="Texture2D" uid="uid://cqcvy83xs2q2j" path="res://image/equip/weapon_effects/SpearEX2.png" id="3_vcsq7"]
+[ext_resource type="Texture2D" uid="uid://c0o5qpb174klj" path="res://image/equip/weapon_effects/SpearEX3.png" id="4_1vbu1"]
+[ext_resource type="Texture2D" uid="uid://0y7um10qlovh" path="res://image/equip/weapon_effects/SpearEX4.png" id="5_s5g0r"]
+[ext_resource type="Texture2D" uid="uid://bctnbccvsweqr" path="res://image/equip/weapon_effects/SpearEX5.png" id="6_pcs5j"]
+[ext_resource type="Texture2D" uid="uid://boa4x8qxra2bq" path="res://image/equip/weapon_effects/SpearEX6.png" id="7_1yaci"]
+[ext_resource type="Texture2D" uid="uid://dwu4jya75dhfa" path="res://image/equip/weapon_effects/SpearEX7.png" id="8_ora36"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ptov3"]
 animations = [{

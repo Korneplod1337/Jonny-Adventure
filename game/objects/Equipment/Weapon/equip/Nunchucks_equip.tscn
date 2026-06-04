@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://buh4o48vfo1ln"]
 
 [ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_3kw3o"]
-[ext_resource type="Texture2D" uid="uid://cyfhtr2x7ed70" path="res://image/effect_sprites/weapon_effects/nunchucks8.png" id="2_65jxo"]
+[ext_resource type="Texture2D" uid="uid://cyfhtr2x7ed70" path="res://image/equip/weapon_effects/nunchucks8.png" id="2_65jxo"]
 [ext_resource type="PackedScene" uid="uid://dmdxdedi4e367" path="res://game/objects/Equipment/Weapon/scene/Nunchucks.tscn" id="3_x5kai"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_em1tl"]
 

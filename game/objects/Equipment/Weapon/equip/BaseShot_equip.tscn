@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_24et4"]
 [ext_resource type="Texture2D" uid="uid://b5280qdpgacbg" path="res://image/equip/weapon/test_Spit_bullet.png" id="2_teggi"]
-[ext_resource type="PackedScene" uid="uid://cwdv6wwd2kqyr" path="res://game/objects/Equipment/Weapon/scene/BaseShot.tscn" id="3_teggi"]
+[ext_resource type="PackedScene" uid="uid://cwdv6wwd2kqyr" path="res://game/objects/Equipment/Weapon/scene/JonnyShot.tscn" id="3_teggi"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_xtrd6"]
 [ext_resource type="Texture2D" uid="uid://3hhrpek856pa" path="res://image/equip/weapon/Spit_bullet.png" id="4_i0cvw"]
 

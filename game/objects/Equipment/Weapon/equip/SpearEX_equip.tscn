@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://x30namew1orx" path="res://image/equip/weapon/SpearEX_equip.png" id="2_csgex"]
 [ext_resource type="PackedScene" uid="uid://btyptmeihg371" path="res://game/objects/Equipment/Weapon/scene/SpearEX.tscn" id="3_b5g8e"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_nve1j"]
-[ext_resource type="Texture2D" uid="uid://0y7um10qlovh" path="res://image/effect_sprites/weapon_effects/SpearEX4.png" id="5_omxrh"]
+[ext_resource type="Texture2D" uid="uid://0y7um10qlovh" path="res://image/equip/weapon_effects/SpearEX4.png" id="5_omxrh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299

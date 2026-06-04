@@ -8,11 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://dk7bcmlp2w4q6" path="res://image/main_menu/button_settings_select.png" id="6_4qcnf"]
 [ext_resource type="Texture2D" uid="uid://bgxs6ayb7gcl5" path="res://image/main_menu/button_quit_not.png" id="7_misp6"]
 [ext_resource type="Texture2D" uid="uid://c8x3scnwolylk" path="res://image/main_menu/button_quit_select.png" id="8_5vq2t"]
-[ext_resource type="Texture2D" uid="uid://bbhx6fvqpjv17" path="res://image/main_menu/button_achivement.png" id="9_stq6n"]
-[ext_resource type="Texture2D" uid="uid://bv6yakr4clr3q" path="res://image/main_menu/button_stats.png" id="10_pk0f2"]
+[ext_resource type="Texture2D" uid="uid://butg0fxnkg0ef" path="res://image/main_menu/button_achivement1.png" id="9_m0epi"]
+[ext_resource type="Texture2D" uid="uid://dsdlqlo7h2eja" path="res://image/main_menu/button_achivement2.png" id="10_bnn4y"]
 [ext_resource type="Texture2D" uid="uid://dlevc6jlrano1" path="res://image/main_menu/settings.png" id="10_y1oxc"]
+[ext_resource type="Texture2D" uid="uid://cq5e14lsibddb" path="res://image/main_menu/button_stats1.png" id="11_bnn4y"]
 [ext_resource type="Script" uid="uid://c5uyjuvfhrlr7" path="res://menu_scripts/settings_control.gd" id="11_c0arg"]
 [ext_resource type="Script" uid="uid://krw2epkapjrr" path="res://menu_scripts/reset.gd" id="11_fvbif"]
+[ext_resource type="Texture2D" uid="uid://df17i44u1qm1n" path="res://image/main_menu/button_stats2.png" id="12_1q055"]
 [ext_resource type="Texture2D" uid="uid://b4yxtbwd6eiqm" path="res://image/main_menu/settings_out_button1.png" id="12_4tbtp"]
 [ext_resource type="AudioStream" uid="uid://dnrgmuhx5ejnx" path="res://sound/main-menu.ogg" id="12_hxuja"]
 [ext_resource type="Texture2D" uid="uid://canf2kceq7uo3" path="res://image/main_menu/settings_video_low1.png" id="12_l726t"]
@@ -22,8 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://dqom4krvjlc81" path="res://image/main_menu/settings_video_med1.png" id="13_alhms"]
 [ext_resource type="Texture2D" uid="uid://bxcynylx1d1b1" path="res://image/main_menu/settings_video_low2.png" id="13_pdvo5"]
 [ext_resource type="Texture2D" uid="uid://dph4vhlmxsoj0" path="res://image/main_menu/settings_sound_0.png" id="13_xg1mu"]
+[ext_resource type="Texture2D" uid="uid://c0tk8dowfqma5" path="res://image/main_menu/button_tutorial1.png" id="13_xy68n"]
 [ext_resource type="Texture2D" uid="uid://cbh25u535577a" path="res://image/main_menu/settings_video_high1.png" id="14_3sut6"]
 [ext_resource type="Texture2D" uid="uid://clhm0dr1n12hv" path="res://image/main_menu/settings_sound_1.png" id="14_lt70l"]
+[ext_resource type="Texture2D" uid="uid://bti52k6ymls5o" path="res://image/main_menu/button_tutorial2.png" id="14_sarce"]
 [ext_resource type="Texture2D" uid="uid://4sw0qtm7kgkv" path="res://image/main_menu/settings_video_med2.png" id="15_bewgb"]
 [ext_resource type="Texture2D" uid="uid://c33hopsoiym5u" path="res://image/main_menu/settings_sound_2.png" id="15_m6dkg"]
 [ext_resource type="Texture2D" uid="uid://b0s2mrco2dpsw" path="res://image/main_menu/settings_sound_3.png" id="16_44wrn"]
@@ -56,6 +60,10 @@
 [ext_resource type="Texture2D" uid="uid://cyfup3waq75i0" path="res://image/main_menu/button_easy.png" id="51_e4x8i"]
 [ext_resource type="Texture2D" uid="uid://cfj7b58oiepqr" path="res://image/main_menu/button_med.png" id="52_a0i4q"]
 [ext_resource type="Texture2D" uid="uid://dmqedacjsdbpd" path="res://image/main_menu/button_hard.png" id="53_pw383"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xy68n"]
+font_size = 22
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ni8h3"]
 animations = [{
@@ -196,12 +204,13 @@ offset_left = -68.0
 offset_right = 68.0
 offset_bottom = 88.0
 focus_mode = 0
+icon = ExtResource("9_m0epi")
 flat = true
 
 [node name="Select_achivement" type="Sprite2D" parent="start_menu/Control_main/Button_achivement" unique_id=68510486]
 visible = false
 position = Vector2(4, 4)
-texture = ExtResource("9_stq6n")
+texture = ExtResource("10_bnn4y")
 centered = false
 
 [node name="Button_stats" type="Button" parent="start_menu/Control_main" unique_id=1483819785]
@@ -210,11 +219,29 @@ offset_left = 100.0
 offset_right = 236.0
 offset_bottom = 88.0
 focus_mode = 0
-icon = ExtResource("10_pk0f2")
+icon = ExtResource("11_bnn4y")
 flat = true
 
 [node name="Select_stats" type="Sprite2D" parent="start_menu/Control_main/Button_stats" unique_id=564091291]
 visible = false
+position = Vector2(4, 4)
+texture = ExtResource("12_1q055")
+centered = false
+
+[node name="Button_tutorial" type="Button" parent="start_menu/Control_main" unique_id=710198851]
+layout_mode = 0
+offset_left = -228.0
+offset_right = -92.0
+offset_bottom = 88.0
+focus_mode = 0
+icon = ExtResource("13_xy68n")
+flat = true
+
+[node name="Select_tutorial" type="Sprite2D" parent="start_menu/Control_main/Button_tutorial" unique_id=83076657]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("14_sarce")
+centered = false
 
 [node name="ResetButton" type="Button" parent="start_menu/Control_main" unique_id=92415567]
 layout_mode = 0
@@ -244,6 +271,17 @@ offset_right = 410.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 32
 text = "activate"
+
+[node name="secret code" type="Label" parent="start_menu" unique_id=1988222383]
+visible = false
+z_index = 100
+z_as_relative = false
+offset_left = 3.0
+offset_top = 56.0
+offset_right = 746.0
+offset_bottom = 109.0
+text = "Секретный код на приз: Бегемотинозавр копал крахмальные ямочки"
+label_settings = SubResource("LabelSettings_xy68n")
 
 [node name="settings_menu" type="Node" parent="." unique_id=981361797]
 
@@ -345,9 +383,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 387.0
-offset_top = 279.0
-offset_right = 432.0
-offset_bottom = 524.0
+offset_top = 281.0
+offset_right = 431.0
+offset_bottom = 545.0
 grow_horizontal = 0
 grow_vertical = 2
 rotation = 3.14159
@@ -360,6 +398,24 @@ theme_override_styles/grabber_pressed = SubResource("StyleBoxTexture_1tgcs")
 max_value = 10.0
 step = 1.0
 value = 4.0
+
+[node name="button_sound_low" type="Button" parent="settings_menu/Settings_layer/Settings_Control/Button_sound" unique_id=448781039]
+visible = false
+layout_mode = 0
+offset_left = 898.0
+offset_top = 419.0
+offset_right = 1034.0
+offset_bottom = 461.0
+flat = true
+
+[node name="button_sound_high" type="Button" parent="settings_menu/Settings_layer/Settings_Control/Button_sound" unique_id=114230159]
+visible = false
+layout_mode = 0
+offset_left = 914.0
+offset_top = -221.0
+offset_right = 1018.0
+offset_bottom = -117.0
+flat = true
 
 [node name="Button_back" type="Button" parent="settings_menu/Settings_layer/Settings_Control" unique_id=1420469648]
 layout_mode = 0
@@ -648,6 +704,9 @@ flat = true
 stream = ExtResource("12_hxuja")
 parameters/looping = true
 
+[node name="Tutorial_select_menu" type="CanvasLayer" parent="." unique_id=291529005]
+visible = false
+
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_NewGame" to="start_menu/Control_main" method="_on_button_new_game_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_NewGame" to="start_menu/Control_main" method="_on_button_new_game_mouse_exited"]
 [connection signal="pressed" from="start_menu/Control_main/Button_NewGame" to="start_menu/Control_main" method="_on_button_new_game_pressed"]
@@ -663,6 +722,9 @@ parameters/looping = true
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_exited"]
 [connection signal="pressed" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_pressed"]
+[connection signal="button_down" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_button_down"]
+[connection signal="mouse_entered" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_mouse_entered"]
+[connection signal="mouse_exited" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_mouse_exited"]
 [connection signal="pressed" from="start_menu/Control_main/ResetButton" to="start_menu/Control_main/ResetButton" method="_on_pressed"]
 [connection signal="pressed" from="start_menu/LineEdit/Button" to="start_menu/Control_main" method="_SecretCode_pressed"]
 [connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_video" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_video_pressed"]
@@ -677,6 +739,8 @@ parameters/looping = true
 [connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_high" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_high_pressed"]
 [connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_sound" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_sound_pressed"]
 [connection signal="value_changed" from="settings_menu/Settings_layer/Settings_Control/Button_sound/VScrollBar" to="settings_menu/Settings_layer/Settings_Control/Button_sound" method="_on_value_changed"]
+[connection signal="button_down" from="settings_menu/Settings_layer/Settings_Control/Button_sound/button_sound_low" to="settings_menu/Settings_layer/Settings_Control/Button_sound" method="_on_button_sound_low_button_down"]
+[connection signal="button_down" from="settings_menu/Settings_layer/Settings_Control/Button_sound/button_sound_high" to="settings_menu/Settings_layer/Settings_Control/Button_sound" method="_on_button_sound_high_button_down"]
 [connection signal="mouse_entered" from="settings_menu/Settings_layer/Settings_Control/Button_back" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_back_mouse_entered"]
 [connection signal="mouse_exited" from="settings_menu/Settings_layer/Settings_Control/Button_back" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_back_mouse_exited"]
 [connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_back" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_back_pressed"]

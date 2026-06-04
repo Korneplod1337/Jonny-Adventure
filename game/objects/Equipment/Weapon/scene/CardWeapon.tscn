@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cr512ns8ox0cc"]
 
 [ext_resource type="Script" uid="uid://cfgae1grhip2b" path="res://game/objects/Equipment/Weapon/scene/cardWeapon.gd" id="1_mi86g"]
-[ext_resource type="Texture2D" uid="uid://byp7ykoiqldhf" path="res://image/effect_sprites/weapon_effects/CardWeapon1.png" id="2_e8pk3"]
-[ext_resource type="Texture2D" uid="uid://67nmexyifowp" path="res://image/effect_sprites/weapon_effects/CardWeapon2.png" id="3_mi86g"]
-[ext_resource type="Texture2D" uid="uid://dqdx62auh7rk7" path="res://image/effect_sprites/weapon_effects/CardWeapon3.png" id="4_scalb"]
-[ext_resource type="Texture2D" uid="uid://bor7ixcl8llre" path="res://image/effect_sprites/weapon_effects/CardWeapon4.png" id="5_1s76c"]
-[ext_resource type="Texture2D" uid="uid://bx8vidks5ghg5" path="res://image/effect_sprites/weapon_effects/CardWeapon5.png" id="6_2k0i3"]
-[ext_resource type="Texture2D" uid="uid://vglenctg1s28" path="res://image/effect_sprites/weapon_effects/CardWeapon6.png" id="7_mmxhk"]
-[ext_resource type="Texture2D" uid="uid://cjeaw7wf8oh7d" path="res://image/effect_sprites/weapon_effects/CardWeapon7.png" id="8_mi86g"]
+[ext_resource type="Texture2D" uid="uid://byp7ykoiqldhf" path="res://image/equip/weapon_effects/CardWeapon1.png" id="2_e8pk3"]
+[ext_resource type="Texture2D" uid="uid://67nmexyifowp" path="res://image/equip/weapon_effects/CardWeapon2.png" id="3_mi86g"]
+[ext_resource type="Texture2D" uid="uid://dqdx62auh7rk7" path="res://image/equip/weapon_effects/CardWeapon3.png" id="4_scalb"]
+[ext_resource type="Texture2D" uid="uid://bor7ixcl8llre" path="res://image/equip/weapon_effects/CardWeapon4.png" id="5_1s76c"]
+[ext_resource type="Texture2D" uid="uid://bx8vidks5ghg5" path="res://image/equip/weapon_effects/CardWeapon5.png" id="6_2k0i3"]
+[ext_resource type="Texture2D" uid="uid://vglenctg1s28" path="res://image/equip/weapon_effects/CardWeapon6.png" id="7_mmxhk"]
+[ext_resource type="Texture2D" uid="uid://cjeaw7wf8oh7d" path="res://image/equip/weapon_effects/CardWeapon7.png" id="8_mi86g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{

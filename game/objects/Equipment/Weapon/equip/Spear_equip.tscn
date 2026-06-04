@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c0522hbal5blh" path="res://image/equip/weapon/Spear_equip.png" id="2_244sx"]
 [ext_resource type="PackedScene" uid="uid://d3qsudothx22b" path="res://game/objects/Equipment/Weapon/scene/Spear.tscn" id="3_nsqh5"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_ffnto"]
-[ext_resource type="Texture2D" uid="uid://cwhoswgj6l8pi" path="res://image/effect_sprites/weapon_effects/Spear1.png" id="5_e7qfi"]
+[ext_resource type="Texture2D" uid="uid://cwhoswgj6l8pi" path="res://image/equip/weapon_effects/Spear1.png" id="5_e7qfi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299
