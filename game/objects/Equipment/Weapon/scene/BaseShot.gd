@@ -21,6 +21,7 @@ var penetration: int = 0 ## Число врагов, сквозь которых
 var _enemy_hit_count: int = 0
 
 func _ready() -> void:
+	collision_mask |= 32 # layer 6 — Препятствия
 	animaited_speed = GameState.animated_world_speed
 	#var player := get_tree().get_first_node_in_group("player")
 	rotation = direction.angle()

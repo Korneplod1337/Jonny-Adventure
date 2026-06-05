@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="3_1tq2v"]
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/rock.tscn" id="4_1jsc2"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_8amni"]
-[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/EmenyWorm.tscn" id="6_7m85q"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/EmenyWorm.tscn" id="6_7m85q"]
+[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/EnemyBat.tscn" id="7_1tq2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
 texture = ExtResource("2_7m85q")
@@ -127,3 +128,11 @@ position = Vector2(370, -118)
 
 [node name="EmenyWorm_extra" parent="." unique_id=1697991086 instance=ExtResource("6_7m85q")]
 visible = false
+position = Vector2(-347, 174)
+
+[node name="EnemyBat" parent="." unique_id=2133096440 instance=ExtResource("7_1tq2v")]
+position = Vector2(-293, -131)
+
+[node name="EnemyBat2" parent="." unique_id=1498312184 instance=ExtResource("7_1tq2v")]
+visible = false
+position = Vector2(382, 179)

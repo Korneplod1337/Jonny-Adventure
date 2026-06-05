@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp55xyng4vysl"
-path="res://.godot/imported/Angry_Jonny.png-2ed5e5982675cc24b29c7f9ef0ed6470.ctex"
+uid="uid://d4xw4e6ry26l"
+path="res://.godot/imported/enemy_proj2.png-470e386c0603bd8d1722396b22c29bd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/enemy/Angry_Jonny.png"
-dest_files=["res://.godot/imported/Angry_Jonny.png-2ed5e5982675cc24b29c7f9ef0ed6470.ctex"]
+source_file="res://image/enemy/enemy_projectile/enemy_proj2.png"
+dest_files=["res://.godot/imported/enemy_proj2.png-470e386c0603bd8d1722396b22c29bd9.ctex"]
 
 [params]
 

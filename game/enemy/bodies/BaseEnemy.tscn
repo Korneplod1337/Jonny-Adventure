@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://4n7hnx6frmbp"]
 
 [ext_resource type="Texture2D" uid="uid://b13bplyg515pj" path="res://image/circle.png" id="1_r4evv"]
-[ext_resource type="Script" uid="uid://c7bi4jrq3704r" path="res://game/enemy/base_enemy.gd" id="1_yry4g"]
-[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="2_2eqer"]
+[ext_resource type="Script" uid="uid://c7bi4jrq3704r" path="res://game/enemy/bodies/base_enemy.gd" id="1_yry4g"]
 [ext_resource type="Texture2D" uid="uid://7l0gm7uwen52" path="res://image/Icon.jpg" id="2_yry4g"]
-[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/effect_icons.gd" id="4_uckop"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/bodies/effect_icons.gd" id="4_uckop"]
 [ext_resource type="Texture2D" uid="uid://b7cqj7inw8y02" path="res://image/effect_sprites/status_bar/snowflake.png" id="5_y8iyg"]
 [ext_resource type="Texture2D" uid="uid://dry1e6wipf5yq" path="res://image/effect_sprites/status_bar/poison.png" id="6_06vgp"]
 [ext_resource type="Texture2D" uid="uid://dew1qqwfm2ex5" path="res://image/effect_sprites/status_bar/fire1.png" id="7_cnrvr"]
@@ -38,12 +37,11 @@ radius = 984.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
 size = Vector2(68, 35)
 
-[node name="BaseEnemy" type="CharacterBody2D" unique_id=2133096440]
+[node name="BaseEnemy" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
 scale = Vector2(1.5, 1.5)
 collision_layer = 4
-collision_mask = 22
+collision_mask = 54
 script = ExtResource("1_yry4g")
-coin_scene = ExtResource("2_2eqer")
 move_speed = 50.0
 use_base_move_towards_player = true
 

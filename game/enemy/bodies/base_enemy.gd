@@ -1,7 +1,7 @@
 class_name BaseEnemy
 extends CharacterBody2D
 
-@export var coin_scene: PackedScene
+var coin_scene = preload("res://game/objects/coins/Coin.tscn")
 
 @export var move_speed: float = 100.0
 var base_move_speed := move_speed
@@ -10,10 +10,11 @@ var poison: float = 0
 var effect_protection: float = 1
 
 @export var cooldown_time: float = 1.5
-@export var base_hp: int = 50
+@export var base_hp: int = 50 
 @export var damage: int = 1
 
 @export var use_base_move_towards_player: bool = false
+@export var deals_melee_damage: bool = true
 var base_move_stop_distance: float = 8.0
 
 var player_in_hit_range: bool = false
@@ -60,11 +61,9 @@ func _physics_process(delta: float) -> void:
 		player = get_tree().get_first_node_in_group("player")
 		return
 
-	if player_in_hit_range:
-		if GameState.level_bufs[3][1]:
-			player.take_damage(0, damage, 0)
-		else:
-			player.take_damage(damage, 0, 0)
+	if player_in_hit_range and deals_melee_damage:
+		var atk := get_attack_damage()
+		player.take_damage(atk.x, atk.y, atk.z)
 	#Отталкивание
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
 	if hitstun > 0:
@@ -102,6 +101,16 @@ func _base_move_towards_player(_delta: float) -> void:
 func _setup_enemy_stats() -> void:
 	if GameState.level_bufs[2][1]:  # Deathly
 		damage *= 2
+
+
+func get_attack_damage() -> Vector3i:
+	var phy := 0
+	var mag := 0
+	if GameState.level_bufs[3][1]:
+		mag = damage
+	else:
+		phy = damage
+	return Vector3i(phy, mag, 0)
 
 
 func _custom_physics(_delta: float) -> void:
