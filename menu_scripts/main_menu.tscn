@@ -230,8 +230,8 @@ centered = false
 
 [node name="Button_tutorial" type="Button" parent="start_menu/Control_main" unique_id=710198851]
 layout_mode = 0
-offset_left = -228.0
-offset_right = -92.0
+offset_left = -232.0
+offset_right = -96.0
 offset_bottom = 88.0
 focus_mode = 0
 icon = ExtResource("13_xy68n")
