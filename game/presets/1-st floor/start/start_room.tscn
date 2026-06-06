@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="2_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/bodies/dartboard.tscn" id="4_cjhlh"]
-[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="7_nbcw0"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.tscn" id="9_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="12_pjn5v"]
 [ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/BaseGun_equip.tscn" id="14_cdchw"]
@@ -103,14 +102,11 @@ position = Vector2(545, -167)
 [node name="EnemyTest4" parent="." unique_id=408778307 instance=ExtResource("4_cjhlh")]
 position = Vector2(503, -112)
 
-[node name="Coin" parent="." unique_id=398995973 instance=ExtResource("7_nbcw0")]
-position = Vector2(240, -130)
-
 [node name="JonnyShot" parent="." unique_id=241584314 instance=ExtResource("9_sw7ps")]
 position = Vector2(-110, -130)
 
 [node name="CoinBag" parent="." unique_id=108492217 instance=ExtResource("12_pjn5v")]
-position = Vector2(150, -130)
+position = Vector2(200, -130)
 
 [node name="JonnyShot2" parent="." unique_id=777621458 instance=ExtResource("15_3rats")]
 position = Vector2(-440, -130)
