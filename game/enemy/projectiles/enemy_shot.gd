@@ -5,7 +5,7 @@ var speed: float = 300.0
 var animaited_speed = 1
 var direction: Vector2 = Vector2.RIGHT
 var atk_range: float = 200.0
-var damage := [0, 0, 0]
+@export var damage := [0, 0, 0]
 
 var distance_travelled := 0.0
 var exploded := false

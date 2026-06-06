@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byd6ny77nffo4"
-path="res://.godot/imported/test _enemy3.png-fae6f99d2211fc5d684e2852eacd1d29.ctex"
+uid="uid://256vtuhf1qpd"
+path="res://.godot/imported/The hog2.png-7a5ce7550a056eff1dfa97f5a54bada7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/enemy/bodies/test _enemy3.png"
-dest_files=["res://.godot/imported/test _enemy3.png-fae6f99d2211fc5d684e2852eacd1d29.ctex"]
+source_file="res://image/enemy/bodies/The hog2.png"
+dest_files=["res://.godot/imported/The hog2.png-7a5ce7550a056eff1dfa97f5a54bada7.ctex"]
 
 [params]
 
