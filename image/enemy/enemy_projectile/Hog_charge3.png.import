@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cab18ch8gsn76"
-path="res://.godot/imported/test _enemy2.png-1290b1f5b5df93eaa3e1ba9ee32f92ba.ctex"
+uid="uid://cqfenbbry3pek"
+path="res://.godot/imported/Hog_charge3.png-b5a84cd07fda73eba264c4ab9af6fc7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/enemy/bodies/test _enemy2.png"
-dest_files=["res://.godot/imported/test _enemy2.png-1290b1f5b5df93eaa3e1ba9ee32f92ba.ctex"]
+source_file="res://image/enemy/enemy_projectile/Hog_charge3.png"
+dest_files=["res://.godot/imported/Hog_charge3.png-b5a84cd07fda73eba264c4ab9af6fc7f.ctex"]
 
 [params]
 

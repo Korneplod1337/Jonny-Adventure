@@ -16,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://dry1e6wipf5yq" path="res://image/effect_sprites/status_bar/poison.png" id="11_0xb6j"]
 [ext_resource type="Texture2D" uid="uid://dew1qqwfm2ex5" path="res://image/effect_sprites/status_bar/fire1.png" id="12_lk7xh"]
 [ext_resource type="Texture2D" uid="uid://bgtjntokqpgaa" path="res://image/effect_sprites/status_bar/fire2.png" id="13_2o6yw"]
+[ext_resource type="Texture2D" uid="uid://d2ax28ube17yw" path="res://image/enemy/enemy_projectile/Hog_charge2.png" id="17_i4y4q"]
+[ext_resource type="Texture2D" uid="uid://cqfenbbry3pek" path="res://image/enemy/enemy_projectile/Hog_charge3.png" id="18_a2jkp"]
+[ext_resource type="Texture2D" uid="uid://dhxc45lll5xlw" path="res://image/enemy/enemy_projectile/Hog_charge4.png" id="19_n8jjt"]
+[ext_resource type="Texture2D" uid="uid://cxfps5ei7ucy4" path="res://image/enemy/enemy_projectile/Hog_charge1.png" id="20_0xb6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
 size = Vector2(50, 21)
@@ -74,8 +78,33 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="BaseEnemy" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
-scale = Vector2(1.5, 1.5)
+[sub_resource type="SpriteFrames" id="SpriteFrames_lk7xh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_i4y4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_a2jkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_n8jjt")
+}],
+"loop": true,
+"name": &"Charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_0xb6j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Hog" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
+scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 54
 script = ExtResource("1_45uaf")
@@ -111,7 +140,6 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_17ibq")
-animation = &"charge"
 
 [node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
 position = Vector2(0, -30)
@@ -123,6 +151,12 @@ freeze_icon = ExtResource("10_n8jjt")
 poison_icon = ExtResource("11_0xb6j")
 fire_icon0 = ExtResource("12_lk7xh")
 fire_icon1 = ExtResource("13_2o6yw")
+
+[node name="Charge" type="AnimatedSprite2D" parent="." unique_id=982909294]
+visible = false
+position = Vector2(2.6666667, -2.6666667)
+sprite_frames = SubResource("SpriteFrames_lk7xh")
+animation = &"Charge"
 
 [connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
 [connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
