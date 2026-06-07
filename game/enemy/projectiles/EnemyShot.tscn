@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bkrkbcba4lrit"]
+
+[ext_resource type="Script" uid="uid://biyr8kxdvqit6" path="res://game/enemy/projectiles/enemy_shot.gd" id="1_baxrs"]
+[ext_resource type="Texture2D" uid="uid://rblkvmi5xfmc" path="res://image/enemy/enemy_projectile/enemy_proj1.png" id="2_7v8yf"]
+[ext_resource type="Texture2D" uid="uid://d4xw4e6ry26l" path="res://image/enemy/enemy_projectile/enemy_proj2.png" id="3_8v8li"]
+[ext_resource type="Texture2D" uid="uid://cdc86ska6n3oa" path="res://image/enemy/enemy_projectile/enemy_proj3.png" id="4_hvmm7"]
+[ext_resource type="Texture2D" uid="uid://dt5ajo5tedfm1" path="res://image/enemy/enemy_projectile/enemy_proj4.png" id="5_baxrs"]
+[ext_resource type="Texture2D" uid="uid://bqgicx60jwlm2" path="res://image/enemy/enemy_projectile/enemy_proj5.png" id="6_40soh"]
+[ext_resource type="Texture2D" uid="uid://ce48w5mv0fvoq" path="res://image/enemy/enemy_projectile/enemy_proj6.png" id="7_queea"]
+[ext_resource type="Texture2D" uid="uid://dwicvetry2koi" path="res://image/enemy/enemy_projectile/enemy_proj7.png" id="8_655lf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
+radius = 15.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7v8yf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8v8li")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hvmm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_baxrs")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7v8yf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_40soh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_queea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_655lf")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 10.0
+}]
+
+[node name="EnemyShot" type="Area2D" unique_id=278677877]
+collision_layer = 2
+script = ExtResource("1_baxrs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
+shape = SubResource("CircleShape2D_34718")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_xhdno")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

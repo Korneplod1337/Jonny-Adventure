@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://bevlvruxr34ip"]
+
+[ext_resource type="Script" uid="uid://dw23pof411khw" path="res://game/enemy/bodies/worm.gd" id="1_ugavn"]
+[ext_resource type="Texture2D" uid="uid://cd1aufvpgqmto" path="res://image/enemy/bodies/Worm1.png" id="2_23odb"]
+[ext_resource type="Texture2D" uid="uid://dk1w182ydfgkf" path="res://image/enemy/bodies/Worm2.png" id="3_4vsym"]
+[ext_resource type="Texture2D" uid="uid://dl4huhlmsfm66" path="res://image/enemy/bodies/Worm3.png" id="4_1mig5"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/bodies/effect_icons.gd" id="5_0265e"]
+[ext_resource type="Texture2D" uid="uid://b7cqj7inw8y02" path="res://image/effect_sprites/status_bar/snowflake.png" id="6_poxlf"]
+[ext_resource type="Texture2D" uid="uid://dry1e6wipf5yq" path="res://image/effect_sprites/status_bar/poison.png" id="7_wq4d0"]
+[ext_resource type="Texture2D" uid="uid://dew1qqwfm2ex5" path="res://image/effect_sprites/status_bar/fire1.png" id="8_ocb8b"]
+[ext_resource type="Texture2D" uid="uid://bgtjntokqpgaa" path="res://image/effect_sprites/status_bar/fire2.png" id="9_fc28w"]
+
+[sub_resource type="Curve" id="Curve_kjktk"]
+_limits = [0.5, 1.5, 0.0, 1.0]
+bake_resolution = 50
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.50199205, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huv4u"]
+size = Vector2(49, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn8fk"]
+radius = 984.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmj20"]
+size = Vector2(68, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d423"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_23odb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4vsym")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1mig5")
+}],
+"loop": false,
+"name": &"die",
+"speed": 1.0
+}]
+
+[node name="EmenyWorm" type="CharacterBody2D" unique_id=1655288545 groups=["Enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 54
+script = ExtResource("1_ugavn")
+dash_curve = SubResource("Curve_kjktk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=59623340]
+shape = SubResource("RectangleShape2D_huv4u")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=607490412]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=862790983]
+visible = false
+shape = SubResource("CircleShape2D_cn8fk")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=982591408]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1413603581]
+shape = SubResource("RectangleShape2D_wmj20")
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1132297483]
+wait_time = 0.2
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=2010852584]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1085292099]
+wait_time = 1.5
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1963768320]
+position = Vector2(-5, -5)
+sprite_frames = SubResource("SpriteFrames_0d423")
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=521838655]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1584987421]
+script = ExtResource("5_0265e")
+spacing = 25.0
+freeze_icon = ExtResource("6_poxlf")
+poison_icon = ExtResource("7_wq4d0")
+fire_icon0 = ExtResource("8_ocb8b")
+fire_icon1 = ExtResource("9_fc28w")
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

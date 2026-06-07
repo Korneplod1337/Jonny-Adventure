@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://6ngyovpkns22"]
 
 [ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_qnn7y"]
+[ext_resource type="Texture2D" uid="uid://cq1ua1s5jgeqj" path="res://image/equip/weapon/card.png" id="2_qnn7y"]
 [ext_resource type="Texture2D" uid="uid://byp7ykoiqldhf" path="res://image/equip/weapon_effects/CardWeapon1.png" id="2_t814i"]
 [ext_resource type="PackedScene" uid="uid://cr512ns8ox0cc" path="res://game/objects/Equipment/Weapon/scene/CardWeapon.tscn" id="3_qnn7y"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_ywrc0"]
@@ -25,7 +26,7 @@ animations = [{
 [node name="CardWeapon_equip" type="Area2D" unique_id=241584314]
 collision_mask = 0
 script = ExtResource("1_qnn7y")
-equip_icon = ExtResource("2_t814i")
+equip_icon = ExtResource("2_qnn7y")
 equip_id = "CardWeapon"
 projectile = ExtResource("3_qnn7y")
 equip_tooltip = "CardWeapon"

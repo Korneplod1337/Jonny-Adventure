@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://krw2epkapjrr" path="res://menu_scripts/reset.gd" id="11_fvbif"]
 [ext_resource type="Texture2D" uid="uid://df17i44u1qm1n" path="res://image/main_menu/button_stats2.png" id="12_1q055"]
 [ext_resource type="Texture2D" uid="uid://b4yxtbwd6eiqm" path="res://image/main_menu/settings_out_button1.png" id="12_4tbtp"]
-[ext_resource type="AudioStream" uid="uid://dnrgmuhx5ejnx" path="res://sound/main-menu.ogg" id="12_hxuja"]
+[ext_resource type="AudioStream" uid="uid://dnrgmuhx5ejnx" path="res://sound/music/main-menu.ogg" id="12_hxuja"]
 [ext_resource type="Texture2D" uid="uid://canf2kceq7uo3" path="res://image/main_menu/settings_video_low1.png" id="12_l726t"]
 [ext_resource type="Script" uid="uid://d13ckchek7pdn" path="res://menu_scripts/button_sound.gd" id="12_ru6ym"]
 [ext_resource type="Texture2D" uid="uid://b7d2a85dky3ij" path="res://image/main_menu/settings_out_button2.png" id="13_1aqqx"]
@@ -60,6 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://cyfup3waq75i0" path="res://image/main_menu/button_easy.png" id="51_e4x8i"]
 [ext_resource type="Texture2D" uid="uid://cfj7b58oiepqr" path="res://image/main_menu/button_med.png" id="52_a0i4q"]
 [ext_resource type="Texture2D" uid="uid://dmqedacjsdbpd" path="res://image/main_menu/button_hard.png" id="53_pw383"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_xy68n"]
 font_size = 22

@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://ysk5cf5ryjby"]
+
+[ext_resource type="Script" uid="uid://cjg67lu4f8w0" path="res://game/enemy/bodies/bat.gd" id="1_0xlom"]
+[ext_resource type="PackedScene" uid="uid://bkrkbcba4lrit" path="res://game/enemy/projectiles/EnemyShot.tscn" id="2_26cec"]
+[ext_resource type="Texture2D" uid="uid://dorlkn6wcps16" path="res://image/enemy/bodies/bat1.png" id="3_mt36t"]
+[ext_resource type="Texture2D" uid="uid://6kkodx2m456u" path="res://image/enemy/bodies/bat2.png" id="4_q48xp"]
+[ext_resource type="Texture2D" uid="uid://dqnt60h2gir5s" path="res://image/enemy/bodies/bat3.png" id="5_c5nik"]
+[ext_resource type="Texture2D" uid="uid://bilxua71m14cl" path="res://image/enemy/bodies/bat4.png" id="6_66y1q"]
+[ext_resource type="Texture2D" uid="uid://dnrypomux7ghf" path="res://image/enemy/bodies/bat5.png" id="7_1y2go"]
+[ext_resource type="Texture2D" uid="uid://dqb60oqhjdflr" path="res://image/enemy/bodies/bat6.png" id="8_eexhc"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/bodies/effect_icons.gd" id="9_f3fvu"]
+[ext_resource type="Texture2D" uid="uid://b7cqj7inw8y02" path="res://image/effect_sprites/status_bar/snowflake.png" id="10_cgabf"]
+[ext_resource type="Texture2D" uid="uid://dry1e6wipf5yq" path="res://image/effect_sprites/status_bar/poison.png" id="11_m3chq"]
+[ext_resource type="Texture2D" uid="uid://dew1qqwfm2ex5" path="res://image/effect_sprites/status_bar/fire1.png" id="12_qcqax"]
+[ext_resource type="Texture2D" uid="uid://bgtjntokqpgaa" path="res://image/effect_sprites/status_bar/fire2.png" id="13_t16fi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
+size = Vector2(16, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
+radius = 984.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
+size = Vector2(62, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mt36t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q48xp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c5nik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_66y1q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mt36t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1y2go")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_eexhc")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}]
+
+[node name="EnemyBat" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 18
+script = ExtResource("1_0xlom")
+projectile_scene = ExtResource("2_26cec")
+cooldown_time = 1.0
+knockback_friction = 600.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ps82n")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=272051664]
+visible = false
+shape = SubResource("CircleShape2D_2eqer")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_hoiul")
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1995691531]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=186013657]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1316312069]
+wait_time = 1.5
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
+sprite_frames = SubResource("SpriteFrames_17ibq")
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1547975255]
+script = ExtResource("9_f3fvu")
+spacing = 25.0
+freeze_icon = ExtResource("10_cgabf")
+poison_icon = ExtResource("11_m3chq")
+fire_icon0 = ExtResource("12_qcqax")
+fire_icon1 = ExtResource("13_t16fi")
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

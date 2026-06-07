@@ -30,6 +30,7 @@ GameState="*res://game/Dungeon_scripts/GameState.gd"
 StatManager="*res://game/player/StatManager.gd"
 ItemManager="*uid://dpl2e0lbx4t7t"
 DamageDealer="*res://game/combat/DamageDealer.gd"
+SoundManager="*res://z_global_scripts/SoundManager.gd"
 
 [display]
 
@@ -155,6 +156,7 @@ button_E={
 2d_physics/layer_3="Враги"
 2d_physics/layer_4="Предметы Интерактив"
 2d_physics/layer_5="Стены"
+2d_physics/layer_6="Препятствия"
 2d_physics/stretch/scale_mode="fractional"
 2d_physics/size/resizable=false
 2d_physics/stretch/mode="canvas_items"
