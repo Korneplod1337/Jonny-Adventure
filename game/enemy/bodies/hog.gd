@@ -5,7 +5,7 @@ enum State { IDLE, AIMING, RESTING, CHARGING, RECOVERING }
 
 const STATS := {
 	"easy": {
-		"base_hp": 50,
+		"base_hp": 100,
 		"charge_damage": 1,
 		"charge_speed": 350.0,
 		"cooldown_time": 2.0,
@@ -14,18 +14,18 @@ const STATS := {
 		"recover_time": 1.0,
 	},
 	"med": {
-		"base_hp": 150,
+		"base_hp": 200,
 		"charge_damage": 2,
-		"charge_speed": 450.0,
+		"charge_speed": 500.0,
 		"cooldown_time": 1.6,
 		"aim_time": 1.0,
 		"rest_time": 0.7,
 		"recover_time": 0.8,
 	},
 	"hard": {
-		"base_hp": 200,
+		"base_hp": 250,
 		"charge_damage": 2,
-		"charge_speed": 600.0,
+		"charge_speed": 650.0,
 		"cooldown_time": 1.2,
 		"aim_time": 1.0,
 		"rest_time": 0.5,

@@ -6,6 +6,7 @@ var spread: float = 0.0
 var base_crit_bonus: float = 50
 
 @onready var crit: AnimatedSprite2D = $Crit
+const CRIT_WORLD_OFFSET := Vector2(0, -60)
 var crit_sprite = -1
 
 # ДРОБОВИК
@@ -22,6 +23,9 @@ func _ready() -> void:
 	self_range_multiplier = range_mult 
 	extra_reload = 0.5
 	super()
+	# Crit всегда сверху и смотрит вверх в мировых координатах
+	crit.position = CRIT_WORLD_OFFSET.rotated(-rotation)
+	crit.rotation = -rotation
 	# Создание дополнительных дробинок
 	if pellet_count > 1 and not spawned_spread:
 		spawned_spread = true

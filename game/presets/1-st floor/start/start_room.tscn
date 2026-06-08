@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/Potion Red.tscn" id="16_o7186"]
 [ext_resource type="PackedScene" uid="uid://bgibadaeek4on" path="res://game/objects/Equipment/Chest/Death_shield.tscn" id="16_vp6t4"]
 [ext_resource type="PackedScene" uid="uid://ujleakh3r3l0" path="res://game/objects/items/scenes/Potion Green.tscn" id="17_n8c84"]
-[ext_resource type="PackedScene" uid="uid://bkrkbcba4lrit" path="res://game/enemy/projectiles/EnemyShot.tscn" id="18_n8c84"]
 [ext_resource type="PackedScene" uid="uid://bi5g2vqe6xdek" path="res://game/objects/Equipment/head/Kaliya_star_hat.tscn" id="19_xf56v"]
 [ext_resource type="PackedScene" uid="uid://buh4o48vfo1ln" path="res://game/objects/Equipment/Weapon/equip/Nunchucks_equip.tscn" id="21_8rj6y"]
 
@@ -131,7 +130,3 @@ position = Vector2(-350, 190)
 
 [node name="Nunchucks_equip" parent="." unique_id=753643143 instance=ExtResource("21_8rj6y")]
 position = Vector2(-330, -130)
-
-[node name="EnemyShot" parent="." unique_id=278677877 instance=ExtResource("18_n8c84")]
-position = Vector2(-150, -5)
-damage = [2, 2, 2]
