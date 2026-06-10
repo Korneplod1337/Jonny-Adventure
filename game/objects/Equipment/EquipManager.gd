@@ -59,7 +59,7 @@ var POOLS := {
 		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Nunchucks", "scene": preload("uid://buh4o48vfo1ln"),
-		 "tier": 2, "weight": 0.0},
+		 "tier": 2, "weight": 10.0},
 		
 		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
 		 "tier": 1, "weight": 10.0},
@@ -181,13 +181,14 @@ func certain_spawn(id: String, pos: Vector2, enchantment: EnchantmentResource = 
 
 
 func update_unlocks() -> void:
-	var unlocked = AchievementManager.achievements["bad_spear_kills"]["unlocked"]
-	
-	for pool_name in POOLS.keys():
-		var pool = POOLS[pool_name]
-		for equipment in pool:
-			if equipment["id"] == "EXSpear":
-				equipment["weight"] = 10.0 if unlocked else 0.0
-				
-	
-	
+	for ach_id in AchivStatsRegistry.EQUIP_UNLOCKS.keys():
+		var unlocked := AchievementManager.is_unlocked(ach_id)
+		for rule in AchivStatsRegistry.EQUIP_UNLOCKS[ach_id]:
+			_set_equipment_weight(rule["pool"], rule["equipment_id"], 10.0 if unlocked else 0.0)
+
+
+func _set_equipment_weight(pool_name: String, equipment_id: String, weight: float) -> void:
+	var pool: Array = POOLS.get(pool_name, [])
+	for equipment in pool:
+		if equipment["id"] == equipment_id:
+			equipment["weight"] = weight

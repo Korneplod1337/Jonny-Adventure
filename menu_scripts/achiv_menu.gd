@@ -6,8 +6,7 @@ func _ready():
 	update_achievement_list()
 	AchievementManager.achievement_unlocked.connect(_on_achievement_unlocked)
 
-func _on_achievement_unlocked(key):
-	print("Ачивка разблокирована:", AchievementManager.achievements[key]["name"])
+func _on_achievement_unlocked(_popup_path: String) -> void:
 	update_achievement_list()
 
 func update_achievement_list():

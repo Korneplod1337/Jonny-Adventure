@@ -2,78 +2,57 @@ extends Node
 
 const SAVE_PATH = "user://achievements.cfg"
 
-var achievements = {
-	"first_kill": {"name": "First kill", "desc": "Kill 1 enemy",
-	"progress": 0, "goal": 1, "unlocked": false,
-	"unlocked_icon": "res://image/achievements/menu_achiv/first_enemy.png", "popup_window": "res://image/achievements/hud_achiv/first_enemy_hud.png"},
-	
-	"long_distance": {"name": "Far away...", "desc": "Runs of 10 km",
-	"progress": 0, "goal": 10000, "unlocked": false,
-	"unlocked_icon": "res://image/achievements/menu_achiv/long_distance.png", "popup_window": "res://image/achievements/hud_achiv/long_distance_hud.png"},
-	
-	"first_item": {"name": "Iron luck", "desc": "Put on the 1-st item",
-	"progress": 0, "goal": 1, "unlocked": false,
-	"unlocked_icon": "res://image/achievements/menu_achiv/first_item.png", "popup_window": "res://image/achievements/hud_achiv/first_item_hud.png"},
-	
-	"shop_loyality": {"name": "Sherocka lover", "desc": "up shop loyality to max", 
-	"progress": 0, "goal": 100, "unlocked": false,
-	"unlocked_icon": "res://image/achievements/menu_achiv/shop_loyality.png", "popup_window": "res://image/achievements/hud_achiv/shop_loyality_hud.png"},
-	
-	"armory_loyality": {"name": "Pepyaka's friend", "desc": "up armory loyality to max", 
-	"progress": 0, "goal": 100, "unlocked": false,
-	"unlocked_icon": "", "popup_window": ""},   # !!!!!!!!
-	
-	"name": {"name": "Alpha test", "desc": "Survive until game released", 
-	"progress": 0, "goal": 1, "unlocked": false,
-	"unlocked_icon": "", "popup_window": ""},
-	
-	"Mega_crit": {"name": "Mega Crit", "desc": "Roll five-x critical shot", 
-	"progress": 0, "goal": 1, "unlocked": false,
-	"unlocked_icon": 'res://image/achievements/menu_achiv/mega_crit.png', "popup_window": "res://image/achievements/hud_achiv/mega_crrit_hud.png"},
-	
-	"bad_spear_kills": {"name": "Spear!", "desc": "hit enemy by weak spear", 
-	"progress": 0, "goal": 2, "unlocked": false,
-	"unlocked_icon": 'res://image/achievements/menu_achiv/Spear_unlock.png', "popup_window": "res://image/achievements/hud_achiv/Spear_unlock_hud.png"},
-	
-	}
-	
-	
-var stat_to_achievements = {
-	"kills": ["first_kill"],
-	"distance_traveled": ["long_distance"],
-	"items_equipped": ["first_item"],
-	"shop_loyalty": ["shop_loyality"],
-	"armory_loyality": ["armory_loyality"],
-	"Mega_crit": ["Mega_crit"],
-	"bad_spear_kills": ["bad_spear_kills"],
-	#"Mega_crit": ["Mega_crit"],
-}
+var achievements := {}
+var stat_to_achievements := {}
+
 
 signal achievement_unlocked(data: String)
 
-func _ready():
+
+func _ready() -> void:
+	achievements = AchivStatsRegistry.build_achievements_data()
+	stat_to_achievements = AchivStatsRegistry.build_stat_to_achievements()
 	load_achievements()
 	StatsManager.stat_changed.connect(_on_stat_changed)
 
-func _on_stat_changed(stat_name: String, new_value: float):
-	return
+
+func _on_stat_changed(stat_name: String, new_value: float) -> void:
+	if not AchivStatsRegistry.TRACKING_ENABLED:
+		return
 	if stat_to_achievements.has(stat_name):
 		for ach_key in stat_to_achievements[stat_name]:
 			check_achievement(ach_key, new_value)
 
-func check_achievement(key: String, stat_value: float):
+
+func check_achievement(key: String, stat_value: float) -> void:
 	var ach = achievements.get(key)
 	if ach and not ach["unlocked"] and stat_value >= ach["goal"]:
-		ach["unlocked"] = true
-		var data = ach["popup_window"]
-		achievement_unlocked.emit(data)
-		save_achievements()
+		unlock_achievement(key)
+
+
+func unlock_achievement(key: String) -> void:
+	var ach = achievements.get(key)
+	if not ach or ach["unlocked"]:
+		return
+	ach["unlocked"] = true
+	var popup_path: String = ach["popup_window"]
+	if popup_path != "":
+		achievement_unlocked.emit(popup_path)
+	save_achievements()
+
+
+func is_unlocked(key: String) -> bool:
+	var ach = achievements.get(key)
+	return ach.get("unlocked", false) if ach else false
+
 
 func load_achievements() -> void:
 	var config = ConfigFile.new()
-	if config.load(SAVE_PATH) != OK: return
+	if config.load(SAVE_PATH) != OK:
+		return
 	for key in achievements.keys():
 		achievements[key]["unlocked"] = config.get_value("achievements", key + "_unlocked", false)
+
 
 func save_achievements() -> void:
 	var config = ConfigFile.new()

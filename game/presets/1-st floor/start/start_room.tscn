@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://c8hfht7lr6kje" path="res://game/objects/Equipment/_enchantments/fire_enchantment.tres" id="15_n8c84"]
 [ext_resource type="PackedScene" uid="uid://d4b16tebiwudm" path="res://game/objects/Equipment/Weapon/equip/Matchlock_equip.tscn" id="15_o7186"]
 [ext_resource type="PackedScene" uid="uid://ywfb4cg1rk1u" path="res://game/objects/items/scenes/LvlupRandom.tscn" id="15_vp6t4"]
+[ext_resource type="PackedScene" uid="uid://d153rj7fiouha" path="res://game/objects/Equipment/Weapon/equip/Spear_equip.tscn" id="16_n8c84"]
 [ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/Potion Red.tscn" id="16_o7186"]
 [ext_resource type="PackedScene" uid="uid://bgibadaeek4on" path="res://game/objects/Equipment/Chest/Death_shield.tscn" id="16_vp6t4"]
 [ext_resource type="PackedScene" uid="uid://ujleakh3r3l0" path="res://game/objects/items/scenes/Potion Green.tscn" id="17_n8c84"]
@@ -127,5 +128,6 @@ position = Vector2(-340, -130)
 
 [node name="Matchlock" parent="." unique_id=1148244337 instance=ExtResource("15_o7186")]
 position = Vector2(-100, -130)
-rotation = 1.0751314
 enchantment = ExtResource("15_n8c84")
+
+[node name="Spear_equip" parent="." unique_id=241584314 instance=ExtResource("16_n8c84")]
