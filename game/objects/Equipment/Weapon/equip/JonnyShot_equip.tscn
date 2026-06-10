@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bwiytmmsxjtk5"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_24et4"]
-[ext_resource type="Texture2D" uid="uid://b5280qdpgacbg" path="res://image/equip/weapon/test_Spit_bullet.png" id="2_teggi"]
-[ext_resource type="PackedScene" uid="uid://cwdv6wwd2kqyr" path="res://game/objects/Equipment/Weapon/scene/JonnyShot.tscn" id="3_teggi"]
-[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_xtrd6"]
-[ext_resource type="Texture2D" uid="uid://3hhrpek856pa" path="res://image/equip/weapon/Spit_bullet.png" id="4_i0cvw"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_ft0r0"]
+[ext_resource type="Texture2D" uid="uid://b5280qdpgacbg" path="res://image/equip/weapon/test_Spit_bullet.png" id="2_3jhcq"]
+[ext_resource type="PackedScene" uid="uid://cwdv6wwd2kqyr" path="res://game/objects/Equipment/Weapon/scene/JonnyShot.tscn" id="3_gwxi8"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_1mk7h"]
+[ext_resource type="Texture2D" uid="uid://3hhrpek856pa" path="res://image/equip/weapon/Spit_bullet.png" id="5_vydtc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299
@@ -16,7 +16,7 @@ radius = 54.08327
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_i0cvw")
+"texture": ExtResource("5_vydtc")
 }],
 "loop": true,
 "name": &"default",
@@ -25,14 +25,14 @@ animations = [{
 
 [node name="JonnyShot" type="Area2D" unique_id=241584314]
 collision_mask = 0
-script = ExtResource("1_24et4")
-equip_icon = ExtResource("2_teggi")
-projectile = ExtResource("3_teggi")
+script = ExtResource("1_ft0r0")
+equip_icon = ExtResource("2_3jhcq")
+projectile = ExtResource("3_gwxi8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
 shape = SubResource("CircleShape2D_qqy2x")
 
-[node name="Interactable" parent="." unique_id=918212545 instance=ExtResource("3_xtrd6")]
+[node name="Interactable" parent="." unique_id=918212545 instance=ExtResource("4_1mk7h")]
 interact_name = "Swap weapon"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1006580381]

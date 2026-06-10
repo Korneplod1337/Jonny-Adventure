@@ -1,16 +1,18 @@
 extends Area2D
 class_name BaseShot
 
+var player
 var speed: float = 300.0
 var animaited_speed = 1
 var direction: Vector2 = Vector2.RIGHT
-var atk_range: float = 200.0
+var atk_range: float
 var damage: int
 var extra_reload: float = 1.0 # только для слёз множитель больше 1 1,6 MAX
 @export var use_spread: bool = true
-var self_damage_multiplier: float = 1
-var self_speed_multiplier: float = 1
-var self_range_multiplier: float = 1
+@export var pellet_count := 1
+@export var self_damage_multiplier: float = 1
+@export var self_speed_multiplier: float = 1
+@export var self_range_multiplier: float = 1
 
 var distance_travelled := 0.0
 var exploded := false
@@ -20,11 +22,18 @@ var enchantment: EnchantmentResource
 var penetration: int = 0 ## Число врагов, сквозь которых снаряд проходит, не исчезая (0 — остановка на первом).
 var _enemy_hit_count: int = 0
 
+var spread_angle: float
+var spawned_spread := false
+
 func _ready() -> void:
 	collision_mask |= 32 # layer 6 — Препятствия
 	animaited_speed = GameState.animated_world_speed
-	#var player := get_tree().get_first_node_in_group("player")
+	player = get_tree().get_first_node_in_group("player")
 	rotation = direction.angle()
+	spread_angle = StatManager.get_stat(player, "spread")
+	if pellet_count > 1 and not spawned_spread:
+		spawned_spread = true
+		_spawn_spread()
 
 func _physics_process(delta):
 	var movement = direction.normalized() * speed * delta * self_speed_multiplier
@@ -106,3 +115,63 @@ func _get_weapon_hit_point() -> Vector2:
 	if col is CollisionShape2D:
 		return col.global_position
 	return global_position
+
+
+func _spawn_spread() -> void:
+	var base_dir := direction.normalized()
+	var half_spread := deg_to_rad(spread_angle) / 2.0
+	var is_even := pellet_count % 2 == 0
+
+	var step: float
+	var start_angle: float
+	var center: int
+
+	if is_even:
+		# Чётное число — симметрично вокруг центра, без выстрела в центр
+		step = deg_to_rad(spread_angle) / float(pellet_count)
+		start_angle = -half_spread + step / 2.0
+		center = -1
+	else:
+		# Нечётное число — одна дробинка в центре (текущий снаряд)
+		center = pellet_count / 2
+		step = deg_to_rad(spread_angle) / float(pellet_count - 1)
+		start_angle = -half_spread
+
+	for i in range(pellet_count):
+		var angle := start_angle + step * i
+		if not is_even and i == center:
+			continue
+		if is_even and i == 0:
+			direction = base_dir.rotated(angle)
+			rotation = direction.angle()
+			if has_node("Crit"):
+				var crit_node: AnimatedSprite2D = $Crit
+				crit_node.position = Vector2(0, -60).rotated(-rotation)
+				crit_node.rotation = -rotation
+			continue
+
+		var bullet: BaseShot = duplicate()
+		bullet.direction = base_dir.rotated(angle)
+		bullet.rotation = bullet.direction.angle()
+		# Чтобы дробинки не создавали новые дробинки
+		bullet.spawned_spread = true
+
+		# Копируем ВСЕ параметры
+		bullet.damage = damage
+		bullet.speed = speed
+		bullet.atk_range = atk_range
+		bullet.extra_reload = extra_reload
+		bullet.self_damage_multiplier = self_damage_multiplier
+		bullet.self_speed_multiplier = self_speed_multiplier
+		bullet.self_range_multiplier = self_range_multiplier
+		bullet.enchantment = enchantment
+		bullet.penetration = penetration
+		bullet.use_spread = use_spread
+		bullet.pellet_count = pellet_count
+		bullet.spread_angle = spread_angle
+
+		if self is BaseGun and bullet is BaseGun:
+			bullet.base_crit_bonus = self.base_crit_bonus
+
+		get_parent().add_child.call_deferred(bullet)
+		bullet.global_position = global_position

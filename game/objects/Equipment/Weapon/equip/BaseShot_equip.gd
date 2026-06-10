@@ -27,6 +27,20 @@ func _ready() -> void:
 		+ interact_name + ' by %s coins' %cost
 
 
+func apply_equip(player) -> void:
+	player.shot_scene = projectile
+	player.shot_id = equip_id
+	player.shot_enchantment = enchantment.duplicate(true) if enchantment else null
+
+	var hud = player.get_tree().get_first_node_in_group("HUD")
+	if not hud:
+		return
+	var tooltip := equip_tooltip
+	if enchantment:
+		tooltip += enchantment.get_tooltip_text()
+	hud.WeaponSlot.set_icon(equip_icon)
+	hud.WeaponSlot.set_tooltip(tooltip)
+
 func _on_interact():
 	var player = get_tree().get_first_node_in_group("player")
 	if not player: 
@@ -36,22 +50,12 @@ func _on_interact():
 		return
 	GameState.add_coins(-cost)
 	
-	var hud = get_tree().get_first_node_in_group("HUD")
-	var tooltip := equip_tooltip
-	if enchantment:
-		tooltip += enchantment.get_tooltip_text()
-	
 	if player.shot_scene:
 		EquipManager.certain_spawn(player.shot_id, self.global_position, player.shot_enchantment) 
 		#player.global_position 
 	
-	player.shot_scene = projectile
-	player.shot_id = equip_id
-	player.shot_enchantment = enchantment.duplicate(true) if enchantment else null
+	apply_equip(player)
 	equip_taken.emit()
-	
-	hud.WeaponSlot.set_icon(equip_icon)
-	hud.WeaponSlot.set_tooltip(tooltip)
 	# hud.add_equip(equip_icon, equip_tooltip)
 	queue_free()
 

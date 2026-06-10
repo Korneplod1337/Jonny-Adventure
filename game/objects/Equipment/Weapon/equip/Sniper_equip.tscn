@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://i6kqba6ow2yq"]
+
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_rlicf"]
+[ext_resource type="Texture2D" uid="uid://det22wn8bgud3" path="res://image/equip/weapon/sniper2.png" id="2_akbol"]
+[ext_resource type="Texture2D" uid="uid://ctxhmkbh6m0tg" path="res://image/equip/weapon/sniper.png" id="2_rlicf"]
+[ext_resource type="PackedScene" uid="uid://bu7s04fr4xwg3" path="res://game/objects/Equipment/Weapon/scene/SniperBullet.tscn" id="3_rlicf"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_igvwy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0twu3"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojoxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rlicf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sniper" type="Area2D" unique_id=241584314]
+collision_mask = 0
+script = ExtResource("1_rlicf")
+equip_icon = ExtResource("2_akbol")
+equip_id = "Sniper_Gun"
+projectile = ExtResource("3_rlicf")
+equip_tooltip = "Sniper Gun"
+interact_name = "sniper gun"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
+shape = SubResource("CircleShape2D_qqy2x")
+
+[node name="Interactable" parent="." unique_id=918212545 instance=ExtResource("4_igvwy")]
+interact_name = "Swap weapon"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1006580381]
+shape = SubResource("CircleShape2D_0twu3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ojoxv")

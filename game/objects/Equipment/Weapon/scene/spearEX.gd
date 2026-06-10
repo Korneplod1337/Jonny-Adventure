@@ -3,6 +3,7 @@ class_name EXSpearShot
 
 func _ready() -> void:
 	super()
+	extra_reload = 1
 	self_damage_multiplier = 1.2
 
 func _on_frame_changed() -> void:

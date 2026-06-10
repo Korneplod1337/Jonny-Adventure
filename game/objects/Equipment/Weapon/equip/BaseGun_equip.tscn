@@ -22,7 +22,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="JonnyShot" type="Area2D" unique_id=241584314]
+[node name="Pistol" type="Area2D" unique_id=241584314]
 collision_mask = 0
 script = ExtResource("1_e5ydc")
 equip_icon = ExtResource("2_fro2o")

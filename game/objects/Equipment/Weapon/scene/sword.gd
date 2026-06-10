@@ -6,9 +6,10 @@ class_name SwordShot
 
 func _ready() -> void:
 	speed = 0
-	self.scale = Vector2(clampi(0.4 + atk_range/300, 0.6, 4), clampi(0.4 +atk_range/300, 0.6, 4))
-	# Rotate the entire sword node based on direction from player
-	# This makes the swing follow the aim direction
+	extra_reload = 0.8
+	var size_scale := clampf(0.4 + atk_range / 300.0, 0.6, 4.0)
+	self.scale = Vector2(size_scale, size_scale)
+
 	rotation = direction.angle()
 	
 	# Connect signals for animation and collision
@@ -26,8 +27,6 @@ func _ready() -> void:
 	_on_frame_changed()
 
 func _physics_process(_delta: float) -> void:
-	# We override this to stop the moving logic from BaseShot
-	# But we keep it empty to prevent inherited movement
 	pass
 
 func _on_body_entered(body: Node) -> void:

@@ -28,7 +28,7 @@ const base_luck: 				float = 0.2
 const base_magic: 				float = 0.0
 const base_damage: 				float = 25.0
 const base_spread: 				float = 14.0
-const base_range: 				float = 200.0
+const base_range: 				float = 150.0
 const base_fire_rate: 			float = 0.5
 
 var hp_bonus: 				int = 0
@@ -63,6 +63,8 @@ var extra_fire_rate:float = 0
 var head_id: String
 var chest_id: String
 var boots_id: String
+@export var start_weapon := true
+const START_WEAPON_EQUIP := preload("uid://bwiytmmsxjtk5")
 
 signal stats_changed(move_speed_level, luck_level, damage_level, spread_level,\
  range_level, hit_points_level, fire_rate_level, magic_level)
@@ -78,6 +80,12 @@ func _ready() -> void:
 	$AnimatedSprite2D.play()
 	_emit_stats_changed()	 # Вызвать это когда меняем стат
 	update_equipment_visuals()
+	if start_weapon:
+		call_deferred("_equip_start_weapon")
+
+func _equip_start_weapon() -> void:
+	var equip: BaseShot_equip = START_WEAPON_EQUIP.instantiate()
+	equip.apply_equip(self)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("button_K"):

@@ -89,10 +89,10 @@ animations = [{
 collision_layer = 2
 collision_mask = 20
 script = ExtResource("1_2mc3r")
-pellet_count = 3
-damage_mult = 0.4
-range_mult = 0.8
 use_spread = false
+pellet_count = 3
+self_damage_multiplier = 0.6
+self_range_multiplier = 0.8
 
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
 position = Vector2(1, 1)

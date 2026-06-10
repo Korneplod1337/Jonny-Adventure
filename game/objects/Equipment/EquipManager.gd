@@ -61,10 +61,15 @@ var POOLS := {
 		{"id": "Nunchucks", "scene": preload("uid://buh4o48vfo1ln"),
 		 "tier": 2, "weight": 0.0},
 		
+		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
+		 "tier": 1, "weight": 10.0},
 		{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Sniper_Gun", "scene": preload("uid://i6kqba6ow2yq"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
 		 "tier": 3, "weight": 10.0},
+		
 		
 	]
 }
