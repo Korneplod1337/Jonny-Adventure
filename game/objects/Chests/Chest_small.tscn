@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://w5dwtf8drfia" path="res://game/objects/chests/chest_small.gd" id="1_ni6rf"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="2_5x3w2"]
-[ext_resource type="Texture2D" uid="uid://dvh80il7ricrh" path="res://image/objects/small_chest1.png" id="3_4b76v"]
-[ext_resource type="Texture2D" uid="uid://df044j277x754" path="res://image/objects/small_chest2.png" id="4_lvl42"]
+[ext_resource type="Texture2D" uid="uid://dvh80il7ricrh" path="res://image/objects/chests and table/small_chest1.png" id="3_4b76v"]
+[ext_resource type="Texture2D" uid="uid://df044j277x754" path="res://image/objects/chests and table/small_chest2.png" id="4_lvl42"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2c5ex"]
 radius = 22.5

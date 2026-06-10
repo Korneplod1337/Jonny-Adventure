@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://fg4d6t0fkyqp"]
 
 [ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/RoomScript_enemy.gd" id="1_visyd"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/background/tile background_1.png" id="2_7m85q"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/background/background_bounds.png" id="3_1tq2v"]
-[ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/rock.tscn" id="4_1jsc2"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/background/tile background_1.png" id="2_7m85q"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/background/background_bounds.png" id="3_1tq2v"]
+[ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="4_1jsc2"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_8amni"]
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="6_7m85q"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="7_1tq2v"]
@@ -93,8 +93,7 @@ position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="Rock3" parent="." unique_id=2114911849 instance=ExtResource("4_1jsc2")]
-position = Vector2(-5, 52)
-scale = Vector2(1.49359, 0.733615)
+position = Vector2(0, -80)
 
 [node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("5_8amni")]
 position = Vector2(0, -300)

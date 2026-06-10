@@ -49,7 +49,6 @@ project/assembly_name="Jonny_adventure"
 
 folder_colors={
 "res://image/achievements/": "purple",
-"res://image/background/": "yellow",
 "res://image/effect_sprites/": "blue",
 "res://image/enemy/": "red",
 "res://image/equip/": "green",
@@ -59,7 +58,9 @@ folder_colors={
 "res://image/money/": "yellow",
 "res://image/objects/": "pink",
 "res://image/players/": "orange",
-"res://image/players/Base_Jonny_textures/": "orange"
+"res://image/players/Base_Jonny_textures/": "orange",
+"res://image/rooms/": "yellow",
+"res://image/rooms/background/": "yellow"
 }
 
 [global_group]

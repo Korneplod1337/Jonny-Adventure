@@ -1,11 +1,18 @@
 extends Node2D
+
+const SETTINGS_PATH := "user://settings.cfg"
+
 var video_conf: Array = [Vector2i(1280, 720), Vector2i(1920, 1080), Vector2i(1920, 1080)]
 
+
 func _ready() -> void:
-	var config = ConfigFile.new()
-	config.load("user://settings.cfg")
-	var volume: float = config.get_value("settings", "volume", 0.4)  # Загружаем громкость
+	var config := ConfigFile.new()
+	config.load(SETTINGS_PATH)
+	var volume: float = config.get_value("settings", "volume", 0.4)
 	var video: int = config.get_value("settings", "video", 1)
+	if not config.has_section_key("settings", "first"):
+		config.set_value("settings", "first", true)
+		config.save(SETTINGS_PATH)
 	set_global_volume_and_video(volume, video)
 
 
@@ -25,4 +32,9 @@ func _process(_delta: float) -> void:
 		_on_timer_timeout()
 
 func _on_timer_timeout() -> void:
-	get_tree().change_scene_to_file("res://menu_scripts/main_menu.tscn")
+	var config := ConfigFile.new()
+	config.load(SETTINGS_PATH)
+	if config.get_value("settings", "first", true):
+		get_tree().change_scene_to_file("res://menu_scripts/comics.tscn")
+	else:
+		get_tree().change_scene_to_file("res://menu_scripts/main_menu.tscn")

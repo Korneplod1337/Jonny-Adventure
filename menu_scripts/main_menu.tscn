@@ -61,11 +61,6 @@
 [ext_resource type="Texture2D" uid="uid://cfj7b58oiepqr" path="res://image/main_menu/button_med.png" id="52_a0i4q"]
 [ext_resource type="Texture2D" uid="uid://dmqedacjsdbpd" path="res://image/main_menu/button_hard.png" id="53_pw383"]
 
-
-[sub_resource type="LabelSettings" id="LabelSettings_xy68n"]
-font_size = 22
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ni8h3"]
 animations = [{
 "frames": [],
@@ -272,17 +267,6 @@ offset_right = 410.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 32
 text = "activate"
-
-[node name="secret code" type="Label" parent="start_menu" unique_id=1988222383]
-visible = false
-z_index = 100
-z_as_relative = false
-offset_left = 3.0
-offset_top = 56.0
-offset_right = 746.0
-offset_bottom = 109.0
-text = "Секретный код на приз: Бегемотинозавр копал крахмальные ямочки"
-label_settings = SubResource("LabelSettings_xy68n")
 
 [node name="settings_menu" type="Node" parent="." unique_id=981361797]
 

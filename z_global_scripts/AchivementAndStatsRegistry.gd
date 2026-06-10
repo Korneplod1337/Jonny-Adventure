@@ -44,7 +44,7 @@ const STATS := {
 		"achievement": {
 			"id": "first_item",
 			"name": "Iron luck",
-			"desc": "Put on the 1-st item",
+			"desc": "Put on 1-st item",
 			"goal": 1,
 			"menu_icon": "res://image/achievements/menu_achiv/first_item.png",
 			"hud_popup": "res://image/achievements/hud_achiv/first_item_hud.png",
@@ -65,7 +65,7 @@ const STATS := {
 		"achievement": {
 			"id": "shop_loyality",
 			"name": "Sherochka lover",
-			"desc": "up shop loyality to max",
+			"desc": "up shop loyality",
 			"goal": 100,
 			"menu_icon": "res://image/achievements/menu_achiv/shop_loyality.png",
 			"hud_popup": "res://image/achievements/hud_achiv/shop_loyality_hud.png",
@@ -77,7 +77,7 @@ const STATS := {
 		"achievement": {
 			"id": "armory_loyality",
 			"name": "Pepyaka's friend",
-			"desc": "up armory loyality to max",
+			"desc": "up armory loyality",
 			"goal": 100,
 			"menu_icon": "",
 			"hud_popup": "",
@@ -89,7 +89,7 @@ const STATS := {
 		"achievement": {
 			"id": "Mega_crit",
 			"name": "Mega Crit",
-			"desc": "Roll five-x critical shot",
+			"desc": "Roll five-x critical",
 			"goal": 1,
 			"menu_icon": "res://image/achievements/menu_achiv/mega_crit.png",
 			"hud_popup": "res://image/achievements/hud_achiv/mega_crrit_hud.png",
@@ -101,7 +101,7 @@ const STATS := {
 		"achievement": {
 			"id": "bad_spear_kills",
 			"name": "Spear!",
-			"desc": "hit enemy by weak spear",
+			"desc": "hit by weak spear",
 			"goal": 2,
 			"menu_icon": "res://image/achievements/menu_achiv/Spear_unlock.png",
 			"hud_popup": "res://image/achievements/hud_achiv/Spear_unlock_hud.png",
@@ -120,8 +120,15 @@ const STANDALONE_ACHIEVEMENTS := {
 		"name": "Alpha test",
 		"desc": "Survive until game released",
 		"goal": 1,
-		"menu_icon": "",
+		"menu_icon": "uid://csy0vboist6bo",
 		"hud_popup": "",
+	},
+	"First time": {
+		"name": "First time ?",
+		"desc": "",
+		"goal": 1,
+		"menu_icon": "uid://dd3h2d8s2ybqi",
+		"hud_popup": "uid://buyhcb1qmt5gw",
 	},
 }
 

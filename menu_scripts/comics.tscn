@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cx8ob66xjntf"]
+
+[ext_resource type="Script" uid="uid://bcnigu7c20nm" path="res://menu_scripts/comics.gd" id="1_ff62f"]
+[ext_resource type="Texture2D" uid="uid://b838qkd33jbpc" path="res://image/main_menu/comics1.png" id="1_xpggs"]
+[ext_resource type="Texture2D" uid="uid://dfoowc6vcaptk" path="res://image/main_menu/comics2.png" id="2_ff62f"]
+[ext_resource type="Texture2D" uid="uid://bblinj8yh88g1" path="res://image/main_menu/comics3.png" id="3_cxy24"]
+[ext_resource type="Texture2D" uid="uid://f2kmba42hlut" path="res://image/main_menu/comics4.png" id="4_2ounq"]
+[ext_resource type="Texture2D" uid="uid://bcyeeev85urta" path="res://image/main_menu/comics5.png" id="5_2ghhx"]
+[ext_resource type="Texture2D" uid="uid://dqjkoy1d7xxe5" path="res://image/main_menu/comics6.png" id="6_5qet0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pi648"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xpggs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ff62f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cxy24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2ounq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ghhx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5qet0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Comics" type="Node2D" unique_id=806729580]
+script = ExtResource("1_ff62f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=707285976]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pi648")
+centered = false

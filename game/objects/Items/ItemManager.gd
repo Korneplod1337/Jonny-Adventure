@@ -4,8 +4,8 @@ extends Node
 var unlocked_items: Dictionary = {}
 var picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
-var DEFAULT_UNLOCKED := ["hpup", "shield", "heal", 'lvlup']
-var DEFAULT_PICK := ["hpup"]
+var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup']
+var DEFAULT_PICK := ["heal"]
 '''
 Тир 0- дорогие бафы 4-х квадрантов, хилки
 Тир 1- обычные предметы
@@ -30,14 +30,12 @@ var POOLS := {
 	"shop": [
 		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0},
 		
-		{"id": "hpup", "scene": preload("uid://duqt5c8r3bui4"), "tier": 1},
 		{"id": "shield", "scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
 		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
 		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 4},
 	],
 	"chest": [
 		{"id": "heal", "scene": preload("uid://baga6mxgrpf1s"), "tier": 0},
-		{"id": "hpup", "scene": preload("uid://baga6mxgrpf1s"), "tier": 1},
 		{"id": "shield", "scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
 		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
 		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 4},

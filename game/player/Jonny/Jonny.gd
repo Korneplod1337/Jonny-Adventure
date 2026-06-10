@@ -337,6 +337,7 @@ func die() -> void:
 	if hud:
 		hud.show_death_menu(total_time_alive, total_distance_travelled)
 	get_tree().paused = true
+	AchievementManager.unlock_achievement('First time')
 
 func _on_immune_timer_timeout() -> void:
 	invulnerable = false

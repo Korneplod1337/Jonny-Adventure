@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bswrq17r14ngm" path="res://game/HUD/hud.gd" id="1_uvy8x"]
 [ext_resource type="Texture2D" uid="uid://dwjxxrdxpcxne" path="res://image/ttttt.png" id="2_n73n3"]
-[ext_resource type="Texture2D" uid="uid://bdxb6w4nfuvpb" path="res://image/background/bg_effect/bg_toxic.png" id="2_w87tb"]
+[ext_resource type="Texture2D" uid="uid://bdxb6w4nfuvpb" path="res://image/rooms/background/bg_effect/bg_toxic.png" id="2_w87tb"]
 [ext_resource type="Texture2D" uid="uid://dnee1bpxbti0u" path="res://image/interface/money_brush.png" id="3_n73n3"]
 [ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="4_heuq7"]
 [ext_resource type="Texture2D" uid="uid://brtmnwq34r1v1" path="res://image/interface/money_brush_low_opacity.png" id="4_ht4al"]

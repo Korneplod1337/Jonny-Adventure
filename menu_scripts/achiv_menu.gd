@@ -13,7 +13,16 @@ func update_achievement_list():
 	for child in achievements_container.get_children():
 		child.queue_free()
 		
-	for key in AchievementManager.achievements.keys():
+	var sorted_keys = AchievementManager.achievements.keys()
+	sorted_keys.sort_custom(func(a: String, b: String) -> bool:
+		var ach_a = AchievementManager.achievements[a]
+		var ach_b = AchievementManager.achievements[b]
+		if ach_a["unlocked"] != ach_b["unlocked"]:
+			return ach_a["unlocked"]
+		return ach_a["name"].nocasecmp_to(ach_b["name"]) < 0
+	)
+
+	for key in sorted_keys:
 		var achievement = AchievementManager.achievements[key]
 		var hbox = HBoxContainer.new()
 		hbox.add_theme_constant_override("separation", 10)

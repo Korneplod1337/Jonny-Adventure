@@ -14,6 +14,7 @@ func _ready() -> void:
 	stat_to_achievements = AchivStatsRegistry.build_stat_to_achievements()
 	load_achievements()
 	StatsManager.stat_changed.connect(_on_stat_changed)
+	#unlock_achievement('Alpha test')
 
 
 func _on_stat_changed(stat_name: String, new_value: float) -> void:
