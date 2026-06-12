@@ -32,6 +32,8 @@ func check_achievement(key: String, stat_value: float) -> void:
 
 
 func unlock_achievement(key: String) -> void:
+	if not AchivStatsRegistry.TRACKING_ENABLED:
+		return
 	var ach = achievements.get(key)
 	if not ach or ach["unlocked"]:
 		return

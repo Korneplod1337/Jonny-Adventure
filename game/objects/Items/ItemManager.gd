@@ -4,7 +4,7 @@ extends Node
 var unlocked_items: Dictionary = {}
 var picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
-var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup']
+var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'storybook']
 var DEFAULT_PICK := ["heal"]
 '''
 Тир 0- дорогие бафы 4-х квадрантов, хилки
@@ -12,7 +12,10 @@ var DEFAULT_PICK := ["heal"]
 Тир 2- сильные предметы
 Тир 3- меняющие геймплей предметы
 Тир 4- хуй пойми что, решафлы 
+
+unlock items это те, которые вообще не могут попасться до того, как их не анлокнет что-то
 '''
+
 
 # Пулы предметов
 var POOLS := {
@@ -23,7 +26,6 @@ var POOLS := {
 		{"id": "healbig", "scene": preload("uid://bvy7i2nw65tyy"), "tier": 0},
 		{"id": "storybook", "scene": preload("uid://m6oyxodimxew"), "tier": 2},
 		
-		{"id": "shield", "scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
 		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
 		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 4}
 	],
@@ -55,6 +57,7 @@ func mark_picked(id: String) -> void:
 	if unlocked_items.get(id):
 		picked_items[id] = true
 		save_config()
+	
 
 func is_unlocked(id: String) -> bool:
 	return unlocked_items.get(id, false)
