@@ -8,10 +8,9 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'st
 var DEFAULT_PICK := ["heal"]
 '''
 Тир 0- дорогие бафы 4-х квадрантов, хилки
-Тир 1- обычные предметы
+Тир 1- обычные предметы/ статбафы
 Тир 2- сильные предметы
-Тир 3- меняющие геймплей предметы
-Тир 4- хуй пойми что, решафлы 
+Тир 3- меняющие геймплей предметы и хуй пойми что, решафлы 
 
 unlock items это те, которые вообще не могут попасться до того, как их не анлокнет что-то
 '''
@@ -27,20 +26,20 @@ var POOLS := {
 		{"id": "storybook", "scene": preload("uid://m6oyxodimxew"), "tier": 2},
 		
 		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
-		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 4}
+		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3}
 	],
 	"shop": [
 		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0},
 		
 		{"id": "shield", "scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
 		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
-		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 4},
+		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 1},
 	],
 	"chest": [
 		{"id": "heal", "scene": preload("uid://baga6mxgrpf1s"), "tier": 0},
 		{"id": "shield", "scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
 		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
-		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 4},
+		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 1},
 	],
 	"armory": [
 		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0}

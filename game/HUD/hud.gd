@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const font: FontFile = preload("uid://cv3kwiaeereef")
+const font: FontFile = preload("uid://bdndi3ua8noo1")
 var ui_open := false
 
 func _ready() -> void:

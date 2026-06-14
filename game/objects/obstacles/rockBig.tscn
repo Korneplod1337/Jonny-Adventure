@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://b0gas5hwfpisf"]
+[gd_scene format=3 uid="uid://ck5v5qiq4jt6a"]
 
-[ext_resource type="Texture2D" uid="uid://bpkvu38cy2ulc" path="res://image/objects/obstacles/rock2.png" id="1_bjalw"]
+[ext_resource type="Texture2D" uid="uid://bavyw4vl5ns3i" path="res://image/objects/obstacles/rock1.png" id="1_ed6hx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_367um"]
 size = Vector2(62, 40)
 
-[node name="Rock" type="Node2D" unique_id=1046045028]
+[node name="Rock_big" type="Node2D" unique_id=1046045028]
 scale = Vector2(2, 2)
 
 [node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=828769915]
@@ -17,10 +17,9 @@ lock_rotation = true
 freeze = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1198677730]
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_367um")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=171219873]
-position = Vector2(-31, -20)
 scale = Vector2(2, 2)
-texture = ExtResource("1_bjalw")
-centered = false
+texture = ExtResource("1_ed6hx")

@@ -1,6 +1,6 @@
 extends Node
 
-const COIN_SFX := preload("uid://djw0tdknh18x6")
+const COIN_SFX := preload("uid://bv6pk8pndy1n7")
 
 func play(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0) -> void:
 	var player := AudioStreamPlayer.new()
