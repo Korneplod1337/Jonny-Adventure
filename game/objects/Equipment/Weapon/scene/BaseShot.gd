@@ -1,6 +1,9 @@
 extends Area2D
 class_name BaseShot
 
+const BOOMERANG_MIN_CURVE_T_RATE := 0.06
+const BOOMERANG_SPEED_CURVE := preload("res://game/combat/boomerang_speed_curve.tres")
+
 var player
 var speed: float = 300.0
 var animaited_speed = 1
@@ -13,9 +16,18 @@ var extra_reload: float = 1.0 # только для слёз множитель 
 @export var self_damage_multiplier: float = 1
 @export var self_speed_multiplier: float = 1
 @export var self_range_multiplier: float = 1
+## 0 — прямой полёт; 1 — туда + обратно; 2+ — дополнительные отрезки пути.
+@export var boomerang_power: int = 0
 
 var distance_travelled := 0.0
 var exploded := false
+
+var _max_boomerang_range := 0.0
+var _boomerang_segment := 0
+var _boomerang_segment_count := 0
+var _segment_curve_t := 0.0
+var _segment_trip_duration := 1.0
+var _boomerang_active := false
 
 var enchantment: EnchantmentResource
 
@@ -34,15 +46,77 @@ func _ready() -> void:
 	if pellet_count > 1 and not spawned_spread:
 		spawned_spread = true
 		_spawn_spread()
+	_init_boomerang()
 
-func _physics_process(delta):
-	var movement = direction.normalized() * speed * delta * self_speed_multiplier
+func _physics_process(delta: float) -> void:
+	if exploded:
+		return
+	if _boomerang_active:
+		_physics_process_boomerang(delta)
+	else:
+		_physics_process_linear(delta)
+
+
+func _physics_process_linear(delta: float) -> void:
+	var movement := direction.normalized() * speed * delta * self_speed_multiplier
 	position += movement
 	distance_travelled += movement.length()
-	
-	if distance_travelled >= atk_range * self_range_multiplier and not exploded:
+
+	if distance_travelled >= atk_range * self_range_multiplier:
 		exploded = true
 		explosion(1)
+
+
+func _physics_process_boomerang(delta: float) -> void:
+	if _boomerang_segment >= _boomerang_segment_count:
+		_finish_boomerang_path()
+		return
+
+	if _segment_curve_t >= 1.0:
+		_advance_boomerang_segment()
+		return
+
+	var outbound := _boomerang_segment % 2 == 0
+	var sample_t := lerpf(0.0, 0.5, _segment_curve_t) if outbound else lerpf(0.5, 1.0, _segment_curve_t)
+	var mult := BOOMERANG_SPEED_CURVE.sample(sample_t)
+	var move_dir := direction.normalized()
+
+	var step := move_dir * speed * absf(mult) * delta * self_speed_multiplier
+	global_position += step
+	rotation = move_dir.angle()
+	distance_travelled += step.length()
+
+	var t_rate := maxf(absf(mult), BOOMERANG_MIN_CURVE_T_RATE)
+	_segment_curve_t += (t_rate * delta) / _segment_trip_duration
+	_segment_curve_t = minf(_segment_curve_t, 1.0)
+
+
+func _init_boomerang() -> void:
+	if boomerang_power <= 0:
+		_boomerang_active = false
+		return
+
+	_max_boomerang_range = atk_range * self_range_multiplier
+	_boomerang_segment_count = boomerang_power + 1
+	_boomerang_segment = 0
+	_segment_curve_t = 0.0
+	_segment_trip_duration = _max_boomerang_range / maxf(speed * self_speed_multiplier, 1.0)
+	_boomerang_active = true
+
+
+func _advance_boomerang_segment() -> void:
+	direction = -direction
+	_boomerang_segment += 1
+	_segment_curve_t = 0.0
+	if _boomerang_segment >= _boomerang_segment_count:
+		_finish_boomerang_path()
+
+func _finish_boomerang_path() -> void:
+	if exploded:
+		return
+	exploded = true
+	explosion(1)
+
 
 func _on_body_entered(body):
 	if exploded:
@@ -164,6 +238,7 @@ func _spawn_spread() -> void:
 		bullet.self_damage_multiplier = self_damage_multiplier
 		bullet.self_speed_multiplier = self_speed_multiplier
 		bullet.self_range_multiplier = self_range_multiplier
+		bullet.boomerang_power = boomerang_power
 		bullet.enchantment = enchantment
 		bullet.penetration = penetration
 		bullet.use_spread = use_spread

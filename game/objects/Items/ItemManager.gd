@@ -1,11 +1,12 @@
 extends Node
 
-# Статические данные (замена класса ItemData)
 var unlocked_items: Dictionary = {}
 var picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
-var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'storybook']
+var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'storybook',
+ "mindseye", "storybook", "boomerang", ]
 var DEFAULT_PICK := ["heal"]
+
 '''
 Тир 0- дорогие бафы 4-х квадрантов, хилки
 Тир 1- обычные предметы/ статбафы
@@ -16,37 +17,36 @@ unlock items это те, которые вообще не могут попас
 '''
 
 
-# Пулы предметов
 var POOLS := {
 	"treasure": [
-		{"id": "heal", "scene": preload("uid://baga6mxgrpf1s"), "tier": 0},
-		{"id": "healalt", "scene": preload("uid://ujleakh3r3l0"), "tier": 0},
-		{"id": "healblack", "scene": preload("uid://c83w3v5l3edwc"), "tier": 0},
-		{"id": "healbig", "scene": preload("uid://bvy7i2nw65tyy"), "tier": 0},
-		{"id": "spiderweb", "scene": preload("uid://cgcss4ubm0tjd"), "tier": 1},
-		{"id": "mindseye", "scene": preload("uid://b2l04uommikl0"), "tier": 1},
-		{"id": "storybook", "scene": preload("uid://m6oyxodimxew"), "tier": 2},
-		{"id": "boomerang", "scene": preload("uid://duqt5c8r3bui4"), "tier": 3},
+		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), 	"tier": 0},
+		{"id": "healalt", 	"scene": preload("uid://ujleakh3r3l0"), 		"tier": 0},
+		{"id": "healblack", 	"scene": preload("uid://c83w3v5l3edwc"), 	"tier": 0},
+		{"id": "healbig", 	"scene": preload("uid://bvy7i2nw65tyy"), 	"tier": 0},
+		{"id": "spiderweb", 	"scene": preload("uid://cgcss4ubm0tjd"), 	"tier": 1},
+		{"id": "mindseye", 	"scene": preload("uid://b2l04uommikl0"), 	"tier": 1},
+		{"id": "storybook", 	"scene": preload("uid://m6oyxodimxew"), 		"tier": 2},
+		{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
 		
 		
-		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
+		{"id": "ring", 		"scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
 		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3}
 	],
 	"shop": [
-		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0},
+		{"id": "lvlup", 		"scene": preload("uid://ywfb4cg1rk1u"), "tier": 0},
 		
-		{"id": "shield", "scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
-		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
+		{"id": "shield", 	"scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
+		{"id": "ring", 		"scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
 		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 1},
 	],
 	"chest": [
-		{"id": "heal", "scene": preload("uid://baga6mxgrpf1s"), "tier": 0},
-		{"id": "shield", "scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
-		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
+		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), "tier": 0},
+		{"id": "shield", 	"scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
+		{"id": "ring", 		"scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
 		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 1},
 	],
 	"armory": [
-		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0}
+		{"id": "lvlup", 		"scene": preload("uid://ywfb4cg1rk1u"), "tier": 0}
 	],
 }
 

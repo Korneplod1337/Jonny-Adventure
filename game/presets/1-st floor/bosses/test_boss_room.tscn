@@ -1,17 +1,17 @@
 [gd_scene format=4 uid="uid://b777y3m4083ll"]
 
-[ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/RoomScript_enemy.gd" id="1_tgard"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/background/tile background_1.png" id="2_7ur2v"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/background/background_bounds.png" id="3_7q3g2"]
-[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="3_tgard"]
-[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_wgx1u"]
-[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="6_v55mq"]
+[ext_resource type="Script" path="res://game/presets/1-st floor/bosses/test_boss_room.gd" id="1_hdncw"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/background/tile background_1.png" id="2_jae1j"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/background/background_bounds.png" id="3_bt72h"]
+[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_onn6l"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="5_k4en7"]
+[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="6_kj6r0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgard"]
 size = Vector2(1270, 711)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ur2v"]
-texture = ExtResource("2_7ur2v")
+texture = ExtResource("2_jae1j")
 separation = Vector2i(2, 2)
 0:0/0 = 0
 1:0/0 = 0
@@ -60,7 +60,7 @@ size = Vector2(1136.44, 39.25)
 size = Vector2(41.03, 654.5)
 
 [node name="TestRoom2" type="Node2D" unique_id=133483040]
-script = ExtResource("1_tgard")
+script = ExtResource("1_hdncw")
 
 [node name="Detecter_player" type="Area2D" parent="." unique_id=1378419140]
 visible = false
@@ -77,7 +77,7 @@ tile_set = SubResource("TileSet_g0c75")
 [node name="BG_bounds" type="Sprite2D" parent="." unique_id=346515156]
 z_index = -5
 scale = Vector2(2, 2)
-texture = ExtResource("3_7q3g2")
+texture = ExtResource("3_bt72h")
 
 [node name="CameraBounds" type="Area2D" parent="." unique_id=1686679619]
 visible = false
@@ -106,50 +106,50 @@ shape = SubResource("RectangleShape2D_7q3g2")
 position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_7q3g2")
 
-[node name="Door_Up" parent="." unique_id=650211907 instance=ExtResource("3_wgx1u")]
+[node name="Door_Up" parent="." unique_id=650211907 instance=ExtResource("4_onn6l")]
 position = Vector2(0, -301)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
-[node name="Door_Down" parent="." unique_id=60275189 instance=ExtResource("3_wgx1u")]
+[node name="Door_Down" parent="." unique_id=60275189 instance=ExtResource("4_onn6l")]
 position = Vector2(0, 297)
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
-[node name="Door_Left" parent="." unique_id=1774901095 instance=ExtResource("3_wgx1u")]
+[node name="Door_Left" parent="." unique_id=1774901095 instance=ExtResource("4_onn6l")]
 position = Vector2(-580, 0)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
-[node name="Door_Right" parent="." unique_id=970584351 instance=ExtResource("3_wgx1u")]
+[node name="Door_Right" parent="." unique_id=970584351 instance=ExtResource("4_onn6l")]
 position = Vector2(580, 0)
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
-[node name="EmenyWorm" parent="." unique_id=234496380 instance=ExtResource("3_tgard")]
+[node name="EmenyWorm" parent="." unique_id=234496380 instance=ExtResource("5_k4en7")]
 position = Vector2(-106, 4)
 
-[node name="EmenyWorm2" parent="." unique_id=1655288545 instance=ExtResource("3_tgard")]
+[node name="EmenyWorm2" parent="." unique_id=1655288545 instance=ExtResource("5_k4en7")]
 position = Vector2(-2, 62)
 
-[node name="EmenyWorm9" parent="." unique_id=1879289174 instance=ExtResource("3_tgard")]
+[node name="EmenyWorm9" parent="." unique_id=1879289174 instance=ExtResource("5_k4en7")]
 position = Vector2(102, 4.9999847)
 
-[node name="EmenyWorm12" parent="." unique_id=1036364311 instance=ExtResource("3_tgard")]
+[node name="EmenyWorm12" parent="." unique_id=1036364311 instance=ExtResource("5_k4en7")]
 visible = false
 position = Vector2(-5, -47.000015)
 
-[node name="EnemyBat" parent="." unique_id=2133096440 instance=ExtResource("6_v55mq")]
+[node name="EnemyBat" parent="." unique_id=2133096440 instance=ExtResource("6_kj6r0")]
 position = Vector2(-444, -212)
 
-[node name="EnemyBat2" parent="." unique_id=1522632719 instance=ExtResource("6_v55mq")]
+[node name="EnemyBat2" parent="." unique_id=1522632719 instance=ExtResource("6_kj6r0")]
 visible = false
 position = Vector2(472, -215)
 
-[node name="EnemyBat3" parent="." unique_id=2091276415 instance=ExtResource("6_v55mq")]
+[node name="EnemyBat3" parent="." unique_id=2091276415 instance=ExtResource("6_kj6r0")]
 position = Vector2(472, 227)
 
-[node name="EnemyBat4" parent="." unique_id=1399020331 instance=ExtResource("6_v55mq")]
+[node name="EnemyBat4" parent="." unique_id=1399020331 instance=ExtResource("6_kj6r0")]
 visible = false
 position = Vector2(-444, 213)
 

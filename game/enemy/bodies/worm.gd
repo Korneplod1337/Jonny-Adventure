@@ -10,14 +10,14 @@ var is_dashing: bool = false
 
 func _setup_enemy_stats() -> void:
 	if DungeonManager.difficulty == "hard":
-		move_step_distance = 	300 		* GameState.enemy_ms_multiplier
-		move_speed = 			250 		* GameState.enemy_ms_multiplier
+		move_step_distance = 	250 		* (GameState.enemy_ms_multiplier * 1.2)
+		move_speed = 			200 		* (GameState.enemy_ms_multiplier * 1.2)
 		base_hp = 				100 		* GameState.enemy_hp_multiplier
 		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
 		cooldown_time = 		0.8 			* GameState.enemy_cooldown_multiplier
 	elif DungeonManager.difficulty == "med":
-		move_step_distance = 	250 		* GameState.enemy_ms_multiplier
-		move_speed = 			200 		* GameState.enemy_ms_multiplier
+		move_step_distance = 	200 		* (GameState.enemy_ms_multiplier * 1.1)
+		move_speed = 			175 		* (GameState.enemy_ms_multiplier * 1.1)
 		base_hp = 				80 		* GameState.enemy_hp_multiplier
 		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
 		cooldown_time = 		0.9 			* GameState.enemy_cooldown_multiplier

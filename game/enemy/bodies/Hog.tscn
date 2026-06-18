@@ -108,6 +108,14 @@ scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 54
 script = ExtResource("1_45uaf")
+move_speed = null
+cooldown_time = null
+base_hp = null
+damage = null
+use_base_move_towards_player = null
+deals_melee_damage = null
+knockback_friction = null
+hitstun_duration = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
 position = Vector2(0, 1)
@@ -140,7 +148,6 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_17ibq")
-animation = &"charge"
 
 [node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
 position = Vector2(0, -30)
@@ -154,10 +161,8 @@ fire_icon0 = ExtResource("12_lk7xh")
 fire_icon1 = ExtResource("13_2o6yw")
 
 [node name="Charge" type="AnimatedSprite2D" parent="." unique_id=982909294]
-visible = false
 position = Vector2(2.6666667, -2.6666667)
 sprite_frames = SubResource("SpriteFrames_lk7xh")
-animation = &"Charge"
 
 [connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
 [connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]

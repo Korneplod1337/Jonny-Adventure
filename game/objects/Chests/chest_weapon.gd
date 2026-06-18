@@ -2,7 +2,7 @@ extends StaticBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interactable: Area2D = $Interactable
 var cost := 0
-var equip_tier :Array = [1]
+var equip_tier :Array = [1, 2, 3]
 var equip_pool := 'weapon'
 var coin = preload("uid://ci05xlan24oqs")
 

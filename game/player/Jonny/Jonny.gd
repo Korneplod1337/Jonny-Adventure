@@ -4,6 +4,7 @@ class_name Jonny
 var ST = StatManager
 var player_name = 'Jonny'
 
+@onready var interactcomp = $InteractingComponents/InteractRange/CollisionShape2D
 @onready var head_sprite: AnimatedSprite2D = $Head
 @onready var chest_sprite: AnimatedSprite2D = $Chest
 @onready var boots_sprite: AnimatedSprite2D = $Boots
@@ -59,6 +60,7 @@ var fire_rate_bonus:			int = 5
 @onready var fire_rate:float		= ST.get_stat(self, "fire_rate")
 
 var extra_fire_rate:float = 0
+var boomerang_bonus: int = 0
 
 var head_id: String
 var chest_id: String
@@ -422,6 +424,9 @@ func fire (shot_dir: Vector2) -> void:
 	
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
+	shot.atk_range = atk_range
+	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
+	shot.boomerang_power += boomerang_bonus
 	
 	if shot_enchantment:
 		shot.enchantment = shot_enchantment.duplicate(true)

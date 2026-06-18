@@ -29,16 +29,9 @@ func _physics_process(delta: float) -> void:
 	var target := _find_nearest_enemy()
 	if target:
 		_turn_towards(target.global_position, delta)
-
 	rotation = direction.angle()
 
-	var movement := direction.normalized() * speed * delta * self_speed_multiplier
-	position += movement
-	distance_travelled += movement.length()
-
-	if distance_travelled >= _max_range:
-		exploded = true
-		explosion(1)
+	super._physics_process(delta)
 
 
 func _turn_towards(target_pos: Vector2, delta: float) -> void:

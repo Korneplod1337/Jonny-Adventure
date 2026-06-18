@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/background/background_bounds.png" id="2_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/bodies/dartboard.tscn" id="4_cjhlh"]
-[ext_resource type="PackedScene" uid="uid://b2l04uommikl0" path="res://game/objects/items/scenes/tier 1/Mind's Eye.tscn" id="12_3rats"]
-[ext_resource type="PackedScene" uid="uid://cgcss4ubm0tjd" path="res://game/objects/items/scenes/tier 1/Spider web.tscn" id="12_cdchw"]
+[ext_resource type="PackedScene" uid="uid://cxmow65o8obwu" path="res://game/objects/items/scenes/tier 3/Boomerang.tscn" id="12_cdchw"]
 [ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="12_pjn5v"]
 [ext_resource type="PackedScene" uid="uid://ck5v5qiq4jt6a" path="res://game/objects/obstacles/rockBig.tscn" id="12_wkjof"]
-[ext_resource type="PackedScene" uid="uid://m6oyxodimxew" path="res://game/objects/items/scenes/tier 2/Story Book.tscn" id="13_wkjof"]
+[ext_resource type="PackedScene" uid="uid://6ngyovpkns22" path="res://game/objects/Equipment/Weapon/equip/CardWeapon_equip.tscn" id="13_3rats"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_3rats"]
 [ext_resource type="PackedScene" uid="uid://d4b16tebiwudm" path="res://game/objects/Equipment/Weapon/equip/Matchlock_equip.tscn" id="15_o7186"]
+[ext_resource type="PackedScene" uid="uid://xi3j7etugnhg" path="res://game/objects/Equipment/Weapon/equip/ShotGun_equip.tscn" id="15_vp6t4"]
 [ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/tier 0/Potion Red.tscn" id="16_o7186"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
@@ -68,7 +68,7 @@ position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_sw7ps")
 
 [node name="Rock" parent="." unique_id=724279530 instance=ExtResource("1_jseag")]
-position = Vector2(-180, 180)
+position = Vector2(-181, 178.00002)
 rotation = 0.49916416
 skew = 0.7225663
 
@@ -120,22 +120,19 @@ position = Vector2(-109, -155)
 [node name="Rock_big" parent="." unique_id=1046045028 instance=ExtResource("12_wkjof")]
 position = Vector2(428, 192)
 
-[node name="Spider web" parent="." unique_id=1430574395 instance=ExtResource("12_cdchw")]
-position = Vector2(127, 72)
-
-[node name="Spider web3" parent="." unique_id=1989890484 instance=ExtResource("12_cdchw")]
-position = Vector2(205, 19)
-
 [node name="Rock4" parent="." unique_id=1354961088 instance=ExtResource("1_jseag")]
-position = Vector2(-447.00003, -206.00002)
+position = Vector2(-447, -200)
 rotation = 0.49916416
 skew = 0.7225663
 
-[node name="Mind\'s Eye" parent="." unique_id=1095823284 instance=ExtResource("12_3rats")]
-position = Vector2(35, 106)
+[node name="Sword_equip2" parent="." unique_id=865548092 instance=ExtResource("15_3rats")]
+position = Vector2(-223, 68)
 
-[node name="Mind\'s Eye2" parent="." unique_id=1810576478 instance=ExtResource("12_3rats")]
-position = Vector2(-40, 105)
+[node name="ShotGun" parent="." unique_id=555538127 instance=ExtResource("15_vp6t4")]
+position = Vector2(-23, -81)
 
-[node name="Story book" parent="." unique_id=564624927 instance=ExtResource("13_wkjof")]
-position = Vector2(-99, 35)
+[node name="Boomerang3" parent="." unique_id=303184870 instance=ExtResource("12_cdchw")]
+position = Vector2(118, 166)
+
+[node name="CardWeapon_equip" parent="." unique_id=257005019 instance=ExtResource("13_3rats")]
+position = Vector2(-191, -41)
