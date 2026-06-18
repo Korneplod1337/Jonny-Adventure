@@ -23,7 +23,11 @@ var POOLS := {
 		{"id": "healalt", "scene": preload("uid://ujleakh3r3l0"), "tier": 0},
 		{"id": "healblack", "scene": preload("uid://c83w3v5l3edwc"), "tier": 0},
 		{"id": "healbig", "scene": preload("uid://bvy7i2nw65tyy"), "tier": 0},
+		{"id": "spiderweb", "scene": preload("uid://cgcss4ubm0tjd"), "tier": 1},
+		{"id": "mindseye", "scene": preload("uid://b2l04uommikl0"), "tier": 1},
 		{"id": "storybook", "scene": preload("uid://m6oyxodimxew"), "tier": 2},
+		{"id": "boomerang", "scene": preload("uid://duqt5c8r3bui4"), "tier": 3},
+		
 		
 		{"id": "ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
 		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3}

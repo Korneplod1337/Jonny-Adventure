@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://m6oyxodimxew"]
 
-[ext_resource type="Script" uid="uid://c5ygd3qpekbo2" path="res://game/objects/items/scripts/Story Book.gd" id="1_khpax"]
-[ext_resource type="Texture2D" uid="uid://dahfubqr6mm70" path="res://image/items/1 tier/ItemStoryBook.png" id="2_k2joo"]
-[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_ph536"]
+[ext_resource type="Script" uid="uid://c5ygd3qpekbo2" path="res://game/objects/items/scripts/Story Book.gd" id="1_mscv5"]
+[ext_resource type="Texture2D" uid="uid://dahfubqr6mm70" path="res://image/items/2 tier/ItemStoryBook.png" id="2_qfh24"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_o6jgt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
 radius = 40.04997
@@ -12,14 +12,14 @@ radius = 19.0
 
 [node name="Story book" type="Area2D" unique_id=1430574395]
 collision_layer = 0
-script = ExtResource("1_khpax")
-item_icon = ExtResource("2_k2joo")
+script = ExtResource("1_mscv5")
+item_icon = ExtResource("2_qfh24")
 item_tooltip = "Story book"
 item_tooltip2 = "It seems that after reading this book, it takes me back to my childhood"
 item_id = "storybook"
 effect_power = 0.85
 
-[node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_ph536")]
+[node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_o6jgt")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
 shape = SubResource("CircleShape2D_lh7he")
@@ -29,4 +29,4 @@ shape = SubResource("CircleShape2D_oisx2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302434300]
 scale = Vector2(2, 2)
-texture = ExtResource("2_k2joo")
+texture = ExtResource("2_qfh24")

@@ -12,7 +12,7 @@ var cost_multiplier := 1.0
 var cost_plus := 0.0
 var animated_world_speed := 1
 
-var AlchemistsGlasses := false #больше инфы
+var AlchemistsGlasses := true #false #больше инфы
 
 
 #уровень

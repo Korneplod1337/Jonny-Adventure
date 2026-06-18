@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b2l04uommikl0"]
+
+[ext_resource type="Script" uid="uid://duuhhw4hd7by" path="res://game/objects/items/scripts/mind's_eye.gd" id="1_je1yc"]
+[ext_resource type="Texture2D" uid="uid://b20khiiu86qyp" path="res://image/items/1 tier/ItemMindsEye.png" id="2_je1yc"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_3p656"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Mind\'s Eye" type="Area2D" unique_id=1430574395]
+collision_layer = 0
+script = ExtResource("1_je1yc")
+item_icon = ExtResource("2_je1yc")
+item_tooltip = "Mind's Eye"
+item_tooltip2 = "Mind's Eye gave me an epiphany"
+item_id = "mindseye"
+effect_power = 0.1
+
+[node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_3p656")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302434300]
+scale = Vector2(2, 2)
+texture = ExtResource("2_je1yc")

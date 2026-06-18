@@ -14,15 +14,20 @@ func _setup_enemy_stats() -> void:
 		move_speed = 			250 		* GameState.enemy_ms_multiplier
 		base_hp = 				100 		* GameState.enemy_hp_multiplier
 		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
-		cooldown_time = 		1.0 			* GameState.enemy_cooldown_multiplier
+		cooldown_time = 		0.8 			* GameState.enemy_cooldown_multiplier
 	elif DungeonManager.difficulty == "med":
+		move_step_distance = 	250 		* GameState.enemy_ms_multiplier
+		move_speed = 			200 		* GameState.enemy_ms_multiplier
+		base_hp = 				80 		* GameState.enemy_hp_multiplier
+		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
+		cooldown_time = 		0.9 			* GameState.enemy_cooldown_multiplier
+	else:
 		move_step_distance = 	150 		* GameState.enemy_ms_multiplier
 		move_speed = 			150 		* GameState.enemy_ms_multiplier
-		base_hp = 				60 		* GameState.enemy_hp_multiplier
+		base_hp = 				50		* GameState.enemy_hp_multiplier
 		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
 		cooldown_time = 		1.0 			* GameState.enemy_cooldown_multiplier
-	else:
-		base_hp = 				base_hp	* GameState.enemy_hp_multiplier
+		
 	super._setup_enemy_stats()
 
 
