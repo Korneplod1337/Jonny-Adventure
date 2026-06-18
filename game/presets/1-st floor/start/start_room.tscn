@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/background/background_bounds.png" id="2_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/bodies/dartboard.tscn" id="4_cjhlh"]
-[ext_resource type="PackedScene" uid="uid://m6oyxodimxew" path="res://game/objects/items/scenes/tier 1/Story Book.tscn" id="10_6qdf2"]
-[ext_resource type="PackedScene" uid="uid://d153rj7fiouha" path="res://game/objects/Equipment/Weapon/equip/Spear_equip.tscn" id="11_ajpcv"]
+[ext_resource type="PackedScene" uid="uid://cgcss4ubm0tjd" path="res://game/objects/items/scenes/tier 1/Spider web.tscn" id="12_cdchw"]
 [ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="12_pjn5v"]
 [ext_resource type="PackedScene" uid="uid://ck5v5qiq4jt6a" path="res://game/objects/obstacles/rockBig.tscn" id="12_wkjof"]
+[ext_resource type="PackedScene" uid="uid://dkb1xb65dreb4" path="res://game/enemy/bodies/Hog.tscn" id="13_wkjof"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_3rats"]
 [ext_resource type="PackedScene" uid="uid://d4b16tebiwudm" path="res://game/objects/Equipment/Weapon/equip/Matchlock_equip.tscn" id="15_o7186"]
 [ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/tier 0/Potion Red.tscn" id="16_o7186"]
@@ -21,6 +21,9 @@ size = Vector2(1136.44, 39.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw7ps"]
 size = Vector2(41.03, 654.5)
+
+[sub_resource type="Resource" id="Resource_ajpcv"]
+metadata/__load_path__ = "res://image/items/items_hud/ItemHealthPotion.png"
 
 [node name="StartRoom" type="Node2D" unique_id=757044430]
 
@@ -105,6 +108,7 @@ position = Vector2(200, -130)
 
 [node name="TestItem" parent="." unique_id=1539246569 instance=ExtResource("16_o7186")]
 position = Vector2(244, 172)
+item_icon = SubResource("Resource_ajpcv")
 
 [node name="Sword_equip" parent="." unique_id=1735063906 instance=ExtResource("15_3rats")]
 position = Vector2(-513, 245)
@@ -112,10 +116,17 @@ position = Vector2(-513, 245)
 [node name="Matchlock" parent="." unique_id=241584314 instance=ExtResource("15_o7186")]
 position = Vector2(-109, -155)
 
-[node name="Story book" parent="." unique_id=1430574395 instance=ExtResource("10_6qdf2")]
-position = Vector2(-110, -45)
-
-[node name="Spear_equip" parent="." unique_id=1592650037 instance=ExtResource("11_ajpcv")]
-
 [node name="Rock_big" parent="." unique_id=1046045028 instance=ExtResource("12_wkjof")]
 position = Vector2(428, 192)
+
+[node name="Hog" parent="." unique_id=2133096440 instance=ExtResource("13_wkjof")]
+position = Vector2(-387, -87)
+
+[node name="Spider web" parent="." unique_id=1430574395 instance=ExtResource("12_cdchw")]
+position = Vector2(84, 31)
+
+[node name="Spider web2" parent="." unique_id=1032197147 instance=ExtResource("12_cdchw")]
+position = Vector2(141, 51)
+
+[node name="Spider web3" parent="." unique_id=1989890484 instance=ExtResource("12_cdchw")]
+position = Vector2(205, 19)

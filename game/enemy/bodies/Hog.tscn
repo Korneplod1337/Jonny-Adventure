@@ -1,25 +1,25 @@
 [gd_scene format=3 uid="uid://dkb1xb65dreb4"]
 
 [ext_resource type="Script" uid="uid://c6163m604rgb" path="res://game/enemy/bodies/hog.gd" id="1_45uaf"]
-[ext_resource type="Texture2D" uid="uid://fca7de7st2qc" path="res://image/enemy/bodies/The hog1.png" id="2_d63fg"]
-[ext_resource type="Texture2D" uid="uid://dq03efkojuo2j" path="res://image/enemy/bodies/The hog5.png" id="2_pdkj3"]
-[ext_resource type="Texture2D" uid="uid://qxireukv5qq0" path="res://image/enemy/bodies/The hog6.png" id="3_eqwbs"]
-[ext_resource type="Texture2D" uid="uid://256vtuhf1qpd" path="res://image/enemy/bodies/The hog2.png" id="3_yx8fq"]
-[ext_resource type="Texture2D" uid="uid://drfyv45f71m5d" path="res://image/enemy/bodies/The hog7.png" id="4_d63fg"]
-[ext_resource type="Texture2D" uid="uid://ooowe3nhr3i6" path="res://image/enemy/bodies/The hog3.png" id="4_xwenc"]
-[ext_resource type="Texture2D" uid="uid://6nuhbo2dwima" path="res://image/enemy/bodies/The hog8.png" id="5_yx8fq"]
-[ext_resource type="Texture2D" uid="uid://dgqrrcucrbduh" path="res://image/enemy/bodies/The hog9.png" id="6_xwenc"]
-[ext_resource type="Texture2D" uid="uid://kj84444mnc7h" path="res://image/enemy/bodies/The hog10.png" id="7_0uj11"]
-[ext_resource type="Texture2D" uid="uid://c57uudgiaips7" path="res://image/enemy/bodies/The hog11.png" id="8_i4y4q"]
+[ext_resource type="Texture2D" uid="uid://cgth5x6ewm1pk" path="res://image/enemy/bodies/The hog1.png" id="2_d63fg"]
+[ext_resource type="Texture2D" uid="uid://copkcqk5qimgl" path="res://image/enemy/bodies/The hog5.png" id="2_pdkj3"]
+[ext_resource type="Texture2D" uid="uid://c7q3sxbkhsdj0" path="res://image/enemy/bodies/The hog6.png" id="3_eqwbs"]
+[ext_resource type="Texture2D" uid="uid://chph235or8nvj" path="res://image/enemy/bodies/The hog2.png" id="3_yx8fq"]
+[ext_resource type="Texture2D" uid="uid://du0k27kfprps1" path="res://image/enemy/bodies/The hog7.png" id="4_d63fg"]
+[ext_resource type="Texture2D" uid="uid://b83tbhfw47qo1" path="res://image/enemy/bodies/The hog3.png" id="4_xwenc"]
+[ext_resource type="Texture2D" uid="uid://dge0cgsyklhbd" path="res://image/enemy/bodies/The hog8.png" id="5_yx8fq"]
+[ext_resource type="Texture2D" uid="uid://cyxq2mu2gg232" path="res://image/enemy/bodies/The hog9.png" id="6_xwenc"]
+[ext_resource type="Texture2D" uid="uid://4q20epxfb3sx" path="res://image/enemy/bodies/The hog10.png" id="7_0uj11"]
+[ext_resource type="Texture2D" uid="uid://cq8ob1spt41tx" path="res://image/enemy/bodies/The hog11.png" id="8_i4y4q"]
 [ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/bodies/effect_icons.gd" id="9_a2jkp"]
-[ext_resource type="Texture2D" uid="uid://b7cqj7inw8y02" path="res://image/effect_sprites/status_bar/snowflake.png" id="10_n8jjt"]
-[ext_resource type="Texture2D" uid="uid://dry1e6wipf5yq" path="res://image/effect_sprites/status_bar/poison.png" id="11_0xb6j"]
-[ext_resource type="Texture2D" uid="uid://dew1qqwfm2ex5" path="res://image/effect_sprites/status_bar/fire1.png" id="12_lk7xh"]
-[ext_resource type="Texture2D" uid="uid://bgtjntokqpgaa" path="res://image/effect_sprites/status_bar/fire2.png" id="13_2o6yw"]
-[ext_resource type="Texture2D" uid="uid://d2ax28ube17yw" path="res://image/enemy/enemy_projectile/Hog_charge2.png" id="17_i4y4q"]
-[ext_resource type="Texture2D" uid="uid://cqfenbbry3pek" path="res://image/enemy/enemy_projectile/Hog_charge3.png" id="18_a2jkp"]
-[ext_resource type="Texture2D" uid="uid://dhxc45lll5xlw" path="res://image/enemy/enemy_projectile/Hog_charge4.png" id="19_n8jjt"]
-[ext_resource type="Texture2D" uid="uid://cxfps5ei7ucy4" path="res://image/enemy/enemy_projectile/Hog_charge1.png" id="20_0xb6j"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="10_n8jjt"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="11_0xb6j"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="12_lk7xh"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="13_2o6yw"]
+[ext_resource type="Texture2D" uid="uid://bij6uihhisqji" path="res://image/enemy/enemy_projectile/Hog_charge2.png" id="17_i4y4q"]
+[ext_resource type="Texture2D" uid="uid://dq625eh5ah7tr" path="res://image/enemy/enemy_projectile/Hog_charge3.png" id="18_a2jkp"]
+[ext_resource type="Texture2D" uid="uid://c08ti8yk0f7o2" path="res://image/enemy/enemy_projectile/Hog_charge4.png" id="19_n8jjt"]
+[ext_resource type="Texture2D" uid="uid://cjk6266ssspuy" path="res://image/enemy/enemy_projectile/Hog_charge1.png" id="20_0xb6j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
 size = Vector2(50, 21)
@@ -140,6 +140,7 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_17ibq")
+animation = &"charge"
 
 [node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
 position = Vector2(0, -30)

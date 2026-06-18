@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://baga6mxgrpf1s"]
 
 [ext_resource type="Script" uid="uid://qypg6l131j4v" path="res://game/objects/items/scripts/Poison Red.gd" id="1_5uw0k"]
-[ext_resource type="Texture2D" uid="uid://ccvttu4y32iu2" path="res://image/items/items_hud/ItemHealthPotion.png" id="2_d4h2p"]
+[ext_resource type="Texture2D" uid="uid://blewc7533wx23" path="res://image/items/0 tier/ItemHealthPotion.png" id="2_lor3b"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_ntj6x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -13,7 +13,7 @@ radius = 19.0
 [node name="Potion Heal" type="Area2D" unique_id=1430574395]
 collision_layer = 0
 script = ExtResource("1_5uw0k")
-item_icon = ExtResource("2_d4h2p")
+item_icon = ExtResource("2_lor3b")
 item_tooltip = "Red potion"
 item_tooltip2 = "This potion makes me feel better"
 item_id = "heal"
@@ -28,4 +28,4 @@ shape = SubResource("CircleShape2D_oisx2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302434300]
 scale = Vector2(2, 2)
-texture = ExtResource("2_d4h2p")
+texture = ExtResource("2_lor3b")

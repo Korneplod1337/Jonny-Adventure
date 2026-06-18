@@ -41,6 +41,8 @@ var hitstun: float = 0.0  # Время в секундах паузы движе
 
 
 func _ready() -> void:
+	blind_timer.wait_time = 0.1
+	
 	_setup_enemy_stats()
 
 	base_move_speed = move_speed
@@ -198,6 +200,7 @@ func _remove_effect(effect: StringName) -> void:
 func _on_field_view_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_vision = true
+		_setup_enemy_stats()
 		if blind_timer.is_stopped() and not active:
 			blind_timer.start()
 

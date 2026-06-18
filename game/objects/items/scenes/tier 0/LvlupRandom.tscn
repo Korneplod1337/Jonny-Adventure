@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://hlras5a2umwl" path="res://game/objects/items/scripts/LvlupRandom.gd" id="1_rftd4"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="2_qknov"]
-[ext_resource type="Texture2D" uid="uid://7fhc16cg2h05" path="res://image/items/items_hud/LevelupHP.png" id="3_djq2g"]
-[ext_resource type="Texture2D" uid="uid://dus878il2v07n" path="res://image/items/items_hud/LevelupLuck.png" id="4_aaokw"]
-[ext_resource type="Texture2D" uid="uid://dyi8ytour8ky5" path="res://image/items/items_hud/LevelupSpeed.png" id="5_72hc0"]
-[ext_resource type="Texture2D" uid="uid://d1ckltoandiqt" path="res://image/items/items_hud/LevelupMagic.png" id="6_7mtte"]
-[ext_resource type="Texture2D" uid="uid://ca1s4ovk6kape" path="res://image/items/items_hud/LevelupDamage.png" id="7_7nbn1"]
-[ext_resource type="Texture2D" uid="uid://c13oxrgkhxdh3" path="res://image/items/items_hud/LevelupAtkSpeed.png" id="8_3f3bu"]
-[ext_resource type="Texture2D" uid="uid://oitcfy1i85or" path="res://image/items/items_hud/LevelupSpread.png" id="9_v8rt3"]
-[ext_resource type="Texture2D" uid="uid://cvfgwy1ru51bg" path="res://image/items/items_hud/LevelupRange.png" id="10_7lobj"]
+[ext_resource type="Texture2D" uid="uid://dhlycfvgl65cp" path="res://image/items/0 tier/LevelupHP.png" id="3_fo011"]
+[ext_resource type="Texture2D" uid="uid://c3urraeen8pxe" path="res://image/items/0 tier/LevelupLuck.png" id="4_qy8gc"]
+[ext_resource type="Texture2D" uid="uid://bp0d3qt6c2h7" path="res://image/items/0 tier/LevelupSpeed.png" id="5_ayklr"]
+[ext_resource type="Texture2D" uid="uid://d1qk0j5csxhrb" path="res://image/items/0 tier/LevelupMagic.png" id="6_5gi7w"]
+[ext_resource type="Texture2D" uid="uid://ccvo3ubonqt70" path="res://image/items/0 tier/LevelupDamage.png" id="7_fvtl6"]
+[ext_resource type="Texture2D" uid="uid://bayxo72spwioo" path="res://image/items/0 tier/LevelupAtkSpeed.png" id="8_v531h"]
+[ext_resource type="Texture2D" uid="uid://c487gax0s4dt3" path="res://image/items/0 tier/LevelupSpread.png" id="9_lo63t"]
+[ext_resource type="Texture2D" uid="uid://c1teqedxe4ioy" path="res://image/items/0 tier/LevelupRange.png" id="10_h64gu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
 radius = 19.0
@@ -21,28 +21,28 @@ radius = 40.04997
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_djq2g")
+"texture": ExtResource("3_fo011")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_aaokw")
+"texture": ExtResource("4_qy8gc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_72hc0")
+"texture": ExtResource("5_ayklr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_7mtte")
+"texture": ExtResource("6_5gi7w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_7nbn1")
+"texture": ExtResource("7_fvtl6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_3f3bu")
+"texture": ExtResource("8_v531h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_v8rt3")
+"texture": ExtResource("9_lo63t")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_7lobj")
+"texture": ExtResource("10_h64gu")
 }],
 "loop": true,
 "name": &"default",

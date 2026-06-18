@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c83w3v5l3edwc"]
 
 [ext_resource type="Script" uid="uid://louqll8pa8fw" path="res://game/objects/items/scripts/Poison Black.gd" id="1_sqr04"]
-[ext_resource type="Texture2D" uid="uid://bwfkk5k3pnshk" path="res://image/items/items_hud/ItemDeathPotion.png" id="2_sqr04"]
+[ext_resource type="Texture2D" uid="uid://bmfk7qcaud1fm" path="res://image/items/0 tier/ItemDeathPotion.png" id="2_ly48v"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_xub2a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -13,7 +13,7 @@ radius = 19.0
 [node name="Black potion" type="Area2D" unique_id=1430574395]
 collision_layer = 0
 script = ExtResource("1_sqr04")
-item_icon = ExtResource("2_sqr04")
+item_icon = ExtResource("2_ly48v")
 item_tooltip = "Strange black potion"
 item_tooltip2 = "I think this potion gives me something. But it makes me feel bad :("
 item_id = "healblack"
@@ -28,4 +28,4 @@ shape = SubResource("CircleShape2D_oisx2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302434300]
 scale = Vector2(2, 2)
-texture = ExtResource("2_sqr04")
+texture = ExtResource("2_ly48v")

@@ -11,7 +11,7 @@ const STATS := {
 		"cooldown_time": 2.0,
 		"aim_time": 1.0,
 		"rest_time": 1.0,
-		"recover_time": 1.0,
+		"recover_time": 0.0,
 	},
 	"med": {
 		"base_hp": 200,
@@ -19,8 +19,8 @@ const STATS := {
 		"charge_speed": 500.0,
 		"cooldown_time": 1.6,
 		"aim_time": 1.0,
-		"rest_time": 0.7,
-		"recover_time": 0.8,
+		"rest_time": 0.75,
+		"recover_time": 0.0,
 	},
 	"hard": {
 		"base_hp": 250,
@@ -29,7 +29,7 @@ const STATS := {
 		"cooldown_time": 1.2,
 		"aim_time": 1.0,
 		"rest_time": 0.5,
-		"recover_time": 0.6,
+		"recover_time": 0.0,
 	},
 }
 
@@ -52,6 +52,7 @@ func _ready() -> void:
 	knockback_friction += 200.0
 	sprite.play("default")
 	_hide_charge_indicator()
+	
 
 
 func _setup_enemy_stats() -> void:
