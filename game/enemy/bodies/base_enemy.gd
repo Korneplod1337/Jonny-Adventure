@@ -10,8 +10,8 @@ var poison: float = 0
 var effect_protection: float = 1
 
 @export var cooldown_time: float = 1.5
-@export var base_hp: int = 50 
-@export var damage: int = 1
+var base_hp: int = 50 
+var damage: int = 1
 
 @export var use_base_move_towards_player: bool = false
 @export var deals_melee_damage: bool = true
@@ -41,7 +41,7 @@ var hitstun: float = 0.0  # Время в секундах паузы движе
 
 
 func _ready() -> void:
-	blind_timer.wait_time = 0.1
+	blind_timer.wait_time = 0.5
 	
 	_setup_enemy_stats()
 

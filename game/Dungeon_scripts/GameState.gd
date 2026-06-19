@@ -12,7 +12,8 @@ var cost_multiplier := 1.0
 var cost_plus := 0.0
 var animated_world_speed := 1
 
-var AlchemistsGlasses := true #false #больше инфы
+var AlchemistsGlasses := false #больше инфы
+var Surestrike := false # убирает разброс выстрела, не меняя стат точности
 
 
 #уровень
@@ -54,7 +55,8 @@ func obnulenie() -> void:
 	coins = 0
 	"Всё, что обнуляется между играми сюда по идее"
 	DamageDealer.clear_modifiers()
-	#AlchemistsGlasses = false
+	AlchemistsGlasses = false
+	Surestrike = false
 	enemy_ms_multiplier = 1.0
 	enemy_hp_multiplier = 1.0
 	enemy_dmg_multiplier = 1.0

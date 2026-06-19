@@ -18,11 +18,16 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 var POOLS := {
 	"treasure": [ ## временно только шмотки
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 3, "weight": 10.0},
 		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Poison_boots", "scene": preload("uid://c1fiyctd2xrli"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
+		 "tier": 2, "weight": 10.0},
+		
 		
 	
 	],
@@ -67,8 +72,12 @@ var POOLS := {
 		 "tier": 2, "weight": 10.0},
 		{"id": "Sniper_Gun", "scene": preload("uid://i6kqba6ow2yq"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Scatterhand", "scene": preload("uid://ixfqllfdouf6"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
 		 "tier": 3, "weight": 10.0},
+		
+		 
 		
 		
 	]
@@ -79,9 +88,11 @@ var equip_visuals := {
 	# HEAD
 	"Kaliya_star_hat":
 		preload("uid://cpdenuif162v0"),
-	"test_chest2":
-		preload("uid://bupakre411yu6"),
-	
+	"Alchemists_glasses":
+		preload("uid://h7lm83qrvm2y"),
+	"Surestrike":
+		preload("uid://big2quf10m3j8"),
+		
 	# CHEST
 	"Death_shield":
 		preload("uid://bupakre411yu6"),

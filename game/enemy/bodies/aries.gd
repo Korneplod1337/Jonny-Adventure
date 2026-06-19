@@ -3,34 +3,25 @@ class_name EnemyAries
 
 enum State { IDLE, AIMING, CHARGING }
 
-const STATS := {
-	"easy": {
-		"base_hp": 100,
-		"charge_damage": 1,
-		"charge_speed": 220.0,
-		"max_dash_distance": 360.0,
-		"cooldown_time": 2.0,
-		"aim_time": 2.0,
-	},
-	"med": {
-		"base_hp": 200,
-		"charge_damage": 2,
-		"charge_speed": 320.0,
-		"max_dash_distance": 440.0,
-		"cooldown_time": 1.6,
-		"aim_time": 2.0,
-	},
-	"hard": {
-		"base_hp": 250,
-		"charge_damage": 2,
-		"charge_speed": 420.0,
-		"max_dash_distance": 520.0,
-		"cooldown_time": 1.2,
-		"aim_time": 2.0,
-	},
-}
+@export_group("Hard Stats")
+@export var hard_base_hp: int = 250
+@export var hard_charge_damage: int = 2
+@export var hard_charge_speed: float = 420.0
+@export var hard_max_dash_distance: float = 520.0
+@export var hard_cooldown_time: float = 1.2
+@export var hard_aim_time: float = 2.0
+@export var charge_max_duration: float = 8.0
 
-const CHARGE_MAX_DURATION := 8.0
+const HP_MED_OFFSET := -50
+const HP_EASY_OFFSET := -150
+const CHARGE_DAMAGE_MED_OFFSET := 0
+const CHARGE_DAMAGE_EASY_OFFSET := -1
+const CHARGE_SPEED_MED_OFFSET := -100.0
+const CHARGE_SPEED_EASY_OFFSET := -200.0
+const MAX_DASH_MED_OFFSET := -80.0
+const MAX_DASH_EASY_OFFSET := -160.0
+const COOLDOWN_MED_OFFSET := 0.4
+const COOLDOWN_EASY_OFFSET := 0.8
 
 var charge_speed: float
 var charge_damage: int
@@ -45,6 +36,16 @@ var dash_distance_travelled := 0.0
 var charge_damage_dealt := false
 
 @onready var charge_sprite: AnimatedSprite2D = $Charge
+
+
+func _apply_difficulty_offset(hard_value: float, med_offset: float, easy_offset: float) -> float:
+	match DungeonManager.difficulty:
+		"hard":
+			return hard_value
+		"med":
+			return hard_value + med_offset
+		_:
+			return hard_value + easy_offset
 
 
 func _ready() -> void:
@@ -65,17 +66,24 @@ func _physics_process(delta: float) -> void:
 
 
 func _setup_enemy_stats() -> void:
-	var key: String = DungeonManager.difficulty
-	if key not in STATS:
-		key = "easy"
-
-	var s: Dictionary = STATS[key]
-	base_hp = int(s.base_hp * GameState.enemy_hp_multiplier)
-	charge_damage = clampi(int(s.charge_damage * GameState.enemy_dmg_multiplier), 1, 4)
-	charge_speed = s.charge_speed * GameState.enemy_ms_multiplier
-	max_dash_distance = s.max_dash_distance * GameState.enemy_ms_multiplier
-	cooldown_time = s.cooldown_time * GameState.enemy_cooldown_multiplier
-	aim_time = s.aim_time
+	base_hp = int(_apply_difficulty_offset(
+		float(hard_base_hp), float(HP_MED_OFFSET), float(HP_EASY_OFFSET)
+	) * GameState.enemy_hp_multiplier)
+	charge_damage = clampi(int(_apply_difficulty_offset(
+		float(hard_charge_damage),
+		float(CHARGE_DAMAGE_MED_OFFSET),
+		float(CHARGE_DAMAGE_EASY_OFFSET)
+	) * GameState.enemy_dmg_multiplier), 1, 4)
+	charge_speed = _apply_difficulty_offset(
+		hard_charge_speed, CHARGE_SPEED_MED_OFFSET, CHARGE_SPEED_EASY_OFFSET
+	) * GameState.enemy_ms_multiplier
+	max_dash_distance = _apply_difficulty_offset(
+		hard_max_dash_distance, MAX_DASH_MED_OFFSET, MAX_DASH_EASY_OFFSET
+	) * GameState.enemy_ms_multiplier
+	cooldown_time = _apply_difficulty_offset(
+		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
+	) * GameState.enemy_cooldown_multiplier
+	aim_time = hard_aim_time
 
 	super._setup_enemy_stats()
 
@@ -165,7 +173,7 @@ func _process_charging(delta: float) -> void:
 
 	_try_bounce()
 
-	if dash_distance_travelled >= max_dash_distance or charge_timer >= CHARGE_MAX_DURATION:
+	if dash_distance_travelled >= max_dash_distance or charge_timer >= charge_max_duration:
 		_finish_charge()
 
 

@@ -23,4 +23,5 @@ func _set_first_time(value: bool) -> void:
 	var config := ConfigFile.new()
 	config.load(SETTINGS_PATH)
 	config.set_value("settings", "first", value)
+	config.set_value("settings", "easy_unlocked", false)
 	config.save(SETTINGS_PATH)

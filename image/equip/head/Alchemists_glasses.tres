@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://h7lm83qrvm2y"]
+
+[ext_resource type="Texture2D" uid="uid://dxrjyyfxlic40" path="res://image/equip/head/Alchemists_glasses4.png" id="2_7r7xp"]
+[ext_resource type="Texture2D" uid="uid://elg2ihrwywjq" path="res://image/equip/head/Alchemists_glasses3.png" id="3_p3otd"]
+[ext_resource type="Texture2D" uid="uid://cgn5vkwwmdylv" path="res://image/equip/head/Alchemists_glasses6.png" id="4_teylo"]
+[ext_resource type="Texture2D" uid="uid://cr4c1edtv7vfm" path="res://image/equip/head/Alchemists_glasses5.png" id="4_yc0yg"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p3otd")
+}],
+"loop": true,
+"name": &"down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yc0yg")
+}],
+"loop": true,
+"name": &"left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7r7xp")
+}],
+"loop": true,
+"name": &"right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_teylo")
+}],
+"loop": true,
+"name": &"up",
+"speed": 1.0
+}]

@@ -96,8 +96,8 @@ func _input(_event: InputEvent) -> void:
 		heal(1)
 	#if Input.is_action_just_pressed("o"):
 	#	ST.upgrade_stat(self, 'hp', 1)
-	if Input.is_action_just_pressed("i"):
-		ItemManager.spawn("treasure", [0], self.global_position)
+	#if Input.is_action_just_pressed("i"):
+	#	ItemManager.spawn("treasure", [0], self.global_position)
 
 
 @export var on_ice: bool = true
@@ -413,7 +413,7 @@ func fire (shot_dir: Vector2) -> void:
 	shot.position = global_position + Vector2(0, -10)
 	
 	var angle := shot_dir.angle()
-	if shot.use_spread:
+	if shot.use_spread and not GameState.Surestrike:
 		angle += deg_to_rad(randf_range(-spread/2, spread/2))
 	var final_dir := Vector2.RIGHT.rotated(angle)
 	

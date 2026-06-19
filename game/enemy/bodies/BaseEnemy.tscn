@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://4n7hnx6frmbp"]
 
-[ext_resource type="Texture2D" uid="uid://b13bplyg515pj" path="res://image/circle.png" id="1_r4evv"]
+[ext_resource type="Texture2D" uid="uid://gufsr2xe3alb" path="res://image/circle.png" id="1_r4evv"]
 [ext_resource type="Script" uid="uid://c7bi4jrq3704r" path="res://game/enemy/bodies/base_enemy.gd" id="1_yry4g"]
-[ext_resource type="Texture2D" uid="uid://7l0gm7uwen52" path="res://image/Icon.jpg" id="2_yry4g"]
+[ext_resource type="Texture2D" uid="uid://85ysx84ltmms" path="res://image/Icon.jpg" id="2_yry4g"]
 [ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/bodies/effect_icons.gd" id="4_uckop"]
-[ext_resource type="Texture2D" uid="uid://b7cqj7inw8y02" path="res://image/effect_sprites/status_bar/snowflake.png" id="5_y8iyg"]
-[ext_resource type="Texture2D" uid="uid://dry1e6wipf5yq" path="res://image/effect_sprites/status_bar/poison.png" id="6_06vgp"]
-[ext_resource type="Texture2D" uid="uid://dew1qqwfm2ex5" path="res://image/effect_sprites/status_bar/fire1.png" id="7_cnrvr"]
-[ext_resource type="Texture2D" uid="uid://bgtjntokqpgaa" path="res://image/effect_sprites/status_bar/fire2.png" id="9_xfrs4"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="5_y8iyg"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="6_06vgp"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="7_cnrvr"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="9_xfrs4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{

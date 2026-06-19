@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://big2quf10m3j8"]
+
+[ext_resource type="Texture2D" uid="uid://dv5i7y4db0uxh" path="res://image/equip/head/Surestrike2.png" id="1_qg6m5"]
+[ext_resource type="Texture2D" uid="uid://b00xofpywcjb" path="res://image/equip/head/Surestrike4.png" id="2_vsvr6"]
+[ext_resource type="Texture2D" uid="uid://bbpo8w8070h4j" path="res://image/equip/head/Surestrike3.png" id="3_s7t8y"]
+[ext_resource type="Texture2D" uid="uid://da7ogebi1e1yx" path="res://image/equip/head/Surestrike5.png" id="4_i50py"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qg6m5")
+}],
+"loop": true,
+"name": &"down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vsvr6")
+}],
+"loop": true,
+"name": &"left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_s7t8y")
+}],
+"loop": true,
+"name": &"right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_i50py")
+}],
+"loop": true,
+"name": &"up",
+"speed": 1.0
+}]

@@ -1,33 +1,69 @@
 extends BaseEnemy
 
-@export var move_step_distance: float = 100.0
+@export_group("Hard Stats")
+@export var hard_move_step_distance: float = 250.0
+@export var hard_move_speed: float = 200.0
+@export var hard_base_hp: int = 100
+@export var hard_damage: int = 1
+@export var hard_cooldown_time: float = 0.8
+
+const MOVE_STEP_MED_OFFSET := -50.0
+const MOVE_STEP_EASY_OFFSET := -100.0
+const MOVE_SPEED_MED_OFFSET := -25.0
+const MOVE_SPEED_EASY_OFFSET := -50.0
+const HP_MED_OFFSET := -20
+const HP_EASY_OFFSET := -50
+const COOLDOWN_MED_OFFSET := 0.1
+const COOLDOWN_EASY_OFFSET := 0.2
+const MS_MULT_HARD := 1.2
+const MS_MULT_MED := 1.1
+const MS_MULT_EASY := 1.0
+
 @export var dash_curve: Curve
 
+var move_step_distance: float = 100.0
 var dash_distance_travelled: float = 0.0
 var target_direction: Vector2 = Vector2.ZERO
 var is_dashing: bool = false
 
 
+func _apply_difficulty_offset(hard_value: float, med_offset: float, easy_offset: float) -> float:
+	match DungeonManager.difficulty:
+		"hard":
+			return hard_value
+		"med":
+			return hard_value + med_offset
+		_:
+			return hard_value + easy_offset
+
+
+func _get_ms_multiplier() -> float:
+	match DungeonManager.difficulty:
+		"hard":
+			return MS_MULT_HARD
+		"med":
+			return MS_MULT_MED
+		_:
+			return MS_MULT_EASY
+
+
 func _setup_enemy_stats() -> void:
-	if DungeonManager.difficulty == "hard":
-		move_step_distance = 	250 		* (GameState.enemy_ms_multiplier * 1.2)
-		move_speed = 			200 		* (GameState.enemy_ms_multiplier * 1.2)
-		base_hp = 				100 		* GameState.enemy_hp_multiplier
-		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
-		cooldown_time = 		0.8 			* GameState.enemy_cooldown_multiplier
-	elif DungeonManager.difficulty == "med":
-		move_step_distance = 	200 		* (GameState.enemy_ms_multiplier * 1.1)
-		move_speed = 			175 		* (GameState.enemy_ms_multiplier * 1.1)
-		base_hp = 				80 		* GameState.enemy_hp_multiplier
-		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
-		cooldown_time = 		0.9 			* GameState.enemy_cooldown_multiplier
-	else:
-		move_step_distance = 	150 		* GameState.enemy_ms_multiplier
-		move_speed = 			150 		* GameState.enemy_ms_multiplier
-		base_hp = 				50		* GameState.enemy_hp_multiplier
-		damage = clampi(		1 			* GameState.enemy_dmg_multiplier, 1, 3)
-		cooldown_time = 		1.0 			* GameState.enemy_cooldown_multiplier
-		
+	var ms_mult := _get_ms_multiplier() * GameState.enemy_ms_multiplier
+
+	move_step_distance = _apply_difficulty_offset(
+		hard_move_step_distance, MOVE_STEP_MED_OFFSET, MOVE_STEP_EASY_OFFSET
+	) * ms_mult
+	move_speed = _apply_difficulty_offset(
+		hard_move_speed, MOVE_SPEED_MED_OFFSET, MOVE_SPEED_EASY_OFFSET
+	) * ms_mult
+	base_hp = int(_apply_difficulty_offset(
+		float(hard_base_hp), float(HP_MED_OFFSET), float(HP_EASY_OFFSET)
+	) * GameState.enemy_hp_multiplier)
+	damage = clampi(int(hard_damage * GameState.enemy_dmg_multiplier), 1, 3)
+	cooldown_time = _apply_difficulty_offset(
+		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
+	) * GameState.enemy_cooldown_multiplier
+
 	super._setup_enemy_stats()
 
 

@@ -60,10 +60,13 @@ func _on_button_new_game_pressed() -> void:
 
 @onready var line_edit: LineEdit = $"../LineEdit"
 
+const SETTINGS_PATH := "user://settings.cfg"
+
 var secret_codes := {
 	"bobrinaya ohota": "achiv",
 	"dlc skin": "skin",
 	"dlc artbook": "artbook",
+	"easy": "easy",
 }
 
 func _SecretCode_pressed() -> void:
@@ -78,10 +81,20 @@ func _SecretCode_pressed() -> void:
 			
 			"artbook":
 				pass
+			
+			"easy":
+				_unlock_easy_difficulty()
 		print("Верный код (no)")
 	
 	else:
 		print("Неверный код")
+
+
+func _unlock_easy_difficulty() -> void:
+	var config := ConfigFile.new()
+	config.load(SETTINGS_PATH)
+	config.set_value("settings", "easy_unlocked", true)
+	config.save(SETTINGS_PATH)
 
 
 func _on_button_tutorial_button_down() -> void:

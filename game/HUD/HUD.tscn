@@ -610,7 +610,16 @@ offset_top = -360.0
 offset_bottom = 360.0
 grow_horizontal = 0
 grow_vertical = 2
+focus_mode = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ekhi8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lec8a")
+theme_override_styles/hovered = SubResource("StyleBoxEmpty_kacrq")
+theme_override_styles/hovered_selected = SubResource("StyleBoxEmpty_me0bp")
+theme_override_styles/hovered_selected_focus = SubResource("StyleBoxEmpty_tnnfl")
+theme_override_styles/selected = SubResource("StyleBoxEmpty_rbfw0")
+theme_override_styles/selected_focus = SubResource("StyleBoxEmpty_htpw1")
+theme_override_styles/cursor_unfocused = SubResource("StyleBoxEmpty_vl7y8")
+theme_override_styles/cursor = SubResource("StyleBoxEmpty_e4o0i")
 max_text_lines = 2
 
 [node name="ItemsScroll" type="ScrollContainer" parent="HUD/InventoryList" unique_id=1972940559]
@@ -621,8 +630,10 @@ anchor_right = 1.0
 offset_left = -629.0
 offset_bottom = 684.0
 grow_horizontal = 0
+focus_mode = 0
 theme = ExtResource("86_p0ac8")
-follow_focus = true
+theme_override_styles/scroll_focus = SubResource("StyleBoxEmpty_p0ac8")
+follow_focus = false
 horizontal_scroll_mode = 0
 
 [node name="ItemsGridContainer" type="GridContainer" parent="HUD/InventoryList/ItemsScroll" unique_id=892028582]

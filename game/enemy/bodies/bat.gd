@@ -3,53 +3,41 @@ class_name EnemyBat
 
 enum State { IDLE, FLYING, PREPARING, RECOVERING }
 
-const NEAR_PLAYER_RANGE_MULT := 1.2
-const NEAR_PLAYER_FLY_DISTANCE_MULT := 0.7
+@export_group("Hard Stats")
+@export var hard_move_speed: float = 150.0
+@export var hard_base_hp: int = 80
+@export var hard_damage: int = 2
+@export var hard_cooldown_time: float = 0.8
+@export var hard_projectile_speed: float = 300.0
+@export var hard_projectile_range: float = 350.0
+@export var hard_max_move_distance: float = 200.0
+@export var hard_prepare_time: float = 0.4
+@export var hard_post_shoot_pause: float = 0.8
+@export var hard_fly_time_min: float = 1.5
+@export var hard_fly_time_max: float = 2.5
+@export var target_offset: float = 80.0
+@export var near_player_range_mult: float = 1.2
+@export var near_player_fly_distance_mult: float = 0.7
 
-# ===== Характеристики по сложности =====
-const STATS := {
-	"easy": {
-		"move_speed": 100.0,
-		"base_hp": 30,
-		"damage": 1,
-		"cooldown_time": 1.2,
-		"projectile_speed": 200.0,
-		"projectile_range": 250.0,
-		"max_move_distance": 150.0,
-		"prepare_time": 0.5,
-		"post_shoot_pause": 1.0,
-		"fly_time_min": 1.5,
-		"fly_time_max": 2.5,
-	},
-	"med": {
-		"move_speed": 120.0,
-		"base_hp": 50,
-		"damage": 1,
-		"cooldown_time": 1.0,
-		"projectile_speed": 250.0,
-		"projectile_range": 300.0,
-		"max_move_distance": 175.0,
-		"prepare_time": 0.45,
-		"post_shoot_pause": 0.8,
-		"fly_time_min": 1.5,
-		"fly_time_max": 2.5,
-	},
-	"hard": {
-		"move_speed": 150.0,
-		"base_hp": 80,
-		"damage": 2,
-		"cooldown_time": 0.8,
-		"projectile_speed": 300.0,
-		"projectile_range": 350.0,
-		"max_move_distance": 200.0,
-		"prepare_time": 0.4,
-		"post_shoot_pause": 0.8,
-		"fly_time_min": 1.5,
-		"fly_time_max": 2.5,
-	},
-}
+const MOVE_SPEED_MED_OFFSET := -30.0
+const MOVE_SPEED_EASY_OFFSET := -50.0
+const HP_MED_OFFSET := -30
+const HP_EASY_OFFSET := -50
+const DAMAGE_MED_OFFSET := -1
+const DAMAGE_EASY_OFFSET := -1
+const COOLDOWN_MED_OFFSET := 0.2
+const COOLDOWN_EASY_OFFSET := 0.4
+const PROJECTILE_SPEED_MED_OFFSET := -50.0
+const PROJECTILE_SPEED_EASY_OFFSET := -100.0
+const PROJECTILE_RANGE_MED_OFFSET := -50.0
+const PROJECTILE_RANGE_EASY_OFFSET := -100.0
+const MAX_MOVE_DISTANCE_MED_OFFSET := -25.0
+const MAX_MOVE_DISTANCE_EASY_OFFSET := -50.0
+const PREPARE_TIME_MED_OFFSET := 0.05
+const PREPARE_TIME_EASY_OFFSET := 0.1
+const POST_SHOOT_PAUSE_MED_OFFSET := 0.0
+const POST_SHOOT_PAUSE_EASY_OFFSET := 0.2
 
-var target_offset: float = 80
 var prepare_time: float
 var post_shoot_pause: float
 var fly_time_min: float
@@ -64,6 +52,16 @@ var fly_distance_travelled := 0.0
 var fly_distance_limit := 0.0
 
 
+func _apply_difficulty_offset(hard_value: float, med_offset: float, easy_offset: float) -> float:
+	match DungeonManager.difficulty:
+		"hard":
+			return hard_value
+		"med":
+			return hard_value + med_offset
+		_:
+			return hard_value + easy_offset
+
+
 func _ready() -> void:
 	super._ready()
 	deals_melee_damage = false
@@ -72,22 +70,35 @@ func _ready() -> void:
 
 
 func _setup_enemy_stats() -> void:
-	var key: String = DungeonManager.difficulty
-	if key not in STATS:
-		key = "easy"
-
-	var s: Dictionary = STATS[key]
-	move_speed = s.move_speed * GameState.enemy_ms_multiplier
-	base_hp = int(s.base_hp * GameState.enemy_hp_multiplier)
-	damage = clampi(int(s.damage * GameState.enemy_dmg_multiplier), 1, 4)
-	cooldown_time = s.cooldown_time * GameState.enemy_cooldown_multiplier
-	projectile_speed = s.projectile_speed
-	projectile_range = s.projectile_range
-	max_move_distance = s.max_move_distance
-	prepare_time = s.prepare_time
-	post_shoot_pause = s.post_shoot_pause
-	fly_time_min = s.fly_time_min
-	fly_time_max = s.fly_time_max
+	move_speed = _apply_difficulty_offset(
+		hard_move_speed, MOVE_SPEED_MED_OFFSET, MOVE_SPEED_EASY_OFFSET
+	) * GameState.enemy_ms_multiplier
+	base_hp = int(_apply_difficulty_offset(
+		float(hard_base_hp), float(HP_MED_OFFSET), float(HP_EASY_OFFSET)
+	) * GameState.enemy_hp_multiplier)
+	damage = clampi(int(_apply_difficulty_offset(
+		float(hard_damage), float(DAMAGE_MED_OFFSET), float(DAMAGE_EASY_OFFSET)
+	) * GameState.enemy_dmg_multiplier), 1, 4)
+	cooldown_time = _apply_difficulty_offset(
+		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
+	) * GameState.enemy_cooldown_multiplier
+	projectile_speed = _apply_difficulty_offset(
+		hard_projectile_speed, PROJECTILE_SPEED_MED_OFFSET, PROJECTILE_SPEED_EASY_OFFSET
+	)
+	projectile_range = _apply_difficulty_offset(
+		hard_projectile_range, PROJECTILE_RANGE_MED_OFFSET, PROJECTILE_RANGE_EASY_OFFSET
+	)
+	max_move_distance = _apply_difficulty_offset(
+		hard_max_move_distance, MAX_MOVE_DISTANCE_MED_OFFSET, MAX_MOVE_DISTANCE_EASY_OFFSET
+	)
+	prepare_time = _apply_difficulty_offset(
+		hard_prepare_time, PREPARE_TIME_MED_OFFSET, PREPARE_TIME_EASY_OFFSET
+	)
+	post_shoot_pause = _apply_difficulty_offset(
+		hard_post_shoot_pause, POST_SHOOT_PAUSE_MED_OFFSET, POST_SHOOT_PAUSE_EASY_OFFSET
+	)
+	fly_time_min = hard_fly_time_min
+	fly_time_max = hard_fly_time_max
 
 	super._setup_enemy_stats()
 
@@ -137,9 +148,9 @@ func _get_fly_distance_limit() -> float:
 	if not player:
 		return max_move_distance
 
-	var near_threshold := projectile_range * NEAR_PLAYER_RANGE_MULT
+	var near_threshold := projectile_range * near_player_range_mult
 	if global_position.distance_to(player.global_position) <= near_threshold:
-		return max_move_distance * NEAR_PLAYER_FLY_DISTANCE_MULT
+		return max_move_distance * near_player_fly_distance_mult
 
 	return max_move_distance
 

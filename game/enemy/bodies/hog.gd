@@ -3,37 +3,26 @@ class_name EnemyHog
 
 enum State { IDLE, AIMING, RESTING, CHARGING, RECOVERING }
 
-const STATS := {
-	"easy": {
-		"base_hp": 100,
-		"charge_damage": 1,
-		"charge_speed": 350.0,
-		"cooldown_time": 2.0,
-		"aim_time": 1.0,
-		"rest_time": 1.0,
-		"recover_time": 0.0,
-	},
-	"med": {
-		"base_hp": 200,
-		"charge_damage": 1,
-		"charge_speed": 500.0,
-		"cooldown_time": 1.6,
-		"aim_time": 1.0,
-		"rest_time": 0.75,
-		"recover_time": 0.0,
-	},
-	"hard": {
-		"base_hp": 250,
-		"charge_damage": 2,
-		"charge_speed": 650.0,
-		"cooldown_time": 1.2,
-		"aim_time": 1.0,
-		"rest_time": 0.5,
-		"recover_time": 0.0,
-	},
-}
+@export_group("Hard Stats")
+@export var hard_base_hp: int = 250
+@export var hard_charge_damage: int = 2
+@export var hard_charge_speed: float = 650.0
+@export var hard_cooldown_time: float = 1.2
+@export var hard_aim_time: float = 1.0
+@export var hard_rest_time: float = 0.5
+@export var hard_recover_time: float = 0.0
+@export var charge_max_duration: float = 5.0
 
-const CHARGE_MAX_DURATION := 5.0
+const HP_MED_OFFSET := -50
+const HP_EASY_OFFSET := -150
+const CHARGE_DAMAGE_MED_OFFSET := -1
+const CHARGE_DAMAGE_EASY_OFFSET := -1
+const CHARGE_SPEED_MED_OFFSET := -150.0
+const CHARGE_SPEED_EASY_OFFSET := -300.0
+const COOLDOWN_MED_OFFSET := 0.4
+const COOLDOWN_EASY_OFFSET := 0.8
+const REST_TIME_MED_OFFSET := 0.25
+const REST_TIME_EASY_OFFSET := 0.5
 
 var charge_speed: float
 var charge_damage: int
@@ -49,28 +38,44 @@ var charge_direction := Vector2.RIGHT
 @onready var charge_sprite: AnimatedSprite2D = $Charge
 
 
+func _apply_difficulty_offset(hard_value: float, med_offset: float, easy_offset: float) -> float:
+	match DungeonManager.difficulty:
+		"hard":
+			return hard_value
+		"med":
+			return hard_value + med_offset
+		_:
+			return hard_value + easy_offset
+
+
 func _ready() -> void:
 	super._ready()
 	deals_melee_damage = false
 	knockback_friction += 200.0
 	sprite.play("default")
 	_hide_charge_indicator()
-	
 
 
 func _setup_enemy_stats() -> void:
-	var key: String = DungeonManager.difficulty
-	if key not in STATS:
-		key = "easy"
-
-	var s: Dictionary = STATS[key]
-	base_hp = int(s.base_hp * GameState.enemy_hp_multiplier)
-	charge_damage = clampi(int(s.charge_damage * GameState.enemy_dmg_multiplier), 1, 4)
-	charge_speed = s.charge_speed * GameState.enemy_ms_multiplier
-	cooldown_time = s.cooldown_time * GameState.enemy_cooldown_multiplier
-	aim_time = s.aim_time
-	rest_time = s.rest_time
-	recover_time = s.recover_time
+	base_hp = int(_apply_difficulty_offset(
+		float(hard_base_hp), float(HP_MED_OFFSET), float(HP_EASY_OFFSET)
+	) * GameState.enemy_hp_multiplier)
+	charge_damage = clampi(int(_apply_difficulty_offset(
+		float(hard_charge_damage),
+		float(CHARGE_DAMAGE_MED_OFFSET),
+		float(CHARGE_DAMAGE_EASY_OFFSET)
+	) * GameState.enemy_dmg_multiplier), 1, 4)
+	charge_speed = _apply_difficulty_offset(
+		hard_charge_speed, CHARGE_SPEED_MED_OFFSET, CHARGE_SPEED_EASY_OFFSET
+	) * GameState.enemy_ms_multiplier
+	cooldown_time = _apply_difficulty_offset(
+		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
+	) * GameState.enemy_cooldown_multiplier
+	aim_time = hard_aim_time
+	rest_time = _apply_difficulty_offset(
+		hard_rest_time, REST_TIME_MED_OFFSET, REST_TIME_EASY_OFFSET
+	)
+	recover_time = hard_recover_time
 
 	super._setup_enemy_stats()
 
@@ -177,7 +182,7 @@ func _process_charging(delta: float) -> void:
 
 	move_and_slide()
 
-	if charge_timer >= CHARGE_MAX_DURATION or _hit_wall():
+	if charge_timer >= charge_max_duration or _hit_wall():
 		_start_recover_phase()
 
 

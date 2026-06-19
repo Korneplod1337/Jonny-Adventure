@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xi3j7etugnhg"]
 
 [ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_7nup5"]
-[ext_resource type="Texture2D" uid="uid://b15nohj2533jn" path="res://image/equip/weapon/shotgun.png" id="2_ngg4g"]
+[ext_resource type="Texture2D" uid="uid://4soh5lshxbns" path="res://image/equip/weapon/shotgun.png" id="2_ngg4g"]
 [ext_resource type="PackedScene" uid="uid://boc3oh8ujboyp" path="res://game/objects/Equipment/Weapon/scene/ShotGunBullet.tscn" id="3_wyay2"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_omn51"]
 

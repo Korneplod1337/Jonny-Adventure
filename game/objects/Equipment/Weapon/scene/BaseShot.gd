@@ -43,6 +43,8 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	rotation = direction.angle()
 	spread_angle = StatManager.get_stat(player, "spread")
+	if GameState.Surestrike:
+		spread_angle = 0.0
 	if pellet_count > 1 and not spawned_spread:
 		spawned_spread = true
 		_spawn_spread()
