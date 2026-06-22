@@ -4,6 +4,9 @@ const SETTINGS_PATH := "user://settings.cfg"
 
 
 func _ready() -> void:
+	$easy.focus_mode = Control.FOCUS_NONE
+	$med.focus_mode = Control.FOCUS_NONE
+	$hard.focus_mode = Control.FOCUS_NONE
 	visibility_changed.connect(_on_visibility_changed)
 	_update_easy_button()
 
@@ -11,6 +14,16 @@ func _ready() -> void:
 func _on_visibility_changed() -> void:
 	if visible:
 		_update_easy_button()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not visible:
+		return
+	if event.is_action_pressed("space"):
+		var viewport := get_viewport()
+		if viewport:
+			viewport.set_input_as_handled()
+		_on_hard_pressed()
 
 
 func _update_easy_button() -> void:

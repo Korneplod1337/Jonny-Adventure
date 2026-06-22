@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2dtjjer8eim8"]
 
 [ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_tvl8s"]
-[ext_resource type="Texture2D" uid="uid://bitc6aqsoe1e4" path="res://image/equip/weapon_effects/tome_of_fairy_tales14.png" id="2_fbnfh"]
+[ext_resource type="Texture2D" uid="uid://dwkr7d7yjiujb" path="res://image/equip/weapon_effects/tome_of_fairy_tales14.png" id="2_fbnfh"]
 [ext_resource type="PackedScene" uid="uid://mipf8xtfare7" path="res://game/objects/Equipment/Weapon/scene/Tome_of_fairy_tales.tscn" id="3_onxxp"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_rde30"]
 
@@ -28,8 +28,8 @@ script = ExtResource("1_tvl8s")
 equip_icon = ExtResource("2_fbnfh")
 equip_id = "tome_of_fairy_tales"
 projectile = ExtResource("3_onxxp")
-equip_tooltip = "Tome of fairy tales"
-interact_name = "fairy tales tome"
+equip_tooltip = "The firefly will find a target... someday... maybe"
+interact_name = "Tome of fairy tales"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
 shape = SubResource("CircleShape2D_qqy2x")

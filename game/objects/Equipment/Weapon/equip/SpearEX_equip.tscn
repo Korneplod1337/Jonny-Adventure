@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dwqy4pk0blosi"]
 
 [ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_ibnpk"]
-[ext_resource type="Texture2D" uid="uid://x30namew1orx" path="res://image/equip/weapon/SpearEX_equip.png" id="2_csgex"]
+[ext_resource type="Texture2D" uid="uid://cjjntagm7vt6x" path="res://image/equip/weapon/SpearEX_equip.png" id="2_csgex"]
 [ext_resource type="PackedScene" uid="uid://btyptmeihg371" path="res://game/objects/Equipment/Weapon/scene/SpearEX.tscn" id="3_b5g8e"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_nve1j"]
-[ext_resource type="Texture2D" uid="uid://0y7um10qlovh" path="res://image/equip/weapon_effects/SpearEX4.png" id="5_omxrh"]
+[ext_resource type="Texture2D" uid="uid://di88eom1bm5ow" path="res://image/equip/weapon_effects/SpearEX4.png" id="5_omxrh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299
@@ -29,7 +29,7 @@ script = ExtResource("1_ibnpk")
 equip_icon = ExtResource("2_csgex")
 equip_id = "EXSpear"
 projectile = ExtResource("3_b5g8e")
-equip_tooltip = "EX-spear"
+equip_tooltip = "Worthy is the one who has gone through weakness"
 interact_name = "EX-spear"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]

@@ -29,8 +29,8 @@ script = ExtResource("1_rlicf")
 equip_icon = ExtResource("2_akbol")
 equip_id = "Sniper_Gun"
 projectile = ExtResource("3_rlicf")
-equip_tooltip = "Sniper Gun"
-interact_name = "sniper gun"
+equip_tooltip = "Precision is the courtesy of kings"
+interact_name = "Sniper gun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
 shape = SubResource("CircleShape2D_qqy2x")

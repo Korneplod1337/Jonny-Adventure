@@ -28,7 +28,7 @@ script = ExtResource("1_u2xqo")
 equip_icon = ExtResource("2_1mai7")
 equip_id = "Scatterhand"
 projectile = ExtResource("3_306n2")
-equip_tooltip = "Scatterhand "
+equip_tooltip = "Not accurate, but generous"
 interact_name = "Scatterhand "
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]

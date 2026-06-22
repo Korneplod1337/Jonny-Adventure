@@ -27,6 +27,7 @@ func hit(damage: float, clear:= false) -> void:
 	if not clear:
 		if poison > 0:
 			damage *= effect_protection
+	_flash_damage()
 	label.show()
 	damage_last_hit = damage
 	total_damage_recent += damage

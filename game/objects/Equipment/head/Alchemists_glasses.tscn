@@ -16,7 +16,7 @@ script = ExtResource("1_06u6f")
 type = "head"
 equip_icon = ExtResource("3_06u6f")
 equip_id = "Alchemists_glasses"
-equip_tooltip = "Alchemist's glasses"
+equip_tooltip = "The essence of things is visible through these glasses"
 interact_name = "Alchemist's glasses"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191125084]

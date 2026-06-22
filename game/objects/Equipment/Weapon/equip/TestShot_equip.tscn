@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyq3vlj4jlml5"]
 
 [ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_qcawo"]
-[ext_resource type="Texture2D" uid="uid://cxel76tem1o83" path="res://image/equip/weapon/alt_Spit_bullet.png" id="2_bqapk"]
+[ext_resource type="Texture2D" uid="uid://c4emycgmbx27e" path="res://image/equip/weapon/alt_Spit_bullet.png" id="2_bqapk"]
 [ext_resource type="PackedScene" uid="uid://bhfqxrdvcm408" path="res://game/objects/Equipment/Weapon/scene/JonnyShotAlt.tscn" id="3_h44u8"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_vuclf"]
 
@@ -28,8 +28,8 @@ script = ExtResource("1_qcawo")
 equip_icon = ExtResource("2_bqapk")
 equip_id = "test_shot"
 projectile = ExtResource("3_h44u8")
-equip_tooltip = "Test weapon"
-interact_name = "test weapon"
+equip_tooltip = "Angry Jonny tear"
+interact_name = "Alt-Jonny tear"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=615229045]
 shape = SubResource("CircleShape2D_hqatu")

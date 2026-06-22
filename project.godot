@@ -58,7 +58,7 @@ folder_colors={
 "res://image/money/": "yellow",
 "res://image/objects/": "pink",
 "res://image/players/": "orange",
-"res://image/players/Base_Jonny_textures/": "orange",
+"res://image/players/Old_Jonny_textures/": "orange",
 "res://image/rooms/": "yellow",
 "res://image/rooms/background/": "yellow"
 }

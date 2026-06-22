@@ -35,6 +35,7 @@ signal _enemy_die(int)
 
 @onready var effect_icons = $EffectAnchor/EffectIcons
 var knockback_velocity: Vector2 = Vector2.ZERO
+var damage_flash_token: int = 0
 var hitstun: float = 0.0  # Время в секундах паузы движения (0.3-0.5 сек)
 @export var knockback_friction: float = 400.0  # Скорость затухания толчка
 @export var hitstun_duration: float = 0.2  # Длительность hitstun
@@ -231,9 +232,20 @@ func _on_hit_area_body_exited(body: Node2D) -> void:
 func hit(amount: float, clear:= false) -> void:
 	if not clear:
 		amount *= effect_protection
+	_flash_damage()
 	current_hp -= amount
 	if current_hp <= 0:
 		die()
+
+
+func _flash_damage() -> void:
+	damage_flash_token += 1
+	var my_token := damage_flash_token
+	sprite.modulate.a = 0.4
+	await get_tree().process_frame
+	if my_token != damage_flash_token or not is_instance_valid(self):
+		return
+	sprite.modulate.a = 1.0
 
 func die() -> void:
 	is_dead = true

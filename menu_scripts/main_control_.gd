@@ -106,3 +106,16 @@ func _on_button_tutorial_mouse_entered() -> void:
 	$Button_tutorial/Select_tutorial.show()
 func _on_button_tutorial_mouse_exited() -> void:
 	$Button_tutorial/Select_tutorial.hide()
+
+
+func _on_button_patch_note_pressed() -> void:
+	get_parent().get_parent().get_node("start_menu").hide()
+	get_parent().get_parent().get_node("Patch_note_menu").open()
+
+
+func _on_button_patch_note_mouse_entered() -> void:
+	$Button_patch_note/Select_patch_note.show()
+
+
+func _on_button_patch_note_mouse_exited() -> void:
+	$Button_patch_note/Select_patch_note.hide()

@@ -1,65 +1,73 @@
 [gd_scene format=3 uid="uid://ckbshuddtl78y"]
 
-[ext_resource type="Texture2D" uid="uid://dw38br8xqx7we" path="res://image/main_menu/menu.png" id="1_auw0j"]
+[ext_resource type="Texture2D" uid="uid://cqv2mbl2hx37m" path="res://image/main_menu/menu.png" id="1_auw0j"]
 [ext_resource type="Script" uid="uid://d0fo1ay0nvvan" path="res://menu_scripts/main_control_.gd" id="2_72qvv"]
-[ext_resource type="Texture2D" uid="uid://dvekr3gt7b1dr" path="res://image/main_menu/button_new_game_not.png" id="2_pv6v7"]
-[ext_resource type="Texture2D" uid="uid://h1dtng0oyql3" path="res://image/main_menu/button_settings_not.png" id="3_fjq68"]
-[ext_resource type="Texture2D" uid="uid://wyl7yqe7lix2" path="res://image/main_menu/button_new_game_select.png" id="4_575cf"]
-[ext_resource type="Texture2D" uid="uid://dk7bcmlp2w4q6" path="res://image/main_menu/button_settings_select.png" id="6_4qcnf"]
-[ext_resource type="Texture2D" uid="uid://bgxs6ayb7gcl5" path="res://image/main_menu/button_quit_not.png" id="7_misp6"]
-[ext_resource type="Texture2D" uid="uid://c8x3scnwolylk" path="res://image/main_menu/button_quit_select.png" id="8_5vq2t"]
-[ext_resource type="Texture2D" uid="uid://butg0fxnkg0ef" path="res://image/main_menu/button_achivement1.png" id="9_m0epi"]
-[ext_resource type="Texture2D" uid="uid://dsdlqlo7h2eja" path="res://image/main_menu/button_achivement2.png" id="10_bnn4y"]
-[ext_resource type="Texture2D" uid="uid://dlevc6jlrano1" path="res://image/main_menu/settings.png" id="10_y1oxc"]
-[ext_resource type="Texture2D" uid="uid://cq5e14lsibddb" path="res://image/main_menu/button_stats1.png" id="11_bnn4y"]
+[ext_resource type="Texture2D" uid="uid://cuv4obda3jj7r" path="res://image/main_menu/button_new_game_not.png" id="2_pv6v7"]
+[ext_resource type="Texture2D" uid="uid://c8x6ak6uembjs" path="res://image/main_menu/button_settings_not.png" id="3_fjq68"]
+[ext_resource type="Texture2D" uid="uid://ddjyjynntl4c" path="res://image/main_menu/button_new_game_select.png" id="4_575cf"]
+[ext_resource type="Texture2D" uid="uid://hruwtomqr3w6" path="res://image/main_menu/button_settings_select.png" id="6_4qcnf"]
+[ext_resource type="Texture2D" uid="uid://bqn505iajiabo" path="res://image/main_menu/button_quit_not.png" id="7_misp6"]
+[ext_resource type="Texture2D" uid="uid://co2mlnuui0fcg" path="res://image/main_menu/button_quit_select.png" id="8_5vq2t"]
+[ext_resource type="Texture2D" uid="uid://b4rn1oiyiynv3" path="res://image/main_menu/button_achivement1.png" id="9_m0epi"]
+[ext_resource type="Texture2D" uid="uid://cmualrgehx0tu" path="res://image/main_menu/button_achivement2.png" id="10_bnn4y"]
+[ext_resource type="Texture2D" uid="uid://dqk78lefm8ehq" path="res://image/main_menu/settings.png" id="10_y1oxc"]
+[ext_resource type="Texture2D" uid="uid://dx7jt5vijkfqk" path="res://image/main_menu/button_stats1.png" id="11_bnn4y"]
 [ext_resource type="Script" uid="uid://c5uyjuvfhrlr7" path="res://menu_scripts/settings_control.gd" id="11_c0arg"]
 [ext_resource type="Script" uid="uid://krw2epkapjrr" path="res://menu_scripts/reset.gd" id="11_fvbif"]
-[ext_resource type="Texture2D" uid="uid://df17i44u1qm1n" path="res://image/main_menu/button_stats2.png" id="12_1q055"]
-[ext_resource type="Texture2D" uid="uid://b4yxtbwd6eiqm" path="res://image/main_menu/settings_out_button1.png" id="12_4tbtp"]
-[ext_resource type="AudioStream" uid="uid://dnrgmuhx5ejnx" path="res://sound/music/main-menu.ogg" id="12_hxuja"]
-[ext_resource type="Texture2D" uid="uid://canf2kceq7uo3" path="res://image/main_menu/settings_video_low1.png" id="12_l726t"]
+[ext_resource type="Texture2D" uid="uid://b60wpg0kwunws" path="res://image/main_menu/button_stats2.png" id="12_1q055"]
+[ext_resource type="Texture2D" uid="uid://bv6f1vgnisf1l" path="res://image/main_menu/settings_out_button1.png" id="12_4tbtp"]
+[ext_resource type="AudioStream" uid="uid://8wh85yu8f87e" path="res://sound/music/main-menu.ogg" id="12_hxuja"]
+[ext_resource type="Texture2D" uid="uid://dbqdyv8un05f4" path="res://image/main_menu/settings_video_low1.png" id="12_l726t"]
 [ext_resource type="Script" uid="uid://d13ckchek7pdn" path="res://menu_scripts/button_sound.gd" id="12_ru6ym"]
-[ext_resource type="Texture2D" uid="uid://b7d2a85dky3ij" path="res://image/main_menu/settings_out_button2.png" id="13_1aqqx"]
+[ext_resource type="Texture2D" uid="uid://dbsbyktgd360r" path="res://image/main_menu/settings_out_button2.png" id="13_1aqqx"]
 [ext_resource type="Theme" uid="uid://c626wtnojhto8" path="res://image/interface/new_theme.tres" id="13_5uchu"]
-[ext_resource type="Texture2D" uid="uid://dqom4krvjlc81" path="res://image/main_menu/settings_video_med1.png" id="13_alhms"]
-[ext_resource type="Texture2D" uid="uid://bxcynylx1d1b1" path="res://image/main_menu/settings_video_low2.png" id="13_pdvo5"]
-[ext_resource type="Texture2D" uid="uid://dph4vhlmxsoj0" path="res://image/main_menu/settings_sound_0.png" id="13_xg1mu"]
-[ext_resource type="Texture2D" uid="uid://c0tk8dowfqma5" path="res://image/main_menu/button_tutorial1.png" id="13_xy68n"]
-[ext_resource type="Texture2D" uid="uid://cbh25u535577a" path="res://image/main_menu/settings_video_high1.png" id="14_3sut6"]
-[ext_resource type="Texture2D" uid="uid://clhm0dr1n12hv" path="res://image/main_menu/settings_sound_1.png" id="14_lt70l"]
-[ext_resource type="Texture2D" uid="uid://bti52k6ymls5o" path="res://image/main_menu/button_tutorial2.png" id="14_sarce"]
-[ext_resource type="Texture2D" uid="uid://4sw0qtm7kgkv" path="res://image/main_menu/settings_video_med2.png" id="15_bewgb"]
-[ext_resource type="Texture2D" uid="uid://c33hopsoiym5u" path="res://image/main_menu/settings_sound_2.png" id="15_m6dkg"]
-[ext_resource type="Texture2D" uid="uid://b0s2mrco2dpsw" path="res://image/main_menu/settings_sound_3.png" id="16_44wrn"]
-[ext_resource type="Texture2D" uid="uid://lthmbfanprir" path="res://image/main_menu/settings_sound_4.png" id="17_g6as0"]
-[ext_resource type="Texture2D" uid="uid://10i2c01si4vo" path="res://image/main_menu/settings_video_high2.png" id="17_qs6ui"]
-[ext_resource type="Texture2D" uid="uid://dv6dpipr618oo" path="res://image/main_menu/settings_sound_5.png" id="18_n6dfu"]
-[ext_resource type="Texture2D" uid="uid://b12f5sklq12pw" path="res://image/main_menu/settings_sound_6.png" id="19_ofdyd"]
-[ext_resource type="Texture2D" uid="uid://cx7jvquuk0tho" path="res://image/main_menu/settings_sound_7.png" id="20_gb7ws"]
-[ext_resource type="Texture2D" uid="uid://oxevf35yf0ff" path="res://image/main_menu/settings_sound_8.png" id="21_k7yeo"]
-[ext_resource type="Texture2D" uid="uid://cbhv6ifnwp54u" path="res://image/main_menu/settings_sound_9.png" id="22_lhmyd"]
-[ext_resource type="Texture2D" uid="uid://5hlgib0r8f7o" path="res://image/main_menu/settings_sound_10.png" id="23_cb4mk"]
-[ext_resource type="Texture2D" uid="uid://u8kxka5hnml2" path="res://image/main_menu/achievement_background.png" id="32_djfv0"]
+[ext_resource type="Texture2D" uid="uid://bxx7dp8lrehuo" path="res://image/main_menu/settings_video_med1.png" id="13_alhms"]
+[ext_resource type="Texture2D" uid="uid://byy3wnpx2avwu" path="res://image/main_menu/settings_video_low2.png" id="13_pdvo5"]
+[ext_resource type="Texture2D" uid="uid://dmnbb38fndhgl" path="res://image/main_menu/settings_sound_0.png" id="13_xg1mu"]
+[ext_resource type="Texture2D" uid="uid://c6n5dxcfqyfj5" path="res://image/main_menu/button_tutorial1.png" id="13_xy68n"]
+[ext_resource type="Texture2D" uid="uid://kcb2wtgclojg" path="res://image/main_menu/settings_video_high1.png" id="14_3sut6"]
+[ext_resource type="Texture2D" uid="uid://dh6yq26xlqyfv" path="res://image/main_menu/settings_sound_1.png" id="14_lt70l"]
+[ext_resource type="Texture2D" uid="uid://bfueaebntuvno" path="res://image/main_menu/button_tutorial2.png" id="14_sarce"]
+[ext_resource type="Texture2D" uid="uid://dledcq1k3vx6c" path="res://image/main_menu/settings_video_med2.png" id="15_bewgb"]
+[ext_resource type="Texture2D" uid="uid://dvuo4ertaye4i" path="res://image/main_menu/settings_sound_2.png" id="15_m6dkg"]
+[ext_resource type="Texture2D" uid="uid://nnh3vq3qfiqr" path="res://image/main_menu/settings_sound_3.png" id="16_44wrn"]
+[ext_resource type="Texture2D" uid="uid://bbqg0pqjs8by4" path="res://image/main_menu/button_patchnote1.png" id="17_3lt5t"]
+[ext_resource type="Texture2D" uid="uid://cpf5jfiowk2al" path="res://image/main_menu/settings_sound_4.png" id="17_g6as0"]
+[ext_resource type="Texture2D" uid="uid://c68seh2qo53gv" path="res://image/main_menu/settings_video_high2.png" id="17_qs6ui"]
+[ext_resource type="Texture2D" uid="uid://fdduxtyseovb" path="res://image/main_menu/button_patchnote2.png" id="18_gr0d0"]
+[ext_resource type="Texture2D" uid="uid://bcbbgqett24i5" path="res://image/main_menu/settings_sound_5.png" id="18_n6dfu"]
+[ext_resource type="Texture2D" uid="uid://bwhak7ruwuubt" path="res://image/main_menu/settings_sound_6.png" id="19_ofdyd"]
+[ext_resource type="Texture2D" uid="uid://dloyeki1vgo6y" path="res://image/main_menu/settings_sound_7.png" id="20_gb7ws"]
+[ext_resource type="Texture2D" uid="uid://rfqkrwh5lco" path="res://image/main_menu/settings_sound_8.png" id="21_k7yeo"]
+[ext_resource type="Texture2D" uid="uid://c155dbt87u6y0" path="res://image/main_menu/settings_sound_9.png" id="22_lhmyd"]
+[ext_resource type="Texture2D" uid="uid://cwh1qijqjymr0" path="res://image/main_menu/settings_sound_10.png" id="23_cb4mk"]
+[ext_resource type="Texture2D" uid="uid://bi1sb1movhdv6" path="res://image/main_menu/achievement_background.png" id="32_djfv0"]
 [ext_resource type="Script" uid="uid://bqjwamvh8krhb" path="res://menu_scripts/ach_menu_canvas.gd" id="32_ecv6d"]
 [ext_resource type="Script" uid="uid://brlutts5y51k5" path="res://menu_scripts/achiv_menu.gd" id="33_lhxuk"]
-[ext_resource type="FontFile" uid="uid://cv3kwiaeereef" path="res://Fonts/JonnyAdventureFont.ttf" id="35_om5lu"]
+[ext_resource type="FontFile" uid="uid://bdndi3ua8noo1" path="res://Fonts/JonnyAdventureFont.ttf" id="35_om5lu"]
 [ext_resource type="Script" uid="uid://cds3efabo8m26" path="res://menu_scripts/stats_menu.gd" id="37_8d7ws"]
-[ext_resource type="Texture2D" uid="uid://dbvn7ugovwo3j" path="res://image/main_menu/stats_menu_bg.png" id="37_f6qc3"]
-[ext_resource type="Texture2D" uid="uid://c1r6kf1x6pafn" path="res://image/main_menu/out_button_alt1.png" id="38_epd2p"]
-[ext_resource type="Texture2D" uid="uid://chiajevgnvrgt" path="res://image/main_menu/out_button_alt2.png" id="39_ou8mj"]
+[ext_resource type="Texture2D" uid="uid://b70p0djwcdc1n" path="res://image/main_menu/stats_menu_bg.png" id="37_f6qc3"]
+[ext_resource type="Texture2D" uid="uid://lsm8jyi884jw" path="res://image/main_menu/out_button_alt1.png" id="38_epd2p"]
+[ext_resource type="Texture2D" uid="uid://dmibd2a1rmdfs" path="res://image/main_menu/out_button_alt2.png" id="39_ou8mj"]
 [ext_resource type="Script" uid="uid://jkbxm721krv1" path="res://menu_scripts/stats_stat_text.gd" id="41_oohye"]
 [ext_resource type="Script" uid="uid://ch6qi7g7c3fro" path="res://menu_scripts/char_select_menu.gd" id="43_bkji5"]
-[ext_resource type="Texture2D" uid="uid://dfpxr52njifvw" path="res://image/main_menu/char_select.png" id="44_jpo0d"]
-[ext_resource type="Texture2D" uid="uid://c2jlnwfa82bhs" path="res://image/main_menu/char_select_1.png" id="45_t7jce"]
-[ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="46_1exqm"]
-[ext_resource type="Texture2D" uid="uid://c3bwnpxit5dj2" path="res://image/main_menu/char_select_2.png" id="47_ao1gk"]
-[ext_resource type="Texture2D" uid="uid://lfap8uqvcfdd" path="res://image/main_menu/char_select_1_select.png" id="47_x8o75"]
-[ext_resource type="Texture2D" uid="uid://dy6jdi84g4y1b" path="res://image/main_menu/char_select_2_select.png" id="48_kmf6r"]
+[ext_resource type="Texture2D" uid="uid://ts21d7hdis0w" path="res://image/main_menu/char_select.png" id="44_jpo0d"]
+[ext_resource type="Texture2D" uid="uid://ck8nq5ikn4h5a" path="res://image/main_menu/char_select_1.png" id="45_t7jce"]
+[ext_resource type="FontFile" uid="uid://da2aij2x8g1mb" path="res://Fonts/JonnyAdventureFont2.ttf" id="46_1exqm"]
+[ext_resource type="Texture2D" uid="uid://dogalfqy0wwvh" path="res://image/main_menu/char_select_2.png" id="47_ao1gk"]
+[ext_resource type="Texture2D" uid="uid://dgfi13wcjnhwa" path="res://image/main_menu/char_select_1_select.png" id="47_x8o75"]
+[ext_resource type="Texture2D" uid="uid://ddoju64hqdmr0" path="res://image/main_menu/char_select_2_select.png" id="48_kmf6r"]
 [ext_resource type="Script" uid="uid://jyn34jplqxu6" path="res://menu_scripts/diff_select_menu.gd" id="49_qyqc0"]
-[ext_resource type="Texture2D" uid="uid://c77qfd3xuppte" path="res://image/main_menu/diff_select.png" id="50_jsmax"]
-[ext_resource type="Texture2D" uid="uid://cyfup3waq75i0" path="res://image/main_menu/button_easy.png" id="51_e4x8i"]
-[ext_resource type="Texture2D" uid="uid://cfj7b58oiepqr" path="res://image/main_menu/button_med.png" id="52_a0i4q"]
-[ext_resource type="Texture2D" uid="uid://dmqedacjsdbpd" path="res://image/main_menu/button_hard.png" id="53_pw383"]
+[ext_resource type="Texture2D" uid="uid://bhk82x5qqd0do" path="res://image/main_menu/diff_select.png" id="50_jsmax"]
+[ext_resource type="Texture2D" uid="uid://bpctbrutib668" path="res://image/main_menu/button_easy.png" id="51_e4x8i"]
+[ext_resource type="Texture2D" uid="uid://cgebh0h4g5kd2" path="res://image/main_menu/button_med.png" id="52_a0i4q"]
+[ext_resource type="Texture2D" uid="uid://cwcve060opkbo" path="res://image/main_menu/button_hard.png" id="53_pw383"]
+[ext_resource type="Script" path="res://menu_scripts/CharacterSelectEntry.gd" id="54_char_entry"]
+[ext_resource type="Texture2D" uid="uid://xgknvutvuned" path="res://image/main_menu/char_select_name_Jonny.png" id="57_name_jonny"]
+[ext_resource type="Texture2D" uid="uid://c5ckpwbn3iiqr" path="res://image/main_menu/char_select_name_Jonnytta.png" id="58_name_jonnytta"]
+[ext_resource type="Texture2D" uid="uid://1a7rcprvo255" path="res://image/main_menu/char_select_name_Joker.png" id="59_name_joker"]
+[ext_resource type="Script" uid="uid://dqhbl1wi87kbh" path="res://menu_scripts/patch_note_menu.gd" id="65_gdt60"]
+[ext_resource type="Texture2D" uid="uid://d2seur3kw6maw" path="res://image/main_menu/patch_note_menu_bg.png" id="66_a8x8j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ni8h3"]
 animations = [{
@@ -117,9 +125,43 @@ animations = [{
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1tgcs"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_fvbif"]
-font = ExtResource("46_1exqm")
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="Resource" id="CharEntry_jonny"]
+script = ExtResource("54_char_entry")
+id = "Jonny"
+display_name = "Jonny"
+portrait = ExtResource("45_t7jce")
+portrait_selected = ExtResource("47_x8o75")
+name_texture = ExtResource("57_name_jonny")
+
+[sub_resource type="Resource" id="CharEntry_jonnytta"]
+script = ExtResource("54_char_entry")
+id = "Jonnytta"
+display_name = "Pashe
+(femboy)"
+portrait = ExtResource("47_ao1gk")
+portrait_selected = ExtResource("48_kmf6r")
+name_texture = ExtResource("58_name_jonnytta")
+
+[sub_resource type="Resource" id="CharEntry_joker"]
+script = ExtResource("54_char_entry")
+id = "JonnyAlt"
+display_name = "??? Jonny"
+name_texture = ExtResource("59_name_joker")
+unlocked = false
+
+[sub_resource type="Resource" id="Resource_leqrv"]
+script = ExtResource("54_char_entry")
+id = "Joker"
+display_name = "Jo???"
+portrait_locked = ExtResource("59_name_joker")
+unlocked = false
+
+[sub_resource type="Resource" id="Resource_tfjan"]
+script = ExtResource("54_char_entry")
+id = "Jovita"
+display_name = "Jo????"
+name_texture = ExtResource("59_name_joker")
+unlocked = false
 
 [node name="MainMenu" type="Node2D" unique_id=1398218460]
 
@@ -239,16 +281,21 @@ position = Vector2(4, 4)
 texture = ExtResource("14_sarce")
 centered = false
 
-[node name="ResetButton" type="Button" parent="start_menu/Control_main" unique_id=92415567]
+[node name="Button_patch_note" type="Button" parent="start_menu/Control_main" unique_id=30452439]
 layout_mode = 0
-offset_left = 75.0
-offset_top = -105.0
-offset_right = 275.0
-offset_bottom = -75.0
-scale = Vector2(1.2, 1.2)
-theme_override_fonts/font = ExtResource("35_om5lu")
-text = "Reset stats and achivments"
-script = ExtResource("11_fvbif")
+offset_left = 278.0
+offset_top = -142.0
+offset_right = 326.0
+offset_bottom = -96.0
+focus_mode = 0
+icon = ExtResource("17_3lt5t")
+flat = true
+
+[node name="Select_patch_note" type="Sprite2D" parent="start_menu/Control_main/Button_patch_note" unique_id=900387114]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("18_gr0d0")
+centered = false
 
 [node name="LineEdit" type="LineEdit" parent="start_menu" unique_id=1442888934]
 offset_right = 339.0
@@ -417,6 +464,18 @@ visible = false
 position = Vector2(36, 40)
 texture = ExtResource("13_1aqqx")
 
+[node name="ResetButton" type="Button" parent="settings_menu/Settings_layer/Settings_Control" unique_id=92415567]
+layout_mode = 0
+offset_left = 632.0
+offset_right = 848.0
+offset_bottom = 68.0
+scale = Vector2(1.2, 1.2)
+theme_override_fonts/font = ExtResource("35_om5lu")
+theme_override_font_sizes/font_size = 32
+text = "Reset stats
+and achivments"
+script = ExtResource("11_fvbif")
+
 [node name="Achivements_menu" type="CanvasLayer" parent="." unique_id=1832615005]
 visible = false
 script = ExtResource("32_ecv6d")
@@ -513,103 +572,227 @@ layout_mode = 2
 [node name="Char_select_menu" type="CanvasLayer" parent="." unique_id=504680637]
 visible = false
 script = ExtResource("43_bkji5")
+characters = Array[ExtResource("54_char_entry")]([SubResource("CharEntry_jonny"), SubResource("CharEntry_jonnytta"), SubResource("CharEntry_joker"), SubResource("Resource_leqrv"), SubResource("Resource_tfjan")])
 
 [node name="char_bg" type="Sprite2D" parent="Char_select_menu" unique_id=1365344464]
 scale = Vector2(2, 2)
 texture = ExtResource("44_jpo0d")
 centered = false
 
-[node name="Jonny_ch" type="Button" parent="Char_select_menu" unique_id=1752976681]
+[node name="Carousel" type="Control" parent="Char_select_menu" unique_id=146435018]
+layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -411.0
-offset_top = -243.0
-offset_right = -367.0
-offset_bottom = -200.0
+offset_left = -500.0
+offset_top = -280.0
+offset_right = 500.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(2, 2)
-size_flags_horizontal = 4
-size_flags_vertical = 4
+
+[node name="SlotPrev" type="Button" parent="Char_select_menu/Carousel" unique_id=1432008984]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 37.0
+offset_right = 133.0
+offset_bottom = 80.0
 focus_mode = 0
-icon = ExtResource("45_t7jce")
 flat = true
 
-[node name="Label" type="Label" parent="Char_select_menu/Jonny_ch" unique_id=870111154]
+[node name="Portrait" type="TextureRect" parent="Char_select_menu/Carousel/SlotPrev" unique_id=1474377549]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 43.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Char_select_menu/Carousel/SlotPrev" unique_id=2055729652]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -45.0
-offset_top = 1.5
-offset_right = 1.0
-offset_bottom = 19.5
+offset_left = -60.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameSprite" type="TextureRect" parent="Char_select_menu/Carousel/SlotPrev" unique_id=1586274997]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SlotCenter" type="Button" parent="Char_select_menu/Carousel" unique_id=1220122449]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 37.0
+offset_right = 501.0
+offset_bottom = 80.0
+focus_mode = 0
+flat = true
+
+[node name="Portrait" type="TextureRect" parent="Char_select_menu/Carousel/SlotCenter" unique_id=999878941]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 43.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SelectOverlay" type="TextureRect" parent="Char_select_menu/Carousel/SlotCenter" unique_id=2061923962]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 43.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Char_select_menu/Carousel/SlotCenter" unique_id=103322444]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = 4.0
+offset_right = 70.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
 theme_override_font_sizes/font_size = 16
-text = "Jonny"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="jonny_select" type="Sprite2D" parent="Char_select_menu/Jonny_ch" unique_id=1012898202]
+[node name="NameSprite" type="TextureRect" parent="Char_select_menu/Carousel/SlotCenter" unique_id=1894113362]
 visible = false
-texture = ExtResource("47_x8o75")
-centered = false
-offset = Vector2(5, 5)
-
-[node name="Jonnytta_ch" type="Button" parent="Char_select_menu" unique_id=316749002]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -243.0
-offset_right = 1.0
-offset_bottom = -200.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(2, 2)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_mode = 0
-icon = ExtResource("47_ao1gk")
-flat = true
-
-[node name="Label" type="Label" parent="Char_select_menu/Jonnytta_ch" unique_id=828256921]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -49.5
-offset_top = 2.5
-offset_right = 0.5
-offset_bottom = 35.5
+offset_left = -70.0
+offset_top = 4.0
+offset_right = 70.0
+offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(2, 2)
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SlotNext" type="Button" parent="Char_select_menu/Carousel" unique_id=1128264581]
+layout_mode = 0
+offset_left = 825.0
+offset_top = 37.0
+offset_right = 869.0
+offset_bottom = 80.0
+focus_mode = 0
+flat = true
+
+[node name="Portrait" type="TextureRect" parent="Char_select_menu/Carousel/SlotNext" unique_id=300054934]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 43.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Char_select_menu/Carousel/SlotNext" unique_id=1279692366]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
-text = "Pashe 
-(femboy)"
-label_settings = SubResource("LabelSettings_fvbif")
+theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
-language = "en"
+vertical_alignment = 1
 
-[node name="jonnytta_select" type="Sprite2D" parent="Char_select_menu/Jonnytta_ch" unique_id=1699087262]
+[node name="NameSprite" type="TextureRect" parent="Char_select_menu/Carousel/SlotNext" unique_id=1445839337]
 visible = false
-texture = ExtResource("48_kmf6r")
-centered = false
-offset = Vector2(5, 5)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BtnLeft" type="Button" parent="Char_select_menu" unique_id=520746822]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -530.0
+offset_top = -290.0
+offset_right = -466.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 128
+text = "<"
+flat = true
+
+[node name="BtnRight" type="Button" parent="Char_select_menu" unique_id=1727531914]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 460.0
+offset_top = -290.0
+offset_right = 524.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 128
+text = ">"
+flat = true
 
 [node name="exit" type="Button" parent="Char_select_menu" unique_id=21732195]
 anchors_preset = 2
@@ -692,6 +875,55 @@ parameters/looping = true
 [node name="Tutorial_select_menu" type="CanvasLayer" parent="." unique_id=291529005]
 visible = false
 
+[node name="Patch_note_menu" type="CanvasLayer" parent="." unique_id=1425480142]
+script = ExtResource("65_gdt60")
+
+[node name="background_pn" type="Sprite2D" parent="Patch_note_menu" unique_id=476958042]
+scale = Vector2(2, 2)
+texture = ExtResource("66_a8x8j")
+centered = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Patch_note_menu" unique_id=1987654321]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -320.0
+offset_right = 580.0
+offset_bottom = 257.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PatchNotesText" type="RichTextLabel" parent="Patch_note_menu/ScrollContainer" unique_id=1987654322]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_font_sizes/normal_font_size = 24
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="exitpn" type="Button" parent="Patch_note_menu" unique_id=1469808]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -105.0
+offset_right = 72.0
+offset_bottom = -37.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+icon = ExtResource("12_4tbtp")
+flat = true
+
+[node name="exit_select" type="Sprite2D" parent="Patch_note_menu/exitpn" unique_id=225322996]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("13_1aqqx")
+centered = false
+
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_NewGame" to="start_menu/Control_main" method="_on_button_new_game_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_NewGame" to="start_menu/Control_main" method="_on_button_new_game_mouse_exited"]
 [connection signal="pressed" from="start_menu/Control_main/Button_NewGame" to="start_menu/Control_main" method="_on_button_new_game_pressed"]
@@ -710,7 +942,9 @@ visible = false
 [connection signal="button_down" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_button_down"]
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_mouse_exited"]
-[connection signal="pressed" from="start_menu/Control_main/ResetButton" to="start_menu/Control_main/ResetButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="start_menu/Control_main/Button_patch_note" to="start_menu/Control_main" method="_on_button_patch_note_mouse_entered"]
+[connection signal="mouse_exited" from="start_menu/Control_main/Button_patch_note" to="start_menu/Control_main" method="_on_button_patch_note_mouse_exited"]
+[connection signal="pressed" from="start_menu/Control_main/Button_patch_note" to="start_menu/Control_main" method="_on_button_patch_note_pressed"]
 [connection signal="pressed" from="start_menu/LineEdit/Button" to="start_menu/Control_main" method="_SecretCode_pressed"]
 [connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_video" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_video_pressed"]
 [connection signal="mouse_entered" from="settings_menu/Settings_layer/Settings_Control/Button_video/Button_low" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_low_mouse_entered"]
@@ -729,18 +963,13 @@ visible = false
 [connection signal="mouse_entered" from="settings_menu/Settings_layer/Settings_Control/Button_back" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_back_mouse_entered"]
 [connection signal="mouse_exited" from="settings_menu/Settings_layer/Settings_Control/Button_back" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_back_mouse_exited"]
 [connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/Button_back" to="settings_menu/Settings_layer/Settings_Control" method="_on_button_back_pressed"]
+[connection signal="pressed" from="settings_menu/Settings_layer/Settings_Control/ResetButton" to="settings_menu/Settings_layer/Settings_Control/ResetButton" method="_on_pressed"]
 [connection signal="mouse_entered" from="Achivements_menu/exit_button" to="Achivements_menu" method="_on_exit_button_mouse_entered"]
 [connection signal="mouse_exited" from="Achivements_menu/exit_button" to="Achivements_menu" method="_on_exit_button_mouse_exited"]
 [connection signal="pressed" from="Achivements_menu/exit_button" to="Achivements_menu" method="_on_exit_button_pressed"]
 [connection signal="mouse_entered" from="stats_menu/exit_button" to="stats_menu" method="_on_exit_button_mouse_entered"]
 [connection signal="mouse_exited" from="stats_menu/exit_button" to="stats_menu" method="_on_exit_button_mouse_exited"]
 [connection signal="pressed" from="stats_menu/exit_button" to="stats_menu" method="_on_exit_button_pressed"]
-[connection signal="mouse_entered" from="Char_select_menu/Jonny_ch" to="Char_select_menu" method="_on_jonny_ch_mouse_entered"]
-[connection signal="mouse_exited" from="Char_select_menu/Jonny_ch" to="Char_select_menu" method="_on_jonny_ch_mouse_exited"]
-[connection signal="pressed" from="Char_select_menu/Jonny_ch" to="Char_select_menu" method="_on_jonny_ch_pressed"]
-[connection signal="mouse_entered" from="Char_select_menu/Jonnytta_ch" to="Char_select_menu" method="_on_jonnytta_ch_mouse_entered"]
-[connection signal="mouse_exited" from="Char_select_menu/Jonnytta_ch" to="Char_select_menu" method="_on_jonnytta_ch_mouse_exited"]
-[connection signal="pressed" from="Char_select_menu/Jonnytta_ch" to="Char_select_menu" method="_on_jonnytta_ch_pressed"]
 [connection signal="mouse_entered" from="Char_select_menu/exit" to="Char_select_menu" method="_on_exit_mouse_entered"]
 [connection signal="mouse_exited" from="Char_select_menu/exit" to="Char_select_menu" method="_on_exit_mouse_exited"]
 [connection signal="pressed" from="Char_select_menu/exit" to="Char_select_menu" method="_on_exit_pressed"]
@@ -750,3 +979,6 @@ visible = false
 [connection signal="pressed" from="Diff_select_menu/easy" to="Diff_select_menu" method="_on_easy_pressed"]
 [connection signal="pressed" from="Diff_select_menu/med" to="Diff_select_menu" method="_on_med_pressed"]
 [connection signal="pressed" from="Diff_select_menu/hard" to="Diff_select_menu" method="_on_hard_pressed"]
+[connection signal="mouse_entered" from="Patch_note_menu/exitpn" to="Patch_note_menu" method="_on_exitpn_mouse_entered"]
+[connection signal="mouse_exited" from="Patch_note_menu/exitpn" to="Patch_note_menu" method="_on_exitpn_mouse_exited"]
+[connection signal="pressed" from="Patch_note_menu/exitpn" to="Patch_note_menu" method="_on_exitpn_pressed"]

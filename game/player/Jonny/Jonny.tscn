@@ -1,32 +1,32 @@
-[gd_scene format=3 uid="uid://ctxdqxo8mr54o"]
+[gd_scene format=3 uid="uid://c2ej24f1hgto1"]
 
 [ext_resource type="Script" uid="uid://cpip77fiv4ddh" path="res://game/player/Jonny/Jonny.gd" id="1_fwoqh"]
-[ext_resource type="Texture2D" uid="uid://c5erhh4uehlpi" path="res://image/players/Base_Jonny_textures/player_afk1.png" id="2_rbic2"]
-[ext_resource type="Texture2D" uid="uid://dkhg788bd6a5m" path="res://image/players/Base_Jonny_textures/player_afk2.png" id="3_n05vw"]
-[ext_resource type="Texture2D" uid="uid://cd60v7t7c4yf7" path="res://image/players/Base_Jonny_textures/right_go1.png" id="4_8e2hg"]
-[ext_resource type="Texture2D" uid="uid://cbev4xncngh58" path="res://image/players/Base_Jonny_textures/back_afk1.png" id="5_3pvxu"]
-[ext_resource type="Texture2D" uid="uid://cnl1u6vbdfoot" path="res://image/players/Base_Jonny_textures/right_go2.png" id="5_csy6s"]
-[ext_resource type="Texture2D" uid="uid://bfia7rvuukf1n" path="res://image/players/Base_Jonny_textures/down_go1.png" id="6_4p20w"]
-[ext_resource type="Texture2D" uid="uid://bfxhsl3rjpg4c" path="res://image/players/Base_Jonny_textures/back_afk2.png" id="6_50ein"]
-[ext_resource type="Texture2D" uid="uid://b2xcidd4y7wqv" path="res://image/players/Base_Jonny_textures/right_go3.png" id="6_xpoel"]
-[ext_resource type="Texture2D" uid="uid://cgjb87rvt1gum" path="res://image/players/Base_Jonny_textures/right_go4.png" id="7_16wa1"]
-[ext_resource type="Texture2D" uid="uid://tlx51w2cw47n" path="res://image/players/Base_Jonny_textures/down_go2.png" id="7_mkd23"]
-[ext_resource type="Texture2D" uid="uid://drk5fan5nlkj0" path="res://image/players/Base_Jonny_textures/top_go1.png" id="12_jfx7g"]
-[ext_resource type="Texture2D" uid="uid://dmb51csbxme3d" path="res://image/players/Base_Jonny_textures/top_go2.png" id="13_n7ct6"]
-[ext_resource type="Texture2D" uid="uid://x5h4ymhq175k" path="res://image/players/Base_Jonny_textures/shot_down.png" id="15_usp30"]
-[ext_resource type="Texture2D" uid="uid://cewm4x2xepd2o" path="res://image/players/Base_Jonny_textures/shot_left.png" id="16_0e4oy"]
-[ext_resource type="Texture2D" uid="uid://ch0j2w0i653co" path="res://image/players/Base_Jonny_textures/shot_rightt.png" id="17_eeltd"]
+[ext_resource type="Texture2D" uid="uid://c5erhh4uehlpi" path="res://image/players/Jonny_textures/player_afk1.png" id="3_3pvxu"]
+[ext_resource type="Texture2D" uid="uid://dkhg788bd6a5m" path="res://image/players/Jonny_textures/player_afk2.png" id="4_50ein"]
+[ext_resource type="Texture2D" uid="uid://cbev4xncngh58" path="res://image/players/Jonny_textures/back_afk1.png" id="5_vwt7v"]
+[ext_resource type="Texture2D" uid="uid://bfxhsl3rjpg4c" path="res://image/players/Jonny_textures/back_afk2.png" id="6_xja5x"]
+[ext_resource type="Texture2D" uid="uid://bfia7rvuukf1n" path="res://image/players/Jonny_textures/down_go1.png" id="7_c1m0k"]
+[ext_resource type="Texture2D" uid="uid://tlx51w2cw47n" path="res://image/players/Jonny_textures/down_go2.png" id="8_yy0ws"]
+[ext_resource type="Texture2D" uid="uid://cd60v7t7c4yf7" path="res://image/players/Jonny_textures/right_go1.png" id="9_gkjy8"]
+[ext_resource type="Texture2D" uid="uid://cnl1u6vbdfoot" path="res://image/players/Jonny_textures/right_go2.png" id="10_qnkfr"]
+[ext_resource type="Texture2D" uid="uid://b2xcidd4y7wqv" path="res://image/players/Jonny_textures/right_go3.png" id="11_023ld"]
+[ext_resource type="Texture2D" uid="uid://cgjb87rvt1gum" path="res://image/players/Jonny_textures/right_go4.png" id="12_muhuu"]
+[ext_resource type="Texture2D" uid="uid://drk5fan5nlkj0" path="res://image/players/Jonny_textures/top_go1.png" id="13_hwl0s"]
+[ext_resource type="Texture2D" uid="uid://dmb51csbxme3d" path="res://image/players/Jonny_textures/top_go2.png" id="14_8yyl5"]
+[ext_resource type="Texture2D" uid="uid://x5h4ymhq175k" path="res://image/players/Jonny_textures/shot_down.png" id="15_q4ar1"]
+[ext_resource type="Texture2D" uid="uid://cewm4x2xepd2o" path="res://image/players/Jonny_textures/shot_left.png" id="16_jl0e1"]
 [ext_resource type="PackedScene" uid="uid://dw14oijigxyr4" path="res://game/interact_tools/InteractingComponents.tscn" id="17_gh012"]
-[ext_resource type="Texture2D" uid="uid://ds81cajpn1qa8" path="res://image/players/Base_Jonny_textures/shot_up.png" id="18_088ty"]
+[ext_resource type="Texture2D" uid="uid://ch0j2w0i653co" path="res://image/players/Jonny_textures/shot_rightt.png" id="17_qo5h3"]
+[ext_resource type="Texture2D" uid="uid://ds81cajpn1qa8" path="res://image/players/Jonny_textures/shot_up.png" id="18_p8sk6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g617h"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_rbic2")
+"texture": ExtResource("3_3pvxu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_n05vw")
+"texture": ExtResource("4_50ein")
 }],
 "loop": true,
 "name": &"afk_default",
@@ -34,10 +34,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_3pvxu")
+"texture": ExtResource("5_vwt7v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_50ein")
+"texture": ExtResource("6_xja5x")
 }],
 "loop": true,
 "name": &"afk_up",
@@ -45,10 +45,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_4p20w")
+"texture": ExtResource("7_c1m0k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_mkd23")
+"texture": ExtResource("8_yy0ws")
 }],
 "loop": true,
 "name": &"walk_down",
@@ -56,16 +56,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_8e2hg")
+"texture": ExtResource("9_gkjy8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_csy6s")
+"texture": ExtResource("10_qnkfr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_xpoel")
+"texture": ExtResource("11_023ld")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_16wa1")
+"texture": ExtResource("12_muhuu")
 }],
 "loop": true,
 "name": &"walk_h",
@@ -73,10 +73,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_jfx7g")
+"texture": ExtResource("13_hwl0s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_n7ct6")
+"texture": ExtResource("14_8yyl5")
 }],
 "loop": true,
 "name": &"walk_up",
@@ -87,7 +87,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_usp30")
+"texture": ExtResource("15_q4ar1")
 }],
 "loop": false,
 "name": &"down",
@@ -95,7 +95,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_0e4oy")
+"texture": ExtResource("16_jl0e1")
 }],
 "loop": false,
 "name": &"left",
@@ -103,7 +103,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("17_eeltd")
+"texture": ExtResource("17_qo5h3")
 }],
 "loop": false,
 "name": &"right",
@@ -111,7 +111,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_088ty")
+"texture": ExtResource("18_p8sk6")
 }],
 "loop": false,
 "name": &"up",

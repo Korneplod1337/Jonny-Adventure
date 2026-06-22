@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://q4qd8e0uku10"]
+
+[ext_resource type="Texture2D" uid="uid://cdikiljg1oxgh" path="res://image/objects/trap/floor_pike2.png" id="1_3x2g8"]
+[ext_resource type="Script" uid="uid://di6l44brl6xe" path="res://game/objects/obstacles/floor_pike.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cjtcqclia82h2" path="res://image/objects/trap/floor_pike1.png" id="2_vevs2"]
+[ext_resource type="Texture2D" uid="uid://dgqxxtancrye3" path="res://image/objects/trap/floor_pike3.png" id="3_cavxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x2g8"]
+size = Vector2(36, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mrt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3x2g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vevs2")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3x2g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cavxd")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 2.0
+}]
+
+[node name="FloorPike" type="Area2D" unique_id=2035113601]
+z_index = -1
+scale = Vector2(2, 2)
+collision_mask = 5
+monitoring = false
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1254259397]
+shape = SubResource("RectangleShape2D_3x2g8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759346571]
+position = Vector2(0, -2)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6mrt8")
+animation = &"Close"
+frame = 1
+frame_progress = 0.44900185
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

@@ -28,8 +28,8 @@ script = ExtResource("1_whvhx")
 equip_icon = ExtResource("2_whvhx")
 equip_id = "Matchlock"
 projectile = ExtResource("3_8dh5s")
-equip_tooltip = "Matchlock"
-interact_name = "matchlock"
+equip_tooltip = "It's flimsy, but it breathes double magic (if it has)"
+interact_name = "Matchlock"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
 shape = SubResource("CircleShape2D_qqy2x")

@@ -16,7 +16,7 @@ script = ExtResource("1_ghsht")
 type = "head"
 equip_icon = ExtResource("2_suslj")
 equip_id = "Surestrike"
-equip_tooltip = "Surestrike"
+equip_tooltip = "A Miss is not your lot"
 interact_name = "Surestrike"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191125084]

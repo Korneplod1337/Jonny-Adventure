@@ -7,9 +7,9 @@ var generator := DungeonGenerator.new()
 var hud_instance: Node = null
 
 @export var player_scene: Dictionary = {
-	"Jonny": 		preload("uid://ctxdqxo8mr54o"),
-	"Jonnytta": 		preload("uid://ctxdqxo8mr54o"),
-	"": 			preload("uid://ctxdqxo8mr54o"),
+	"Jonny": 		preload("uid://c2ej24f1hgto1"),
+	"Jonnytta": 		preload("uid://c2ej24f1hgto1"),
+	"": 			preload("uid://c2ej24f1hgto1"),
 	}
 var char_name := DungeonManager.selected_character
 var player : CharacterBody2D = player_scene[char_name].instantiate()
@@ -20,13 +20,16 @@ enum RoomType {	START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
 				TREASURE, BANK, GAMBLING, BOSS, SECRET}
 
 var floors_config: Array[Dictionary] = [
-{"total_rooms": 7, 	"shop_rooms": 2 , 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 6, 	"shop_rooms": 2 , 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 #{"total_rooms": 5, 	"shop_rooms": 1 , 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 {"total_rooms": 6, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+
 {"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
 {"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+
 {"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
 {"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
+
 {"total_rooms": 15, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%3}, 
 {"total_rooms": 16, 	"shop_rooms": 2, 		"buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
 ]

@@ -149,10 +149,9 @@ func roll_enchantment() -> EnchantmentResource:
 	var e: EnchantmentResource = template.duplicate(true)
 	e.level = rng.randi_range(1, 3)
 	
-	print(e)
-	print(e.get_tooltip_text())
 	
 	if randi() % 100 > 80: #80 / 0
+		print(e, e.get_tooltip_text())
 		return e
 	return null
 

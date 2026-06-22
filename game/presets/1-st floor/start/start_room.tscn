@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/background/background_bounds.png" id="2_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/bodies/dartboard.tscn" id="4_cjhlh"]
+[ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="12_cdchw"]
 [ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="12_pjn5v"]
-[ext_resource type="PackedScene" uid="uid://ck5v5qiq4jt6a" path="res://game/objects/obstacles/rockBig.tscn" id="12_wkjof"]
+[ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="13_cdchw"]
 [ext_resource type="PackedScene" uid="uid://dyq3vlj4jlml5" path="res://game/objects/Equipment/Weapon/equip/TestShot_equip.tscn" id="13_wkjof"]
 [ext_resource type="PackedScene" uid="uid://bpxxvh07ciubm" path="res://game/objects/obstacles/rockSmall.tscn" id="14_cdchw"]
 [ext_resource type="PackedScene" uid="uid://7wom6t7b0i7c" path="res://game/objects/obstacles/rockSmallest.tscn" id="15_n8c84"]
-[ext_resource type="PackedScene" uid="uid://ujleakh3r3l0" path="res://game/objects/items/scenes/tier 0/Potion Green.tscn" id="15_xf56v"]
 [ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/tier 0/Potion Red.tscn" id="16_o7186"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
@@ -67,7 +67,7 @@ position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_sw7ps")
 
 [node name="Rock2" parent="." unique_id=882224253 instance=ExtResource("1_jseag")]
-position = Vector2(242, 232)
+position = Vector2(250, 232)
 
 [node name="Door_Up" parent="." unique_id=976948045 instance=ExtResource("3_et5k3")]
 position = Vector2(0, -278)
@@ -90,32 +90,49 @@ scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
 [node name="EnemyTest2" parent="." unique_id=1789486187 instance=ExtResource("4_cjhlh")]
-position = Vector2(454, -166)
+position = Vector2(444, -188)
 
 [node name="EnemyTest3" parent="." unique_id=464290923 instance=ExtResource("4_cjhlh")]
-position = Vector2(534, -190)
+position = Vector2(520, -220)
 
 [node name="EnemyTest4" parent="." unique_id=408778307 instance=ExtResource("4_cjhlh")]
-position = Vector2(502, -102)
+position = Vector2(488, -132)
 
 [node name="CoinBag" parent="." unique_id=108492217 instance=ExtResource("12_pjn5v")]
-position = Vector2(200, -130)
+position = Vector2(519, 236)
 
 [node name="TestItem" parent="." unique_id=1539246569 instance=ExtResource("16_o7186")]
-position = Vector2(284, 172)
+position = Vector2(208, 172)
 item_icon = SubResource("Resource_ajpcv")
 
-[node name="Rock_big" parent="." unique_id=1046045028 instance=ExtResource("12_wkjof")]
-position = Vector2(428, 192)
-
 [node name="Rock small" parent="." unique_id=1382891265 instance=ExtResource("14_cdchw")]
-position = Vector2(148, 240)
+position = Vector2(156, 240)
 
 [node name="Rock smallest" parent="." unique_id=1708801684 instance=ExtResource("15_n8c84")]
-position = Vector2(168, 192)
-
-[node name="Green potion" parent="." unique_id=1430574395 instance=ExtResource("15_xf56v")]
-position = Vector2(204, 172)
+position = Vector2(172, 192)
 
 [node name="TestShot" parent="." unique_id=652461765 instance=ExtResource("13_wkjof")]
-position = Vector2(-176, 13)
+position = Vector2(-147, -146)
+
+[node name="Rock2_5" parent="." unique_id=1882577447 instance=ExtResource("12_cdchw")]
+position = Vector2(272, 152)
+
+[node name="FloorPike" parent="." unique_id=1298280768 instance=ExtResource("13_cdchw")]
+position = Vector2(352, 152)
+initial_delay = 0.0
+player_phy_damage = 100
+
+[node name="FloorPike2" parent="." unique_id=2035113601 instance=ExtResource("13_cdchw")]
+position = Vector2(432, 152)
+initial_delay = 0.0
+player_phy_damage = 100
+
+[node name="FloorPike3" parent="." unique_id=217037388 instance=ExtResource("13_cdchw")]
+position = Vector2(512, 152)
+initial_delay = 0.0
+player_phy_damage = 100
+
+[node name="FloorPike4" parent="." unique_id=381557609 instance=ExtResource("13_cdchw")]
+position = Vector2(352, 232)
+initial_delay = 0.0
+player_phy_damage = 100

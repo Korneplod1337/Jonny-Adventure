@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c1fiyctd2xrli"]
 
 [ext_resource type="Script" uid="uid://c18mmxrwmlpjj" path="res://game/objects/Equipment/boots/Poison_boots.gd" id="1_yxyj2"]
-[ext_resource type="Texture2D" uid="uid://dhyi42xskjpfq" path="res://image/equip/boots/poison_boots13.png" id="2_f4ctk"]
-[ext_resource type="Texture2D" uid="uid://b57kp4lta8blt" path="res://image/equip/boots/poison_boots11.png" id="2_yxyj2"]
+[ext_resource type="Texture2D" uid="uid://bdp7qgspquk35" path="res://image/equip/boots/poison_boots13.png" id="2_f4ctk"]
+[ext_resource type="Texture2D" uid="uid://bjug4qstbem7l" path="res://image/equip/boots/poison_boots11.png" id="2_yxyj2"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_cm0lv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
@@ -16,7 +16,7 @@ script = ExtResource("1_yxyj2")
 type = "boots"
 equip_icon = ExtResource("2_f4ctk")
 equip_id = "Poison_boots"
-equip_tooltip = "Poison boots"
+equip_tooltip = "Every step poisons the earth"
 interact_name = "Poison boots"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191125084]
