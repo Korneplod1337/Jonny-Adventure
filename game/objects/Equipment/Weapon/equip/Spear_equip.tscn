@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://d153rj7fiouha"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_nsqh5"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_nsqh5"]
 [ext_resource type="Texture2D" uid="uid://cos1ln1r7sgdk" path="res://image/equip/weapon/Spear_equip.png" id="2_244sx"]
 [ext_resource type="PackedScene" uid="uid://d3qsudothx22b" path="res://game/objects/Equipment/Weapon/scene/Spear.tscn" id="3_nsqh5"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_ffnto"]
 [ext_resource type="Texture2D" uid="uid://xcg7wj6dw4ty" path="res://image/equip/weapon_effects/Spear1.png" id="5_e7qfi"]
+[ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="enchant_shader_scene"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299
@@ -29,7 +30,7 @@ script = ExtResource("1_nsqh5")
 equip_icon = ExtResource("2_244sx")
 equip_id = "Spear"
 projectile = ExtResource("3_nsqh5")
-equip_tooltip = "An insignificant weapon, a great goal"
+equip_tooltip = "An insignificant weapon, a great goal, a weak spear"
 interact_name = "Weak spear"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
@@ -41,7 +42,10 @@ shape = SubResource("CircleShape2D_qqy2x")
 shape = SubResource("CircleShape2D_0twu3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+clip_children = 2
 position = Vector2(9, -5.9999995)
 rotation = -0.6981317
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ojoxv")
+
+[node name="enchant_shader" parent="AnimatedSprite2D" unique_id=322286018 instance=ExtResource("enchant_shader_scene")]

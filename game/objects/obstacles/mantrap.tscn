@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://b8jjo3xjprydx"]
+
+[ext_resource type="Script" uid="uid://l6dn1egb13x3" path="res://game/objects/obstacles/mantrap.gd" id="1_ba2hp"]
+[ext_resource type="Texture2D" uid="uid://c1bqfsrxtfj7t" path="res://image/objects/trap/Mantrapp2.png" id="3_close"]
+[ext_resource type="Texture2D" uid="uid://srd3xh2tkxl8" path="res://image/objects/trap/Mantrapp1.png" id="4_open"]
+[ext_resource type="Texture2D" uid="uid://b1o6n4b6tpwur" path="res://image/objects/trap/Mantrapp3.png" id="5_open2"]
+[ext_resource type="Texture2D" uid="uid://dwloprtl1g35x" path="res://image/objects/trap/Mantrapp4.png" id="6_break"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mantrap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_break")
+}],
+"loop": false,
+"name": &"Break",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_close")
+}],
+"loop": false,
+"name": &"Close",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_open")
+}],
+"loop": false,
+"name": &"Open",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_open2")
+}],
+"loop": true,
+"name": &"Open2",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hit"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_04wfc"]
+radius = 16.0
+
+[node name="Mantrap" type="Node2D" unique_id=1335757185]
+z_index = -1
+script = ExtResource("1_ba2hp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759346571]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_mantrap")
+animation = &"Open"
+
+[node name="HitArea" type="Area2D" parent="." unique_id=2143951060]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1135878190]
+position = Vector2(-4, -3)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_hit")
+
+[node name="TrapArea" type="Area2D" parent="." unique_id=1316286754]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrapArea" unique_id=1254259397]
+position = Vector2(-4, -3)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_04wfc")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+[connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]
+[connection signal="body_entered" from="TrapArea" to="." method="_on_trap_area_body_entered"]

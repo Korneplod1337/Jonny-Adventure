@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c2mpyjsefrqek"]
+
+[ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="1_6nq0r"]
+
+[node name="many rock" type="Node2D" unique_id=1679948303]
+
+[node name="Rock2_5" parent="." unique_id=1046045028 instance=ExtResource("1_6nq0r")]
+position = Vector2(528, -88)
+rotation = 3.1415927
+
+[node name="Rock2_6" parent="." unique_id=2031435051 instance=ExtResource("1_6nq0r")]
+position = Vector2(448, -88)
+rotation = 3.1415927
+
+[node name="Rock2_7" parent="." unique_id=151479090 instance=ExtResource("1_6nq0r")]
+position = Vector2(448, 72)
+rotation = 3.1415927
+
+[node name="Rock2_8" parent="." unique_id=1251860273 instance=ExtResource("1_6nq0r")]
+position = Vector2(368, 72)
+rotation = 3.1415927
+
+[node name="Rock2_9" parent="." unique_id=739030581 instance=ExtResource("1_6nq0r")]
+position = Vector2(288, -168)
+rotation = 3.1415927
+
+[node name="Rock2_10" parent="." unique_id=1665615366 instance=ExtResource("1_6nq0r")]
+position = Vector2(288, -248)
+rotation = 3.1415927
+
+[node name="Rock2_11" parent="." unique_id=1851698072 instance=ExtResource("1_6nq0r")]
+position = Vector2(208, -88)
+rotation = 3.1415927
+
+[node name="Rock2_12" parent="." unique_id=1164488178 instance=ExtResource("1_6nq0r")]
+position = Vector2(288, -88)
+rotation = 3.1415927
+
+[node name="Rock2_13" parent="." unique_id=1887478693 instance=ExtResource("1_6nq0r")]
+position = Vector2(448, -8)
+rotation = 3.1415927
+
+[node name="Rock2_14" parent="." unique_id=83267752 instance=ExtResource("1_6nq0r")]
+position = Vector2(288, 72)
+rotation = 3.1415927
+
+[node name="Rock2_15" parent="." unique_id=1804399297 instance=ExtResource("1_6nq0r")]
+position = Vector2(208, 72)
+rotation = 3.1415927
+
+[node name="Rock2_16" parent="." unique_id=617797402 instance=ExtResource("1_6nq0r")]
+position = Vector2(128, -88)
+rotation = 3.1415927

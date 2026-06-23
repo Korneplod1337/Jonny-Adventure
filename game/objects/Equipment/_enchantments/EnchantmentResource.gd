@@ -15,3 +15,7 @@ func get_tooltip_text() -> String:
 
 func get_name_text() -> String:
 	return ''
+
+
+func get_visual_animation() -> String:
+	return enchant_name.to_lower()

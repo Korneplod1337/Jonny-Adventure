@@ -59,8 +59,8 @@ animations = [{
 
 [node name="EnemyBat" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
 scale = Vector2(1.5, 1.5)
-collision_layer = 4
-collision_mask = 18
+collision_layer = 64
+collision_mask = 82
 script = ExtResource("1_0xlom")
 projectile_scene = ExtResource("2_26cec")
 cooldown_time = 1.0

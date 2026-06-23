@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c2ej24f1hgto1"]
 
 [ext_resource type="Script" uid="uid://cpip77fiv4ddh" path="res://game/player/Jonny/Jonny.gd" id="1_fwoqh"]
-[ext_resource type="Texture2D" uid="uid://c5erhh4uehlpi" path="res://image/players/Jonny_textures/player_afk1.png" id="3_3pvxu"]
-[ext_resource type="Texture2D" uid="uid://dkhg788bd6a5m" path="res://image/players/Jonny_textures/player_afk2.png" id="4_50ein"]
-[ext_resource type="Texture2D" uid="uid://cbev4xncngh58" path="res://image/players/Jonny_textures/back_afk1.png" id="5_vwt7v"]
-[ext_resource type="Texture2D" uid="uid://bfxhsl3rjpg4c" path="res://image/players/Jonny_textures/back_afk2.png" id="6_xja5x"]
+[ext_resource type="Texture2D" uid="uid://c5erhh4uehlpi" path="res://image/players/Jonny_textures/back_afk1.png" id="3_3pvxu"]
+[ext_resource type="Texture2D" uid="uid://dkhg788bd6a5m" path="res://image/players/Jonny_textures/back_afk2.png" id="4_50ein"]
+[ext_resource type="Texture2D" uid="uid://cbev4xncngh58" path="res://image/players/Jonny_textures/player_afk1.png" id="5_vwt7v"]
+[ext_resource type="Texture2D" uid="uid://bfxhsl3rjpg4c" path="res://image/players/Jonny_textures/player_afk2.png" id="6_xja5x"]
 [ext_resource type="Texture2D" uid="uid://bfia7rvuukf1n" path="res://image/players/Jonny_textures/down_go1.png" id="7_c1m0k"]
 [ext_resource type="Texture2D" uid="uid://tlx51w2cw47n" path="res://image/players/Jonny_textures/down_go2.png" id="8_yy0ws"]
 [ext_resource type="Texture2D" uid="uid://cd60v7t7c4yf7" path="res://image/players/Jonny_textures/right_go1.png" id="9_gkjy8"]
@@ -23,10 +23,10 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_3pvxu")
+"texture": ExtResource("5_vwt7v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_50ein")
+"texture": ExtResource("6_xja5x")
 }],
 "loop": true,
 "name": &"afk_default",
@@ -34,10 +34,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_vwt7v")
+"texture": ExtResource("3_3pvxu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_xja5x")
+"texture": ExtResource("4_50ein")
 }],
 "loop": true,
 "name": &"afk_up",
@@ -206,7 +206,7 @@ scale = Vector2(1.9, 1.9)
 collision_mask = 55
 script = ExtResource("1_fwoqh")
 hit_points_level = 2.0
-luck_level = 2.0
+luck_level = 10.0
 magic_level = 2.0
 damage_level = 2.0
 spread_level = 2.0
@@ -229,7 +229,7 @@ sprite_frames = SubResource("SpriteFrames_epc1c")
 animation = &"down"
 
 [node name="immune_Timer" type="Timer" parent="." unique_id=1440095197]
-wait_time = 0.2
+wait_time = 0.3
 one_shot = true
 
 [node name="shot_Timer" type="Timer" parent="." unique_id=563273745]

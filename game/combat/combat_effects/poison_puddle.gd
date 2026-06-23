@@ -17,7 +17,6 @@ func setup(explosion_radius: float) -> void:
 
 
 func _ready() -> void:
-	collision_mask = 4
 	monitoring = false
 
 	var scale_factor := radius / base_collision_radius

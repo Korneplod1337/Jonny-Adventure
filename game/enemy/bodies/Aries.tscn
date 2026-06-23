@@ -19,9 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://c08ti8yk0f7o2" path="res://image/enemy/enemy_projectile/Hog_charge4.png" id="19_6epln"]
 [ext_resource type="Texture2D" uid="uid://cjk6266ssspuy" path="res://image/enemy/enemy_projectile/Hog_charge1.png" id="20_cpa3m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
-size = Vector2(50, 21)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
 radius = 984.0
 
@@ -95,15 +92,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
+size = Vector2(50, 21)
+
 [node name="Aries" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 54
 script = ExtResource("1_ywp5n")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_ps82n")
 
 [node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
 scale = Vector2(0.75, 0.75)
@@ -150,6 +146,10 @@ fire_icon1 = ExtResource("16_cvtt4")
 position = Vector2(2.6666667, -2.6666667)
 sprite_frames = SubResource("SpriteFrames_lk7xh")
 animation = &"Charge"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ps82n")
 
 [connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
 [connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]

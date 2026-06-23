@@ -1,0 +1,98 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://crtka3wukigki"]
+
+[ext_resource type="Texture2D" uid="uid://kr21f2ynkfld" path="res://image/enchants/zero enchant.png" id="1_zero"]
+[ext_resource type="Texture2D" uid="uid://v64xroqphvob" path="res://image/enchants/fire enchant1.png" id="2_fire1"]
+[ext_resource type="Texture2D" uid="uid://c2ik0m73vayhb" path="res://image/enchants/fire enchant2.png" id="3_fire2"]
+[ext_resource type="Texture2D" uid="uid://dr65scj14e5l7" path="res://image/enchants/fire enchant3.png" id="4_fire3"]
+[ext_resource type="Texture2D" uid="uid://dhihu0t8v7sur" path="res://image/enchants/fire enchant4.png" id="5_fire4"]
+[ext_resource type="Texture2D" uid="uid://b0b14058qbfad" path="res://image/enchants/ice enchant1.png" id="6_ice1"]
+[ext_resource type="Texture2D" uid="uid://bvlqtfhw24ka7" path="res://image/enchants/ice enchant2.png" id="7_ice2"]
+[ext_resource type="Texture2D" uid="uid://cl1vb6i8hkguv" path="res://image/enchants/ice enchant3.png" id="8_ice3"]
+[ext_resource type="Texture2D" uid="uid://bvqsqwahl2oow" path="res://image/enchants/ice enchant4.png" id="9_ice4"]
+[ext_resource type="Texture2D" uid="uid://cw8hkhpkwmlyd" path="res://image/enchants/poison enchant1.png" id="10_poison1"]
+[ext_resource type="Texture2D" uid="uid://cj4mvfjk8bda3" path="res://image/enchants/poison enchant2.png" id="11_poison2"]
+[ext_resource type="Texture2D" uid="uid://bjvcedj77m44o" path="res://image/enchants/poison enchant3.png" id="12_poison3"]
+[ext_resource type="Texture2D" uid="uid://doh7a2ocnd0cg" path="res://image/enchants/poison enchant4.png" id="13_poison4"]
+[ext_resource type="Texture2D" uid="uid://b46i0x7jdcdv" path="res://image/enchants/knockback enchant1.png" id="14_knock1"]
+[ext_resource type="Texture2D" uid="uid://c5ae81vr1mfr0" path="res://image/enchants/knockback enchant2.png" id="15_knock2"]
+[ext_resource type="Texture2D" uid="uid://ddy0mskg1va6u" path="res://image/enchants/knockback enchant3.png" id="16_knock3"]
+[ext_resource type="Texture2D" uid="uid://bvuaucj25j7s6" path="res://image/enchants/knockback enchant4.png" id="17_knock4"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_zero")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fire1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fire2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fire3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fire4")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ice1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ice2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ice3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ice4")
+}],
+"loop": true,
+"name": &"ice",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_knock1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_knock2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_knock3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_knock4")
+}],
+"loop": true,
+"name": &"knockback",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_poison1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_poison2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_poison3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_poison4")
+}],
+"loop": true,
+"name": &"poison",
+"speed": 4.0
+}]

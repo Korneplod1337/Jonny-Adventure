@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://d4b16tebiwudm"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_whvhx"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_whvhx"]
 [ext_resource type="Texture2D" uid="uid://bnjyir0i8qrdm" path="res://image/equip/weapon/matchlock.png" id="2_whvhx"]
 [ext_resource type="PackedScene" uid="uid://b0nafokq5qtk4" path="res://game/objects/Equipment/Weapon/scene/MatchlockBullet.tscn" id="3_8dh5s"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_encim"]
+[ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="enchant_shader_scene"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299
@@ -28,7 +29,7 @@ script = ExtResource("1_whvhx")
 equip_icon = ExtResource("2_whvhx")
 equip_id = "Matchlock"
 projectile = ExtResource("3_8dh5s")
-equip_tooltip = "It's flimsy, but it breathes double magic (if it has)"
+equip_tooltip = "It's flimsy matchlock, but it breathes double magic"
 interact_name = "Matchlock"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
@@ -41,5 +42,8 @@ interact_name = "Swap weapon"
 shape = SubResource("CircleShape2D_0twu3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+clip_children = 2
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ojoxv")
+
+[node name="enchant_shader" parent="AnimatedSprite2D" unique_id=1627213634 instance=ExtResource("enchant_shader_scene")]

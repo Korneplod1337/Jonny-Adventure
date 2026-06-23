@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://crtkbhmubifki"]
+
+[ext_resource type="SpriteFrames" uid="uid://c8enchantframes01" path="res://game/objects/Equipment/_enchantments/enchant_shader_frames.tres" id="1_frames"]
+
+[node name="enchant_shader" type="AnimatedSprite2D"]
+rotation = 0.5235988
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("1_frames")

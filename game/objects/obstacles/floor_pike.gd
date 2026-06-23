@@ -14,7 +14,6 @@ var _damaged_bodies: Dictionary = {}
 
 
 func _ready() -> void:
-	collision_mask = 5  # игрок (1) + враги (4)
 	monitoring = false
 	_sprite.speed_scale = GameState.animated_world_speed
 	_sprite.frame_changed.connect(_on_frame_changed)
@@ -82,7 +81,7 @@ func _try_damage(body: Node) -> void:
 			body.take_damage(player_phy_damage)
 			_damaged_bodies[id] = true
 	elif body.is_in_group("Enemy"):
-		if body.has_method("hit"):
+		if body.has_method("hit") and not body.get("is_dead"):
 			body.hit(enemy_damage)
 			_damaged_bodies[id] = true
 

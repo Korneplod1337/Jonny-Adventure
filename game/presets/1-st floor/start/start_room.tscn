@@ -7,11 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/bodies/dartboard.tscn" id="4_cjhlh"]
 [ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="12_cdchw"]
 [ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="12_pjn5v"]
+[ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn" id="13_8rj6y"]
 [ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="13_cdchw"]
-[ext_resource type="PackedScene" uid="uid://dyq3vlj4jlml5" path="res://game/objects/Equipment/Weapon/equip/TestShot_equip.tscn" id="13_wkjof"]
 [ext_resource type="PackedScene" uid="uid://bpxxvh07ciubm" path="res://game/objects/obstacles/rockSmall.tscn" id="14_cdchw"]
 [ext_resource type="PackedScene" uid="uid://7wom6t7b0i7c" path="res://game/objects/obstacles/rockSmallest.tscn" id="15_n8c84"]
+[ext_resource type="PackedScene" uid="uid://i6kqba6ow2yq" path="res://game/objects/Equipment/Weapon/equip/Sniper_equip.tscn" id="15_ncaf4"]
+[ext_resource type="Resource" uid="uid://c8hfht7lr6kje" path="res://game/objects/Equipment/_enchantments/fire_enchantment.tres" id="16_g3480"]
 [ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/tier 0/Potion Red.tscn" id="16_o7186"]
+[ext_resource type="PackedScene" uid="uid://2dtjjer8eim8" path="res://game/objects/Equipment/Weapon/equip/tome_of_fairy_tales_equip.tscn" id="17_sfoq5"]
+[ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="20_ymo7r"]
+[ext_resource type="Resource" uid="uid://1t58a5xdtapu" path="res://game/objects/Equipment/_enchantments/poison_enchantment.tres" id="21_olefb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -102,7 +107,7 @@ position = Vector2(488, -132)
 position = Vector2(519, 236)
 
 [node name="TestItem" parent="." unique_id=1539246569 instance=ExtResource("16_o7186")]
-position = Vector2(208, 172)
+position = Vector2(466, 252)
 item_icon = SubResource("Resource_ajpcv")
 
 [node name="Rock small" parent="." unique_id=1382891265 instance=ExtResource("14_cdchw")]
@@ -110,9 +115,6 @@ position = Vector2(156, 240)
 
 [node name="Rock smallest" parent="." unique_id=1708801684 instance=ExtResource("15_n8c84")]
 position = Vector2(172, 192)
-
-[node name="TestShot" parent="." unique_id=652461765 instance=ExtResource("13_wkjof")]
-position = Vector2(-147, -146)
 
 [node name="Rock2_5" parent="." unique_id=1882577447 instance=ExtResource("12_cdchw")]
 position = Vector2(272, 152)
@@ -136,3 +138,17 @@ player_phy_damage = 100
 position = Vector2(352, 232)
 initial_delay = 0.0
 player_phy_damage = 100
+
+[node name="Pistol" parent="." unique_id=241584314 instance=ExtResource("13_8rj6y")]
+position = Vector2(-123, 62)
+enchantment = ExtResource("21_olefb")
+
+[node name="Sniper" parent="." unique_id=1823620353 instance=ExtResource("15_ncaf4")]
+position = Vector2(-182, 176)
+
+[node name="tome_of_fairy_tales_equip" parent="." unique_id=925666813 instance=ExtResource("17_sfoq5")]
+position = Vector2(-304, 170)
+
+[node name="Sword_equip" parent="." unique_id=133096138 instance=ExtResource("20_ymo7r")]
+position = Vector2(-245, 42)
+enchantment = ExtResource("16_g3480")

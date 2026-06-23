@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://xi3j7etugnhg"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_7nup5"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_7nup5"]
 [ext_resource type="Texture2D" uid="uid://4soh5lshxbns" path="res://image/equip/weapon/shotgun.png" id="2_ngg4g"]
 [ext_resource type="PackedScene" uid="uid://boc3oh8ujboyp" path="res://game/objects/Equipment/Weapon/scene/ShotGunBullet.tscn" id="3_wyay2"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_omn51"]
+[ext_resource type="PackedScene" uid="uid://c8enchantshader01" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="enchant_shader_scene"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299
@@ -41,5 +42,8 @@ interact_name = "Swap weapon"
 shape = SubResource("CircleShape2D_0twu3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+clip_children = 2
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ojoxv")
+
+[node name="enchant_shader" parent="AnimatedSprite2D" instance=ExtResource("enchant_shader_scene")]

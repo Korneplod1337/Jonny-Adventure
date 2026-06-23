@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://buh4o48vfo1ln"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_3kw3o"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_3kw3o"]
 [ext_resource type="Texture2D" uid="uid://4ti2g2bibm6j" path="res://image/equip/weapon_effects/nunchucks8.png" id="2_65jxo"]
 [ext_resource type="PackedScene" uid="uid://dmdxdedi4e367" path="res://game/objects/Equipment/Weapon/scene/Nunchucks.tscn" id="3_x5kai"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_em1tl"]
+[ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="enchant_shader_scene"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299
@@ -28,7 +29,7 @@ script = ExtResource("1_3kw3o")
 equip_icon = ExtResource("2_65jxo")
 equip_id = "Nunchucks"
 projectile = ExtResource("3_x5kai")
-equip_tooltip = "A weapon with no sense of self-preservation"
+equip_tooltip = "A weapon with no sense of self-preservation. Nunchucks"
 interact_name = "Nunchucks"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
@@ -40,7 +41,10 @@ shape = SubResource("CircleShape2D_qqy2x")
 shape = SubResource("CircleShape2D_0twu3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+clip_children = 2
 position = Vector2(27, 31)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ojoxv")
 offset = Vector2(0, 5)
+
+[node name="enchant_shader" parent="AnimatedSprite2D" unique_id=1025354201 instance=ExtResource("enchant_shader_scene")]

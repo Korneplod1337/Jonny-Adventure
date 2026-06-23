@@ -876,6 +876,7 @@ parameters/looping = true
 visible = false
 
 [node name="Patch_note_menu" type="CanvasLayer" parent="." unique_id=1425480142]
+visible = false
 script = ExtResource("65_gdt60")
 
 [node name="background_pn" type="Sprite2D" parent="Patch_note_menu" unique_id=476958042]

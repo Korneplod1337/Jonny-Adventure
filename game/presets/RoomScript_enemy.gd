@@ -26,7 +26,7 @@ func connect_enemies() -> void:
 		enemy_count += 1
 
 		if enemy.has_signal("_enemy_die"):
-			enemy._enemy_die.connect(_on_enemy_die)
+			enemy._enemy_die.connect(_on_enemy_die, CONNECT_ONE_SHOT)
 
 func cache_active_doors() -> void:
 	active_doors.clear()
@@ -53,8 +53,8 @@ func _update_door_collision(door: Node, hide: bool) -> void:
 		area.monitorable = hide
 
 func _on_enemy_die(damage: int) -> void:
-	enemy_count -= damage
+	enemy_count = maxi(enemy_count - damage, 0)
 	print('enemy left: ', enemy_count)
 
-	if enemy_count <= 0:
+	if enemy_count == 0:
 		show_doors()

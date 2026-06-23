@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://dwqy4pk0blosi"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_ibnpk"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_ibnpk"]
 [ext_resource type="Texture2D" uid="uid://cjjntagm7vt6x" path="res://image/equip/weapon/SpearEX_equip.png" id="2_csgex"]
 [ext_resource type="PackedScene" uid="uid://btyptmeihg371" path="res://game/objects/Equipment/Weapon/scene/SpearEX.tscn" id="3_b5g8e"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_nve1j"]
 [ext_resource type="Texture2D" uid="uid://di88eom1bm5ow" path="res://image/equip/weapon_effects/SpearEX4.png" id="5_omxrh"]
+[ext_resource type="PackedScene" uid="uid://c8enchantshader01" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="enchant_shader_scene"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299
@@ -41,7 +42,10 @@ shape = SubResource("CircleShape2D_qqy2x")
 shape = SubResource("CircleShape2D_0twu3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+clip_children = 2
 position = Vector2(-4, 5)
 rotation = -0.7853982
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ojoxv")
+
+[node name="enchant_shader" parent="AnimatedSprite2D" instance=ExtResource("enchant_shader_scene")]

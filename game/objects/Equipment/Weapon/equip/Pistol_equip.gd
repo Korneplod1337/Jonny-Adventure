@@ -13,8 +13,12 @@ var type = 'weapon'
 
 @export var enchantment: EnchantmentResource
 
+@onready var weapon_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var enchant_shader: AnimatedSprite2D = $AnimatedSprite2D/enchant_shader
+
 func _ready() -> void:
 	interactable.interact = _on_interact
+	_setup_enchant_visual()
 	
 	var enchant_text := ""
 	if enchantment:
@@ -61,3 +65,20 @@ func _on_interact():
 
 func _set_equip_icon(new_icon: Texture2D):
 	equip_icon = new_icon
+
+
+func _setup_enchant_visual() -> void:
+	if not weapon_sprite:
+		return
+	weapon_sprite.clip_children = CanvasItem.CLIP_CHILDREN_AND_DRAW
+	if not enchant_shader:
+		return
+	if not enchantment:
+		enchant_shader.visible = false
+		return
+	var anim_name := enchantment.get_visual_animation()
+	if not enchant_shader.sprite_frames.has_animation(anim_name):
+		enchant_shader.visible = false
+		return
+	enchant_shader.visible = true
+	enchant_shader.play(anim_name)

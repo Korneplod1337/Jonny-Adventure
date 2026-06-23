@@ -230,6 +230,8 @@ func _on_hit_area_body_exited(body: Node2D) -> void:
 		player_in_hit_range = false
 
 func hit(amount: float, clear:= false) -> void:
+	if is_dead:
+		return
 	if not clear:
 		amount *= effect_protection
 	_flash_damage()
@@ -248,6 +250,8 @@ func _flash_damage() -> void:
 	sprite.modulate.a = 1.0
 
 func die() -> void:
+	if is_dead:
+		return
 	is_dead = true
 	velocity = Vector2.ZERO
 
@@ -257,6 +261,7 @@ func die() -> void:
 	$HitArea.hide()
 	cooldown_timer.stop()
 	blind_timer.stop()
+	poison_timer.stop()
 	sprite.play("die")
 	_enemy_die.emit(1)
 

@@ -87,7 +87,7 @@ animations = [{
 
 [node name="shot2" type="Area2D" unique_id=278677877]
 collision_layer = 2
-collision_mask = 52
+collision_mask = 116
 script = ExtResource("1_otytm")
 use_spread = false
 

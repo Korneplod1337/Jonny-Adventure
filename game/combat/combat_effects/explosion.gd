@@ -15,8 +15,6 @@ func setup(explosion_radius: float) -> void:
 
 
 func _ready() -> void:
-	collision_mask = 4
-
 	var scale_factor := radius / base_collision_radius
 	scale = Vector2.ONE * scale_factor
 

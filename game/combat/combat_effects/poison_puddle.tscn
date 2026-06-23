@@ -77,7 +77,7 @@ animations = [{
 
 [node name="Poison puddle" type="Area2D" unique_id=1721338808]
 z_index = -1
-collision_mask = 4
+collision_mask = 68
 script = ExtResource("1_y6o6s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761060348]

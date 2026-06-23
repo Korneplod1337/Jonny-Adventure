@@ -159,6 +159,7 @@ button_E={
 2d_physics/layer_4="Предметы Интерактив"
 2d_physics/layer_5="Стены"
 2d_physics/layer_6="Препятствия"
+2d_physics/layer_7="Летающие враги"
 2d_physics/stretch/scale_mode="fractional"
 2d_physics/size/resizable=false
 2d_physics/stretch/mode="canvas_items"
@@ -167,4 +168,5 @@ button_E={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.26438904, 0.26438904, 0.26438898, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
