@@ -200,14 +200,14 @@ Owerall:
 	1 атакспид
 	1 удача
 	
-	🟢 Тир 1  hp6 luck8+1 magic5 speed5+1 damage6+1 accuracy3+3 range 5 fire_rate5+1
+	🟢 Тир 1  hp6 luck5+1 magic5 speed5+1 damage6+1 accuracy3+3 range 5 fire_rate5+1
 	Аегис								hp_bonus: +1
 	Крест								hp_bonus: +2
+	Косточка								hp_bonus: +2
 	Мясо									hp_bonus: +3
 	Борода								luck_bonus: +1
 	Гомункул								luck_bonus: +1, range_bonus: +1
 	Проросшее семя						luck_bonus: +2
-	Четырёхлистный клевер				luck_bonus: +3
 	Сияние								luck_bonus: +1, magic_bonus: +1
 	Часики								magic_bonus: +2
 	Бомба								damage_bonus: +1, magic_bonus: +2
@@ -237,79 +237,65 @@ Owerall:
 	blueprint 		Предмет дублирубший последний предмет 					нет
 	
 	
-	🟡 Тир 2 (средние) 	hp luck magic1 speed damage accuracy range fire_rate
-	Сырые кишки 							hp_bonus: +3
-	Ouroborus							hp_bonus: +1, magic_bonus: +2
+	🟡 Тир 2 (средние) 	hp-1+11=10 luck15+1 magic17+1 speed11+2 damage13 accuracy11+3 range15+3 fire_rate18+1
+	Сырые кишки 							hp_bonus: +4
+	Ouroborus							hp_bonus: +2, magic_bonus: +2
 	Цветок папоротника	шанс найти доп лут в сундуках + 10%	luck_bonus: +3
-	
-	
-	Звёздный глобус 						range_bonus: +4 ???????
-	Алмаз								accuracy_bonus: +3, range_bonus: +3, fire_rate_bonus: +3
-	Глаз ястреба							accuracy_bonus: +3
-	Дикий ветер							speed_bonus: +3
-	Огненная саламандра					damage_bonus: +3
-	Золотой самородок.					fire_rate_bonus: +3
-	Лазерный прицел 						accuracy_bonus: +3
-	Оптический прицел. 					accuracy_bonus: +4
+	Алмаз								luck_bonus: +3, range_bonus: +3, fire_rate_bonus: +3
+	Четырёхлистный клевер				luck_bonus: +4
 	Магический гримуар					magic_bonus: +3
-	Охотник								accuracy_bonus: +3, range_bonus: +2, damage_bonus: +1 
-	Планетарий 							range_bonus: +3
-	Повелитель огня .					damage_bonus: +3
-	Родниковая вода 						fire_rate_bonus: +3
-	Сердце дракона						damage_bonus: +2, hp_bonus: +1
-	Телескоп								range_bonus: +2
-	Уран									damage_bonus: +3, magic_bonus: +2, hp_bonus: -3, luck_bonus: -1
-	Факел (синий)						damage_bonus: +3 ???????????????
-	Черепок								damage_bonus: +4 hp_bonus: -5
-	Шаровая молния						damage_bonus: +2, magic_bonus: +2
+	Mana flame							magic_bonus: +3, damage_bonus: +1
+	Amplifier							magic_bonus: +4
 	Black brand							speed_bonus: +2, accuracy_bonus: +2
-	Desperado							speed_bonus: +3
-	Executioner's 						damage_bonus: +3 accuracy_bonus: +1
-	Joker								повышает все характеристики на 1.
-	Latern								range_bonus: +3
-	Mana flame							magic_bonus: +3
+	Desperado							speed_bonus: +3, damage: +1
+	Дикий ветер							speed_bonus: +3
 	Zero-to-hundred						speed_bonus: +4
-	Amplifier							magic_bonus: +3
+	Огненная саламандра					damage_bonus: +3
+	Сердце дракона						damage_bonus: +2, hp_bonus: +2
+	Уран									damage_bonus: +4, magic_bonus: +2, hp_bonus: -3, range_bonus: -1
+	Executioner's axe 					damage_bonus: +3, accuracy_bonus: +1
+	Глаз ястреба							accuracy_bonus: +2, speed_bonus +2
+	Лазерный прицел 						accuracy_bonus: +3
+	Оптический прицел 					accuracy_bonus: +4
+	Охотник								accuracy_bonus: +3, range_bonus: +2, damage_bonus: +1 
+	Астролябия	 						range_bonus: +4
+	Планетарий 							range_bonus: +2, hp_bonus: +1
+	Телескоп								range_bonus: +3
+	Latern								range_bonus: +2, luck_bonus: +3
+	Шаровая молния						fire_rate_bonus: +2, magic_bonus: +2
+	Элементаль воды 						fire_rate_bonus: +3, luck_bonus: +1
+	Золотой самородок.					fire_rate_bonus: +3
+	Золотой слиток						fire_rate_bonus: +4
+	Родниковая вода 						fire_rate_bonus: +3, luck_bonus: +1
+	Черепок								hp_bonus: -5, некроманту hp_bonus: +5 и лечение
+	Joker								повышает все характеристики на 1.
 	
-	
-	Gigant ring		Кольцо великана – увеличивает размер и здоровье.			hp_bonus: +4
-	Occult			уменьшает хп всем врагам на 10%							hp_bonus: +3
-	Второе сердце	Даёт 1 возрождение и +2 здоровье.						hp_bonus: +2
-	Gaia				Повышает урон за здоровье, даёт +ХП.						hp_bonus: +2
-	
-	
-	Genome map		Уменьшает здоровье всех врагов на 20%.					нет
-	Iron Maiden		15% шанс, что враг взорвётся при смерти, нанося 50% от своего макс. ХП.	нет
-	Magic seal		Максимальный урон по игроку не больше 1, +0.1 к иммунитету magic_bonus: +1
+	Звёздная карта	Миникарта, делает свой вес на 0
 	Penetrating 		Выстрелы пронзают +1 врагов.			нет ????????????????????????????????????? ЕЩЁ ТАКОГО
-	Sacrosanct		Пока здоровье >75%, урон увеличен на 50%.				нет
-	organic shield 	даёт +1 экстралечения									нет.
-	Игрушечный замок	Уменьшает здоровье боссов на 15% и их размер на 10%		range_bonus: +1
 	Мимик			20% шанс, что сундук окажется мимиком (с двойным лутом в 50% случаев).	нет
 	Treasure map		Спавнит случайный сундук в случайной комнате.			range_bonus: +2
 	Opulence			Создаёт 2 случайных сундука рядом с игроком.				fire_rate_bonus: +1
-	Корона			Увеличивает урон за каждый артефакт						damage_bonus: +1
-	Акселератор		Повышает урон атаки в зависимости от скорости передвижения.damage_bonus: +2
+	
+	organic shield 	даёт +1 экстралечения									нет.
+	Gigant ring		Кольцо великана – увеличивает размер и здоровье.			hp_bonus: +4
+	Occult			уменьшает хп всем врагам на 10%							hp_bonus: +3
+	Второе сердце	Даёт 1 возрождение и +2 здоровье.						hp_bonus: +2
+	Gaia				Повышает урон за здоровье								hp_bonus: +2
+	Magic seal		Максимальный урон по игроку не больше 1, +0.1 к иммунитету magic_bonus: +1
+	
+	Genome map		Уменьшает здоровье всех врагов на 20%.					нет
+	Игрушечный замок	Уменьшает здоровье боссов на 15% и их размер на 10%		range_bonus: +1
+	Iron Maiden		15% шанс, что враг взорвётся при смерти, нанося 50% от своего макс. ХП.	нет
+	
+	Sacrosanct		Пока здоровье >75%, урон увеличен на 50%.				нет
+	Корона			Увеличивает урон за каждый артефакт						magic_bonus: +1
+	Акселератор		Повышает урон атаки в зависимости от скорости передвижения. speed_bonus: +2
 	Киборг			Конвертирует здоровье в щиты, даёт +5 к базовому урону за каждое конвертированное ХП.	нет
-	Цветок критов	Увеличивает урон с крита в зависимости от шанса крита.	damage_bonus: +1, accuracy_bonus: +1
-	Siege hammer		Дополнительный урон за крит, если он есть.				damage_bonus: +2
+	
+	Цветок критов	Увеличивает урон с крита в зависимости от шанса крита.	luck_bonus: +1, accuracy_bonus: +1
+	Siege hammer		Дополнительный урон за крит, если он есть.				accuracy_bonus: +2
+	
 	Kalia's Space-time circuit Повышает ход времени на 14%, шанс дополнительной монеты с врага. нет
-	
-	
-	🔴 Тир 3 (сильные)
-	Астролябия							range_bonus: +5
-	Золотой слиток						fire_rate_bonus: +5
-	Мясо									hp_bonus: +5
-	
-	Бумеранг - 		Бумеранг снарядов ✓										нет
-	Стрельба звёздочкой	Выпускает снаряды во все стороны.					нет
-	Звёздная карта	Миникарта												range_bonus: +5
-	Некрономикон		Книга мёртвых – даёт огромную магию, но текущее здоровье не может поднятся выше, чем половина макс хп.	magic_bonus: +5
-	Экскалибур		(зона) повышения урона.									нет.
-	Assassination	Первый урон по врагу всегда критический.					accuracy_bonus: +4
-	Ballista			Наносит дополнительный урон врагу с полным здоровьем.		accuracy_bonus: +2, range_bonus: +2
-	EfirBlade		инстакилл врага, у которого осталось меньше 10% хп		damage_bonus: +2
-	Undead			Возрождение 1 раз с неуязвимостью и прохождением сквозь врагов 2 секунды, но макс. ХП -25%. нет.
 	
 	🃏 Игральные карты
 	Карта 6		magic_bonus: +2
@@ -325,7 +311,18 @@ Owerall:
 	Карты увеличивают шанс найти другие карты. Сильно увеличивают вес друг друга.
 	туз очень сильно увеличивает шанс найти себя помимо обычного увеличения
 	Найти туз - открывает Joker. У Joker карты не увеличивают вес друг друга. Туз всё ещё работает
-
+	
+	🔴 Тир 3 (сильные)	
+	Бумеранг - 		Бумеранг снарядов ✓
+	Стрельба звёздочкой	Выпускает снаряды во все стороны.
+	
+	Экскалибур		(зона) повышения урона.
+	Assassination	Первый урон по врагу всегда критический.
+	Ballista			Наносит дополнительный урон врагу с полным здоровьем.
+	EfirBlade		инстакилл врага, у которого осталось меньше 10% хп
+	Undead			Возрождение 1 раз с неуязвимостью и прохождением сквозь врагов 2 секунды, но макс. ХП -25%. нет.
+	Некрономикон		текущее здоровье не может поднятся выше, чем половина макс хп, хп вргов уменьшено на 30%
+	
 
 
 -------------- Модификаторы уровня --------------
@@ -426,7 +423,7 @@ Owerall:
 	Joker - 
 		уникальная карточная механика 
 		открывается- карты предметы, подбор туза
-		открывает - 
+		открывает - предмет джокер и своё оружие
 	Joab - 
 		чёрное хп, necromancer
 		хилится от чёрных зелий, все красные зелья наносят урон
