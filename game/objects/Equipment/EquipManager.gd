@@ -55,7 +55,7 @@ var POOLS := {
 		{"id": "tome_of_fairy_tales", "scene": preload("uid://2dtjjer8eim8"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 3, "weight": 5.0},
 		
 		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
 		 "tier": 1, "weight": 10.0},

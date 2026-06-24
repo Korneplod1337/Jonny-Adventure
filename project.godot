@@ -24,6 +24,7 @@ boot_splash/minimum_display_time=100
 
 AchivStatsRegistry="*res://z_global_scripts/AchivementAndStatsRegistry.gd"
 AchievementManager="*res://z_global_scripts/AchievementManager.gd"
+CharacterMedalsManager="*res://z_global_scripts/CharacterMedalsManager.gd"
 EquipManager="*uid://cbmrdchj7jmvb"
 StatsManager="*res://z_global_scripts/StatsManager.gd"
 DungeonManager="*res://game/Dungeon_scripts/DungeonManager.gd"

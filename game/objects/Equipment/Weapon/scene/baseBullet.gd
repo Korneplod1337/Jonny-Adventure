@@ -56,6 +56,7 @@ func _get_damage_with_crits() -> int:
 			print('crit! ', crit_sprite)
 			if crit_sprite == 4:
 				StatsManager.add_statistic_progress("Mega_crit", 1)
+				break
 		else:
 			break
 

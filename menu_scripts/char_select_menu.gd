@@ -5,23 +5,75 @@ extends CanvasLayer
 @export var lock_portrait_selected: Texture2D = preload("res://image/main_menu/char_select_lock_select.png")
 
 @export_group("Layout")
-@export var center_scale := Vector2(2.0, 2.0)
-@export var side_scale := Vector2(1.5, 1.5)
+@export var center_scale := Vector2(1.75, 1.75)
+@export var side_scale := Vector2(1.25, 1.25)
 @export var side_modulate := Color(0.75, 0.75, 0.75, 0.85)
 @export var locked_modulate := Color(0.55, 0.55, 0.55, 0.75)
 
+const MEDAL_EMPTY_SMALL := preload("res://image/main_menu/locations_mark1.png")
+const MEDAL_FILLED_SMALL := [
+	preload("res://image/main_menu/locations_mark2.png"),
+	preload("res://image/main_menu/locations_mark3.png"),
+	preload("res://image/main_menu/locations_mark4.png"),
+	preload("res://image/main_menu/locations_mark5.png"),
+	preload("res://image/main_menu/locations_mark6.png"),
+	preload("res://image/main_menu/locations_mark7.png"),
+]
+const MEDAL_EMPTY_BIG := preload("res://image/main_menu/locations_mark8.png")
+const MEDAL_FILLED_BIG := preload("res://image/main_menu/locations_mark9.png")
+
+@onready var _slot_prev2: Control = $Carousel/SlotPrev2
 @onready var _slot_prev: Control = $Carousel/SlotPrev
 @onready var _slot_center: Button = $Carousel/SlotCenter
 @onready var _slot_next: Control = $Carousel/SlotNext
+@onready var _slot_next2: Control = $Carousel/SlotNext2
+const MEDAL_TEXTURE_SIZE := 48
+const MEDAL_SMALL_SCALE := 4  ## 192×192 (×2 от 96)
+const MEDAL_BIG_SCALE := 4    ## 192×192 — тот же контейнер, круг в текстуре крупнее
+const MEDAL_SMALL_SIZE := Vector2(MEDAL_TEXTURE_SIZE * MEDAL_SMALL_SCALE, MEDAL_TEXTURE_SIZE * MEDAL_SMALL_SCALE)
+const MEDAL_BIG_SIZE := Vector2(MEDAL_TEXTURE_SIZE * MEDAL_BIG_SCALE, MEDAL_TEXTURE_SIZE * MEDAL_BIG_SCALE)
+const MEDAL_SMALL_SEPARATION := -80  ## перекрываем прозрачные поля 48×48 текстур
+const MEDAL_BIG_SEPARATION := -40
+
+@onready var _medals_panel: HBoxContainer = $MedalsPanel
+@onready var _small_medals_row: HBoxContainer = $MedalsPanel/SmallMedals
+
+@onready var _medal_slots: Array[TextureRect] = [
+	$MedalsPanel/SmallMedals/Medal1,
+	$MedalsPanel/SmallMedals/Medal2,
+	$MedalsPanel/SmallMedals/Medal3,
+	$MedalsPanel/SmallMedals/Medal4,
+	$MedalsPanel/SmallMedals/Medal5,
+	$MedalsPanel/SmallMedals/Medal6,
+]
+@onready var _medal_big: TextureRect = $MedalsPanel/MedalBig
 
 var _current_index := 0
+var _carousel_slots: Array[Control] = []
 
 
 func _ready() -> void:
+	_carousel_slots = [_slot_prev2, _slot_prev, _slot_center, _slot_next, _slot_next2]
+	_setup_medal_sizes()
 	visibility_changed.connect(_on_visibility_changed)
 	_connect_carousel()
 	_refresh_carousel()
 
+
+func _setup_medal_sizes() -> void:
+	_small_medals_row.add_theme_constant_override("separation", MEDAL_SMALL_SEPARATION)
+	_medals_panel.add_theme_constant_override("separation", MEDAL_BIG_SEPARATION)
+	for slot in _medal_slots:
+		slot.custom_minimum_size = MEDAL_SMALL_SIZE
+		slot.size = MEDAL_SMALL_SIZE
+		slot.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		slot.stretch_mode = TextureRect.STRETCH_SCALE
+		slot.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+	_medal_big.custom_minimum_size = MEDAL_BIG_SIZE
+	_medal_big.size = MEDAL_BIG_SIZE
+	_medal_big.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_medal_big.stretch_mode = TextureRect.STRETCH_SCALE
+	_medal_big.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 
 
 func _make_entry(
@@ -43,12 +95,26 @@ func _connect_carousel() -> void:
 	_slot_center.pressed.connect(_on_center_pressed)
 	$BtnLeft.pressed.connect(_on_prev_pressed)
 	$BtnRight.pressed.connect(_on_next_pressed)
-	_slot_prev.pressed.connect(_on_prev_pressed)
-	_slot_next.pressed.connect(_on_next_pressed)
+	for slot in _carousel_slots:
+		if slot != _slot_center:
+			slot.pressed.connect(_on_side_slot_pressed.bind(slot))
+
+
+func _on_side_slot_pressed(slot: Control) -> void:
+	var slot_index := _carousel_slots.find(slot)
+	if slot_index < 0:
+		return
+	var offset := slot_index - 2
+	if offset == 0:
+		return
+	_current_index = _wrap_index(_current_index + offset)
+	_refresh_carousel()
 
 
 func _on_visibility_changed() -> void:
 	if visible:
+		CharacterMedalsManager.load_medals()
+		CharacterMedalsManager.ensure_all_characters()
 		_refresh_carousel()
 
 
@@ -96,10 +162,38 @@ func _get_character_at(offset: int) -> CharacterSelectEntry:
 func _refresh_carousel() -> void:
 	if characters.is_empty():
 		return
-	_apply_slot(_slot_prev, _get_character_at(-1), false)
-	_apply_slot(_slot_center, _get_character_at(0), true)
-	_apply_slot(_slot_next, _get_character_at(1), false)
+	var offsets := [-2, -1, 0, 1, 2]
+	for i in offsets.size():
+		var is_center = offsets[i] == 0
+		_apply_slot(_carousel_slots[i], _get_character_at(offsets[i]), is_center)
 	_slot_center.disabled = not _get_character_at(0).unlocked
+	_refresh_medals(_get_character_at(0))
+	_position_medals_panel.call_deferred()
+
+
+func _position_medals_panel() -> void:
+	var panel: HBoxContainer = $MedalsPanel
+	panel.reset_size()
+	var panel_size := panel.get_combined_minimum_size()
+	panel.size = panel_size
+	var slot_rect := _slot_center.get_global_rect()
+	panel.global_position = Vector2(
+		slot_rect.position.x + slot_rect.size.x * 0.5 - panel_size.x * 0.5,
+		slot_rect.position.y - panel_size.y - 28.0
+	)
+
+
+func _refresh_medals(entry: CharacterSelectEntry) -> void:
+	if entry == null:
+		$MedalsPanel.hide()
+		return
+	$MedalsPanel.show()
+	var medals := CharacterMedalsManager.get_medals(entry.id)
+	for i in _medal_slots.size():
+		_medal_slots[i].texture = (
+			MEDAL_FILLED_SMALL[i] if medals[i] else MEDAL_EMPTY_SMALL
+		)
+	_medal_big.texture = MEDAL_FILLED_BIG if medals[6] else MEDAL_EMPTY_BIG
 
 
 func _apply_slot(slot: Control, entry: CharacterSelectEntry, is_center: bool) -> void:

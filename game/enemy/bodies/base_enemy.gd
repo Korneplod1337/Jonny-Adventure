@@ -243,8 +243,8 @@ func hit(amount: float, clear:= false) -> void:
 func _flash_damage() -> void:
 	damage_flash_token += 1
 	var my_token := damage_flash_token
-	sprite.modulate.a = 0.4
-	await get_tree().process_frame
+	sprite.modulate.a = 0.75
+	await get_tree().create_timer(0.1).timeout
 	if my_token != damage_flash_token or not is_instance_valid(self):
 		return
 	sprite.modulate.a = 1.0

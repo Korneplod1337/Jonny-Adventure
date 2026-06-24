@@ -12,7 +12,15 @@ var cost_multiplier := 1.0
 var cost_plus := 0.0
 var animated_world_speed := 1
 
-var AlchemistsGlasses := false #больше инфы
+signal alchemists_glasses_changed
+
+var _alchemists_glasses := false
+var AlchemistsGlasses: bool:
+	get:
+		return _alchemists_glasses
+	set(value):
+		_alchemists_glasses = value
+		alchemists_glasses_changed.emit()
 var Surestrike := false # убирает разброс выстрела, не меняя стат точности
 
 

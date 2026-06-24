@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://c8hfht7lr6kje" path="res://game/objects/Equipment/_enchantments/fire_enchantment.tres" id="16_g3480"]
 [ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/tier 0/Potion Red.tscn" id="16_o7186"]
 [ext_resource type="PackedScene" uid="uid://2dtjjer8eim8" path="res://game/objects/Equipment/Weapon/equip/tome_of_fairy_tales_equip.tscn" id="17_sfoq5"]
+[ext_resource type="PackedScene" uid="uid://8nlac1wigti" path="res://game/objects/Equipment/head/Alchemists_glasses.tscn" id="18_n8c84"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="20_ymo7r"]
 [ext_resource type="Resource" uid="uid://1t58a5xdtapu" path="res://game/objects/Equipment/_enchantments/poison_enchantment.tres" id="21_olefb"]
 
@@ -147,8 +148,11 @@ enchantment = ExtResource("21_olefb")
 position = Vector2(-182, 176)
 
 [node name="tome_of_fairy_tales_equip" parent="." unique_id=925666813 instance=ExtResource("17_sfoq5")]
-position = Vector2(-304, 170)
+position = Vector2(-292, 138)
 
 [node name="Sword_equip" parent="." unique_id=133096138 instance=ExtResource("20_ymo7r")]
 position = Vector2(-245, 42)
 enchantment = ExtResource("16_g3480")
+
+[node name="Alchemist\'s glasses" parent="." unique_id=1914859512 instance=ExtResource("18_n8c84")]
+position = Vector2(121, -47)

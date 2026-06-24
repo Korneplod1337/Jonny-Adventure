@@ -23,7 +23,7 @@ var player_name = 'Jonny'
 	"black": 2, #s hield
 	}
 
-const base_max_hp: 				int = 3    #6
+const base_max_hp: 				int  = 3    #6
 const base_move_speed:			float = 300.0
 const base_luck: 				float = 0.2
 const base_magic: 				float = 0.0
@@ -39,7 +39,7 @@ var magic_bonus: 			int = 0
 var damage_bonus: 			int = 0
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 5
+var fire_rate_bonus:			int = 4
 
 @export var hit_points_level: 	float = 1.0
 @export var move_speed_level: 	float = 2.0   # 1–10, 9 лвл прокачки
@@ -70,6 +70,8 @@ const START_WEAPON_EQUIP := preload("uid://bwiytmmsxjtk5")
 
 signal stats_changed(move_speed_level, luck_level, damage_level, spread_level,\
  range_level, hit_points_level, fire_rate_level, magic_level)
+signal bonuses_changed(hp_bonus, speed_bonus, luck_bonus, magic_bonus,\
+ damage_bonus, accuracy_bonus, range_bonus, fire_rate_bonus)
 signal hp_visual_changed(hp_array: Array)
 
 var input_vector = Vector2(0, 0)
@@ -460,6 +462,11 @@ func _emit_stats_changed() -> void:
 	_emit_hp_visual_changed()
 	emit_signal("stats_changed", move_speed_level, luck_level, damage_level,\
 	 spread_level, range_level, hit_points_level, fire_rate_level, magic_level)
+	_emit_bonuses_changed()
+
+func _emit_bonuses_changed() -> void:
+	emit_signal("bonuses_changed", hp_bonus, speed_bonus, luck_bonus, magic_bonus,\
+	 damage_bonus, accuracy_bonus, range_bonus, fire_rate_bonus)
 
 
 

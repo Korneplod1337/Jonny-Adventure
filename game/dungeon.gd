@@ -18,7 +18,7 @@ var player : CharacterBody2D = player_scene[char_name].instantiate()
 var current_floor: int = 0
 enum RoomType {	START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE, 
 				TREASURE, BANK, GAMBLING, BOSS, SECRET}
-
+				## shop - shop armory, buff = bank treasure, dop = blood gambling secret
 var floors_config: Array[Dictionary] = [
 {"total_rooms": 6, 	"shop_rooms": 2 , 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 #{"total_rooms": 5, 	"shop_rooms": 1 , 		"buff_rooms": 0, 			"dop_rooms": 0}, 
@@ -28,10 +28,10 @@ var floors_config: Array[Dictionary] = [
 {"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 
 {"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
-{"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
 
-{"total_rooms": 15, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%3}, 
-{"total_rooms": 16, 	"shop_rooms": 2, 		"buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
+{"total_rooms": 16, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%3}, 
+{"total_rooms": 18, 	"shop_rooms": 2, 		"buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
 ]
 
 @onready var room_presets_by_floor: Array = [
@@ -244,12 +244,12 @@ func print_map():
 					RoomType.STANDARD: 		line_room += "S"
 					RoomType.SHOP: 			line_room += "M"
 					RoomType.ARMORY: 		line_room += "A"
-					RoomType.BLOOD_TRIBUTE:	line_room += "K"
+					RoomType.BLOOD_TRIBUTE:	line_room += "K" #
 					RoomType.TREASURE: 		line_room += "T"
-					RoomType.BANK: 			line_room += "J"
-					RoomType.GAMBLING: 		line_room += "G"
-					RoomType.BOSS: 			line_room += "B"
-					RoomType.SECRET: 		line_room += "H"
+					RoomType.BANK: 			line_room += "J" #
+					RoomType.GAMBLING: 		line_room += "G" #
+					RoomType.BOSS: 			line_room += "B" #
+					RoomType.SECRET: 		line_room += "H" #
 				if rooms[key].exits.has(Vector2(1,0)):
 					line_room += "-"
 				else:

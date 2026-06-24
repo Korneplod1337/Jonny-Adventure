@@ -1,7 +1,11 @@
 extends CanvasLayer
 
 const font: FontFile = preload("uid://bdndi3ua8noo1")
+const BONUS_CLAMP_MIN := -20
+const BONUS_CLAMP_MAX := 20
 var ui_open := false
+var _bonus_labels: Dictionary = {}
+var _last_bonuses: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0]
 
 func _ready() -> void:
 	death_menu.visible = false
@@ -18,6 +22,7 @@ func _ready() -> void:
 		# подключения к игроку
 	var player := get_tree().get_first_node_in_group("player")
 	if player:
+		_setup_bonus_labels()
 		player.hp_visual_changed.connect(_on_hp_visual_changed)
 		_on_hp_visual_changed(player._build_hp_array())
 		
@@ -26,8 +31,14 @@ func _ready() -> void:
 			player.luck_level, player.damage_level,\
 			player.spread_level, player.range_level, player.hit_points_level,\
 			player.fire_rate_level, player.magic_level)
+		
+		player.bonuses_changed.connect(_on_player_bonuses_changed)
+		_on_player_bonuses_changed(player.hp_bonus, player.speed_bonus,\
+			player.luck_bonus, player.magic_bonus, player.damage_bonus,\
+			player.accuracy_bonus, player.range_bonus, player.fire_rate_bonus)
 	
 	else: print('Худ не нашёл Игрока')
+	GameState.alchemists_glasses_changed.connect(_on_alchemists_glasses_changed)
 	AchievementManager.achievement_unlocked.connect(_show_new_achievement)
 	bufs_render()
 
@@ -86,6 +97,65 @@ func _on_player_stats_changed(move_speed_level: float,\
 	hit_points_stat.frame	= int(hit_points_level)		- 1
 	fire_rate_stat.frame	= int(fire_rate_level)		- 1
 	magic_stat.frame		= int(magic_level)			- 1
+
+
+func _setup_bonus_labels() -> void:
+	var label_settings := LabelSettings.new()
+	label_settings.font = font
+	label_settings.font_size = 32
+	label_settings.outline_size = 4
+	label_settings.outline_color = Color(0.1, 0.1, 0.1, 1.0)
+	
+	var stat_nodes: Array[AnimatedSprite2D] = [
+		hit_points_stat, move_speed_stat, luck_stat, magic_stat,
+		damage_stat, spread_stat, range_stat, fire_rate_stat,
+	]
+	var bonus_keys: Array[String] = [
+		"hp", "speed", "luck", "magic",
+		"damage", "accuracy", "range", "fire_rate",
+	]
+	
+	for i in stat_nodes.size():
+		var label := Label.new()
+		label.label_settings = label_settings
+		label.position = stat_nodes[i].position + Vector2(52, 20)
+		label.hide()
+		stats_panel.add_child(label)
+		_bonus_labels[bonus_keys[i]] = label
+
+
+func _on_player_bonuses_changed(hp_bonus: int, speed_bonus: int, luck_bonus: int,\
+ magic_bonus: int, damage_bonus: int, accuracy_bonus: int,\
+ range_bonus: int, fire_rate_bonus: int) -> void:
+	_last_bonuses = [
+		hp_bonus, speed_bonus, luck_bonus, magic_bonus,
+		damage_bonus, accuracy_bonus, range_bonus, fire_rate_bonus,
+	]
+	_refresh_bonus_labels()
+
+
+func _on_alchemists_glasses_changed() -> void:
+	_refresh_bonus_labels()
+
+
+func _refresh_bonus_labels() -> void:
+	if _bonus_labels.is_empty():
+		return
+	
+	var show_bonuses := GameState.AlchemistsGlasses
+	var keys: Array[String] = [
+		"hp", "speed", "luck", "magic",
+		"damage", "accuracy", "range", "fire_rate",
+	]
+	
+	for i in keys.size():
+		var label: Label = _bonus_labels[keys[i]]
+		var value := clampi(_last_bonuses[i], BONUS_CLAMP_MIN, BONUS_CLAMP_MAX)
+		if show_bonuses and value != 0:
+			label.text = ("+%d" % value) if value > 0 else str(value)
+			label.show()
+		else:
+			label.hide()
 
 
 # Смерть и пауза
