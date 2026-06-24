@@ -5,7 +5,7 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 	#preload("uid://1t58a5xdtapu"), # poison
 	#preload("uid://b5olpo70xaavd"), # punch
 	#preload("uid://c8hfht7lr6kje"), # fire
-]
+] #сделать молнии
 
 # Пулы эквипмента
 '''

@@ -2,9 +2,12 @@ extends Node
 
 var unlocked_items: Dictionary = {}
 var picked_items: Dictionary = {}
+var run_picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
-var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'storybook',
- "mindseye", "storybook", "boomerang", ]
+var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'spiderweb',
+ "mindseye", "storybook", "boomerang", 'aegis', 'cross', 'bone', 'meat', 'beard',
+ 'homuncules', 'seed', 'shine', 'pocketwatch', 'bomb', 'jetfuel', 'broom', 'sandclock',
+ 'powerofdamage', 'torch', 'cauldron', 'harmony', 'fontain', 'grail', 'stardust', 'sextant',]
 var DEFAULT_PICK := ["heal"]
 
 '''
@@ -14,7 +17,27 @@ var DEFAULT_PICK := ["heal"]
 Тир 3- меняющие геймплей предметы и хуй пойми что, решафлы 
 
 unlock items это те, которые вообще не могут попасться до того, как их не анлокнет что-то
+
+Вес спавна:
+- weight в POOLS — базовый вес (по умолчанию 1.0)
+- UNIQUE_ONCE_ITEMS — после подбора вес = 0, больше не выпадают
+- REPEAT_PICKED_BONUS — бонус к весу для повторяемых предметов, уже подобранных ранее
+- WEIGHT_SYNERGIES — если подобран source, меняется вес targets (для карт-синергий)
 '''
+
+# Выпадают один раз за забег — после подбора вес становится 0
+const UNIQUE_ONCE_ITEMS := [
+	"mindseye",
+]
+
+# Бонус к весу, если предмет уже подбирали (только для не-уникальных)
+const REPEAT_PICKED_BONUS := 1.0
+
+# Синергии: подобранный source усиливает выпадение targets
+# multiplier — умножает вес, add — прибавляет после умножения
+const WEIGHT_SYNERGIES := [
+	# {"source": "some_card", "targets": ["aegis", "cross"], "multiplier": 3.0},
+]
 
 
 var POOLS := {
@@ -25,6 +48,28 @@ var POOLS := {
 		{"id": "healbig", 	"scene": preload("uid://bvy7i2nw65tyy"), 	"tier": 0},
 		{"id": "spiderweb", 	"scene": preload("uid://cgcss4ubm0tjd"), 	"tier": 1},
 		{"id": "mindseye", 	"scene": preload("uid://b2l04uommikl0"), 	"tier": 1},
+		{"id": "aegis", 		"scene": preload("uid://ccrdfupi8hyq2"), 	"tier": 1}, 
+		{"id": "cross", 		"scene": preload("uid://dk3m8x2nq7wp4"), 	"tier": 1},
+		{"id": "bone", 		"scene": preload("uid://el4n9y3or8xq5"), 	"tier": 1},
+		{"id": "meat", 		"scene": preload("uid://fm5o0z4ps9yr6"), 	"tier": 1},
+		{"id": "beard", 		"scene": preload("uid://gn6p1a5qt0zs7"), 	"tier": 1},
+		{"id": "homuncules", "scene": preload("uid://ho7q2b6ru1at8"), 	"tier": 1},
+		{"id": "seed", 		"scene": preload("uid://ip8r3c7sv2bu9"), 	"tier": 1},
+		{"id": "shine", 		"scene": preload("uid://jq9s4d8tw3cv0"), 	"tier": 1},
+		{"id": "pocketwatch","scene": preload("uid://kr0t5e9ux4dw1"), 	"tier": 1},
+		{"id": "bomb", 		"scene": preload("uid://ls1u6f0vy5ex2"), 	"tier": 1},
+		{"id": "jetfuel", 	"scene": preload("uid://mt2v7g1wz6fy3"), 	"tier": 1},
+		{"id": "broom", 		"scene": preload("uid://nu3w8h2xa7gz4"), 	"tier": 1},
+		{"id": "sandclock", 	"scene": preload("uid://ov4x9i3yb8ha5"), 	"tier": 1},
+		{"id": "powerofdamage", "scene": preload("uid://pw5y0j4zc9ib6"), "tier": 1},
+		{"id": "torch", 		"scene": preload("uid://qx6z1k5ad0jc7"), 	"tier": 1},
+		{"id": "cauldron", 	"scene": preload("uid://ry7a2l6be1kd8"), 	"tier": 1},
+		{"id": "harmony", 	"scene": preload("uid://sz8b3m7cf2le9"), 	"tier": 1},
+		{"id": "fountain", 	"scene": preload("uid://ta9c4n8dg3mf0"), 	"tier": 1},
+		{"id": "grail", 		"scene": preload("uid://ub0d5o9eh4ng1"), 	"tier": 1},
+		{"id": "stardust", 	"scene": preload("uid://vc1e6p0fi5oh2"), 	"tier": 1},
+		{"id": "sextant", 	"scene": preload("uid://wd2f7q1gj6pi3"), 	"tier": 1},
+		
 		{"id": "storybook", 	"scene": preload("uid://m6oyxodimxew"), 		"tier": 2},
 		{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
 		
@@ -57,16 +102,24 @@ func unlock_item(id: String) -> void:
 	save_config()
 
 func mark_picked(id: String) -> void:
-	if unlocked_items.get(id):
+	if not unlocked_items.get(id):
+		return
+	run_picked_items[id] = true
+	if id not in UNIQUE_ONCE_ITEMS:
 		picked_items[id] = true
 		save_config()
-	
+
+func reset_run() -> void:
+	run_picked_items.clear()
 
 func is_unlocked(id: String) -> bool:
 	return unlocked_items.get(id, false)
 
 func is_picked(id: String) -> bool:
 	return picked_items.get(id, false)
+
+func is_picked_this_run(id: String) -> bool:
+	return run_picked_items.get(id, false)
 
 func get_item_unlock_counts() -> String:
 	var unique_items = {}
@@ -112,8 +165,36 @@ func load_config() -> void:
 	else:
 		save_config()
 
+	var cleaned_unique := false
+	for id in UNIQUE_ONCE_ITEMS:
+		if picked_items.erase(id):
+			cleaned_unique = true
+	if cleaned_unique:
+		save_config()
+
 func _ready() -> void:
 	load_config()
+
+func get_spawn_weight(item: Dictionary) -> float:
+	if not is_unlocked(item.id):
+		return 0.0
+
+	if item.id in UNIQUE_ONCE_ITEMS and is_picked_this_run(item.id):
+		return 0.0
+
+	var w := float(item.get("weight", 1.0))
+
+	if is_picked(item.id) and item.id not in UNIQUE_ONCE_ITEMS:
+		w += REPEAT_PICKED_BONUS
+
+	for rule in WEIGHT_SYNERGIES:
+		if not is_picked(rule.source):
+			continue
+		if item.id in rule.targets:
+			w *= float(rule.get("multiplier", 1.0))
+			w += float(rule.get("add", 0.0))
+
+	return maxf(w, 0.0)
 
 func random_pick(pool_type: String, tiers: Array) -> Dictionary:
 	var pool: Array = POOLS.get(pool_type, []).filter(
@@ -124,18 +205,12 @@ func random_pick(pool_type: String, tiers: Array) -> Dictionary:
 
 	var candidates: Array = []
 	for item in pool:
-		if not is_unlocked(item.id):
+		var w := get_spawn_weight(item)
+		if w <= 0.0:
 			continue
-		var w := 1.0
-		if is_picked(item.id):
-			w += 1.0
 		candidates.append({"item": item, "weight": w})
 
-	# Fallback: любой unlocked из пула
 	if candidates.is_empty():
-		for item in pool:
-			if is_unlocked(item.id):
-				return item
 		return {}
 
 	var total := 0.0

@@ -4,8 +4,10 @@ class_name InventorySlot
 @onready var icon: TextureRect = $Icon
 @onready var tooltip_panel: Panel = $ToolTipPanel
 @onready var tooltip_label: Label = $ToolTipPanel/Label
+var count_label: Label
 var _pending_tooltip: String = ""
 var _pending_icon: Texture2D = null
+var _pending_count: int = 1
 
 func set_icon(tex: Texture2D):
 	if icon:
@@ -13,7 +15,22 @@ func set_icon(tex: Texture2D):
 	else:
 		_pending_icon = tex
 
+func set_count(count: int) -> void:
+	_pending_count = count
+	if count_label:
+		_apply_count(count)
+
+func _apply_count(count: int) -> void:
+	if not count_label:
+		return
+	if count > 1:
+		count_label.text = str(count)
+		count_label.show()
+	else:
+		count_label.hide()
+
 func _ready():
+	count_label = get_node_or_null("CountLabel")
 	tooltip_panel.top_level = true
 	mouse_filter = MOUSE_FILTER_PASS
 	mouse_entered.connect(_on_hover)
@@ -22,6 +39,7 @@ func _ready():
 		set_tooltip(_pending_tooltip)
 	if _pending_icon:
 		icon.texture = _pending_icon
+	_apply_count(_pending_count)
 
 func set_tooltip(text: String):
 	if tooltip_label:

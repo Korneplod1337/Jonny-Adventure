@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_je1yc")
 item_icon = ExtResource("2_je1yc")
 item_tooltip = "Mind's Eye"
-item_tooltip2 = "Mind's Eye gave me an epiphany"
+item_tooltip2 = "Mind's Eye gave me an epiphany (1 time max)"
 item_id = "mindseye"
 effect_power = 0.1
 

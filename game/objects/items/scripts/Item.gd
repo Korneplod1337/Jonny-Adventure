@@ -44,7 +44,7 @@ func _on_interact():
 		
 		# hud
 		var hud = get_tree().get_first_node_in_group("HUD")
-		hud.add_item(item_icon, item_tooltip, item_tooltip2)
+		hud.add_item(item_icon, item_tooltip, item_tooltip2, item_id)
 		ItemManager.mark_picked(item_id)
 		queue_free()
 

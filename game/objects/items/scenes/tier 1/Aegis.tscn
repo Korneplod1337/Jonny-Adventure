@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ccrdfupi8hyq2"]
+
+[ext_resource type="Script" uid="uid://6m7o6f3ekb78" path="res://game/objects/items/scripts/aegis.gd" id="1_885je"]
+[ext_resource type="Texture2D" uid="uid://4d2pow8hocn8" path="res://image/items/1 tier/ItemAegis.png" id="3_hpmg7"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_ovk18"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Aegis" type="Area2D" unique_id=1430574395]
+collision_layer = 0
+script = ExtResource("1_885je")
+item_icon = ExtResource("3_hpmg7")
+item_tooltip = "Aegis"
+item_tooltip2 = "A tiny piece of the aegis of the gods hardens your skin."
+item_id = "aegis"
+
+[node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_ovk18")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302434300]
+scale = Vector2(2, 2)
+texture = ExtResource("3_hpmg7")

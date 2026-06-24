@@ -5,40 +5,40 @@ func get_stat(p: Node, stat: String) -> float :
 	match stat:
 		"hp": 
 			var hp = int(p.base_max_hp + lerp(0.0, 9.0, (p.hit_points_level - 1.0) / 9.0))
-			hp += clampi(int(p.hp_bonus * 0.5), -10, 10) 							# 20
+			hp += clampi(int(p.hp_bonus * 0.25), -10, 10) 							# 40
 			return hp 
 		"move_speed":
 			var speed = p.base_move_speed + lerp(0.0, 270.0, (p.move_speed_level - 1.0) / 9.0)
-			speed *= clamp((1 + p.speed_bonus * 0.04), 0.4, 1.8) 					# 20
+			speed *= clamp((1 + p.speed_bonus * 0.02), 0.4, 1.8) 					# 40
 			return speed 
 		"luck":
 			var luck = p.base_luck + lerp(0.0, 0.63, (p.luck_level - 1.0) / 9.0)
-			luck *= (1 + p.luck_bonus * 0.1) 										# 22
+			luck *= (1 + p.luck_bonus * 0.055) 										# 40
 			luck = clamp(luck, 0.1, 2.0)
 			return luck 
 		"magic":
 			var magic = p.base_magic + lerp(0.0, 1.35, (p.magic_level - 1.0) / 9.0)
-			magic *= clamp((1 + p.magic_bonus * 0.1), 0.0, 3)  						# 20
+			magic *= clamp((1 + p.magic_bonus * 0.05), 0.0, 3)  						# 40
 			magic = clamp(magic, 0.0, 4.0) #4.05
 			return magic 
 		"damage":
 			var damage = p.base_damage + lerp(0.0, 36.0, (p.damage_level - 1.0) / 9.0) 
-			damage *= clamp((1 + p.damage_bonus * 0.1),0.1 , 3)  					# 20
+			damage *= clamp((1 + p.damage_bonus * 0.05),0.1 , 3)  					# 40
 			damage = clamp(damage, 0.1, 1000.0)
 			return damage 
 		"spread":
 			var spread_deg: float = p.base_spread + lerp(36.0, 0.0, (p.spread_level - 1.0) / 9.0)
-			spread_deg *= (1 - p.accuracy_bonus * 0.05)  							# 20
+			spread_deg *= (1 - p.accuracy_bonus * 0.025)  							# 40
 			spread_deg = clamp(spread_deg, 0.01, 180.0)
 			return spread_deg 
 		"range": 
 			var range_val = p.base_range + lerp(0.0, 360.0, (p.range_level - 1.0) / 9.0)
-			range_val *= clamp((1 + p.range_bonus * 0.1), 0.2, 3.0) 					# 20
+			range_val *= clamp((1 + p.range_bonus * 0.05), 0.4, 3.0) 				# 40
 			return range_val 
 		"fire_rate":
 			var fire_rate = p.base_fire_rate + lerp(1.0, 0.1, (p.fire_rate_level - 1.0) / 9.0)
 			#print(fire_rate, ' ', (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.04 * p.extra_fire_rate))
-			fire_rate *= (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.03 * p.extra_fire_rate) # 20
+			fire_rate *= (1 - clamp(p.fire_rate_bonus, -40, 40) * 0.015 * p.extra_fire_rate) # 40
 			#print(fire_rate, '- Итого')
 			return fire_rate 
 		_:

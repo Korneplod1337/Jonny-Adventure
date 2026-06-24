@@ -63,6 +63,7 @@ var enemy_cooldown_multiplier: float = 1.0
 func obnulenie() -> void:
 	coins = 0
 	"Всё, что обнуляется между играми сюда по идее"
+	ItemManager.reset_run()
 	DamageDealer.clear_modifiers()
 	AlchemistsGlasses = false
 	Surestrike = false

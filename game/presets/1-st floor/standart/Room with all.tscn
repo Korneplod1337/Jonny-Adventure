@@ -252,7 +252,7 @@ position = Vector2(-141, 237)
 position = Vector2(-136, 151)
 
 [node name="Spider web" parent="." unique_id=1838766649 instance=ExtResource("26_phtwq")]
-position = Vector2(-216, 155)
+position = Vector2(-217, 150)
 
 [node name="Pistol" parent="." unique_id=241584314 instance=ExtResource("27_a1qv4")]
 position = Vector2(40, 457)

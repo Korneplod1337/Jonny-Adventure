@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 const font: FontFile = preload("uid://bdndi3ua8noo1")
-const BONUS_CLAMP_MIN := -20
-const BONUS_CLAMP_MAX := 20
+const BONUS_CLAMP_MIN := -40
+const BONUS_CLAMP_MAX := 40
 var ui_open := false
 var _bonus_labels: Dictionary = {}
 var _last_bonuses: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0]
@@ -180,8 +180,20 @@ func _toggle_pause() -> void:
 const SlotScene: PackedScene = preload("uid://bmr2p245fgr3l")
 @onready var items: Array[Dictionary] = []
 
-func add_item(icon: Texture2D, tooltip: String, tooltip2: String):
-	items.insert(0, {"icon": icon, "tooltip": tooltip, "tooltip2": tooltip2})
+func add_item(icon: Texture2D, tooltip: String, tooltip2: String, item_id: String = "") -> void:
+	for item_data in items:
+		if item_data.id == item_id:
+			item_data.count += 1
+			_render_inventory()
+			return
+	
+	items.insert(0, {
+		"id": item_id,
+		"icon": icon,
+		"tooltip": tooltip,
+		"tooltip2": tooltip2,
+		"count": 1,
+	})
 	_render_inventory()
 
 func _render_inventory():
@@ -194,6 +206,7 @@ func _render_inventory():
 			slot.set_tooltip(item_data.tooltip2)
 		else:
 			slot.set_tooltip(item_data.tooltip)
+		slot.set_count(item_data.count)
 		items_container.add_child(slot)
 
 func bufs_render() -> void:
