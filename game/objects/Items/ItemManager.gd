@@ -9,6 +9,8 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'sp
  'homuncules', 'seed', 'shine', 'pocketwatch', 'bomb', 'jetfuel', 'broom', 'sandclock',
  'powerofdamage', 'cauldron', 'harmony', 'fountain', 'grail', 'stardust', 'sextant',
  'exorcism', 'virus', 'basilisk',
+ 'guillotine', 'wraith', 'target', 'radar',
+ 'luckycoin', 'ez', 'petroglyph', 'forceshield', 'blueprint',
  'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
 var DEFAULT_PICK := ["heal"]
 
@@ -21,7 +23,7 @@ const CARD_SYNERGY_SOURCES := [
 	"card6", "card7", "card8", "card9", "card10",
 	"cardjack", "cardqueen", "cardking",
 ]
-const CARD_PICK_SYNERGY_ADD := 2.0
+const CARD_PICK_SYNERGY_ADD := 3.0
 
 '''
 Тир 0- дорогие бафы 4-х квадрантов, хилки
@@ -87,6 +89,15 @@ var POOLS := {
 		{"id": "exorcism", 	"scene": preload("uid://bspi32myt8j6q"), 	"tier": 1},
 		{"id": "virus", 		"scene": preload("uid://dex02b4e0mukt"), 	"tier": 1},
 		{"id": "basilisk", 	"scene": preload("uid://dxwwacpt1rply"), 	"tier": 1},
+		{"id": "guillotine", "scene": preload("res://game/objects/items/scenes/tier 1/Guillotine.tscn"), "tier": 1},
+		{"id": "wraith", 	"scene": preload("res://game/objects/items/scenes/tier 1/Wraith.tscn"), 	"tier": 1},
+		{"id": "target", 	"scene": preload("res://game/objects/items/scenes/tier 1/Target.tscn"), 	"tier": 1},
+		{"id": "radar", 		"scene": preload("res://game/objects/items/scenes/tier 1/Radar.tscn"), 	"tier": 1},
+		{"id": "luckycoin", 	"scene": preload("res://game/objects/items/scenes/tier 1/LuckyCoin.tscn"), "tier": 1},
+		{"id": "ez", 		"scene": preload("res://game/objects/items/scenes/tier 1/EZ.tscn"), 		"tier": 1},
+		{"id": "petroglyph",	"scene": preload("res://game/objects/items/scenes/tier 1/Petroglyph.tscn"), "tier": 1},
+		{"id": "forceshield","scene": preload("res://game/objects/items/scenes/tier 1/ForceShield.tscn"), "tier": 1},
+		{"id": "blueprint", 	"scene": preload("res://game/objects/items/scenes/tier 1/Blueprint.tscn"), "tier": 1},
 		
 		{"id": "storybook", 	"scene": preload("uid://m6oyxodimxew"), 		"tier": 2},
 		{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
@@ -121,6 +132,10 @@ var POOLS := {
 }
 
 var rng := RandomNumberGenerator.new()
+var last_picked_item_id: String = ""
+
+## TODO(forceshield): вызвать recharge_floor_items(player) при смене этажа
+## (dungeon.regenerate_floor / переход этажа пока не подключён к геймплею)
 
 func unlock_item(id: String) -> void:
 	unlocked_items[id] = true
@@ -130,12 +145,35 @@ func mark_picked(id: String) -> void:
 	if not unlocked_items.get(id):
 		return
 	run_picked_items[id] = true
+	if id != "blueprint":
+		last_picked_item_id = id
 	if id not in UNIQUE_ONCE_ITEMS:
 		picked_items[id] = true
 		save_config()
 
 func reset_run() -> void:
 	run_picked_items.clear()
+	last_picked_item_id = ""
+
+func apply_item_effect_by_id(id: String, player: Node) -> bool:
+	if id.is_empty() or id == "blueprint":
+		return false
+	for pool in POOLS.values():
+		for item in pool:
+			if item.id == id:
+				var inst = item.scene.instantiate()
+				inst.player = player
+				inst.apply_item_effect()
+				inst.queue_free()
+				return true
+	return false
+
+func apply_last_item_effect(player: Node) -> bool:
+	return apply_item_effect_by_id(last_picked_item_id, player)
+
+func recharge_floor_items(player: Node) -> void:
+	if player.has_method("recharge_force_shield"):
+		player.recharge_force_shield()
 
 func is_unlocked(id: String) -> bool:
 	return unlocked_items.get(id, false)

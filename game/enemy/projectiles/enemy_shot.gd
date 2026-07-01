@@ -9,6 +9,7 @@ var atk_range: float = 200.0
 
 var distance_travelled := 0.0
 var exploded := false
+var owner_enemy: Node = null
 
 
 func setup(dir: Vector2, damage_values: Vector3i, spd: float, atk_rng: float) -> void:
@@ -35,7 +36,8 @@ func _on_body_entered(body):
 	if exploded:
 		return
 	if body.is_in_group("player"):
-		body.take_damage(damage[0], damage[1], damage[2])
+		var attacker := owner_enemy if owner_enemy else self
+		body.take_damage(damage[0], damage[1], damage[2], attacker)
 		exploded = true
 		explosion(0)
 		return

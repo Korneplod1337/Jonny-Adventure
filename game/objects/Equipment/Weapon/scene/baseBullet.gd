@@ -3,7 +3,7 @@ class_name BaseGun
 
 var luck :float = 0.0
 var spread: float
-var base_crit_bonus: float = 50
+var base_crit_bonus: float = 60
 
 @onready var crit: AnimatedSprite2D = $Crit
 const CRIT_WORLD_OFFSET := Vector2(0, -60)
@@ -46,7 +46,10 @@ func _on_body_entered(body):
 
 func _get_damage_with_crits() -> int:
 	var chance := 0.1 + luck / 2
-	var crit_bonus := base_crit_bonus / (spread + 10)
+	var shooter := get_tree().get_first_node_in_group("player")
+	if shooter:
+		chance += shooter.crit_chance_bonus
+	var crit_bonus := base_crit_bonus / (spread + 20)
 	var total_crit := 1.0
 	while true:
 		if randf() < chance:
@@ -59,6 +62,4 @@ func _get_damage_with_crits() -> int:
 				break
 		else:
 			break
-
-
-	return int( round(damage * self_damage_multiplier * total_crit))
+	return int(round(damage * self_damage_multiplier * total_crit))

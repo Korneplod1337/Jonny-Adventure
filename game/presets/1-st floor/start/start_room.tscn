@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://2dtjjer8eim8" path="res://game/objects/Equipment/Weapon/equip/tome_of_fairy_tales_equip.tscn" id="17_sfoq5"]
 [ext_resource type="PackedScene" uid="uid://8nlac1wigti" path="res://game/objects/Equipment/head/Alchemists_glasses.tscn" id="18_n8c84"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="20_ymo7r"]
-[ext_resource type="Resource" uid="uid://1t58a5xdtapu" path="res://game/objects/Equipment/_enchantments/poison_enchantment.tres" id="21_olefb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -142,7 +141,6 @@ player_phy_damage = 100
 
 [node name="Pistol" parent="." unique_id=241584314 instance=ExtResource("13_8rj6y")]
 position = Vector2(-123, 62)
-enchantment = ExtResource("21_olefb")
 
 [node name="Sniper" parent="." unique_id=1823620353 instance=ExtResource("15_ncaf4")]
 position = Vector2(-182, 176)

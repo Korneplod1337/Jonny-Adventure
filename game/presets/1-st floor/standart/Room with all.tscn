@@ -231,7 +231,7 @@ position = Vector2(43, 121)
 position = Vector2(45, 342)
 
 [node name="Boomerang" parent="." unique_id=1430574395 instance=ExtResource("19_vm4yr")]
-position = Vector2(-145, 328)
+position = Vector2(-139, 319)
 
 [node name="Potion Heal" parent="." unique_id=1431943573 instance=ExtResource("20_0h76k")]
 position = Vector2(-137, 70)

@@ -32,6 +32,10 @@ const base_spread: 				float = 14.0
 const base_range: 				float = 150.0
 const base_fire_rate: 			float = 0.5
 
+const BASE_COLLISION_MASK := 55
+const ENEMY_COLLISION_BITS := 4 | 64
+const BASE_IMMUNE_TIME := 0.3
+
 var hp_bonus: 				int = 0
 var speed_bonus: 			int = 0
 var luck_bonus: 				int = 0
@@ -39,7 +43,14 @@ var magic_bonus: 			int = 0
 var damage_bonus: 			int = 0
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 42
+var fire_rate_bonus:			int = 0
+
+var crit_chance_bonus: 		float = 0.0
+var immune_time_bonus: 		float = 0.0
+var pass_through_enemies: 	bool = false
+var ez_retaliation_count: 	int = 0
+var force_shield_max: 		int = 0
+var force_shield_charges: 	int = 0
 
 @export var hit_points_level: 	float = 1.0
 @export var move_speed_level: 	float = 2.0   # 1–10, 9 лвл прокачки
@@ -269,9 +280,25 @@ func update_equipment_visuals():
 
 # ЗДОРОВЬЕ
 func take_damage(phy_damage: int = 0,
-				mag_damage: int = 0, clr_damage: int = 0) -> void:
+				mag_damage: int = 0, clr_damage: int = 0, attacker: Node = null) -> void:
 	if invulnerable:
 		return
+	
+	var incoming := phy_damage + mag_damage + clr_damage
+	if incoming <= 0 and attacker == null:
+		return
+	
+	if attacker:
+		_retaliate_ez(attacker)
+	
+	if incoming <= 0:
+		return
+	
+	if force_shield_charges > 0:
+		force_shield_charges -= 1
+		_start_invulnerability()
+		return
+	
 	if phy_damage:
 		var remaining := phy_damage
 		for d in ["black", "blue"]:
@@ -320,10 +347,39 @@ func take_damage(phy_damage: int = 0,
 			die()
 	
 
+	_start_invulnerability()
+
+func _start_invulnerability() -> void:
 	invulnerable = true
+	imuneTimer.wait_time = BASE_IMMUNE_TIME + immune_time_bonus
 	imuneTimer.start()
 	$AnimatedSprite2D.modulate.a = 0.4
 	_emit_hp_visual_changed()
+
+func _retaliate_ez(attacker: Node) -> void:
+	if ez_retaliation_count <= 0:
+		return
+	var target: Node = attacker
+	if not target.has_method("hit"):
+		var owner = target.get("owner_enemy")
+		if owner is Node:
+			target = owner
+	if not target.has_method("hit"):
+		return
+	for _i in ez_retaliation_count:
+		var info := DamageInfo.new()
+		info.damage = damage
+		info.source = self
+		info.hit_position = global_position
+		if target is Node2D:
+			info.direction = (target.global_position - global_position).normalized()
+		DamageDealer.deal_damage(self, target, info)
+
+func recharge_force_shield() -> void:
+	for i in range(force_shield_max):
+		if randi()%2 <1:
+			force_shield_charges +=1
+
 
 func heal(red: int = 0, green: int = 0, blue: int = 0, black: int = 0) -> void:
 	hp_list["blue"] += blue
@@ -470,6 +526,13 @@ func _emit_stats_changed() -> void:
 func _emit_bonuses_changed() -> void:
 	emit_signal("bonuses_changed", hp_bonus, speed_bonus, luck_bonus, magic_bonus,\
 	 damage_bonus, accuracy_bonus, range_bonus, fire_rate_bonus)
+
+
+func _update_enemy_collision() -> void:
+	if pass_through_enemies:
+		collision_mask = BASE_COLLISION_MASK & ~ENEMY_COLLISION_BITS
+	else:
+		collision_mask = BASE_COLLISION_MASK
 
 
 

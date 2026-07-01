@@ -5,6 +5,7 @@ var damage: float = 0.0
 var is_clear: bool = false
 
 var source: Node = null
+var target: Node = null
 var hit_position: Vector2 = Vector2.ZERO
 var direction: Vector2 = Vector2.RIGHT
 
@@ -23,6 +24,7 @@ func duplicate_info() -> DamageInfo:
 	copy.damage = damage
 	copy.is_clear = is_clear
 	copy.source = source
+	copy.target = target
 	copy.hit_position = hit_position
 	copy.direction = direction
 	copy.enchantment = enchantment

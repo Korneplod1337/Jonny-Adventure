@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4emycgmbx27e" path="res://image/equip/weapon/alt_Spit_bullet.png" id="2_bqapk"]
 [ext_resource type="PackedScene" uid="uid://bhfqxrdvcm408" path="res://game/objects/Equipment/Weapon/scene/JonnyShotAlt.tscn" id="3_h44u8"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_vuclf"]
-[ext_resource type="PackedScene" uid="uid://c8enchantshader01" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="enchant_shader_scene"]
+[ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="enchant_shader_scene"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqatu"]
 radius = 19.026299
@@ -46,4 +46,4 @@ clip_children = 2
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_oqfxe")
 
-[node name="enchant_shader" parent="AnimatedSprite2D" instance=ExtResource("enchant_shader_scene")]
+[node name="enchant_shader" parent="AnimatedSprite2D" unique_id=1716099907 instance=ExtResource("enchant_shader_scene")]

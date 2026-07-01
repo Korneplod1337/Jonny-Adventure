@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 
 	if player_in_hit_range and deals_melee_damage:
 		var atk := get_attack_damage()
-		player.take_damage(atk.x, atk.y, atk.z)
+		player.take_damage(atk.x, atk.y, atk.z, self)
 	#Отталкивание
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
 	if hitstun > 0:

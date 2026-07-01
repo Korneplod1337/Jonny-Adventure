@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ctoy78au1wi65"]
+
+[ext_resource type="Script" uid="uid://dgjghwjayu8hm" path="res://game/objects/items/scripts/radar.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://uqwg6h8hpvrs" path="res://image/items/1 tier/ItemRadar.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Radar" type="Area2D" unique_id=1154833122]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_tex")
+item_tooltip = "Radar"
+item_tooltip2 = "You see them before they see you. Are you going to get hurt more this time?"
+item_id = "radar"
+effect_power = 0.1
+
+[node name="Interactable" parent="." unique_id=1517210675 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1419836655]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=123438539]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2043458768]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")

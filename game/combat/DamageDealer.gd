@@ -25,7 +25,13 @@ func get_hit_contact_point(from_node: Node, target: Node, weapon_point: Vector2)
 
 
 func apply_hit_modifiers(info: DamageInfo) -> void:
+	_apply_modifiers(info, false)
+
+
+func _apply_modifiers(info: DamageInfo, per_target: bool) -> void:
 	for modifier in _modifiers:
+		if modifier.is_per_target() != per_target:
+			continue
 		modifier.apply(info)
 
 
@@ -79,9 +85,12 @@ func clear_modifiers() -> void:
 func _deal_single(target: Node, info: DamageInfo) -> void:
 	if not _can_be_damaged(target):
 		return
-	if info.enchantment:
-		info.enchantment.apply_on_hit(target, info.direction)
-	target.hit(info.damage, info.is_clear)
+	var hit_info := info.duplicate_info()
+	hit_info.target = target
+	_apply_modifiers(hit_info, true)
+	if hit_info.enchantment:
+		hit_info.enchantment.apply_on_hit(target, hit_info.direction)
+	target.hit(hit_info.damage, hit_info.is_clear)
 
 func _deal_area(from_node: Node, info: DamageInfo, radius: float, primary_target: Node) -> void:
 	var targets := _find_targets_in_radius(from_node, info.hit_position, radius)

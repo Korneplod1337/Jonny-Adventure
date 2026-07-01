@@ -27,18 +27,28 @@ enum RoomType {	START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
 				TREASURE, BANK, GAMBLING, BOSS, SECRET}
 				## shop - shop armory, buff = bank treasure, dop = blood gambling secret
 var floors_config: Array[Dictionary] = [
-{"total_rooms": 6, 	"shop_rooms": 2 , 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-#{"total_rooms": 6, 	"shop_rooms": 1 , 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+# локация 1
+{"total_rooms": 5, 	"shop_rooms": 2, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+#{"total_rooms": 6, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 {"total_rooms": 6, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-
+# локация 2
 {"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
 {"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
-
+# локация 3
+{"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 {"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
-{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
-
-{"total_rooms": 16, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%3}, 
-{"total_rooms": 18, 	"shop_rooms": 2, 		"buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
+# локация 4
+{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 16, 	"shop_rooms": 2, 		"buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
+# локация 5
+{"total_rooms": 16, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
+{"total_rooms": 18, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
+# локация 6
+{"total_rooms": 18, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
+{"total_rooms": 20, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
+# локация 7
+{"total_rooms": 8, 	"shop_rooms": 2,			"buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 1, 	"shop_rooms": 0, 		"buff_rooms": 0, 	"dop_rooms": 0}, 
 ]
 
 @onready var room_presets_by_floor: Array = [
@@ -49,12 +59,22 @@ var floors_config: Array[Dictionary] = [
 	standard_room_presets_floor3,
 	standard_room_presets_floor3,
 	standard_room_presets_floor4,
-	standard_room_presets_floor4]
+	standard_room_presets_floor4,
+	standard_room_presets_floor5,
+	standard_room_presets_floor5,
+	standard_room_presets_floor6,
+	standard_room_presets_floor6,
+	standard_room_presets_floor7,
+	standard_room_presets_floor7,
+]
 
 @export var standard_room_presets_floor1: Array[PackedScene]
 @export var standard_room_presets_floor2: Array[PackedScene]
 @export var standard_room_presets_floor3: Array[PackedScene]
 @export var standard_room_presets_floor4: Array[PackedScene]
+@export var standard_room_presets_floor5: Array[PackedScene]
+@export var standard_room_presets_floor6: Array[PackedScene]
+@export var standard_room_presets_floor7: Array[PackedScene]
 
 @export var start_room_preset: 		Array[PackedScene]
 @export var shop_room_preset: 		Array[PackedScene]
@@ -121,7 +141,7 @@ func instance_room(room: Room) -> Node:
 		RoomType.BANK:
 			return bank_room_preset		[current_floor / 2].instantiate()
 		RoomType.SECRET:
-			return secret_room_preset	[current_floor / 2].instantiate()
+			return secret_room_preset		[current_floor / 2].instantiate()
 		
 	return null
 

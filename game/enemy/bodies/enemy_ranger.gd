@@ -21,6 +21,7 @@ func shoot_projectile(direction: Vector2) -> void:
 	shot.global_position = global_position + dir * 12.0
 
 	if shot is EnemyShot:
+		shot.owner_enemy = self
 		shot.setup(dir, get_attack_damage(), projectile_speed, projectile_range)
 	elif shot.has_method("setup"):
 		shot.setup(dir, get_attack_damage(), projectile_speed, projectile_range)
