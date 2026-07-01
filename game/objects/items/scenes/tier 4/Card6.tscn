@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://card6scene001"]
+
+[ext_resource type="Script" path="res://game/objects/items/scripts/card.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d16k0125piwlo" path="res://image/items/4 tier/ItemCard1.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Card6" type="Area2D" unique_id=1711463305]
+collision_layer = 0
+script = ExtResource("1_script")
+luck_delta = -1
+magic_delta = 3
+item_icon = ExtResource("2_tex")
+item_tooltip = "Card Six"
+item_tooltip2 = "Magic +3, Luck -1"
+item_id = "card6"
+
+[node name="Interactable" parent="." unique_id=2133158071 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1198080606]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=282998792]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=415708414]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")

@@ -5,6 +5,16 @@ func _ready() -> void:
 	get_parent().get_parent().get_node('settings_menu/Settings_layer/Settings_Control/Button_sound').update_audio()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not get_parent().visible:
+		return
+	if line_edit.has_focus():
+		return
+	if event.is_action_pressed("space"):
+		_on_button_new_game_pressed()
+		get_viewport().set_input_as_handled()
+
+
 func _on_button_new_game_mouse_entered() -> void:
 	$Button_NewGame/Select_NewGame.show()
 func _on_button_new_game_mouse_exited() -> void:

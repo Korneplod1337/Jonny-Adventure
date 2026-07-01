@@ -1,7 +1,8 @@
 extends "res://game/presets/RoomScript.gd" #no enemy
 
 const ChestScene := preload("uid://tsiccout8ibv")
-var tiers_array := [[0, 1], [0, 1], [0, 1, 2], [0, 1, 2], [0, 1, 2, 3], [0, 1, 2, 3], [1, 2, 3], [2, 3]]
+var tiers_equip_array := [[0, 1], [0, 1, 2], [0, 1, 2], [0, 1, 2, 3], [0, 2, 3], [2, 3], [2, 3]]
+var tiers_item_array := [[0, 1], [0, 1, 2, 4], [0, 1, 2, 4], [0, 1, 2, 3, 4], [0, 2, 3], [2, 3], [2, 3]]
 
 func _ready() -> void:
 	tabels_spawn()
@@ -13,7 +14,7 @@ func tabels_spawn() -> void:
 	
 	var Chest = ChestScene.instantiate()
 	Chest.position = self.position
-	Chest.item_tier = tiers_array[current_floor]
-	Chest.equip_tier = tiers_array[current_floor]
+	Chest.item_tier = tiers_item_array[int(current_floor)/2]
+	Chest.equip_tier = tiers_equip_array[int(current_floor)/2]
 	#Chest.set_scale(Vector2i(2, 2))
 	get_tree().current_scene.add_child(Chest)

@@ -7,14 +7,28 @@ var SAVE_PATH := "user://items.cfg"
 var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'spiderweb',
  "mindseye", "storybook", "boomerang", 'aegis', 'cross', 'bone', 'meat', 'beard',
  'homuncules', 'seed', 'shine', 'pocketwatch', 'bomb', 'jetfuel', 'broom', 'sandclock',
- 'powerofdamage', 'torch', 'cauldron', 'harmony', 'fontain', 'grail', 'stardust', 'sextant',]
+ 'powerofdamage', 'cauldron', 'harmony', 'fountain', 'grail', 'stardust', 'sextant',
+ 'exorcism', 'virus', 'basilisk',
+ 'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
 var DEFAULT_PICK := ["heal"]
+
+const CARD_IDS := [
+	"card6", "card7", "card8", "card9", "card10",
+	"cardjack", "cardqueen", "cardking", "cardace",
+]
+# Карты, подобранные за забег, усиливают выпадение остальных (кроме туза как источника)
+const CARD_SYNERGY_SOURCES := [
+	"card6", "card7", "card8", "card9", "card10",
+	"cardjack", "cardqueen", "cardking",
+]
+const CARD_PICK_SYNERGY_ADD := 2.0
 
 '''
 Тир 0- дорогие бафы 4-х квадрантов, хилки
 Тир 1- обычные предметы/ статбафы
 Тир 2- сильные предметы
 Тир 3- меняющие геймплей предметы и хуй пойми что, решафлы 
+Тир 4- карты
 
 unlock items это те, которые вообще не могут попасться до того, как их не анлокнет что-то
 
@@ -28,6 +42,7 @@ unlock items это те, которые вообще не могут попас
 # Выпадают один раз за забег — после подбора вес становится 0
 const UNIQUE_ONCE_ITEMS := [
 	"mindseye",
+	
 ]
 
 # Бонус к весу, если предмет уже подбирали (только для не-уникальных)
@@ -69,13 +84,23 @@ var POOLS := {
 		{"id": "grail", 		"scene": preload("uid://ub0d5o9eh4ng1"), 	"tier": 1},
 		{"id": "stardust", 	"scene": preload("uid://vc1e6p0fi5oh2"), 	"tier": 1},
 		{"id": "sextant", 	"scene": preload("uid://wd2f7q1gj6pi3"), 	"tier": 1},
+		{"id": "exorcism", 	"scene": preload("uid://bspi32myt8j6q"), 	"tier": 1},
+		{"id": "virus", 		"scene": preload("uid://dex02b4e0mukt"), 	"tier": 1},
+		{"id": "basilisk", 	"scene": preload("uid://dxwwacpt1rply"), 	"tier": 1},
 		
 		{"id": "storybook", 	"scene": preload("uid://m6oyxodimxew"), 		"tier": 2},
 		{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
+
+		{"id": "card6", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card6.tscn"), 		"tier": 4},
+		{"id": "card7", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card7.tscn"), 		"tier": 4},
+		{"id": "card8", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card8.tscn"), 		"tier": 4},
+		{"id": "card9", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card9.tscn"), 		"tier": 4},
+		{"id": "card10", 	"scene": preload("res://game/objects/items/scenes/tier 4/Card10.tscn"), 		"tier": 4},
+		{"id": "cardjack", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardJack.tscn"), 	"tier": 4},
+		{"id": "cardqueen", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardQueen.tscn"), 	"tier": 4},
+		{"id": "cardking", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardKing.tscn"), 	"tier": 4},
+		{"id": "cardace", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardAce.tscn"), 	"tier": 4},
 		
-		
-		{"id": "ring", 		"scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
-		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 3}
 	],
 	"shop": [
 		{"id": "lvlup", 		"scene": preload("uid://ywfb4cg1rk1u"), "tier": 0},
@@ -122,6 +147,7 @@ func is_picked_this_run(id: String) -> bool:
 	return run_picked_items.get(id, false)
 
 func get_item_unlock_counts() -> String:
+	update_unlocks()
 	var unique_items = {}
 	for pool in POOLS.values():
 		for item in pool:
@@ -174,6 +200,19 @@ func load_config() -> void:
 
 func _ready() -> void:
 	load_config()
+	update_unlocks()
+	AchievementManager.achievement_unlocked.connect(_on_achievement_unlocked)
+
+func _on_achievement_unlocked(_popup_path: String) -> void:
+	update_unlocks()
+	save_config()
+
+func update_unlocks() -> void:
+	for ach_id in AchivStatsRegistry.ITEM_UNLOCKS.keys():
+		if not AchievementManager.is_unlocked(ach_id):
+			continue
+		for item_id in AchivStatsRegistry.ITEM_UNLOCKS[ach_id]:
+			unlocked_items[item_id] = true
 
 func get_spawn_weight(item: Dictionary) -> float:
 	if not is_unlocked(item.id):
@@ -194,9 +233,17 @@ func get_spawn_weight(item: Dictionary) -> float:
 			w *= float(rule.get("multiplier", 1.0))
 			w += float(rule.get("add", 0.0))
 
+	if item.id in CARD_IDS:
+		for source_id in CARD_SYNERGY_SOURCES:
+			if source_id == item.id:
+				continue
+			if is_picked_this_run(source_id):
+				w += CARD_PICK_SYNERGY_ADD
+
 	return maxf(w, 0.0)
 
 func random_pick(pool_type: String, tiers: Array) -> Dictionary:
+	update_unlocks()
 	var pool: Array = POOLS.get(pool_type, []).filter(
 		func(i): return i.tier in tiers
 	)

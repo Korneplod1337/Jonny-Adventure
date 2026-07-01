@@ -11,6 +11,7 @@ func _ready() -> void:
 
 
 func update_stats_list() -> void:
+	StatsManager.load_statistic()
 	for child in stats_container.get_children():
 		child.queue_free()
 

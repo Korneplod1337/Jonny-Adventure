@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://rwvfj1hyw5xk" path="res://image/equip/weapon_effects/sword1.png" id="2_ymej7"]
 [ext_resource type="PackedScene" uid="uid://didc6fkb0fgjo" path="res://game/objects/Equipment/Weapon/scene/Sword.tscn" id="3_xo03t"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_8lxy5"]
-[ext_resource type="PackedScene" uid="uid://c8enchantshader01" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="enchant_shader_scene"]
+[ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="enchant_shader_scene"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
 radius = 19.026299
@@ -48,4 +48,5 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ojoxv")
 offset = Vector2(0, 5)
 
-[node name="enchant_shader" parent="AnimatedSprite2D" instance=ExtResource("enchant_shader_scene")]
+[node name="enchant_shader" parent="AnimatedSprite2D" unique_id=667971602 instance=ExtResource("enchant_shader_scene")]
+position = Vector2(3.9999998, -19.999998)

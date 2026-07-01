@@ -28,8 +28,11 @@ func get_stat(p: Node, stat: String) -> float :
 			return damage 
 		"spread":
 			var spread_deg: float = p.base_spread + lerp(36.0, 0.0, (p.spread_level - 1.0) / 9.0)
-			spread_deg *= (1 - p.accuracy_bonus * 0.025)  							# 40
-			spread_deg = clamp(spread_deg, 0.01, 180.0)
+			if p.accuracy_bonus >= 0:
+				spread_deg *= (1 - p.accuracy_bonus * 0.01)  							# 40
+			else:
+				spread_deg *= (1 - p.accuracy_bonus * 0.065)
+			spread_deg = clamp(spread_deg, 0.1, 300.0)
 			return spread_deg 
 		"range": 
 			var range_val = p.base_range + lerp(0.0, 360.0, (p.range_level - 1.0) / 9.0)

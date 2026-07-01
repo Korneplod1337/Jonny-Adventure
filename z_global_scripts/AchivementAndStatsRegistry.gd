@@ -1,7 +1,7 @@
 extends Node
 
 ## Включить весь трекинг статистики и достижений.
-const TRACKING_ENABLED := false
+const TRACKING_ENABLED := true
 
 ## Единый реестр счётчиков.
 ##   desc          — подпись в меню статистики
@@ -111,6 +111,10 @@ const STATS := {
 		"desc": "Death potions picked",
 		"show_in_menu": false,
 	},
+	"cards_picked": {
+		"desc": "Cards picked",
+		"show_in_menu": false,
+	},
 }
 
 ## Достижения без привязки к счётчику 
@@ -135,9 +139,24 @@ const STANDALONE_ACHIEVEMENTS := {
 ## Привязка item_id → stat при подборе предмета (Item.gd).
 const ITEM_PICKUP_STATS := {
 	"healblack": "death_potions_picked",
+	"card6": "cards_picked",
+	"card7": "cards_picked",
+	"card8": "cards_picked",
+	"card9": "cards_picked",
+	"card10": "cards_picked",
+	"cardjack": "cards_picked",
+	"cardqueen": "cards_picked",
+	"cardking": "cards_picked",
+	"cardace": "cards_picked",
 }
 
-## Разблокировка предметов в пулах EquipManager при получении достижения.
+## Разблокировка предметов в пулах ItemManager при получении достижения.
+## Ключ — id достижения из achievement.id выше.
+const ITEM_UNLOCKS := {
+	"first_kill": ["torch"],
+}
+
+## Разблокировка экипировки в пулах EquipManager при получении достижения.
 ## Ключ — id достижения из achievement.id выше.
 const EQUIP_UNLOCKS := {
 	"bad_spear_kills": [
@@ -253,7 +272,15 @@ pass
    c) Item.gd сам вызовет add_statistic_progress при подборе.
 
  -----------------------------------------------------------------------------
- 5. Достижение → предмет в пуле EquipManager
+ 5. Достижение → предмет в пуле ItemManager
+   a) Добавь в ITEM_UNLOCKS (ключ = id достижения из achievement.id):
+        "my_achievement": ["card6", "cardjack"],
+   b) ItemManager.update_unlocks() вызывается при старте и при выборе лута.
+   c) Или разблокировать вручную:
+        ItemManager.unlock_item("card6")
+
+ -----------------------------------------------------------------------------
+ 6. Достижение → предмет в пуле EquipManager
    a) Добавь в EQUIP_UNLOCKS (ключ = id достижения из achievement.id):
         "my_achievement": [
             {"pool": "weapon", "equipment_id": "EXSpear"},
@@ -263,7 +290,7 @@ pass
         AchievementManager.is_unlocked("my_achievement")
 
  -----------------------------------------------------------------------------
- 6. Временно отключить весь трекинг
+ 7. Временно отключить весь трекинг
         TRACKING_ENABLED = false   (в начале этого файла)
 
  -----------------------------------------------------------------------------

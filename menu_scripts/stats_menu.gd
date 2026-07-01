@@ -1,10 +1,11 @@
 extends CanvasLayer
 
 func _ready() -> void:
-	pass
+	visibility_changed.connect(_on_visibility_changed)
 
-func _process(_delta: float) -> void:
-	pass
+func _on_visibility_changed() -> void:
+	if visible:
+		$GridContainer.update_stats_list()
 
 
 func _on_exit_button_pressed() -> void:

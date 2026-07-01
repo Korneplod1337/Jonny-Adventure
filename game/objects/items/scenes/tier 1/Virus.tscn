@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dex02b4e0mukt"]
+
+[ext_resource type="Script" uid="uid://c2qxoxt3657cx" path="res://game/objects/items/scripts/virus.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cgl51hyppk1q1" path="res://image/items/1 tier/ItemVirus.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Virus" type="Area2D" unique_id=1906479123]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_tex")
+item_tooltip = "Virus"
+item_tooltip2 = "Reduces all enemies HP just a little bit"
+item_id = "virus"
+effect_power = 0.97
+
+[node name="Interactable" parent="." unique_id=1144694369 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=736023218]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1520518876]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1899813872]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")

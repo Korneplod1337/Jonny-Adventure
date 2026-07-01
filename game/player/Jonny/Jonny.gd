@@ -39,7 +39,7 @@ var magic_bonus: 			int = 0
 var damage_bonus: 			int = 0
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 4
+var fire_rate_bonus:			int = 42
 
 @export var hit_points_level: 	float = 1.0
 @export var move_speed_level: 	float = 2.0   # 1–10, 9 лвл прокачки
@@ -96,10 +96,10 @@ func _input(_event: InputEvent) -> void:
 		take_damage(1)
 	if Input.is_action_just_pressed("button_L"):
 		heal(1)
-	#if Input.is_action_just_pressed("o"):
-	#	ST.upgrade_stat(self, 'hp', 1)
+	if Input.is_action_just_pressed("o"):
+		ItemManager.spawn("treasure", [0,1,4], self.global_position)
 	if Input.is_action_just_pressed("i"):
-		ItemManager.spawn("treasure", [1], self.global_position)
+		ItemManager.spawn("treasure", [4], self.global_position)
 
 
 @export var on_ice: bool = true
@@ -423,8 +423,11 @@ func fire (shot_dir: Vector2) -> void:
 	shot.position = global_position + Vector2(0, -10)
 	
 	var angle := shot_dir.angle()
-	if shot.use_spread and not GameState.Surestrike:
-		angle += deg_to_rad(randf_range(-spread/2, spread/2))
+	var effective_spread := spread
+	if not shot.use_spread:
+		effective_spread = maxf(0.0, spread - 56.0)
+	if effective_spread > 0.0 and not GameState.Surestrike:
+		angle += deg_to_rad(randf_range(-effective_spread / 2, effective_spread / 2))
 	var final_dir := Vector2.RIGHT.rotated(angle)
 	
 	shot.direction = final_dir + now_move_direction.normalized()/3 
