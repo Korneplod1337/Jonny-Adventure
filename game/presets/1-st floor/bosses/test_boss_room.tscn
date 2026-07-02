@@ -115,16 +115,19 @@ dir = Vector2(0, -1)
 [node name="Door_Down" parent="." unique_id=60275189 instance=ExtResource("4_onn6l")]
 position = Vector2(0, 297)
 scale = Vector2(2, 2)
+rotation_degrees = 180.0
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1774901095 instance=ExtResource("4_onn6l")]
 position = Vector2(-580, 0)
 scale = Vector2(2, 2)
+rotation_degrees = -90.0
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=970584351 instance=ExtResource("4_onn6l")]
 position = Vector2(580, 0)
 scale = Vector2(2, 2)
+rotation_degrees = 90.0
 dir = Vector2(1, 0)
 
 [node name="EmenyWorm" parent="." unique_id=234496380 instance=ExtResource("5_k4en7")]

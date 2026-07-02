@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_8amni"]
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="6_7m85q"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="7_1tq2v"]
+[ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="8_1jsc2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
 texture = ExtResource("2_7m85q")
@@ -93,25 +94,28 @@ position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="Rock3" parent="." unique_id=2114911849 instance=ExtResource("4_1jsc2")]
-position = Vector2(0, -80)
+position = Vector2(-1, 82)
 
 [node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("5_8amni")]
-position = Vector2(0, -300)
+position = Vector2(0, -298)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("5_8amni")]
-position = Vector2(0, 300)
+position = Vector2(0, 298)
+rotation = 3.1415927
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("5_8amni")]
-position = Vector2(-585, 0)
+position = Vector2(-578, 0)
+rotation = -1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("5_8amni")]
-position = Vector2(585, 0)
+position = Vector2(578, 0)
+rotation = 1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
@@ -135,3 +139,6 @@ position = Vector2(-293, -131)
 [node name="EnemyBat2" parent="." unique_id=1498312184 instance=ExtResource("7_1tq2v")]
 visible = false
 position = Vector2(382, 179)
+
+[node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("8_1jsc2")]
+position = Vector2(535, 225)

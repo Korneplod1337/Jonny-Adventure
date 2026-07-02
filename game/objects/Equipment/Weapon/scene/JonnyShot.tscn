@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://0m4m21cog7th" path="res://image/equip/weapon_effects/spit_miss3.png" id="9_jn07t"]
 [ext_resource type="Texture2D" uid="uid://clcdak1c1rdc6" path="res://image/equip/weapon_effects/spit_miss4.png" id="10_kk8ku"]
 [ext_resource type="Texture2D" uid="uid://d0qmx54486nlp" path="res://image/equip/weapon_effects/spit_miss5.png" id="11_lp2mf"]
+[ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="12_crit"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -67,5 +68,12 @@ sprite_frames = SubResource("SpriteFrames_xhdno")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
 shape = SubResource("CircleShape2D_34718")
+
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=289088615]
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("12_crit")
+frame = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

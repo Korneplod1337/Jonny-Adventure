@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="8_nyk4y"]
 [ext_resource type="PackedScene" uid="uid://c2mpyjsefrqek" path="res://game/objects/obstacles/many rock2.5.tscn" id="9_k5y2q"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="10_nyk4y"]
+[ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="11_k5y2q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
 texture = ExtResource("2_jjk2f")
@@ -96,22 +97,25 @@ position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("5_k5y2q")]
-position = Vector2(400, -300)
+position = Vector2(402, -298)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("5_k5y2q")]
-position = Vector2(-400, 300)
+position = Vector2(-400, 298)
+rotation = 3.1415927
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("5_k5y2q")]
-position = Vector2(-585, 200)
+position = Vector2(-578, 198)
+rotation = -1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("5_k5y2q")]
-position = Vector2(585, -200)
+position = Vector2(578, -198)
+rotation = 1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
@@ -257,3 +261,6 @@ position = Vector2(512, 152)
 initial_delay = 2.0
 active_duration = 1.0
 player_phy_damage = 2
+
+[node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("11_k5y2q")]
+position = Vector2(-434, -191)

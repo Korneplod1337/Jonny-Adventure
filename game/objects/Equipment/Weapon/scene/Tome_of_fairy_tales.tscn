@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cd168augk10np" path="res://image/equip/weapon_effects/tome_of_fairy_tales11.png" id="12_vnur8"]
 [ext_resource type="Texture2D" uid="uid://vbwxo66ucpfs" path="res://image/equip/weapon_effects/tome_of_fairy_tales12.png" id="13_2pqcr"]
 [ext_resource type="Texture2D" uid="uid://c1xrd65tgjw3c" path="res://image/equip/weapon_effects/tome_of_fairy_tales13.png" id="14_gwnpi"]
+[ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="15_crit"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -86,5 +87,12 @@ animation = &"fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
 shape = SubResource("CircleShape2D_34718")
+
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=289088615]
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("15_crit")
+frame = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

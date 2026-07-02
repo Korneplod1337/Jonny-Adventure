@@ -5,6 +5,10 @@ class_name InventorySlot
 @onready var tooltip_panel: Panel = $ToolTipPanel
 @onready var tooltip_label: Label = $ToolTipPanel/Label
 var count_label: Label
+var _hover_overlay: ColorRect
+var _hover_tween: Tween
+
+var HOVER_OVERLAY_COLOR := Color(0, 0, 0, 0.5)
 var _pending_tooltip: String = ""
 var _pending_icon: Texture2D = null
 var _pending_count: int = 1
@@ -28,6 +32,16 @@ func _apply_count(count: int) -> void:
 		count_label.show()
 	else:
 		count_label.hide()
+
+func _ensure_hover_overlay() -> void:
+	if _hover_overlay:
+		return
+	_hover_overlay = ColorRect.new()
+	_hover_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_hover_overlay.mouse_filter = MOUSE_FILTER_IGNORE
+	_hover_overlay.color = Color(0, 0, 0, 0)
+	add_child(_hover_overlay)
+	move_child(_hover_overlay, 0)
 
 func _ready():
 	count_label = get_node_or_null("CountLabel")
@@ -55,7 +69,16 @@ func set_tooltip(text: String):
 		_pending_tooltip = text
 		
 
+func _set_hover_visual(active: bool) -> void:
+	_ensure_hover_overlay()
+	if _hover_tween:
+		_hover_tween.kill()
+	_hover_tween = create_tween()
+	var target_color := HOVER_OVERLAY_COLOR if active else Color(0, 0, 0, 0)
+	_hover_tween.tween_property(_hover_overlay, "color", target_color, 0.1)
+
 func _on_hover():
+	_set_hover_visual(true)
 	tooltip_panel.visible = true
 	tooltip_panel.global_position = global_position + Vector2(-tooltip_panel.size.x * 2, 0)
 	set_tooltip(_pending_tooltip)
@@ -68,4 +91,5 @@ func _on_hover():
 		tooltip_panel.global_position.y -= overflow
 
 func _off_hover():
+	_set_hover_visual(false)
 	tooltip_panel.visible = false

@@ -102,16 +102,19 @@ dir = Vector2(0, -1)
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("3_yij7n")]
 position = Vector2(0, 300)
 scale = Vector2(2, 2)
+rotation_degrees = 180.0
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("3_yij7n")]
 position = Vector2(-585, 0)
 scale = Vector2(2, 2)
+rotation_degrees = -90.0
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("3_yij7n")]
 position = Vector2(585, 0)
 scale = Vector2(2, 2)
+rotation_degrees = 90.0
 dir = Vector2(1, 0)
 
 [node name="CameraBounds" type="Area2D" parent="." unique_id=1852979454]

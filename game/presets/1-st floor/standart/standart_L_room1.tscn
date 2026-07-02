@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://duyosi2cuk0wi" path="res://game/enemy/bodies/Aries.tscn" id="7_xmmwj"]
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="8_pc25r"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="9_ullei"]
+[ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="10_ji8pd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
 texture = ExtResource("2_ji8pd")
@@ -51,10 +52,10 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_sud2i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sud2i"]
-size = Vector2(1136.44, 39.25)
+size = Vector2(1136, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic6a2"]
-size = Vector2(41.03, 654.5)
+size = Vector2(40, 654)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yij7n"]
 size = Vector2(1280, 1440)
@@ -79,40 +80,43 @@ collision_layer = 16
 collision_mask = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=367172696]
-position = Vector2(207, -428)
+position = Vector2(207.06, -428)
 shape = SubResource("RectangleShape2D_sud2i")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1932436105]
-position = Vector2(207, 908)
+position = Vector2(207.06, 908)
 shape = SubResource("RectangleShape2D_sud2i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=975352996]
-position = Vector2(795.545, 239.75)
+position = Vector2(795.06, 240)
 scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=451787501]
-position = Vector2(-381.94, 239)
+position = Vector2(-380.94, 239)
 scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("4_ptl4c")]
-position = Vector2(0, -650)
+position = Vector2(0, -658)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("4_ptl4c")]
-position = Vector2(0, 650)
+position = Vector2(-1, 658)
+rotation = 3.1415927
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("4_ptl4c")]
-position = Vector2(-580, 0)
+position = Vector2(-578, 0)
+rotation = -1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("4_ptl4c")]
-position = Vector2(580, 0)
+position = Vector2(578, 0)
+rotation = 1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
@@ -148,12 +152,17 @@ position = Vector2(440, -400)
 scale = Vector2(3, 3)
 hard_base_hp = 350
 hard_charge_speed = 600.0
-hard_max_dash_distance = 1500.0
+hard_max_dash_distance = 1700.0
 hard_cooldown_time = 1.0
 hard_aim_time = 4.0
 
 [node name="EmenyWorm" parent="." unique_id=1655288545 instance=ExtResource("8_pc25r")]
-position = Vector2(-413, 458)
+visible = false
+position = Vector2(-420, 461)
 
 [node name="EnemyBat" parent="." unique_id=1214830893 instance=ExtResource("9_ullei")]
-position = Vector2(-518, 460)
+visible = false
+position = Vector2(-424.00003, 411.00003)
+
+[node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("10_ji8pd")]
+position = Vector2(-538, 425)

@@ -29,23 +29,23 @@ enum RoomType {	START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
 var floors_config: Array[Dictionary] = [
 # локация 1
 {"total_rooms": 5, 	"shop_rooms": 2, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-#{"total_rooms": 6, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-{"total_rooms": 6, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+#{"total_rooms": 7, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 7, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 # локация 2
 {"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
-{"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
-# локация 3
 {"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
-{"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
+# локация 3
+{"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
 # локация 4
-{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 {"total_rooms": 16, 	"shop_rooms": 2, 		"buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
 # локация 5
-{"total_rooms": 16, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
+{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
 {"total_rooms": 18, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
 # локация 6
-{"total_rooms": 18, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
-{"total_rooms": 20, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
+{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
+{"total_rooms": 18, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
 # локация 7
 {"total_rooms": 8, 	"shop_rooms": 2,			"buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 {"total_rooms": 1, 	"shop_rooms": 0, 		"buff_rooms": 0, 	"dop_rooms": 0}, 
@@ -202,10 +202,9 @@ func configure_doors_for_room(room: Room, scene: Node2D) -> void:
 		if shape:
 			shape.disabled = false
 
-		# door.gd: target_room_pos и entrance_offset
-		door_node.dir = dir
-		door_node.target_room_pos = room.exits[dir]
-		door_node.entrance_offset = -dir * 64.0
+		var target_pos: Vector2 = room.exits[dir]
+		var target_room: Room = rooms[target_pos]
+		door_node.configure(dir, target_pos, target_room.type, -dir * 64.0)
 
 
 func teleport_player(door: Node, body: Node2D) -> void:

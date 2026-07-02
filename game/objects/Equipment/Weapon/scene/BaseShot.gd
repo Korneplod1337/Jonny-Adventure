@@ -37,6 +37,11 @@ var _enemy_hit_count: int = 0
 var spread_angle: float
 var spawned_spread := false
 
+var base_crit_bonus: float = 60.0
+var crit_sprite: int = -1
+
+const CRIT_WORLD_OFFSET := Vector2(0, -60)
+
 func _ready() -> void:
 	collision_mask |= 32 # layer 6 — Препятствия
 	animaited_speed = GameState.animated_world_speed
@@ -134,11 +139,54 @@ func _on_body_entered(body):
 	explosion(0)
 
 
+func _get_player() -> Node:
+	if player:
+		return player
+	return get_tree().get_first_node_in_group("player")
+
+
+func _get_crit_chance() -> float:
+	var shooter := _get_player()
+	if shooter:
+		return shooter.crit_chance_bonus
+	return 0.0
+
+
 func _get_final_damage() -> float:
+	crit_sprite = -1
 	var final_damage := float(damage * self_damage_multiplier)
 	if enchantment and enchantment.has_method("get_damage_low"):
 		final_damage *= enchantment.get_damage_low() #для яда
-	return final_damage
+
+	var chance := _get_crit_chance()
+	var spread_val := 20.0
+	var shooter := _get_player()
+	if shooter:
+		spread_val = StatManager.get_stat(shooter, "spread")
+	var crit_bonus := base_crit_bonus / (spread_val + 20)
+	var total_crit := 1.0
+	while true:
+		if randf() < chance:
+			crit_sprite += 1
+			total_crit += crit_bonus
+			chance -= 0.2
+			if crit_sprite == 4:
+				StatsManager.add_statistic_progress("Mega_crit", 1)
+				break
+		else:
+			break
+	return final_damage * total_crit
+
+
+func _show_crit_effect() -> void:
+	if crit_sprite < 0:
+		return
+	var crit_node := get_node_or_null("Crit")
+	if crit_node is AnimatedSprite2D:
+		crit_node.position = CRIT_WORLD_OFFSET.rotated(-rotation)
+		crit_node.rotation = -rotation
+		crit_node.frame = crit_sprite
+		crit_node.show()
 
 
 func _build_damage_info(target: Node, amount: float) -> DamageInfo:
@@ -169,6 +217,7 @@ func _register_pierce_hit(target: Node, amount: float) -> bool:
 
 func _deal_hit(target: Node, amount: float) -> void:
 	DamageDealer.deal_damage(self, target, _build_damage_info(target, amount))
+	_show_crit_effect()
 
 
 func explosion(animation_index):
@@ -247,8 +296,7 @@ func _spawn_spread() -> void:
 		bullet.pellet_count = pellet_count
 		bullet.spread_angle = spread_angle
 
-		if self is BaseGun and bullet is BaseGun:
-			bullet.base_crit_bonus = self.base_crit_bonus
+		bullet.base_crit_bonus = self.base_crit_bonus
 
 		get_parent().add_child.call_deferred(bullet)
 		bullet.global_position = global_position

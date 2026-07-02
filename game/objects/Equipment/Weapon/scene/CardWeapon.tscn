@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://vglenctg1s28" path="res://image/equip/weapon_effects/CardWeapon6.png" id="7_mmxhk"]
 [ext_resource type="Texture2D" uid="uid://cjeaw7wf8oh7d" path="res://image/equip/weapon_effects/CardWeapon7.png" id="8_mi86g"]
 [ext_resource type="Curve" path="res://game/combat/boomerang_speed_curve.tres" id="9_curve"]
+[ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="10_crit"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -67,5 +68,12 @@ shape = SubResource("RectangleShape2D_mi86g")
 
 [node name="CurveLine2D" type="Line2D" parent="." unique_id=890067631]
 width_curve = ExtResource("9_curve")
+
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=289088615]
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("10_crit")
+frame = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

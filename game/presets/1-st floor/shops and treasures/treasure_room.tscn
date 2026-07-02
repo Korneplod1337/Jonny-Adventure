@@ -90,22 +90,25 @@ position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("5_nrwhi")]
-position = Vector2(0, -300)
+position = Vector2(0, -298)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("5_nrwhi")]
-position = Vector2(0, 300)
+position = Vector2(0, 298)
+rotation = 3.1415927
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("5_nrwhi")]
-position = Vector2(-585, 0)
+position = Vector2(-578, 0)
+rotation = -1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("5_nrwhi")]
-position = Vector2(585, 0)
+position = Vector2(578, 0)
+rotation = 1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 

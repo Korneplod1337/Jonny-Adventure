@@ -174,22 +174,26 @@ input_pickable = false
 shape = SubResource("RectangleShape2D_sehpn")
 
 [node name="Door_Up" parent="." unique_id=503841439 instance=ExtResource("4_ugfuj")]
-position = Vector2(-580, 0)
+position = Vector2(-578, 0)
+rotation = -1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=1693951162 instance=ExtResource("4_ugfuj")]
-position = Vector2(-470, 300)
+position = Vector2(-470, 298)
+rotation = 3.1415927
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=308207908 instance=ExtResource("4_ugfuj")]
-position = Vector2(-580, 180)
+position = Vector2(-578, 180)
+rotation = -1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=1424844174 instance=ExtResource("4_ugfuj")]
-position = Vector2(0, 300)
+position = Vector2(0, 298)
+rotation = 3.1415927
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 

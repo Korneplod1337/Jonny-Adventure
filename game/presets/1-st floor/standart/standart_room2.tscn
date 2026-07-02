@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="4_genlr"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_rwaag"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="7_0p330"]
+[ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="7_ot0iy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
 texture = ExtResource("2_clk0c")
@@ -92,25 +93,28 @@ position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="Rock3" parent="." unique_id=2114911849 instance=ExtResource("4_genlr")]
-position = Vector2(1, 1)
+position = Vector2(-506, 247)
 
 [node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("5_rwaag")]
-position = Vector2(0, -300)
+position = Vector2(0, -298)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("5_rwaag")]
-position = Vector2(0, 300)
+position = Vector2(0, 298)
+rotation = 3.1415927
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("5_rwaag")]
-position = Vector2(-585, 0)
+position = Vector2(-578, 0)
+rotation = -1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("5_rwaag")]
-position = Vector2(585, 0)
+position = Vector2(578, 0)
+rotation = 1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
@@ -134,3 +138,9 @@ position = Vector2(258, 176)
 [node name="EnemyBat4" parent="." unique_id=197742781 instance=ExtResource("7_0p330")]
 visible = false
 position = Vector2(-182, -129)
+
+[node name="Rock4" parent="." unique_id=1046045028 instance=ExtResource("4_genlr")]
+position = Vector2(505, 247)
+
+[node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("7_ot0iy")]
+position = Vector2(481, 144)

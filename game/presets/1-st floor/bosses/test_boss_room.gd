@@ -5,6 +5,11 @@ const ChestScene := preload("res://game/objects/chests/Chest_treasure.tscn")
 var _reward_spawned := false
 
 
+func init_room() -> void:
+	spawn_clear_reward = false
+	super()
+
+
 func show_doors() -> void:
 	super()
 	if _reward_spawned:

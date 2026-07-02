@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://do671p7pcen03" path="res://image/equip/weapon_effects/Spear5.png" id="6_wmoym"]
 [ext_resource type="Texture2D" uid="uid://cn0u6furkut1n" path="res://image/equip/weapon_effects/Spear6.png" id="7_rrs77"]
 [ext_resource type="Texture2D" uid="uid://nb5q7mupnn8x" path="res://image/equip/weapon_effects/Spear7.png" id="8_h174y"]
+[ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="9_crit"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ptov3"]
 animations = [{
@@ -57,5 +58,12 @@ offset = Vector2(38, 0)
 position = Vector2(84, -1)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_w3x0x")
+
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=289088615]
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("9_crit")
+frame = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

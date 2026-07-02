@@ -14,5 +14,6 @@ func _misfire() -> void:
 func _deal_hit(target: Node, amount: float) -> void:
 	var info := _build_damage_info(target, amount)
 	DamageDealer.deal_damage(self, target, info)
+	_show_crit_effect()
 	if enchantment and randf() < StatManager.get_stat(player, "luck") / 1.5:
 		enchantment.apply_on_hit(target, info.direction)

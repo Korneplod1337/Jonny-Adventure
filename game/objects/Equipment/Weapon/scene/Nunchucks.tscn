@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dnegm2n01hyac" path="res://image/equip/weapon_effects/nunchucks5.png" id="6_c2rb7"]
 [ext_resource type="Texture2D" uid="uid://d1yh8tmjn0pud" path="res://image/equip/weapon_effects/nunchucks6.png" id="7_t5ht2"]
 [ext_resource type="Texture2D" uid="uid://cubxwedbf4yg2" path="res://image/equip/weapon_effects/nunchucks7.png" id="8_kqq1x"]
+[ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="9_crit"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ptov3"]
 animations = [{
@@ -59,6 +60,13 @@ shape = SubResource("CircleShape2D_ygq3i")
 [node name="Timer" type="Timer" parent="." unique_id=784686683]
 wait_time = 0.5
 one_shot = true
+
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=289088615]
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("9_crit")
+frame = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

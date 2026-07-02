@@ -124,16 +124,19 @@ dir = Vector2(0, -1)
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("4_m3kms")]
 position = Vector2(0, 650)
 scale = Vector2(2, 2)
+rotation_degrees = 180.0
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("4_m3kms")]
 position = Vector2(-1212, 0)
 scale = Vector2(2, 2)
+rotation_degrees = -90.0
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("4_m3kms")]
 position = Vector2(1210, 360)
 scale = Vector2(2, 2)
+rotation_degrees = 90.0
 dir = Vector2(1, 0)
 
 [node name="Rock_big" parent="." unique_id=1046045028 instance=ExtResource("5_du2j5")]

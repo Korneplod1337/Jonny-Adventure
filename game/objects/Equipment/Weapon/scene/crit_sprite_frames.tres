@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" uid="uid://d3hx32u3vfqqp" path="res://image/effect_sprites/crit/crit1.png" id="1_crit1"]
+[ext_resource type="Texture2D" uid="uid://dfx8pat5hyg68" path="res://image/effect_sprites/crit/crit2.png" id="2_crit2"]
+[ext_resource type="Texture2D" uid="uid://c1y5ri3h560dp" path="res://image/effect_sprites/crit/crit3.png" id="3_crit3"]
+[ext_resource type="Texture2D" uid="uid://cifixv22ri53v" path="res://image/effect_sprites/crit/crit4.png" id="4_crit4"]
+[ext_resource type="Texture2D" uid="uid://dt6bmgfajgobh" path="res://image/effect_sprites/crit/crit5.png" id="5_crit5"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_crit1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_crit2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_crit3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_crit4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_crit5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

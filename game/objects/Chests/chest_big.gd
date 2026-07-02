@@ -17,9 +17,9 @@ func _on_interact() -> void:
 	var luck = StatManager.get_stat(player, 'luck')
 	if interactable.is_interactable:
 		var random = randi_range(1, 100)
-		if random >= 95:
+		if random >= 90:
 			EquipManager.spawn(equip_pool, equip_tier, self.global_position + Vector2(00, -80))
-		if random >= 75:
+		elif random >= 70:
 			ItemManager.spawn(pool, tier, self.global_position + Vector2(00, -80), cost)
 		elif random >= 50:
 			spawner(coinBag)
