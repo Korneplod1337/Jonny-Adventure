@@ -48,7 +48,7 @@ var floors_config: Array[Dictionary] = [
 {"total_rooms": 18, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
 # локация 7
 {"total_rooms": 8, 	"shop_rooms": 2,			"buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
-{"total_rooms": 1, 	"shop_rooms": 0, 		"buff_rooms": 0, 	"dop_rooms": 0}, 
+{"total_rooms": 2, 	"shop_rooms": 0, 		"buff_rooms": 0, 	"dop_rooms": 0}, 
 ]
 
 @onready var room_presets_by_floor: Array = [
@@ -92,6 +92,8 @@ var floors_config: Array[Dictionary] = [
 @export var room_gap: Vector2 = Vector2(200, 200)
 var last_door_dir: Vector2 = Vector2.ZERO
 
+const FLOOR_ENTER_DROP := 100.0
+
 
 var rooms := {} # Все сгенерированные комнаты: ключ — Vector2 позиции, значение — Room
 var directions := [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
@@ -115,6 +117,7 @@ func _ready():
 	var hud_scene := preload("uid://n5dvgu5we2gn")
 	hud_instance = hud_scene.instantiate()
 	add_child(player)
+	_ensure_player_draw_order()
 	player.update_level_buffs()
 	add_child(hud_instance)
 
@@ -124,7 +127,8 @@ func instance_room(room: Room) -> Node:
 		RoomType.START:
 			return start_room_preset		[current_floor / 2].instantiate()
 		RoomType.BOSS:
-			return boss_room_preset		[current_floor].instantiate()
+			var boss_index := clampi(current_floor / 2, 0, boss_room_preset.size() - 1)
+			return boss_room_preset[boss_index].instantiate()
 		RoomType.STANDARD:
 			var standard_presets = room_presets_by_floor[current_floor]
 			return standard_presets[randi() % standard_presets.size()].instantiate()
@@ -162,7 +166,15 @@ func spawn_rooms() -> Node:
 		if room.type == RoomType.START:
 			start_instance = scene
 	
+	_ensure_player_draw_order()
 	return start_instance
+
+
+func _ensure_player_draw_order() -> void:
+	if not is_instance_valid(player) or player.get_parent() != self:
+		return
+	player.z_index = 10
+	move_child(player, get_child_count() - 1)
 
 
 func spawn_player_in_start(start_instance: Node) -> void:
@@ -293,18 +305,102 @@ func print_map():
 		output += line_conn.rstrip(" \t") + "\n"
 	print(output)
 
-func regenerate_floor(new_floor: int) -> void: # проверить
-	current_floor = new_floor
-	clear_rooms()
-	rooms = generator.generate(
-		floors_config[current_floor].total_rooms, 
-		floors_config[current_floor].shop_rooms )
-	var start_instance := spawn_rooms()
-	spawn_player_in_start(start_instance)
+func go_to_next_floor(hatch: Node2D) -> void:
+	var next_floor := current_floor + 1
+	if next_floor >= floors_config.size():
+		push_warning("Dungeon: no more floors after %d" % current_floor)
+		return
+
+	_reset_player_interactions()
+	var hatch_center := hatch.global_position
+
+	if player.has_method("play_hatch_exit"):
+		await player.play_hatch_exit(hatch_center)
+
+	player.visible = false
+	await _load_floor(next_floor)
+
+	var start_instance := _get_start_room_instance()
+	if start_instance == null:
+		player.visible = true
+		if player.has_method("end_floor_transition"):
+			player.end_floor_transition()
+		return
+
+	var land_pos = start_instance.global_position
+	player.global_position = land_pos + Vector2(0, -FLOOR_ENTER_DROP)
+	player.rotation = 0.0
+	player.visible = true
+	_ensure_player_draw_order()
+	player.set_room(start_instance)
+
+	if player.has_method("play_hatch_enter"):
+		await player.play_hatch_enter(land_pos)
+	else:
+		player.global_position = land_pos
+		if player.has_method("end_floor_transition"):
+			player.end_floor_transition()
+
+	_reset_player_interactions()
 	print_map()
 
-func clear_rooms() -> void:
+
+func regenerate_floor(new_floor: int) -> void:
+	await _load_floor(new_floor)
+	var start_instance := _get_start_room_instance()
+	if start_instance:
+		spawn_player_in_start(start_instance)
+	if player.has_method("end_floor_transition") and player.movement_locked:
+		player.end_floor_transition()
+	_reset_player_interactions()
+	print_map()
+
+
+func _load_floor(new_floor: int) -> void:
+	current_floor = new_floor
+	_reset_player_interactions()
+	clear_floor_content()
+	await get_tree().process_frame
+	await get_tree().physics_frame
+
+	GameState._clear_level_bufs()
+	GameState.random_level_bufs()
+
+	var config := floors_config[current_floor]
+	rooms = generator.generate(
+		config['total_rooms'],
+		config['shop_rooms'],
+		config['buff_rooms'],
+		config['dop_rooms'])
+
+	spawn_rooms()
+	player.update_level_buffs()
+	ItemManager.recharge_floor_items(player)
+
+	if hud_instance and hud_instance.has_method("bufs_render"):
+		hud_instance.bufs_render()
+
+
+func _get_start_room_instance() -> Node:
 	for room in rooms.values():
-		if room.scene:
-			room.scene.queue_free()
+		if room.type == RoomType.START and room.scene:
+			return room.scene
+	return null
+
+
+func _reset_player_interactions() -> void:
+	if not is_instance_valid(player):
+		return
+	var ic := player.get_node_or_null("InteractingComponents")
+	if ic and ic.has_method("reset_interaction_state"):
+		ic.reset_interaction_state()
+
+
+func clear_floor_content() -> void:
 	rooms.clear()
+	for child in get_children():
+		if child == player or child == hud_instance:
+			continue
+		if child is AudioStreamPlayer:
+			continue
+		child.queue_free()

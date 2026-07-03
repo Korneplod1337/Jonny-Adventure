@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_jjk2f"]
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="3_ebwiu"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_k5y2q"]
-[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="6_ekv53"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="6_ekv53"]
 [ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="7_ebwiu"]
-[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="7_gp6pf"]
+[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/1-st floor basement/Bat.tscn" id="7_gp6pf"]
 [ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="8_nyk4y"]
 [ext_resource type="PackedScene" uid="uid://c2mpyjsefrqek" path="res://game/objects/obstacles/many rock2.5.tscn" id="9_k5y2q"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="10_nyk4y"]
@@ -238,6 +238,7 @@ position = Vector2(-32, -8)
 
 [node name="FloorPike9" parent="." unique_id=1703146244 instance=ExtResource("7_ebwiu")]
 position = Vector2(-192, -8)
+initial_delay = 2.0
 active_duration = 2.5
 
 [node name="FloorPike10" parent="." unique_id=1456182397 instance=ExtResource("7_ebwiu")]

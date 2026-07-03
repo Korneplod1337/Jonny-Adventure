@@ -8,6 +8,7 @@ const SHRINE_REMOVE_CHANCE := 0.5
 
 @export var spawn_clear_reward := true
 var _clear_reward_spawned := false
+var _skip_wave2_trigger := false
 
 
 func init_room() -> void:
@@ -30,16 +31,36 @@ func connect_enemies() -> void:
 	enemy_count = 0
 
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		if not is_ancestor_of(enemy):
+			continue
 		if not enemy.is_visible_in_tree():
 			enemy.queue_free()
 			continue
-		if not is_ancestor_of(enemy):
-			continue
+		connect_single_enemy(enemy, true)
 
+
+func connect_single_enemy(enemy: Node, increment_count := true) -> void:
+	if increment_count:
 		enemy_count += 1
+	if enemy.has_signal("_enemy_die"):
+		enemy._enemy_die.connect(_on_enemy_die, CONNECT_ONE_SHOT)
 
-		if enemy.has_signal("_enemy_die"):
-			enemy._enemy_die.connect(_on_enemy_die, CONNECT_ONE_SHOT)
+
+func reserve_enemy_slot() -> void:
+	enemy_count += 1
+
+
+func mark_wave2_spawn_death() -> void:
+	_skip_wave2_trigger = true
+
+
+func spawn_wave2_enemy(scene: PackedScene, spawn_pos: Vector2, spawn_scale: Vector2) -> void:
+	var enemy := scene.instantiate()
+	add_child(enemy)
+	enemy.global_position = spawn_pos
+	enemy.scale = spawn_scale
+	connect_single_enemy(enemy, false)
+
 
 func cache_active_doors() -> void:
 	active_doors.clear()
@@ -111,6 +132,49 @@ func _update_door_collision(door: Node, hide: bool) -> void:
 func _on_enemy_die(damage: int) -> void:
 	enemy_count = maxi(enemy_count - damage, 0)
 	print('enemy left: ', enemy_count)
+	if not _skip_wave2_trigger:
+		_try_release_wave2_spawns()
+	_skip_wave2_trigger = false
 
-	if enemy_count == 0:
+	if enemy_count == 0 and not _has_wave2_release_in_progress():
 		show_doors()
+
+
+func _get_wave2_spawns_in_room() -> Array:
+	var spawns: Array = []
+	for enemy in get_tree().get_nodes_in_group("EnemyWave2Spawn"):
+		if is_ancestor_of(enemy) and is_instance_valid(enemy):
+			spawns.append(enemy)
+	return spawns
+
+
+func _has_first_wave_enemies_alive() -> bool:
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		if not is_ancestor_of(enemy) or not is_instance_valid(enemy):
+			continue
+		if enemy.is_in_group("EnemyWave2Spawn"):
+			continue
+		if not enemy.is_visible_in_tree() or enemy.get("is_dead"):
+			continue
+		return true
+	return false
+
+
+func _has_wave2_release_in_progress() -> bool:
+	for spawn in _get_wave2_spawns_in_room():
+		if spawn.get("_releasing_wave2"):
+			return true
+	return false
+
+
+func _try_release_wave2_spawns() -> void:
+	if _has_first_wave_enemies_alive():
+		return
+	call_deferred("_release_wave2_spawns")
+
+
+func _release_wave2_spawns() -> void:
+	for spawn in _get_wave2_spawns_in_room():
+		if spawn.get("is_dead"):
+			continue
+		spawn.die()

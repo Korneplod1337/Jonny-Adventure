@@ -17,12 +17,13 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_oy40j")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
 [node name="Hatch" type="Node2D" unique_id=197674772]
+z_index = 5
 script = ExtResource("1_s63fd")
 
 [node name="Interactable" parent="." unique_id=1597460607 instance=ExtResource("4_h4otx")]

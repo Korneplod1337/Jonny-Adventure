@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="3_u2wkt"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_0oh7a"]
 [ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="6_50uej"]
-[ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/bodies/SpiderSmall.tscn" id="6_q4vak"]
-[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="7_gvpeu"]
+[ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/1-st floor basement/Spider_small.tscn" id="6_q4vak"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="7_gvpeu"]
 [ext_resource type="PackedScene" uid="uid://7wom6t7b0i7c" path="res://game/objects/obstacles/rockSmallest.tscn" id="8_10i6p"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="9_gvpeu"]
 

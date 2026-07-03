@@ -40,10 +40,10 @@ var hp_bonus: 				int = 0
 var speed_bonus: 			int = 0
 var luck_bonus: 				int = 0
 var magic_bonus: 			int = 0
-var damage_bonus: 			int = 0
+var damage_bonus: 			int = 40
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 0
+var fire_rate_bonus:			int = 40
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0
@@ -237,7 +237,7 @@ func _process(delta: float) -> void:
 		play_head(anim_dir)
 	
 	# Уход на перезарядку
-	if can_shoot and shooting:
+	if can_shoot and shooting and not movement_locked:
 		fire(shot_direction)
 		start_reload()
 		
@@ -281,6 +281,7 @@ func update_equipment_visuals():
 # ЗДОРОВЬЕ
 func take_damage(phy_damage: int = 0,
 				mag_damage: int = 0, clr_damage: int = 0, attacker: Node = null) -> void:
+	return
 	if invulnerable:
 		return
 	
@@ -572,3 +573,77 @@ var invulnerable: bool = false
 
 func update_level_buffs() -> void:
 	on_ice = GameState.level_bufs[4][1]
+
+
+# --- переход между этажами через люк ---
+const HATCH_APPROACH_HEIGHT := 80.0
+const HATCH_DESCEND_DEPTH := 25.0
+const HATCH_APPROACH_TIME := 0.45
+const HATCH_DESCEND_TIME := 1.25
+const HATCH_ENTER_DROP := 100.0
+const HATCH_ENTER_TIME := 1.5
+const HATCH_SPIN_TURNS := 2.0
+
+var _saved_collision_mask: int = 0
+var _floor_transition_tween: Tween = null
+
+
+func begin_floor_transition() -> void:
+	set_movement_locked(true)
+	_saved_collision_mask = collision_mask
+	set_collision_mask(0)
+
+
+func end_floor_transition() -> void:
+	if _floor_transition_tween and _floor_transition_tween.is_valid():
+		_floor_transition_tween.kill()
+	rotation = 0.0
+	set_collision_mask(_saved_collision_mask)
+	_update_enemy_collision()
+	set_movement_locked(false)
+
+
+func play_hatch_exit(hatch_center: Vector2) -> void:
+	begin_floor_transition()
+	var above := hatch_center + Vector2(0, -HATCH_APPROACH_HEIGHT)
+	var inside := hatch_center + Vector2(0, HATCH_DESCEND_DEPTH)
+
+	if _floor_transition_tween and _floor_transition_tween.is_valid():
+		_floor_transition_tween.kill()
+
+	_floor_transition_tween = create_tween()
+	_floor_transition_tween.tween_property(
+		self, "global_position", above, HATCH_APPROACH_TIME
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	await _floor_transition_tween.finished
+
+	var spin_from := rotation
+	_floor_transition_tween = create_tween()
+	_floor_transition_tween.set_parallel(true)
+	_floor_transition_tween.tween_property(
+		self, "global_position", inside, HATCH_DESCEND_TIME
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	_floor_transition_tween.tween_property(
+		self, "rotation", spin_from + TAU * HATCH_SPIN_TURNS, HATCH_DESCEND_TIME
+	)
+	await _floor_transition_tween.finished
+
+
+func play_hatch_enter(land_pos: Vector2) -> void:
+	global_position = land_pos + Vector2(0, -HATCH_ENTER_DROP)
+	rotation = 0.0
+
+	var spin_from := rotation
+	if _floor_transition_tween and _floor_transition_tween.is_valid():
+		_floor_transition_tween.kill()
+
+	_floor_transition_tween = create_tween()
+	_floor_transition_tween.set_parallel(true)
+	_floor_transition_tween.tween_property(
+		self, "global_position", land_pos, HATCH_ENTER_TIME
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	_floor_transition_tween.tween_property(
+		self, "rotation", spin_from + TAU * HATCH_SPIN_TURNS, HATCH_ENTER_TIME
+	)
+	await _floor_transition_tween.finished
+	end_floor_transition()

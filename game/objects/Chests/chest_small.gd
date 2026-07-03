@@ -3,7 +3,7 @@ extends StaticBody2D
 @onready var interactable: Area2D = $Interactable
 var cost := 0
 var tier :Array = [1]
-var pool := 'shop'
+var pool := 'chest'
 var coin = preload("uid://ci05xlan24oqs")
 
 func _ready() -> void:

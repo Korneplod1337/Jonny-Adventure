@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/RoomScript_enemy.gd" id="1_raeur"]
 [ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_ji8pd"]
-[ext_resource type="Texture2D" uid="uid://dq1cgdcxlnhow" path="res://image/rooms/1-st floor/background/background_bounds2.png" id="3_pgq4f"]
+[ext_resource type="Texture2D" uid="uid://djopcq2n8wa67" path="res://image/rooms/1-st floor/background/background_bounds_2x.png" id="3_ji8pd"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_ptl4c"]
 [ext_resource type="PackedScene" uid="uid://ck5v5qiq4jt6a" path="res://game/objects/obstacles/rockBig.tscn" id="5_v748o"]
 [ext_resource type="PackedScene" uid="uid://bpxxvh07ciubm" path="res://game/objects/obstacles/rockSmall.tscn" id="6_17q4v"]
-[ext_resource type="PackedScene" uid="uid://duyosi2cuk0wi" path="res://game/enemy/bodies/Aries.tscn" id="7_xmmwj"]
-[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="8_pc25r"]
-[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="9_ullei"]
+[ext_resource type="PackedScene" uid="uid://duyosi2cuk0wi" path="res://game/enemy/1-st floor basement/Aries.tscn" id="7_xmmwj"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="8_pc25r"]
+[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/1-st floor basement/Bat.tscn" id="9_ullei"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="10_ji8pd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
@@ -72,7 +72,7 @@ tile_set = SubResource("TileSet_2tq2k")
 [node name="BG_bounds" type="Sprite2D" parent="." unique_id=1926935037]
 z_index = -5
 scale = Vector2(2, 2)
-texture = ExtResource("3_pgq4f")
+texture = ExtResource("3_ji8pd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1184620657]
 position = Vector2(-207.06, -240)

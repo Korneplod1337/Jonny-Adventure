@@ -2,20 +2,20 @@
 
 [ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/RoomScript_enemy.gd" id="1_sb1k4"]
 [ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_7nvgh"]
-[ext_resource type="Texture2D" uid="uid://cqity84gpo7v2" path="res://image/rooms/1-st floor/background/background_bounds3.png" id="3_imxwx"]
+[ext_resource type="Texture2D" uid="uid://cqity84gpo7v2" path="res://image/rooms/1-st floor/background/background_bounds_3x.png" id="3_imxwx"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_h5l16"]
 [ext_resource type="PackedScene" uid="uid://ck5v5qiq4jt6a" path="res://game/objects/obstacles/rockBig.tscn" id="5_283ki"]
-[ext_resource type="PackedScene" uid="uid://duyosi2cuk0wi" path="res://game/enemy/bodies/Aries.tscn" id="6_rxhr5"]
-[ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/bodies/SpiderSmall.tscn" id="7_x87ng"]
+[ext_resource type="PackedScene" uid="uid://duyosi2cuk0wi" path="res://game/enemy/1-st floor basement/Aries.tscn" id="6_rxhr5"]
+[ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/1-st floor basement/Spider_small.tscn" id="7_x87ng"]
 [ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="8_hss15"]
 [ext_resource type="PackedScene" uid="uid://b8jjo3xjprydx" path="res://game/objects/obstacles/mantrap.tscn" id="9_d6k1g"]
 [ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="10_pdx4p"]
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="11_wgx4h"]
 [ext_resource type="PackedScene" uid="uid://bpxxvh07ciubm" path="res://game/objects/obstacles/rockSmall.tscn" id="12_pxgv3"]
 [ext_resource type="PackedScene" uid="uid://7wom6t7b0i7c" path="res://game/objects/obstacles/rockSmallest.tscn" id="13_7qtfd"]
-[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="14_7khes"]
-[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="15_x04md"]
-[ext_resource type="PackedScene" uid="uid://dkb1xb65dreb4" path="res://game/enemy/bodies/Hog.tscn" id="16_ltcm7"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="14_7khes"]
+[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/1-st floor basement/Bat.tscn" id="15_x04md"]
+[ext_resource type="PackedScene" uid="uid://dkb1xb65dreb4" path="res://game/enemy/3-st floor forest/Hog.tscn" id="16_ltcm7"]
 [ext_resource type="PackedScene" uid="uid://bi5g2vqe6xdek" path="res://game/objects/Equipment/head/Kaliya_star_hat.tscn" id="17_ep2tc"]
 [ext_resource type="PackedScene" uid="uid://c1fiyctd2xrli" path="res://game/objects/Equipment/boots/Poison_boots.tscn" id="18_js20t"]
 [ext_resource type="PackedScene" uid="uid://cxmow65o8obwu" path="res://game/objects/items/scenes/tier 3/Boomerang.tscn" id="19_vm4yr"]
@@ -49,7 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://dhty76ckflr50" path="res://game/objects/chests/Chest_big.tscn" id="47_w0h66"]
 [ext_resource type="PackedScene" uid="uid://dcfrwovjlwrn0" path="res://game/objects/chests/Chest_weapon.tscn" id="48_x23vw"]
 [ext_resource type="PackedScene" uid="uid://tsiccout8ibv" path="res://game/objects/chests/Chest_treasure.tscn" id="49_kobpu"]
-[ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/bodies/dartboard.tscn" id="50_s6d3r"]
+[ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="50_s6d3r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -95,7 +95,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_sud2i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1ro8"]
-size = Vector2(1241, 60)
+size = Vector2(1240, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sud2i"]
 size = Vector2(2494, 46)
@@ -133,7 +133,7 @@ collision_layer = 16
 collision_mask = 23
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1477807942]
-position = Vector2(795.56, 283)
+position = Vector2(796.06, 282)
 shape = SubResource("RectangleShape2D_c1ro8")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1932436105]

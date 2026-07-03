@@ -134,9 +134,6 @@ var POOLS := {
 var rng := RandomNumberGenerator.new()
 var last_picked_item_id: String = ""
 
-## TODO(forceshield): вызвать recharge_floor_items(player) при смене этажа
-## (dungeon.regenerate_floor / переход этажа пока не подключён к геймплею)
-
 func unlock_item(id: String) -> void:
 	unlocked_items[id] = true
 	save_config()

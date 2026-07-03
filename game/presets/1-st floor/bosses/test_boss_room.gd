@@ -1,17 +1,29 @@
 extends "res://game/presets/RoomScript_enemy.gd"
 
-const ChestScene := preload("res://game/objects/chests/Chest_treasure.tscn")
+const ChestScene := preload("uid://tsiccout8ibv")
+const TIERS_EQUIP := [[0, 1], [0, 1, 2], [0, 1, 2], [0, 1, 2, 3], [0, 2, 3], [2, 3], [2, 3]]
+const TIERS_ITEM := [[0, 1], [0, 1, 2, 4], [0, 1, 2, 4], [0, 1, 2, 3, 4], [0, 2, 3, 4], [2, 3], [2, 3]]
+	
 
 var _reward_spawned := false
+@onready var _hatch: Node2D = $Hatch
 
 
 func init_room() -> void:
-	spawn_clear_reward = false
 	super()
+	spawn_clear_reward = false
+	if _hatch and _hatch.has_method("hide_hatch"):
+		_hatch.hide_hatch()
 
 
 func show_doors() -> void:
 	super()
+	call_deferred("_show_hatch_and_reward")
+
+
+func _show_hatch_and_reward() -> void:
+	if _hatch and _hatch.has_method("show_hatch"):
+		_hatch.show_hatch()
 	if _reward_spawned:
 		return
 	_reward_spawned = true
@@ -20,8 +32,10 @@ func show_doors() -> void:
 
 func spawn_reward_chest() -> void:
 	var dungeon = get_tree().current_scene
-	var current_floor: int = dungeon.current_floor
+	var floor_index := clampi(int(dungeon.current_floor) / 2, 0, TIERS_ITEM.size() - 1)
 
 	var chest = ChestScene.instantiate()
 	chest.position = Vector2.ZERO
-	call_deferred('add_child', chest)
+	chest.item_tier = TIERS_ITEM[floor_index]
+	chest.equip_tier = TIERS_EQUIP[floor_index]
+	call_deferred("add_child", chest)

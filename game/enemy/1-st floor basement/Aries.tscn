@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://duyosi2cuk0wi"]
 
-[ext_resource type="Script" uid="uid://g1al6y2iv4bx" path="res://game/enemy/bodies/aries.gd" id="1_ywp5n"]
+[ext_resource type="Script" uid="uid://g1al6y2iv4bx" path="res://game/enemy/1-st floor basement/aries.gd" id="1_ywp5n"]
 [ext_resource type="Texture2D" uid="uid://v567j4vh4wol" path="res://image/enemy/bodies/The aries1.png" id="2_7gr17"]
 [ext_resource type="Texture2D" uid="uid://dws4cgifkiyfa" path="res://image/enemy/bodies/The aries2.png" id="3_you84"]
 [ext_resource type="Texture2D" uid="uid://cyoiq7rbkejye" path="res://image/enemy/bodies/The aries3.png" id="4_ywp5n"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://iq832usk8n1c" path="res://image/enemy/bodies/The aries6.png" id="7_6dqnl"]
 [ext_resource type="Texture2D" uid="uid://ctd142x7adeyk" path="res://image/enemy/bodies/The aries7.png" id="8_i71pe"]
 [ext_resource type="Texture2D" uid="uid://rv5o1p4v52ot" path="res://image/enemy/bodies/The aries8.png" id="9_n4hy5"]
-[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/bodies/effect_icons.gd" id="12_bhddo"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="12_bhddo"]
 [ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="13_381hw"]
 [ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="14_fpjip"]
 [ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="15_3bhmr"]
@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://dq625eh5ah7tr" path="res://image/enemy/enemy_projectile/Hog_charge3.png" id="18_2f17y"]
 [ext_resource type="Texture2D" uid="uid://c08ti8yk0f7o2" path="res://image/enemy/enemy_projectile/Hog_charge4.png" id="19_6epln"]
 [ext_resource type="Texture2D" uid="uid://cjk6266ssspuy" path="res://image/enemy/enemy_projectile/Hog_charge1.png" id="20_cpa3m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
+size = Vector2(50, 21)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
 radius = 984.0
@@ -92,14 +95,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
-size = Vector2(50, 21)
-
 [node name="Aries" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 54
 script = ExtResource("1_ywp5n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ps82n")
 
 [node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
 scale = Vector2(0.75, 0.75)
@@ -146,10 +150,6 @@ fire_icon1 = ExtResource("16_cvtt4")
 position = Vector2(2.6666667, -2.6666667)
 sprite_frames = SubResource("SpriteFrames_lk7xh")
 animation = &"Charge"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_ps82n")
 
 [connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
 [connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
