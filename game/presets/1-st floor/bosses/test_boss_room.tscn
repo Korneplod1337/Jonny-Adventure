@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://b777y3m4083ll"]
 
 [ext_resource type="Script" uid="uid://8dsbbf343e01" path="res://game/presets/1-st floor/bosses/test_boss_room.gd" id="1_hdncw"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/background/tile background_1.png" id="2_jae1j"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/background/background_bounds.png" id="3_bt72h"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_jae1j"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="3_bt72h"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_onn6l"]
-[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/bodies/Worm.tscn" id="5_k4en7"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/bodies/Bat.tscn" id="6_kj6r0"]
+[ext_resource type="PackedScene" uid="uid://cs4tdfiitr06y" path="res://game/presets/doors/hatch.tscn" id="7_bt72h"]
 [ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/bodies/SpiderSmall.tscn" id="7_jae1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgard"]
@@ -108,64 +108,54 @@ position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_7q3g2")
 
 [node name="Door_Up" parent="." unique_id=650211907 instance=ExtResource("4_onn6l")]
-position = Vector2(0, -301)
+position = Vector2(0, -298)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=60275189 instance=ExtResource("4_onn6l")]
-position = Vector2(0, 297)
+position = Vector2(0, 298)
+rotation = 3.1415927
 scale = Vector2(2, 2)
-rotation_degrees = 180.0
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1774901095 instance=ExtResource("4_onn6l")]
-position = Vector2(-580, 0)
+position = Vector2(-578, 0)
+rotation = -1.5707964
 scale = Vector2(2, 2)
-rotation_degrees = -90.0
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=970584351 instance=ExtResource("4_onn6l")]
-position = Vector2(580, 0)
+position = Vector2(578, 0)
+rotation = 1.5707964
 scale = Vector2(2, 2)
-rotation_degrees = 90.0
 dir = Vector2(1, 0)
-
-[node name="EmenyWorm" parent="." unique_id=234496380 instance=ExtResource("5_k4en7")]
-position = Vector2(-184, 2)
-
-[node name="EnemyBat2" parent="." unique_id=1522632719 instance=ExtResource("6_kj6r0")]
-visible = false
-position = Vector2(472, -215)
 
 [node name="EnemyBat3" parent="." unique_id=2091276415 instance=ExtResource("6_kj6r0")]
 position = Vector2(472, 227)
 
-[node name="EnemyBat4" parent="." unique_id=1399020331 instance=ExtResource("6_kj6r0")]
-visible = false
-position = Vector2(-444, 213)
-
 [node name="Spider_small" parent="." unique_id=1888020393 instance=ExtResource("7_jae1j")]
-position = Vector2(-3, -9)
+position = Vector2(-450, -158)
 
 [node name="Spider_small2" parent="." unique_id=187135159 instance=ExtResource("7_jae1j")]
-visible = false
-position = Vector2(-53, -20)
+position = Vector2(-172, -91)
 
 [node name="Spider_small3" parent="." unique_id=1939424748 instance=ExtResource("7_jae1j")]
-visible = false
-position = Vector2(65, -21)
+position = Vector2(480, -208)
 
 [node name="Spider_small4" parent="." unique_id=1144575085 instance=ExtResource("7_jae1j")]
-position = Vector2(-30, 34)
+position = Vector2(-438, 188)
 
 [node name="Spider_small5" parent="." unique_id=236342886 instance=ExtResource("7_jae1j")]
-position = Vector2(48, 27)
+position = Vector2(-135, 91)
 
 [node name="Spider_small6" parent="." unique_id=1032089150 instance=ExtResource("7_jae1j")]
-position = Vector2(-27, -71)
+position = Vector2(-388, -213)
 
 [node name="Spider_small7" parent="." unique_id=1952702360 instance=ExtResource("7_jae1j")]
-position = Vector2(23, -54)
+position = Vector2(111, -93)
+
+[node name="Hatch" parent="." unique_id=197674772 instance=ExtResource("7_bt72h")]
+scale = Vector2(2, 2)
 
 [connection signal="body_entered" from="Detecter_player" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="Detecter_player" to="." method="_on_player_detection_area_body_exited"]

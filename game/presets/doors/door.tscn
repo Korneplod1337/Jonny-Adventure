@@ -1,15 +1,24 @@
 [gd_scene format=3 uid="uid://dlhahqejp67se"]
 
 [ext_resource type="Script" uid="uid://bmj7jtsmllyis" path="res://game/presets/doors/door.gd" id="1_hf35o"]
-[ext_resource type="Texture2D" uid="uid://y3qn4sv1dgst" path="res://image/rooms/rects/door_rect.png" id="2_fnhlo"]
-[ext_resource type="Texture2D" uid="uid://b858nwdhy14rr" path="res://image/rooms/background/Empty_door.png" id="2_nppai"]
-[ext_resource type="Texture2D" uid="uid://5vrhd6umh6xn" path="res://image/rooms/background/standart_door.png" id="3_dywht"]
-[ext_resource type="Texture2D" uid="uid://cfracdioyj8ya" path="res://image/rooms/background/shop_door.png" id="4_m2315"]
-[ext_resource type="Texture2D" uid="uid://bdfxasq34mg05" path="res://image/rooms/background/start_door.png" id="5_j0d1f"]
-[ext_resource type="Texture2D" uid="uid://378ai2i2spfx" path="res://image/rooms/background/Treasure_door.png" id="6_6mkc6"]
+[ext_resource type="Texture2D" uid="uid://c0qpfo1uo3s6x" path="res://image/rooms/1-st floor/background/armory_door.png" id="2_dywht"]
+[ext_resource type="Texture2D" uid="uid://y3qn4sv1dgst" path="res://image/rooms/1-st floor/rects/door_rect.png" id="2_fnhlo"]
+[ext_resource type="Texture2D" uid="uid://b858nwdhy14rr" path="res://image/rooms/1-st floor/background/Empty_door.png" id="2_nppai"]
+[ext_resource type="Texture2D" uid="uid://5vrhd6umh6xn" path="res://image/rooms/1-st floor/background/standart_door.png" id="3_dywht"]
+[ext_resource type="Texture2D" uid="uid://cfracdioyj8ya" path="res://image/rooms/1-st floor/background/shop_door.png" id="4_m2315"]
+[ext_resource type="Texture2D" uid="uid://bdfxasq34mg05" path="res://image/rooms/1-st floor/background/start_door.png" id="5_j0d1f"]
+[ext_resource type="Texture2D" uid="uid://378ai2i2spfx" path="res://image/rooms/1-st floor/background/Treasure_door.png" id="6_6mkc6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2nvgd"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dywht")
+}],
+"loop": true,
+"name": &"armory",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_nppai")
@@ -62,7 +71,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ileth"]
 size = Vector2(26, 26)
 
-[node name="Door_test" type="Node2D" unique_id=1759071911 groups=["Door"]]
+[node name="Door" type="Node2D" unique_id=1759071911 groups=["Door"]]
 script = ExtResource("1_hf35o")
 
 [node name="Room_type_sprites" type="AnimatedSprite2D" parent="." unique_id=321617268]

@@ -6,7 +6,7 @@ const ROOM_TYPE_TO_ANIM := {
 	0: "start",      # START
 	1: "standart",   # STANDARD
 	2: "shop",       # SHOP
-	3: "default",    # ARMORY
+	3: "armory",     # ARMORY
 	4: "default",    # BLOOD_TRIBUTE
 	5: "treasure",   # TREASURE
 	6: "default",    # BANK

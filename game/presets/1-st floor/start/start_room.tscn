@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cmlobl77iwbor"]
 
-[ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/rooms/background/background1.png" id="1_et5k3"]
+[ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/rooms/1-st floor/background/background1.png" id="1_et5k3"]
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="1_jseag"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/background/background_bounds.png" id="2_sw7ps"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_sw7ps"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/bodies/dartboard.tscn" id="4_cjhlh"]
 [ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="12_cdchw"]

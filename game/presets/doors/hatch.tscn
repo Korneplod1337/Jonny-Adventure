@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cs4tdfiitr06y"]
+
+[ext_resource type="Script" uid="uid://ugplkmpjme7q" path="res://game/presets/doors/hatch.gd" id="1_s63fd"]
+[ext_resource type="Texture2D" uid="uid://q6etc7afsp4" path="res://image/rooms/1-st floor/background/hatch1.png" id="2_rx0vn"]
+[ext_resource type="Texture2D" uid="uid://8feipuqehsqk" path="res://image/rooms/1-st floor/background/hatch2.png" id="3_oy40j"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_h4otx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q1g0h"]
+radius = 22.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lkksa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rx0vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oy40j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Hatch" type="Node2D" unique_id=197674772]
+script = ExtResource("1_s63fd")
+
+[node name="Interactable" parent="." unique_id=1597460607 instance=ExtResource("4_h4otx")]
+interact_name = "hatch to next floor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1626291635]
+shape = SubResource("CircleShape2D_q1g0h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=689931078]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_lkksa")
