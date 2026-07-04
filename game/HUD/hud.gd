@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const font: FontFile = preload("uid://bdndi3ua8noo1")
+const font: FontFile = preload("res://Fonts/JonnyAdventureFont.ttf")
 const BONUS_CLAMP_MIN := -40
 const BONUS_CLAMP_MAX := 40
 var ui_open := false
