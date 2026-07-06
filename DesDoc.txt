@@ -2,10 +2,6 @@ ToDo:
 	враги 3 (1)
 	первый босс (слабая его версия)
 	снаряжение 3 (1)
-<<<<<<< Updated upstream
-=======
-	враги 3 (1) глифиды, яйца
->>>>>>> Stashed changes
 	пропасти
 	слот-машина
 	комнаты 2+ (0)
@@ -237,6 +233,7 @@ Owerall:
 	Четырёхлистный клевер				luck_bonus: +4
 	Магический гримуар					magic_bonus: +3
 	Mana flame							magic_bonus: +3, damage_bonus: +1
+	
 	Amplifier							magic_bonus: +4
 	Black brand							speed_bonus: +2, accuracy_bonus: +2
 	Desperado							speed_bonus: +3, damage: +1
