@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://dght2o6kvlham" path="res://game/objects/items/scenes/tier 1/Petroglyph.tscn" id="20_uwsn1"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="20_ymo7r"]
 [ext_resource type="PackedScene" uid="uid://dx5hdeerhyxeh" path="res://game/enemy/1-st floor basement/Spider_egg_small.tscn" id="21_8rj6y"]
+[ext_resource type="PackedScene" uid="uid://c7xpw4mtilp2j" path="res://game/enemy/1-st floor basement/Spider_big.tscn" id="22_ncaf4"]
+[ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/1-st floor basement/Spider_small.tscn" id="23_g3480"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -173,3 +175,9 @@ position = Vector2(30, 77)
 
 [node name="Spider_egg_small" parent="." unique_id=2133096440 instance=ExtResource("21_8rj6y")]
 position = Vector2(-231, -107)
+
+[node name="Spider_big" parent="." unique_id=1645265165 instance=ExtResource("22_ncaf4")]
+position = Vector2(-294, -179)
+
+[node name="Spider_small" parent="." unique_id=1705570218 instance=ExtResource("23_g3480")]
+position = Vector2(-299, -112)

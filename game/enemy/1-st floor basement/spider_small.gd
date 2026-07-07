@@ -48,8 +48,26 @@ func _apply_difficulty_offset(hard_value: float, med_offset: float, easy_offset:
 
 func _ready() -> void:
 	super._ready()
-	sprite.play("default")
-	_pick_new_wander_params()
+	_update_locomotion_animation()
+
+
+func _on_blind_timer_timeout() -> void:
+	super._on_blind_timer_timeout()
+	if active:
+		_pick_new_wander_params()
+	_update_locomotion_animation()
+
+
+func _update_locomotion_animation() -> void:
+	if active:
+		sprite.play("default")
+	elif sprite.sprite_frames.has_animation("idle"):
+		sprite.play("idle")
+
+
+func _on_field_view_area_body_exited(body: Node2D) -> void:
+	super._on_field_view_area_body_exited(body)
+	_update_locomotion_animation()
 
 
 func _setup_enemy_stats() -> void:
