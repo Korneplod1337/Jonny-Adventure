@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c7xpw4mtilp2j"]
 
-[ext_resource type="Script" uid="uid://uj821yomhuiu" path="res://game/enemy/1-st floor basement/spider_small.gd" id="1_tl65e"]
+[ext_resource type="Script" uid="uid://0xb1cclspvw4" path="res://game/enemy/base/spider_wander.gd" id="1_tl65e"]
 [ext_resource type="Texture2D" uid="uid://cdcccjcdal7a6" path="res://image/enemy/bodies/spider_big3.png" id="2_hjtyh"]
 [ext_resource type="Texture2D" uid="uid://dagniakky270" path="res://image/enemy/bodies/spider_big4.png" id="3_c3kxu"]
 [ext_resource type="Texture2D" uid="uid://dh58v7f3x3dso" path="res://image/enemy/bodies/spider_big5.png" id="4_sk4cx"]
@@ -71,9 +71,9 @@ scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 54
 script = ExtResource("1_tl65e")
-hard_base_hp = 100
 hard_direction_change_min = 0.4
 hard_direction_change_max = 1.0
+hard_base_hp = 100
 hard_angle_deviation = 40.0
 use_pathfinding = true
 knockback_friction = 600.0

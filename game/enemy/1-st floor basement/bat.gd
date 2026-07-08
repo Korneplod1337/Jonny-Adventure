@@ -52,16 +52,6 @@ var fly_distance_travelled := 0.0
 var fly_distance_limit := 0.0
 
 
-func _apply_difficulty_offset(hard_value: float, med_offset: float, easy_offset: float) -> float:
-	match DungeonManager.difficulty:
-		"hard":
-			return hard_value
-		"med":
-			return hard_value + med_offset
-		_:
-			return hard_value + easy_offset
-
-
 func _ready() -> void:
 	super._ready()
 	deals_melee_damage = false
@@ -70,18 +60,14 @@ func _ready() -> void:
 
 
 func _setup_enemy_stats() -> void:
-	move_speed = _apply_difficulty_offset(
+	move_speed = _scale_move_speed(
 		hard_move_speed, MOVE_SPEED_MED_OFFSET, MOVE_SPEED_EASY_OFFSET
-	) * GameState.enemy_ms_multiplier
-	base_hp = int(_apply_difficulty_offset(
-		float(hard_base_hp), float(HP_MED_OFFSET), float(HP_EASY_OFFSET)
-	) * GameState.enemy_hp_multiplier)
-	damage = clampi(int(_apply_difficulty_offset(
-		float(hard_damage), float(DAMAGE_MED_OFFSET), float(DAMAGE_EASY_OFFSET)
-	) * GameState.enemy_dmg_multiplier), 1, 4)
-	cooldown_time = _apply_difficulty_offset(
+	)
+	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
+	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET, 1, 4)
+	cooldown_time = _scale_cooldown(
 		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
-	) * GameState.enemy_cooldown_multiplier
+	)
 	projectile_speed = _apply_difficulty_offset(
 		hard_projectile_speed, PROJECTILE_SPEED_MED_OFFSET, PROJECTILE_SPEED_EASY_OFFSET
 	)

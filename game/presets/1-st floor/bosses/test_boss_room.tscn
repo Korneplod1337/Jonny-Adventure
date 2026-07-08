@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_jae1j"]
 [ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="3_bt72h"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_onn6l"]
-[ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/1-st floor basement/Bat.tscn" id="6_kj6r0"]
+[ext_resource type="PackedScene" uid="uid://ce5ei6v0m2h2e" path="res://game/enemy/1-st floor basement/Spider_queen_boss.tscn" id="6_hdncw"]
 [ext_resource type="PackedScene" uid="uid://cs4tdfiitr06y" path="res://game/presets/doors/hatch.tscn" id="7_bt72h"]
-[ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/1-st floor basement/Spider_small.tscn" id="7_jae1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgard"]
 size = Vector2(1270, 711)
@@ -130,33 +129,12 @@ rotation = 1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
-[node name="EnemyBat3" parent="." unique_id=2091276415 instance=ExtResource("6_kj6r0")]
-position = Vector2(472, 227)
-
-[node name="Spider_small" parent="." unique_id=1888020393 instance=ExtResource("7_jae1j")]
-position = Vector2(-450, -158)
-
-[node name="Spider_small2" parent="." unique_id=187135159 instance=ExtResource("7_jae1j")]
-position = Vector2(-172, -91)
-
-[node name="Spider_small3" parent="." unique_id=1939424748 instance=ExtResource("7_jae1j")]
-position = Vector2(480, -208)
-
-[node name="Spider_small4" parent="." unique_id=1144575085 instance=ExtResource("7_jae1j")]
-position = Vector2(-438, 188)
-
-[node name="Spider_small5" parent="." unique_id=236342886 instance=ExtResource("7_jae1j")]
-position = Vector2(-135, 91)
-
-[node name="Spider_small6" parent="." unique_id=1032089150 instance=ExtResource("7_jae1j")]
-position = Vector2(-388, -213)
-
-[node name="Spider_small7" parent="." unique_id=1952702360 instance=ExtResource("7_jae1j")]
-position = Vector2(111, -93)
-
 [node name="Hatch" parent="." unique_id=197674772 instance=ExtResource("7_bt72h")]
 position = Vector2(191, 0)
 scale = Vector2(2, 2)
+
+[node name="Spider_queen_boss" parent="." unique_id=1352998397 instance=ExtResource("6_hdncw")]
+position = Vector2(-2, -11)
 
 [connection signal="body_entered" from="Detecter_player" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="Detecter_player" to="." method="_on_player_detection_area_body_exited"]

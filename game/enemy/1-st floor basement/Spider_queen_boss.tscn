@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://4otoknedbda1"]
+[gd_scene format=3 uid="uid://ce5ei6v0m2h2e"]
 
-[ext_resource type="Script" uid="uid://qm0jmnba0sv5" path="res://game/enemy/1-st floor basement/spider_queen.gd" id="1_a12kh"]
+[ext_resource type="Script" path="res://game/enemy/1-st floor basement/spider_queen_boss.gd" id="1_boss"]
 [ext_resource type="Texture2D" uid="uid://ckfsn6vc50ovm" path="res://image/enemy/bodies/spider_queen1.png" id="1_o0nan"]
 [ext_resource type="Texture2D" uid="uid://chwwosgbsi2la" path="res://image/enemy/bodies/spider_queen2.png" id="2_a12kh"]
 [ext_resource type="Texture2D" uid="uid://c1i14ghgjflw6" path="res://image/enemy/bodies/spider_queen15.png" id="3_w7c8a"]
@@ -31,7 +31,7 @@ size = Vector2(22, 64)
 radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(20, 60)
+size = Vector2(40, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{
@@ -120,60 +120,60 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Spider_queen" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
-scale = Vector2(2, 2)
+[node name="Spider_queen_boss" type="CharacterBody2D" unique_id=1352998397 groups=["Enemy"]]
+scale = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 54
-script = ExtResource("1_a12kh")
-hard_move_speed = 100.0
-hard_cooldown_time = 1.5
-hard_projectile_speed = 350.0
-hard_projectile_range = 400.0
-wait_idle_time = 0.5
+script = ExtResource("1_boss")
+hard_move_speed = 125.0
+hard_cooldown_time = 2.0
+hard_projectile_speed = 437.5
+hard_projectile_range = 800.0
 spawn_distance_buffer = 30.0
-hard_base_hp = 260
+spawn_below_offset = Vector2(0, 168)
+hard_base_hp = 500
 hard_damage = 2
 hard_angle_deviation = 40.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=240624342]
 position = Vector2(0.5, 4)
 shape = SubResource("RectangleShape2D_ps82n")
 
-[node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=1679188214]
 scale = Vector2(0.75, 0.75)
 monitorable = false
 
-[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=272051664]
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=614548800]
 visible = false
 shape = SubResource("CircleShape2D_2eqer")
 
-[node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
+[node name="HitArea" type="Area2D" parent="." unique_id=385706620]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=365001778]
 position = Vector2(0.5, 4)
 shape = SubResource("RectangleShape2D_hoiul")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=501285538]
 position = Vector2(-0.5, 0)
 sprite_frames = SubResource("SpriteFrames_17ibq")
 
-[node name="ShotSpawnPoint" type="Marker2D" parent="." unique_id=878812300]
+[node name="ShotSpawnPoint" type="Marker2D" parent="." unique_id=1347821456]
 position = Vector2(0, -28)
 
-[node name="BlindTimer" type="Timer" parent="." unique_id=1995691531]
+[node name="BlindTimer" type="Timer" parent="." unique_id=1481104024]
 one_shot = true
 
-[node name="CooldownTimer" type="Timer" parent="." unique_id=186013657]
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1231340546]
 one_shot = true
 
-[node name="PoisonTimer" type="Timer" parent="." unique_id=1316312069]
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1902013516]
 wait_time = 1.5
 one_shot = true
 
-[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1384564555]
 position = Vector2(0, -30)
 
-[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1547975255]
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1722163644]
 script = ExtResource("10_a12kh")
 spacing = 25.0
 freeze_icon = ExtResource("11_w7c8a")

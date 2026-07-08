@@ -20,6 +20,8 @@ var damage: int = 1
 ## Меньше — точнее на поворотах, больше — плавнее. На рывки червя не влияет.
 @export var path_desired_distance: float = 8.0
 @export var deals_melee_damage: bool = true
+## Останавливать движение, пока враг наносит урон через HitArea (Hog и Aries отключают).
+@export var stop_on_melee_hit: bool = true
 var base_move_stop_distance: float = 8.0
 const NAV_LOCAL_MAX_DISTANCE_SQ := 250.0 * 250.0
 
@@ -77,9 +79,7 @@ func _physics_process(delta: float) -> void:
 	if use_pathfinding and _navigation_agent and player:
 		_navigation_agent.target_position = player.global_position
 
-	if player_in_hit_range and deals_melee_damage:
-		var atk := get_attack_damage()
-		player.take_damage(atk.x, atk.y, atk.z, self)
+	var dealing_melee := _deal_melee_damage_to_player()
 	#Отталкивание
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
 	if hitstun > 0:
@@ -89,7 +89,11 @@ func _physics_process(delta: float) -> void:
 		knockback_velocity = Vector2.ZERO  # Останавливаем остатки
 	velocity += knockback_velocity  # Добавляем knockback к общему velocity
 	if hitstun <= 0:
-		
+		if dealing_melee and stop_on_melee_hit:
+			velocity = Vector2.ZERO
+			move_and_slide()
+			return
+
 		if use_base_move_towards_player:
 			_base_move_towards_player(delta)
 			return
@@ -202,9 +206,63 @@ func _get_navigation_path_to_player() -> PackedVector2Array:
 	return NavigationServer2D.map_get_path(map_rid, from, to, true)
 
 
-func _setup_enemy_stats() -> void:
+func _apply_difficulty_offset(hard_value: float, med_offset: float, easy_offset: float) -> float:
+	match DungeonManager.difficulty:
+		"hard":
+			return hard_value
+		"med":
+			return hard_value + med_offset
+		_:
+			return hard_value + easy_offset
+
+
+func _scale_hp(hard_hp: int, med_offset: int, easy_offset: int) -> int:
+	return int(
+		_apply_difficulty_offset(float(hard_hp), float(med_offset), float(easy_offset))
+		* GameState.enemy_hp_multiplier
+	)
+
+
+func _scale_damage(
+	hard_dmg: int,
+	med_offset: int,
+	easy_offset: int,
+	min_dmg: int = 1,
+	max_dmg: int = 5
+) -> int:
+	return clampi(
+		int(
+			_apply_difficulty_offset(float(hard_dmg), float(med_offset), float(easy_offset))
+			* GameState.enemy_dmg_multiplier
+		),
+		min_dmg,
+		max_dmg
+	)
+
+
+func _scale_move_speed(hard_speed: float, med_offset: float, easy_offset: float) -> float:
+	return _apply_difficulty_offset(hard_speed, med_offset, easy_offset) * GameState.enemy_ms_multiplier
+
+
+func _scale_cooldown(hard_cd: float, med_offset: float, easy_offset: float) -> float:
+	return _apply_difficulty_offset(hard_cd, med_offset, easy_offset) * GameState.enemy_cooldown_multiplier
+
+
+func _deal_melee_damage_to_player() -> bool:
+	if not player_in_hit_range or not deals_melee_damage or not player:
+		return false
+	var atk := get_attack_damage()
+	player.take_damage(atk.x, atk.y, atk.z, self)
+	return true
+
+
+func _apply_level_buffs() -> void:
 	if GameState.level_bufs[2][1]:  # Deathly
 		damage *= 2
+
+
+func _setup_enemy_stats() -> void:
+	_apply_level_buffs()
 
 
 func get_attack_damage() -> Vector3i:

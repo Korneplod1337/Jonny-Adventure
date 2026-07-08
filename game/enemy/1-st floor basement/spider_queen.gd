@@ -1,4 +1,4 @@
-extends BaseEnemy
+extends EnemySpider
 class_name EnemySpiderQueen
 
 ## Королева не разворачивает спрайт по горизонтали при движении и атаках.
@@ -9,8 +9,6 @@ enum State { IDLE, WAIT_IDLE, STEP_MOVE, CHARGE_SHOT, SHOOT, SPAWN_EGG }
 @export_group("Stats")
 ## Скорость короткого отхода от игрока (с учётом сложности).
 @export var hard_move_speed: float = 90.0
-@export var hard_base_hp: int = 280
-@export var hard_damage: int = 2
 @export var hard_cooldown_time: float = 0.8
 @export var hard_projectile_speed: float = 340.0
 @export var hard_projectile_range: float = 320.0
@@ -18,8 +16,6 @@ enum State { IDLE, WAIT_IDLE, STEP_MOVE, CHARGE_SHOT, SHOOT, SPAWN_EGG }
 @export_group("Behavior")
 ## Длительность короткого отхода от игрока.
 @export var short_move_time: float = 0.8
-## Разброс направления отхода от линии «от игрока», в градусах.
-@export var short_move_angle_spread: float = 30.0
 @export var wait_idle_time: float = 1.0
 @export var shot_charge_time: float = 1.5
 @export var spawn_distance_buffer: float = 50.0
@@ -27,18 +23,18 @@ enum State { IDLE, WAIT_IDLE, STEP_MOVE, CHARGE_SHOT, SHOOT, SPAWN_EGG }
 @export var projectile_scene: PackedScene = preload("res://game/enemy/projectiles/EnemyShotAlt.tscn")
 @export var spider_small_scene: PackedScene = preload("res://game/enemy/1-st floor basement/Spider_small.tscn")
 
-const MOVE_SPEED_MED_OFFSET := -20.0
-const MOVE_SPEED_EASY_OFFSET := -40.0
-const HP_MED_OFFSET := -40
-const HP_EASY_OFFSET := -100
-const DAMAGE_MED_OFFSET := 0
-const DAMAGE_EASY_OFFSET := -1
-const COOLDOWN_MED_OFFSET := 0.25
-const COOLDOWN_EASY_OFFSET := 0.45
-const PROJECTILE_SPEED_MED_OFFSET := -35.0
-const PROJECTILE_SPEED_EASY_OFFSET := -70.0
-const PROJECTILE_RANGE_MED_OFFSET := -60.0
-const PROJECTILE_RANGE_EASY_OFFSET := -120.0
+const QUEEN_MOVE_SPEED_MED_OFFSET := -20.0
+const QUEEN_MOVE_SPEED_EASY_OFFSET := -40.0
+const QUEEN_HP_MED_OFFSET := -40
+const QUEEN_HP_EASY_OFFSET := -100
+const QUEEN_DAMAGE_MED_OFFSET := 0
+const QUEEN_DAMAGE_EASY_OFFSET := -1
+const QUEEN_COOLDOWN_MED_OFFSET := 0.25
+const QUEEN_COOLDOWN_EASY_OFFSET := 0.45
+const QUEEN_PROJECTILE_SPEED_MED_OFFSET := -35.0
+const QUEEN_PROJECTILE_SPEED_EASY_OFFSET := -70.0
+const QUEEN_PROJECTILE_RANGE_MED_OFFSET := -20.0
+const QUEEN_PROJECTILE_RANGE_EASY_OFFSET := -20.0
 
 var state: State = State.IDLE
 var projectile_speed: float = 300.0
@@ -51,16 +47,6 @@ var _spawned_minions: Array[CharacterBody2D] = []
 @onready var shot_spawn_point: Marker2D = $ShotSpawnPoint
 
 
-func _apply_difficulty_offset(hard_value: float, med_offset: float, easy_offset: float) -> float:
-	match DungeonManager.difficulty:
-		"hard":
-			return hard_value
-		"med":
-			return hard_value + med_offset
-		_:
-			return hard_value + easy_offset
-
-
 func _ready() -> void:
 	deals_melee_damage = false
 	super._ready()
@@ -70,25 +56,28 @@ func _ready() -> void:
 
 
 func _setup_enemy_stats() -> void:
-	move_speed = _apply_difficulty_offset(
-		hard_move_speed, MOVE_SPEED_MED_OFFSET, MOVE_SPEED_EASY_OFFSET
-	) * GameState.enemy_ms_multiplier
-	base_hp = int(_apply_difficulty_offset(
-		float(hard_base_hp), float(HP_MED_OFFSET), float(HP_EASY_OFFSET)
-	) * GameState.enemy_hp_multiplier)
-	damage = clampi(int(_apply_difficulty_offset(
-		float(hard_damage), float(DAMAGE_MED_OFFSET), float(DAMAGE_EASY_OFFSET)
-	) * GameState.enemy_dmg_multiplier), 1, 5)
-	cooldown_time = _apply_difficulty_offset(
-		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
-	) * GameState.enemy_cooldown_multiplier
+	move_speed = _scale_move_speed(
+		hard_move_speed, QUEEN_MOVE_SPEED_MED_OFFSET, QUEEN_MOVE_SPEED_EASY_OFFSET
+	)
+	base_hp = _scale_hp(hard_base_hp, QUEEN_HP_MED_OFFSET, QUEEN_HP_EASY_OFFSET)
+	damage = _scale_damage(
+		hard_damage, QUEEN_DAMAGE_MED_OFFSET, QUEEN_DAMAGE_EASY_OFFSET, 1, 5
+	)
+	cooldown_time = _scale_cooldown(
+		hard_cooldown_time, QUEEN_COOLDOWN_MED_OFFSET, QUEEN_COOLDOWN_EASY_OFFSET
+	)
 	projectile_speed = _apply_difficulty_offset(
-		hard_projectile_speed, PROJECTILE_SPEED_MED_OFFSET, PROJECTILE_SPEED_EASY_OFFSET
+		hard_projectile_speed,
+		QUEEN_PROJECTILE_SPEED_MED_OFFSET,
+		QUEEN_PROJECTILE_SPEED_EASY_OFFSET
 	)
 	projectile_range = _apply_difficulty_offset(
-		hard_projectile_range, PROJECTILE_RANGE_MED_OFFSET, PROJECTILE_RANGE_EASY_OFFSET
+		hard_projectile_range,
+		QUEEN_PROJECTILE_RANGE_MED_OFFSET,
+		QUEEN_PROJECTILE_RANGE_EASY_OFFSET
 	)
-	super._setup_enemy_stats()
+	_apply_spider_angle_deviation()
+	_apply_level_buffs()
 
 
 func _on_field_view_area_body_entered(body: Node2D) -> void:
@@ -97,6 +86,10 @@ func _on_field_view_area_body_entered(body: Node2D) -> void:
 		return
 	if active and state == State.IDLE and cooldown_timer.is_stopped():
 		_schedule_next_decision()
+
+
+func _on_blind_timer_timeout() -> void:
+	super._on_blind_timer_timeout()
 
 
 func enemy_action() -> void:
@@ -166,7 +159,7 @@ func _start_short_move() -> void:
 
 	_begin_action(State.STEP_MOVE)
 	var base_angle := dir.angle()
-	var angle_offset := deg_to_rad(randf_range(-short_move_angle_spread, short_move_angle_spread))
+	var angle_offset := deg_to_rad(randf_range(-angle_deviation, angle_deviation))
 	_step_direction = Vector2.from_angle(base_angle + angle_offset)
 	_step_time_elapsed = 0.0
 	velocity = _step_direction * move_speed

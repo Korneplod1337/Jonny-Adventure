@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cjkspeia472c6" path="res://game/objects/items/scenes/tier 1/Cauldron.tscn" id="19_xf56v"]
 [ext_resource type="PackedScene" uid="uid://dght2o6kvlham" path="res://game/objects/items/scenes/tier 1/Petroglyph.tscn" id="20_uwsn1"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="20_ymo7r"]
-[ext_resource type="PackedScene" uid="uid://4otoknedbda1" path="res://game/enemy/1-st floor basement/Spider_queen.tscn" id="21_oiiu3"]
+[ext_resource type="PackedScene" uid="uid://ce5ei6v0m2h2e" path="res://game/enemy/1-st floor basement/Spider_queen_boss.tscn" id="21_8rj6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -183,5 +183,5 @@ position = Vector2(-375, 77)
 [node name="Rock5" parent="." unique_id=1317262919 instance=ExtResource("1_jseag")]
 position = Vector2(-251, -3)
 
-[node name="Spider_queen" parent="." unique_id=2133096440 instance=ExtResource("21_oiiu3")]
-position = Vector2(-292, -210)
+[node name="Spider_queen_boss" parent="." unique_id=1352998397 instance=ExtResource("21_8rj6y")]
+position = Vector2(333, -92)

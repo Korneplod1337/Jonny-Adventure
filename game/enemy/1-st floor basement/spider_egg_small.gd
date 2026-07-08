@@ -1,10 +1,7 @@
-extends BaseEnemy
+extends EnemySpider
 class_name EnemySpiderEggSmall
 
 const WAVE2_ENEMY_SCENE := preload("res://game/enemy/1-st floor basement/Spider_small.tscn")
-
-@export_group("Hard Stats")
-@export var hard_base_hp: int = 30
 
 var _releasing_wave2 := false
 var _spawn_pos := Vector2.ZERO
@@ -23,8 +20,9 @@ func _ready() -> void:
 
 
 func _setup_enemy_stats() -> void:
-	base_hp = int(float(hard_base_hp) * GameState.enemy_hp_multiplier)
-	super._setup_enemy_stats()
+	base_hp = _scale_hp(hard_base_hp, 0, 0)
+	_apply_spider_angle_deviation()
+	_apply_level_buffs()
 
 
 func _custom_physics(_delta: float) -> void:
