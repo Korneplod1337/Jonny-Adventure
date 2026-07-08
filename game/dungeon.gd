@@ -2,6 +2,7 @@ extends Node
 
 const DungeonGenerator = 	preload("uid://btqj5883lt4m8")
 const Room = 				preload("uid://dyph656r88f3r")
+const RoomNavigationBaker = preload("res://game/presets/room_navigation_baker.gd")
 var generator := DungeonGenerator.new()
 
 var hud_instance: Node = null
@@ -152,22 +153,33 @@ func instance_room(room: Room) -> Node:
 
 func spawn_rooms() -> Node:
 	var start_instance: Node = null
+	var spawned_rooms: Array[Node2D] = []
 
 	for room in rooms.values():
 		var scene := instance_room(room)
 		# «шаг» сетки в мировых координатах: размер комнаты + отступ
 		scene.position = room.pos * room_world_size + room.pos * room_gap
 		add_child(scene)
-		
+		if scene is Node2D:
+			spawned_rooms.append(scene)
+
 		room.scene = scene
-		
+
 		configure_doors_for_room(room, scene)
-		
+
 		if room.type == RoomType.START:
 			start_instance = scene
-	
+
+	call_deferred("_bake_room_navigation", spawned_rooms)
 	_ensure_player_draw_order()
 	return start_instance
+
+
+func _bake_room_navigation(room_scenes: Array[Node2D]) -> void:
+	await get_tree().physics_frame
+	for room_scene in room_scenes:
+		if is_instance_valid(room_scene):
+			RoomNavigationBaker.setup_for_room(room_scene)
 
 
 func _ensure_player_draw_order() -> void:

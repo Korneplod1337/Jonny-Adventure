@@ -92,8 +92,15 @@ func enemy_action() -> void:
 
 
 func choose_direction_and_dash() -> void:
-	var dir = (player.global_position - global_position).normalized()
-	if dir.length() == 0:
+	var dir := Vector2.ZERO
+
+	if use_pathfinding and _navigation_agent:
+		dir = get_direction_to_player(move_step_distance * 0.85)
+	else:
+		var to_player := (player.global_position - global_position).normalized()
+
+	if dir == Vector2.ZERO:
+		cooldown_timer.start()
 		return
 
 	target_direction = dir

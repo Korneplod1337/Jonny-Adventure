@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://4otoknedbda1"]
+
+[ext_resource type="Script" uid="uid://qm0jmnba0sv5" path="res://game/enemy/1-st floor basement/spider_queen.gd" id="1_a12kh"]
+[ext_resource type="Texture2D" uid="uid://ckfsn6vc50ovm" path="res://image/enemy/bodies/spider_queen1.png" id="1_o0nan"]
+[ext_resource type="Texture2D" uid="uid://chwwosgbsi2la" path="res://image/enemy/bodies/spider_queen2.png" id="2_a12kh"]
+[ext_resource type="Texture2D" uid="uid://c1i14ghgjflw6" path="res://image/enemy/bodies/spider_queen15.png" id="3_w7c8a"]
+[ext_resource type="Texture2D" uid="uid://drwkrpilemjsl" path="res://image/enemy/bodies/spider_queen16.png" id="4_k2m47"]
+[ext_resource type="Texture2D" uid="uid://dite7qja3te72" path="res://image/enemy/bodies/spider_queen17.png" id="5_jeedy"]
+[ext_resource type="Texture2D" uid="uid://8i5tqpy5vd5v" path="res://image/enemy/bodies/spider_queen5.png" id="6_3rxmb"]
+[ext_resource type="Texture2D" uid="uid://b1tmx8rl6ii54" path="res://image/enemy/bodies/spider_queen3.png" id="7_gslvy"]
+[ext_resource type="Texture2D" uid="uid://bocrh0cx0uywh" path="res://image/enemy/bodies/spider_queen4.png" id="8_x1ufl"]
+[ext_resource type="Texture2D" uid="uid://dvpbm8fqctb2e" path="res://image/enemy/bodies/spider_queen6.png" id="9_dgajx"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="10_a12kh"]
+[ext_resource type="Texture2D" uid="uid://dencouqq4w8mi" path="res://image/enemy/bodies/spider_queen7.png" id="10_niwth"]
+[ext_resource type="Texture2D" uid="uid://dk0awhg0bfe3t" path="res://image/enemy/bodies/spider_queen8.png" id="11_rcvg2"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="11_w7c8a"]
+[ext_resource type="Texture2D" uid="uid://oxnw2f3raqe0" path="res://image/enemy/bodies/spider_queen9.png" id="12_35md6"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="12_k2m47"]
+[ext_resource type="Texture2D" uid="uid://cg5bkioiqmuyw" path="res://image/enemy/bodies/spider_queen10.png" id="13_3ip26"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="13_jeedy"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="14_3rxmb"]
+[ext_resource type="Texture2D" uid="uid://cd0elpwpwdmaw" path="res://image/enemy/bodies/spider_queen11.png" id="14_taakf"]
+[ext_resource type="Texture2D" uid="uid://dwojqipwed30b" path="res://image/enemy/bodies/spider_queen12.png" id="15_3ls0l"]
+[ext_resource type="Texture2D" uid="uid://dubsc8tyjyi4t" path="res://image/enemy/bodies/spider_queen13.png" id="16_45mca"]
+[ext_resource type="Texture2D" uid="uid://ud7s61sej2wj" path="res://image/enemy/bodies/spider_queen14.png" id="17_wnql3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
+size = Vector2(22, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
+radius = 984.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
+size = Vector2(24, 68)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o0nan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a12kh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_w7c8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k2m47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jeedy")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o0nan")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3rxmb")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_gslvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x1ufl")
+}],
+"loop": true,
+"name": &"shot_charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_dgajx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_niwth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rcvg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_35md6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3ip26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_taakf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3ls0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_45mca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_wnql3")
+}],
+"loop": false,
+"name": &"spawn_egg",
+"speed": 5.0
+}]
+
+[node name="Spider_queen" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 54
+script = ExtResource("1_a12kh")
+hard_move_speed = 100.0
+hard_cooldown_time = 1.5
+hard_projectile_speed = 350.0
+hard_projectile_range = 400.0
+wait_idle_time = 0.5
+spawn_distance_buffer = 30.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_ps82n")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=272051664]
+visible = false
+shape = SubResource("CircleShape2D_2eqer")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_hoiul")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
+position = Vector2(-0.5, 0)
+sprite_frames = SubResource("SpriteFrames_17ibq")
+animation = &"shot"
+
+[node name="ShotSpawnPoint" type="Marker2D" parent="." unique_id=878812300]
+position = Vector2(0, -28)
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1995691531]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=186013657]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1316312069]
+wait_time = 1.5
+one_shot = true
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1547975255]
+script = ExtResource("10_a12kh")
+spacing = 25.0
+freeze_icon = ExtResource("11_w7c8a")
+poison_icon = ExtResource("12_k2m47")
+fire_icon0 = ExtResource("13_jeedy")
+fire_icon1 = ExtResource("14_3rxmb")
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

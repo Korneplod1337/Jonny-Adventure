@@ -134,7 +134,7 @@ func _pick_new_wander_params() -> void:
 		wander_direction = Vector2.RIGHT.rotated(randf() * TAU)
 		return
 
-	var to_player := player.global_position - global_position
+	var to_player := get_direction_to_player()
 	if to_player.length_squared() < 0.01:
 		wander_direction = Vector2.RIGHT.rotated(
 			deg_to_rad(randf_range(-angle_deviation, angle_deviation))

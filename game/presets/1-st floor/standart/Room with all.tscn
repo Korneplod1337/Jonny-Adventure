@@ -50,6 +50,8 @@
 [ext_resource type="PackedScene" uid="uid://dcfrwovjlwrn0" path="res://game/objects/chests/Chest_weapon.tscn" id="48_x23vw"]
 [ext_resource type="PackedScene" uid="uid://tsiccout8ibv" path="res://game/objects/chests/Chest_treasure.tscn" id="49_kobpu"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="50_s6d3r"]
+[ext_resource type="PackedScene" uid="uid://c7xpw4mtilp2j" path="res://game/enemy/1-st floor basement/Spider_big.tscn" id="51_pdx4p"]
+[ext_resource type="PackedScene" uid="uid://dx5hdeerhyxeh" path="res://game/enemy/1-st floor basement/Spider_egg_small.tscn" id="52_wgx4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -329,3 +331,9 @@ position = Vector2(-925, 221)
 
 [node name="EnemyTest2" parent="." unique_id=464290923 instance=ExtResource("50_s6d3r")]
 position = Vector2(-116, -565)
+
+[node name="Spider_big" parent="." unique_id=1889375929 instance=ExtResource("51_pdx4p")]
+position = Vector2(-488, -470)
+
+[node name="Spider_egg_small" parent="." unique_id=1024645861 instance=ExtResource("52_wgx4h")]
+position = Vector2(-403, -451)

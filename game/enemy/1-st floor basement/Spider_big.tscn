@@ -75,10 +75,11 @@ hard_base_hp = 100
 hard_direction_change_min = 0.4
 hard_direction_change_max = 1.0
 hard_angle_deviation = 40.0
+use_pathfinding = true
 knockback_friction = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.25, 1.25)
 shape = SubResource("RectangleShape2D_ps82n")
 
 [node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
@@ -93,11 +94,11 @@ shape = SubResource("CircleShape2D_2eqer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
 position = Vector2(-2, 1)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.25, 1.25)
 shape = SubResource("RectangleShape2D_hoiul")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.25, 1.25)
 sprite_frames = SubResource("SpriteFrames_17ibq")
 animation = &"idle"
 

@@ -14,8 +14,14 @@ var base_hp: int = 50
 var damage: int = 1
 
 @export var use_base_move_towards_player: bool = false
+@export var use_pathfinding: bool = false
+@export var drop_coin_on_death: bool = true
+## Расстояние до следующей точки маршрута при непрерывном движении (паук и др.).
+## Меньше — точнее на поворотах, больше — плавнее. На рывки червя не влияет.
+@export var path_desired_distance: float = 8.0
 @export var deals_melee_damage: bool = true
 var base_move_stop_distance: float = 8.0
+const NAV_LOCAL_MAX_DISTANCE_SQ := 250.0 * 250.0
 
 var player_in_hit_range: bool = false
 var player_in_vision: bool = false
@@ -35,6 +41,7 @@ signal _enemy_die(int)
 
 @onready var effect_icons = $EffectAnchor/EffectIcons
 var knockback_velocity: Vector2 = Vector2.ZERO
+var _navigation_agent: NavigationAgent2D
 var damage_flash_token: int = 0
 var hitstun: float = 0.0  # Время в секундах паузы движения (0.3-0.5 сек)
 @export var knockback_friction: float = 400.0  # Скорость затухания толчка
@@ -56,6 +63,9 @@ func _ready() -> void:
 	
 	player = get_tree().get_first_node_in_group("player")
 
+	if use_pathfinding:
+		_setup_pathfinding()
+
 
 func _physics_process(delta: float) -> void:
 	if not active or is_dead:
@@ -63,6 +73,9 @@ func _physics_process(delta: float) -> void:
 	if not player:
 		player = get_tree().get_first_node_in_group("player")
 		return
+
+	if use_pathfinding and _navigation_agent and player:
+		_navigation_agent.target_position = player.global_position
 
 	if player_in_hit_range and deals_melee_damage:
 		var atk := get_attack_damage()
@@ -89,16 +102,104 @@ func _base_move_towards_player(_delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 
-	var dir := player.global_position - global_position
-	if dir.length() <= base_move_stop_distance:
+	var dir := get_direction_to_player()
+	if dir == Vector2.ZERO:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 
-	dir = dir.normalized()
 	velocity = dir * move_speed
 	sprite.flip_h = dir.x < 0
 	move_and_slide()
+
+
+func _setup_pathfinding() -> void:
+	if _navigation_agent:
+		return
+
+	_navigation_agent = NavigationAgent2D.new()
+	_navigation_agent.name = "NavigationAgent2D"
+	_navigation_agent.path_desired_distance = path_desired_distance
+	_navigation_agent.target_desired_distance = base_move_stop_distance
+	_navigation_agent.radius = _navigation_agent_radius()
+	_navigation_agent.path_max_distance = 4000.0
+	_navigation_agent.avoidance_enabled = false
+	add_child(_navigation_agent)
+	_navigation_agent.target_position = global_position
+
+
+func _navigation_agent_radius() -> float:
+	var collision := get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if collision and collision.shape is RectangleShape2D:
+		var rect := collision.shape as RectangleShape2D
+		var half := rect.size * 0.5 * Vector2(scale.x, scale.y)
+		return half.length() + 4.0
+	if collision and collision.shape is CircleShape2D:
+		var circle := collision.shape as CircleShape2D
+		return circle.radius * maxf(scale.x, scale.y) + 4.0
+	return 22.0
+
+
+## path_lookahead > 0 — направление рывка на эту дистанцию вдоль пути (червь).
+## path_lookahead == 0 — следующая точка маршрута (паук и др.).
+func get_direction_to_player(path_lookahead: float = 0.0) -> Vector2:
+	if not player:
+		return Vector2.ZERO
+
+	var to_player := player.global_position - global_position
+	if to_player.length() <= base_move_stop_distance:
+		return Vector2.ZERO
+
+	if not use_pathfinding or not _navigation_agent:
+		return to_player.normalized()
+
+	var path := _get_navigation_path_to_player()
+	if path.size() < 2:
+		return Vector2.ZERO
+
+	if path_lookahead > 0.0:
+		var remaining := path_lookahead
+		var cursor := global_position
+		for i in range(1, path.size()):
+			var segment_end: Vector2 = path[i]
+			var segment_vec := segment_end - cursor
+			var segment_len := segment_vec.length()
+			if segment_len < 0.01:
+				cursor = segment_end
+				continue
+			if remaining <= segment_len:
+				var aim := cursor + segment_vec.normalized() * remaining
+				var dash_dir := aim - global_position
+				return dash_dir.normalized() if dash_dir.length_squared() > 0.01 else Vector2.ZERO
+			remaining -= segment_len
+			cursor = segment_end
+		var final_dir := path[path.size() - 1] - global_position
+		return final_dir.normalized() if final_dir.length_squared() > 0.01 else Vector2.ZERO
+
+	var target_index := 1
+	for i in range(1, path.size()):
+		target_index = i
+		if global_position.distance_to(path[i]) > path_desired_distance:
+			break
+
+	var dir := path[target_index] - global_position
+	return dir.normalized() if dir.length_squared() >= 4.0 else Vector2.ZERO
+
+
+func _get_navigation_path_to_player() -> PackedVector2Array:
+	if not player or not _navigation_agent:
+		return PackedVector2Array()
+
+	var map_rid := _navigation_agent.get_navigation_map()
+	if map_rid == RID() or NavigationServer2D.map_get_iteration_id(map_rid) == 0:
+		return PackedVector2Array()
+
+	var from := NavigationServer2D.map_get_closest_point(map_rid, global_position)
+	if from.distance_squared_to(global_position) > NAV_LOCAL_MAX_DISTANCE_SQ:
+		return PackedVector2Array()
+
+	var to := NavigationServer2D.map_get_closest_point(map_rid, player.global_position)
+	return NavigationServer2D.map_get_path(map_rid, from, to, true)
 
 
 func _setup_enemy_stats() -> void:
@@ -270,7 +371,7 @@ func _on_sprite_animation_finished() -> void:
 		var luck := 0.0
 		if player:
 			luck = StatManager.get_stat(player, "luck")
-			if randf() < luck:
+			if drop_coin_on_death and randf() < luck:
 				spawn_coin()
 		queue_free()
 		StatsManager.add_statistic_progress("kills", 1)
