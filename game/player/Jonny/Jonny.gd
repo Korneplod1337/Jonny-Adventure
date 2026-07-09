@@ -281,7 +281,7 @@ func update_equipment_visuals():
 # ЗДОРОВЬЕ
 func take_damage(phy_damage: int = 0,
 				mag_damage: int = 0, clr_damage: int = 0, attacker: Node = null) -> void:
-	return
+	#return
 	if invulnerable:
 		return
 	

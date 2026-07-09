@@ -58,7 +58,7 @@ func _ready() -> void:
 	blind_timer.wait_time = 0.5
 	
 	_apply_level_buffs()
-
+	
 	base_move_speed = move_speed
 	current_hp = base_hp
 	cooldown_timer.wait_time = cooldown_time
@@ -255,7 +255,7 @@ func _deal_melee_damage_to_player() -> bool:
 	return true
 
 
-func _apply_level_buffs() -> void:
+func _apply_level_buffs() -> void: ## apply stats and level buffs
 	if GameState.level_bufs[2][1]:  # Deathly
 		damage *= 2
 

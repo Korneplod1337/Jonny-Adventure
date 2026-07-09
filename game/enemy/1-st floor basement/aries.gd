@@ -41,7 +41,6 @@ var charge_damage_dealt := false
 func _ready() -> void:
 	super._ready()
 	deals_melee_damage = false
-	stop_on_melee_hit = false
 	knockback_friction += 200.0
 	sprite.play("default")
 	_hide_charge_indicator()
@@ -56,14 +55,12 @@ func _physics_process(delta: float) -> void:
 		deals_melee_damage = false
 
 
-func _setup_enemy_stats() -> void:
+func _apply_level_buffs() -> void:
 	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
 	charge_damage = _scale_damage(
 		hard_charge_damage,
 		CHARGE_DAMAGE_MED_OFFSET,
 		CHARGE_DAMAGE_EASY_OFFSET,
-		1,
-		4
 	)
 	charge_speed = _scale_move_speed(
 		hard_charge_speed, CHARGE_SPEED_MED_OFFSET, CHARGE_SPEED_EASY_OFFSET
@@ -76,7 +73,7 @@ func _setup_enemy_stats() -> void:
 	)
 	aim_time = hard_aim_time
 
-	super._setup_enemy_stats()
+	super._apply_level_buffs()
 
 
 func get_attack_damage() -> Vector3i:
@@ -169,15 +166,6 @@ func _process_charging(delta: float) -> void:
 
 
 func _try_bounce() -> void:
-	if state == State.CHARGING and player_in_hit_range and player:
-		var to_player := player.global_position - global_position
-		if to_player.length_squared() > 0.01:
-			var normal := -to_player.normalized()
-			charge_direction = charge_direction.bounce(normal).normalized()
-			charge_sprite.rotation = charge_direction.angle()
-			sprite.flip_h = charge_direction.x < 0.0
-			return
-
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		if collision == null:

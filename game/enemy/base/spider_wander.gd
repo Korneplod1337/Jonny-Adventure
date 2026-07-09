@@ -61,7 +61,7 @@ func _on_field_view_area_body_exited(body: Node2D) -> void:
 	_update_locomotion_animation()
 
 
-func _setup_enemy_stats() -> void:
+func _apply_level_buffs() -> void:
 	move_speed_min = _scale_move_speed(
 		hard_move_speed_min, MOVE_SPEED_MIN_MED_OFFSET, MOVE_SPEED_MIN_EASY_OFFSET
 	)
@@ -85,7 +85,7 @@ func _setup_enemy_stats() -> void:
 		DIRECTION_CHANGE_MAX_EASY_OFFSET
 	)
 	_apply_spider_angle_deviation()
-	_apply_level_buffs()
+	super._apply_level_buffs()
 
 
 func _custom_physics(delta: float) -> void:

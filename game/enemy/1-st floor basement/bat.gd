@@ -59,7 +59,7 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("default")
 
 
-func _setup_enemy_stats() -> void:
+func _apply_level_buffs() -> void:
 	move_speed = _scale_move_speed(
 		hard_move_speed, MOVE_SPEED_MED_OFFSET, MOVE_SPEED_EASY_OFFSET
 	)

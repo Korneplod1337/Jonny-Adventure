@@ -56,7 +56,7 @@ func _ready() -> void:
 	sprite.play("idle")
 
 
-func _setup_enemy_stats() -> void:
+func _apply_level_buffs() -> void:
 	move_speed = _scale_move_speed(
 		hard_move_speed, QUEEN_MOVE_SPEED_MED_OFFSET, QUEEN_MOVE_SPEED_EASY_OFFSET
 	)
@@ -74,7 +74,7 @@ func _setup_enemy_stats() -> void:
 		QUEEN_PROJECTILE_RANGE_EASY_OFFSET
 	)
 	_apply_spider_angle_deviation()
-	_apply_level_buffs()
+	super._apply_level_buffs()
 
 
 func _on_field_view_area_body_entered(body: Node2D) -> void:

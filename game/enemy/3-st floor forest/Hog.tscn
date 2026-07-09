@@ -108,14 +108,7 @@ scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 54
 script = ExtResource("1_45uaf")
-move_speed = null
-cooldown_time = null
-base_hp = null
-damage = null
-use_base_move_towards_player = null
-deals_melee_damage = null
-knockback_friction = null
-hitstun_duration = null
+stop_on_melee_hit = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
 position = Vector2(0, 1)

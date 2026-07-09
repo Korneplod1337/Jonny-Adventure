@@ -24,7 +24,7 @@ const MS_MULT_EASY := 1.0
 
 @export var dash_curve: Curve
 
-var move_step_distance: float = 100.0
+var move_step_distance: float = 10.0
 var dash_distance_travelled: float = 0.0
 var target_direction: Vector2 = Vector2.ZERO
 var is_dashing: bool = false
@@ -40,7 +40,7 @@ func _get_ms_multiplier() -> float:
 			return MS_MULT_EASY
 
 
-func _setup_enemy_stats() -> void:
+func _apply_level_buffs() -> void:
 	var ms_mult := _get_ms_multiplier() * GameState.enemy_ms_multiplier
 
 	move_step_distance = _apply_difficulty_offset(
