@@ -1,0 +1,192 @@
+[gd_scene format=3 uid="uid://dk2be1gdyetpo"]
+
+[ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/rooms/1-st floor/background/background1.png" id="1_h6u4y"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_2ue0t"]
+[ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="3_yfpwr"]
+[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
+[ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
+[ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="6_ww7l6"]
+[ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/tier 0/Potion Red.tscn" id="7_bxm0y"]
+[ext_resource type="PackedScene" uid="uid://bpxxvh07ciubm" path="res://game/objects/obstacles/rockSmall.tscn" id="8_iqmaw"]
+[ext_resource type="PackedScene" uid="uid://7wom6t7b0i7c" path="res://game/objects/obstacles/rockSmallest.tscn" id="9_p8hec"]
+[ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="10_jo4v1"]
+[ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="11_6cfgv"]
+[ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn" id="12_f67eu"]
+[ext_resource type="PackedScene" uid="uid://i6kqba6ow2yq" path="res://game/objects/Equipment/Weapon/equip/Sniper_equip.tscn" id="13_j72gn"]
+[ext_resource type="PackedScene" uid="uid://2dtjjer8eim8" path="res://game/objects/Equipment/Weapon/equip/tome_of_fairy_tales_equip.tscn" id="14_kmixf"]
+[ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_fyd7y"]
+[ext_resource type="Resource" uid="uid://c8hfht7lr6kje" path="res://game/objects/Equipment/_enchantments/fire_enchantment.tres" id="16_dsn1n"]
+[ext_resource type="PackedScene" uid="uid://8nlac1wigti" path="res://game/objects/Equipment/head/Alchemists_glasses.tscn" id="17_5tx8v"]
+[ext_resource type="PackedScene" uid="uid://ctoy78au1wi65" path="res://game/objects/items/scenes/tier 1/Radar.tscn" id="18_3m1kt"]
+[ext_resource type="PackedScene" uid="uid://cjkspeia472c6" path="res://game/objects/items/scenes/tier 1/Cauldron.tscn" id="19_hacjm"]
+[ext_resource type="PackedScene" uid="uid://dght2o6kvlham" path="res://game/objects/items/scenes/tier 1/Petroglyph.tscn" id="20_fxlmj"]
+[ext_resource type="PackedScene" uid="uid://c58nxtsrgbldy" path="res://game/enemy/1-st floor basement/WormInsected.tscn" id="21_h6u4y"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="22_2ue0t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
+size = Vector2(1280, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsolu"]
+size = Vector2(1136, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw7ps"]
+size = Vector2(41.03, 654.5)
+
+[sub_resource type="Resource" id="Resource_ajpcv"]
+metadata/__load_path__ = "res://image/items/items_hud/ItemHealthPotion.png"
+
+[node name="StartRoom" type="Node2D" unique_id=757044430]
+
+[node name="CameraBounds" type="Area2D" parent="." unique_id=1720013523]
+z_index = -5
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=332360121]
+z_index = -5
+shape = SubResource("RectangleShape2D_85tg8")
+
+[node name="BG_floor" type="Sprite2D" parent="." unique_id=1940620195]
+z_index = -10
+scale = Vector2(2, 2)
+texture = ExtResource("1_h6u4y")
+
+[node name="BG_bounds" type="Sprite2D" parent="." unique_id=326775904]
+z_index = -5
+scale = Vector2(2, 2)
+texture = ExtResource("2_2ue0t")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=962677030]
+position = Vector2(-207, -240)
+collision_layer = 16
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1507287982]
+position = Vector2(207, -67.999985)
+shape = SubResource("RectangleShape2D_lsolu")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=594798197]
+position = Vector2(207, 548)
+shape = SubResource("RectangleShape2D_lsolu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1238806990]
+position = Vector2(795.545, 239.75)
+shape = SubResource("RectangleShape2D_sw7ps")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=345058929]
+position = Vector2(-381.94, 239)
+shape = SubResource("RectangleShape2D_sw7ps")
+
+[node name="Rock2" parent="." unique_id=882224253 instance=ExtResource("3_yfpwr")]
+position = Vector2(250, 232)
+
+[node name="Door_Up" parent="." unique_id=976948045 instance=ExtResource("4_7fgpm")]
+position = Vector2(0, -298)
+scale = Vector2(2, 2)
+dir = Vector2(0, -1)
+
+[node name="Door_Down" parent="." unique_id=468466240 instance=ExtResource("4_7fgpm")]
+position = Vector2(0, 298)
+rotation = 3.1415927
+scale = Vector2(2, 2)
+dir = Vector2(0, 1)
+
+[node name="Door_Left" parent="." unique_id=867576507 instance=ExtResource("4_7fgpm")]
+position = Vector2(-578, 0)
+rotation = -1.5707964
+scale = Vector2(2, 2)
+dir = Vector2(-1, 0)
+
+[node name="Door_Right" parent="." unique_id=1947595542 instance=ExtResource("4_7fgpm")]
+position = Vector2(578, 0)
+rotation = 1.5707964
+scale = Vector2(2, 2)
+dir = Vector2(1, 0)
+
+[node name="EnemyTest2" parent="." unique_id=1789486187 instance=ExtResource("5_tvg8h")]
+position = Vector2(444, -188)
+
+[node name="EnemyTest3" parent="." unique_id=464290923 instance=ExtResource("5_tvg8h")]
+position = Vector2(520, -220)
+
+[node name="EnemyTest4" parent="." unique_id=408778307 instance=ExtResource("5_tvg8h")]
+position = Vector2(488, -132)
+
+[node name="CoinBag" parent="." unique_id=108492217 instance=ExtResource("6_ww7l6")]
+position = Vector2(519, 236)
+
+[node name="TestItem" parent="." unique_id=1539246569 instance=ExtResource("7_bxm0y")]
+position = Vector2(466, 252)
+item_icon = SubResource("Resource_ajpcv")
+
+[node name="Rock small" parent="." unique_id=1382891265 instance=ExtResource("8_iqmaw")]
+position = Vector2(156, 240)
+
+[node name="Rock smallest" parent="." unique_id=1708801684 instance=ExtResource("9_p8hec")]
+position = Vector2(172, 192)
+
+[node name="Rock2_5" parent="." unique_id=1882577447 instance=ExtResource("10_jo4v1")]
+position = Vector2(272, 152)
+
+[node name="FloorPike" parent="." unique_id=1298280768 instance=ExtResource("11_6cfgv")]
+position = Vector2(352, 152)
+initial_delay = 0.0
+player_phy_damage = 100
+
+[node name="FloorPike2" parent="." unique_id=2035113601 instance=ExtResource("11_6cfgv")]
+position = Vector2(432, 152)
+initial_delay = 0.0
+player_phy_damage = 100
+
+[node name="FloorPike3" parent="." unique_id=217037388 instance=ExtResource("11_6cfgv")]
+position = Vector2(512, 152)
+initial_delay = 0.0
+player_phy_damage = 100
+
+[node name="FloorPike4" parent="." unique_id=381557609 instance=ExtResource("11_6cfgv")]
+position = Vector2(352, 232)
+initial_delay = 0.0
+player_phy_damage = 100
+
+[node name="Pistol" parent="." unique_id=241584314 instance=ExtResource("12_f67eu")]
+position = Vector2(-123, 62)
+
+[node name="Sniper" parent="." unique_id=1823620353 instance=ExtResource("13_j72gn")]
+position = Vector2(-182, 176)
+
+[node name="tome_of_fairy_tales_equip" parent="." unique_id=925666813 instance=ExtResource("14_kmixf")]
+position = Vector2(-292, 138)
+
+[node name="Sword_equip" parent="." unique_id=133096138 instance=ExtResource("15_fyd7y")]
+position = Vector2(-215, 76)
+enchantment = ExtResource("16_dsn1n")
+
+[node name="Alchemist\'s glasses" parent="." unique_id=1914859512 instance=ExtResource("17_5tx8v")]
+position = Vector2(144, -48)
+
+[node name="Radar" parent="." unique_id=1154833122 instance=ExtResource("18_3m1kt")]
+position = Vector2(84, 94)
+
+[node name="Cauldron" parent="." unique_id=1430574395 instance=ExtResource("19_hacjm")]
+position = Vector2(185, 18)
+
+[node name="Petroglyph" parent="." unique_id=1430574397 instance=ExtResource("20_fxlmj")]
+position = Vector2(30, 77)
+
+[node name="Rock" parent="." unique_id=1046045028 instance=ExtResource("3_yfpwr")]
+position = Vector2(-375, 237)
+
+[node name="Rock3" parent="." unique_id=189083648 instance=ExtResource("3_yfpwr")]
+position = Vector2(-375, 157)
+
+[node name="Rock4" parent="." unique_id=524582743 instance=ExtResource("3_yfpwr")]
+position = Vector2(-375, 77)
+
+[node name="Rock5" parent="." unique_id=1317262919 instance=ExtResource("3_yfpwr")]
+position = Vector2(-251, -3)
+
+[node name="EmenyWormInsected" parent="." unique_id=1655288545 instance=ExtResource("21_h6u4y")]
+position = Vector2(-252, -124)
+
+[node name="EmenyWorm" parent="." unique_id=1677486888 instance=ExtResource("22_2ue0t")]
+position = Vector2(-101, -170)
+use_pathfinding = false

@@ -45,6 +45,7 @@ var _phase_token: int = 0
 var _spawned_minions: Array[CharacterBody2D] = []
 
 @onready var shot_spawn_point: Marker2D = $ShotSpawnPoint
+@onready var _minion_spawn_point: Marker2D = get_node_or_null("MinionSpawnPoint") as Marker2D
 
 
 func _ready() -> void:
@@ -60,12 +61,8 @@ func _setup_enemy_stats() -> void:
 		hard_move_speed, QUEEN_MOVE_SPEED_MED_OFFSET, QUEEN_MOVE_SPEED_EASY_OFFSET
 	)
 	base_hp = _scale_hp(hard_base_hp, QUEEN_HP_MED_OFFSET, QUEEN_HP_EASY_OFFSET)
-	damage = _scale_damage(
-		hard_damage, QUEEN_DAMAGE_MED_OFFSET, QUEEN_DAMAGE_EASY_OFFSET, 1, 5
-	)
-	cooldown_time = _scale_cooldown(
-		hard_cooldown_time, QUEEN_COOLDOWN_MED_OFFSET, QUEEN_COOLDOWN_EASY_OFFSET
-	)
+	damage = _scale_damage(hard_damage, QUEEN_DAMAGE_MED_OFFSET, QUEEN_DAMAGE_EASY_OFFSET)
+	cooldown_time = _scale_cooldown(hard_cooldown_time, QUEEN_COOLDOWN_MED_OFFSET, QUEEN_COOLDOWN_EASY_OFFSET)
 	projectile_speed = _apply_difficulty_offset(
 		hard_projectile_speed,
 		QUEEN_PROJECTILE_SPEED_MED_OFFSET,
@@ -198,9 +195,6 @@ func _finish_charge_then_shoot() -> void:
 
 
 func _spawn_projectile() -> void:
-	if not projectile_scene or not player:
-		return
-
 	var origin := global_position
 	if is_instance_valid(shot_spawn_point):
 		origin = shot_spawn_point.global_position
@@ -229,12 +223,7 @@ func _spawn_projectile() -> void:
 
 
 func _spawn_small_spider() -> void:
-	if not spider_small_scene:
-		return
-
 	var spawned_spider: CharacterBody2D = spider_small_scene.instantiate()
-	spawned_spider.global_position = global_position + spawn_below_offset
-	spawned_spider.scale = scale
 	spawned_spider.drop_coin_on_death = false
 
 	var room := _get_room_node()
@@ -247,6 +236,7 @@ func _spawn_small_spider() -> void:
 	else:
 		get_parent().add_child(spawned_spider)
 
+	spawned_spider.global_position = _minion_spawn_point.global_position
 	_register_spawned_minion(spawned_spider)
 
 

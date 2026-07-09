@@ -18,7 +18,7 @@ func init_room() -> void:
 
 func show_doors() -> void:
 	super()
-	call_deferred("_show_hatch_and_reward")
+	_show_hatch_and_reward()
 
 
 func _show_hatch_and_reward() -> void:
@@ -35,7 +35,10 @@ func spawn_reward_chest() -> void:
 	var floor_index := clampi(int(dungeon.current_floor) / 2, 0, TIERS_ITEM.size() - 1)
 
 	var chest = ChestScene.instantiate()
-	chest.position = Vector2.ZERO
+	if _hatch:
+		chest.position = _hatch.position + Vector2(-140, 0)
+	else:
+		chest.position = Vector2.ZERO
 	chest.item_tier = TIERS_ITEM[floor_index]
 	chest.equip_tier = TIERS_EQUIP[floor_index]
 	call_deferred("add_child", chest)

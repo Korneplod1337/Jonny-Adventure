@@ -64,7 +64,7 @@ func _setup_enemy_stats() -> void:
 		hard_move_speed, MOVE_SPEED_MED_OFFSET, MOVE_SPEED_EASY_OFFSET
 	)
 	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
-	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET, 1, 4)
+	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
 	cooldown_time = _scale_cooldown(
 		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
 	)
@@ -86,7 +86,7 @@ func _setup_enemy_stats() -> void:
 	fly_time_min = hard_fly_time_min
 	fly_time_max = hard_fly_time_max
 
-	super._setup_enemy_stats()
+	super._apply_level_buffs()
 
 
 func enemy_action() -> void:

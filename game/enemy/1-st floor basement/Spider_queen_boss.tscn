@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ce5ei6v0m2h2e"]
 
-[ext_resource type="Script" path="res://game/enemy/1-st floor basement/spider_queen_boss.gd" id="1_boss"]
+[ext_resource type="Script" uid="uid://c78p0nf5ll5hy" path="res://game/enemy/1-st floor basement/spider_queen_boss.gd" id="1_boss"]
 [ext_resource type="Texture2D" uid="uid://ckfsn6vc50ovm" path="res://image/enemy/bodies/spider_queen1.png" id="1_o0nan"]
 [ext_resource type="Texture2D" uid="uid://chwwosgbsi2la" path="res://image/enemy/bodies/spider_queen2.png" id="2_a12kh"]
 [ext_resource type="Texture2D" uid="uid://c1i14ghgjflw6" path="res://image/enemy/bodies/spider_queen15.png" id="3_w7c8a"]
@@ -130,7 +130,6 @@ hard_cooldown_time = 2.0
 hard_projectile_speed = 437.5
 hard_projectile_range = 800.0
 spawn_distance_buffer = 30.0
-spawn_below_offset = Vector2(0, 168)
 hard_base_hp = 500
 hard_damage = 2
 hard_angle_deviation = 40.0
@@ -159,6 +158,9 @@ sprite_frames = SubResource("SpriteFrames_17ibq")
 
 [node name="ShotSpawnPoint" type="Marker2D" parent="." unique_id=1347821456]
 position = Vector2(0, -28)
+
+[node name="MinionSpawnPoint" type="Marker2D" parent="." unique_id=2122143012]
+position = Vector2(0, 45)
 
 [node name="BlindTimer" type="Timer" parent="." unique_id=1481104024]
 one_shot = true

@@ -160,6 +160,9 @@ sprite_frames = SubResource("SpriteFrames_17ibq")
 [node name="ShotSpawnPoint" type="Marker2D" parent="." unique_id=878812300]
 position = Vector2(0, -28)
 
+[node name="MinionSpawnPoint" type="Marker2D" parent="." unique_id=143804503]
+position = Vector2(0, 40)
+
 [node name="BlindTimer" type="Timer" parent="." unique_id=1995691531]
 one_shot = true
 
