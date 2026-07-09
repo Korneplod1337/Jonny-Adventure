@@ -126,10 +126,9 @@ func _ready():
 func instance_room(room: Room) -> Node:
 	match room.type:
 		RoomType.START:
-			return start_room_preset		[current_floor / 2].instantiate()
+			return start_room_preset		[current_floor].instantiate()
 		RoomType.BOSS:
-			var boss_index := clampi(current_floor / 2, 0, boss_room_preset.size() - 1)
-			return boss_room_preset[boss_index].instantiate()
+			return boss_room_preset		[current_floor].instantiate()
 		RoomType.STANDARD:
 			var standard_presets = room_presets_by_floor[current_floor]
 			return standard_presets[randi() % standard_presets.size()].instantiate()

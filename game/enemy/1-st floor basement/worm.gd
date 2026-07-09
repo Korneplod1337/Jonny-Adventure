@@ -1,4 +1,5 @@
 extends BaseEnemy
+class_name Worm
 
 @export_group("Hard Stats")
 @export var hard_move_step_distance: float = 250.0
@@ -23,7 +24,7 @@ const MS_MULT_EASY := 1.0
 
 @export var dash_curve: Curve
 
-var move_step_distance: float = 100.0
+var move_step_distance: float = 10.0
 var dash_distance_travelled: float = 0.0
 var target_direction: Vector2 = Vector2.ZERO
 var is_dashing: bool = false
@@ -39,7 +40,7 @@ func _get_ms_multiplier() -> float:
 			return MS_MULT_EASY
 
 
-func _setup_enemy_stats() -> void:
+func _apply_level_buffs() -> void:
 	var ms_mult := _get_ms_multiplier() * GameState.enemy_ms_multiplier
 
 	move_step_distance = _apply_difficulty_offset(
@@ -49,12 +50,12 @@ func _setup_enemy_stats() -> void:
 		hard_move_speed, MOVE_SPEED_MED_OFFSET, MOVE_SPEED_EASY_OFFSET
 	) * ms_mult
 	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
-	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET, 1, 3)
+	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
 	cooldown_time = _scale_cooldown(
 		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
 	)
 
-	super._setup_enemy_stats()
+	super._apply_level_buffs()
 
 
 func _custom_physics(delta: float) -> void:
@@ -87,7 +88,7 @@ func choose_direction_and_dash() -> void:
 	if use_pathfinding and _navigation_agent:
 		dir = get_direction_to_player(move_step_distance * 0.85)
 	else:
-		var to_player := (player.global_position - global_position).normalized()
+		dir = (player.global_position - global_position).normalized()
 
 	if dir == Vector2.ZERO:
 		cooldown_timer.start()

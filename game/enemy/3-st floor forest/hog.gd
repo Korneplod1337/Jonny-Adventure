@@ -41,20 +41,17 @@ var charge_direction := Vector2.RIGHT
 func _ready() -> void:
 	super._ready()
 	deals_melee_damage = false
-	stop_on_melee_hit = false
 	knockback_friction += 200.0
 	sprite.play("default")
 	_hide_charge_indicator()
 
 
-func _setup_enemy_stats() -> void:
+func _apply_level_buffs() -> void:
 	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
 	charge_damage = _scale_damage(
 		hard_charge_damage,
 		CHARGE_DAMAGE_MED_OFFSET,
 		CHARGE_DAMAGE_EASY_OFFSET,
-		1,
-		4
 	)
 	charge_speed = _scale_move_speed(
 		hard_charge_speed, CHARGE_SPEED_MED_OFFSET, CHARGE_SPEED_EASY_OFFSET
@@ -68,7 +65,7 @@ func _setup_enemy_stats() -> void:
 	)
 	recover_time = hard_recover_time
 
-	super._setup_enemy_stats()
+	super._apply_level_buffs()
 
 
 func get_attack_damage() -> Vector3i:

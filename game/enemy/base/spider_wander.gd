@@ -37,6 +37,8 @@ func _ready() -> void:
 
 
 func _on_blind_timer_timeout() -> void:
+	if is_dead:
+		return
 	super._on_blind_timer_timeout()
 	if active:
 		_pick_new_wander_params()
@@ -44,6 +46,8 @@ func _on_blind_timer_timeout() -> void:
 
 
 func _update_locomotion_animation() -> void:
+	if is_dead:
+		return
 	if active:
 		sprite.play("default")
 	elif sprite.sprite_frames.has_animation("idle"):
@@ -51,11 +55,13 @@ func _update_locomotion_animation() -> void:
 
 
 func _on_field_view_area_body_exited(body: Node2D) -> void:
+	if is_dead:
+		return
 	super._on_field_view_area_body_exited(body)
 	_update_locomotion_animation()
 
 
-func _setup_enemy_stats() -> void:
+func _apply_level_buffs() -> void:
 	move_speed_min = _scale_move_speed(
 		hard_move_speed_min, MOVE_SPEED_MIN_MED_OFFSET, MOVE_SPEED_MIN_EASY_OFFSET
 	)
@@ -67,7 +73,7 @@ func _setup_enemy_stats() -> void:
 	_speed_range_min_ratio = move_speed_min / base_move_speed
 	_speed_range_max_ratio = move_speed_max / base_move_speed
 	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
-	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET, 1, 4)
+	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
 	direction_change_min = _apply_difficulty_offset(
 		hard_direction_change_min,
 		DIRECTION_CHANGE_MIN_MED_OFFSET,
@@ -79,7 +85,7 @@ func _setup_enemy_stats() -> void:
 		DIRECTION_CHANGE_MAX_EASY_OFFSET
 	)
 	_apply_spider_angle_deviation()
-	_apply_level_buffs()
+	super._apply_level_buffs()
 
 
 func _custom_physics(delta: float) -> void:

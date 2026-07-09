@@ -24,6 +24,10 @@ var damage: int = 1
 @export var stop_on_melee_hit: bool = true
 var base_move_stop_distance: float = 8.0
 const NAV_LOCAL_MAX_DISTANCE_SQ := 250.0 * 250.0
+const PATHFIND_UPDATE_INTERVAL := 0.25
+
+var _pathfind_cooldown: float = 0.0
+var _cached_nav_path: PackedVector2Array = PackedVector2Array()
 
 var player_in_hit_range: bool = false
 var player_in_vision: bool = false
@@ -53,8 +57,8 @@ var hitstun: float = 0.0  # Время в секундах паузы движе
 func _ready() -> void:
 	blind_timer.wait_time = 0.5
 	
-	_setup_enemy_stats()
-
+	_apply_level_buffs()
+	
 	base_move_speed = move_speed
 	current_hp = base_hp
 	cooldown_timer.wait_time = cooldown_time
@@ -77,7 +81,10 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if use_pathfinding and _navigation_agent and player:
-		_navigation_agent.target_position = player.global_position
+		_pathfind_cooldown -= delta
+		if _pathfind_cooldown <= 0.0:
+			_pathfind_cooldown = PATHFIND_UPDATE_INTERVAL
+			_refresh_navigation_path()
 
 	var dealing_melee := _deal_melee_damage_to_player()
 	#Отталкивание
@@ -120,7 +127,6 @@ func _base_move_towards_player(_delta: float) -> void:
 func _setup_pathfinding() -> void:
 	if _navigation_agent:
 		return
-
 	_navigation_agent = NavigationAgent2D.new()
 	_navigation_agent.name = "NavigationAgent2D"
 	_navigation_agent.path_desired_distance = path_desired_distance
@@ -130,7 +136,7 @@ func _setup_pathfinding() -> void:
 	_navigation_agent.avoidance_enabled = false
 	add_child(_navigation_agent)
 	_navigation_agent.target_position = global_position
-
+	_pathfind_cooldown = 0.0
 
 func _navigation_agent_radius() -> float:
 	var collision := get_node_or_null("CollisionShape2D") as CollisionShape2D
@@ -142,8 +148,6 @@ func _navigation_agent_radius() -> float:
 		var circle := collision.shape as CircleShape2D
 		return circle.radius * maxf(scale.x, scale.y) + 4.0
 	return 22.0
-
-
 ## path_lookahead > 0 — направление рывка на эту дистанцию вдоль пути (червь).
 ## path_lookahead == 0 — следующая точка маршрута (паук и др.).
 func get_direction_to_player(path_lookahead: float = 0.0) -> Vector2:
@@ -191,19 +195,24 @@ func get_direction_to_player(path_lookahead: float = 0.0) -> Vector2:
 
 
 func _get_navigation_path_to_player() -> PackedVector2Array:
+	return _cached_nav_path
+
+
+func _refresh_navigation_path() -> void:
+	_cached_nav_path = PackedVector2Array()
 	if not player or not _navigation_agent:
-		return PackedVector2Array()
+		return
+
+	_navigation_agent.target_position = player.global_position
 
 	var map_rid := _navigation_agent.get_navigation_map()
 	if map_rid == RID() or NavigationServer2D.map_get_iteration_id(map_rid) == 0:
-		return PackedVector2Array()
-
+		return
 	var from := NavigationServer2D.map_get_closest_point(map_rid, global_position)
 	if from.distance_squared_to(global_position) > NAV_LOCAL_MAX_DISTANCE_SQ:
-		return PackedVector2Array()
-
+		return
 	var to := NavigationServer2D.map_get_closest_point(map_rid, player.global_position)
-	return NavigationServer2D.map_get_path(map_rid, from, to, true)
+	_cached_nav_path = NavigationServer2D.map_get_path(map_rid, from, to, true)
 
 
 func _apply_difficulty_offset(hard_value: float, med_offset: float, easy_offset: float) -> float:
@@ -222,27 +231,17 @@ func _scale_hp(hard_hp: int, med_offset: int, easy_offset: int) -> int:
 		* GameState.enemy_hp_multiplier
 	)
 
-
 func _scale_damage(
 	hard_dmg: int,
 	med_offset: int,
-	easy_offset: int,
-	min_dmg: int = 1,
-	max_dmg: int = 5
-) -> int:
-	return clampi(
-		int(
-			_apply_difficulty_offset(float(hard_dmg), float(med_offset), float(easy_offset))
-			* GameState.enemy_dmg_multiplier
-		),
-		min_dmg,
-		max_dmg
+	easy_offset: int ) -> int:
+	return int(
+		_apply_difficulty_offset(float(hard_dmg), float(med_offset), float(easy_offset))
+		* GameState.enemy_dmg_multiplier
 	)
-
 
 func _scale_move_speed(hard_speed: float, med_offset: float, easy_offset: float) -> float:
 	return _apply_difficulty_offset(hard_speed, med_offset, easy_offset) * GameState.enemy_ms_multiplier
-
 
 func _scale_cooldown(hard_cd: float, med_offset: float, easy_offset: float) -> float:
 	return _apply_difficulty_offset(hard_cd, med_offset, easy_offset) * GameState.enemy_cooldown_multiplier
@@ -256,13 +255,9 @@ func _deal_melee_damage_to_player() -> bool:
 	return true
 
 
-func _apply_level_buffs() -> void:
+func _apply_level_buffs() -> void: ## apply stats and level buffs
 	if GameState.level_bufs[2][1]:  # Deathly
 		damage *= 2
-
-
-func _setup_enemy_stats() -> void:
-	_apply_level_buffs()
 
 
 func get_attack_damage() -> Vector3i:
@@ -360,7 +355,8 @@ func _remove_effect(effect: StringName) -> void:
 func _on_field_view_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_vision = true
-		_setup_enemy_stats()
+		if use_pathfinding:
+			_pathfind_cooldown = 0.0
 		if blind_timer.is_stopped() and not active:
 			blind_timer.start()
 
@@ -375,6 +371,8 @@ func _on_field_view_area_body_exited(body: Node2D) -> void:
 func _on_blind_timer_timeout() -> void:
 	if player_in_vision:
 		active = true
+		if use_pathfinding:
+			_pathfind_cooldown = 0.0
 		cooldown_timer.start()
 
 func _on_cooldown_timer_timeout() -> void:
@@ -412,6 +410,8 @@ func die() -> void:
 	if is_dead:
 		return
 	is_dead = true
+	active = false
+	player_in_vision = false
 	velocity = Vector2.ZERO
 
 	$CollisionShape2D.call_deferred("set_disabled", true)

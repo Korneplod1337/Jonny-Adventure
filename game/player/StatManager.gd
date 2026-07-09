@@ -22,8 +22,8 @@ func get_stat(p: Node, stat: String) -> float :
 			magic = clamp(magic, 0.0, 4.0) #4.05
 			return magic 
 		"damage":
-			var damage = p.base_damage + lerp(0.0, 36.0, (p.damage_level - 1.0) / 9.0) 
-			damage *= clamp((1 + p.damage_bonus * 0.05),0.1 , 3)  					# 40
+			var damage = p.base_damage + lerp(0.0, 45.0, (p.damage_level - 1.0) / 9.0) 
+			damage *= clamp((1 + p.damage_bonus * 0.05), 0.1, 3)  					# 40
 			damage = clamp(damage, 0.1, 1000.0)
 			return damage 
 		"spread":
