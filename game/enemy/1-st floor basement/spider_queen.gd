@@ -10,6 +10,7 @@ enum State { IDLE, WAIT_IDLE, STEP_MOVE, CHARGE_SHOT, SHOOT, SPAWN_EGG }
 ## Скорость короткого отхода от игрока (с учётом сложности).
 @export var hard_move_speed: float = 90.0
 @export var hard_cooldown_time: float = 0.8
+@export var hard_projectile_damage: int = 1
 @export var hard_projectile_speed: float = 340.0
 @export var hard_projectile_range: float = 320.0
 
@@ -28,7 +29,9 @@ const QUEEN_MOVE_SPEED_EASY_OFFSET := -40.0
 const QUEEN_HP_MED_OFFSET := -40
 const QUEEN_HP_EASY_OFFSET := -100
 const QUEEN_DAMAGE_MED_OFFSET := 0
-const QUEEN_DAMAGE_EASY_OFFSET := -1
+const QUEEN_DAMAGE_EASY_OFFSET := 0
+const QUEEN_PROJECTILE_DAMAGE_MED_OFFSET := 0
+const QUEEN_PROJECTILE_DAMAGE_EASY_OFFSET := -1
 const QUEEN_COOLDOWN_MED_OFFSET := 0.25
 const QUEEN_COOLDOWN_EASY_OFFSET := 0.45
 const QUEEN_PROJECTILE_SPEED_MED_OFFSET := -35.0
@@ -37,6 +40,7 @@ const QUEEN_PROJECTILE_RANGE_MED_OFFSET := -20.0
 const QUEEN_PROJECTILE_RANGE_EASY_OFFSET := -20.0
 
 var state: State = State.IDLE
+var projectile_damage: int = 1
 var projectile_speed: float = 300.0
 var projectile_range: float = 450.0
 var _step_direction: Vector2 = Vector2.ZERO
@@ -49,7 +53,7 @@ var _spawned_minions: Array[CharacterBody2D] = []
 
 
 func _ready() -> void:
-	deals_melee_damage = false
+	#deals_melee_damage = false
 	super._ready()
 	state = State.IDLE
 	sprite.flip_h = FLIPS_SPRITE_ON_DIRECTION
@@ -62,6 +66,9 @@ func _apply_level_buffs() -> void:
 	)
 	base_hp = _scale_hp(hard_base_hp, QUEEN_HP_MED_OFFSET, QUEEN_HP_EASY_OFFSET)
 	damage = _scale_damage(hard_damage, QUEEN_DAMAGE_MED_OFFSET, QUEEN_DAMAGE_EASY_OFFSET)
+	projectile_damage = _scale_damage(
+		hard_projectile_damage, QUEEN_PROJECTILE_DAMAGE_MED_OFFSET, QUEEN_PROJECTILE_DAMAGE_EASY_OFFSET
+	)
 	cooldown_time = _scale_cooldown(hard_cooldown_time, QUEEN_COOLDOWN_MED_OFFSET, QUEEN_COOLDOWN_EASY_OFFSET)
 	projectile_speed = _apply_difficulty_offset(
 		hard_projectile_speed,
@@ -75,6 +82,8 @@ func _apply_level_buffs() -> void:
 	)
 	_apply_spider_angle_deviation()
 	super._apply_level_buffs()
+	if GameState.level_bufs[2][1]:
+		projectile_damage *= 2
 
 
 func _on_field_view_area_body_entered(body: Node2D) -> void:
@@ -194,6 +203,10 @@ func _finish_charge_then_shoot() -> void:
 	sprite.play("shot")
 
 
+func get_projectile_damage() -> Vector3i:
+	return _build_damage_vector(projectile_damage)
+
+
 func _spawn_projectile() -> void:
 	var origin := global_position
 	if is_instance_valid(shot_spawn_point):
@@ -207,18 +220,8 @@ func _spawn_projectile() -> void:
 	var shot: Node2D = projectile_scene.instantiate()
 	shot.global_position = origin
 
-	if shot is EnemyShot:
-		shot.owner_enemy = self
-		shot.setup(dir, get_attack_damage(), projectile_speed, projectile_range)
-	elif shot.has_method("setup"):
-		shot.setup(dir, get_attack_damage(), projectile_speed, projectile_range)
-	else:
-		var atk := get_attack_damage()
-		shot.set("direction", dir)
-		shot.set("damage", [atk.x, atk.y, atk.z])
-		shot.set("speed", projectile_speed)
-		shot.set("atk_range", projectile_range)
-
+	shot.owner_enemy = self
+	shot.setup(dir, get_projectile_damage(), projectile_speed, projectile_range)
 	get_tree().current_scene.call_deferred("add_child", shot)
 
 

@@ -15,13 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="13_t16fi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
-size = Vector2(16, 25)
+size = Vector2(24, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
 radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(62, 26)
+size = Vector2(2, 2)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{
@@ -63,7 +63,9 @@ collision_layer = 64
 collision_mask = 82
 script = ExtResource("1_0xlom")
 projectile_scene = ExtResource("2_26cec")
+hard_projectile_damage = 2
 cooldown_time = 1.0
+deals_melee_damage = false
 knockback_friction = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]

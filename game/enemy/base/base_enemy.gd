@@ -74,10 +74,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if not is_instance_valid(player):
+		player = get_tree().get_first_node_in_group("player")
 	if not active or is_dead:
 		return
 	if not player:
-		player = get_tree().get_first_node_in_group("player")
 		return
 
 	if use_pathfinding and _navigation_agent and player:
@@ -261,12 +262,20 @@ func _apply_level_buffs() -> void: ## apply stats and level buffs
 
 
 func get_attack_damage() -> Vector3i:
+	return _build_damage_vector(damage)
+
+
+func get_projectile_damage() -> Vector3i:
+	return get_attack_damage()
+
+
+func _build_damage_vector(dmg: int) -> Vector3i:
 	var phy := 0
 	var mag := 0
 	if GameState.level_bufs[3][1]:
-		mag = damage
+		mag = dmg
 	else:
-		phy = damage
+		phy = dmg
 	return Vector3i(phy, mag, 0)
 
 
@@ -324,11 +333,20 @@ func apply_fire(effect: float, duration: float) -> void:
 	elif 'fire0' in active_effects:
 		_remove_effect('fire0')
 		_add_effect('fire1')
+		if not is_instance_valid(player):
+			player = get_tree().get_first_node_in_group("player")
 		_reset_fire_later(effect, duration)
 
 
 func _reset_fire_later(effect: float, duration: float) -> void:
 	await get_tree().create_timer(duration).timeout
+	if not is_instance_valid(self) or is_dead:
+		return
+	if not is_instance_valid(player):
+		player = get_tree().get_first_node_in_group("player")
+	if not player:
+		_remove_effect('fire1')
+		return
 	hit(effect * (StatManager.get_stat(player, 'damage')/20)
 				* (1 + StatManager.get_stat(player, 'magic')) /2, true)
 	_remove_effect('fire1')

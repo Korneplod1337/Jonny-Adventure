@@ -11,8 +11,7 @@ var _spawned_minions: Array[CharacterBody2D] = []
 func die() -> void:
 	super()
 	var spawned_spider: CharacterBody2D = spider_small_scene.instantiate()
-	spawned_spider.drop_coin_on_death = false
-
+	
 	var room := _get_room_node()
 	if room:
 		if room.has_method("reserve_enemy_slot"):

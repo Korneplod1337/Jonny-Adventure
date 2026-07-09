@@ -107,7 +107,16 @@ var POOLS := {
 		{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
 		 "tier": 3, "weight": 10.0},
 		
-		
+		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
+		 "tier": 3, "weight": 10.0},
+		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Poison_boots", "scene": preload("uid://c1fiyctd2xrli"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
+		 "tier": 2, "weight": 10.0},
 	]
 }
 

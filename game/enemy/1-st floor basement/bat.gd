@@ -50,7 +50,7 @@ var recover_timer := 0.0
 var fly_target := Vector2.ZERO
 var fly_distance_travelled := 0.0
 var fly_distance_limit := 0.0
-
+var max_move_distance: float
 
 func _ready() -> void:
 	super._ready()
@@ -65,6 +65,7 @@ func _apply_level_buffs() -> void:
 	)
 	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
 	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
+	projectile_damage = _scale_damage(hard_projectile_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
 	cooldown_time = _scale_cooldown(
 		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
 	)
@@ -87,6 +88,8 @@ func _apply_level_buffs() -> void:
 	fly_time_max = hard_fly_time_max
 
 	super._apply_level_buffs()
+	if GameState.level_bufs[2][1]:
+		projectile_damage *= 2
 
 
 func enemy_action() -> void:

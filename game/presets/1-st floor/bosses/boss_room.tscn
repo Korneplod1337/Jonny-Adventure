@@ -136,6 +136,12 @@ scale = Vector2(2, 2)
 
 [node name="Spider_queen_boss" parent="." unique_id=1352998397 instance=ExtResource("6_t5yr1")]
 position = Vector2(-193, -34)
+hard_move_speed = 150.0
+hard_cooldown_time = 1.8
+hard_projectile_speed = 450.0
+hard_projectile_range = 850.0
+shot_charge_time = 1.4
+spawn_distance_buffer = 20.0
 
 [connection signal="body_entered" from="Detecter_player" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="Detecter_player" to="." method="_on_player_detection_area_body_exited"]

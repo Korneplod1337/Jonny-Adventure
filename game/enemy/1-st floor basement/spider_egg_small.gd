@@ -19,10 +19,9 @@ func _ready() -> void:
 		sprite.play("idle")
 
 
-func _setup_enemy_stats() -> void:
+func _apply_level_buffs() -> void:
 	base_hp = _scale_hp(hard_base_hp, 0, 0)
 	_apply_spider_angle_deviation()
-	_apply_level_buffs()
 
 
 func _custom_physics(_delta: float) -> void:
@@ -32,14 +31,11 @@ func _custom_physics(_delta: float) -> void:
 func _on_field_view_area_body_entered(_body: Node2D) -> void:
 	pass
 
-
 func _on_field_view_area_body_exited(_body: Node2D) -> void:
 	pass
 
-
 func _on_blind_timer_timeout() -> void:
 	pass
-
 
 func die() -> void:
 	if is_dead or _releasing_wave2:
