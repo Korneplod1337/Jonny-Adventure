@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cardqueenscn1"]
 
-[ext_resource type="Script" uid="uid://b8k3m2carditem1" path="res://game/objects/items/scripts/card.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://image/items/4 tier/ItemCard7.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://14t3ul75381c" path="res://game/objects/Items/scripts/card.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bqelcswc68tex" path="res://image/items/4 tier/ItemCard7.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -10,24 +10,24 @@ radius = 40.04997
 [sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
 radius = 19.0
 
-[node name="CardQueen" type="Area2D"]
+[node name="CardQueen" type="Area2D" unique_id=215335918]
 collision_layer = 0
 script = ExtResource("1_script")
-item_icon = ExtResource("2_tex")
-item_tooltip = "Queen"
-item_tooltip2 = "HP +3, Damage -1"
-item_id = "cardqueen"
 hp_delta = 3
 damage_delta = -1
+item_icon = ExtResource("2_tex")
+item_tooltip = "Card Queen"
+item_tooltip2 = "HP +3, Damage -1"
+item_id = "cardqueen"
 
-[node name="Interactable" parent="." instance=ExtResource("3_interact")]
+[node name="Interactable" parent="." unique_id=182389350 instance=ExtResource("3_interact")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1645076319]
 shape = SubResource("CircleShape2D_lh7he")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1004726673]
 shape = SubResource("CircleShape2D_oisx2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1195430538]
 scale = Vector2(2, 2)
 texture = ExtResource("2_tex")

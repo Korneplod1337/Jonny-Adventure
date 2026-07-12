@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://bfcf8lqhevofc"]
 
 [ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/RoomScript_enemy.gd" id="1_sb1k4"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_7nvgh"]
-[ext_resource type="Texture2D" uid="uid://cqity84gpo7v2" path="res://image/rooms/1-st floor/background/background_bounds_3x.png" id="3_imxwx"]
+[ext_resource type="Texture2D" uid="uid://cyw7cnqw0y506" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_7nvgh"]
+[ext_resource type="Texture2D" uid="uid://beff0u1chsfaq" path="res://image/rooms/1-st floor/background/background_bounds_3x.png" id="3_imxwx"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_h5l16"]
 [ext_resource type="PackedScene" uid="uid://ck5v5qiq4jt6a" path="res://game/objects/obstacles/rockBig.tscn" id="5_283ki"]
 [ext_resource type="PackedScene" uid="uid://duyosi2cuk0wi" path="res://game/enemy/1-st floor basement/Aries.tscn" id="6_rxhr5"]
@@ -18,14 +18,14 @@
 [ext_resource type="PackedScene" uid="uid://dkb1xb65dreb4" path="res://game/enemy/3-st floor forest/Hog.tscn" id="16_ltcm7"]
 [ext_resource type="PackedScene" uid="uid://bi5g2vqe6xdek" path="res://game/objects/Equipment/head/Kaliya_star_hat.tscn" id="17_ep2tc"]
 [ext_resource type="PackedScene" uid="uid://c1fiyctd2xrli" path="res://game/objects/Equipment/boots/Poison_boots.tscn" id="18_js20t"]
-[ext_resource type="PackedScene" uid="uid://cxmow65o8obwu" path="res://game/objects/items/scenes/tier 3/Boomerang.tscn" id="19_vm4yr"]
-[ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/tier 0/Potion Red.tscn" id="20_0h76k"]
-[ext_resource type="PackedScene" uid="uid://c83w3v5l3edwc" path="res://game/objects/items/scenes/tier 0/Potion Death.tscn" id="21_1kwnq"]
-[ext_resource type="PackedScene" uid="uid://ujleakh3r3l0" path="res://game/objects/items/scenes/tier 0/Potion Green.tscn" id="22_t02pl"]
-[ext_resource type="PackedScene" uid="uid://bvy7i2nw65tyy" path="res://game/objects/items/scenes/tier 0/Potion Red Big.tscn" id="23_qh7pm"]
-[ext_resource type="PackedScene" uid="uid://m6oyxodimxew" path="res://game/objects/items/scenes/tier 2/Story Book.tscn" id="24_m4mvj"]
-[ext_resource type="PackedScene" uid="uid://b2l04uommikl0" path="res://game/objects/items/scenes/tier 1/Mind's Eye.tscn" id="25_4orec"]
-[ext_resource type="PackedScene" uid="uid://cgcss4ubm0tjd" path="res://game/objects/items/scenes/tier 1/Spider web.tscn" id="26_phtwq"]
+[ext_resource type="PackedScene" uid="uid://cxmow65o8obwu" path="res://game/objects/Items/scenes/tier 3/Boomerang.tscn" id="19_vm4yr"]
+[ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/Items/scenes/tier 0/Potion Red.tscn" id="20_0h76k"]
+[ext_resource type="PackedScene" uid="uid://c83w3v5l3edwc" path="res://game/objects/Items/scenes/tier 0/Potion Death.tscn" id="21_1kwnq"]
+[ext_resource type="PackedScene" uid="uid://ujleakh3r3l0" path="res://game/objects/Items/scenes/tier 0/Potion Green.tscn" id="22_t02pl"]
+[ext_resource type="PackedScene" uid="uid://bvy7i2nw65tyy" path="res://game/objects/Items/scenes/tier 0/Potion Red Big.tscn" id="23_qh7pm"]
+[ext_resource type="PackedScene" uid="uid://m6oyxodimxew" path="res://game/objects/Items/scenes/tier 2/Story Book.tscn" id="24_m4mvj"]
+[ext_resource type="PackedScene" uid="uid://b2l04uommikl0" path="res://game/objects/Items/scenes/tier 1/Mind's Eye.tscn" id="25_4orec"]
+[ext_resource type="PackedScene" uid="uid://cgcss4ubm0tjd" path="res://game/objects/Items/scenes/tier 1/Spider web.tscn" id="26_phtwq"]
 [ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn" id="27_a1qv4"]
 [ext_resource type="PackedScene" uid="uid://6ngyovpkns22" path="res://game/objects/Equipment/Weapon/equip/CardWeapon_equip.tscn" id="28_c0p64"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/JonnyShot_equip.tscn" id="29_iu86b"]
@@ -42,59 +42,59 @@
 [ext_resource type="PackedScene" uid="uid://8nlac1wigti" path="res://game/objects/Equipment/head/Alchemists_glasses.tscn" id="40_w41jv"]
 [ext_resource type="PackedScene" uid="uid://rm084balo4ar" path="res://game/objects/Equipment/head/Surestrike.tscn" id="41_rctke"]
 [ext_resource type="PackedScene" uid="uid://bgibadaeek4on" path="res://game/objects/Equipment/Chest/Death_shield.tscn" id="42_p34vw"]
-[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="43_5upo4"]
-[ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="44_0kfrf"]
+[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coins/Coin.tscn" id="43_5upo4"]
+[ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/Coins/CoinBag.tscn" id="44_0kfrf"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="45_gsls4"]
-[ext_resource type="PackedScene" uid="uid://3p4virvlmdu2" path="res://game/objects/chests/Chest_small.tscn" id="46_26j28"]
-[ext_resource type="PackedScene" uid="uid://dhty76ckflr50" path="res://game/objects/chests/Chest_big.tscn" id="47_w0h66"]
-[ext_resource type="PackedScene" uid="uid://dcfrwovjlwrn0" path="res://game/objects/chests/Chest_weapon.tscn" id="48_x23vw"]
-[ext_resource type="PackedScene" uid="uid://tsiccout8ibv" path="res://game/objects/chests/Chest_treasure.tscn" id="49_kobpu"]
+[ext_resource type="PackedScene" uid="uid://3p4virvlmdu2" path="res://game/objects/Chests/Chest_small.tscn" id="46_26j28"]
+[ext_resource type="PackedScene" uid="uid://dhty76ckflr50" path="res://game/objects/Chests/Chest_big.tscn" id="47_w0h66"]
+[ext_resource type="PackedScene" uid="uid://dcfrwovjlwrn0" path="res://game/objects/Chests/Chest_weapon.tscn" id="48_x23vw"]
+[ext_resource type="PackedScene" uid="uid://tsiccout8ibv" path="res://game/objects/Chests/Chest_treasure.tscn" id="49_kobpu"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="50_s6d3r"]
 [ext_resource type="PackedScene" uid="uid://c7xpw4mtilp2j" path="res://game/enemy/1-st floor basement/Spider_big.tscn" id="51_pdx4p"]
 [ext_resource type="PackedScene" uid="uid://dx5hdeerhyxeh" path="res://game/enemy/1-st floor basement/Spider_egg_small.tscn" id="52_wgx4h"]
-[ext_resource type="PackedScene" uid="uid://ccrdfupi8hyq2" path="res://game/objects/items/scenes/tier 1/Aegis.tscn" id="53_wxx06"]
-[ext_resource type="PackedScene" uid="uid://dxwwacpt1rply" path="res://game/objects/items/scenes/tier 1/Basilisk.tscn" id="54_1b6f8"]
-[ext_resource type="PackedScene" uid="uid://csruf78ias42g" path="res://game/objects/items/scenes/tier 1/Beard.tscn" id="55_qoxtj"]
+[ext_resource type="PackedScene" uid="uid://ccrdfupi8hyq2" path="res://game/objects/Items/scenes/tier 1/Aegis.tscn" id="53_wxx06"]
+[ext_resource type="PackedScene" uid="uid://dxwwacpt1rply" path="res://game/objects/Items/scenes/tier 1/Basilisk.tscn" id="54_1b6f8"]
+[ext_resource type="PackedScene" uid="uid://csruf78ias42g" path="res://game/objects/Items/scenes/tier 1/Beard.tscn" id="55_qoxtj"]
 [ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 1/Blueprint.tscn" id="56_lqgqp"]
-[ext_resource type="PackedScene" uid="uid://d2740b6euqngj" path="res://game/objects/items/scenes/tier 1/Bomb.tscn" id="57_3g58v"]
-[ext_resource type="PackedScene" uid="uid://qpsow6f7120e" path="res://game/objects/items/scenes/tier 1/Bone.tscn" id="58_lmqaq"]
-[ext_resource type="PackedScene" uid="uid://cavchcb6lltqt" path="res://game/objects/items/scenes/tier 1/Broom.tscn" id="59_80cog"]
-[ext_resource type="PackedScene" uid="uid://cjkspeia472c6" path="res://game/objects/items/scenes/tier 1/Cauldron.tscn" id="60_2imyw"]
-[ext_resource type="PackedScene" uid="uid://dk3m8x2nq7wp4" path="res://game/objects/items/scenes/tier 1/Cross.tscn" id="61_1potx"]
-[ext_resource type="PackedScene" uid="uid://bspi32myt8j6q" path="res://game/objects/items/scenes/tier 1/Exorcism.tscn" id="62_ugc3l"]
-[ext_resource type="PackedScene" uid="uid://d2x3ddpip71w5" path="res://game/objects/items/scenes/tier 1/EZ.tscn" id="63_kwy8j"]
-[ext_resource type="PackedScene" uid="uid://dtmurgkc7a4ex" path="res://game/objects/items/scenes/tier 1/Fontain.tscn" id="64_0qir2"]
-[ext_resource type="PackedScene" uid="uid://srmb107k6daw" path="res://game/objects/items/scenes/tier 1/ForceShield.tscn" id="65_r0oqo"]
-[ext_resource type="PackedScene" uid="uid://yx07fn4n4an7" path="res://game/objects/items/scenes/tier 1/Grail.tscn" id="66_1yr5r"]
-[ext_resource type="PackedScene" uid="uid://c7ket2wgdkf0a" path="res://game/objects/items/scenes/tier 1/Guillotine.tscn" id="67_13bi0"]
-[ext_resource type="PackedScene" uid="uid://dkltqfjb583d7" path="res://game/objects/items/scenes/tier 1/Harmony.tscn" id="68_6udrj"]
-[ext_resource type="PackedScene" uid="uid://dtsvhaajbte3h" path="res://game/objects/items/scenes/tier 1/Homuncules.tscn" id="69_wc11c"]
-[ext_resource type="PackedScene" uid="uid://8ubgba6cksps" path="res://game/objects/items/scenes/tier 1/JetFuel.tscn" id="70_kvn2i"]
-[ext_resource type="PackedScene" uid="uid://dfddouvj147pb" path="res://game/objects/items/scenes/tier 1/LuckyCoin.tscn" id="71_1oeag"]
-[ext_resource type="PackedScene" uid="uid://brqtfx7g8231f" path="res://game/objects/items/scenes/tier 1/Meat.tscn" id="72_5m63l"]
-[ext_resource type="PackedScene" uid="uid://dght2o6kvlham" path="res://game/objects/items/scenes/tier 1/Petroglyph.tscn" id="73_r226l"]
-[ext_resource type="PackedScene" uid="uid://c163ybgdtpmfi" path="res://game/objects/items/scenes/tier 1/PocketWatch.tscn" id="74_xqp2j"]
-[ext_resource type="PackedScene" uid="uid://hjincgy3g0a4" path="res://game/objects/items/scenes/tier 1/PowerOfDamage.tscn" id="75_7x06c"]
-[ext_resource type="PackedScene" uid="uid://ctoy78au1wi65" path="res://game/objects/items/scenes/tier 1/Radar.tscn" id="76_jv5hk"]
-[ext_resource type="PackedScene" uid="uid://dbwdidc7mmt0u" path="res://game/objects/items/scenes/tier 1/SandClock.tscn" id="77_3d2wa"]
-[ext_resource type="PackedScene" uid="uid://0f1v8ebrnkdq" path="res://game/objects/items/scenes/tier 1/Seed.tscn" id="78_pcwib"]
-[ext_resource type="PackedScene" uid="uid://c103ahf6p6cqa" path="res://game/objects/items/scenes/tier 1/Sextant.tscn" id="79_x7but"]
-[ext_resource type="PackedScene" uid="uid://b1g2xafcsoleh" path="res://game/objects/items/scenes/tier 1/Shine.tscn" id="80_kkijl"]
-[ext_resource type="PackedScene" uid="uid://b0y18ge5o5bo8" path="res://game/objects/items/scenes/tier 1/Stardust.tscn" id="81_nndxb"]
-[ext_resource type="PackedScene" uid="uid://c3qpciiqts3wt" path="res://game/objects/items/scenes/tier 1/Target.tscn" id="82_ixb6m"]
-[ext_resource type="PackedScene" uid="uid://bikjodg8361b5" path="res://game/objects/items/scenes/tier 1/Torch.tscn" id="83_86lkc"]
-[ext_resource type="PackedScene" uid="uid://dex02b4e0mukt" path="res://game/objects/items/scenes/tier 1/Virus.tscn" id="84_d822m"]
-[ext_resource type="PackedScene" uid="uid://nq7e0uskpp8t" path="res://game/objects/items/scenes/tier 1/Wraith.tscn" id="85_u3e44"]
-[ext_resource type="PackedScene" uid="uid://card6scene001" path="res://game/objects/items/scenes/tier 4/Card6.tscn" id="86_ugp8v"]
-[ext_resource type="PackedScene" uid="uid://card7scene001" path="res://game/objects/items/scenes/tier 4/Card7.tscn" id="87_yw3f5"]
-[ext_resource type="PackedScene" uid="uid://card8scene001" path="res://game/objects/items/scenes/tier 4/Card8.tscn" id="88_26vy3"]
-[ext_resource type="PackedScene" uid="uid://careascene001" path="res://game/objects/items/scenes/tier 4/Card9.tscn" id="89_dvhxs"]
-[ext_resource type="PackedScene" uid="uid://card10scene01" path="res://game/objects/items/scenes/tier 4/Card10.tscn" id="90_uoe7b"]
-[ext_resource type="PackedScene" uid="uid://cardacescene1" path="res://game/objects/items/scenes/tier 4/CardAce.tscn" id="91_hbfap"]
-[ext_resource type="PackedScene" uid="uid://cardjackscn01" path="res://game/objects/items/scenes/tier 4/CardJack.tscn" id="92_0ngq4"]
-[ext_resource type="PackedScene" uid="uid://cardkingscn01" path="res://game/objects/items/scenes/tier 4/CardKing.tscn" id="93_o1jkl"]
-[ext_resource type="PackedScene" uid="uid://cardqueenscn1" path="res://game/objects/items/scenes/tier 4/CardQueen.tscn" id="94_j02fn"]
-[ext_resource type="PackedScene" uid="uid://ywfb4cg1rk1u" path="res://game/objects/items/scenes/tier 0/LvlupRandom.tscn" id="95_xs4ol"]
+[ext_resource type="PackedScene" uid="uid://d2740b6euqngj" path="res://game/objects/Items/scenes/tier 1/Bomb.tscn" id="57_3g58v"]
+[ext_resource type="PackedScene" uid="uid://qpsow6f7120e" path="res://game/objects/Items/scenes/tier 1/Bone.tscn" id="58_lmqaq"]
+[ext_resource type="PackedScene" uid="uid://cavchcb6lltqt" path="res://game/objects/Items/scenes/tier 1/Broom.tscn" id="59_80cog"]
+[ext_resource type="PackedScene" uid="uid://cjkspeia472c6" path="res://game/objects/Items/scenes/tier 1/Cauldron.tscn" id="60_2imyw"]
+[ext_resource type="PackedScene" uid="uid://dk3m8x2nq7wp4" path="res://game/objects/Items/scenes/tier 1/Cross.tscn" id="61_1potx"]
+[ext_resource type="PackedScene" uid="uid://bspi32myt8j6q" path="res://game/objects/Items/scenes/tier 1/Exorcism.tscn" id="62_ugc3l"]
+[ext_resource type="PackedScene" uid="uid://d2x3ddpip71w5" path="res://game/objects/Items/scenes/tier 1/EZ.tscn" id="63_kwy8j"]
+[ext_resource type="PackedScene" uid="uid://dtmurgkc7a4ex" path="res://game/objects/Items/scenes/tier 1/Fontain.tscn" id="64_0qir2"]
+[ext_resource type="PackedScene" uid="uid://srmb107k6daw" path="res://game/objects/Items/scenes/tier 1/ForceShield.tscn" id="65_r0oqo"]
+[ext_resource type="PackedScene" uid="uid://yx07fn4n4an7" path="res://game/objects/Items/scenes/tier 1/Grail.tscn" id="66_1yr5r"]
+[ext_resource type="PackedScene" uid="uid://c7ket2wgdkf0a" path="res://game/objects/Items/scenes/tier 1/Guillotine.tscn" id="67_13bi0"]
+[ext_resource type="PackedScene" uid="uid://dkltqfjb583d7" path="res://game/objects/Items/scenes/tier 1/Harmony.tscn" id="68_6udrj"]
+[ext_resource type="PackedScene" uid="uid://dtsvhaajbte3h" path="res://game/objects/Items/scenes/tier 1/Homuncules.tscn" id="69_wc11c"]
+[ext_resource type="PackedScene" uid="uid://8ubgba6cksps" path="res://game/objects/Items/scenes/tier 1/JetFuel.tscn" id="70_kvn2i"]
+[ext_resource type="PackedScene" uid="uid://dfddouvj147pb" path="res://game/objects/Items/scenes/tier 1/LuckyCoin.tscn" id="71_1oeag"]
+[ext_resource type="PackedScene" uid="uid://brqtfx7g8231f" path="res://game/objects/Items/scenes/tier 1/Meat.tscn" id="72_5m63l"]
+[ext_resource type="PackedScene" uid="uid://dght2o6kvlham" path="res://game/objects/Items/scenes/tier 1/Petroglyph.tscn" id="73_r226l"]
+[ext_resource type="PackedScene" uid="uid://c163ybgdtpmfi" path="res://game/objects/Items/scenes/tier 1/PocketWatch.tscn" id="74_xqp2j"]
+[ext_resource type="PackedScene" uid="uid://hjincgy3g0a4" path="res://game/objects/Items/scenes/tier 1/PowerOfDamage.tscn" id="75_7x06c"]
+[ext_resource type="PackedScene" uid="uid://ctoy78au1wi65" path="res://game/objects/Items/scenes/tier 1/Radar.tscn" id="76_jv5hk"]
+[ext_resource type="PackedScene" uid="uid://dbwdidc7mmt0u" path="res://game/objects/Items/scenes/tier 1/SandClock.tscn" id="77_3d2wa"]
+[ext_resource type="PackedScene" uid="uid://0f1v8ebrnkdq" path="res://game/objects/Items/scenes/tier 1/Seed.tscn" id="78_pcwib"]
+[ext_resource type="PackedScene" uid="uid://c103ahf6p6cqa" path="res://game/objects/Items/scenes/tier 1/Sextant.tscn" id="79_x7but"]
+[ext_resource type="PackedScene" uid="uid://b1g2xafcsoleh" path="res://game/objects/Items/scenes/tier 1/Shine.tscn" id="80_kkijl"]
+[ext_resource type="PackedScene" uid="uid://b0y18ge5o5bo8" path="res://game/objects/Items/scenes/tier 1/Stardust.tscn" id="81_nndxb"]
+[ext_resource type="PackedScene" uid="uid://c3qpciiqts3wt" path="res://game/objects/Items/scenes/tier 1/Target.tscn" id="82_ixb6m"]
+[ext_resource type="PackedScene" uid="uid://bikjodg8361b5" path="res://game/objects/Items/scenes/tier 1/Torch.tscn" id="83_86lkc"]
+[ext_resource type="PackedScene" uid="uid://dex02b4e0mukt" path="res://game/objects/Items/scenes/tier 1/Virus.tscn" id="84_d822m"]
+[ext_resource type="PackedScene" uid="uid://nq7e0uskpp8t" path="res://game/objects/Items/scenes/tier 1/Wraith.tscn" id="85_u3e44"]
+[ext_resource type="PackedScene" uid="uid://card6scene001" path="res://game/objects/Items/scenes/tier 4/Card6.tscn" id="86_ugp8v"]
+[ext_resource type="PackedScene" uid="uid://card7scene001" path="res://game/objects/Items/scenes/tier 4/Card7.tscn" id="87_yw3f5"]
+[ext_resource type="PackedScene" uid="uid://card8scene001" path="res://game/objects/Items/scenes/tier 4/Card8.tscn" id="88_26vy3"]
+[ext_resource type="PackedScene" uid="uid://careascene001" path="res://game/objects/Items/scenes/tier 4/Card9.tscn" id="89_dvhxs"]
+[ext_resource type="PackedScene" uid="uid://card10scene01" path="res://game/objects/Items/scenes/tier 4/Card10.tscn" id="90_uoe7b"]
+[ext_resource type="PackedScene" uid="uid://cardacescene1" path="res://game/objects/Items/scenes/tier 4/CardAce.tscn" id="91_hbfap"]
+[ext_resource type="PackedScene" uid="uid://cardjackscn01" path="res://game/objects/Items/scenes/tier 4/CardJack.tscn" id="92_0ngq4"]
+[ext_resource type="PackedScene" uid="uid://cardkingscn01" path="res://game/objects/Items/scenes/tier 4/CardKing.tscn" id="93_o1jkl"]
+[ext_resource type="PackedScene" uid="uid://cardqueenscn1" path="res://game/objects/Items/scenes/tier 4/CardQueen.tscn" id="94_j02fn"]
+[ext_resource type="PackedScene" uid="uid://ywfb4cg1rk1u" path="res://game/objects/Items/scenes/tier 0/LvlupRandom.tscn" id="95_xs4ol"]
 [ext_resource type="PackedScene" uid="uid://4otoknedbda1" path="res://game/enemy/1-st floor basement/Spider_queen.tscn" id="96_kjqnc"]
 [ext_resource type="PackedScene" uid="uid://ce5ei6v0m2h2e" path="res://game/enemy/1-st floor basement/Spider_queen_boss.tscn" id="97_ahchr"]
 [ext_resource type="PackedScene" uid="uid://c58nxtsrgbldy" path="res://game/enemy/1-st floor basement/WormInsected.tscn" id="98_l3f4i"]
@@ -276,10 +276,10 @@ position = Vector2(43, 121)
 position = Vector2(45, 342)
 
 [node name="Boomerang" parent="." unique_id=1430574395 instance=ExtResource("19_vm4yr")]
-position = Vector2(-129, 496)
+position = Vector2(-60, 480)
 
 [node name="Potion Heal" parent="." unique_id=1431943573 instance=ExtResource("20_0h76k")]
-position = Vector2(-129, 44)
+position = Vector2(-128, 38)
 
 [node name="Black potion" parent="." unique_id=606213143 instance=ExtResource("21_1kwnq")]
 position = Vector2(-314, 39)
@@ -291,13 +291,13 @@ position = Vector2(-256, 38)
 position = Vector2(-193, 43)
 
 [node name="Story book" parent="." unique_id=5682892 instance=ExtResource("24_m4mvj")]
-position = Vector2(-106, 360)
+position = Vector2(-66, 347)
 
 [node name="Mind\'s Eye" parent="." unique_id=677376930 instance=ExtResource("25_4orec")]
-position = Vector2(-110, 126)
+position = Vector2(-133, 126)
 
 [node name="Spider web" parent="." unique_id=1838766649 instance=ExtResource("26_phtwq")]
-position = Vector2(-180, 126)
+position = Vector2(-194, 122)
 
 [node name="Pistol" parent="." unique_id=241584314 instance=ExtResource("27_a1qv4")]
 position = Vector2(40, 457)
@@ -382,13 +382,13 @@ position = Vector2(-403, -451)
 position = Vector2(-414, 256)
 
 [node name="Basilisk" parent="." unique_id=231050838 instance=ExtResource("54_1b6f8")]
-position = Vector2(-687, 306)
+position = Vector2(-170, 250)
 
 [node name="Beard" parent="." unique_id=1791809453 instance=ExtResource("55_qoxtj")]
 position = Vector2(-690, 250)
 
 [node name="Blueprint" parent="." unique_id=1430574399 instance=ExtResource("56_lqgqp")]
-position = Vector2(-643, 243)
+position = Vector2(-303, 124)
 
 [node name="Bomb" parent="." unique_id=1710993967 instance=ExtResource("57_3g58v")]
 position = Vector2(-590, 245)
@@ -403,28 +403,28 @@ position = Vector2(-480, 244)
 position = Vector2(-351, 252)
 
 [node name="Cross" parent="." unique_id=42139006 instance=ExtResource("61_1potx")]
-position = Vector2(-295, 250)
+position = Vector2(-457, 183)
 
 [node name="Exorcism" parent="." unique_id=111544993 instance=ExtResource("62_ugc3l")]
-position = Vector2(-234, 254)
+position = Vector2(-297, 248)
 
 [node name="EZ" parent="." unique_id=1430574396 instance=ExtResource("63_kwy8j")]
-position = Vector2(-176, 249)
+position = Vector2(-64, 244)
 
 [node name="Fontain" parent="." unique_id=2069311995 instance=ExtResource("64_0qir2")]
 position = Vector2(-121, 249)
 
 [node name="ForceShield" parent="." unique_id=1430574398 instance=ExtResource("65_r0oqo")]
-position = Vector2(-73, 202)
+position = Vector2(-70, 179)
 
 [node name="Grail" parent="." unique_id=625837496 instance=ExtResource("66_1yr5r")]
-position = Vector2(-118, 199)
+position = Vector2(-151, 191)
 
 [node name="Guillotine" parent="." unique_id=413319347 instance=ExtResource("67_13bi0")]
-position = Vector2(-160, 192)
+position = Vector2(-74, 116)
 
 [node name="Harmony" parent="." unique_id=527415019 instance=ExtResource("68_6udrj")]
-position = Vector2(-209, 191)
+position = Vector2(-200, 189)
 
 [node name="Homuncules" parent="." unique_id=73074890 instance=ExtResource("69_wc11c")]
 position = Vector2(-258, 189)
@@ -439,22 +439,23 @@ position = Vector2(-343, 190)
 position = Vector2(-395, 190)
 
 [node name="Petroglyph" parent="." unique_id=1430574397 instance=ExtResource("73_r226l")]
-position = Vector2(-449, 186)
+position = Vector2(-368, 121)
 
 [node name="PocketWatch" parent="." unique_id=1871337404 instance=ExtResource("74_xqp2j")]
 position = Vector2(-504, 185)
 
 [node name="PowerOfDamage" parent="." unique_id=500138579 instance=ExtResource("75_7x06c")]
-position = Vector2(-556, 186)
+position = Vector2(-631, 190)
 
 [node name="Radar" parent="." unique_id=1154833122 instance=ExtResource("76_jv5hk")]
-position = Vector2(-621, 186)
+position = Vector2(-494, 124)
 
 [node name="SandClock" parent="." unique_id=1001609919 instance=ExtResource("77_3d2wa")]
 position = Vector2(-689, 182)
 
 [node name="Seed" parent="." unique_id=280839398 instance=ExtResource("78_pcwib")]
 position = Vector2(-686, 132)
+item_tooltip2 = "The sprout that rewrote the probability of your decay"
 
 [node name="Sextant" parent="." unique_id=1088839078 instance=ExtResource("79_x7but")]
 position = Vector2(-619, 135)
@@ -463,16 +464,16 @@ position = Vector2(-619, 135)
 position = Vector2(-558, 134)
 
 [node name="Stardust" parent="." unique_id=1096508358 instance=ExtResource("81_nndxb")]
-position = Vector2(-495, 129)
+position = Vector2(-564, 193)
 
 [node name="Target" parent="." unique_id=156014486 instance=ExtResource("82_ixb6m")]
-position = Vector2(-445, 126)
+position = Vector2(-435, 125)
 
 [node name="Torch" parent="." unique_id=715299003 instance=ExtResource("83_86lkc")]
-position = Vector2(-384, 127)
+position = Vector2(-638, 254)
 
 [node name="Virus" parent="." unique_id=1906479123 instance=ExtResource("84_d822m")]
-position = Vector2(-316, 123)
+position = Vector2(-229, 250)
 
 [node name="Wraith" parent="." unique_id=929381436 instance=ExtResource("85_u3e44")]
 position = Vector2(-249, 126)

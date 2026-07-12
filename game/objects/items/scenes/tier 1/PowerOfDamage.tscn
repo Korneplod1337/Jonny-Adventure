@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://hjincgy3g0a4"]
 
-[ext_resource type="Script" uid="uid://cbqpbajo5vsuo" path="res://game/objects/items/scripts/powerofdamage.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://khjm1hcg0ndl" path="res://image/items/1 tier/ItemPowerOfDamage.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://cbqpbajo5vsuo" path="res://game/objects/Items/scripts/powerofdamage.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cbgixtaqlnqt5" path="res://image/items/1 tier/ItemPowerOfDamage.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Power of damage"
-item_tooltip2 = "The engine of destruction. Each shot is heavier than the previous one"
+item_tooltip2 = "The engine of destruction. The next shots seem to be more powerful than the previous ones"
 item_id = "powerofdamage"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_interact")]

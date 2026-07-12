@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brqtfx7g8231f"]
 
-[ext_resource type="Script" uid="uid://dyig1fg5o865q" path="res://game/objects/items/scripts/meat.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dyig1fg5o865q" path="res://game/objects/Items/scripts/meat.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://seeypkeg0gb8" path="res://image/items/1 tier/ItemMeat.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Meat"
-item_tooltip2 = "Raw flesh, still remembering warmth, is the source of life"
+item_tooltip2 = "Raw flesh, still remembering warmth of life"
 item_id = "meat"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_interact")]

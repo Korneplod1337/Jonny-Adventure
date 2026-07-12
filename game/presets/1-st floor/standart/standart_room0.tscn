@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cxt5f8lgqi4k7" path="res://game/presets/RoomScript.gd" id="1_1d7da"]
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="1_7kv4s"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="1_gk7ie"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_wnpcq"]
+[ext_resource type="Texture2D" uid="uid://cyw7cnqw0y506" path="res://image/rooms/1-st floor/background/tile background_1.png" id="1_gk7ie"]
+[ext_resource type="Texture2D" uid="uid://dlxlfq5ccjgvi" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_wnpcq"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_yij7n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
@@ -91,7 +91,6 @@ position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="Rock3" parent="." unique_id=2114911849 instance=ExtResource("1_7kv4s")]
-position = Vector2(0, 50)
 scale = Vector2(3, 3)
 
 [node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("3_yij7n")]
@@ -101,20 +100,20 @@ dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("3_yij7n")]
 position = Vector2(0, 300)
+rotation = 3.1415927
 scale = Vector2(2, 2)
-rotation_degrees = 180.0
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("3_yij7n")]
 position = Vector2(-585, 0)
+rotation = -1.5707964
 scale = Vector2(2, 2)
-rotation_degrees = -90.0
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("3_yij7n")]
 position = Vector2(585, 0)
+rotation = 1.5707964
 scale = Vector2(2, 2)
-rotation_degrees = 90.0
 dir = Vector2(1, 0)
 
 [node name="CameraBounds" type="Area2D" parent="." unique_id=1852979454]

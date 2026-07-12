@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccrdfupi8hyq2"]
 
-[ext_resource type="Script" uid="uid://6m7o6f3ekb78" path="res://game/objects/items/scripts/aegis.gd" id="1_885je"]
+[ext_resource type="Script" uid="uid://6m7o6f3ekb78" path="res://game/objects/Items/scripts/aegis.gd" id="1_885je"]
 [ext_resource type="Texture2D" uid="uid://4d2pow8hocn8" path="res://image/items/1 tier/ItemAegis.png" id="3_hpmg7"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_ovk18"]
 

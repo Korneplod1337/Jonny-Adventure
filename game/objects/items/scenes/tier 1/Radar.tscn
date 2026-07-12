@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ctoy78au1wi65"]
 
-[ext_resource type="Script" uid="uid://dgjghwjayu8hm" path="res://game/objects/items/scripts/radar.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://dgjghwjayu8hm" path="res://game/objects/Items/scripts/radar.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://uqwg6h8hpvrs" path="res://image/items/1 tier/ItemRadar.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Radar"
-item_tooltip2 = "You see them before they see you. Are you going to get hurt more this time?"
+item_tooltip2 = "You see them before they see you. Can you hit harder this time?"
 item_id = "radar"
 effect_power = 0.1
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cardacescene1"]
 
-[ext_resource type="Script" path="res://game/objects/items/scripts/card.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://btuiqxd7e3r5" path="res://image/items/4 tier/ItemCard9.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://14t3ul75381c" path="res://game/objects/items/scripts/card.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bnaxklvrtejv8" path="res://image/items/4 tier/ItemCard9.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -22,8 +22,8 @@ accuracy_delta = 1
 range_delta = 1
 fire_rate_delta = 1
 item_icon = ExtResource("2_tex")
-item_tooltip = "Ace"
-item_tooltip2 = "This card is more powerful than the others and does not have the same card attraction. Great."
+item_tooltip = "Card Ace"
+item_tooltip2 = "All stats +1"
 item_id = "cardace"
 
 [node name="Interactable" parent="." unique_id=1690989997 instance=ExtResource("3_interact")]

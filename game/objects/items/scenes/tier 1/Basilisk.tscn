@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxwwacpt1rply"]
 
-[ext_resource type="Script" uid="uid://0int1caqehk3" path="res://game/objects/items/scripts/basilisk.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://crda65qexlsbc" path="res://image/items/1 tier/ItemVasilisk.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://0int1caqehk3" path="res://game/objects/Items/scripts/basilisk.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://drqkq7pkdlirv" path="res://image/items/1 tier/ItemVasilisk.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Basilisk"
-item_tooltip2 = "Reduces all enemies' HP and Luck +1 per 2 floors passed"
+item_tooltip2 = "Reduces all enemies HP and Luck +1 per 2 floors passed"
 item_id = "basilisk"
 effect_power = 0.95
 

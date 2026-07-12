@@ -227,13 +227,13 @@ Owerall:
 	
 	🟡 Тир 2 (средние) 	hp-1+11=10 luck15+1 magic17+1 speed11+2 damage13 accuracy11+3 range15+3 fire_rate18+1
 	Сырые кишки 							hp_bonus: +4
+	Черепок BlackDeal					hp_bonus: -5, некроманту hp_bonus: +5 и лечение
 	Ouroborus							hp_bonus: +2, magic_bonus: +2
 	Цветок папоротника	шанс найти доп лут в сундуках + 10%	luck_bonus: +3
 	Алмаз								luck_bonus: +3, range_bonus: +3, fire_rate_bonus: +3
 	Четырёхлистный клевер				luck_bonus: +4
 	Магический гримуар					magic_bonus: +3
 	Mana flame							magic_bonus: +3, damage_bonus: +1
-	
 	Amplifier							magic_bonus: +4
 	Black brand							speed_bonus: +2, accuracy_bonus: +2
 	Desperado							speed_bonus: +3, damage: +1
@@ -253,11 +253,12 @@ Owerall:
 	Latern								range_bonus: +2, luck_bonus: +3
 	Шаровая молния						fire_rate_bonus: +2, magic_bonus: +2
 	Элементаль воды 						fire_rate_bonus: +3, luck_bonus: +1
-	Золотой самородок.					fire_rate_bonus: +3
+	Золотой самородок					fire_rate_bonus: +3
 	Золотой слиток						fire_rate_bonus: +4
-	Родниковая вода 						fire_rate_bonus: +3, luck_bonus: +1
-	Черепок								hp_bonus: -5, некроманту hp_bonus: +5 и лечение
-	Joker								повышает все характеристики на 1.
+	Well			 						fire_rate_bonus: +3, luck_bonus: +1
+	Joker		 This card is more powerful than the others and does not have the same card attraction. Great.
+										повышает все характеристики на 1.
+	
 	
 	Звёздная карта	Миникарта, делает свой вес на 0
 	Penetrating 		Выстрелы пронзают +1 врагов.			нет ????????????????????????????????????? ЕЩЁ ТАКОГО
@@ -419,7 +420,7 @@ Owerall:
 		имеет уникальное неснимаемое оружие которое и сплеш, и криты, и множитель слезы, но слабое в стоке - кидаться зельями
 		библейское имя, означает «Яхве — отец» на иврите, поклоняется Кересу
 		открывается- выиграть после того как выпил 4 чёрных зелья
-		открывает - 
+		открывает - черепок
 	
 	Joaquin 
 		имя испанское, означает «Бог даёт силу»
