@@ -1,80 +1,26 @@
 [gd_scene format=3 uid="uid://bltt30qk8jp62"]
 
-[ext_resource type="Texture2D" uid="uid://bn5i1oe8rssdh" path="res://image/objects/obstacles/Gap1.png" id="1_hiqy7"]
-[ext_resource type="Texture2D" uid="uid://bes6a1vhkhyjd" path="res://image/objects/obstacles/Gap2.png" id="2_uo6aj"]
-[ext_resource type="Texture2D" uid="uid://d26eo5r18yajw" path="res://image/objects/obstacles/Gap3.png" id="3_mp0k2"]
-[ext_resource type="Texture2D" uid="uid://dkcnanoasnphi" path="res://image/objects/obstacles/Gap4.png" id="4_483uq"]
-[ext_resource type="Texture2D" uid="uid://dqup1nmwbltg1" path="res://image/objects/obstacles/Gap5.png" id="5_mdy6v"]
-[ext_resource type="Texture2D" uid="uid://dn3smkcfug3gm" path="res://image/objects/obstacles/Gap6.png" id="6_2guwv"]
-[ext_resource type="Texture2D" uid="uid://bj2uym8ck044h" path="res://image/objects/obstacles/Gap7.png" id="7_kyxll"]
-[ext_resource type="Texture2D" uid="uid://bdk0y3wjaq3un" path="res://image/objects/obstacles/Gap8.png" id="8_6chf3"]
-[ext_resource type="Texture2D" uid="uid://bqcwhy58cur5" path="res://image/objects/obstacles/Gap9.png" id="9_5mjmy"]
-[ext_resource type="Texture2D" uid="uid://dcxcipx8etpda" path="res://image/objects/obstacles/Gap10.png" id="10_iluq0"]
-[ext_resource type="Texture2D" uid="uid://dliyqybyc2q0e" path="res://image/objects/obstacles/Gap11.png" id="11_rbfj4"]
-[ext_resource type="Texture2D" uid="uid://cx31gmqxwc7jn" path="res://image/objects/obstacles/Gap12.png" id="12_figyx"]
-[ext_resource type="Texture2D" uid="uid://3bucmecuqrpv" path="res://image/objects/obstacles/Gap13.png" id="13_s7v4w"]
-[ext_resource type="Texture2D" uid="uid://dhpmsa7yh1ggj" path="res://image/objects/obstacles/Gap14.png" id="14_nwvm6"]
+[ext_resource type="Script" uid="uid://c8gap4k2m7x1n" path="res://game/objects/obstacles/gap.gd" id="1_gap"]
+[ext_resource type="Texture2D" uid="uid://co5sb25uiat2i" path="res://image/objects/obstacles/Gap1.png" id="2_gap1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cn48p"]
 size = Vector2(38, 38)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qnaqx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_hiqy7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_uo6aj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_mp0k2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_483uq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_mdy6v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_2guwv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_kyxll")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_6chf3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_5mjmy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_iluq0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_rbfj4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_figyx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_s7v4w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_nwvm6")
-}],
-"loop": false,
-"name": &"default",
-"speed": 1.0
-}]
+[node name="Gap" type="Node2D" unique_id=1148295091]
+script = ExtResource("1_gap")
 
-[node name="Gap" type="RigidBody2D" unique_id=1295503728]
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1593172121]
+collision_layer = 128
+collision_mask = 17
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1275666312]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=598732440]
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_cn48p")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1354079578]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1079552386]
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_qnaqx")
-frame_progress = 1.0
+texture = ExtResource("2_gap1")

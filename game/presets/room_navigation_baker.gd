@@ -2,6 +2,7 @@ class_name RoomNavigationBaker
 
 const WALL_LAYER_MASK := 16
 const OBSTACLE_LAYER_MASK := 32
+const GAP_LAYER_MASK := 128
 const AGENT_RADIUS := 48.0
 const WALKABLE_INSET := 32.0
 
@@ -25,7 +26,7 @@ static func setup_for_room(room: Node2D) -> void:
 	var source_data := NavigationMeshSourceGeometryData2D.new()
 	source_data.add_traversable_outline(_ensure_ccw(outer_outline))
 
-	for obstruction in _collect_collision_outlines(room, WALL_LAYER_MASK | OBSTACLE_LAYER_MASK):
+	for obstruction in _collect_collision_outlines(room, WALL_LAYER_MASK | OBSTACLE_LAYER_MASK | GAP_LAYER_MASK):
 		source_data.add_obstruction_outline(_ensure_cw(obstruction))
 
 	NavigationServer2D.bake_from_source_geometry_data(nav_poly, source_data)

@@ -19,10 +19,14 @@ var POOLS := {
 	"treasure": [ ## временно только шмотки
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 3, "weight": 10.0},
+		{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
+		 "tier": 3, "weight": 10.0},
 		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Poison_boots", "scene": preload("uid://c1fiyctd2xrli"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Kaliya_boots", "scene": preload("uid://by8qnvewpw3v3"),
+		 "tier": 3, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
@@ -109,10 +113,14 @@ var POOLS := {
 		
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 3, "weight": 10.0},
+		{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
+		 "tier": 3, "weight": 10.0},
 		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Poison_boots", "scene": preload("uid://c1fiyctd2xrli"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Kaliya_boots", "scene": preload("uid://by8qnvewpw3v3"),
+		 "tier": 3, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
@@ -133,10 +141,14 @@ var equip_visuals := {
 	# CHEST
 	"Death_shield":
 		preload("uid://bupakre411yu6"),
+	"Accelerator_Cloak":
+		preload("uid://d1xaywuwy2w1e"),
 	
 	# BOOTS
 	"Poison_boots":
 		preload("uid://bo8mktvnh36np"),
+	"Kaliya_boots":
+		preload("uid://b5n6x6aiv8j01"),
 	
 }
 

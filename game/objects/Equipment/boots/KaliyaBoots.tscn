@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://by8qnvewpw3v3"]
+
+[ext_resource type="Script" uid="uid://ddmnwd8t0sr8p" path="res://game/objects/Equipment/boots/kaliya_boots.gd" id="1_2prt8"]
+[ext_resource type="Texture2D" uid="uid://ctsrhp0co2ybr" path="res://image/equip/boots/Kaliya_boots12.png" id="2_1n577"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_7257c"]
+[ext_resource type="Texture2D" uid="uid://beppvmqpftaf5" path="res://image/equip/boots/Kaliya_boots11.png" id="4_wp1nc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjk28"]
+radius = 54.08327
+
+[node name="Kaliya\'s boots" type="Area2D" unique_id=1914859512]
+script = ExtResource("1_2prt8")
+type = "boots"
+equip_icon = ExtResource("2_1n577")
+equip_id = "Kaliya_boots"
+equip_tooltip = "Every shot is a stolen moment"
+interact_name = "Kaliya's boots"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191125084]
+shape = SubResource("CircleShape2D_amy5j")
+
+[node name="Interactable" parent="." unique_id=663750920 instance=ExtResource("3_7257c")]
+interact_name = "Swap on test_chest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=384725513]
+shape = SubResource("CircleShape2D_kjk28")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
+position = Vector2(0, -34)
+scale = Vector2(2, 2)
+texture = ExtResource("4_wp1nc")
+offset = Vector2(0, -2)

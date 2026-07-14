@@ -93,3 +93,5 @@ position = Vector2(-490, -232)
 
 [node name="Rock5" parent="." unique_id=1317262919 instance=ExtResource("1_jseag")]
 position = Vector2(490, 232)
+
+[node name="ChestSpawnPoint" type="Marker2D" parent="."]

@@ -20,11 +20,11 @@ var player_name = 'Jonny'
 	"red": max(0, StatManager.get_stat(self, 'hp')),
 	"green": 0,
 	"blue": 0,  # magic shield
-	"black": 2, #s hield
+	"black": 2, # shield
 	}
 
 const base_max_hp: 				int  = 3    #6
-const base_move_speed:			float = 300.0
+const base_move_speed:			float = 250.0
 const base_luck: 				float = 0.2
 const base_magic: 				float = 0.0
 const base_damage: 				float = 25.0
@@ -32,34 +32,34 @@ const base_spread: 				float = 14.0
 const base_range: 				float = 150.0
 const base_fire_rate: 			float = 0.5
 
-const BASE_COLLISION_MASK := 55
 const ENEMY_COLLISION_BITS := 4 | 64
 const BASE_IMMUNE_TIME := 0.3
 
 var hp_bonus: 				int = 0
 var speed_bonus: 			int = 0
 var luck_bonus: 				int = 0
-var magic_bonus: 			int = 0
+var magic_bonus: 			int = 20
 var damage_bonus: 			int = 0
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 0
+var fire_rate_bonus:			int = 2
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0
 var pass_through_enemies: 	bool = false
+var _base_collision_mask: 	int = 0
 var ez_retaliation_count: 	int = 0
 var force_shield_max: 		int = 0
 var force_shield_charges: 	int = 0
 
-@export var hit_points_level: 	float = 1.0
-@export var move_speed_level: 	float = 2.0   # 1–10, 9 лвл прокачки
-@export var luck_level: 			float = 1.0
-@export var magic_level: 		float = 1.0
-@export var damage_level: 		float = 1.0
-@export var spread_level: 		float = 1.0
-@export var range_level: 		float = 1.0
-@export var fire_rate_level: 	float = 1.0
+@export_range(1.0, 10.0, 1.0) var hit_points_level: 	float = 1.0
+@export_range(1.0, 10.0, 1.0) var move_speed_level: 	float = 2.0
+@export_range(1.0, 10.0, 1.0) var luck_level: 		float = 1.0
+@export_range(1.0, 10.0, 1.0) var magic_level: 		float = 1.0
+@export_range(1.0, 10.0, 1.0) var damage_level: 		float = 1.0
+@export_range(1.0, 10.0, 1.0) var spread_level: 		float = 1.0
+@export_range(1.0, 10.0, 1.0) var range_level: 		float = 1.0
+@export_range(1.0, 10.0, 1.0) var fire_rate_level: 	float = 1.0
 
 @onready var max_hp: 		= int(ST.get_stat(self, "hp"))
 @onready var move_speed: float	= ST.get_stat(self, "move_speed")
@@ -71,6 +71,8 @@ var force_shield_charges: 	int = 0
 @onready var fire_rate:float		= ST.get_stat(self, "fire_rate")
 
 var extra_fire_rate:float = 0
+var EquipFireRateBoost: float = 1.0
+var EquipMoveSpeedFlat: float = 0.0
 var boomerang_bonus: int = 0
 
 var head_id: String
@@ -92,6 +94,7 @@ var last_move_dir := 1
 var animated_speed := 1
 
 func _ready() -> void:
+	_base_collision_mask = collision_mask
 	$AnimatedSprite2D.play()
 	_emit_stats_changed()	 # Вызвать это когда меняем стат
 	update_equipment_visuals()
@@ -503,6 +506,9 @@ func fire (shot_dir: Vector2) -> void:
 	get_tree().current_scene.add_child(shot)
 	
 	extra_fire_rate = shot.extra_reload
+	var cloak_fx := get_node_or_null("Accelerator_Cloak")
+	if cloak_fx and cloak_fx.has_method("update_boost"):
+		cloak_fx.update_boost()
 	fire_rate = ST.get_stat(self, "fire_rate")
 
 # таймер (лоховской)
@@ -531,9 +537,9 @@ func _emit_bonuses_changed() -> void:
 
 func _update_enemy_collision() -> void:
 	if pass_through_enemies:
-		collision_mask = BASE_COLLISION_MASK & ~ENEMY_COLLISION_BITS
+		collision_mask = _base_collision_mask & ~ENEMY_COLLISION_BITS
 	else:
-		collision_mask = BASE_COLLISION_MASK
+		collision_mask = _base_collision_mask
 
 
 

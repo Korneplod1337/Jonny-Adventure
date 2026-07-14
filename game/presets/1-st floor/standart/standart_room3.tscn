@@ -191,3 +191,5 @@ position = Vector2(411, 237)
 
 [node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("9_jd3jf")]
 position = Vector2(-538, 225)
+
+[node name="ChestSpawnPoint" type="Marker2D" parent="."]

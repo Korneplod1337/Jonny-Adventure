@@ -123,20 +123,20 @@ dir = Vector2(0, -1)
 
 [node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("4_m3kms")]
 position = Vector2(0, 650)
+rotation = 3.1415927
 scale = Vector2(2, 2)
-rotation_degrees = 180.0
 dir = Vector2(0, 1)
 
 [node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("4_m3kms")]
 position = Vector2(-1212, 0)
+rotation = -1.5707964
 scale = Vector2(2, 2)
-rotation_degrees = -90.0
 dir = Vector2(-1, 0)
 
 [node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("4_m3kms")]
 position = Vector2(1210, 360)
+rotation = 1.5707964
 scale = Vector2(2, 2)
-rotation_degrees = 90.0
 dir = Vector2(1, 0)
 
 [node name="Rock_big" parent="." unique_id=1046045028 instance=ExtResource("5_du2j5")]
@@ -159,7 +159,11 @@ position = Vector2(-372, 277)
 scale = Vector2(8, 8)
 hard_move_speed_min = 240.0
 hard_move_speed_max = 300.0
-hard_base_hp = 120
 hard_direction_change_min = 0.5
 hard_direction_change_max = 1.2
+hard_base_hp = 120
 hard_angle_deviation = 80.0
+
+[node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=994767452]
+position = Vector2(-843, 372)
+gizmo_extents = 100.0

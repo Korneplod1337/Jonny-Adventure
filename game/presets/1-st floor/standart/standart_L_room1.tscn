@@ -166,3 +166,6 @@ position = Vector2(-424.00003, 411.00003)
 
 [node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("10_ji8pd")]
 position = Vector2(-538, 425)
+
+[node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=399254278]
+position = Vector2(0, -80)

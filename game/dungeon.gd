@@ -322,6 +322,7 @@ func go_to_next_floor(hatch: Node2D) -> void:
 		push_warning("Dungeon: no more floors after %d" % current_floor)
 		return
 
+	GameState.enemy_hp_multiplier *= 1.1
 	_reset_player_interactions()
 	var hatch_center := hatch.global_position
 

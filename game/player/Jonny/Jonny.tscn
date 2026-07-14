@@ -204,7 +204,7 @@ animations = [{
 z_index = 10
 position = Vector2(1, 0)
 scale = Vector2(1.9, 1.9)
-collision_mask = 55
+collision_mask = 183
 script = ExtResource("1_fwoqh")
 hit_points_level = 2.0
 luck_level = 2.0
@@ -250,9 +250,9 @@ sprite_frames = SubResource("SpriteFrames_h4d6h")
 animation = &"down"
 
 [node name="Chest" type="AnimatedSprite2D" parent="." unique_id=845721799]
-position = Vector2(0, -10)
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_fm61y")
-animation = &"afk_up"
+animation = &"afk_default"
 
 [node name="Boots" type="AnimatedSprite2D" parent="." unique_id=13519053]
 position = Vector2(0, -12)

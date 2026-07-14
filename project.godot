@@ -161,6 +161,7 @@ button_E={
 2d_physics/layer_5="Стены"
 2d_physics/layer_6="Препятствия"
 2d_physics/layer_7="Летающие враги"
+2d_physics/layer_8="Пропасть"
 2d_physics/stretch/scale_mode="fractional"
 2d_physics/size/resizable=false
 2d_physics/stretch/mode="canvas_items"

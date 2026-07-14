@@ -73,6 +73,10 @@ z_index = -5
 scale = Vector2(2, 2)
 texture = ExtResource("3_1tq2v")
 
+[node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=1431920777]
+position = Vector2(0, -40)
+gizmo_extents = 30.0
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1184620657]
 position = Vector2(-207.06, -240)
 collision_layer = 16

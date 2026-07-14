@@ -118,9 +118,15 @@ func _pick_chest_scene() -> PackedScene:
 
 	return CHEST_BIG
 
+func _get_clear_reward_spawn_position() -> Vector2:
+	var spawn_marker := get_node_or_null("ChestSpawnPoint") as Marker2D
+	if spawn_marker:
+		return spawn_marker.position
+	return Vector2.ZERO
+
 func _spawn_clear_reward_chest() -> void:
 	var chest := _pick_chest_scene().instantiate()
-	chest.position = Vector2.ZERO
+	chest.position = _get_clear_reward_spawn_position()
 	call_deferred("add_child", chest)
 
 func _update_door_collision(door: Node, hide: bool) -> void:

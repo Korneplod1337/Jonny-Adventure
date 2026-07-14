@@ -17,9 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_fyd7y"]
 [ext_resource type="Script" uid="uid://fh1fkq16e7td" path="res://game/objects/Equipment/_enchantments/knockback_enchantment.gd" id="16_h6u4y"]
 [ext_resource type="PackedScene" uid="uid://8nlac1wigti" path="res://game/objects/Equipment/head/Alchemists_glasses.tscn" id="17_5tx8v"]
-[ext_resource type="PackedScene" uid="uid://ctoy78au1wi65" path="res://game/objects/items/scenes/tier 1/Radar.tscn" id="18_3m1kt"]
-[ext_resource type="PackedScene" uid="uid://cjkspeia472c6" path="res://game/objects/items/scenes/tier 1/Cauldron.tscn" id="19_hacjm"]
-[ext_resource type="PackedScene" uid="uid://dght2o6kvlham" path="res://game/objects/items/scenes/tier 1/Petroglyph.tscn" id="20_fxlmj"]
+[ext_resource type="PackedScene" uid="uid://bi5g2vqe6xdek" path="res://game/objects/Equipment/head/Kaliya_star_hat.tscn" id="18_hfl2y"]
+[ext_resource type="PackedScene" uid="uid://rm084balo4ar" path="res://game/objects/Equipment/head/Surestrike.tscn" id="19_8sdh4"]
+[ext_resource type="PackedScene" uid="uid://bgibadaeek4on" path="res://game/objects/Equipment/Chest/Death_shield.tscn" id="20_8sdh4"]
+[ext_resource type="PackedScene" uid="uid://c6snhkx0masi2" path="res://game/objects/Equipment/Chest/KaliyaAcceleratorCloak.tscn" id="21_h6u4y"]
+[ext_resource type="PackedScene" uid="uid://c1fiyctd2xrli" path="res://game/objects/Equipment/boots/Poison_boots.tscn" id="22_2ue0t"]
+[ext_resource type="PackedScene" uid="uid://by8qnvewpw3v3" path="res://game/objects/Equipment/boots/KaliyaBoots.tscn" id="23_yfpwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -115,7 +118,7 @@ position = Vector2(520, -220)
 position = Vector2(488, -132)
 
 [node name="CoinBag" parent="." unique_id=108492217 instance=ExtResource("6_ww7l6")]
-position = Vector2(519, 236)
+position = Vector2(519, 242.00002)
 
 [node name="TestItem" parent="." unique_id=1539246569 instance=ExtResource("7_bxm0y")]
 position = Vector2(466, 252)
@@ -151,29 +154,20 @@ initial_delay = 0.0
 player_phy_damage = 100
 
 [node name="Pistol" parent="." unique_id=241584314 instance=ExtResource("12_f67eu")]
-position = Vector2(-123, 62)
+position = Vector2(-278, 7)
 
 [node name="Sniper" parent="." unique_id=1823620353 instance=ExtResource("13_j72gn")]
-position = Vector2(-182, 176)
+position = Vector2(-277, 164)
 
 [node name="tome_of_fairy_tales_equip" parent="." unique_id=925666813 instance=ExtResource("14_kmixf")]
-position = Vector2(-292, 138)
+position = Vector2(-273, 232)
 
 [node name="Sword_equip" parent="." unique_id=133096138 instance=ExtResource("15_fyd7y")]
-position = Vector2(-215, 76)
+position = Vector2(-279, 82)
 enchantment = SubResource("Resource_yfpwr")
 
 [node name="Alchemist\'s glasses" parent="." unique_id=1914859512 instance=ExtResource("17_5tx8v")]
-position = Vector2(144, -48)
-
-[node name="Radar" parent="." unique_id=1154833122 instance=ExtResource("18_3m1kt")]
-position = Vector2(84, 94)
-
-[node name="Cauldron" parent="." unique_id=1430574395 instance=ExtResource("19_hacjm")]
-position = Vector2(185, 18)
-
-[node name="Petroglyph" parent="." unique_id=1430574397 instance=ExtResource("20_fxlmj")]
-position = Vector2(30, 77)
+position = Vector2(99, -48)
 
 [node name="Rock" parent="." unique_id=1046045028 instance=ExtResource("3_yfpwr")]
 position = Vector2(-375, 237)
@@ -183,3 +177,23 @@ position = Vector2(-375, 157)
 
 [node name="Rock4" parent="." unique_id=524582743 instance=ExtResource("3_yfpwr")]
 position = Vector2(-375, 77)
+
+[node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=298626992]
+
+[node name="Kaliya\'s Star Hat" parent="." unique_id=971323989 instance=ExtResource("18_hfl2y")]
+position = Vector2(254, -148)
+
+[node name="Surestrike" parent="." unique_id=1369623635 instance=ExtResource("19_8sdh4")]
+position = Vector2(364, -145)
+
+[node name="Death_shield" parent="." unique_id=203268532 instance=ExtResource("20_8sdh4")]
+position = Vector2(366, 58)
+
+[node name="Kaliya\'s accelerator cloak" parent="." unique_id=377056134 instance=ExtResource("21_h6u4y")]
+position = Vector2(246, 63)
+
+[node name="Poison_boots" parent="." unique_id=584830615 instance=ExtResource("22_2ue0t")]
+position = Vector2(362, -45)
+
+[node name="Kaliya\'s boots" parent="." unique_id=2016753826 instance=ExtResource("23_yfpwr")]
+position = Vector2(249, -52)

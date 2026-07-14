@@ -176,3 +176,7 @@ position = Vector2(-541, -262)
 
 [node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("9_gvpeu")]
 position = Vector2(535, -267)
+
+[node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=1118385925]
+position = Vector2(-520, 248)
+gizmo_extents = 30.0

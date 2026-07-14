@@ -106,7 +106,7 @@ animations = [{
 [node name="Hog" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
 scale = Vector2(2, 2)
 collision_layer = 4
-collision_mask = 54
+collision_mask = 182
 script = ExtResource("1_45uaf")
 stop_on_melee_hit = false
 

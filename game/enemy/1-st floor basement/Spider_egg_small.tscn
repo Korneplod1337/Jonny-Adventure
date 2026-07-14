@@ -60,7 +60,7 @@ animations = [{
 [node name="Spider_egg_small" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy", "EnemyWave2Spawn"]]
 scale = Vector2(2, 2)
 collision_layer = 4
-collision_mask = 54
+collision_mask = 182
 script = ExtResource("1_dcfd1")
 hard_base_hp = 20
 deals_melee_damage = false
