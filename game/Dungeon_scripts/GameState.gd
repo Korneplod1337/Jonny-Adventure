@@ -22,6 +22,7 @@ var AlchemistsGlasses: bool:
 		_alchemists_glasses = value
 		alchemists_glasses_changed.emit()
 var Surestrike := false # убирает разброс выстрела, не меняя стат точности
+var LuckyHead := false # за этаж: +1 luck_level и enemy_hp_multiplier *= 0.97
 
 
 #уровень
@@ -67,6 +68,7 @@ func obnulenie() -> void:
 	DamageDealer.clear_modifiers()
 	AlchemistsGlasses = false
 	Surestrike = false
+	LuckyHead = false
 	enemy_ms_multiplier = 1.0
 	enemy_hp_multiplier = 1.0
 	enemy_dmg_multiplier = 1.0

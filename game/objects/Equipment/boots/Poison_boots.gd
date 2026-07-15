@@ -5,7 +5,7 @@ const TRAIL_SCRIPT := preload("res://game/objects/Equipment/boots/poison_boots_t
 
 
 func effect_on() -> void:
-	var player := get_tree().get_first_node_in_group("player")
+	var player := get_player()
 	if player == null or player.get_node_or_null(MODIFIER_ID):
 		return
 	var trail := TRAIL_SCRIPT.new()
@@ -14,7 +14,7 @@ func effect_on() -> void:
 
 
 func effect_off() -> void:
-	var player := get_tree().get_first_node_in_group("player")
+	var player := get_player()
 	if player == null:
 		return
 	var trail := player.get_node_or_null(MODIFIER_ID)

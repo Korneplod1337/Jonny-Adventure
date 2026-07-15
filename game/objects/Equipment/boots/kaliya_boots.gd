@@ -10,7 +10,7 @@ func effect_on() -> void:
 
 func effect_off() -> void:
 	DamageDealer.remove_modifier_by_id(MODIFIER_ID)
-	var player := get_tree().get_first_node_in_group("player")
+	var player := get_player()
 	if player == null:
 		return
 	var buff := player.get_node_or_null(SpeedBoostOnHitModifier.BUFF_NODE)

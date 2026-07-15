@@ -323,6 +323,10 @@ func go_to_next_floor(hatch: Node2D) -> void:
 		return
 
 	GameState.enemy_hp_multiplier *= 1.1
+	if GameState.LuckyHead:
+		GameState.enemy_hp_multiplier *= 0.97
+		if is_instance_valid(player):
+			StatManager.upgrade_stat(player, "luck", 1)
 	_reset_player_interactions()
 	var hatch_center := hatch.global_position
 

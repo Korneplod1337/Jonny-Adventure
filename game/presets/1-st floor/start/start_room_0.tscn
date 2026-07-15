@@ -23,6 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://c6snhkx0masi2" path="res://game/objects/Equipment/Chest/KaliyaAcceleratorCloak.tscn" id="21_h6u4y"]
 [ext_resource type="PackedScene" uid="uid://c1fiyctd2xrli" path="res://game/objects/Equipment/boots/Poison_boots.tscn" id="22_2ue0t"]
 [ext_resource type="PackedScene" uid="uid://by8qnvewpw3v3" path="res://game/objects/Equipment/boots/KaliyaBoots.tscn" id="23_yfpwr"]
+[ext_resource type="PackedScene" uid="uid://b6vskrremanrc" path="res://game/objects/Equipment/head/lucky_Head.tscn" id="24_7fgpm"]
+[ext_resource type="PackedScene" uid="uid://bdx03qht6dlwl" path="res://game/objects/Equipment/Chest/Cleaving.tscn" id="25_tvg8h"]
+[ext_resource type="PackedScene" uid="uid://lcbyc42s480y" path="res://game/objects/Equipment/boots/Speed_boots.tscn" id="26_bxm0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -167,7 +170,7 @@ position = Vector2(-279, 82)
 enchantment = SubResource("Resource_yfpwr")
 
 [node name="Alchemist\'s glasses" parent="." unique_id=1914859512 instance=ExtResource("17_5tx8v")]
-position = Vector2(99, -48)
+position = Vector2(144, -147)
 
 [node name="Rock" parent="." unique_id=1046045028 instance=ExtResource("3_yfpwr")]
 position = Vector2(-375, 237)
@@ -187,13 +190,25 @@ position = Vector2(254, -148)
 position = Vector2(364, -145)
 
 [node name="Death_shield" parent="." unique_id=203268532 instance=ExtResource("20_8sdh4")]
-position = Vector2(366, 58)
+position = Vector2(359, -40)
 
 [node name="Kaliya\'s accelerator cloak" parent="." unique_id=377056134 instance=ExtResource("21_h6u4y")]
-position = Vector2(246, 63)
+position = Vector2(252, -44)
 
 [node name="Poison_boots" parent="." unique_id=584830615 instance=ExtResource("22_2ue0t")]
-position = Vector2(362, -45)
+position = Vector2(358, 64)
 
 [node name="Kaliya\'s boots" parent="." unique_id=2016753826 instance=ExtResource("23_yfpwr")]
-position = Vector2(249, -52)
+position = Vector2(253, 63)
+
+[node name="lucky Head" parent="." unique_id=179850007 instance=ExtResource("24_7fgpm")]
+position = Vector2(35, -144)
+
+[node name="Cleaving" parent="." unique_id=2002285572 instance=ExtResource("25_tvg8h")]
+position = Vector2(142, -44)
+
+[node name="EnemyTest5" parent="." unique_id=1206335830 instance=ExtResource("5_tvg8h")]
+position = Vector2(380, -188)
+
+[node name="Speed_boots" parent="." unique_id=1218933505 instance=ExtResource("26_bxm0y")]
+position = Vector2(142, 58)

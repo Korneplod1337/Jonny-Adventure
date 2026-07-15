@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dfoxvsjwytkk7"]
+
+[ext_resource type="Texture2D" uid="uid://bofcnykoxj57q" path="res://image/equip/head/lucky Head2.png" id="1_uiivw"]
+[ext_resource type="Texture2D" uid="uid://b16amxjmomlf6" path="res://image/equip/head/lucky Head4.png" id="2_65vot"]
+[ext_resource type="Texture2D" uid="uid://eetres0yuy7r" path="res://image/equip/head/lucky Head3.png" id="3_c5xmi"]
+[ext_resource type="Texture2D" uid="uid://cohnlia61o4v1" path="res://image/equip/head/lucky Head5.png" id="4_rt041"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uiivw")
+}],
+"loop": true,
+"name": &"down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_65vot")
+}],
+"loop": true,
+"name": &"left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_c5xmi")
+}],
+"loop": true,
+"name": &"right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rt041")
+}],
+"loop": true,
+"name": &"up",
+"speed": 1.0
+}]

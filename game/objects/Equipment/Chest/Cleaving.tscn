@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bdx03qht6dlwl"]
+
+[ext_resource type="Script" uid="uid://brwjvnlxs7v38" path="res://game/objects/Equipment/Chest/cleaving.gd" id="1_waed0"]
+[ext_resource type="Texture2D" uid="uid://dufve8iptbe68" path="res://image/equip/chest/Cleaving6.png" id="2_icon"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_2x35g"]
+[ext_resource type="Texture2D" uid="uid://cgcqhhdwblmcg" path="res://image/equip/chest/Cleaving1.png" id="4_y7vvf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjk28"]
+radius = 54.08327
+
+[node name="Cleaving" type="Area2D" unique_id=1914859512]
+script = ExtResource("1_waed0")
+type = "chest"
+equip_icon = ExtResource("2_icon")
+equip_id = "Cleaving"
+equip_tooltip = "Proximity to the victim is also a sentence"
+interact_name = "Cleaving"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191125084]
+shape = SubResource("CircleShape2D_amy5j")
+
+[node name="Interactable" parent="." unique_id=663750920 instance=ExtResource("3_2x35g")]
+interact_name = "Swap on test_chest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=384725513]
+shape = SubResource("CircleShape2D_kjk28")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_y7vvf")
+offset = Vector2(0, -2)

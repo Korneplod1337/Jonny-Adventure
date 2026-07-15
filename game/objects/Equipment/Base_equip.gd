@@ -23,7 +23,7 @@ func _ready() -> void:
 		+ interact_name + ' by %s coins' % ((cost + GS.cost_plus) * GS.cost_multiplier)
 
 func _on_interact():
-	var player = get_tree().get_first_node_in_group("player")
+	var player = get_player()
 	if not player: 
 		print('эквип не видит игрока')
 		return
@@ -67,6 +67,16 @@ func _on_interact():
 
 func _set_equip_icon(new_icon: Texture2D):
 	equip_icon = new_icon
+
+func get_player() -> Node:
+	var tree: SceneTree
+	if is_inside_tree():
+		tree = get_tree()
+	else:
+		tree = Engine.get_main_loop() as SceneTree
+	if tree == null:
+		return null
+	return tree.get_first_node_in_group("player")
 
 func effect_on() -> void:
 	print('empty effect on')

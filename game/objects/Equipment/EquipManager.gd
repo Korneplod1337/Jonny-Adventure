@@ -19,6 +19,8 @@ var POOLS := {
 	"treasure": [ ## временно только шмотки
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 3, "weight": 10.0},
+		{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
 		 "tier": 3, "weight": 10.0},
 		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
@@ -27,9 +29,13 @@ var POOLS := {
 		 "tier": 2, "weight": 10.0},
 		{"id": "Kaliya_boots", "scene": preload("uid://by8qnvewpw3v3"),
 		 "tier": 3, "weight": 10.0},
+		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "lucky_head", "scene": preload("uid://b6vskrremanrc"),
 		 "tier": 2, "weight": 10.0},
 		
 		
@@ -113,6 +119,8 @@ var POOLS := {
 		
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 3, "weight": 10.0},
+		{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
 		 "tier": 3, "weight": 10.0},
 		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
@@ -121,9 +129,13 @@ var POOLS := {
 		 "tier": 2, "weight": 10.0},
 		{"id": "Kaliya_boots", "scene": preload("uid://by8qnvewpw3v3"),
 		 "tier": 3, "weight": 10.0},
+		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "lucky_head", "scene": preload("uid://b6vskrremanrc"),
 		 "tier": 2, "weight": 10.0},
 	]
 }
@@ -137,18 +149,24 @@ var equip_visuals := {
 		preload("uid://h7lm83qrvm2y"),
 	"Surestrike":
 		preload("uid://big2quf10m3j8"),
+	"lucky_head":
+		preload("uid://dfoxvsjwytkk7"),
 		
 	# CHEST
 	"Death_shield":
 		preload("uid://bupakre411yu6"),
 	"Accelerator_Cloak":
 		preload("uid://d1xaywuwy2w1e"),
+	"Cleaving":
+		preload("uid://ceswef8mjmxf4"),
 	
 	# BOOTS
 	"Poison_boots":
 		preload("uid://bo8mktvnh36np"),
 	"Kaliya_boots":
 		preload("uid://b5n6x6aiv8j01"),
+	"Speed_boots":
+		preload("uid://37cru6ygwhba"),
 	
 }
 
