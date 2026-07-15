@@ -16,7 +16,7 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 '''
 
 var POOLS := {
-	"treasure": [ ## временно только шмотки
+	"treasure": [ ## только шмотки
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 3, "weight": 10.0},
 		{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),

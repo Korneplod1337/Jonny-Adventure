@@ -56,7 +56,7 @@ const WEIGHT_SYNERGIES := [
 	# {"source": "some_card", "targets": ["aegis", "cross"], "multiplier": 3.0},
 ]
 
-
+# настроить пулы
 var POOLS := {
 	"treasure": [
 		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), 	"tier": 0},

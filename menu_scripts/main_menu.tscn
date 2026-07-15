@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dmnbb38fndhgl" path="res://image/main_menu/settings_sound_0.png" id="13_xg1mu"]
 [ext_resource type="Texture2D" uid="uid://c6n5dxcfqyfj5" path="res://image/main_menu/button_tutorial1.png" id="13_xy68n"]
 [ext_resource type="Texture2D" uid="uid://kcb2wtgclojg" path="res://image/main_menu/settings_video_high1.png" id="14_3sut6"]
+[ext_resource type="Texture2D" uid="uid://bfvktmt5grs2l" path="res://image/серый хуй.png" id="14_gr0d0"]
 [ext_resource type="Texture2D" uid="uid://dh6yq26xlqyfv" path="res://image/main_menu/settings_sound_1.png" id="14_lt70l"]
 [ext_resource type="Texture2D" uid="uid://bfueaebntuvno" path="res://image/main_menu/button_tutorial2.png" id="14_sarce"]
 [ext_resource type="Texture2D" uid="uid://dledcq1k3vx6c" path="res://image/main_menu/settings_video_med2.png" id="15_bewgb"]
@@ -286,6 +287,13 @@ icon = ExtResource("13_xy68n")
 flat = true
 
 [node name="Select_tutorial" type="Sprite2D" parent="start_menu/Control_main/Button_tutorial" unique_id=83076657]
+visible = false
+position = Vector2(-18, -11)
+scale = Vector2(0.1757696, 0.16792169)
+texture = ExtResource("14_gr0d0")
+centered = false
+
+[node name="Select_tutorial2" type="Sprite2D" parent="start_menu/Control_main/Button_tutorial" unique_id=613215127]
 visible = false
 position = Vector2(4, 4)
 texture = ExtResource("14_sarce")

@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://d21vlt2wtdmkm"]
+
+[ext_resource type="Script" uid="uid://djuams11aamo" path="res://game/objects/obstacles/slot_machine.gd" id="1_4bjjm"]
+[ext_resource type="Script" path="res://game/objects/obstacles/slot_machine_hurtbox.gd" id="1_hurtbox"]
+[ext_resource type="Texture2D" uid="uid://ba7i3k31rpn30" path="res://image/objects/obstacles/slot-machine1.png" id="1_4pwwf"]
+[ext_resource type="Texture2D" uid="uid://twt7wcn63fq3" path="res://image/objects/obstacles/slot-machine2.png" id="2_4bjjm"]
+[ext_resource type="Texture2D" uid="uid://chc1x4m5lxbhx" path="res://image/objects/obstacles/slot-machine3.png" id="3_120bw"]
+[ext_resource type="Texture2D" uid="uid://ccua6dj3101da" path="res://image/objects/obstacles/slot-machine4.png" id="4_1jh8x"]
+[ext_resource type="Texture2D" uid="uid://dicbdl3op0uj1" path="res://image/objects/obstacles/slot-machine8.png" id="5_psi4i"]
+[ext_resource type="Texture2D" uid="uid://b4iqm5rh0nmt8" path="res://image/objects/obstacles/slot-machine9.png" id="6_2rlnb"]
+[ext_resource type="Texture2D" uid="uid://bqkhjixs3nt0x" path="res://image/objects/obstacles/slot-machine12.png" id="6_psi4i"]
+[ext_resource type="Texture2D" uid="uid://ba6o0xheu5uun" path="res://image/objects/obstacles/slot-machine13.png" id="7_2rlnb"]
+[ext_resource type="Texture2D" uid="uid://b1jhp3s7jxm3b" path="res://image/objects/obstacles/slot-machine11.png" id="7_w8iwh"]
+[ext_resource type="Texture2D" uid="uid://biwpy8fskcs0v" path="res://image/objects/obstacles/slot-machine5.png" id="8_jojal"]
+[ext_resource type="Texture2D" uid="uid://0cddn00gw4v5" path="res://image/objects/obstacles/slot-machine6.png" id="9_djutx"]
+[ext_resource type="Texture2D" uid="uid://b8v0iiu12axv2" path="res://image/objects/obstacles/slot-machine7.png" id="10_irmo2"]
+[ext_resource type="Texture2D" uid="uid://bogvvkurlbjcm" path="res://image/objects/obstacles/slot-machine10.png" id="11_g386l"]
+[ext_resource type="Texture2D" uid="uid://bn7us01uosmgm" path="res://image/objects/obstacles/roll-machine slot4.png" id="12_0hwo7"]
+[ext_resource type="Texture2D" uid="uid://cbwxq61gcu70c" path="res://image/objects/obstacles/roll-machine slot2.png" id="13_jraol"]
+[ext_resource type="Texture2D" uid="uid://quc301myp18f" path="res://image/objects/obstacles/roll-machine slot3.png" id="14_56uy0"]
+[ext_resource type="Texture2D" uid="uid://bu5sp6q11l378" path="res://image/objects/obstacles/roll-machine slot5.png" id="15_k68ko"]
+[ext_resource type="Texture2D" uid="uid://djn2n6p1yjnie" path="res://image/objects/obstacles/roll-machine slot1.png" id="16_pi7rj"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="18_120bw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0h455"]
+size = Vector2(26, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqqx0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4pwwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4bjjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_120bw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1jh8x")
+}],
+"loop": false,
+"name": &"activation",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_psi4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2rlnb")
+}],
+"loop": false,
+"name": &"die",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_psi4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2rlnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w8iwh")
+}],
+"loop": false,
+"name": &"show",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_jojal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_djutx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_irmo2")
+}],
+"loop": true,
+"name": &"spinning",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_g386l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_w8iwh")
+}],
+"loop": true,
+"name": &"win",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n3757"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0hwo7")
+}],
+"loop": true,
+"name": &"7",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_jraol")
+}],
+"loop": true,
+"name": &"apple",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_56uy0")
+}],
+"loop": true,
+"name": &"cherry",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_k68ko")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_pi7rj")
+}],
+"loop": true,
+"name": &"money",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jh8x"]
+radius = 54.0
+
+[node name="Slot machine" type="Node2D" unique_id=90725484]
+script = ExtResource("1_4bjjm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1435860194]
+collision_layer = 5
+collision_mask = 2
+script = ExtResource("1_hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=954114991]
+position = Vector2(0, 16)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_0h455")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1486369886]
+position = Vector2(2, 0)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dqqx0")
+animation = &"activation"
+
+[node name="Slot machine roll 1" type="Node2D" parent="." unique_id=1801608088]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot machine roll 1" unique_id=700783699]
+position = Vector2(22, -28)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_n3757")
+
+[node name="Slot machine roll 2" type="Node2D" parent="." unique_id=778516990]
+position = Vector2(-24, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot machine roll 2" unique_id=918562466]
+position = Vector2(22, -28)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_n3757")
+
+[node name="Slot machine roll 3" type="Node2D" parent="." unique_id=468542767]
+position = Vector2(-48, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Slot machine roll 3" unique_id=1814773817]
+position = Vector2(22, -28)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_n3757")
+
+[node name="Interactable" parent="." unique_id=1597460607 instance=ExtResource("18_120bw")]
+position = Vector2(83, 7)
+interact_name = "Roll slot machine"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=157505423]
+position = Vector2(-40, 10)
+shape = SubResource("CircleShape2D_1jh8x")
+
+[node name="Rolling timer" type="Timer" parent="." unique_id=1683928386]
+wait_time = 2.0
+one_shot = true
+
+[node name="Win Marker" type="Marker2D" parent="." unique_id=1806441864]
+position = Vector2(-36, 42)

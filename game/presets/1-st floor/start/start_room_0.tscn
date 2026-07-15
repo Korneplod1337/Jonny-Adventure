@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://b6vskrremanrc" path="res://game/objects/Equipment/head/lucky_Head.tscn" id="24_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bdx03qht6dlwl" path="res://game/objects/Equipment/Chest/Cleaving.tscn" id="25_tvg8h"]
 [ext_resource type="PackedScene" uid="uid://lcbyc42s480y" path="res://game/objects/Equipment/boots/Speed_boots.tscn" id="26_bxm0y"]
+[ext_resource type="PackedScene" uid="uid://d21vlt2wtdmkm" path="res://game/objects/obstacles/slot_machine.tscn" id="27_bxm0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -212,3 +213,18 @@ position = Vector2(380, -188)
 
 [node name="Speed_boots" parent="." unique_id=1218933505 instance=ExtResource("26_bxm0y")]
 position = Vector2(142, 58)
+
+[node name="Slot machine" parent="." unique_id=90725484 instance=ExtResource("27_bxm0y")]
+position = Vector2(-152, -169)
+
+[node name="CoinBag2" parent="." unique_id=947796805 instance=ExtResource("6_ww7l6")]
+position = Vector2(-17, 40)
+
+[node name="CoinBag3" parent="." unique_id=1140457695 instance=ExtResource("6_ww7l6")]
+position = Vector2(6, 62)
+
+[node name="CoinBag4" parent="." unique_id=1984778878 instance=ExtResource("6_ww7l6")]
+position = Vector2(-42, 58)
+
+[node name="CoinBag5" parent="." unique_id=1042890370 instance=ExtResource("6_ww7l6")]
+position = Vector2(-29, 64)

@@ -145,7 +145,7 @@ func instance_room(room: Room) -> Node:
 		RoomType.BANK:
 			return bank_room_preset		[current_floor / 2].instantiate()
 		RoomType.SECRET:
-			return secret_room_preset		[current_floor / 2].instantiate()
+			return secret_room_preset	[current_floor / 2].instantiate()
 		
 	return null
 
