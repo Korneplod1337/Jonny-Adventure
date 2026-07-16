@@ -42,7 +42,7 @@ var magic_bonus: 			int = 0
 var damage_bonus: 			int = 0
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 2
+var fire_rate_bonus:			int = 20
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0

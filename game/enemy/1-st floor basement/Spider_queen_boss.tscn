@@ -126,14 +126,11 @@ scale = Vector2(3, 3)
 collision_layer = 4
 collision_mask = 182
 script = ExtResource("1_boss")
-hard_move_speed = 150.0
-hard_cooldown_time = 1.8
-hard_projectile_damage = 2
-hard_projectile_speed = 450.0
-hard_projectile_range = 850.0
-spawn_distance_buffer = 30.0
-hard_base_hp = 500
-hard_angle_deviation = 40.0
+BossName = "Spider queen"
+boss_base_hp = 500
+boss_move_speed = 150.0
+boss_model_scale = 3.0
+knockback_friction = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=240624342]
 position = Vector2(0.5, 4)

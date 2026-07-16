@@ -36,7 +36,7 @@ var active: bool = false
 var current_hp: int
 var is_dead: bool = false
 
-@onready var player: Node2D = get_tree().get_first_node_in_group("player")
+@onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 var animated_speed := GameState.animated_world_speed
 @onready var cooldown_timer: Timer = $CooldownTimer

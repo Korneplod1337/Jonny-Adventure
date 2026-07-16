@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="6_rcloy"]
 [ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="7_gdcu3"]
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="8_nao3q"]
+[ext_resource type="Texture2D" uid="uid://cth2pqmlrvtro" path="res://image/enemy/bodies/Angry_Jonny2.png" id="9_yaabp"]
+[ext_resource type="Texture2D" uid="uid://blcxqt5t8dex2" path="res://image/enemy/bodies/Angry_Jonny1.png" id="10_p25qt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_punh0"]
 font = ExtResource("3_c2jts")
@@ -21,6 +23,25 @@ radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqygm"]
 size = Vector2(38, 76.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qrow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_yaabp")
+}],
+"loop": false,
+"name": &"alt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_p25qt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Dartboard" type="CharacterBody2D" unique_id=464290923 groups=["Enemy"]]
 collision_layer = 4
@@ -83,10 +104,13 @@ poison_icon = ExtResource("6_rcloy")
 fire_icon0 = ExtResource("7_gdcu3")
 fire_icon1 = ExtResource("8_nao3q")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=255080674]
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1414418699]
+visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("1_78b7b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=681668452]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2qrow")
 
 [connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://cwdv6wwd2kqyr"]
 
 [ext_resource type="Script" uid="uid://dsccy0lu1l5fy" path="res://game/objects/Equipment/Weapon/scene/JonnyShot.gd" id="1_pfflx"]
-[ext_resource type="Texture2D" uid="uid://br43g0v1chqni" path="res://image/equip/weapon_effects/spit_kills1.png" id="2_q8ro8"]
-[ext_resource type="Texture2D" uid="uid://bj4ghikaxht1x" path="res://image/equip/weapon_effects/spit_kills2.png" id="3_17rnw"]
-[ext_resource type="Texture2D" uid="uid://bj6pch5cf4anf" path="res://image/equip/weapon_effects/spit_kills3.png" id="4_j1ojm"]
-[ext_resource type="Texture2D" uid="uid://crrc0c3o7d6ns" path="res://image/equip/weapon_effects/spit_kills4.png" id="5_pynuf"]
-[ext_resource type="Texture2D" uid="uid://c0y6yuy0dro2r" path="res://image/equip/weapon_effects/spit_kills5.png" id="6_axccd"]
-[ext_resource type="Texture2D" uid="uid://blcox3ow4g6pw" path="res://image/equip/weapon_effects/spit_miss1.png" id="7_b18pk"]
-[ext_resource type="Texture2D" uid="uid://c6psi30kus7mm" path="res://image/equip/weapon_effects/spit_miss2.png" id="8_q1xht"]
-[ext_resource type="Texture2D" uid="uid://0m4m21cog7th" path="res://image/equip/weapon_effects/spit_miss3.png" id="9_jn07t"]
-[ext_resource type="Texture2D" uid="uid://clcdak1c1rdc6" path="res://image/equip/weapon_effects/spit_miss4.png" id="10_kk8ku"]
-[ext_resource type="Texture2D" uid="uid://d0qmx54486nlp" path="res://image/equip/weapon_effects/spit_miss5.png" id="11_lp2mf"]
+[ext_resource type="Texture2D" uid="uid://c73qtwa4vf5gb" path="res://image/equip/weapon_effects/spit_kills1.png" id="2_q8ro8"]
+[ext_resource type="Texture2D" uid="uid://ca8681g20r56p" path="res://image/equip/weapon_effects/spit_kills2.png" id="3_17rnw"]
+[ext_resource type="Texture2D" uid="uid://drmc1tjusgwh8" path="res://image/equip/weapon_effects/spit_kills3.png" id="4_j1ojm"]
+[ext_resource type="Texture2D" uid="uid://b1bucjtd3bp4o" path="res://image/equip/weapon_effects/spit_kills4.png" id="5_pynuf"]
+[ext_resource type="Texture2D" uid="uid://gqhqs76vodje" path="res://image/equip/weapon_effects/spit_kills5.png" id="6_axccd"]
+[ext_resource type="Texture2D" uid="uid://d2411aww71101" path="res://image/equip/weapon_effects/spit_miss1.png" id="7_b18pk"]
+[ext_resource type="Texture2D" uid="uid://bktkfvlp2eiuh" path="res://image/equip/weapon_effects/spit_miss2.png" id="8_q1xht"]
+[ext_resource type="Texture2D" uid="uid://buep5olbkkirn" path="res://image/equip/weapon_effects/spit_miss3.png" id="9_jn07t"]
+[ext_resource type="Texture2D" uid="uid://2ov3i8auxixu" path="res://image/equip/weapon_effects/spit_miss4.png" id="10_kk8ku"]
+[ext_resource type="Texture2D" uid="uid://p66jd5g3c2kh" path="res://image/equip/weapon_effects/spit_miss5.png" id="11_lp2mf"]
 [ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="12_crit"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -56,18 +58,16 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
-
-[node name="JonnyShot" type="Area2D" unique_id=278677877]
+[node name="JonnyShot2" type="Area2D" unique_id=278677877]
 collision_layer = 2
 collision_mask = 84
 script = ExtResource("1_pfflx")
 
-[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
-sprite_frames = SubResource("SpriteFrames_xhdno")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
 shape = SubResource("CircleShape2D_34718")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
+sprite_frames = SubResource("SpriteFrames_xhdno")
 
 [node name="Crit" type="AnimatedSprite2D" parent="." unique_id=289088615]
 visible = false

@@ -12,7 +12,7 @@ var _detection_range: float
 
 
 func _ready() -> void:
-	self_damage_multiplier = 0.5
+	self_damage_multiplier = 0.6
 	self_speed_multiplier = 0.8
 	self_range_multiplier = 0.8
 	extra_reload = 1.3

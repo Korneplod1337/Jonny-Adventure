@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://f07ikj132ro1"]
+
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_4ytdp"]
+[ext_resource type="Texture2D" uid="uid://cj3n1nxvh05w1" path="res://image/equip/weapon/Spit_bullet_Alt.png" id="2_1xl3c"]
+[ext_resource type="PackedScene" uid="uid://d0u1jub57eer0" path="res://game/objects/Equipment/Weapon/scene/JonnyShotAlt2.tscn" id="3_4ytdp"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_ldall"]
+[ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="5_sdd2n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqatu"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iwcm1"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oqfxe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1xl3c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="JonnyShotGreen" type="Area2D" unique_id=652461765]
+collision_mask = 0
+script = ExtResource("1_4ytdp")
+equip_icon = ExtResource("2_1xl3c")
+equip_id = "Jonny_shot_Alt"
+projectile = ExtResource("3_4ytdp")
+equip_tooltip = "The tear of the forest infected mysterious Jonny"
+interact_name = "fim Jonny weapon"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=615229045]
+shape = SubResource("CircleShape2D_hqatu")
+
+[node name="Interactable" parent="." unique_id=1597460607 instance=ExtResource("4_ldall")]
+interact_name = "Swap weapon2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=2049084370]
+shape = SubResource("CircleShape2D_iwcm1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1909338811]
+clip_children = 2
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_oqfxe")
+
+[node name="enchant_shader" parent="AnimatedSprite2D" unique_id=1716099907 instance=ExtResource("5_sdd2n")]

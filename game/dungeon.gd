@@ -105,6 +105,8 @@ func _ready():
 	GameState.obnulenie()
 	GameState._clear_level_bufs()
 	GameState.random_level_bufs()
+	GameState._clear_boss_bufs()
+	GameState.random_boss_bufs()
 		
 	$Arcade_music.play()
 	rooms = generator.generate(
@@ -381,6 +383,8 @@ func _load_floor(new_floor: int) -> void:
 
 	GameState._clear_level_bufs()
 	GameState.random_level_bufs()
+	GameState._clear_boss_bufs()
+	GameState.random_boss_bufs()
 
 	var config := floors_config[current_floor]
 	rooms = generator.generate(

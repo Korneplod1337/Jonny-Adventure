@@ -26,7 +26,9 @@
 [ext_resource type="PackedScene" uid="uid://b6vskrremanrc" path="res://game/objects/Equipment/head/lucky_Head.tscn" id="24_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bdx03qht6dlwl" path="res://game/objects/Equipment/Chest/Cleaving.tscn" id="25_tvg8h"]
 [ext_resource type="PackedScene" uid="uid://lcbyc42s480y" path="res://game/objects/Equipment/boots/Speed_boots.tscn" id="26_bxm0y"]
-[ext_resource type="PackedScene" uid="uid://d21vlt2wtdmkm" path="res://game/objects/obstacles/slot_machine.tscn" id="27_bxm0y"]
+[ext_resource type="PackedScene" uid="uid://dyq3vlj4jlml5" path="res://game/objects/Equipment/Weapon/equip/TestShot_equip.tscn" id="28_iqmaw"]
+[ext_resource type="PackedScene" uid="uid://ce5ei6v0m2h2e" path="res://game/enemy/1-st floor basement/Spider_queen_boss.tscn" id="29_jo4v1"]
+[ext_resource type="PackedScene" uid="uid://f07ikj132ro1" path="res://game/objects/Equipment/Weapon/equip/JonnyShotGreen_equip.tscn" id="29_p8hec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -214,9 +216,6 @@ position = Vector2(380, -188)
 [node name="Speed_boots" parent="." unique_id=1218933505 instance=ExtResource("26_bxm0y")]
 position = Vector2(142, 58)
 
-[node name="Slot machine" parent="." unique_id=90725484 instance=ExtResource("27_bxm0y")]
-position = Vector2(-152, -169)
-
 [node name="CoinBag2" parent="." unique_id=947796805 instance=ExtResource("6_ww7l6")]
 position = Vector2(-17, 40)
 
@@ -228,3 +227,12 @@ position = Vector2(-42, 58)
 
 [node name="CoinBag5" parent="." unique_id=1042890370 instance=ExtResource("6_ww7l6")]
 position = Vector2(-29, 64)
+
+[node name="TestShot" parent="." unique_id=652461765 instance=ExtResource("28_iqmaw")]
+position = Vector2(-93, 119)
+
+[node name="JonnyShotGreen" parent="." unique_id=660692123 instance=ExtResource("29_p8hec")]
+position = Vector2(-129, 212)
+
+[node name="Spider_queen_boss" parent="." unique_id=1352998397 instance=ExtResource("29_jo4v1")]
+position = Vector2(-215, -158)

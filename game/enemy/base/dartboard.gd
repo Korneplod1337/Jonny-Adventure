@@ -22,6 +22,17 @@ func _physics_process(delta: float) -> void:
 func _ready() -> void:
 	super()
 	update_label()
+	await get_tree().process_frame
+	_apply_player_sprite()
+
+
+func _apply_player_sprite() -> void:
+	player = get_tree().get_first_node_in_group("player")
+	var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+	if player.player_name in ["JonnyAlt", "JonnyttaAlt"]:
+		anim_sprite.animation = &"alt"
+	else:
+		anim_sprite.animation = &"default"
 
 func hit(damage: float, clear:= false) -> void:
 	if not clear:

@@ -43,14 +43,36 @@ func _ready() -> void:
 	bufs_render()
 
 
+var ui_locked := false
+
 func _process(_delta) -> void:
-	if Input.is_action_just_pressed("tab_button"):
+	if Input.is_action_just_pressed("tab_button") and not ui_locked:
 		_toggle_full_ui()
 	if Input.is_action_just_pressed("Escape"):
 		_toggle_pause()
 	if Input.is_action_just_pressed("button_L"):
 		if pause_menu.visible or death_menu.visible:
 			_on_button_main_pressed()
+
+
+func set_ui_locked(locked: bool) -> void:
+	ui_locked = locked
+	if locked and ui_open:
+		ui_open = false
+		stats_panel.visible = false
+		inventory_panel.visible = false
+		equip_panel.visible = false
+
+
+func show_boss_effect(text: String, color: Color) -> void:
+	effect_timer.stop()
+	effect_label.text = text
+	effect_label.label_settings.set_font_color(color)
+	effect_label.show()
+
+
+func hide_boss_effect() -> void:
+	effect_label.hide()
 
 
 # Здоровье

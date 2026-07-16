@@ -56,7 +56,6 @@ func _ready() -> void:
 	machine_sprite.frame_changed.connect(_on_machine_frame_changed)
 	rolling_timer.timeout.connect(_on_rolling_timer_timeout)
 	rolling_timer.wait_time = TIMER_START
-	#machine_sprite.play("win")
 	_set_all_rolls("default")
 
 
@@ -190,8 +189,7 @@ func _finish_spin() -> void:
 
 
 func _play_die() -> void:
-	for sprite in roll_sprites:
-		sprite.play('default')
+	_set_all_rolls('default')
 	rolling_timer.stop()
 	_is_spinning = false
 	interactable.is_interactable = false

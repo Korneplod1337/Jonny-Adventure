@@ -10,7 +10,7 @@ var _spin_angle := 0.0
 
 func _ready() -> void:
 	penetration = 1
-	extra_reload = 1.2
+	extra_reload = 1.1
 	self_damage_multiplier = 0.75
 	self_range_multiplier = 0.75
 	animaited_speed = GameState.animated_world_speed

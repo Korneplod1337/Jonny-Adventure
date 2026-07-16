@@ -72,7 +72,7 @@ animations = [{
 size = Vector2(26, 26)
 
 [node name="Door" type="Node2D" unique_id=1759071911 groups=["Door"]]
-z_index = 5
+z_index = 1
 script = ExtResource("1_hf35o")
 
 [node name="Room_type_sprites" type="AnimatedSprite2D" parent="." unique_id=321617268]

@@ -6,7 +6,7 @@ class_name BaseGun
 func _ready() -> void:
 	super()
 	self_speed_multiplier *= 1.5
-	extra_reload *= 0.5
+	extra_reload = 0.9
 	# Crit всегда сверху и смотрит вверх в мировых координатах
 	crit.position = CRIT_WORLD_OFFSET.rotated(-rotation)
 	crit.rotation = -rotation

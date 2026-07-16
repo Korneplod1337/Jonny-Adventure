@@ -103,6 +103,7 @@
 [ext_resource type="PackedScene" uid="uid://bdx03qht6dlwl" path="res://game/objects/Equipment/Chest/Cleaving.tscn" id="101_80cog"]
 [ext_resource type="PackedScene" uid="uid://c6snhkx0masi2" path="res://game/objects/Equipment/Chest/KaliyaAcceleratorCloak.tscn" id="102_2imyw"]
 [ext_resource type="PackedScene" uid="uid://b6vskrremanrc" path="res://game/objects/Equipment/head/lucky_Head.tscn" id="103_lmqaq"]
+[ext_resource type="PackedScene" uid="uid://f07ikj132ro1" path="res://game/objects/Equipment/Weapon/equip/JonnyShotGreen_equip.tscn" id="104_80cog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -329,17 +330,17 @@ position = Vector2(153, 567)
 position = Vector2(261, 570)
 
 [node name="Sword_equip" parent="." unique_id=956946821 instance=ExtResource("35_hxgw2")]
-position = Vector2(712, 571)
+position = Vector2(716, 457)
 
 [node name="Spear_equip" parent="." unique_id=113484293 instance=ExtResource("36_wa6gx")]
-position = Vector2(822, 466)
+position = Vector2(828, 455)
 
 [node name="EXSpear_equip" parent="." unique_id=608126380 instance=ExtResource("37_5ku8x")]
 position = Vector2(824, 570)
 equip_tooltip = "Worthy is the one who has gone through weakness. EX-spear"
 
 [node name="Nunchucks_equip" parent="." unique_id=22258957 instance=ExtResource("38_hgqf3")]
-position = Vector2(714, 469)
+position = Vector2(713, 569)
 
 [node name="TestShot" parent="." unique_id=652461765 instance=ExtResource("39_37q3n")]
 position = Vector2(502, 458)
@@ -536,3 +537,6 @@ position = Vector2(148, 233)
 
 [node name="lucky Head" parent="." unique_id=679354868 instance=ExtResource("103_lmqaq")]
 position = Vector2(371, 131)
+
+[node name="JonnyShotGreen" parent="." unique_id=849730534 instance=ExtResource("104_80cog")]
+position = Vector2(609, 456)

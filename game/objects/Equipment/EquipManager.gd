@@ -62,6 +62,8 @@ var POOLS := {
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
+		{"id": "Jonny_shot_Alt", "scene": preload("uid://f07ikj132ro1"),
+		 "tier": 1, "weight": 10.0},
 		#{"id": "tome_of_fairy_tales", "scene": preload("uid://2dtjjer8eim8"),
 		 #"tier": 2, "weight": 10.0},
 		#{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
