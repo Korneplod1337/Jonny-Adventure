@@ -29,15 +29,20 @@ var LuckyHead := false # за этаж: +1 luck_level и enemy_hp_multiplier *= 
 @onready var level_bufs :Array = [
  ["Invasion", 			false, Color.RED],
  ["Deathly", 			false, Color.RED],
+ ["Barren", 				false, Color.RED],
  ["Toxic", 				false, Color.YELLOW],
- ["Ice", 				false, Color.LAWN_GREEN],
+ ["Shopless", 			false, Color.YELLOW],
  ["Confusing space", 	false, Color.LAWN_GREEN],
+ ["Ice", 				false, Color.LAWN_GREEN],
+ ["Bountiful", 			false, Color.LAWN_GREEN],
+ ["Explosive", 			false, Color.LAWN_GREEN],
+ ["Midas", 				false, Color.LAWN_GREEN],
 ]
 
 func random_level_bufs() -> void:
+	level_bufs[9][1] = true
 	if randi() % 100 > 70:
 		pass
-		#level_bufs[0][1] = true
 		##level_bufs[randi() % len(level_bufs)][1] = true
 
 func _clear_level_bufs() -> void:
@@ -50,13 +55,15 @@ func get_level_bufs() -> Array:
 			return [i[0], i[2]]
 	return ['Nothing', 'Nothing']
 
+func has_level_buf(buf_name: String) -> bool:
+	return get_level_bufs()[0] == buf_name
+
 
 # враги
 var enemy_ms_multiplier: float = 1.0
 var enemy_hp_multiplier: float = 1.0
 var enemy_dmg_multiplier: float = 1.0
 var enemy_cooldown_multiplier: float = 1.0
-
 #босс
 @onready var boss_bufs :Array = [
  ["Dreadnought", 	false, Color.RED],
@@ -69,10 +76,13 @@ var enemy_cooldown_multiplier: float = 1.0
  ["Emaciated", 		false, Color.LAWN_GREEN],
  ["Inhibited", 		false, Color.LAWN_GREEN],
  ["Slothful", 		false, Color.LAWN_GREEN],
+ ["Vengeful", 		false, Color.RED],
+ ["Tempest", 		false, Color.RED],
+ ["Thunderer", 		false, Color.YELLOW],
 ]
 
 func random_boss_bufs() -> void:
-	boss_bufs[6][1] = true
+	#boss_bufs[12][1] = true
 	if randi() % 100 > 70:
 		pass
 	#	boss_bufs[randi() % len(boss_bufs)][1] = true

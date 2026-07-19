@@ -1,6 +1,8 @@
 extends "res://game/presets/RoomScript_enemy.gd"
 
 const ChestScene := preload("uid://tsiccout8ibv")
+const CoinBagScene := preload("res://game/objects/coins/CoinBag.tscn")
+const LightningScene := preload("res://game/objects/obstacles/lightning.tscn")
 const TIERS_EQUIP := [[0, 1], [0, 1, 2], [0, 1, 2], [0, 1, 2, 3], [0, 2, 3], [2, 3], [2, 3]]
 const TIERS_ITEM := [[0, 1], [0, 1, 2, 4], [0, 1, 2, 4], [0, 1, 2, 3, 4], [0, 2, 3, 4], [2, 3], [2, 3]]
 
@@ -8,10 +10,13 @@ const INTRO_ZOOM_IN := 2.0
 const INTRO_HOLD := 2.0
 const INTRO_ZOOM_OUT := 1.0
 const INTRO_ZOOM_MULT := 1.2
+const HAZARD_SPAWN_MARGIN := 80.0
 
 var _reward_spawned := false
 var _intro_played := false
 var _intro_running := false
+var _hazard_timer: Timer = null
+var _hazard_kind: String = ""
 @onready var _hatch: Node2D = $Hatch
 
 
@@ -25,6 +30,7 @@ func init_room() -> void:
 
 
 func show_doors() -> void:
+	_stop_boss_hazards()
 	super()
 	_show_hatch_and_reward()
 
@@ -39,9 +45,19 @@ func _show_hatch_and_reward() -> void:
 
 
 func spawn_reward_chest() -> void:
+	if GameState.has_level_buf("Barren"):
+		return
+
+	var positions: Array[Vector2] = _get_chest_spawn_positions()
+	if GameState.has_level_buf("Midas"):
+		for pos in positions:
+			var bag = CoinBagScene.instantiate()
+			bag.position = pos
+			call_deferred("add_child", bag)
+		return
+
 	var dungeon = get_tree().current_scene
 	var floor_index := clampi(int(dungeon.current_floor) / 2, 0, TIERS_ITEM.size() - 1)
-	var positions: Array[Vector2] = _get_chest_spawn_positions()
 	for pos in positions:
 		var chest = ChestScene.instantiate()
 		chest.position = pos
@@ -99,6 +115,10 @@ func _apply_boss_complication() -> void:
 			pass
 		"Reaper":
 			boss.Boss_damage_buff *= 2.0
+		"Vengeful":
+			pass
+		"Tempest":
+			pass
 		"Turtleshell":
 			boss.Boss_HP_buff *= 1.5
 			boss.Boss_move_speed_buff *= 0.8
@@ -111,6 +131,8 @@ func _apply_boss_complication() -> void:
 			boss.Boss_damage_buff *= 0.5
 			boss.Boss_move_speed_buff *= 1.2
 			boss.Boss_phase_switch_buff -= 0.4
+		"Thunderer":
+			pass
 		"Emaciated":
 			boss.Boss_HP_buff *= 0.8
 		"Inhibited":
@@ -124,6 +146,13 @@ func _apply_boss_complication() -> void:
 		var clone := _spawn_boss_pair(boss, buf_name == "Siamese")
 		if clone and buf_name == "Siamese":
 			clone.setup_as_siamese_follower(boss)
+
+	if buf_name == "Vengeful":
+		for b in _find_bosses():
+			b.vengeful_enabled = true
+
+	if buf_name == "Tempest" or buf_name == "Thunderer":
+		_hazard_kind = buf_name
 
 
 func _refresh_boss_stats(boss: Boss) -> void:
@@ -178,6 +207,94 @@ func _set_boss_combat_enabled(enabled: bool) -> void:
 			if body.is_in_group("player"):
 				boss._on_field_view_area_body_entered(body)
 				break
+
+	if enabled:
+		_start_boss_hazards()
+	else:
+		_stop_boss_hazards()
+
+
+func _has_living_boss() -> bool:
+	for boss in _find_bosses():
+		if is_instance_valid(boss) and not boss.is_dead:
+			return true
+	return false
+
+
+func _start_boss_hazards() -> void:
+	if _hazard_kind.is_empty() or _hazard_timer != null:
+		return
+
+	var interval := 1.0
+	match _hazard_kind:
+		"Tempest":
+			interval = 2.0
+		"Thunderer":
+			interval = 6.0
+		_:
+			return
+
+	_hazard_timer = Timer.new()
+	_hazard_timer.wait_time = interval
+	_hazard_timer.one_shot = false
+	_hazard_timer.timeout.connect(_on_hazard_timer_timeout)
+	add_child(_hazard_timer)
+	_hazard_timer.start()
+	_on_hazard_timer_timeout()
+
+
+func _stop_boss_hazards() -> void:
+	if _hazard_timer != null:
+		_hazard_timer.stop()
+		_hazard_timer.queue_free()
+		_hazard_timer = null
+
+
+func _on_hazard_timer_timeout() -> void:
+	if not _has_living_boss():
+		_stop_boss_hazards()
+		return
+	_spawn_hazard_lightning()
+
+
+func _spawn_hazard_lightning() -> void:
+	var bolt := LightningScene.instantiate()
+	match _hazard_kind:
+		"Tempest":
+			bolt.spawn_fire = true
+			bolt.prepare_time = 2.0
+			bolt.active_duration = 0.5
+		"Thunderer":
+			bolt.spawn_fire = false
+			bolt.mag_damage = 2
+			bolt.prepare_time = 6.0
+			bolt.active_duration = 1.5
+			bolt.size_scale = 8.0
+		_:
+			bolt.queue_free()
+			return
+
+	bolt.position = to_local(_random_hazard_global_position())
+	add_child(bolt)
+
+
+func _random_hazard_global_position() -> Vector2:
+	var bounds := get_node_or_null("CameraBounds") as Area2D
+	if bounds == null:
+		return global_position
+
+	var shape_node := bounds.get_node_or_null("CollisionShape2D") as CollisionShape2D
+	var rect := shape_node.shape as RectangleShape2D if shape_node else null
+	if rect == null:
+		return bounds.global_position
+
+	var half := rect.size * 0.5
+	var margin := HAZARD_SPAWN_MARGIN
+	var local := Vector2(
+		randf_range(-half.x + margin, half.x - margin),
+		randf_range(-half.y + margin, half.y - margin)
+	)
+	return bounds.to_global(local)
 
 
 func _on_player_detection_area_body_entered(body: Node2D) -> void:

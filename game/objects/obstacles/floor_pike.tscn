@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://q4qd8e0uku10"]
 
-[ext_resource type="Texture2D" uid="uid://cjijs3vp8qxbr" path="res://image/objects/trap/floor_pike2.png" id="1_3x2g8"]
+[ext_resource type="Texture2D" uid="uid://cdikiljg1oxgh" path="res://image/objects/trap/floor_pike2.png" id="1_3x2g8"]
 [ext_resource type="Script" uid="uid://di6l44brl6xe" path="res://game/objects/obstacles/floor_pike.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://bi0mnjrl65n0c" path="res://image/objects/trap/floor_pike1.png" id="2_vevs2"]
-[ext_resource type="Texture2D" uid="uid://b06wvgfela0ia" path="res://image/objects/trap/floor_pike3.png" id="3_cavxd"]
+[ext_resource type="Texture2D" uid="uid://cjtcqclia82h2" path="res://image/objects/trap/floor_pike1.png" id="2_vevs2"]
+[ext_resource type="Texture2D" uid="uid://dgqxxtancrye3" path="res://image/objects/trap/floor_pike3.png" id="3_cavxd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3x2g8"]
 size = Vector2(36, 36)

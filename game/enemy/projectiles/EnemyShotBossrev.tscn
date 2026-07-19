@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://da5j38680gc6q"]
+
+[ext_resource type="Script" uid="uid://biyr8kxdvqit6" path="res://game/enemy/projectiles/enemy_shot.gd" id="1_xwtsl"]
+[ext_resource type="Texture2D" uid="uid://dpf7tcpiqrfvs" path="res://image/enemy/enemy_projectile/enemy_proj_bossrev1.png" id="2_xwtsl"]
+[ext_resource type="Texture2D" uid="uid://bk0y5x5sqrq1m" path="res://image/enemy/enemy_projectile/enemy_proj_bossrev2.png" id="3_pg3fj"]
+[ext_resource type="Texture2D" uid="uid://c54a6rlj2rg3s" path="res://image/enemy/enemy_projectile/enemy_proj_bossrev3.png" id="4_kprxt"]
+[ext_resource type="Texture2D" uid="uid://c7rjopx15owql" path="res://image/enemy/enemy_projectile/enemy_proj_bossrev4.png" id="5_mvacv"]
+[ext_resource type="Texture2D" uid="uid://kc7ranchyacl" path="res://image/enemy/enemy_projectile/enemy_proj_bossrev5.png" id="6_5do7k"]
+[ext_resource type="Texture2D" uid="uid://dddgycpycl342" path="res://image/enemy/enemy_projectile/enemy_proj_bossrev6.png" id="7_31bq6"]
+[ext_resource type="Texture2D" uid="uid://bb5hp6cux5q0i" path="res://image/enemy/enemy_projectile/enemy_proj_bossrev7.png" id="8_bt2sg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
+radius = 14.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xwtsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pg3fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kprxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mvacv")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xwtsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5do7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_31bq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bt2sg")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 10.0
+}]
+
+[node name="EnemyShotBossrev" type="Area2D" unique_id=278677877]
+collision_layer = 2
+script = ExtResource("1_xwtsl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
+shape = SubResource("CircleShape2D_34718")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
+z_index = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_xhdno")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

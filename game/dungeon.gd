@@ -111,7 +111,7 @@ func _ready():
 	$Arcade_music.play()
 	rooms = generator.generate(
 		floors_config[current_floor]['total_rooms'], 
-		floors_config[current_floor]['shop_rooms'], 
+		_shop_rooms_for_floor(floors_config[current_floor]['shop_rooms']), 
 		floors_config[current_floor]['buff_rooms'], 
 		floors_config[current_floor]['dop_rooms'])
 	var start_instance := spawn_rooms()
@@ -389,7 +389,7 @@ func _load_floor(new_floor: int) -> void:
 	var config := floors_config[current_floor]
 	rooms = generator.generate(
 		config['total_rooms'],
-		config['shop_rooms'],
+		_shop_rooms_for_floor(config['shop_rooms']),
 		config['buff_rooms'],
 		config['dop_rooms'])
 
@@ -399,6 +399,12 @@ func _load_floor(new_floor: int) -> void:
 
 	if hud_instance and hud_instance.has_method("bufs_render"):
 		hud_instance.bufs_render()
+
+
+func _shop_rooms_for_floor(shop_rooms: int) -> int:
+	if GameState.has_level_buf("Shopless"):
+		return 0
+	return shop_rooms
 
 
 func _get_start_room_instance() -> Node:

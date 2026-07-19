@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bkrkbcba4lrit"]
 
 [ext_resource type="Script" uid="uid://biyr8kxdvqit6" path="res://game/enemy/projectiles/enemy_shot.gd" id="1_baxrs"]
-[ext_resource type="Texture2D" uid="uid://rblkvmi5xfmc" path="res://image/enemy/enemy_projectile/enemy_proj1.png" id="2_7v8yf"]
-[ext_resource type="Texture2D" uid="uid://d4xw4e6ry26l" path="res://image/enemy/enemy_projectile/enemy_proj2.png" id="3_8v8li"]
-[ext_resource type="Texture2D" uid="uid://cdc86ska6n3oa" path="res://image/enemy/enemy_projectile/enemy_proj3.png" id="4_hvmm7"]
-[ext_resource type="Texture2D" uid="uid://dt5ajo5tedfm1" path="res://image/enemy/enemy_projectile/enemy_proj4.png" id="5_baxrs"]
-[ext_resource type="Texture2D" uid="uid://bqgicx60jwlm2" path="res://image/enemy/enemy_projectile/enemy_proj5.png" id="6_40soh"]
-[ext_resource type="Texture2D" uid="uid://ce48w5mv0fvoq" path="res://image/enemy/enemy_projectile/enemy_proj6.png" id="7_queea"]
-[ext_resource type="Texture2D" uid="uid://dwicvetry2koi" path="res://image/enemy/enemy_projectile/enemy_proj7.png" id="8_655lf"]
+[ext_resource type="Texture2D" uid="uid://q1m6xohk3if4" path="res://image/enemy/enemy_projectile/enemy_proj1.png" id="2_7v8yf"]
+[ext_resource type="Texture2D" uid="uid://t5ceheajsfx0" path="res://image/enemy/enemy_projectile/enemy_proj2.png" id="3_8v8li"]
+[ext_resource type="Texture2D" uid="uid://cpewiq40uy86o" path="res://image/enemy/enemy_projectile/enemy_proj3.png" id="4_hvmm7"]
+[ext_resource type="Texture2D" uid="uid://bko34fsgbw2yr" path="res://image/enemy/enemy_projectile/enemy_proj4.png" id="5_baxrs"]
+[ext_resource type="Texture2D" uid="uid://dbfpep1mwwbtv" path="res://image/enemy/enemy_projectile/enemy_proj5.png" id="6_40soh"]
+[ext_resource type="Texture2D" uid="uid://sxw6sdf31tx2" path="res://image/enemy/enemy_projectile/enemy_proj6.png" id="7_queea"]
+[ext_resource type="Texture2D" uid="uid://crur24tut3ox4" path="res://image/enemy/enemy_projectile/enemy_proj7.png" id="8_655lf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
 radius = 15.0

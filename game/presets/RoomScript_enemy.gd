@@ -82,7 +82,8 @@ func show_doors() -> void:
 
 	if spawn_clear_reward and not _clear_reward_spawned:
 		_clear_reward_spawned = true
-		_spawn_clear_reward_chest()
+		if not GameState.has_level_buf("Barren"):
+			_spawn_clear_reward_chest()
 
 func _get_player_luck_factor() -> float:
 	var player = get_tree().get_first_node_in_group("player")

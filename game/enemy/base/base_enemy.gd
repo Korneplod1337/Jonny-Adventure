@@ -444,15 +444,43 @@ func die() -> void:
 
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "die":
-		var luck := 0.0
-		if player:
-			luck = StatManager.get_stat(player, "luck")
-			if drop_coin_on_death and randf() < luck:
-				spawn_coin()
+		_try_spawn_death_loot()
 		queue_free()
 		StatsManager.add_statistic_progress("kills", 1)
 
-func spawn_coin() -> void:
+
+func _try_spawn_death_loot() -> void:
+	if not drop_coin_on_death:
+		return
+
+	if GameState.has_level_buf("Barren"):
+		return
+
+	if GameState.has_level_buf("Explosive"):
+		spawn_skull()
+		return
+
+	if GameState.has_level_buf("Midas"):
+		spawn_coin()
+		return
+
+	var luck := 0.0
+	if player:
+		luck = StatManager.get_stat(player, "luck")
+	if randf() < luck:
+		spawn_coin()
+
+	if GameState.has_level_buf("Bountiful") and randf() < 0.2:
+		spawn_coin(global_position + Vector2(randf_range(-24.0, 24.0), randf_range(-24.0, 24.0)))
+
+
+func spawn_coin(at_pos: Vector2 = Vector2.INF) -> void:
 	var coin := coin_scene.instantiate()
-	coin.global_position = global_position
+	coin.global_position = global_position if at_pos == Vector2.INF else at_pos
 	get_tree().current_scene.call_deferred("add_child", coin)
+
+
+func spawn_skull() -> void:
+	var skull := preload("res://game/objects/obstacles/skull.tscn").instantiate()
+	skull.global_position = global_position
+	get_tree().current_scene.call_deferred("add_child", skull)

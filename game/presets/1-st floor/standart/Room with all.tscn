@@ -104,6 +104,9 @@
 [ext_resource type="PackedScene" uid="uid://c6snhkx0masi2" path="res://game/objects/Equipment/Chest/KaliyaAcceleratorCloak.tscn" id="102_2imyw"]
 [ext_resource type="PackedScene" uid="uid://b6vskrremanrc" path="res://game/objects/Equipment/head/lucky_Head.tscn" id="103_lmqaq"]
 [ext_resource type="PackedScene" uid="uid://f07ikj132ro1" path="res://game/objects/Equipment/Weapon/equip/JonnyShotGreen_equip.tscn" id="104_80cog"]
+[ext_resource type="PackedScene" uid="uid://d21vlt2wtdmkm" path="res://game/objects/obstacles/slot_machine.tscn" id="105_ugc3l"]
+[ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="106_kwy8j"]
+[ext_resource type="PackedScene" uid="uid://ch8qkvh1kb427" path="res://game/objects/obstacles/lightning.tscn" id="107_0qir2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -540,3 +543,16 @@ position = Vector2(371, 131)
 
 [node name="JonnyShotGreen" parent="." unique_id=849730534 instance=ExtResource("104_80cog")]
 position = Vector2(609, 456)
+
+[node name="Slot machine" parent="." unique_id=90725484 instance=ExtResource("105_ugc3l")]
+position = Vector2(-731, 528)
+
+[node name="Fire" parent="." unique_id=1969482845 instance=ExtResource("106_kwy8j")]
+position = Vector2(-906, 515)
+burn_out_time = 100.0
+player_phy_damage = 0
+
+[node name="lightning" parent="." unique_id=1026476125 instance=ExtResource("107_0qir2")]
+position = Vector2(-838, 520)
+mag_damage = 0
+active_duration = 20.0

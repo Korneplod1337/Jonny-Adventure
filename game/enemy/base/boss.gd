@@ -23,12 +23,17 @@ class_name Boss
 
 ## База паузы между фазами (бывший hard_cooldown_time босса = 1.8).
 const PHASE_SWITCH_BASE := 1.8
+const VENGEFUL_SHOT_SCENE := preload("res://game/enemy/projectiles/EnemyShotBossrev.tscn")
+const VENGEFUL_SHOT_SPEED := 350.0
+const VENGEFUL_SHOT_RANGE := 1000.0
 
 ## Siamese: клон повторяет лидера, пока тот жив.
 var is_siamese_follower := false
 var siamese_leader: Boss = null
 var siamese_follower: Boss = null
 var siamese_offset := Vector2.ZERO
+## Vengeful: ответный выстрел при получении урона.
+var vengeful_enabled := false
 
 
 func _apply_level_buffs() -> void:
@@ -135,3 +140,34 @@ func die() -> void:
 	if is_instance_valid(siamese_follower) and not siamese_follower.is_dead:
 		siamese_follower.release_siamese_follow()
 	super.die()
+
+
+func hit(amount: float, clear := false) -> void:
+	if is_dead:
+		return
+	super.hit(amount, clear)
+	if vengeful_enabled:
+		_fire_vengeful_shot()
+
+
+func _fire_vengeful_shot() -> void:
+	if not is_instance_valid(player):
+		player = get_tree().get_first_node_in_group("player")
+	if not is_instance_valid(player):
+		return
+
+	var origin := global_position
+	var dir := player.global_position - origin
+	if dir.length_squared() < 0.01:
+		return
+	dir = dir.normalized()
+
+	var shot: Node2D = VENGEFUL_SHOT_SCENE.instantiate()
+	shot.global_position = origin
+	shot.owner_enemy = self
+	# 1 база → Boss_damage_buff / Deathly / Toxic через общий пайплайн.
+	var dmg := maxi(1, int(round(1.0 * Boss_damage_buff)))
+	if GameState.level_bufs[2][1]:
+		dmg = maxi(1, dmg * 2)
+	shot.setup(dir, _build_damage_vector(dmg), VENGEFUL_SHOT_SPEED, VENGEFUL_SHOT_RANGE)
+	get_tree().current_scene.call_deferred("add_child", shot)

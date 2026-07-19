@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://ch8qkvh1kb427"]
+
+[ext_resource type="Script" uid="uid://dyl11um5bru4h" path="res://game/objects/obstacles/lightning.gd" id="1_lxb41"]
+[ext_resource type="Texture2D" uid="uid://eejyl0qtnx71" path="res://image/objects/trap/lightning2.png" id="2_mgy7b"]
+[ext_resource type="Texture2D" uid="uid://b3ufk64i16h6c" path="res://image/objects/trap/lightning3.png" id="3_wq3fg"]
+[ext_resource type="Texture2D" uid="uid://bcw7yajmf1bkx" path="res://image/objects/trap/lightning4.png" id="4_1o8kk"]
+[ext_resource type="Texture2D" uid="uid://b2ck8qss4xds8" path="res://image/objects/trap/lightning5.png" id="5_s7qa2"]
+[ext_resource type="Texture2D" uid="uid://dlk2jf3ylvvt0" path="res://image/objects/trap/lightning6.png" id="6_uri00"]
+[ext_resource type="Texture2D" uid="uid://ckxt2jcgwq42w" path="res://image/objects/trap/lightning7.png" id="7_e0a71"]
+[ext_resource type="Texture2D" uid="uid://dtbdir36xoas8" path="res://image/objects/trap/lightning8.png" id="8_t2rdf"]
+[ext_resource type="Texture2D" uid="uid://cxt82iv70jup7" path="res://image/objects/trap/lightning9.png" id="9_gxq80"]
+[ext_resource type="Texture2D" uid="uid://bvagkirpu83um" path="res://image/objects/trap/lightning10.png" id="10_vj78i"]
+[ext_resource type="Texture2D" uid="uid://d1r5q7jlan8ad" path="res://image/objects/trap/lightning11.png" id="11_6287m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vkjsn"]
+radius = 18.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mrt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mgy7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wq3fg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1o8kk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s7qa2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uri00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e0a71")
+}],
+"loop": false,
+"name": &"preparing",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_t2rdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gxq80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vj78i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6287m")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 8.0
+}]
+
+[node name="lightning" type="Area2D" unique_id=2035113601]
+z_index = -1
+scale = Vector2(2, 2)
+collision_layer = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_lxb41")
+prepare_time = 3.0
+active_duration = 0.8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1254259397]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_vkjsn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759346571]
+position = Vector2(-1, -167.5)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6mrt8")
+animation = &"preparing"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

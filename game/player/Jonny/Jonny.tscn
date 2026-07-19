@@ -154,22 +154,22 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"afk_up",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"walk_down",
-"speed": 1.0
+"speed": 5.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"walk_h",
-"speed": 1.0
+"speed": 5.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"walk_up",
-"speed": 1.0
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3pvxu"]
@@ -177,12 +177,12 @@ animations = [{
 "frames": [],
 "loop": true,
 "name": &"afk_default",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"afk_up",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [],
 "loop": true,
@@ -209,10 +209,10 @@ script = ExtResource("1_fwoqh")
 hit_points_level = 2.0
 luck_level = 2.0
 magic_level = 2.0
-damage_level = 10.0
-spread_level = 10.0
-range_level = 10.0
-fire_rate_level = 10.0
+damage_level = 2.0
+spread_level = 2.0
+range_level = 2.0
+fire_rate_level = 2.0
 on_ice = false
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
@@ -222,7 +222,7 @@ position = Vector2(0, -10)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=222282461]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_g617h")
-animation = &"afk_default"
+animation = &"afk_up"
 
 [node name="AnimatedShot" type="AnimatedSprite2D" parent="." unique_id=2140154797]
 position = Vector2(0, -26)
@@ -252,7 +252,7 @@ animation = &"down"
 [node name="Chest" type="AnimatedSprite2D" parent="." unique_id=845721799]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_fm61y")
-animation = &"afk_default"
+animation = &"walk_up"
 
 [node name="Boots" type="AnimatedSprite2D" parent="." unique_id=13519053]
 position = Vector2(0, -12)

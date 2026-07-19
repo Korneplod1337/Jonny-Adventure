@@ -5,13 +5,16 @@ class_name CombatExplosion
 @export var magic_damage_per_point: float = 150.0
 
 var radius: float = 40.0
+## Если >= 0 — фиксированный урон, иначе считается от магии игрока.
+var _fixed_damage: float = -1.0
 var _damaged: Array[Node] = []
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
-func setup(explosion_radius: float) -> void:
+func setup(explosion_radius: float, fixed_damage: float = -1.0) -> void:
 	radius = explosion_radius
+	_fixed_damage = fixed_damage
 
 
 func _ready() -> void:
@@ -34,9 +37,13 @@ func _damage_body(body: Node) -> void:
 		return
 	_damaged.append(body)
 
-	var player := get_tree().get_first_node_in_group("player")
-	var magic := StatManager.get_stat(player, "magic") if player else 0.0
-	var amount := magic * magic_damage_per_point
+	var amount: float
+	if _fixed_damage >= 0.0:
+		amount = _fixed_damage
+	else:
+		var player := get_tree().get_first_node_in_group("player")
+		var magic := StatManager.get_stat(player, "magic") if player else 0.0
+		amount = magic * magic_damage_per_point
 	body.hit(amount, true)
 
 

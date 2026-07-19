@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://kk1iof18jdrv"]
+
+[ext_resource type="Script" uid="uid://ds0g1tfwkb62w" path="res://game/objects/obstacles/fire.gd" id="1_j6m2x"]
+[ext_resource type="Texture2D" uid="uid://cf2epbo0hnuu5" path="res://image/objects/trap/fire1.png" id="2_pw4ha"]
+[ext_resource type="Texture2D" uid="uid://dy1f7g0odw3bj" path="res://image/objects/trap/fire2.png" id="3_hayw2"]
+[ext_resource type="Texture2D" uid="uid://btgggpdxblen4" path="res://image/objects/trap/fire3.png" id="4_up1ky"]
+[ext_resource type="Texture2D" uid="uid://c8q2k7s205uey" path="res://image/objects/trap/fire4.png" id="5_7gkud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x2g8"]
+size = Vector2(20, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mrt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pw4ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hayw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_up1ky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7gkud")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fov"]
+radius = 400.0
+
+[node name="Fire" type="Area2D" unique_id=2035113601]
+z_index = -1
+scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 3
+monitorable = false
+script = ExtResource("1_j6m2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1254259397]
+shape = SubResource("RectangleShape2D_3x2g8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759346571]
+position = Vector2(0, -2)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6mrt8")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=607490412]
+collision_layer = 0
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=862790983]
+visible = false
+shape = SubResource("CircleShape2D_fov")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
