@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dk2be1gdyetpo"]
 
-[ext_resource type="Texture2D" uid="uid://cdntxi0hff7yl" path="res://image/rooms/1-st floor/background/background1.png" id="1_h6u4y"]
-[ext_resource type="Texture2D" uid="uid://dlxlfq5ccjgvi" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_2ue0t"]
+[ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/rooms/1-st floor/background/background1.png" id="1_h6u4y"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_2ue0t"]
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="3_yfpwr"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
-[ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/Coins/CoinBag.tscn" id="6_ww7l6"]
-[ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/Items/scenes/tier 0/Potion Red.tscn" id="7_bxm0y"]
+[ext_resource type="PackedScene" uid="uid://bt02g3ohw7ksf" path="res://game/objects/coins/CoinBag.tscn" id="6_ww7l6"]
+[ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/tier 0/Potion Red.tscn" id="7_bxm0y"]
 [ext_resource type="PackedScene" uid="uid://bpxxvh07ciubm" path="res://game/objects/obstacles/rockSmall.tscn" id="8_iqmaw"]
 [ext_resource type="PackedScene" uid="uid://7wom6t7b0i7c" path="res://game/objects/obstacles/rockSmallest.tscn" id="9_p8hec"]
 [ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="10_jo4v1"]
@@ -21,14 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://c1fiyctd2xrli" path="res://game/objects/Equipment/boots/Poison_boots.tscn" id="22_2ue0t"]
 [ext_resource type="PackedScene" uid="uid://b6vskrremanrc" path="res://game/objects/Equipment/head/lucky_Head.tscn" id="24_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bdx03qht6dlwl" path="res://game/objects/Equipment/Chest/Cleaving.tscn" id="25_tvg8h"]
+[ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="25_ww7l6"]
 [ext_resource type="PackedScene" uid="uid://lcbyc42s480y" path="res://game/objects/Equipment/boots/Speed_boots.tscn" id="26_bxm0y"]
 [ext_resource type="PackedScene" uid="uid://dyq3vlj4jlml5" path="res://game/objects/Equipment/Weapon/equip/TestShot_equip.tscn" id="28_iqmaw"]
-<<<<<<< Updated upstream
-=======
-[ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="29_jo4v1"]
->>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://f07ikj132ro1" path="res://game/objects/Equipment/Weapon/equip/JonnyShotGreen_equip.tscn" id="29_p8hec"]
-[ext_resource type="PackedScene" uid="uid://c3x2ip1hrm544" path="res://game/objects/obstacles/skull.tscn" id="31_6cfgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -202,34 +198,19 @@ position = Vector2(380, -188)
 position = Vector2(259, 65)
 
 [node name="CoinBag2" parent="." unique_id=947796805 instance=ExtResource("6_ww7l6")]
-position = Vector2(-25, 80)
-
-[node name="CoinBag3" parent="." unique_id=1140457695 instance=ExtResource("6_ww7l6")]
-position = Vector2(6, 62)
-
-[node name="CoinBag4" parent="." unique_id=1984778878 instance=ExtResource("6_ww7l6")]
-position = Vector2(-42, 58)
-
-[node name="CoinBag5" parent="." unique_id=1042890370 instance=ExtResource("6_ww7l6")]
-position = Vector2(-29, 64)
+position = Vector2(-171, -81)
 
 [node name="TestShot" parent="." unique_id=652461765 instance=ExtResource("28_iqmaw")]
 position = Vector2(-127, 139)
 
 [node name="JonnyShotGreen" parent="." unique_id=660692123 instance=ExtResource("29_p8hec")]
 position = Vector2(-129, 212)
-<<<<<<< Updated upstream
-=======
 
-[node name="Fire" parent="." unique_id=1908283235 instance=ExtResource("29_jo4v1")]
+[node name="Fire" parent="." unique_id=1442893126 instance=ExtResource("25_ww7l6")]
 position = Vector2(-417, 93)
 
-[node name="Skull2" parent="." unique_id=703251335 instance=ExtResource("31_6cfgv")]
-position = Vector2(-242, -154)
-
-[node name="Fire2" parent="." unique_id=795977815 instance=ExtResource("29_jo4v1")]
-position = Vector2(-375, 93)
-
-[node name="Fire3" parent="." unique_id=1764707259 instance=ExtResource("29_jo4v1")]
+[node name="Fire2" parent="." unique_id=1912039661 instance=ExtResource("25_ww7l6")]
 position = Vector2(-333, 93)
->>>>>>> Stashed changes
+
+[node name="Fire3" parent="." unique_id=6822186 instance=ExtResource("25_ww7l6")]
+position = Vector2(-375, 93)
