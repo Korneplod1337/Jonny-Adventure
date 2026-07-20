@@ -16,13 +16,11 @@ func open() -> void:
 
 
 func _load_patch_notes() -> void:
-	if FileAccess.file_exists(PATCH_NOTES_PATH):
-		var file := FileAccess.open(PATCH_NOTES_PATH, FileAccess.READ)
-		if file:
-			notes_label.text = file.get_as_text()
-			file.close()
-	else:
+	var text := FileAccess.get_file_as_string(PATCH_NOTES_PATH)
+	if text.is_empty() and FileAccess.get_open_error() != OK:
 		notes_label.text = "Patch notes will appear here."
+		return
+	notes_label.text = text
 
 
 func _process(_delta: float) -> void:

@@ -1,6 +1,7 @@
 # Godot 4
 .godot/
 *.import
+!menu_scripts/patch_notes.txt.import
 
 export.cfg
 export_presets.cfg
