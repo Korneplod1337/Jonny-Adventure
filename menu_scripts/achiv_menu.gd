@@ -28,8 +28,11 @@ func update_achievement_list():
 		hbox.add_theme_constant_override("separation", 10)
 		
 		var icon = TextureRect.new()
-		icon.texture = load(achievement["unlocked_icon"] if achievement["unlocked"]
-		 else "res://image/achievements/menu_achiv/lock_achiv.png")
+		var icon_path: String = achievement["unlocked_icon"] if achievement["unlocked"] \
+			else "res://image/achievements/menu_achiv/lock_achiv.png"
+		if icon_path == "" or icon_path == "-":
+			icon_path = "res://image/achievements/menu_achiv/lock_achiv.png"
+		icon.texture = load(icon_path)
 		icon.custom_minimum_size = Vector2(96, 96)
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		

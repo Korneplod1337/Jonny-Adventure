@@ -28,6 +28,7 @@ func _ready() -> void:
 	_field_view.monitorable = false
 	_field_view.collision_layer = 0
 	_field_view.collision_mask = 1 # только игрок
+	burn_out_time += randf_range(-2, 2)
 
 
 func _physics_process(delta: float) -> void:

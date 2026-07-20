@@ -29,6 +29,8 @@ func load_statistic() -> void:
 	var config = ConfigFile.new()
 	if config.load(SAVE_PATH) == OK:
 		for key in stats.keys():
+			if _is_run_scoped(key):
+				continue
 			if config.has_section_key("stats", key):
 				stats[key]["value"] = config.get_value("stats", key, 0)
 
@@ -36,6 +38,8 @@ func load_statistic() -> void:
 func save_statistic() -> void:
 	var config = ConfigFile.new()
 	for key in stats.keys():
+		if _is_run_scoped(key):
+			continue
 		config.set_value("stats", key, stats[key]["value"])
 	config.save(SAVE_PATH)
 
@@ -46,7 +50,19 @@ func add_statistic_progress(key: String, value: float) -> void:
 	if stats.has(key):
 		stats[key]["value"] += value
 		stat_changed.emit(key, stats[key]["value"])
-		save_statistic()
+		if not _is_run_scoped(key):
+			save_statistic()
+
+
+func reset_run_stats() -> void:
+	for key in stats.keys():
+		if _is_run_scoped(key):
+			stats[key]["value"] = 0.0
+
+
+func _is_run_scoped(key: String) -> bool:
+	var entry: Dictionary = AchivStatsRegistry.STATS.get(key, {})
+	return entry.get("run_scoped", false)
 
 
 func get_stat_display(key: String) -> Dictionary:

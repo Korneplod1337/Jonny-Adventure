@@ -3,7 +3,7 @@ class_name DungeonGenerator
 
 const Room = preload("res://game/Dungeon_scripts/Room.gd")
 enum RoomType { START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
-				TREASURE, BANK, GAMBLING, BOSS, SECRET}
+				TREASURE, BANK, GAMBLING, BOSS, SECRET, STATUP}
 
 # либо как поле класса / ресурса
 const directions := [
@@ -13,7 +13,7 @@ const directions := [
 	Vector2(0, -1),
 ]
 
-# shop - shop armory, buff = bank treasure, dop = blood gambling secret
+# shop - shop armory, buff = bank treasure, dop = blood gambling secret statup
 func generate(total_rooms: int, shop_rooms: int = 0,
 			buff_rooms: int = 0, dop_rooms: int = 0) -> Dictionary:
 	var rooms := {}
@@ -94,7 +94,7 @@ func generate(total_rooms: int, shop_rooms: int = 0,
 	candidates = rooms.values().filter(func(r): return r.type == RoomType.STANDARD)
 	while placed < dop_rooms and candidates.size() > 0:
 		var r = candidates[randi() % candidates.size()]
-		r.type = [RoomType.BLOOD_TRIBUTE, RoomType.GAMBLING, RoomType.SECRET][randi()%3]
+		r.type = [RoomType.BLOOD_TRIBUTE, RoomType.GAMBLING, RoomType.SECRET, RoomType.STATUP][randi() % 4]
 		candidates.erase(r)
 		placed += 1
 	

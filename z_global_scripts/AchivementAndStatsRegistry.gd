@@ -1,11 +1,12 @@
 extends Node
 
 ## Включить весь трекинг статистики и достижений.
-const TRACKING_ENABLED := true
+const TRACKING_ENABLED := false
 
 ## Единый реестр счётчиков.
 ##   desc          — подпись в меню статистики
 ##   show_in_menu  — показывать игроку в меню stats (false = только для разблокировок)
+##   run_scoped    — счётчик забега: не пишется в сейв, сбрасывается в GameState.obnulenie()
 ##   custom_display — особый формат значения ("item_unlock_counts" и т.п.)
 ##   achievement   — опционально: достижение, привязанное к этому счётчику
 
@@ -114,6 +115,15 @@ const STATS := {
 	"cards_picked": {
 		"desc": "Cards picked",
 		"show_in_menu": false,
+		"run_scoped": true,
+		"achievement": {
+			"id": "cards_collector",
+			"name": "Cardmaster",
+			"desc": "Pick up many cards in one run",
+			"goal": 8,
+			"menu_icon":"res://image/achievements/menu_achiv/Joker.png",
+			"hud_popup": "res://image/achievements/hud_achiv/Joker_unlock_hud.png",
+		},
 	},
 }
 
@@ -154,6 +164,7 @@ const ITEM_PICKUP_STATS := {
 ## Ключ — id достижения из achievement.id выше.
 const ITEM_UNLOCKS := {
 	"first_kill": ["torch"],
+	"cards_collector": ["joker"],
 }
 
 ## Разблокировка экипировки в пулах EquipManager при получении достижения.
@@ -163,6 +174,16 @@ const EQUIP_UNLOCKS := {
 		{"pool": "armory", "equipment_id": "EXSpear"},
 		{"pool": "weapon", "equipment_id": "EXSpear"},
 	],
+	"cards_collector": [
+		{"pool": "weapon", "equipment_id": "CardWeapon"},
+		{"pool": "all", "equipment_id": "CardWeapon"},
+	],
+}
+
+## Разблокировка персонажей в меню выбора (CharacterSelectEntry.id).
+## Ключ — id достижения из achievement.id выше.
+const CHARACTER_UNLOCKS := {
+	"cards_collector": ["Joker"],
 }
 
 
@@ -290,11 +311,18 @@ pass
         AchievementManager.is_unlocked("my_achievement")
 
  -----------------------------------------------------------------------------
- 7. Временно отключить весь трекинг
+ 7. Достижение → персонаж в меню выбора
+   a) Добавь в CHARACTER_UNLOCKS (ключ = id достижения, значение — CharacterSelectEntry.id):
+        "my_achievement": ["Joker"],
+   b) В main_menu.tscn у персонажа unlocked = false (стартово заблокирован).
+   c) char_select_menu.update_character_unlocks() выставит unlocked при открытии меню.
+
+ -----------------------------------------------------------------------------
+ 8. Временно отключить весь трекинг
         TRACKING_ENABLED = false   (в начале этого файла)
 
  -----------------------------------------------------------------------------
- 8. Сброс сохранений для теста
+ 9. Сброс сохранений для теста
    Статы:        user://stats.cfg
    Достижения:   user://achievements.cfg
    (удали файлы или сбрось через меню reset, если есть)

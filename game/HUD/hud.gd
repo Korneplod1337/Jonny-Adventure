@@ -271,6 +271,8 @@ func _toggle_full_ui() -> void:
 
 # Ачивки
 func _show_new_achievement(data: String):
+	if data == "" or data == "-":
+		return
 	$HUD/Achivements.show()
 	$HUD/Achivements/Sprite2D.texture = load(data)
 	$HUD/Achivements/achiv_timer.start()
@@ -291,6 +293,7 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var ChestSlot: InventorySlotAlt = $HUD/EquipPanel/ChestSlot/Slot
 @onready var WeaponSlot: InventorySlotAlt = $HUD/EquipPanel/WeaponSlot/Slot
 @onready var BootsSlot: InventorySlotAlt = $HUD/EquipPanel/BootsSlot/Slot
+@onready var AbilitySlot: InventorySlotAlt = $HUD/EquipPanel/AbilitySlot/Slot
 
 
 @onready var death_menu: Control = $HUD/DeathMenu

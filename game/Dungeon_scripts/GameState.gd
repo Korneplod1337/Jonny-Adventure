@@ -23,6 +23,7 @@ var AlchemistsGlasses: bool:
 		alchemists_glasses_changed.emit()
 var Surestrike := false # убирает разброс выстрела, не меняя стат точности
 var LuckyHead := false # за этаж: +1 luck_level и enemy_hp_multiplier *= 0.97
+var extra_chest_loot_chance := 0.0 # шанс доп. лута из сундуков (цветок папоротника и т.п.)
 
 
 #уровень
@@ -39,11 +40,13 @@ var LuckyHead := false # за этаж: +1 luck_level и enemy_hp_multiplier *= 
  ["Midas", 				false, Color.LAWN_GREEN],
 ]
 
-func random_level_bufs() -> void:
-	level_bufs[9][1] = true
-	if randi() % 100 > 70:
-		pass
-		##level_bufs[randi() % len(level_bufs)][1] = true
+func random_level_bufs(current_floor) -> void:
+	#level_bufs[9][1] = true
+	
+	if current_floor > 1:
+		if randi() % 100 > 70:
+			pass
+			##level_bufs[randi() % len(level_bufs)][1] = true
 
 func _clear_level_bufs() -> void:
 	for i in level_bufs:
@@ -81,11 +84,12 @@ var enemy_cooldown_multiplier: float = 1.0
  ["Thunderer", 		false, Color.YELLOW],
 ]
 
-func random_boss_bufs() -> void:
+func random_boss_bufs(current_floor) -> void:
 	#boss_bufs[12][1] = true
-	if randi() % 100 > 70:
-		pass
-	#	boss_bufs[randi() % len(boss_bufs)][1] = true
+	if current_floor > 1:
+		if randi() % 100 > 70:
+			pass
+			#boss_bufs[randi() % len(boss_bufs)][1] = true
 
 func _clear_boss_bufs() -> void:
 	for i in boss_bufs:
@@ -107,10 +111,12 @@ func obnulenie() -> void:
 	coins = 0
 	"Всё, что обнуляется между играми сюда по идее"
 	ItemManager.reset_run()
+	StatsManager.reset_run_stats()
 	DamageDealer.clear_modifiers()
 	AlchemistsGlasses = false
 	Surestrike = false
 	LuckyHead = false
+	extra_chest_loot_chance = 0.0
 	enemy_ms_multiplier = 1.0
 	enemy_hp_multiplier = 1.0
 	enemy_dmg_multiplier = 1.0

@@ -13,6 +13,7 @@ const ROOM_TYPE_TO_ANIM := {
 	7: "default",    # GAMBLING
 	8: "boss",       # BOSS
 	9: "default",    # SECRET
+	10: "default",   # STATUP
 }
 
 @export var dir: Vector2        # направление выхода: (1,0), (-1,0), (0,1), (0,-1)

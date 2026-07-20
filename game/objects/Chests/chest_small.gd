@@ -13,12 +13,17 @@ func _on_interact() -> void:
 	var player = get_tree().get_first_node_in_group('player')
 	var luck = StatManager.get_stat(player, 'luck')
 	if interactable.is_interactable:
-		var random = randi_range(1, 100)
-		if random >= 70:
-			ItemManager.spawn(pool, tier, self.global_position + Vector2(00, -80), cost)
-		else:
-			var inst = coin.instantiate()
-			inst.position = self.global_position + Vector2(00, -80)
-			get_tree().current_scene.add_child(inst)
+		_spawn_loot(Vector2(0, -80))
+		if GameState.extra_chest_loot_chance > 0.0 and randf() < GameState.extra_chest_loot_chance:
+			_spawn_loot(Vector2(40, -80))
 		animated_sprite_2d.frame = 1
 		interactable.is_interactable = false
+
+func _spawn_loot(offset: Vector2) -> void:
+	var random = randi_range(1, 100)
+	if random >= 70:
+		ItemManager.spawn(pool, tier, self.global_position + offset, cost)
+	else:
+		var inst = coin.instantiate()
+		inst.position = self.global_position + offset
+		get_tree().current_scene.add_child(inst)

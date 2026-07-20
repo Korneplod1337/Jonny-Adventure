@@ -28,11 +28,9 @@ const MEDAL_FILLED_BIG := preload("res://image/main_menu/locations_mark9.png")
 @onready var _slot_next: Control = $Carousel/SlotNext
 @onready var _slot_next2: Control = $Carousel/SlotNext2
 const MEDAL_TEXTURE_SIZE := 48
-const MEDAL_SMALL_SCALE := 4  ## 192×192 (×2 от 96)
-const MEDAL_BIG_SCALE := 4    ## 192×192 — тот же контейнер, круг в текстуре крупнее
-const MEDAL_SMALL_SIZE := Vector2(MEDAL_TEXTURE_SIZE * MEDAL_SMALL_SCALE, MEDAL_TEXTURE_SIZE * MEDAL_SMALL_SCALE)
-const MEDAL_BIG_SIZE := Vector2(MEDAL_TEXTURE_SIZE * MEDAL_BIG_SCALE, MEDAL_TEXTURE_SIZE * MEDAL_BIG_SCALE)
-const MEDAL_SMALL_SEPARATION := -80  ## перекрываем прозрачные поля 48×48 текстур
+const MEDAL_SMALL_SIZE := Vector2(MEDAL_TEXTURE_SIZE * 4, MEDAL_TEXTURE_SIZE * 4)
+const MEDAL_BIG_SIZE := Vector2(MEDAL_TEXTURE_SIZE * 4, MEDAL_TEXTURE_SIZE * 4)
+const MEDAL_SMALL_SEPARATION := -80 
 const MEDAL_BIG_SEPARATION := -40
 
 @onready var _medals_panel: HBoxContainer = $MedalsPanel
@@ -57,7 +55,18 @@ func _ready() -> void:
 	_setup_medal_sizes()
 	visibility_changed.connect(_on_visibility_changed)
 	_connect_carousel()
+	update_character_unlocks()
 	_refresh_carousel()
+
+
+func update_character_unlocks() -> void:
+	for ach_id in AchivStatsRegistry.CHARACTER_UNLOCKS.keys():
+		if not AchievementManager.is_unlocked(ach_id):
+			continue
+		for character_id in AchivStatsRegistry.CHARACTER_UNLOCKS[ach_id]:
+			for entry in characters:
+				if entry != null and entry.id == character_id:
+					entry.unlocked = true
 
 
 func _setup_medal_sizes() -> void:
@@ -115,6 +124,7 @@ func _on_visibility_changed() -> void:
 	if visible:
 		CharacterMedalsManager.load_medals()
 		CharacterMedalsManager.ensure_all_characters()
+		update_character_unlocks()
 		_refresh_carousel()
 
 

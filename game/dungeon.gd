@@ -23,24 +23,30 @@ var char_name := DungeonManager.selected_character
 var player : CharacterBody2D = player_scene[char_name].instantiate()
 
 
-var current_floor: int = 0
+var current_floor: int = 1
 enum RoomType {	START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE, 
-				TREASURE, BANK, GAMBLING, BOSS, SECRET}
-				## shop - shop armory, buff = bank treasure, dop = blood gambling secret
+				TREASURE, BANK, GAMBLING, BOSS, SECRET, STATUP}
+				## shop - shop armory, buff = bank treasure, dop = blood gambling secret statup
+## локация 1 — 4 этажа (0–3), далее по 2 этажа на локацию
 var floors_config: Array[Dictionary] = [
 # локация 1
-{"total_rooms": 5, 	"shop_rooms": 2, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-#{"total_rooms": 7, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-{"total_rooms": 7, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 2, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 4, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 5, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 6, 	"shop_rooms": 2, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+#{"total_rooms": 4, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+#{"total_rooms": 5, 	"shop_rooms": randi()%2, "buff_rooms": 0, 			"dop_rooms": 0}, 
+#{"total_rooms": 6, 	"shop_rooms": randi()%2, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 # локация 2
-{"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
+{"total_rooms": 2, 	"shop_rooms": 0, "buff_rooms": 0, 	"dop_rooms": 0}, 
+#{"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
 {"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 # локация 3
 {"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 {"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
 # локация 4
 {"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
-{"total_rooms": 16, 	"shop_rooms": 2, 		"buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 16, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
 # локация 5
 {"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
 {"total_rooms": 18, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
@@ -53,6 +59,8 @@ var floors_config: Array[Dictionary] = [
 ]
 
 @onready var room_presets_by_floor: Array = [
+	standard_room_presets_floor1,
+	standard_room_presets_floor1,
 	standard_room_presets_floor1,
 	standard_room_presets_floor1,
 	standard_room_presets_floor2,
@@ -86,6 +94,7 @@ var floors_config: Array[Dictionary] = [
 @export var bank_room_preset: 		Array[PackedScene]
 @export var gambling_room_preset: 	Array[PackedScene]
 @export var secret_room_preset: 		Array[PackedScene]
+@export var statup_room_preset: 		Array[PackedScene]
 
 
 # Размер комнаты в мире и отступ между комнатами
@@ -104,9 +113,9 @@ func _ready():
 	seed(Time.get_unix_time_from_system())
 	GameState.obnulenie()
 	GameState._clear_level_bufs()
-	GameState.random_level_bufs()
+	GameState.random_level_bufs(current_floor)
 	GameState._clear_boss_bufs()
-	GameState.random_boss_bufs()
+	GameState.random_boss_bufs(current_floor)
 		
 	$Arcade_music.play()
 	rooms = generator.generate(
@@ -125,7 +134,15 @@ func _ready():
 	add_child(hud_instance)
 
 
+func _location_preset_index() -> int:
+	# Локация 1: этажи 0–3; дальше по 2 этажа на локацию
+	if current_floor < 4:
+		return 0
+	return (current_floor - 2) / 2
+
+
 func instance_room(room: Room) -> Node:
+	var loc := _location_preset_index()
 	match room.type:
 		RoomType.START:
 			return start_room_preset		[current_floor].instantiate()
@@ -135,19 +152,21 @@ func instance_room(room: Room) -> Node:
 			var standard_presets = room_presets_by_floor[current_floor]
 			return standard_presets[randi() % standard_presets.size()].instantiate()
 		RoomType.SHOP:
-			return shop_room_preset		[current_floor / 2].instantiate()
+			return shop_room_preset		[loc].instantiate()
 		RoomType.GAMBLING:
-			return gambling_room_preset	[current_floor / 2].instantiate()
+			return gambling_room_preset	[loc].instantiate()
 		RoomType.ARMORY:
-			return armory_room_preset	[current_floor / 2].instantiate()
+			return armory_room_preset	[loc].instantiate()
 		RoomType.TREASURE:
-			return treasure_room_preset	[current_floor / 2].instantiate()
+			return treasure_room_preset	[loc].instantiate()
 		RoomType.BLOOD_TRIBUTE:
-			return blood_room_preset		[current_floor / 2].instantiate()
+			return blood_room_preset		[loc].instantiate()
 		RoomType.BANK:
-			return bank_room_preset		[current_floor / 2].instantiate()
+			return bank_room_preset		[loc].instantiate()
 		RoomType.SECRET:
-			return secret_room_preset	[current_floor / 2].instantiate()
+			return secret_room_preset	[loc].instantiate()
+		RoomType.STATUP:
+			return statup_room_preset	[loc].instantiate()
 		
 	return null
 
@@ -301,6 +320,7 @@ func print_map():
 					RoomType.GAMBLING: 		line_room += "G" #
 					RoomType.BOSS: 			line_room += "B" #
 					RoomType.SECRET: 		line_room += "H" #
+					RoomType.STATUP: 		line_room += "U" #
 				if rooms[key].exits.has(Vector2(1,0)):
 					line_room += "-"
 				else:
@@ -382,9 +402,9 @@ func _load_floor(new_floor: int) -> void:
 	await get_tree().physics_frame
 
 	GameState._clear_level_bufs()
-	GameState.random_level_bufs()
+	GameState.random_level_bufs(current_floor)
 	GameState._clear_boss_bufs()
-	GameState.random_boss_bufs()
+	GameState.random_boss_bufs(current_floor)
 
 	var config := floors_config[current_floor]
 	rooms = generator.generate(

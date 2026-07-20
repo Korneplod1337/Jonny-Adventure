@@ -14,6 +14,8 @@ func _ready() -> void:
 	stat_to_achievements = AchivStatsRegistry.build_stat_to_achievements()
 	load_achievements()
 	StatsManager.stat_changed.connect(_on_stat_changed)
+	# StatsManager грузится после нас — перепроверяем пороги на следующем кадре.
+	call_deferred("_recheck_stat_achievements")
 	#unlock_achievement('Alpha test')
 
 
@@ -23,6 +25,14 @@ func _on_stat_changed(stat_name: String, new_value: float) -> void:
 	if stat_to_achievements.has(stat_name):
 		for ach_key in stat_to_achievements[stat_name]:
 			check_achievement(ach_key, new_value)
+
+
+func _recheck_stat_achievements() -> void:
+	for stat_name in stat_to_achievements.keys():
+		var stat_data: Dictionary = StatsManager.get_stat_display(stat_name)
+		var value := float(stat_data.get("value", 0.0))
+		for ach_key in stat_to_achievements[stat_name]:
+			check_achievement(ach_key, value)
 
 
 func check_achievement(key: String, stat_value: float) -> void:
@@ -38,10 +48,11 @@ func unlock_achievement(key: String) -> void:
 	if not ach or ach["unlocked"]:
 		return
 	ach["unlocked"] = true
-	var popup_path: String = ach["popup_window"]
-	if popup_path != "":
-		achievement_unlocked.emit(popup_path)
 	save_achievements()
+	# Всегда уведомляем слушателей (ItemManager / EquipManager / меню).
+	# HUD сам игнорирует пустой путь и "-".
+	achievement_unlocked.emit(ach["popup_window"])
+
 
 
 func is_unlocked(key: String) -> bool:

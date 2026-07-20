@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://b18wfc5xv21tj"]
+
+[ext_resource type="Script" uid="uid://sogba3fuhdeg" path="res://game/objects/obstacles/stat_machine.gd" id="1_pnqjv"]
+[ext_resource type="Texture2D" uid="uid://dc8qbld4vyorc" path="res://image/objects/obstacles/stat_machine5.png" id="2_8uqlh"]
+[ext_resource type="Texture2D" uid="uid://b4uvjvb7olei3" path="res://image/objects/obstacles/stat_machine1.png" id="3_d15wu"]
+[ext_resource type="Texture2D" uid="uid://dclrm0qsxq6g4" path="res://image/objects/obstacles/stat_machine2.png" id="4_n1qlx"]
+[ext_resource type="Texture2D" uid="uid://blrgjlrofwnff" path="res://image/objects/obstacles/stat_machine3.png" id="5_0ysv1"]
+[ext_resource type="Texture2D" uid="uid://vovox3yufri0" path="res://image/objects/obstacles/stat_machine6.png" id="5_r3abb"]
+[ext_resource type="Texture2D" uid="uid://e8cnetcpbalr" path="res://image/objects/obstacles/stat_machine4.png" id="6_3u583"]
+[ext_resource type="Texture2D" uid="uid://blf5xpexcbb4r" path="res://image/objects/obstacles/stat_machine7.png" id="6_ygpdy"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="7_r3abb"]
+[ext_resource type="Texture2D" uid="uid://c5557v8r7sl87" path="res://image/objects/obstacles/stat_machine8.png" id="7_wyosn"]
+[ext_resource type="Texture2D" uid="uid://ces8iafb25hmv" path="res://image/objects/obstacles/stat_machine9.png" id="8_0awrc"]
+[ext_resource type="Texture2D" uid="uid://btyd241kxlq4s" path="res://image/objects/obstacles/stat_machine10.png" id="9_18npo"]
+[ext_resource type="Texture2D" uid="uid://dobglgg0p67i2" path="res://image/objects/obstacles/stat_machine11.png" id="10_0n4ho"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wyosn"]
+radius = 60.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ygpdy"]
+points = PackedVector2Array(-52, 36, -40, -28, 40, -28, 52, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kglhg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8uqlh")
+}],
+"loop": false,
+"name": &"active",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_d15wu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_r3abb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ygpdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wyosn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0awrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_18npo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0n4ho")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n1qlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0ysv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3u583")
+}],
+"loop": false,
+"name": &"use",
+"speed": 4.0
+}]
+
+[node name="StatMachine" type="StaticBody2D" unique_id=202095868]
+script = ExtResource("1_pnqjv")
+
+[node name="Interactable" parent="." unique_id=1597460607 instance=ExtResource("7_r3abb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1094101815]
+position = Vector2(0, 10)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_wyosn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=15968308]
+scale = Vector2(2, 2)
+shape = SubResource("ConvexPolygonShape2D_ygpdy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=233066702]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_kglhg")

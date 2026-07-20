@@ -16,20 +16,25 @@ func _on_interact() -> void:
 	var player = get_tree().get_first_node_in_group('player')
 	var luck = StatManager.get_stat(player, 'luck')
 	if interactable.is_interactable:
-		var random = randi_range(1, 100)
-		if random >= 90:
-			EquipManager.spawn(equip_pool, equip_tier, self.global_position + Vector2(00, -80))
-		elif random >= 70:
-			ItemManager.spawn(pool, tier, self.global_position + Vector2(00, -80), cost)
-		elif random >= 50:
-			spawner(coinBag)
-		else:
-			spawner(coin)
+		_spawn_loot(Vector2(0, -80))
+		if GameState.extra_chest_loot_chance > 0.0 and randf() < GameState.extra_chest_loot_chance:
+			_spawn_loot(Vector2(40, -80))
 		animated_sprite_2d.frame = 1
 		interactable.is_interactable = false
 '''5 20 25 50'''
 
-func spawner(ini) -> void:
+func _spawn_loot(offset: Vector2) -> void:
+	var random = randi_range(1, 100)
+	if random >= 90:
+		EquipManager.spawn(equip_pool, equip_tier, self.global_position + offset)
+	elif random >= 70:
+		ItemManager.spawn(pool, tier, self.global_position + offset, cost)
+	elif random >= 50:
+		spawner(coinBag, offset)
+	else:
+		spawner(coin, offset)
+
+func spawner(ini, offset: Vector2 = Vector2(0, -80)) -> void:
 	var inst = ini.instantiate()
-	inst.position = self.global_position + Vector2(00, -80)
+	inst.position = self.global_position + offset
 	get_tree().current_scene.add_child(inst)

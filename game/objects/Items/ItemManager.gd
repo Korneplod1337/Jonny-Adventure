@@ -11,6 +11,11 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'sp
  'exorcism', 'virus', 'basilisk',
  'guillotine', 'wraith', 'target', 'radar',
  'luckycoin', 'ez', 'petroglyph', 'forceshield', 'blueprint',
+ 'guts', 'blackdeal', 'ouroboros', 'fernlucky', 'diamond', 'clover',
+ #'magicgrimoire', 'manaflame', 'amplifier', 'blackbrand', 'desperado', 'wildwind',
+ #'zerotohundred', 'salamandra', 'dragonheart', 'uranium', 'executionersaxe', 'eagleseye',
+ #'laserscope', 'scope', 'hunter', 'astrolabia', 'planetary', 'telescope', 'lantern',
+ #'balllightning', 'waterelemental', 'goldnugget', 'goldbar', 'well',
  'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
 var DEFAULT_PICK := ["heal"]
 
@@ -18,10 +23,10 @@ const CARD_IDS := [
 	"card6", "card7", "card8", "card9", "card10",
 	"cardjack", "cardqueen", "cardking", "cardace",
 ]
-# Карты, подобранные за забег, усиливают выпадение остальных (кроме туза как источника)
+# Карты, подобранные за забег, усиливают выпадение остальных
 const CARD_SYNERGY_SOURCES := [
 	"card6", "card7", "card8", "card9", "card10",
-	"cardjack", "cardqueen", "cardking",
+	"cardjack", "cardqueen", "cardking", "cardace"
 ]
 const CARD_PICK_SYNERGY_ADD := 3.0
 
@@ -64,42 +69,75 @@ var POOLS := {
 		{"id": "healblack", 	"scene": preload("uid://c83w3v5l3edwc"), 	"tier": 0},
 		{"id": "healbig", 	"scene": preload("uid://bvy7i2nw65tyy"), 	"tier": 0},
 		{"id": "spiderweb", 	"scene": preload("uid://cgcss4ubm0tjd"), 	"tier": 1},
-		{"id": "mindseye", 	"scene": preload("uid://b2l04uommikl0"), 	"tier": 1},
+		#{"id": "mindseye", 	"scene": preload("uid://b2l04uommikl0"), 	"tier": 1},
 		{"id": "aegis", 		"scene": preload("uid://ccrdfupi8hyq2"), 	"tier": 1}, 
 		{"id": "cross", 		"scene": preload("uid://dk3m8x2nq7wp4"), 	"tier": 1},
-		{"id": "bone", 		"scene": preload("uid://el4n9y3or8xq5"), 	"tier": 1},
+		#{"id": "bone", 		"scene": preload("uid://el4n9y3or8xq5"), 	"tier": 1},
 		{"id": "meat", 		"scene": preload("uid://fm5o0z4ps9yr6"), 	"tier": 1},
-		{"id": "beard", 		"scene": preload("uid://gn6p1a5qt0zs7"), 	"tier": 1},
-		{"id": "homuncules", "scene": preload("uid://ho7q2b6ru1at8"), 	"tier": 1},
+		#{"id": "beard", 		"scene": preload("uid://gn6p1a5qt0zs7"), 	"tier": 1},
+		#{"id": "homuncules", "scene": preload("uid://ho7q2b6ru1at8"), 	"tier": 1},
 		{"id": "seed", 		"scene": preload("uid://ip8r3c7sv2bu9"), 	"tier": 1},
-		{"id": "shine", 		"scene": preload("uid://jq9s4d8tw3cv0"), 	"tier": 1},
+		#{"id": "shine", 		"scene": preload("uid://jq9s4d8tw3cv0"), 	"tier": 1},
 		{"id": "pocketwatch","scene": preload("uid://kr0t5e9ux4dw1"), 	"tier": 1},
 		{"id": "bomb", 		"scene": preload("uid://ls1u6f0vy5ex2"), 	"tier": 1},
-		{"id": "jetfuel", 	"scene": preload("uid://mt2v7g1wz6fy3"), 	"tier": 1},
+		#{"id": "jetfuel", 	"scene": preload("uid://mt2v7g1wz6fy3"), 	"tier": 1},
 		{"id": "broom", 		"scene": preload("uid://nu3w8h2xa7gz4"), 	"tier": 1},
 		{"id": "sandclock", 	"scene": preload("uid://ov4x9i3yb8ha5"), 	"tier": 1},
-		{"id": "powerofdamage", "scene": preload("uid://pw5y0j4zc9ib6"), "tier": 1},
+		#{"id": "powerofdamage", "scene": preload("uid://pw5y0j4zc9ib6"), "tier": 1},
 		{"id": "torch", 		"scene": preload("uid://qx6z1k5ad0jc7"), 	"tier": 1},
-		{"id": "cauldron", 	"scene": preload("uid://ry7a2l6be1kd8"), 	"tier": 1},
+		#{"id": "cauldron", 	"scene": preload("uid://ry7a2l6be1kd8"), 	"tier": 1},
 		{"id": "harmony", 	"scene": preload("uid://sz8b3m7cf2le9"), 	"tier": 1},
 		{"id": "fountain", 	"scene": preload("uid://ta9c4n8dg3mf0"), 	"tier": 1},
-		{"id": "grail", 		"scene": preload("uid://ub0d5o9eh4ng1"), 	"tier": 1},
+		#{"id": "grail", 		"scene": preload("uid://ub0d5o9eh4ng1"), 	"tier": 1},
 		{"id": "stardust", 	"scene": preload("uid://vc1e6p0fi5oh2"), 	"tier": 1},
 		{"id": "sextant", 	"scene": preload("uid://wd2f7q1gj6pi3"), 	"tier": 1},
-		{"id": "exorcism", 	"scene": preload("uid://bspi32myt8j6q"), 	"tier": 1},
+		#{"id": "exorcism", 	"scene": preload("uid://bspi32myt8j6q"), 	"tier": 1},
 		{"id": "virus", 		"scene": preload("uid://dex02b4e0mukt"), 	"tier": 1},
-		{"id": "basilisk", 	"scene": preload("uid://dxwwacpt1rply"), 	"tier": 1},
+		#{"id": "basilisk", 	"scene": preload("uid://dxwwacpt1rply"), 	"tier": 1},
 		{"id": "guillotine", "scene": preload("res://game/objects/items/scenes/tier 1/Guillotine.tscn"), "tier": 1},
 		{"id": "wraith", 	"scene": preload("res://game/objects/items/scenes/tier 1/Wraith.tscn"), 	"tier": 1},
 		{"id": "target", 	"scene": preload("res://game/objects/items/scenes/tier 1/Target.tscn"), 	"tier": 1},
 		{"id": "radar", 		"scene": preload("res://game/objects/items/scenes/tier 1/Radar.tscn"), 	"tier": 1},
 		{"id": "luckycoin", 	"scene": preload("res://game/objects/items/scenes/tier 1/LuckyCoin.tscn"), "tier": 1},
 		{"id": "ez", 		"scene": preload("res://game/objects/items/scenes/tier 1/EZ.tscn"), 		"tier": 1},
-		{"id": "petroglyph",	"scene": preload("res://game/objects/items/scenes/tier 1/Petroglyph.tscn"), "tier": 1},
+		#{"id": "petroglyph",	"scene": preload("res://game/objects/items/scenes/tier 1/Petroglyph.tscn"), "tier": 1},
 		{"id": "forceshield","scene": preload("res://game/objects/items/scenes/tier 1/ForceShield.tscn"), "tier": 1},
-		{"id": "blueprint", 	"scene": preload("res://game/objects/items/scenes/tier 1/Blueprint.tscn"), "tier": 1},
+		#{"id": "blueprint", 	"scene": preload("res://game/objects/items/scenes/tier 1/Blueprint.tscn"), "tier": 1},
+		
 		
 		{"id": "storybook", 	"scene": preload("uid://m6oyxodimxew"), 		"tier": 2},
+		#{"id": "guts", 			"scene": preload("res://game/objects/items/scenes/tier 2/Guts.tscn"), "tier": 2},
+		#{"id": "blackdeal", 	"scene": preload("res://game/objects/items/scenes/tier 2/BlackDeal.tscn"), "tier": 2},
+		#{"id": "ouroboros", 	"scene": preload("res://game/objects/items/scenes/tier 2/Ouroboros.tscn"), "tier": 2},
+		#{"id": "fernlucky", 	"scene": preload("res://game/objects/items/scenes/tier 2/FernLucky.tscn"), "tier": 2},
+		#{"id": "diamond", 		"scene": preload("res://game/objects/items/scenes/tier 2/Diamond.tscn"), "tier": 2},
+		#{"id": "clover", 		"scene": preload("res://game/objects/items/scenes/tier 2/Clover.tscn"), "tier": 2},
+		#{"id": "magicgrimoire","scene": preload("res://game/objects/items/scenes/tier 2/MagicGrimoire.tscn"), "tier": 2},
+		#{"id": "manaflame", 	"scene": preload("res://game/objects/items/scenes/tier 2/ManaFlame.tscn"), "tier": 2},
+		#{"id": "amplifier", 	"scene": preload("res://game/objects/items/scenes/tier 2/Amplifier.tscn"), "tier": 2},
+		#{"id": "blackbrand", 	"scene": preload("res://game/objects/items/scenes/tier 2/BlackBrand.tscn"), "tier": 2},
+		#{"id": "desperado", 	"scene": preload("res://game/objects/items/scenes/tier 2/Desperado.tscn"), "tier": 2},
+		#{"id": "wildwind", 		"scene": preload("res://game/objects/items/scenes/tier 2/WildWind.tscn"), "tier": 2},
+		#{"id": "zerotohundred","scene": preload("res://game/objects/items/scenes/tier 2/ZeroToHundred.tscn"), "tier": 2},
+		#{"id": "salamandra", 	"scene": preload("res://game/objects/items/scenes/tier 2/Salamandra.tscn"), "tier": 2},
+		#{"id": "dragonheart", 	"scene": preload("res://game/objects/items/scenes/tier 2/DragonHeart.tscn"), "tier": 2},
+		#{"id": "uranium", 		"scene": preload("res://game/objects/items/scenes/tier 2/Uranium.tscn"), "tier": 2},
+		#{"id": "executionersaxe", "scene": preload("res://game/objects/items/scenes/tier 2/ExecutionersAxe.tscn"), "tier": 2},
+		#{"id": "eagleseye", 	"scene": preload("res://game/objects/items/scenes/tier 2/EaglesEye.tscn"), "tier": 2},
+		#{"id": "laserscope", 	"scene": preload("res://game/objects/items/scenes/tier 2/LaserScope.tscn"), "tier": 2},
+		#{"id": "scope", 		"scene": preload("res://game/objects/items/scenes/tier 2/Scope.tscn"), "tier": 2},
+		#{"id": "hunter", 		"scene": preload("res://game/objects/items/scenes/tier 2/Hunter.tscn"), "tier": 2},
+		#{"id": "astrolabia", 	"scene": preload("res://game/objects/items/scenes/tier 2/Astrolabia.tscn"), "tier": 2},
+		#{"id": "planetary", 	"scene": preload("res://game/objects/items/scenes/tier 2/Planetary.tscn"), "tier": 2},
+		#{"id": "telescope", 	"scene": preload("res://game/objects/items/scenes/tier 2/Telescope.tscn"), "tier": 2},
+		#{"id": "lantern", 		"scene": preload("res://game/objects/items/scenes/tier 2/Lantern.tscn"), "tier": 2},
+		#{"id": "balllightning","scene": preload("res://game/objects/items/scenes/tier 2/BallLightning.tscn"), "tier": 2},
+		#{"id": "waterelemental", "scene": preload("res://game/objects/items/scenes/tier 2/WaterElemental.tscn"), "tier": 2},
+		#{"id": "goldnugget", 	"scene": preload("res://game/objects/items/scenes/tier 2/GoldNugget.tscn"), "tier": 2},
+		#{"id": "goldbar", 		"scene": preload("res://game/objects/items/scenes/tier 2/GoldBar.tscn"), "tier": 2},
+		#{"id": "well", 			"scene": preload("res://game/objects/items/scenes/tier 2/Well.tscn"), "tier": 2},
+		#{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
+
 		{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
 
 		{"id": "card6", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card6.tscn"), 		"tier": 4},
@@ -122,9 +160,34 @@ var POOLS := {
 	],
 	"chest": [
 		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), "tier": 0},
+		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), 	"tier": 0},
+		{"id": "healalt", 	"scene": preload("uid://ujleakh3r3l0"), 		"tier": 0},
+		{"id": "healblack", 	"scene": preload("uid://c83w3v5l3edwc"), 	"tier": 0},
+		{"id": "healbig", 	"scene": preload("uid://bvy7i2nw65tyy"), 	"tier": 0},
+		{"id": "spiderweb", 	"scene": preload("uid://cgcss4ubm0tjd"), 	"tier": 1},
+		{"id": "aegis", 		"scene": preload("uid://ccrdfupi8hyq2"), 	"tier": 1}, 
+		{"id": "cross", 		"scene": preload("uid://dk3m8x2nq7wp4"), 	"tier": 1},
+		{"id": "meat", 		"scene": preload("uid://fm5o0z4ps9yr6"), 	"tier": 1},
+		{"id": "seed", 		"scene": preload("uid://ip8r3c7sv2bu9"), 	"tier": 1},
+		{"id": "pocketwatch","scene": preload("uid://kr0t5e9ux4dw1"), 	"tier": 1},
+		{"id": "bomb", 		"scene": preload("uid://ls1u6f0vy5ex2"), 	"tier": 1},
+		{"id": "broom", 		"scene": preload("uid://nu3w8h2xa7gz4"), 	"tier": 1},
+		{"id": "sandclock", 	"scene": preload("uid://ov4x9i3yb8ha5"), 	"tier": 1},
+		{"id": "torch", 		"scene": preload("uid://qx6z1k5ad0jc7"), 	"tier": 1},
+		{"id": "harmony", 	"scene": preload("uid://sz8b3m7cf2le9"), 	"tier": 1},
+		{"id": "fountain", 	"scene": preload("uid://ta9c4n8dg3mf0"), 	"tier": 1},
+		{"id": "stardust", 	"scene": preload("uid://vc1e6p0fi5oh2"), 	"tier": 1},
+		{"id": "sextant", 	"scene": preload("uid://wd2f7q1gj6pi3"), 	"tier": 1},
+		{"id": "virus", 		"scene": preload("uid://dex02b4e0mukt"), 	"tier": 1},
+		{"id": "guillotine", "scene": preload("res://game/objects/items/scenes/tier 1/Guillotine.tscn"), "tier": 1},
+		{"id": "wraith", 	"scene": preload("res://game/objects/items/scenes/tier 1/Wraith.tscn"), 	"tier": 1},
+		{"id": "target", 	"scene": preload("res://game/objects/items/scenes/tier 1/Target.tscn"), 	"tier": 1},
+		{"id": "radar", 		"scene": preload("res://game/objects/items/scenes/tier 1/Radar.tscn"), 	"tier": 1},
+		{"id": "luckycoin", 	"scene": preload("res://game/objects/items/scenes/tier 1/LuckyCoin.tscn"), "tier": 1},
+		{"id": "ez", 		"scene": preload("res://game/objects/items/scenes/tier 1/EZ.tscn"), 		"tier": 1},
+		{"id": "forceshield","scene": preload("res://game/objects/items/scenes/tier 1/ForceShield.tscn"), "tier": 1},
 		{"id": "shield", 	"scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
 		{"id": "ring", 		"scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
-		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 1},
 	],
 	"armory": [
 		{"id": "lvlup", 		"scene": preload("uid://ywfb4cg1rk1u"), "tier": 0}
@@ -236,6 +299,7 @@ func load_config() -> void:
 func _ready() -> void:
 	load_config()
 	update_unlocks()
+	save_config()
 	AchievementManager.achievement_unlocked.connect(_on_achievement_unlocked)
 
 func _on_achievement_unlocked(_popup_path: String) -> void:
@@ -244,10 +308,13 @@ func _on_achievement_unlocked(_popup_path: String) -> void:
 
 func update_unlocks() -> void:
 	for ach_id in AchivStatsRegistry.ITEM_UNLOCKS.keys():
-		if not AchievementManager.is_unlocked(ach_id):
-			continue
+		var unlocked := AchievementManager.is_unlocked(ach_id)
 		for item_id in AchivStatsRegistry.ITEM_UNLOCKS[ach_id]:
-			unlocked_items[item_id] = true
+			if unlocked:
+				unlocked_items[item_id] = true
+			else:
+				# Снимаем с сейва, если предмет теперь гейтится достижением.
+				unlocked_items.erase(item_id)
 
 func get_spawn_weight(item: Dictionary) -> float:
 	if not is_unlocked(item.id):

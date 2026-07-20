@@ -30,11 +30,11 @@ var POOLS := {
 		{"id": "Kaliya_boots", "scene": preload("uid://by8qnvewpw3v3"),
 		 "tier": 3, "weight": 10.0},
 		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 1, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 1, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 1, "weight": 10.0},
 		{"id": "lucky_head", "scene": preload("uid://b6vskrremanrc"),
 		 "tier": 2, "weight": 10.0},
 		
@@ -42,32 +42,31 @@ var POOLS := {
 	
 	],
 	"armory": [ ## временно хуета
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # Оружейный кейс
+		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # магазин
+		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
 		 "tier": 1, "weight": 10.0},
-		{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
-		 "tier": 1, "weight": 0.0},
-		
-		{"id": "test_chest", "scene": preload("uid://bgibadaeek4on"),
-		 "tier": 2, "weight": 10.0},
-		
-		{"id": "test_shot2", "scene": preload("uid://bwiytmmsxjtk5"),
-		 "tier": 2, "weight": 10.0},
-		{"id": "test_shot3", "scene": preload("uid://bwiytmmsxjtk5"),
-		 "tier": 3, "weight": 10.0},
+		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
+		 "tier": 1, "weight": 10.0},
+
 	],
 	"weapon": [
 		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # Оружейный кейс
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 10.0},
-		{"id": "Jonny_shot_Alt", "scene": preload("uid://f07ikj132ro1"),
-		 "tier": 1, "weight": 10.0},
+		#{"id": "Jonny_shot_Alt", "scene": preload("uid://f07ikj132ro1"),
+		# "tier": 1, "weight": 10.0},
 		#{"id": "tome_of_fairy_tales", "scene": preload("uid://2dtjjer8eim8"),
 		 #"tier": 2, "weight": 10.0},
 		#{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
-		 #"tier": 3, "weight": 5.0},
+		#"tier": 3, "weight": 0.0},
 		
 		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
 		 "tier": 1, "weight": 10.0},
@@ -89,6 +88,12 @@ var POOLS := {
 		#{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
 		 #"tier": 3, "weight": 10.0},
 		],
+	"ability": [ ## дебаг / certain_spawn, пока не в сундуках
+		{"id": "Dash", "scene": preload("res://game/objects/Equipment/Ability/equip/Dash_equip.tscn"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "CoinRoulette", "scene": preload("res://game/objects/Equipment/Ability/equip/CoinRoulette_equip.tscn"),
+		 "tier": 1, "weight": 10.0},
+	],
 	"all": [
 		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # Оружейный кейс
 		 "tier": 1, "weight": 10.0},
@@ -97,7 +102,7 @@ var POOLS := {
 		{"id": "tome_of_fairy_tales", "scene": preload("uid://2dtjjer8eim8"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
-		 "tier": 3, "weight": 5.0},
+		 "tier": 3, "weight": 0.0},
 		
 		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
 		 "tier": 1, "weight": 10.0},
@@ -139,6 +144,10 @@ var POOLS := {
 		 "tier": 2, "weight": 10.0},
 		{"id": "lucky_head", "scene": preload("uid://b6vskrremanrc"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Dash", "scene": preload("res://game/objects/Equipment/Ability/equip/Dash_equip.tscn"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "CoinRoulette", "scene": preload("res://game/objects/Equipment/Ability/equip/CoinRoulette_equip.tscn"),
+		 "tier": 1, "weight": 10.0},
 	]
 }
 
@@ -177,6 +186,12 @@ var rng := RandomNumberGenerator.new()
 func _ready() -> void:
 	rng.randomize()
 	update_unlocks()
+	AchievementManager.achievement_unlocked.connect(_on_achievement_unlocked)
+
+
+func _on_achievement_unlocked(_popup_path: String) -> void:
+	update_unlocks()
+
 
 func random_pick(pool_type: String, tiers: Array) -> Dictionary:
 	update_unlocks()
@@ -244,7 +259,8 @@ func spawn(pool_type: String, tiers: Array, pos: Vector2, cost: int = -1) -> voi
 
 # certain_spawn спавнить любой предмет по его id на определённой позиции с нужным зачарованием
 # !И! выключает эффект этого предмета, независимо от того надет он или нет
-func certain_spawn(id: String, pos: Vector2, enchantment: EnchantmentResource = null) -> void:
+# ability_cd — остаток перезарядки способности, переносится на pickup на земле
+func certain_spawn(id: String, pos: Vector2, enchantment: EnchantmentResource = null, ability_cd: Dictionary = {}) -> void:
 	for pool in POOLS.values():
 		for equipment in pool:
 			if equipment["id"] == id:
@@ -253,7 +269,11 @@ func certain_spawn(id: String, pos: Vector2, enchantment: EnchantmentResource = 
 				inst.cost = 0
 				if enchantment:
 					inst.enchantment = enchantment.duplicate(true)
-				if inst.type != 'weapon':
+				if inst.type == "ability":
+					if not ability_cd.is_empty() and inst.has_method("set_saved_cooldown"):
+						inst.set_saved_cooldown(ability_cd)
+					inst.effect_off()
+				elif inst.type != 'weapon':
 					inst.effect_off()
 				get_tree().current_scene.add_child(inst)
 				return

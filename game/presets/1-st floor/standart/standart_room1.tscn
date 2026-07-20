@@ -149,4 +149,4 @@ position = Vector2(382, 179)
 position = Vector2(535, 225)
 
 [node name="Spider_egg_small" parent="." unique_id=1035861842 instance=ExtResource("9_8amni")]
-position = Vector2(110, -2)
+position = Vector2(57, 24)

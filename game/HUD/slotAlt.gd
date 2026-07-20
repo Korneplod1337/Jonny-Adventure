@@ -12,6 +12,8 @@ func _ready():
 	if _pending_icon:
 		icon.texture = _pending_icon
 	_apply_count(_pending_count)
+	if _pending_cooldown > 0.0:
+		set_cooldown_progress(_pending_cooldown)
 
 func _on_hover():
 	tooltip_panel.visible = true

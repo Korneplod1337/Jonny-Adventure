@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cq1e35ccwm0yt"]
+
+[ext_resource type="Texture2D" uid="uid://bc67f5n7c2hd7" path="res://image/rooms/1-st floor/background/background3.png" id="1_0krqc"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_4kb0c"]
+[ext_resource type="PackedScene" uid="uid://ch8qkvh1kb427" path="res://game/objects/obstacles/lightning.tscn" id="4_1cm4y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
+size = Vector2(1280, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lsolu"]
+size = Vector2(1136, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw7ps"]
+size = Vector2(41.03, 654.5)
+
+[node name="StartRoom" type="Node2D" unique_id=757044430]
+
+[node name="CameraBounds" type="Area2D" parent="." unique_id=1720013523]
+z_index = -5
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=332360121]
+z_index = -5
+shape = SubResource("RectangleShape2D_85tg8")
+
+[node name="BG_floor" type="Sprite2D" parent="." unique_id=1940620195]
+z_index = -10
+scale = Vector2(2, 2)
+texture = ExtResource("1_0krqc")
+
+[node name="BG_bounds" type="Sprite2D" parent="." unique_id=326775904]
+z_index = -5
+scale = Vector2(2, 2)
+texture = ExtResource("2_4kb0c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=962677030]
+position = Vector2(-207, -240)
+collision_layer = 16
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1507287982]
+position = Vector2(207, -67.999985)
+shape = SubResource("RectangleShape2D_lsolu")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=594798197]
+position = Vector2(207, 548)
+shape = SubResource("RectangleShape2D_lsolu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1238806990]
+position = Vector2(795.545, 239.75)
+shape = SubResource("RectangleShape2D_sw7ps")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=345058929]
+position = Vector2(-381.94, 239)
+shape = SubResource("RectangleShape2D_sw7ps")
+
+[node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=468390853]
+
+[node name="lightning" parent="." unique_id=2035113601 instance=ExtResource("4_1cm4y")]
+position = Vector2(-300, 0)
+prepare_time = 1.0
+
+[node name="lightning2" parent="." unique_id=658856937 instance=ExtResource("4_1cm4y")]
+position = Vector2(300, 0)
+prepare_time = 1.0

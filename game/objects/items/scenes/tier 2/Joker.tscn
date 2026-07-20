@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cgdrpbguyb166"]
+
+[ext_resource type="Script" uid="uid://bny7cg53un5dg" path="res://game/objects/items/scripts/joker.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bbmdsdhnk3s8c" path="res://image/items/ItemQ.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+[ext_resource type="Texture2D" uid="uid://tf1ljs4wma7f" path="res://image/items/4 tier/ItemCard10.png" id="4_r6jhs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Joker" type="Area2D" unique_id=1378068918]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_tex")
+item_tooltip = "Joker"
+item_tooltip2 = ""
+item_id = "joker"
+
+[node name="Interactable" parent="." unique_id=1694018968 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=391302556]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=275865705]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1928845955]
+scale = Vector2(2, 2)
+texture = ExtResource("4_r6jhs")

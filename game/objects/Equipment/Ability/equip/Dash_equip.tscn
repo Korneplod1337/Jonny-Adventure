@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d4nmsl38t7ni6"]
+
+[ext_resource type="Script" uid="uid://cdreuanfktvo7" path="res://game/objects/Equipment/Ability/BaseAbility_equip.gd" id="1_equip"]
+[ext_resource type="Script" uid="uid://bbxm67fqcb5s1" path="res://game/objects/Equipment/Ability/scripts/dash_ability.gd" id="2_ability"]
+[ext_resource type="Texture2D" uid="uid://cb3rq7686hdkp" path="res://image/ttttt.png" id="3_icon"]
+[ext_resource type="Texture2D" uid="uid://jd3ql7t7or3p" path="res://image/ttttt30.png" id="3_lfp4h"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+radius = 54.08327
+
+[node name="Dash_equip" type="Area2D" unique_id=566211452]
+script = ExtResource("1_equip")
+ability_script = ExtResource("2_ability")
+equip_icon = ExtResource("3_lfp4h")
+equip_id = "Dash"
+equip_tooltip = "Dash"
+interact_name = "Dash"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1816126790]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Interactable" parent="." unique_id=527878728 instance=ExtResource("4_interact")]
+interact_name = "Take Dash"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=690511088]
+shape = SubResource("CircleShape2D_interact")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1153649594]
+scale = Vector2(2, 2)
+texture = ExtResource("3_icon")

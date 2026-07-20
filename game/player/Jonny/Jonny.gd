@@ -39,10 +39,10 @@ var hp_bonus: 				int = 0
 var speed_bonus: 			int = 0
 var luck_bonus: 				int = 0
 var magic_bonus: 			int = 0
-var damage_bonus: 			int = 0
+var damage_bonus: 			int = 1
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 20
+var fire_rate_bonus:			int = 0
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0
@@ -78,8 +78,14 @@ var boomerang_bonus: int = 0
 var head_id: String
 var chest_id: String
 var boots_id: String
+var ability_id: String = ""
+var current_ability: BaseAbility = null
+var is_dashing: bool = false
 @export var start_weapon := true
+@export var start_ability := true
 const START_WEAPON_EQUIP := preload("uid://bwiytmmsxjtk5")
+const START_ABILITY_EQUIP := preload("res://game/objects/Equipment/Ability/equip/Dash_equip.tscn")
+const PROJECTILE_COLLISION_BIT := 2
 
 signal stats_changed(move_speed_level, luck_level, damage_level, spread_level,\
  range_level, hit_points_level, fire_rate_level, magic_level)
@@ -100,12 +106,26 @@ func _ready() -> void:
 	update_equipment_visuals()
 	if start_weapon:
 		call_deferred("_equip_start_weapon")
+	if start_ability:
+		call_deferred("_equip_start_ability")
 
 func _equip_start_weapon() -> void:
 	var equip: BaseShot_equip = START_WEAPON_EQUIP.instantiate()
 	equip.apply_equip(self)
 
+func _equip_start_ability() -> void:
+	var equip: BaseAbility_equip = START_ABILITY_EQUIP.instantiate()
+	equip.apply_equip(self)
+	equip.queue_free()
+
+func _try_use_ability() -> void:
+	if current_ability == null:
+		return
+	current_ability.try_activate()
+
 func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Ability"):
+		_try_use_ability()
 	if Input.is_action_just_pressed("button_K"):
 		take_damage(1)
 	if Input.is_action_just_pressed("button_L"):
@@ -133,21 +153,26 @@ func _process(delta: float) -> void:
 		Input.get_axis('move_up', 'move_down')).normalized() * move_speed
 	'''
 	
-	var dir := Vector2(
-		Input.get_axis("move_left", "move_right"),
-		Input.get_axis("move_up", "move_down")
-	).normalized()
-	if movement_locked:
-		dir = Vector2.ZERO
+	var ability_moved := false
+	if current_ability:
+		ability_moved = current_ability.process_movement(delta)
 
-	var target := dir * move_speed
-	
-	if on_ice:
-		velocity = velocity.move_toward(target, delta * move_speed)
-		if dir == Vector2.ZERO:
-			velocity = velocity.move_toward(Vector2.ZERO, delta * move_speed)
-	else:
-		velocity = dir * move_speed
+	if not ability_moved:
+		var dir := Vector2(
+			Input.get_axis("move_left", "move_right"),
+			Input.get_axis("move_up", "move_down")
+		).normalized()
+		if movement_locked:
+			dir = Vector2.ZERO
+
+		var target := dir * move_speed
+		
+		if on_ice:
+			velocity = velocity.move_toward(target, delta * move_speed)
+			if dir == Vector2.ZERO:
+				velocity = velocity.move_toward(Vector2.ZERO, delta * move_speed)
+		else:
+			velocity = dir * move_speed
 
 	move_and_slide()
 	now_move_direction = get_real_velocity()
@@ -285,7 +310,7 @@ func update_equipment_visuals():
 func take_damage(phy_damage: int = 0,
 				mag_damage: int = 0, clr_damage: int = 0, attacker: Node = null) -> void:
 	#return
-	if invulnerable:
+	if invulnerable or is_dashing:
 		return
 	
 	var incoming := phy_damage + mag_damage + clr_damage
@@ -536,10 +561,12 @@ func _emit_bonuses_changed() -> void:
 
 
 func _update_enemy_collision() -> void:
-	if pass_through_enemies:
-		collision_mask = _base_collision_mask & ~ENEMY_COLLISION_BITS
-	else:
-		collision_mask = _base_collision_mask
+	var mask := _base_collision_mask
+	if pass_through_enemies or is_dashing:
+		mask = mask & ~ENEMY_COLLISION_BITS
+	if is_dashing:
+		mask = mask & ~PROJECTILE_COLLISION_BIT
+	collision_mask = mask
 
 
 

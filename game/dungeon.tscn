@@ -4,24 +4,31 @@
 [ext_resource type="PackedScene" uid="uid://bpievu6gfe5d0" path="res://game/presets/1-st floor/shops/shop_room.tscn" id="2_0t1uw"]
 [ext_resource type="PackedScene" uid="uid://fg4d6t0fkyqp" path="res://game/presets/1-st floor/standart/standart_room1.tscn" id="2_2xsro"]
 [ext_resource type="PackedScene" uid="uid://cmlobl77iwbor" path="res://game/presets/1-st floor/start/start_room_1.tscn" id="3_0t1uw"]
+[ext_resource type="PackedScene" uid="uid://bqp0w2mjefnei" path="res://game/presets/1-st floor/standart/standart_room2.tscn" id="3_1u0ww"]
 [ext_resource type="PackedScene" uid="uid://dk2be1gdyetpo" path="res://game/presets/1-st floor/start/start_room_0.tscn" id="4_bdqim"]
+[ext_resource type="PackedScene" uid="uid://dn81o08ltpimr" path="res://game/presets/1-st floor/standart/standart_room3.tscn" id="4_qso4u"]
 [ext_resource type="PackedScene" uid="uid://b777y3m4083ll" path="res://game/presets/1-st floor/bosses/hatch_boss_room.tscn" id="5_2xsro"]
+[ext_resource type="PackedScene" uid="uid://dmknpy6eyeafg" path="res://game/presets/standart_room.tscn" id="5_o8gq0"]
+[ext_resource type="PackedScene" uid="uid://cq1e35ccwm0yt" path="res://game/presets/1-st floor/start/start_room_END BETA.tscn" id="5_qso4u"]
 [ext_resource type="PackedScene" uid="uid://b7qvxj2i104cp" path="res://game/presets/1-st floor/shops/armory_room.tscn" id="6_2xsro"]
 [ext_resource type="PackedScene" uid="uid://ctpm02rpg8gfx" path="res://game/presets/1-st floor/buff/treasure_room.tscn" id="6_3jp2u"]
 [ext_resource type="PackedScene" uid="uid://e8vf31lieg73" path="res://game/presets/1-st floor/bosses/boss_room.tscn" id="7_bdqim"]
 [ext_resource type="AudioStream" uid="uid://bsjukypra43dq" path="res://sound/music/arcade.ogg" id="7_luatc"]
 [ext_resource type="PackedScene" uid="uid://cs61w8ntlmjw7" path="res://game/presets/1-st floor/dop/Gambling_room.tscn" id="10_iyqye"]
+[ext_resource type="PackedScene" uid="uid://bkfxd17whnabm" path="res://game/presets/1-st floor/dop/Statup_room.tscn" id="11_statup"]
 
 [node name="Dungeon" type="Node" unique_id=1730459875]
 script = ExtResource("1_u4sk0")
-standard_room_presets_floor1 = Array[PackedScene]([ExtResource("2_2xsro")])
-start_room_preset = Array[PackedScene]([ExtResource("4_bdqim"), ExtResource("3_0t1uw")])
+standard_room_presets_floor1 = Array[PackedScene]([ExtResource("2_2xsro"), ExtResource("3_1u0ww"), ExtResource("4_qso4u")])
+standard_room_presets_floor2 = Array[PackedScene]([ExtResource("5_o8gq0")])
+start_room_preset = Array[PackedScene]([ExtResource("3_0t1uw"), ExtResource("4_bdqim"), ExtResource("3_0t1uw"), ExtResource("3_0t1uw"), ExtResource("5_qso4u")])
 shop_room_preset = Array[PackedScene]([ExtResource("2_0t1uw")])
-boss_room_preset = Array[PackedScene]([ExtResource("7_bdqim"), ExtResource("5_2xsro")])
+boss_room_preset = Array[PackedScene]([ExtResource("5_2xsro"), ExtResource("5_2xsro"), ExtResource("5_2xsro"), ExtResource("7_bdqim"), ExtResource("5_2xsro")])
 armory_room_preset = Array[PackedScene]([ExtResource("6_2xsro")])
 treasure_room_preset = Array[PackedScene]([ExtResource("6_3jp2u")])
 bank_room_preset = Array[PackedScene]([ExtResource("6_3jp2u")])
 gambling_room_preset = Array[PackedScene]([ExtResource("10_iyqye")])
+statup_room_preset = Array[PackedScene]([ExtResource("11_statup")])
 room_gap = Vector2(800, 800)
 
 [node name="Arcade_music" type="AudioStreamPlayer" parent="." unique_id=687942417]

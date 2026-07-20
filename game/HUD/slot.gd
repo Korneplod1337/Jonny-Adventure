@@ -7,11 +7,14 @@ class_name InventorySlot
 var count_label: Label
 var _hover_overlay: ColorRect
 var _hover_tween: Tween
+var _cd_overlay: ColorRect
 
 var HOVER_OVERLAY_COLOR := Color(0, 0, 0, 0.5)
+var COOLDOWN_OVERLAY_COLOR := Color(0, 0, 0, 0.5)
 var _pending_tooltip: String = ""
 var _pending_icon: Texture2D = null
 var _pending_count: int = 1
+var _pending_cooldown: float = 0.0
 
 func set_icon(tex: Texture2D):
 	if icon:
@@ -43,6 +46,34 @@ func _ensure_hover_overlay() -> void:
 	add_child(_hover_overlay)
 	move_child(_hover_overlay, 0)
 
+
+func _ensure_cooldown_overlay() -> void:
+	if _cd_overlay:
+		return
+	_cd_overlay = ColorRect.new()
+	_cd_overlay.mouse_filter = MOUSE_FILTER_IGNORE
+	_cd_overlay.color = COOLDOWN_OVERLAY_COLOR
+	_cd_overlay.visible = false
+	add_child(_cd_overlay)
+
+
+## ratio 1.0 = full cooldown lock, 0.0 = ready. Dark bar shrinks from top.
+func set_cooldown_progress(ratio: float) -> void:
+	ratio = clampf(ratio, 0.0, 1.0)
+	_pending_cooldown = ratio
+	if not is_inside_tree():
+		return
+	_ensure_cooldown_overlay()
+	if ratio <= 0.001:
+		_cd_overlay.visible = false
+		return
+	var slot_size := size
+	if slot_size.x <= 0.0 or slot_size.y <= 0.0:
+		slot_size = custom_minimum_size
+	_cd_overlay.visible = true
+	_cd_overlay.position = Vector2.ZERO
+	_cd_overlay.size = Vector2(slot_size.x, slot_size.y * ratio)
+
 func _ready():
 	count_label = get_node_or_null("CountLabel")
 	tooltip_panel.top_level = true
@@ -54,6 +85,8 @@ func _ready():
 	if _pending_icon:
 		icon.texture = _pending_icon
 	_apply_count(_pending_count)
+	if _pending_cooldown > 0.0:
+		set_cooldown_progress(_pending_cooldown)
 
 func set_tooltip(text: String):
 	if tooltip_label:

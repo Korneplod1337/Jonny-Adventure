@@ -150,12 +150,14 @@ display_name = "---"
 name_texture = ExtResource("59_name_joker")
 unlocked = false
 
-[sub_resource type="Resource" id="CharEntry_joker"]
+[sub_resource type="Resource" id="Resource_mup2x"]
 script = ExtResource("54_char_entry")
 id = "JonnyAlt"
-display_name = "??? Jonny"
+display_name = "---"
+portrait = ExtResource("59_name_joker")
 name_texture = ExtResource("59_name_joker")
 unlocked = false
+metadata/_custom_type_script = "uid://rf5hnoay7fia"
 
 [sub_resource type="Resource" id="Resource_3lt5t"]
 script = ExtResource("54_char_entry")
@@ -165,6 +167,14 @@ portrait_locked = ExtResource("59_name_joker")
 name_texture = ExtResource("59_name_joker")
 unlocked = false
 metadata/_custom_type_script = "uid://rf5hnoay7fia"
+
+[sub_resource type="Resource" id="CharEntry_joker"]
+script = ExtResource("54_char_entry")
+id = "Joker"
+display_name = "-"
+portrait_locked = ExtResource("59_name_joker")
+name_texture = ExtResource("59_name_joker")
+unlocked = false
 
 [sub_resource type="Resource" id="Resource_gr0d0"]
 script = ExtResource("54_char_entry")
@@ -590,7 +600,7 @@ layout_mode = 2
 [node name="Char_select_menu" type="CanvasLayer" parent="." unique_id=504680637]
 visible = false
 script = ExtResource("43_bkji5")
-characters = Array[ExtResource("54_char_entry")]([SubResource("CharEntry_jonny"), SubResource("CharEntry_jonnytta"), SubResource("Resource_tfjan"), SubResource("CharEntry_joker"), SubResource("Resource_3lt5t"), SubResource("Resource_gr0d0")])
+characters = Array[ExtResource("54_char_entry")]([SubResource("CharEntry_jonny"), SubResource("CharEntry_jonnytta"), SubResource("Resource_tfjan"), SubResource("Resource_mup2x"), SubResource("Resource_3lt5t"), SubResource("CharEntry_joker"), SubResource("Resource_gr0d0")])
 
 [node name="char_bg" type="Sprite2D" parent="Char_select_menu" unique_id=1365344464]
 scale = Vector2(2, 2)

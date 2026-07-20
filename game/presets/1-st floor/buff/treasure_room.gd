@@ -1,8 +1,8 @@
 extends "res://game/presets/RoomScript.gd" #no enemy
 
 const ChestScene := preload("uid://tsiccout8ibv")
-var tiers_equip_array := [[0, 1], [0, 1, 2], [0, 1, 2], [0, 1, 2, 3], [0, 2, 3], [2, 3], [2, 3]]
-var tiers_item_array := [[0, 1], [0, 1, 2, 4], [0, 1, 2, 4], [0, 1, 2, 3, 4], [0, 2, 3, 4], [2, 3], [2, 3]]
+var tiers_equip_array := [[0, 1], [0, 1], [0, 1, 2], [0, 1, 2], [0, 1, 2, 3], [0, 2, 3], [2, 3], [2, 3]]
+var tiers_item_array :=  [[0, 1], [0, 1], [0, 1, 2, 4], [0, 1, 2, 4], [0, 1, 2, 3, 4], [0, 2, 3, 4], [2, 3], [2, 3]]
 
 func _ready() -> void:
 	tabels_spawn()
