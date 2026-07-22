@@ -152,11 +152,12 @@ var POOLS := {
 		
 	],
 	"shop": [
-		{"id": "lvlup", 		"scene": preload("uid://ywfb4cg1rk1u"), "tier": 0},
-		
-		{"id": "shield", 	"scene": preload("uid://baga6mxgrpf1s"), "tier": 2},
-		{"id": "ring", 		"scene": preload("uid://baga6mxgrpf1s"), "tier": 3},
-		{"id": "cool_ring", "scene": preload("uid://baga6mxgrpf1s"), "tier": 1},
+		{"id": "lvlup", 		"scene": preload("uid://ywfb4cg1rk1u"), 		"tier": 0},
+		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), 	"tier": 0},
+		{"id": "healalt", 	"scene": preload("uid://ujleakh3r3l0"), 		"tier": 0},
+		{"id": "healblack", 	"scene": preload("uid://c83w3v5l3edwc"), 	"tier": 0},
+		{"id": "healbig", 	"scene": preload("uid://bvy7i2nw65tyy"), 	"tier": 0},
+
 	],
 	"chest": [
 		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), "tier": 0},

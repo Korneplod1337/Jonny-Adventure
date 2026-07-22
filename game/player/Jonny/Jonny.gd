@@ -126,14 +126,14 @@ func _try_use_ability() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Ability"):
 		_try_use_ability()
-	if Input.is_action_just_pressed("button_K"):
-		take_damage(1)
-	if Input.is_action_just_pressed("button_L"):
-		heal(1)
-	if Input.is_action_just_pressed("o"):
-		ItemManager.spawn("treasure", [0,1,4], self.global_position)
-	if Input.is_action_just_pressed("i"):
-		ItemManager.spawn("treasure", [4], self.global_position)
+	#if Input.is_action_just_pressed("button_K"):
+	#	take_damage(1)
+	#if Input.is_action_just_pressed("button_L"):
+	#	heal(1)
+	#if Input.is_action_just_pressed("o"):
+	#	ItemManager.spawn("treasure", [0,1,4], self.global_position)
+	#if Input.is_action_just_pressed("i"):
+	#	ItemManager.spawn("treasure", [4], self.global_position)
 
 
 @export var on_ice: bool = true

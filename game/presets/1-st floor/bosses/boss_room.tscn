@@ -138,8 +138,11 @@ scale = Vector2(2, 2)
 
 [node name="Spider_queen_boss" parent="." unique_id=1352998397 instance=ExtResource("6_t5yr1")]
 position = Vector2(0, -25)
-shot_charge_time = 1.4
-spawn_distance_buffer = 20.0
+boss_projectile_range = 800.0
+wait_idle_time = 0.8
+shot_charge_time = 1.0
+spawn_distance_buffer = 25.0
+boss_move_speed = 200.0
 
 [node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=1128471653]
 

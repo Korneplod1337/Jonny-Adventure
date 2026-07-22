@@ -22,7 +22,7 @@ class_name Boss
 @export var Boss_phase_switch_buff: float = 0.0
 
 ## База паузы между фазами (бывший hard_cooldown_time босса = 1.8).
-const PHASE_SWITCH_BASE := 1.8
+const PHASE_SWITCH_BASE := 1.6
 const VENGEFUL_SHOT_SCENE := preload("res://game/enemy/projectiles/EnemyShotBossrev.tscn")
 const VENGEFUL_SHOT_SPEED := 350.0
 const VENGEFUL_SHOT_RANGE := 1000.0
