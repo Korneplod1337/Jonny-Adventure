@@ -18,6 +18,7 @@ func _ready() -> void:
 		#Интвентарь
 	stats_panel.visible = false
 	inventory_panel.visible = false
+	_configure_minimap()
 	
 		# подключения к игроку
 	var player := get_tree().get_first_node_in_group("player")
@@ -62,6 +63,7 @@ func set_ui_locked(locked: bool) -> void:
 		stats_panel.visible = false
 		inventory_panel.visible = false
 		equip_panel.visible = false
+	_refresh_minimap_visibility()
 
 
 func show_boss_effect(text: String, color: Color) -> void:
@@ -268,6 +270,10 @@ func _toggle_full_ui() -> void:
 	_on_coins_changed(GameState.coins)
 	if ui_open:
 		_render_inventory()
+		var dungeon := get_tree().current_scene
+		if dungeon and dungeon.has_method("refresh_minimap"):
+			dungeon.refresh_minimap()
+	_refresh_minimap_visibility()
 
 # Ачивки
 func _show_new_achievement(data: String):
@@ -320,7 +326,26 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var effect_timer: Timer = $HUD/Effect/Effect_timer
 @onready var toxic_color = $HUD/Toxic
 
+@onready var minimap_panel: Control = $HUD/Minimap
+@onready var minimap_label: Label = $HUD/Minimap/MapLabel
+var _minimap_text := ""
+var _minimap_level := 1
 
+
+func _configure_minimap() -> void:
+	minimap_label.add_theme_font_override("font", font)
+	minimap_panel.visible = false
+
+
+func update_minimap(map_text: String, minimap_level: int) -> void:
+	_minimap_text = map_text
+	_minimap_level = minimap_level
+	minimap_label.text = map_text
+	_refresh_minimap_visibility()
+
+
+func _refresh_minimap_visibility() -> void:
+	minimap_panel.visible = ui_open and _minimap_level > 1
 
 
 #Временные кнопки

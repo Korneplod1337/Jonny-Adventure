@@ -37,20 +37,26 @@ const BASE_IMMUNE_TIME := 0.3
 
 var hp_bonus: 				int = 0
 var speed_bonus: 			int = 0
-var luck_bonus: 				int = 0
+var luck_bonus: 				int = 40
 var magic_bonus: 			int = 0
 var damage_bonus: 			int = 1
-var accuracy_bonus: 			int = 0
+var accuracy_bonus: 			int = 40
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 0
+var fire_rate_bonus:			int = 40
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0
 var pass_through_enemies: 	bool = false
+var _revive_pass_through: 	bool = false
 var _base_collision_mask: 	int = 0
 var ez_retaliation_count: 	int = 0
 var force_shield_max: 		int = 0
 var force_shield_charges: 	int = 0
+## База 1; миникарта в HUD при minimap > 1 (StarMap даёт +1)
+var minimap: 				int = 1
+var revival_count: 			int = 0
+var penetration_bonus: 		int = 0
+var attack_locked: 			bool = false
 
 @export_range(1.0, 10.0, 1.0) var hit_points_level: 	float = 1.0
 @export_range(1.0, 10.0, 1.0) var move_speed_level: 	float = 2.0
@@ -126,10 +132,10 @@ func _try_use_ability() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Ability"):
 		_try_use_ability()
-	#if Input.is_action_just_pressed("button_K"):
-	#	take_damage(1)
-	#if Input.is_action_just_pressed("button_L"):
-	#	heal(1)
+	if Input.is_action_just_pressed("button_K"):
+		take_damage(1)
+	if Input.is_action_just_pressed("button_L"):
+		heal(1)
 	#if Input.is_action_just_pressed("o"):
 	#	ItemManager.spawn("treasure", [0,1,4], self.global_position)
 	#if Input.is_action_just_pressed("i"):
@@ -176,6 +182,7 @@ func _process(delta: float) -> void:
 
 	move_and_slide()
 	now_move_direction = get_real_velocity()
+	_update_walking_sfx()
 	
 # =========================
 # BODY ANIMATION
@@ -265,7 +272,7 @@ func _process(delta: float) -> void:
 		play_head(anim_dir)
 	
 	# Уход на перезарядку
-	if can_shoot and shooting and not movement_locked:
+	if can_shoot and shooting and not movement_locked and not attack_locked:
 		fire(shot_direction)
 		start_reload()
 		
@@ -307,6 +314,9 @@ func update_equipment_visuals():
 		boots_sprite.visible = false
 
 # ЗДОРОВЬЕ
+const LOW_HP_FULL_HEART := 2 # целое сердце (две половинки)
+const LOW_HP_HALF_HEART := 1 # полсердца
+
 func take_damage(phy_damage: int = 0,
 				mag_damage: int = 0, clr_damage: int = 0, attacker: Node = null) -> void:
 	#return
@@ -325,8 +335,11 @@ func take_damage(phy_damage: int = 0,
 	
 	if force_shield_charges > 0:
 		force_shield_charges -= 1
+		SoundManager.play_hit()
 		_start_invulnerability()
 		return
+	
+	SoundManager.play_hit()
 	
 	if phy_damage:
 		var remaining := phy_damage
@@ -346,6 +359,7 @@ func take_damage(phy_damage: int = 0,
 		if hp_list["red"] + hp_list["green"] + hp_list["blue"] + hp_list["black"] <= 0: 
 			print('die')
 			die()
+			return
 	if mag_damage:
 		var remaining := mag_damage
 		for t in ["green", "red"]:
@@ -357,6 +371,7 @@ func take_damage(phy_damage: int = 0,
 		if hp_list["red"] + hp_list["green"] <= 0: 
 			print('die')
 			die()
+			return
 	if clr_damage:
 		var remaining := clr_damage
 		for d in ["blue"]:
@@ -374,15 +389,17 @@ func take_damage(phy_damage: int = 0,
 		if hp_list["red"] <= 0: 
 			print('die')
 			die()
+			return
 	
 
+	_update_heartbeat_sfx()
 	_start_invulnerability()
 
 func _start_invulnerability() -> void:
 	invulnerable = true
 	imuneTimer.wait_time = BASE_IMMUNE_TIME + immune_time_bonus
 	imuneTimer.start()
-	$AnimatedSprite2D.modulate.a = 0.4
+	_set_invuln_visual(true)
 	_emit_hp_visual_changed()
 
 func _retaliate_ez(attacker: Node) -> void:
@@ -411,6 +428,7 @@ func recharge_force_shield() -> void:
 
 
 func heal(red: int = 0, green: int = 0, blue: int = 0, black: int = 0) -> void:
+	var before := _total_hp_units()
 	hp_list["blue"] += blue
 	hp_list["black"] += black
 	
@@ -419,6 +437,9 @@ func heal(red: int = 0, green: int = 0, blue: int = 0, black: int = 0) -> void:
 	if green != 0:
 		_add_live_hp("green", green)
 	
+	if _total_hp_units() > before:
+		SoundManager.play_heal()
+	_update_heartbeat_sfx()
 	_emit_hp_visual_changed()
 
 func _add_live_hp(typ: String, amount: int) -> void:
@@ -430,16 +451,89 @@ func _add_live_hp(typ: String, amount: int) -> void:
 	hp_list[typ] += add
 
 func die() -> void:
+	if try_revive():
+		return
+	SoundManager.stop_heartbeat()
+	SoundManager.stop_walking()
+	# SoundManager.play_death()
 	var hud := get_tree().get_first_node_in_group("HUD")
 	if hud:
 		hud.show_death_menu(total_time_alive, total_distance_travelled)
 	get_tree().paused = true
 	AchievementManager.unlock_achievement('First time')
 
+
+func try_revive() -> bool:
+	if revival_count <= 0:
+		return false
+	revival_count -= 1
+
+	hp_bonus -= 2
+	max_hp = int(StatManager.get_stat(self, "hp"))
+	hp_list["red"] = mini(1, maxi(max_hp, 0))
+	hp_list["green"] = 0
+	hp_list["blue"] = 0
+	hp_list["black"] = 0
+
+	SoundManager.play_revive()
+	SoundManager.duck_music_for_revive()
+
+	attack_locked = true
+	get_tree().create_timer(1.0).timeout.connect(_on_revive_attack_unlock)
+
+	invulnerable = true
+	imuneTimer.wait_time = 2.0
+	imuneTimer.start()
+	_set_invuln_visual(true)
+
+	_revive_pass_through = true
+	_update_enemy_collision()
+	_update_heartbeat_sfx()
+	_emit_stats_changed()
+	return true
+
+
+func _on_revive_attack_unlock() -> void:
+	attack_locked = false
+
+
+func _set_invuln_visual(active: bool) -> void:
+	var a := 0.4 if active else 1.0
+	for p in body_parts:
+		p.modulate.a = a
+	for p in head_parts:
+		p.modulate.a = a
+
+
+func _total_hp_units() -> int:
+	return hp_list["red"] + hp_list["green"] + hp_list["blue"] + hp_list["black"]
+
+
+func _live_hp_units() -> int:
+	return hp_list["red"] + hp_list["green"]
+
+
+func _update_heartbeat_sfx() -> void:
+	var live := _live_hp_units()
+	var threshold := LOW_HP_HALF_HEART if max_hp <= 4 else LOW_HP_FULL_HEART
+	if live > 0 and live <= threshold:
+		SoundManager.start_heartbeat()
+	else:
+		SoundManager.stop_heartbeat()
+
+
+func _update_walking_sfx() -> void:
+	if movement_locked or velocity.length() < 1.0:
+		SoundManager.stop_walking()
+	else:
+		SoundManager.start_walking()
+
 func _on_immune_timer_timeout() -> void:
 	invulnerable = false
-	$AnimatedSprite2D.modulate.a = 1
-	pass
+	_set_invuln_visual(false)
+	if _revive_pass_through:
+		_revive_pass_through = false
+		_update_enemy_collision()
 
 
 func _emit_hp_visual_changed() -> void:
@@ -525,6 +619,7 @@ func fire (shot_dir: Vector2) -> void:
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
 	shot.boomerang_power += boomerang_bonus
+	shot.penetration += penetration_bonus
 	
 	if shot_enchantment:
 		shot.enchantment = shot_enchantment.duplicate(true)
@@ -562,7 +657,7 @@ func _emit_bonuses_changed() -> void:
 
 func _update_enemy_collision() -> void:
 	var mask := _base_collision_mask
-	if pass_through_enemies or is_dashing:
+	if pass_through_enemies or is_dashing or _revive_pass_through:
 		mask = mask & ~ENEMY_COLLISION_BITS
 	if is_dashing:
 		mask = mask & ~PROJECTILE_COLLISION_BIT

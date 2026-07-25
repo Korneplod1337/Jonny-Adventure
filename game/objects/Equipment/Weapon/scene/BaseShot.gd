@@ -40,6 +40,9 @@ var spawned_spread := false
 var base_crit_bonus: float = 60.0
 var crit_sprite: int = -1
 
+enum FireSfxKind { TEAR, GUN, SLASH, NONE }
+@export var fire_sfx_kind: FireSfxKind = FireSfxKind.TEAR
+
 const CRIT_WORLD_OFFSET := Vector2(0, -60)
 
 func _ready() -> void:
@@ -50,10 +53,25 @@ func _ready() -> void:
 	spread_angle = StatManager.get_stat(player, "spread")
 	if GameState.Surestrike:
 		spread_angle = 0.0
+	_play_attack_sfx()
 	if pellet_count > 1 and not spawned_spread:
 		spawned_spread = true
 		_spawn_spread()
 	_init_boomerang()
+
+
+func _play_attack_sfx() -> void:
+	if spawned_spread:
+		return
+	match fire_sfx_kind:
+		FireSfxKind.GUN:
+			SoundManager.play_gun_shot()
+		FireSfxKind.TEAR:
+			SoundManager.play_tear_shot()
+		FireSfxKind.SLASH:
+			SoundManager.play_slash()
+		FireSfxKind.NONE:
+			pass
 
 func _physics_process(delta: float) -> void:
 	if exploded:
@@ -172,6 +190,7 @@ func _get_final_damage() -> float:
 			chance -= 0.2
 			if crit_sprite == 4:
 				StatsManager.add_statistic_progress("Mega_crit", 1)
+				SoundManager.play_megacrit()
 				break
 		else:
 			break

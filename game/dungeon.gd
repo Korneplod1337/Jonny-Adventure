@@ -107,6 +107,7 @@ const FLOOR_ENTER_DROP := 100.0
 
 var rooms := {} # Все сгенерированные комнаты: ключ — Vector2 позиции, значение — Room
 var directions := [Vector2(1,0), Vector2(-1,0), Vector2(0,1), Vector2(0,-1)]
+var current_room_pos: Vector2 = Vector2.ZERO
 
 
 func _ready():
@@ -117,7 +118,7 @@ func _ready():
 	GameState._clear_boss_bufs()
 	GameState.random_boss_bufs(current_floor)
 		
-	$Arcade_music.play()
+	SoundManager.play_location_music(_location_preset_index())
 	rooms = generator.generate(
 		floors_config[current_floor]['total_rooms'], 
 		_shop_rooms_for_floor(floors_config[current_floor]['shop_rooms']), 
@@ -132,6 +133,7 @@ func _ready():
 	_ensure_player_draw_order()
 	player.update_level_buffs()
 	add_child(hud_instance)
+	refresh_minimap()
 
 
 func _location_preset_index() -> int:
@@ -210,8 +212,13 @@ func _ensure_player_draw_order() -> void:
 
 
 func spawn_player_in_start(start_instance: Node) -> void:
+	for key in rooms.keys():
+		if rooms[key].type == RoomType.START:
+			current_room_pos = key
+			break
 	player.global_position = start_instance.global_position
 	player.set_room(start_instance)
+	refresh_minimap()
 
 func configure_doors_for_room(room: Room, scene: Node2D) -> void:
 # направление -> имя узла двери в пресете
@@ -288,12 +295,21 @@ func teleport_player(door: Node, body: Node2D) -> void:
 	# временно отключаем эту дверь
 	spawn_door.call_deferred("set_temporarily_inactive")
 	body.global_position = spawn_pos
+	current_room_pos = target_pos
+	refresh_minimap()
 
 	if body.has_method("set_room"): #камера тп
 		body.set_room(target_scene)
 
 
 func print_map():
+	print(build_minimap_text())
+
+
+func build_minimap_text() -> String:
+	if rooms.is_empty():
+		return ""
+
 	var xs = rooms.keys().map(func(v): return v.x)
 	var ys = rooms.keys().map(func(v): return v.y)
 
@@ -302,41 +318,49 @@ func print_map():
 	var min_y = int(ys.min())
 	var max_y = int(ys.max())
 
-	var output = ""
+	var output := ""
 	for y in range(min_y, max_y + 1):
-		var line_room = ""
-		var line_conn = ""
+		var line_room := ""
+		var line_conn := ""
 		for x in range(min_x, max_x + 1):
-			var key = Vector2(x,y)
+			var key := Vector2(x, y)
 			if rooms.has(key):
-				match rooms[key].type: 
-					RoomType.START: 			line_room += "()"
-					RoomType.STANDARD: 		line_room += "S"
-					RoomType.SHOP: 			line_room += "M"
-					RoomType.ARMORY: 		line_room += "A"
-					RoomType.BLOOD_TRIBUTE:	line_room += "K" #
-					RoomType.TREASURE: 		line_room += "T"
-					RoomType.BANK: 			line_room += "J" #
-					RoomType.GAMBLING: 		line_room += "G" #
-					RoomType.BOSS: 			line_room += "B" #
-					RoomType.SECRET: 		line_room += "H" #
-					RoomType.STATUP: 		line_room += "U" #
-				if rooms[key].exits.has(Vector2(1,0)):
-					line_room += "-"
-				else:
-					line_room += " "
+				# Каждая клетка ровно 2 символа: тип + выход на восток
+				line_room += _room_type_symbol(rooms[key].type)
+				line_room += "-" if rooms[key].exits.has(Vector2(1, 0)) else " "
+				line_conn += "| " if rooms[key].exits.has(Vector2(0, 1)) else "  "
 			else:
 				line_room += "  "
-			if rooms.has(key):
-				if rooms[key].exits.has(Vector2(0,1)):
-					line_conn += "| "
-				else:
-					line_conn += "  "
-			else:
 				line_conn += "  "
-		output += line_room.rstrip(" \t") + "\n"
-		output += line_conn.rstrip(" \t") + "\n"
-	print(output)
+		output += line_room + "\n" + line_conn + "\n"
+	return output
+
+
+func _room_type_symbol(type: int) -> String:
+	match type:
+		RoomType.START: return "O"
+		RoomType.STANDARD: return "S"
+		RoomType.SHOP: return "M"
+		RoomType.ARMORY: return "A"
+		RoomType.BLOOD_TRIBUTE: return "K"
+		RoomType.TREASURE: return "T"
+		RoomType.BANK: return "J"
+		RoomType.GAMBLING: return "G"
+		RoomType.BOSS: return "B"
+		RoomType.SECRET: return "H"
+		RoomType.STATUP: return "U"
+		_: return "?"
+
+
+func refresh_minimap() -> void:
+	if not is_instance_valid(hud_instance):
+		return
+	if not hud_instance.has_method("update_minimap"):
+		return
+	var level := 1
+	if is_instance_valid(player):
+		level = int(player.minimap)
+	hud_instance.update_minimap(build_minimap_text(), level)
 
 func go_to_next_floor(hatch: Node2D) -> void:
 	var next_floor := current_floor + 1
@@ -381,6 +405,7 @@ func go_to_next_floor(hatch: Node2D) -> void:
 
 	_reset_player_interactions()
 	print_map()
+	refresh_minimap()
 
 
 func regenerate_floor(new_floor: int) -> void:
@@ -392,6 +417,7 @@ func regenerate_floor(new_floor: int) -> void:
 		player.end_floor_transition()
 	_reset_player_interactions()
 	print_map()
+	refresh_minimap()
 
 
 func _load_floor(new_floor: int) -> void:
@@ -401,6 +427,7 @@ func _load_floor(new_floor: int) -> void:
 	await get_tree().process_frame
 	await get_tree().physics_frame
 
+	SoundManager.play_location_music(_location_preset_index())
 	GameState._clear_level_bufs()
 	GameState.random_level_bufs(current_floor)
 	GameState._clear_boss_bufs()
@@ -442,11 +469,13 @@ func _reset_player_interactions() -> void:
 		ic.reset_interaction_state()
 
 
+func _exit_tree() -> void:
+	SoundManager.stop_music()
+
+
 func clear_floor_content() -> void:
 	rooms.clear()
 	for child in get_children():
 		if child == player or child == hud_instance:
-			continue
-		if child is AudioStreamPlayer:
 			continue
 		child.queue_free()

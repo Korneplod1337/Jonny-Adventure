@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://su5svp3wtnp6"]
 
-[ext_resource type="Script" path="res://game/objects/items/scripts/fernlucky.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://image/items/ItemFernLucky.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://bs0au46mytwou" path="res://game/objects/items/scripts/fernlucky.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dkyp828ofigki" path="res://image/items/2 tier/ItemFernLucky.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -10,22 +10,22 @@ radius = 40.04997
 [sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
 radius = 19.0
 
-[node name="FernLucky" type="Area2D"]
+[node name="FernLucky" type="Area2D" unique_id=438033537]
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Fern Flower"
-item_tooltip2 = ""
+item_tooltip2 = "A legendary flower that brings not just luck, but abundance. Even the empty chests in front of him are filling up"
 item_id = "fernlucky"
 
-[node name="Interactable" parent="." instance=ExtResource("3_interact")]
+[node name="Interactable" parent="." unique_id=1722674193 instance=ExtResource("3_interact")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=528088415]
 shape = SubResource("CircleShape2D_lh7he")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=690446289]
 shape = SubResource("CircleShape2D_oisx2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=774802219]
 scale = Vector2(2, 2)
 texture = ExtResource("2_tex")

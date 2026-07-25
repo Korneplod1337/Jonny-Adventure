@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b7qvxj2i104cp" path="res://game/presets/1-st floor/shops/armory_room.tscn" id="6_2xsro"]
 [ext_resource type="PackedScene" uid="uid://ctpm02rpg8gfx" path="res://game/presets/1-st floor/buff/treasure_room.tscn" id="6_3jp2u"]
 [ext_resource type="PackedScene" uid="uid://e8vf31lieg73" path="res://game/presets/1-st floor/bosses/boss_room.tscn" id="7_bdqim"]
-[ext_resource type="AudioStream" uid="uid://bsjukypra43dq" path="res://sound/music/arcade.ogg" id="7_luatc"]
 [ext_resource type="PackedScene" uid="uid://cs61w8ntlmjw7" path="res://game/presets/1-st floor/dop/Gambling_room.tscn" id="10_iyqye"]
 [ext_resource type="PackedScene" uid="uid://bkfxd17whnabm" path="res://game/presets/1-st floor/dop/Statup_room.tscn" id="11_statup"]
 
@@ -30,7 +29,3 @@ bank_room_preset = Array[PackedScene]([ExtResource("6_3jp2u")])
 gambling_room_preset = Array[PackedScene]([ExtResource("10_iyqye")])
 statup_room_preset = Array[PackedScene]([ExtResource("11_statup")])
 room_gap = Vector2(800, 800)
-
-[node name="Arcade_music" type="AudioStreamPlayer" parent="." unique_id=687942417]
-stream = ExtResource("7_luatc")
-parameters/looping = true

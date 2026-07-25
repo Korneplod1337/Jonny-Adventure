@@ -90,7 +90,7 @@ collision_layer = 16
 collision_mask = 23
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1477807942]
-position = Vector2(795.56, 283)
+position = Vector2(796.12, 278)
 shape = SubResource("RectangleShape2D_c1ro8")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1932436105]
@@ -108,12 +108,12 @@ scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=2008876526]
-position = Vector2(165, -48)
+position = Vector2(165.06, -52)
 scale = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_c0yv7")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D" unique_id=952240782]
-position = Vector2(-402, -438)
+position = Vector2(-402, -442)
 shape = SubResource("RectangleShape2D_c1ro8")
 
 [node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("4_m3kms")]

@@ -1,6 +1,7 @@
 extends Node2D
 
 const DEFAULT_ANIM := "default"
+const HOLD_TIME := 0.1
 
 const ROOM_TYPE_TO_ANIM := {
 	0: "start",      # START
@@ -22,6 +23,8 @@ const ROOM_TYPE_TO_ANIM := {
 
 var active := true
 var just_teleported := false
+var _player_inside: Node2D = null
+var _hold_timer := 0.0
 
 @onready var _room_type_sprites: AnimatedSprite2D = $Room_type_sprites
 
@@ -51,21 +54,45 @@ func _get_room_type_sprites() -> AnimatedSprite2D:
 	return _room_type_sprites
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if not active:
+func _physics_process(delta: float) -> void:
+	if not active or _player_inside == null:
+		_hold_timer = 0.0
 		return
-	if not body.is_in_group("player"):
+	if not _is_pressing_door_direction():
+		_hold_timer = 0.0
+		return
+
+	_hold_timer += delta
+	if _hold_timer < HOLD_TIME:
 		return
 
 	active = false
-
+	_hold_timer = 0.0
 	var dungeon := get_tree().current_scene
-	dungeon.teleport_player(self, body)
+	dungeon.teleport_player(self, _player_inside)
+	_player_inside = null
+
+
+func _is_pressing_door_direction() -> bool:
+	# rotation 0 = вверх; кнопка берётся по визуальному повороту двери
+	var facing := Vector2.UP.rotated(rotation)
+	if absf(facing.y) >= absf(facing.x):
+		return Input.is_action_pressed("move_up" if facing.y < 0 else "move_down")
+	return Input.is_action_pressed("move_left" if facing.x < 0 else "move_right")
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if not body.is_in_group("player"):
+		return
+	_player_inside = body
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
+	if _player_inside == body:
+		_player_inside = null
+		_hold_timer = 0.0
 	if just_teleported:
 		just_teleported = false
 		active = true
@@ -76,8 +103,11 @@ func _on_body_exited(body: Node2D) -> void:
 func set_temporarily_inactive() -> void:
 	active = false
 	just_teleported = true
+	_player_inside = null
+	_hold_timer = 0.0
 
 
 func reactivate_after_room_clear() -> void:
 	active = true
 	just_teleported = false
+	_hold_timer = 0.0

@@ -9,8 +9,9 @@ func _ready() -> void:
 	speed = 0
 	self_damage_multiplier = 1.2
 	rotation = direction.angle()
-
+	fire_sfx_kind = FireSfxKind.SLASH
 	if not _melee_boomerang_copy:
+		SoundManager.play_slash()
 		_fire_direction = direction.normalized()
 		if boomerang_power > 0:
 			_melee_boomerang_legs = BoomerangPath.build_legs(boomerang_power)

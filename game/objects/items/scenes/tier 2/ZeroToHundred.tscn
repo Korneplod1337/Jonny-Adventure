@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnmgffejiu4wf"]
 
 [ext_resource type="Script" uid="uid://dupa4hyx1hdqr" path="res://game/objects/items/scripts/zerotohundred.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://dwcbaw4xjb000" path="res://image/items/ItemZeroToHundred.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://dwcbaw4xjb000" path="res://image/items/2 tier/ItemZeroToHundred.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Zero-to-hundred"
-item_tooltip2 = ""
+item_tooltip2 = "Zero-to-hundred"
 item_id = "zerotohundred"
 
 [node name="Interactable" parent="." unique_id=1481799263 instance=ExtResource("3_interact")]

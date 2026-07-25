@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cgdrpbguyb166"]
 
 [ext_resource type="Script" uid="uid://bny7cg53un5dg" path="res://game/objects/items/scripts/joker.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://bbmdsdhnk3s8c" path="res://image/items/ItemQ.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 [ext_resource type="Texture2D" uid="uid://tf1ljs4wma7f" path="res://image/items/4 tier/ItemCard10.png" id="4_r6jhs"]
 
@@ -14,9 +13,9 @@ radius = 19.0
 [node name="Joker" type="Area2D" unique_id=1378068918]
 collision_layer = 0
 script = ExtResource("1_script")
-item_icon = ExtResource("2_tex")
+item_icon = ExtResource("4_r6jhs")
 item_tooltip = "Joker"
-item_tooltip2 = ""
+item_tooltip2 = "This card is more powerful than the others and does not have the same card attraction. Great."
 item_id = "joker"
 
 [node name="Interactable" parent="." unique_id=1694018968 instance=ExtResource("3_interact")]

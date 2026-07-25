@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://7wom6t7b0i7c" path="res://game/objects/obstacles/rockSmallest.tscn" id="9_p8hec"]
 [ext_resource type="PackedScene" uid="uid://bdb7wsvhvikuk" path="res://game/objects/obstacles/rock2.5.tscn" id="10_jo4v1"]
 [ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="11_6cfgv"]
+[ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn" id="14_i3tqa"]
+[ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_o41he"]
 [ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="25_ww7l6"]
 [ext_resource type="PackedScene" uid="uid://lcbyc42s480y" path="res://game/objects/Equipment/boots/Speed_boots.tscn" id="26_bxm0y"]
 
@@ -21,7 +23,7 @@ size = Vector2(1280, 720)
 size = Vector2(1136, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw7ps"]
-size = Vector2(41.03, 654.5)
+size = Vector2(42, 654)
 
 [sub_resource type="Resource" id="Resource_ajpcv"]
 metadata/__load_path__ = "res://image/items/items_hud/ItemHealthPotion.png"
@@ -52,7 +54,7 @@ collision_layer = 16
 collision_mask = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1507287982]
-position = Vector2(207, -67.999985)
+position = Vector2(208, -72)
 shape = SubResource("RectangleShape2D_lsolu")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=594798197]
@@ -60,11 +62,11 @@ position = Vector2(207, 548)
 shape = SubResource("RectangleShape2D_lsolu")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1238806990]
-position = Vector2(795.545, 239.75)
+position = Vector2(796, 240)
 shape = SubResource("RectangleShape2D_sw7ps")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=345058929]
-position = Vector2(-381.94, 239)
+position = Vector2(-382, 239)
 shape = SubResource("RectangleShape2D_sw7ps")
 
 [node name="Rock2" parent="." unique_id=882224253 instance=ExtResource("3_yfpwr")]
@@ -163,3 +165,9 @@ position = Vector2(-333, 93)
 
 [node name="Fire3" parent="." unique_id=6822186 instance=ExtResource("25_ww7l6")]
 position = Vector2(-375, 93)
+
+[node name="Pistol" parent="." unique_id=241584314 instance=ExtResource("14_i3tqa")]
+position = Vector2(-180, 99)
+
+[node name="Sword_equip" parent="." unique_id=1046444052 instance=ExtResource("15_o41he")]
+position = Vector2(-191, -24)

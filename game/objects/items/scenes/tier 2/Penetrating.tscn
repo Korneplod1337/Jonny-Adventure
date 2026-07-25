@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bfc4l6acsnytu"]
+
+[ext_resource type="Script" uid="uid://nql1irxrt8iv" path="res://game/objects/items/scripts/penetrating.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dura4p50hgwqm" path="res://image/items/2 tier/ItemPenetrating.png" id="2_1q5ob"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Penetrating" type="Area2D" unique_id=554965135]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_1q5ob")
+item_tooltip = "Penetrating"
+item_tooltip2 = "Shot doesn't stop. It doesn't care"
+item_id = "penetrating"
+
+[node name="Interactable" parent="." unique_id=880629960 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=955725831]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=515327015]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1551778671]
+scale = Vector2(2, 2)
+texture = ExtResource("2_1q5ob")

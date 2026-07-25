@@ -1,15 +1,13 @@
 ToDo:
-	ЗВУКИ ходьба, выстрел, попадание, крит, мегакрит, переход между этажами, саундтреки
+	все предметы второго тира
 	
 	комикс между этажами
 	АБИЛКУ ПЕРСОНАЖАМ деши, щиты, рулетка
 	выбор скина
 	оружие доделать
 	ачивки
-	предметы второго тира
 	враг нужно попасть и убить, иначе бежит на тебя и взрывается
 	bank
-	все предметы второго тира
 	вторая и 3 лока, вторую в общий доступ хотя бы обрезанную
 	первый босс
 	тиры для слот машины и т.д. настроить
@@ -17,7 +15,6 @@ ToDo:
 	не все комнаты разблокированы
 	обучение пару слайдов на треугольник оружия, зачарования и статы подробнее
 	сразу босс сильная версия любого моба?
-		любые уложнения начинаются с 3-го этажа
 	animation world speed от эквипа?
 	fix z-index снарядов Jonny
 	treasure chest fix floor check
@@ -234,11 +231,41 @@ Owerall:
 	
 	
 	🟡 Тир 2 (средние) 	hp-1+11=10 luck15+1 magic17+1 speed11+2 damage13 accuracy11+3 range15+3 fire_rate18+1
+	Guts									hp_bonus: +4
+	Черепок BlackDeal					hp_bonus: -5, некроманту hp_bonus: +5 и лечение
+	Ouroboros							hp_bonus: +2, magic_bonus: +2
+	Алмаз								luck_bonus: +3, range_bonus: +3, fire_rate_bonus: +3
+	Четырёхлистный клевер				luck_bonus: +4
+	Магический гримуар					magic_bonus: +3
+	Mana flame							magic_bonus: +3, damage_bonus: +1
+	Amplifier							magic_bonus: +4
+	Black brand							speed_bonus: +2, accuracy_bonus: +2
+	Desperado							speed_bonus: +3, damage: +1 accuracy_bonus: -1
+	Дикий ветер							speed_bonus: +3
+	Zero-to-hundred						speed_bonus: +4
+	Огненная саламандра					damage_bonus: +3
+	Сердце дракона						damage_bonus: +2, hp_bonus: +2
+	Уран									damage_bonus: +4, magic_bonus: +2, hp_bonus: -3, range_bonus: -1
+	Executioner's axe 					damage_bonus: +3, accuracy_bonus: +1
+	Глаз ястреба							accuracy_bonus: +2, speed_bonus +2
+	Лазерный прицел 						accuracy_bonus: +3
+	Оптический прицел 					accuracy_bonus: +4
+	Охотник								accuracy_bonus: +3, range_bonus: +2, damage_bonus: +1 
+	Астролябия	 						range_bonus: +4
+	Планета	рий 							range_bonus: +2, hp_bonus: +1
+	Телескоп								range_bonus: +3
+	Latern								range_bonus: +2, luck_bonus: +3
+	Шаровая молния						fire_rate_bonus: +2, magic_bonus: +2
+	Элементаль воды 						fire_rate_bonus: +3, luck_bonus: +1
+	Золотой самородок					fire_rate_bonus: +3
+	Золотой слиток						fire_rate_bonus: +4
+	Well			 						fire_rate_bonus: +3, luck_bonus: +1
+	Joker		 						повышает все характеристики на 1.
 	
+	Цветок папоротника шанс найти доп лут в сундуках + 10%					luck_bonus: +3	 ✓
+	Звёздная карта	Миникарта, делает свой вес на 0  						range_bonus: +2	 ✓
+	Penetrating 		Выстрелы пронзают +1 врагов.												 ✓
 	
-	
-	Звёздная карта	Миникарта, делает свой вес на 0  ???????? 				range_bonus: +2
-	Penetrating 		Выстрелы пронзают +1 врагов.			нет ????????????????????????????????????? ЕЩЁ ТАКОГО
 	Мимик			20% шанс, что сундук окажется мимиком (с двойным лутом в 50% случаев).	нет
 	Treasure map		Спавнит случайный сундук в случайной комнате
 	Opulence			Создаёт 2 случайных сундука рядом с игроком.				fire_rate_bonus: +1
@@ -246,7 +273,7 @@ Owerall:
 	organic shield 	даёт +1 экстралечения									нет.
 	Gigant ring		Кольцо великана – увеличивает размер и здоровье.			hp_bonus: +4
 	Occult			уменьшает хп всем врагам на 10%							hp_bonus: +3
-	Второе сердце	Даёт 1 возрождение и +2 здоровье.						hp_bonus: +2
+	Второе сердце	Даёт 1 возрождение 										hp_bonus: +2 	 ✓
 	Gaia				Повышает урон за здоровье								hp_bonus: +2
 	Magic seal		Максимальный урон по игроку не больше 1, +0.1 к иммунитету magic_bonus: +1
 	
@@ -259,59 +286,28 @@ Owerall:
 	Акселератор		Повышает урон атаки в зависимости от скорости передвижения. speed_bonus: +2
 	Киборг			Конвертирует здоровье в щиты, даёт +5 к базовому урону за каждое конвертированное ХП.	нет
 	
-	Цветок критов	Увеличивает урон с крита в зависимости от шанса крита.	luck_bonus: +1, accuracy_bonus: +1Сырые кишки 							hp_bonus: +4
-	Черепок BlackDeal					hp_bonus: -5, некроманту hp_bonus: +5 и лечение
-	Ouroborus							hp_bonus: +2, magic_bonus: +2
-	Цветок папоротника	шанс найти доп лут в сундуках + 10%	luck_bonus: +3
-	Алмаз								luck_bonus: +3, range_bonus: +3, fire_rate_bonus: +3
-	Четырёхлистный клевер				luck_bonus: +4
-	Магический гримуар					magic_bonus: +3
-	Mana flame							magic_bonus: +3, damage_bonus: +1
-	Amplifier							magic_bonus: +4
-	Black brand							speed_bonus: +2, accuracy_bonus: +2
-	Desperado							speed_bonus: +3, damage: +1
-	Дикий ветер							speed_bonus: +3
-	Zero-to-hundred						speed_bonus: +4
-	Огненная саламандра					damage_bonus: +3
-	Сердце дракона						damage_bonus: +2, hp_bonus: +2
-	Уран									damage_bonus: +4, magic_bonus: +2, hp_bonus: -3, range_bonus: -1
-	Executioner's axe 					damage_bonus: +3, accuracy_bonus: +1
-	Глаз ястреба							accuracy_bonus: +2, speed_bonus +2
-	Лазерный прицел 						accuracy_bonus: +3
-	Оптический прицел 					accuracy_bonus: +4
-	Охотник								accuracy_bonus: +3, range_bonus: +2, damage_bonus: +1 
-	Астролябия	 						range_bonus: +4
-	Планетарий 							range_bonus: +2, hp_bonus: +1
-	Телескоп								range_bonus: +3
-	Latern								range_bonus: +2, luck_bonus: +3
-	Шаровая молния						fire_rate_bonus: +2, magic_bonus: +2
-	Элементаль воды 						fire_rate_bonus: +3, luck_bonus: +1
-	Золотой самородок					fire_rate_bonus: +3
-	Золотой слиток						fire_rate_bonus: +4
-	Well			 						fire_rate_bonus: +3, luck_bonus: +1
-	Joker		 This card is more powerful than the others and does not have the same card attraction. Great.
-										повышает все характеристики на 1.
 	Siege hammer		Дополнительный урон за крит, если он есть.				accuracy_bonus: +2
+	Цветок критов	Увеличивает урон с крита в зависимости от шанса крита.	luck_bonus: +1, accuracy_bonus: +1
 	
 	Kalia's Space-time circuit Повышает ход времени на 14%, шанс дополнительной монеты с врага. нет
 	
 	🃏 Игральные карты
-	Карта 6		magic_bonus: +3, luck_bonus: -1
-	Карта 7		luck_bonus: +3, speed_bonus: -1
-	Карта 8		speed_bonus: +3, range_bonus: -1
-	Карта 9		range_bonus: +3, accuracy_bonus: -1
-	Карта 10		accuracy_bonus: +3, fire_rate_bonus: -1
-	Валет 		fire_rate_bonus: +3, hp_bonus: -1
-	Дама	 		hp_bonus: +3, damage_bonus: -1
-	Король		damage_bonus: +3, magic_bonus: -1
-	Туз			повышает все характеристики на 1
+	Карта 6			magic_bonus: +3, luck_bonus: -1
+	Карта 7			luck_bonus: +3, speed_bonus: -1
+	Карта 8			speed_bonus: +3, range_bonus: -1
+	Карта 9			range_bonus: +3, accuracy_bonus: -1
+	Карта 10			accuracy_bonus: +3, fire_rate_bonus: -1
+	Валет 			fire_rate_bonus: +3, hp_bonus: -1
+	Дама	 			hp_bonus: +3, damage_bonus: -1
+	Король			damage_bonus: +3, magic_bonus: -1
+	Туз				повышает все характеристики на 1
 	
 	Карты увеличивают шанс найти другие карты. Сильно увеличивают вес друг друга.
 	туз очень сильно увеличивает шанс найти себя помимо обычного увеличения
 	Найти туз - открывает Joker. У Joker карты не увеличивают вес друг друга. Туз всё ещё работает
 	
 	🔴 Тир 3 (сильные)	
-	Полёт!
+	Полёт! - 		
 	Бумеранг - 		Бумеранг снарядов ✓
 	Стрельба звёздочкой	Выпускает снаряды во все стороны.
 	
@@ -340,7 +336,8 @@ Owerall:
 
 	Жёлтые:
 	Toxic			Весь урон врагов становится магическим					✓
-	Castle			На уровне есть уникальная вертикальная комната с Головорезом, который стреляет лучами в игрока, и сундук с оружием.
+	Castle			На уровне есть уникальная вертикальная комната с Головорезом,
+	 который стреляет лучами в игрока, и сундук с оружием.
 	Shopless			На этом этаже не будет магазинов 						✓
 
 	Зелёные:
@@ -432,7 +429,8 @@ Owerall:
 	Joab - 
 		чёрное хп, necromancer
 		хилится от чёрных зелий, все красные зелья наносят урон
-		имеет уникальное неснимаемое оружие которое и сплеш, и криты, и множитель слезы, но слабое в стоке - кидаться зельями
+		имеет уникальное неснимаемое оружие которое и сплеш, и криты, и множитель слезы,
+		 но слабое в стоке - кидаться зельями
 		библейское имя, означает «Яхве — отец» на иврите, поклоняется Кересу
 		открывается- выиграть после того как выпил 4 чёрных зелья
 		открывает - черепок
@@ -514,7 +512,8 @@ Owerall:
 
 	Основные расы:
 		Люди Валлийские Евьгейные
-		Гоблины Похожие – прекрасные медленные создания с слегка вытянутым черепом и большим межкостным расстоянием
+		Гоблины Похожие – прекрасные медленные создания с слегка вытянутым черепом и большим 
+		межкостным расстоянием
 		Эльфы Похожие
 		Гномы Сильные отклонения – упакованные молчуны
 		Моры Сильные отклонения – аля орки, жестокие падальщики и убийцы
@@ -534,7 +533,8 @@ Owerall:
 		Жрецы- Дарованные богом силы магии
 		Колдуны- продали душу Кересу за определённые силы (переодетый)
 		Варвары
-		Войны – Строгуны (первый огнестрел), мечники, лучники, алебардеры, копейщики, щиты разных форм и размеров, 
+		Войны – Строгуны (первый огнестрел), мечники, лучники, алебардеры, копейщики, щ
+		иты разных форм и размеров, 
 		Воры
 		Шаманы – 3-х рукие признанные людьми маги целители или предвестники
 

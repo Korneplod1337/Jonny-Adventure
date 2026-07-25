@@ -43,7 +43,7 @@ var extra_chest_loot_chance := 0.0 # шанс доп. лута из сундук
 func random_level_bufs(current_floor) -> void:
 	#level_bufs[9][1] = true
 	
-	if current_floor > 1:
+	if current_floor >= 2:
 		if randi() % 100 > 70:
 			pass
 			##level_bufs[randi() % len(level_bufs)][1] = true

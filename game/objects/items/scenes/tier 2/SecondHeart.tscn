@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://buvm0xxu4d42i"]
+
+[ext_resource type="Script" uid="uid://rh030xfm5cfq" path="res://game/objects/items/scripts/secondheart.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://6hjrg0scrg3n" path="res://image/items/2 tier/ItemSecondHeart.png" id="2_yfcly"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="SecondHeart" type="Area2D" unique_id=1358123504]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_yfcly")
+item_tooltip = "Second Heart"
+item_tooltip2 = "In case the first one fails."
+item_id = "secondheart"
+
+[node name="Interactable" parent="." unique_id=362369975 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=558079044]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1932311824]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1503587211]
+scale = Vector2(2, 2)
+texture = ExtResource("2_yfcly")

@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cvrwp146ivecy"]
 
-[ext_resource type="Script" path="res://game/objects/items/scripts/manaflame.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://image/items/ItemManaFlame.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://o4175bc4wrjp" path="res://game/objects/items/scripts/manaflame.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b1ym1srn7wndp" path="res://image/items/2 tier/ItemManaFlame.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -10,22 +10,22 @@ radius = 40.04997
 [sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
 radius = 19.0
 
-[node name="ManaFlame" type="Area2D"]
+[node name="ManaFlame" type="Area2D" unique_id=433509010]
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Mana Flame"
-item_tooltip2 = ""
+item_tooltip2 = "Flame of the mana"
 item_id = "manaflame"
 
-[node name="Interactable" parent="." instance=ExtResource("3_interact")]
+[node name="Interactable" parent="." unique_id=1052146454 instance=ExtResource("3_interact")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=195520311]
 shape = SubResource("CircleShape2D_lh7he")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1118722895]
 shape = SubResource("CircleShape2D_oisx2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=811910637]
 scale = Vector2(2, 2)
 texture = ExtResource("2_tex")

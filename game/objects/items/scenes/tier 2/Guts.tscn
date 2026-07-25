@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bxf020mqyr5re"]
 
-[ext_resource type="Script" path="res://game/objects/items/scripts/guts.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://image/items/ItemGuts.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://ca2q5kks4nkyy" path="res://game/objects/items/scripts/guts.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://chvjta3qpi3a8" path="res://image/items/2 tier/ItemGuts.png" id="2_1e6sr"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
@@ -10,22 +10,22 @@ radius = 40.04997
 [sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
 radius = 19.0
 
-[node name="Guts" type="Area2D"]
+[node name="Guts" type="Area2D" unique_id=954278657]
 collision_layer = 0
 script = ExtResource("1_script")
-item_icon = ExtResource("2_tex")
+item_icon = ExtResource("2_1e6sr")
 item_tooltip = "Raw Guts"
-item_tooltip2 = ""
+item_tooltip2 = "Thank God they're clean"
 item_id = "guts"
 
-[node name="Interactable" parent="." instance=ExtResource("3_interact")]
+[node name="Interactable" parent="." unique_id=614593497 instance=ExtResource("3_interact")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=102524806]
 shape = SubResource("CircleShape2D_lh7he")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=795940654]
 shape = SubResource("CircleShape2D_oisx2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=547909249]
 scale = Vector2(2, 2)
-texture = ExtResource("2_tex")
+texture = ExtResource("2_1e6sr")

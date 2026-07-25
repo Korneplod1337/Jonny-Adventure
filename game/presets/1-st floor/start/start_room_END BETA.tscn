@@ -39,7 +39,7 @@ collision_layer = 16
 collision_mask = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1507287982]
-position = Vector2(207, -67.999985)
+position = Vector2(207, -72)
 shape = SubResource("RectangleShape2D_lsolu")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=594798197]
