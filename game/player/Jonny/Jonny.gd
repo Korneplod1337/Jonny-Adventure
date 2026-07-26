@@ -37,12 +37,12 @@ const BASE_IMMUNE_TIME := 0.3
 
 var hp_bonus: 				int = 0
 var speed_bonus: 			int = 0
-var luck_bonus: 				int = 40
+var luck_bonus: 				int = 0
 var magic_bonus: 			int = 0
 var damage_bonus: 			int = 1
-var accuracy_bonus: 			int = 40
+var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 40
+var fire_rate_bonus:			int = 0
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0
@@ -241,28 +241,6 @@ func _process(delta: float) -> void:
 				else:
 					play_head("down")
 	
-	#if (now_move_direction.x < 1 and now_move_direction.x > -1) \
-	#and (now_move_direction.y < 1 and now_move_direction.y > -1):
-		#$AnimatedSprite2D.animation = "afk_default"
-		#if last_move_dir > 0:
-			#$AnimatedShot.animation = "down"
-		#else:
-			#$AnimatedShot.animation = "up"
-	#elif velocity.x != 0:
-		#$AnimatedSprite2D.animation = "walk_h"
-		#$AnimatedShot.animation = "right"
-		#$AnimatedSprite2D.flip_h = velocity.x < 0
-		#if velocity.x < 0:
-			#$AnimatedShot.animation = "left"
-	#elif velocity.y != 0:
-		#if velocity.y < 0:
-			#$AnimatedSprite2D.animation = "walk_up"
-			#$AnimatedShot.animation = "up"
-		#else:
-			#$AnimatedSprite2D.animation = "walk_down"
-			#$AnimatedShot.animation = "down"
-		#last_move_dir = now_move_direction.y
-	
 	# Анимации стрельбы
 	shot_direction = Input.get_vector("fire_left", "fire_right", "fire_up", "fire_down")
 	shooting = shot_direction != Vector2.ZERO
@@ -451,10 +429,9 @@ func _add_live_hp(typ: String, amount: int) -> void:
 	hp_list[typ] += add
 
 func die() -> void:
+	SoundManager.stop_all_sfx()
 	if try_revive():
 		return
-	SoundManager.stop_heartbeat()
-	SoundManager.stop_walking()
 	# SoundManager.play_death()
 	var hud := get_tree().get_first_node_in_group("HUD")
 	if hud:
@@ -599,7 +576,7 @@ func fire (shot_dir: Vector2) -> void:
 		return
 		
 	var shot = shot_scene.instantiate()
-	shot.position = global_position + Vector2(0, -10)
+	shot.position = global_position + Vector2(0, -15)
 	
 	var angle := shot_dir.angle()
 	var effective_spread := spread

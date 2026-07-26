@@ -343,6 +343,21 @@ offset_bottom = 40.0
 theme_override_font_sizes/font_size = 32
 text = "activate"
 
+[node name="Label" type="Label" parent="start_menu" unique_id=2111077641]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -183.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("13_5uchu")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Ver. Beta 0.2.0"
+
 [node name="settings_menu" type="Node" parent="." unique_id=981361797]
 
 [node name="Settings_layer" type="CanvasLayer" parent="settings_menu" unique_id=468677436]

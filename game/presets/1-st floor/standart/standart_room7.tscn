@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://b214mu6targ42"]
 
 [ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/RoomScript_enemy.gd" id="1_naj6c"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_s24j6"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="3_0qmne"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/tile background_1.png" id="2_s24j6"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background_bounds.png" id="3_0qmne"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_lbdgk"]
 [ext_resource type="PackedScene" uid="uid://b8jjo3xjprydx" path="res://game/objects/obstacles/mantrap.tscn" id="6_ncte3"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="7_lmg1l"]

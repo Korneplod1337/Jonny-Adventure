@@ -69,23 +69,23 @@ var enemy_dmg_multiplier: float = 1.0
 var enemy_cooldown_multiplier: float = 1.0
 #босс
 @onready var boss_bufs :Array = [
- ["Dreadnought", 	false, Color.RED],
- ["Twins", 			false, Color.RED],
- ["Reaper", 			false, Color.RED],
- ["Turtleshell", 	false, Color.YELLOW],
- ["Dwarf", 			false, Color.YELLOW],
- ["Siamese", 		false, Color.YELLOW],
- ["Frenetic", 		false, Color.YELLOW],
  ["Emaciated", 		false, Color.LAWN_GREEN],
  ["Inhibited", 		false, Color.LAWN_GREEN],
  ["Slothful", 		false, Color.LAWN_GREEN],
- ["Vengeful", 		false, Color.RED],
- ["Tempest", 		false, Color.RED],
+ ["Turtleshell", 	false, Color.YELLOW],
+ ["Dwarf", 			false, Color.YELLOW],
+ ["Frenetic", 		false, Color.YELLOW],
+ ["Siamese", 		false, Color.YELLOW],
  ["Thunderer", 		false, Color.YELLOW],
+ ["Tempest", 		false, Color.RED],
+ ["Twins", 			false, Color.RED],
+ ["Vengeful", 		false, Color.RED],
+ ["Dreadnought", 	false, Color.RED],
+ ["Reaper", 			false, Color.RED],
 ]
 
 func random_boss_bufs(current_floor) -> void:
-	#boss_bufs[12][1] = true
+	boss_bufs[12][1] = true
 	if current_floor > 1:
 		if randi() % 100 > 70:
 			pass

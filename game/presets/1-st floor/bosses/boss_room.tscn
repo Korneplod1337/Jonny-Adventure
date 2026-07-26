@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://e8vf31lieg73"]
 
 [ext_resource type="Script" uid="uid://8dsbbf343e01" path="res://game/presets/1-st floor/bosses/boss_room.gd" id="1_81pxa"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_wfoqa"]
-[ext_resource type="Texture2D" uid="uid://5eibh5egrc5o" path="res://image/rooms/1-st floor/background/background_bounds_1.2x.png" id="3_81pxa"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/tile background_1.png" id="2_wfoqa"]
+[ext_resource type="Texture2D" uid="uid://5eibh5egrc5o" path="res://image/rooms/1-st floor/background_bounds_1.2x.png" id="3_81pxa"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_38h4p"]
 [ext_resource type="PackedScene" uid="uid://ce5ei6v0m2h2e" path="res://game/enemy/1-st floor basement/Spider_queen_boss.tscn" id="6_t5yr1"]
 [ext_resource type="PackedScene" uid="uid://cs4tdfiitr06y" path="res://game/presets/doors/hatch.tscn" id="7_5a48l"]

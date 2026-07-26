@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://b777y3m4083ll"]
 
 [ext_resource type="Script" uid="uid://8dsbbf343e01" path="res://game/presets/1-st floor/bosses/boss_room.gd" id="1_6bvb5"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_7k5rr"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="3_or834"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/tile background_1.png" id="2_7k5rr"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background_bounds.png" id="3_or834"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_qs887"]
 [ext_resource type="PackedScene" uid="uid://cs4tdfiitr06y" path="res://game/presets/doors/hatch.tscn" id="5_mn21p"]
 [ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/1-st floor basement/Spider_small.tscn" id="6_7k5rr"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgard"]
 size = Vector2(1270, 711)

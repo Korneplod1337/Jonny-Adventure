@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://doo7vbyl4xowo"]
+
+[ext_resource type="Script" uid="uid://b885npeqnxvd2" path="res://game/objects/Equipment/Weapon/scene/solaris.gd" id="1_i7ovw"]
+[ext_resource type="Texture2D" uid="uid://cx8pawbjvdnqu" path="res://image/equip/weapon_effects/Solaris.png" id="2_aj0qu"]
+[ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="3_crit"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aura"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aj0qu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7t12"]
+radius = 70.0
+
+[node name="Solaris" type="Area2D" unique_id=1072035854]
+z_index = 11
+collision_layer = 2
+collision_mask = 68
+monitorable = false
+script = ExtResource("1_i7ovw")
+use_spread = false
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1902513986]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_aura")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1483584186]
+shape = SubResource("CircleShape2D_c7t12")
+
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=1019176651]
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_crit")
+frame = 1

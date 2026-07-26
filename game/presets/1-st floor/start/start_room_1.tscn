@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://cmlobl77iwbor"]
 
-[ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="1_jseag"]
-[ext_resource type="Texture2D" uid="uid://bmprsyh8bug17" path="res://image/rooms/1-st floor/background/background2.png" id="1_n66pl"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_sw7ps"]
+[ext_resource type="Texture2D" uid="uid://bh8lquhled2b0" path="res://image/rooms/2-st floor/backgroundStartEgypt.png" id="1_5o7nw"]
+[ext_resource type="Texture2D" uid="uid://dpomjj5pp6fag" path="res://image/rooms/2-st floor/background_bounds3.png" id="2_n66pl"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="3_et5k3"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="4_cjhlh"]
 
@@ -28,12 +27,12 @@ shape = SubResource("RectangleShape2D_85tg8")
 [node name="BG_floor" type="Sprite2D" parent="." unique_id=1940620195]
 z_index = -10
 scale = Vector2(2, 2)
-texture = ExtResource("1_n66pl")
+texture = ExtResource("1_5o7nw")
 
 [node name="BG_bounds" type="Sprite2D" parent="." unique_id=326775904]
 z_index = -5
 scale = Vector2(2, 2)
-texture = ExtResource("2_sw7ps")
+texture = ExtResource("2_n66pl")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=962677030]
 position = Vector2(-207, -240)
@@ -83,15 +82,6 @@ dir = Vector2(1, 0)
 position = Vector2(444, -188)
 
 [node name="EnemyTest3" parent="." unique_id=464290923 instance=ExtResource("4_cjhlh")]
-position = Vector2(520, -220)
+position = Vector2(508, -208)
 
-[node name="Rock" parent="." unique_id=1046045028 instance=ExtResource("1_jseag")]
-position = Vector2(-490, 232)
-
-[node name="Rock4" parent="." unique_id=524582743 instance=ExtResource("1_jseag")]
-position = Vector2(-490, -232)
-
-[node name="Rock5" parent="." unique_id=1317262919 instance=ExtResource("1_jseag")]
-position = Vector2(490, 232)
-
-[node name="ChestSpawnPoint" type="Marker2D" parent="."]
+[node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=1429342643]

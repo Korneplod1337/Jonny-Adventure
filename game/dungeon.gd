@@ -470,7 +470,7 @@ func _reset_player_interactions() -> void:
 
 
 func _exit_tree() -> void:
-	SoundManager.stop_music()
+	SoundManager.stop_all()
 
 
 func clear_floor_content() -> void:

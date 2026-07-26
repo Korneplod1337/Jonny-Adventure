@@ -60,8 +60,7 @@ folder_colors={
 "res://image/objects/": "pink",
 "res://image/players/": "orange",
 "res://image/players/Old_Jonny_textures/": "orange",
-"res://image/rooms/": "yellow",
-"res://image/rooms/1-st floor/background/": "yellow"
+"res://image/rooms/": "yellow"
 }
 
 [global_group]

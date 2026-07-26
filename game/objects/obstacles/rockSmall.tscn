@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpxxvh07ciubm"]
 
-[ext_resource type="Texture2D" uid="uid://bn2e5grvhacrq" path="res://image/objects/obstacles/rock3.png" id="1_2ylv3"]
+[ext_resource type="Texture2D" uid="uid://cp34rhwwhs48f" path="res://image/objects/obstacles/rock4.png" id="1_2ylv3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c53b1"]
 radius = 17.507141
@@ -20,5 +20,6 @@ freeze = true
 shape = SubResource("CircleShape2D_c53b1")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=171219873]
+position = Vector2(45.5, 24)
 scale = Vector2(2, 2)
 texture = ExtResource("1_2ylv3")

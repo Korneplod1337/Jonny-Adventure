@@ -86,6 +86,7 @@ animations = [{
 }]
 
 [node name="MatchlockShot" type="Area2D" unique_id=278677877]
+z_index = 11
 collision_layer = 2
 collision_mask = 84
 script = ExtResource("1_qma8c")

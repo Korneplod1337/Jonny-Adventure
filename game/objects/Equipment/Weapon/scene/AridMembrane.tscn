@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://bi8obdnbtysjc"]
+
+[ext_resource type="Script" uid="uid://dal50ted2bint" path="res://game/objects/Equipment/Weapon/scene/arid_membrane.gd" id="1_gr8q7"]
+[ext_resource type="Texture2D" uid="uid://btdhf2ytqybmo" path="res://image/equip/weapon_effects/arid_membrane_expsn1.png" id="2_gr8q7"]
+[ext_resource type="Texture2D" uid="uid://dl6alibejjbgo" path="res://image/equip/weapon_effects/arid_membrane_expsn2.png" id="3_bkxe1"]
+[ext_resource type="Texture2D" uid="uid://drrpw4haydvam" path="res://image/equip/weapon_effects/arid_membrane_expsn3.png" id="4_vv5y6"]
+[ext_resource type="Texture2D" uid="uid://cfsp7848aqumj" path="res://image/equip/weapon_effects/arid_membrane_expsn4.png" id="5_148a4"]
+[ext_resource type="Texture2D" uid="uid://b5l4fnm26dy0w" path="res://image/equip/weapon_effects/arid_membrane_expsn5.png" id="6_l682a"]
+[ext_resource type="Texture2D" uid="uid://d0aqixhn3q70e" path="res://image/equip/weapon_effects/arid membrane_miss1.png" id="7_tneu5"]
+[ext_resource type="Texture2D" uid="uid://cbnnwo0dalp0h" path="res://image/equip/weapon_effects/arid membrane_miss2.png" id="8_p6lxk"]
+[ext_resource type="Texture2D" uid="uid://yfw4u6lcmcev" path="res://image/equip/weapon_effects/arid membrane_miss3.png" id="9_kvaji"]
+[ext_resource type="Texture2D" uid="uid://bt5tgiktirobs" path="res://image/equip/weapon_effects/arid membrane_miss4.png" id="10_al6t2"]
+[ext_resource type="Texture2D" uid="uid://njb51pqblorv" path="res://image/equip/weapon_effects/arid membrane_miss5.png" id="11_5nlnl"]
+[ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="12_h84sl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gr8q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bkxe1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vv5y6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_148a4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l682a")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_tneu5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p6lxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kvaji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_al6t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5nlnl")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gr8q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bkxe1")
+}],
+"loop": true,
+"name": &"sticking",
+"speed": 2.0
+}]
+
+[node name="arid membrane" type="Area2D" unique_id=278677877]
+z_index = 11
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 84
+script = ExtResource("1_gr8q7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
+shape = SubResource("CircleShape2D_34718")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
+sprite_frames = SubResource("SpriteFrames_xhdno")
+animation = &"sticking"
+
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=289088615]
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("12_h84sl")
+frame = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

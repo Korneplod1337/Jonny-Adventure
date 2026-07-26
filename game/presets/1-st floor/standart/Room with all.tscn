@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://bfcf8lqhevofc"]
 
 [ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/RoomScript_enemy.gd" id="1_sb1k4"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/background/tile background_1.png" id="2_7nvgh"]
-[ext_resource type="Texture2D" uid="uid://cqity84gpo7v2" path="res://image/rooms/1-st floor/background/background_bounds_3x.png" id="3_imxwx"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/tile background_1.png" id="2_7nvgh"]
+[ext_resource type="Texture2D" uid="uid://cqity84gpo7v2" path="res://image/rooms/1-st floor/background_bounds_3x.png" id="3_imxwx"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_h5l16"]
 [ext_resource type="PackedScene" uid="uid://ck5v5qiq4jt6a" path="res://game/objects/obstacles/rockBig.tscn" id="5_283ki"]
 [ext_resource type="PackedScene" uid="uid://duyosi2cuk0wi" path="res://game/enemy/1-st floor basement/Aries.tscn" id="6_rxhr5"]
@@ -108,6 +108,7 @@
 [ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="106_kwy8j"]
 [ext_resource type="PackedScene" uid="uid://ch8qkvh1kb427" path="res://game/objects/obstacles/lightning.tscn" id="107_0qir2"]
 [ext_resource type="PackedScene" uid="uid://b18wfc5xv21tj" path="res://game/objects/obstacles/stat_machine.tscn" id="108_kwy8j"]
+[ext_resource type="PackedScene" uid="uid://ci4paxr8kkjx2" path="res://game/objects/Equipment/Weapon/equip/Solaris_equip.tscn" id="109_0qir2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -247,7 +248,7 @@ position = Vector2(-1068, 552)
 position = Vector2(-147, -373)
 
 [node name="Spider_small" parent="." unique_id=1095816015 instance=ExtResource("7_x87ng")]
-position = Vector2(-349, -449)
+position = Vector2(-349, -498)
 
 [node name="FloorPike" parent="." unique_id=2035113601 instance=ExtResource("8_hss15")]
 position = Vector2(-904, 592)
@@ -271,13 +272,10 @@ position = Vector2(-956, 393)
 position = Vector2(-139, -460)
 
 [node name="EnemyBat" parent="." unique_id=2112646817 instance=ExtResource("15_x04md")]
-position = Vector2(-257, -456)
+position = Vector2(-261, -494)
 
 [node name="Hog" parent="." unique_id=875395071 instance=ExtResource("16_ltcm7")]
 position = Vector2(-145, -280)
-
-[node name="Spider_small2" parent="." unique_id=1434363924 instance=ExtResource("7_x87ng")]
-position = Vector2(-351, -382)
 
 [node name="Kaliya\'s Star Hat" parent="." unique_id=1914859512 instance=ExtResource("17_ep2tc")]
 position = Vector2(152, 127)
@@ -383,10 +381,10 @@ position = Vector2(-925, 221)
 position = Vector2(-107, -596)
 
 [node name="Spider_big" parent="." unique_id=1889375929 instance=ExtResource("51_pdx4p")]
-position = Vector2(-488, -470)
+position = Vector2(-486, -511)
 
 [node name="Spider_egg_small" parent="." unique_id=1024645861 instance=ExtResource("52_wgx4h")]
-position = Vector2(-403, -451)
+position = Vector2(-402, -503)
 
 [node name="Aegis" parent="." unique_id=1532516261 instance=ExtResource("53_wxx06")]
 position = Vector2(-414, 250)
@@ -410,13 +408,13 @@ position = Vector2(-536, 246)
 position = Vector2(-480, 244)
 
 [node name="Cauldron" parent="." unique_id=930890616 instance=ExtResource("60_2imyw")]
-position = Vector2(-354, 249)
+position = Vector2(-355, 251)
 
 [node name="Cross" parent="." unique_id=42139006 instance=ExtResource("61_1potx")]
 position = Vector2(-458, 185)
 
 [node name="Exorcism" parent="." unique_id=111544993 instance=ExtResource("62_ugc3l")]
-position = Vector2(-297, 248)
+position = Vector2(-290, 251)
 
 [node name="EZ" parent="." unique_id=1430574396 instance=ExtResource("63_kwy8j")]
 position = Vector2(-65, 250)
@@ -431,13 +429,13 @@ position = Vector2(-62, 191)
 position = Vector2(-130, 186)
 
 [node name="Guillotine" parent="." unique_id=413319347 instance=ExtResource("67_13bi0")]
-position = Vector2(-64, 126)
+position = Vector2(-67, 126)
 
 [node name="Harmony" parent="." unique_id=527415019 instance=ExtResource("68_6udrj")]
 position = Vector2(-192, 184)
 
 [node name="Homuncules" parent="." unique_id=73074890 instance=ExtResource("69_wc11c")]
-position = Vector2(-250, 189)
+position = Vector2(-248, 191)
 
 [node name="JetFuel" parent="." unique_id=1213731014 instance=ExtResource("70_kvn2i")]
 position = Vector2(-296, 187)
@@ -468,7 +466,7 @@ position = Vector2(-686, 132)
 item_tooltip2 = "The sprout that rewrote the probability of your decay"
 
 [node name="Sextant" parent="." unique_id=1088839078 instance=ExtResource("79_x7but")]
-position = Vector2(-619, 135)
+position = Vector2(-622, 122)
 
 [node name="Shine" parent="." unique_id=119054695 instance=ExtResource("80_kkijl")]
 position = Vector2(-558, 134)
@@ -519,10 +517,10 @@ position = Vector2(-218, 608)
 position = Vector2(-376, 40)
 
 [node name="Spider_queen" parent="." unique_id=222572111 instance=ExtResource("96_kjqnc")]
-position = Vector2(-616, -465)
+position = Vector2(-614, -519)
 
 [node name="Spider_queen_boss" parent="." unique_id=1352998397 instance=ExtResource("97_ahchr")]
-position = Vector2(-741, -465)
+position = Vector2(-752, -531)
 
 [node name="EmenyWormInsected" parent="." unique_id=338583932 instance=ExtResource("98_l3f4i")]
 position = Vector2(-138, -519)
@@ -560,3 +558,6 @@ active_duration = 20.0
 
 [node name="StatMachine" parent="." unique_id=202095868 instance=ExtResource("108_kwy8j")]
 position = Vector2(-686, 571)
+
+[node name="Solaris_equip" parent="." unique_id=184505259 instance=ExtResource("109_0qir2")]
+position = Vector2(934, 569)

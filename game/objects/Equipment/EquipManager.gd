@@ -76,6 +76,10 @@ var POOLS := {
 		 #"tier": 2, "weight": 10.0},
 		#{"id": "Nunchucks", "scene": preload("uid://buh4o48vfo1ln"),
 		 #"tier": 2, "weight": 10.0},
+		{"id": "Solaris", "scene": preload("uid://ci4paxr8kkjx2"),
+		 "tier": 3, "weight": 10.0},
+		{"id": "arid_membrane", "scene": preload("uid://ck8xe35a25xmt"),
+		 "tier": 2, "weight": 10.0},
 		
 		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
 		 "tier": 1, "weight": 10.0},
@@ -111,6 +115,10 @@ var POOLS := {
 		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Nunchucks", "scene": preload("uid://buh4o48vfo1ln"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Solaris", "scene": preload("uid://ci4paxr8kkjx2"),
+		 "tier": 3, "weight": 10.0},
+		{"id": "arid_membrane", "scene": preload("uid://ck8xe35a25xmt"),
 		 "tier": 2, "weight": 10.0},
 		
 		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dk2be1gdyetpo"]
 
-[ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/rooms/1-st floor/background/background1.png" id="1_h6u4y"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_2ue0t"]
+[ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/rooms/1-st floor/background1.png" id="1_h6u4y"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background_bounds.png" id="2_2ue0t"]
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="3_yfpwr"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="11_6cfgv"]
 [ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn" id="14_i3tqa"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_o41he"]
+[ext_resource type="PackedScene" uid="uid://ci4paxr8kkjx2" path="res://game/objects/Equipment/Weapon/equip/Solaris_equip.tscn" id="16_o41he"]
+[ext_resource type="PackedScene" uid="uid://ck8xe35a25xmt" path="res://game/objects/Equipment/Weapon/equip/AridMembrane_equip.tscn" id="17_8sdh4"]
+[ext_resource type="PackedScene" uid="uid://bi5g2vqe6xdek" path="res://game/objects/Equipment/head/Kaliya_star_hat.tscn" id="18_vombo"]
+[ext_resource type="PackedScene" uid="uid://by8qnvewpw3v3" path="res://game/objects/Equipment/boots/KaliyaBoots.tscn" id="19_8sdh4"]
+[ext_resource type="PackedScene" uid="uid://c6snhkx0masi2" path="res://game/objects/Equipment/Chest/KaliyaAcceleratorCloak.tscn" id="20_h6u4y"]
 [ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="25_ww7l6"]
 [ext_resource type="PackedScene" uid="uid://lcbyc42s480y" path="res://game/objects/Equipment/boots/Speed_boots.tscn" id="26_bxm0y"]
 
@@ -171,3 +176,17 @@ position = Vector2(-180, 99)
 
 [node name="Sword_equip" parent="." unique_id=1046444052 instance=ExtResource("15_o41he")]
 position = Vector2(-191, -24)
+
+[node name="Solaris_equip" parent="." unique_id=484894857 instance=ExtResource("16_o41he")]
+position = Vector2(253, 60)
+
+[node name="arid membrane_equip" parent="." unique_id=690576395 instance=ExtResource("17_8sdh4")]
+position = Vector2(143, 73)
+
+[node name="Kaliya\'s Star Hat" parent="." unique_id=2128810709 instance=ExtResource("18_vombo")]
+position = Vector2(-4, -70)
+
+[node name="Kaliya\'s boots" parent="." unique_id=983643964 instance=ExtResource("19_8sdh4")]
+
+[node name="Kaliya\'s accelerator cloak" parent="." unique_id=1987422288 instance=ExtResource("20_h6u4y")]
+position = Vector2(-3, 57)

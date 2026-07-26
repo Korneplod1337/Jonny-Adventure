@@ -119,6 +119,25 @@ func stop_loop(key: StringName) -> void:
 		player.queue_free()
 
 
+## Останавливает лупы и one-shot SFX. Музыку не трогает.
+func stop_all_sfx() -> void:
+	var loop_keys := _loop_players.keys()
+	for key in loop_keys:
+		stop_loop(key)
+	for child in get_children():
+		if child == _music_player:
+			continue
+		if child is AudioStreamPlayer:
+			(child as AudioStreamPlayer).stop()
+			child.queue_free()
+
+
+## Останавливает все активные звуки, включая музыку.
+func stop_all() -> void:
+	stop_all_sfx()
+	stop_music()
+
+
 func play_heal() -> void:
 	play(SFX_HEAL, VOL_HEAL)
 

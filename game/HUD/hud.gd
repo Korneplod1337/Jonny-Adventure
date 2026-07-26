@@ -354,11 +354,13 @@ func _on_button_play_pressed() -> void:
 
 func _on_button_restart_pressed() -> void:
 	var tree := get_tree()
+	SoundManager.stop_all()
 	tree.paused = false
 	var current_scene := tree.current_scene
 	tree.reload_current_scene() 
 
 func _on_button_main_pressed() -> void:
 	var tree := get_tree()
+	SoundManager.stop_all()
 	tree.paused = false
 	tree.change_scene_to_file("uid://ckbshuddtl78y")

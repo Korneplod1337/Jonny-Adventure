@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cq1e35ccwm0yt"]
 
-[ext_resource type="Texture2D" uid="uid://bc67f5n7c2hd7" path="res://image/rooms/1-st floor/background/background3.png" id="1_0krqc"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background/background_bounds.png" id="2_4kb0c"]
+[ext_resource type="Texture2D" uid="uid://bc67f5n7c2hd7" path="res://image/rooms/1-st floor/background3.png" id="1_0krqc"]
+[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background_bounds.png" id="2_4kb0c"]
 [ext_resource type="PackedScene" uid="uid://ch8qkvh1kb427" path="res://game/objects/obstacles/lightning.tscn" id="4_1cm4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]

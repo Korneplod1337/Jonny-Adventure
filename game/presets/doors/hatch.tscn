@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cs4tdfiitr06y"]
 
 [ext_resource type="Script" uid="uid://ugplkmpjme7q" path="res://game/presets/doors/hatch.gd" id="1_s63fd"]
-[ext_resource type="Texture2D" uid="uid://q6etc7afsp4" path="res://image/rooms/1-st floor/background/hatch1.png" id="2_rx0vn"]
-[ext_resource type="Texture2D" uid="uid://8feipuqehsqk" path="res://image/rooms/1-st floor/background/hatch2.png" id="3_oy40j"]
+[ext_resource type="Texture2D" uid="uid://q6etc7afsp4" path="res://image/rooms/1-st floor/hatch1.png" id="2_rx0vn"]
+[ext_resource type="Texture2D" uid="uid://8feipuqehsqk" path="res://image/rooms/1-st floor/hatch2.png" id="3_oy40j"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_h4otx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q1g0h"]

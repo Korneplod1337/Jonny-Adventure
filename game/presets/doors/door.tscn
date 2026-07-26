@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dlhahqejp67se"]
 
 [ext_resource type="Script" uid="uid://bmj7jtsmllyis" path="res://game/presets/doors/door.gd" id="1_hf35o"]
-[ext_resource type="Texture2D" uid="uid://c0qpfo1uo3s6x" path="res://image/rooms/1-st floor/background/armory_door.png" id="2_dywht"]
-[ext_resource type="Texture2D" uid="uid://y3qn4sv1dgst" path="res://image/rooms/1-st floor/rects/door_rect.png" id="2_fnhlo"]
-[ext_resource type="Texture2D" uid="uid://b858nwdhy14rr" path="res://image/rooms/1-st floor/background/Empty_door.png" id="2_nppai"]
-[ext_resource type="Texture2D" uid="uid://5vrhd6umh6xn" path="res://image/rooms/1-st floor/background/standart_door.png" id="3_dywht"]
-[ext_resource type="Texture2D" uid="uid://cfracdioyj8ya" path="res://image/rooms/1-st floor/background/shop_door.png" id="4_m2315"]
-[ext_resource type="Texture2D" uid="uid://bdfxasq34mg05" path="res://image/rooms/1-st floor/background/start_door.png" id="5_j0d1f"]
-[ext_resource type="Texture2D" uid="uid://378ai2i2spfx" path="res://image/rooms/1-st floor/background/Treasure_door.png" id="6_6mkc6"]
+[ext_resource type="Texture2D" uid="uid://c0qpfo1uo3s6x" path="res://image/rooms/1-st floor/armory_door.png" id="2_dywht"]
+[ext_resource type="Texture2D" uid="uid://y3qn4sv1dgst" path="res://image/rooms/1-st floor/door_rect.png" id="2_fnhlo"]
+[ext_resource type="Texture2D" uid="uid://b858nwdhy14rr" path="res://image/rooms/1-st floor/Empty_door.png" id="2_nppai"]
+[ext_resource type="Texture2D" uid="uid://5vrhd6umh6xn" path="res://image/rooms/1-st floor/standart_door.png" id="3_dywht"]
+[ext_resource type="Texture2D" uid="uid://cfracdioyj8ya" path="res://image/rooms/1-st floor/shop_door.png" id="4_m2315"]
+[ext_resource type="Texture2D" uid="uid://bdfxasq34mg05" path="res://image/rooms/1-st floor/start_door.png" id="5_j0d1f"]
+[ext_resource type="Texture2D" uid="uid://378ai2i2spfx" path="res://image/rooms/1-st floor/Treasure_door.png" id="6_6mkc6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2nvgd"]
 animations = [{
