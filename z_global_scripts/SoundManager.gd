@@ -12,6 +12,7 @@ const SFX_SHINE := preload("res://sound/sound/shine.mp3")
 const SFX_MEGACRIT := preload("res://sound/sound/megacrit.mp3")
 const SFX_REVIVE := preload("res://sound/sound/revive.mp3")
 const SFX_DEATH := preload("res://sound/sound/death.mp3")
+const SFX_MISFIRE := preload("res://sound/sound/misfire.mp3")
 
 const SFX_SHOTS: Array[AudioStream] = [
 	preload("res://sound/sound/shot1.mp3"),
@@ -188,6 +189,10 @@ func duck_music_for_revive(
 
 func play_gun_shot() -> void:
 	play_random(SFX_SHOTS, VOL_GUN_SHOT)
+
+
+func play_misfire() -> void:
+	play(SFX_MISFIRE, VOL_GUN_SHOT)
 
 
 func play_tear_shot() -> void:

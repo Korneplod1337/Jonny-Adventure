@@ -76,6 +76,9 @@ texture = ExtResource("3_eekmk")
 position = Vector2(0, -40)
 gizmo_extents = 30.0
 
+[node name="Rock" parent="." unique_id=1046045028 instance=ExtResource("8_6tbt6")]
+position = Vector2(-1, 82)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1184620657]
 position = Vector2(-207.06, -240)
 collision_layer = 16
@@ -135,7 +138,7 @@ visible = false
 position = Vector2(-347, 174)
 
 [node name="EnemyBat" parent="." unique_id=2133096440 instance=ExtResource("7_d8sa7")]
-position = Vector2(-293, -131)
+position = Vector2(-335, -127)
 
 [node name="EnemyBat2" parent="." unique_id=1498312184 instance=ExtResource("7_d8sa7")]
 visible = false
@@ -143,6 +146,3 @@ position = Vector2(382, 179)
 
 [node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("8_tm8bw")]
 position = Vector2(535, 225)
-
-[node name="Rock" parent="." unique_id=1046045028 instance=ExtResource("8_6tbt6")]
-position = Vector2(-1, 82)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ixfqllfdouf6"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_u2xqo"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_u2xqo"]
 [ext_resource type="Texture2D" uid="uid://cgcphn1ucd360" path="res://image/equip/weapon/pistol shotgun.png" id="2_1mai7"]
 [ext_resource type="PackedScene" uid="uid://duywhvqb3g43m" path="res://game/objects/Equipment/Weapon/scene/Scatterhand Bullet.tscn" id="3_306n2"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_uf0ty"]

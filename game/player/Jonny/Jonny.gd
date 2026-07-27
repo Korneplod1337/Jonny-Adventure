@@ -56,6 +56,7 @@ var force_shield_charges: 	int = 0
 var minimap: 				int = 1
 var revival_count: 			int = 0
 var penetration_bonus: 		int = 0
+var hack_bonus: 			int = 0
 var attack_locked: 			bool = false
 
 @export_range(1.0, 10.0, 1.0) var hit_points_level: 	float = 1.0
@@ -597,6 +598,7 @@ func fire (shot_dir: Vector2) -> void:
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
 	shot.boomerang_power += boomerang_bonus
 	shot.penetration += penetration_bonus
+	shot.hack += hack_bonus
 	
 	if shot_enchantment:
 		shot.enchantment = shot_enchantment.duplicate(true)

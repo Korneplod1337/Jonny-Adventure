@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bt4itkvibrwwl"]
+
+[ext_resource type="Script" uid="uid://1v6s0m72qisu" path="res://game/combat/combat_effects/hack_cleave.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dai2psfkk7kjq" path="res://image/effect_sprites/hack/hack_effect1.png" id="2_f1"]
+[ext_resource type="Texture2D" uid="uid://7bu30eeqtoj5" path="res://image/effect_sprites/hack/hack_effect2.png" id="3_f2"]
+[ext_resource type="Texture2D" uid="uid://cwm8mbqna87to" path="res://image/effect_sprites/hack/hack_effect3.png" id="4_htar0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hack"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_htar0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m13b6"]
+radius = 22.0
+height = 50.0
+
+[node name="HackCleave" type="Area2D" unique_id=1485941996]
+z_index = 11
+collision_layer = 2
+collision_mask = 68
+monitoring = true
+monitorable = false
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=878702974]
+position = Vector2(7, 0)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_hack")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=745089471]
+shape = SubResource("CapsuleShape2D_m13b6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

@@ -16,7 +16,12 @@ func get_force() -> float:
 		3: return 120.0
 		_: return 40.0
 
-func apply_on_hit(target: Node, projectile_direction: Vector2 = Vector2(0, 0)) -> void:
+func apply_on_hit(
+	target: Node,
+	projectile_direction: Vector2 = Vector2(0, 0),
+	_hack: int = 0,
+	_hack_direction: Vector2 = Vector2.ZERO
+) -> void:
 	if target.has_method("apply_knockback"):
 		target.apply_knockback(projectile_direction, get_force())
 

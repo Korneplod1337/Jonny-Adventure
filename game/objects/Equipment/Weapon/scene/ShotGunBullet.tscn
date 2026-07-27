@@ -88,10 +88,11 @@ animations = [{
 [node name="shot" type="Area2D" unique_id=278677877]
 z_index = 11
 collision_layer = 2
-collision_mask = 84
+collision_mask = 116
 script = ExtResource("1_2mc3r")
 use_spread = false
 pellet_count = 3
+fire_sfx_kind = 1
 self_damage_multiplier = 0.6
 self_range_multiplier = 0.8
 

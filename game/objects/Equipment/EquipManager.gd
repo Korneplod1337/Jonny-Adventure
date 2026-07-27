@@ -67,6 +67,8 @@ var POOLS := {
 		 #"tier": 2, "weight": 10.0},
 		#{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
 		#"tier": 3, "weight": 0.0},
+		{"id": "arid_membrane", "scene": preload("uid://ck8xe35a25xmt"),
+		 "tier": 2, "weight": 10.0},
 		
 		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
 		 "tier": 1, "weight": 10.0},
@@ -78,7 +80,7 @@ var POOLS := {
 		 #"tier": 2, "weight": 10.0},
 		{"id": "Solaris", "scene": preload("uid://ci4paxr8kkjx2"),
 		 "tier": 3, "weight": 10.0},
-		{"id": "arid_membrane", "scene": preload("uid://ck8xe35a25xmt"),
+		{"id": "Axe", "scene": preload("uid://c8glpvvgfk441"),
 		 "tier": 2, "weight": 10.0},
 		
 		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
@@ -119,6 +121,8 @@ var POOLS := {
 		{"id": "Solaris", "scene": preload("uid://ci4paxr8kkjx2"),
 		 "tier": 3, "weight": 10.0},
 		{"id": "arid_membrane", "scene": preload("uid://ck8xe35a25xmt"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Axe", "scene": preload("res://game/objects/Equipment/Weapon/equip/Axe_equip.tscn"),
 		 "tier": 2, "weight": 10.0},
 		
 		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),

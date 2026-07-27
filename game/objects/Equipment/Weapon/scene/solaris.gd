@@ -4,7 +4,6 @@ class_name SolarisShot
 const AURA_GROUP := "solaris_aura"
 const PLAYER_OFFSET := Vector2(0, -10)
 const AURA_META := "solaris_aura"
-const ENEMY_MASK := 68 # враги + летающие
 
 var _cooldown := 0.0
 
@@ -16,9 +15,7 @@ func _ready() -> void:
 	extra_reload = 1
 	use_spread = false
 	pellet_count = 1
-	fire_sfx_kind = FireSfxKind.NONE
 	rotation = 0.0
-	monitoring = true
 
 	# Инстанс от fire() — только для extra_reload у игрока, урон делает постоянная аура
 	var existing := _get_existing_aura()
@@ -94,7 +91,7 @@ func _deal_aura_damage() -> void:
 	var query := PhysicsShapeQueryParameters2D.new()
 	query.shape = circle
 	query.transform = Transform2D(0.0, global_position)
-	query.collision_mask = ENEMY_MASK
+	query.collision_mask = collision_mask
 	query.collide_with_areas = false
 	query.collide_with_bodies = true
 

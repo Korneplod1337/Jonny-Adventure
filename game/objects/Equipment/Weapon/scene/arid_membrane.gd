@@ -13,7 +13,6 @@ var _finishing := false
 
 func _ready() -> void:
 	extra_reload = 1.2
-	fire_sfx_kind = FireSfxKind.TEAR
 	super()
 
 
@@ -44,7 +43,7 @@ func _stick_to(body: Node) -> void:
 
 	_stuck = true
 	exploded = true
-	speed = 0
+	speed = 0  
 	set_deferred("monitoring", false)
 	_stick_target = body as Node2D
 	_stick_offset = _stick_target.to_local(global_position)
@@ -107,6 +106,7 @@ func _deal_membrane_hit(target: Node, damage_mult: float, apply_enchant: bool) -
 		info.enchantment = null
 	DamageDealer.deal_damage(self, target, info)
 	_show_crit_effect()
+	_spawn_hack_effects(target, amount)
 
 
 func _get_membrane_damage(damage_mult: float, apply_enchant_mult: bool) -> float:

@@ -212,7 +212,7 @@ magic_level = 2.0
 damage_level = 2.0
 spread_level = 2.0
 range_level = 2.0
-fire_rate_level = 10.0
+fire_rate_level = 2.0
 start_ability = false
 on_ice = false
 

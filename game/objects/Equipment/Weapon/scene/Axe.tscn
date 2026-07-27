@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://i1apvmmwpg1r"]
+
+[ext_resource type="Script" uid="uid://lca7bj1qvkc4" path="res://game/objects/Equipment/Weapon/scene/axe.gd" id="1_uiy77"]
+[ext_resource type="Texture2D" uid="uid://bfqjmy8anxk32" path="res://image/equip/weapon_effects/axe1.png" id="2_uiy77"]
+[ext_resource type="Texture2D" uid="uid://d2ht277j8f0vy" path="res://image/equip/weapon_effects/axe2.png" id="3_1st6r"]
+[ext_resource type="Texture2D" uid="uid://e6dvt6mm7ivw" path="res://image/equip/weapon_effects/axe3.png" id="4_12ce8"]
+[ext_resource type="Texture2D" uid="uid://jwy5snswcj4h" path="res://image/equip/weapon_effects/axe4.png" id="5_4flhu"]
+[ext_resource type="Texture2D" uid="uid://wnfr1fw18cvv" path="res://image/equip/weapon_effects/axe5.png" id="6_ivla6"]
+[ext_resource type="Texture2D" uid="uid://bwgcydvcptm7e" path="res://image/equip/weapon_effects/axe6.png" id="7_ou1rl"]
+[ext_resource type="Texture2D" uid="uid://db2ic3y66ec4u" path="res://image/equip/weapon_effects/axe7.png" id="8_srtox"]
+[ext_resource type="Texture2D" uid="uid://ck6o0xy68du6s" path="res://image/equip/weapon_effects/axe8.png" id="9_q30f2"]
+[ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="10_wy0sg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptov3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uiy77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1st6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_12ce8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4flhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ivla6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ou1rl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_srtox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_q30f2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3x0x"]
+size = Vector2(10, 13.990385)
+
+[node name="Axe" type="Area2D" unique_id=223675929]
+z_index = 11
+collision_layer = 2
+collision_mask = 84
+script = ExtResource("1_uiy77")
+hack = 1
+fire_sfx_kind = 2
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1954727757]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ptov3")
+offset = Vector2(28, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2030464140]
+position = Vector2(45, -38)
+rotation = 0.5235988
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_w3x0x")
+
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=312248960]
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("10_wy0sg")
+frame = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

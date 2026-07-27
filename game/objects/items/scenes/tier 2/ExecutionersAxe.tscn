@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_61u7d")
 item_tooltip = "Executioner's Axe"
-item_tooltip2 = "Executioner's axe that knows its job. Heavy and precise"
+item_tooltip2 = "Adds cleaving to any weapon. Knows its job"
 item_id = "executionersaxe"
 
 [node name="Interactable" parent="." unique_id=1282037998 instance=ExtResource("3_interact")]

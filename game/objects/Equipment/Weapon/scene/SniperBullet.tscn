@@ -90,6 +90,7 @@ z_index = 11
 collision_layer = 2
 collision_mask = 116
 script = ExtResource("1_d5pxf")
+fire_sfx_kind = 1
 use_spread = false
 self_damage_multiplier = 2.0
 self_speed_multiplier = 2.0

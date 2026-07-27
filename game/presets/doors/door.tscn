@@ -15,7 +15,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_dywht")
 }],
-"loop": true,
+"loop": false,
 "name": &"armory",
 "speed": 5.0
 }, {
@@ -23,7 +23,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_nppai")
 }],
-"loop": true,
+"loop": false,
 "name": &"boss",
 "speed": 5.0
 }, {
@@ -31,7 +31,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_dywht")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -39,7 +39,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_m2315")
 }],
-"loop": true,
+"loop": false,
 "name": &"shop",
 "speed": 5.0
 }, {
@@ -47,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_dywht")
 }],
-"loop": true,
+"loop": false,
 "name": &"standart",
 "speed": 5.0
 }, {
@@ -55,7 +55,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_j0d1f")
 }],
-"loop": true,
+"loop": false,
 "name": &"start",
 "speed": 5.0
 }, {
@@ -63,7 +63,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_6mkc6")
 }],
-"loop": true,
+"loop": false,
 "name": &"treasure",
 "speed": 5.0
 }]

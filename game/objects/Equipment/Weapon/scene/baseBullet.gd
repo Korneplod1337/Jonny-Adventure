@@ -4,7 +4,6 @@ class_name BaseGun
 @onready var crit: AnimatedSprite2D = $Crit
 
 func _ready() -> void:
-	fire_sfx_kind = FireSfxKind.GUN
 	super()
 	self_speed_multiplier *= 1.5
 	extra_reload = 0.9

@@ -8,6 +8,8 @@ var base_move_speed := move_speed
 var slow_token: int = 0
 var poison: float = 0
 var effect_protection: float = 1
+var _pending_fire_hack: int = 0
+var _pending_fire_hack_dir: Vector2 = Vector2.RIGHT
 
 @export var cooldown_time: float = 1.5
 var base_hp: int = 50 
@@ -326,7 +328,12 @@ func _on_poison_timer_timeout() -> void:
 	print('poison now: ', poison, 'hp: ', current_hp)
 	
 
-func apply_fire(effect: float, duration: float) -> void:
+func apply_fire(
+	effect: float,
+	duration: float,
+	hack_power: int = 0,
+	hack_dir: Vector2 = Vector2.RIGHT
+) -> void:
 	print('add fire effect: ', effect)
 	if 'fire1' not in active_effects and 'fire0' not in active_effects:
 		_add_effect('fire0')
@@ -335,6 +342,8 @@ func apply_fire(effect: float, duration: float) -> void:
 		_add_effect('fire1')
 		if not is_instance_valid(player):
 			player = get_tree().get_first_node_in_group("player")
+		_pending_fire_hack = maxi(0, hack_power)
+		_pending_fire_hack_dir = hack_dir.normalized() if hack_dir != Vector2.ZERO else Vector2.RIGHT
 		_reset_fire_later(effect, duration)
 
 
@@ -346,9 +355,23 @@ func _reset_fire_later(effect: float, duration: float) -> void:
 		player = get_tree().get_first_node_in_group("player")
 	if not player:
 		_remove_effect('fire1')
+		_pending_fire_hack = 0
 		return
-	hit(effect * (StatManager.get_stat(player, 'damage')/20)
-				* (1 + StatManager.get_stat(player, 'magic')) /2, true)
+	var fire_damage := effect * (StatManager.get_stat(player, 'damage') / 20.0) \
+		* (1.0 + StatManager.get_stat(player, 'magic')) / 2.0
+	hit(fire_damage, true)
+	if _pending_fire_hack > 0 and fire_damage > 0.0:
+		var parent := get_tree().current_scene
+		if parent == null:
+			parent = get_parent()
+		HackCleave.spawn_batch(
+			parent,
+			self,
+			_pending_fire_hack_dir,
+			fire_damage * 0.5,
+			_pending_fire_hack
+		)
+	_pending_fire_hack = 0
 	_remove_effect('fire1')
 	
 func apply_knockback(direction: Vector2, force: float) -> void:

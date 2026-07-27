@@ -109,6 +109,8 @@
 [ext_resource type="PackedScene" uid="uid://ch8qkvh1kb427" path="res://game/objects/obstacles/lightning.tscn" id="107_0qir2"]
 [ext_resource type="PackedScene" uid="uid://b18wfc5xv21tj" path="res://game/objects/obstacles/stat_machine.tscn" id="108_kwy8j"]
 [ext_resource type="PackedScene" uid="uid://ci4paxr8kkjx2" path="res://game/objects/Equipment/Weapon/equip/Solaris_equip.tscn" id="109_0qir2"]
+[ext_resource type="PackedScene" uid="uid://ck8xe35a25xmt" path="res://game/objects/Equipment/Weapon/equip/AridMembrane_equip.tscn" id="110_r0oqo"]
+[ext_resource type="PackedScene" uid="uid://c8glpvvgfk441" path="res://game/objects/Equipment/Weapon/equip/Axe_equip.tscn" id="111_1yr5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -561,3 +563,9 @@ position = Vector2(-686, 571)
 
 [node name="Solaris_equip" parent="." unique_id=184505259 instance=ExtResource("109_0qir2")]
 position = Vector2(934, 569)
+
+[node name="arid membrane_equip" parent="." unique_id=279860601 instance=ExtResource("110_r0oqo")]
+position = Vector2(617, 568)
+
+[node name="Axe_equip" parent="." unique_id=1859475580 instance=ExtResource("111_1yr5r")]
+position = Vector2(936, 459)

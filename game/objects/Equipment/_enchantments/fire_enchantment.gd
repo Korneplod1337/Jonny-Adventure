@@ -23,9 +23,17 @@ func get_duration() -> float:
 		3: return 2.25
 		_: return 2
 
-func apply_on_hit(target: Node, _projectile_direction: Vector2 = Vector2(0, 0)) -> void:
+func apply_on_hit(
+	target: Node,
+	_projectile_direction: Vector2 = Vector2(0, 0),
+	hack: int = 0,
+	hack_direction: Vector2 = Vector2.ZERO
+) -> void:
 	if target.has_method("apply_fire"):
-		target.apply_fire(get_effect(), get_duration())
+		var dir := hack_direction
+		if dir == Vector2.ZERO:
+			dir = _projectile_direction
+		target.apply_fire(get_effect(), get_duration(), hack, dir)
 
 func get_tooltip_text() -> String:
 	match level:

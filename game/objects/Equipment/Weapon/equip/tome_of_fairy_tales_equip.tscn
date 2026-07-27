@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://2dtjjer8eim8"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_tvl8s"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_tvl8s"]
 [ext_resource type="Texture2D" uid="uid://dwkr7d7yjiujb" path="res://image/equip/weapon_effects/tome_of_fairy_tales14.png" id="2_fbnfh"]
 [ext_resource type="PackedScene" uid="uid://mipf8xtfare7" path="res://game/objects/Equipment/Weapon/scene/Tome_of_fairy_tales.tscn" id="3_onxxp"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_rde30"]

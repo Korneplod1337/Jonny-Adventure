@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ck8xe35a25xmt"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_owfka"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_owfka"]
 [ext_resource type="Texture2D" uid="uid://ds0wmi45uauo2" path="res://image/equip/weapon/arid membrane.png" id="2_owfka"]
 [ext_resource type="PackedScene" uid="uid://bi8obdnbtysjc" path="res://game/objects/Equipment/Weapon/scene/AridMembrane.tscn" id="3_2hmpa"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_6xrxm"]

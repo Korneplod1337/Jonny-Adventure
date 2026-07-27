@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_SPEED := 700.0
+const MAX_SPEED := 600.0
 const MIN_BOOST := 1.0
 const MAX_BOOST := 0.5
 

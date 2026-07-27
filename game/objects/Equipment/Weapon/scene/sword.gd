@@ -19,9 +19,8 @@ func _ready() -> void:
 	speed = 0
 	extra_reload = 1
 	rotation = direction.angle()
-	fire_sfx_kind = FireSfxKind.SLASH
 	if not _melee_boomerang_copy:
-		SoundManager.play_slash()
+		_play_attack_sfx()
 		_fire_direction = direction.normalized()
 		if boomerang_power > 0:
 			_melee_boomerang_legs = BoomerangPath.build_legs(boomerang_power)
@@ -35,9 +34,9 @@ func _ready() -> void:
 		anim_sprite.animation_finished.connect(_on_animation_finished)
 	if not is_connected("body_entered", Callable(self, "_on_body_entered")):
 		body_entered.connect(_on_body_entered)
-
 	anim_sprite.play("default")
 	_on_frame_changed()
+	
 
 
 func _physics_process(_delta: float) -> void:

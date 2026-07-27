@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://f07ikj132ro1"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_4ytdp"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_4ytdp"]
 [ext_resource type="Texture2D" uid="uid://cj3n1nxvh05w1" path="res://image/equip/weapon/Spit_bullet_Alt.png" id="2_1xl3c"]
 [ext_resource type="PackedScene" uid="uid://d0u1jub57eer0" path="res://game/objects/Equipment/Weapon/scene/JonnyShotAlt2.tscn" id="3_4ytdp"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_ldall"]

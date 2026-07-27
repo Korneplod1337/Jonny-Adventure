@@ -18,6 +18,8 @@ var extra_reload: float = 1.0 # только для слёз множитель 
 @export var self_range_multiplier: float = 1
 ## 0 — прямой полёт; 1 — туда + обратно; 2+ — дополнительные отрезки пути.
 @export var boomerang_power: int = 0
+## Сколько прорубаний создать за целью при попадании (0 = нет).
+@export var hack: int = 0
 
 var distance_travelled := 0.0
 var exploded := false
@@ -46,7 +48,6 @@ enum FireSfxKind { TEAR, GUN, SLASH, NONE }
 const CRIT_WORLD_OFFSET := Vector2(0, -60)
 
 func _ready() -> void:
-	collision_mask |= 32 # layer 6 — Препятствия
 	animaited_speed = GameState.animated_world_speed
 	player = get_tree().get_first_node_in_group("player")
 	rotation = direction.angle()
@@ -216,6 +217,11 @@ func _build_damage_info(target: Node, amount: float) -> DamageInfo:
 	info.hit_position = DamageDealer.get_hit_contact_point(self, target, weapon_point)
 	info.enchantment = enchantment
 	info.penetration = penetration
+	info.hack = hack
+	var flight_dir := direction.normalized()
+	if flight_dir == Vector2.ZERO:
+		flight_dir = Vector2.RIGHT
+	info.hack_direction = flight_dir
 	if target is Node2D:
 		info.direction = (target.global_position - weapon_point).normalized()
 	return info
@@ -237,6 +243,21 @@ func _register_pierce_hit(target: Node, amount: float) -> bool:
 func _deal_hit(target: Node, amount: float) -> void:
 	DamageDealer.deal_damage(self, target, _build_damage_info(target, amount))
 	_show_crit_effect()
+	_spawn_hack_effects(target, amount)
+
+
+func _spawn_hack_effects(target: Node, dealt_damage: float) -> void:
+	if hack <= 0 or dealt_damage <= 0.0:
+		return
+	if not target is Node2D or not is_instance_valid(target):
+		return
+	var parent := get_tree().current_scene
+	if parent == null:
+		parent = get_parent()
+	var dir := direction.normalized()
+	if dir == Vector2.ZERO:
+		dir = Vector2.RIGHT
+	HackCleave.spawn_batch(parent, target as Node2D, dir, dealt_damage * 0.5, hack)
 
 
 func explosion(animation_index):
@@ -309,6 +330,7 @@ func _spawn_spread() -> void:
 		bullet.self_speed_multiplier = self_speed_multiplier
 		bullet.self_range_multiplier = self_range_multiplier
 		bullet.boomerang_power = boomerang_power
+		bullet.hack = hack
 		bullet.enchantment = enchantment
 		bullet.penetration = penetration
 		bullet.use_spread = use_spread

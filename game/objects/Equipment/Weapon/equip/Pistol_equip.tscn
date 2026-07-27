@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clqoo37e0j35j"]
 
-[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.gd" id="1_e5ydc"]
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_e5ydc"]
 [ext_resource type="Texture2D" uid="uid://bknhx5ubqubto" path="res://image/equip/weapon/pistol.png" id="2_fro2o"]
 [ext_resource type="PackedScene" uid="uid://dxohwm4smvnn4" path="res://game/objects/Equipment/Weapon/scene/BaseBullet.tscn" id="3_g68qo"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_igyj1"]

@@ -22,12 +22,14 @@ radius = 70.0
 z_index = 11
 collision_layer = 2
 collision_mask = 68
+monitoring = true
 monitorable = false
 script = ExtResource("1_i7ovw")
 use_spread = false
+fire_sfx_kind = 3
 
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1902513986]
-scale = Vector2(3, 3)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_aura")
 autoplay = "default"
 

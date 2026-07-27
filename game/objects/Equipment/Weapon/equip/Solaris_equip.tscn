@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ci4paxr8kkjx2"]
 
 [ext_resource type="Script" uid="uid://1021a27e7a64" path="res://game/objects/Equipment/Weapon/equip/solaris_equip.gd" id="1_opccu"]
-[ext_resource type="Texture2D" uid="uid://rk40wo38rk8s" path="res://image/equip/weapon/Solaris2.png" id="2_7nqiw"]
+[ext_resource type="Texture2D" uid="uid://351aes1f4wel" path="res://image/equip/weapon/Solaris3.png" id="2_7nqiw"]
+[ext_resource type="Texture2D" uid="uid://dhxyi0iyf6ie1" path="res://image/equip/weapon/Solaris.png" id="2_opccu"]
 [ext_resource type="PackedScene" uid="uid://doo7vbyl4xowo" path="res://game/objects/Equipment/Weapon/scene/Solaris.tscn" id="3_84rjm"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_jdf0v"]
 [ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="6_0lrgo"]
@@ -26,7 +27,7 @@ animations = [{
 [node name="Solaris_equip" type="Area2D" unique_id=514682751]
 collision_mask = 0
 script = ExtResource("1_opccu")
-equip_icon = ExtResource("2_7nqiw")
+equip_icon = ExtResource("2_opccu")
 equip_id = "Solaris"
 projectile = ExtResource("3_84rjm")
 equip_tooltip = "Solaris"

@@ -23,7 +23,12 @@ func get_duration() -> float:
 		3: return 1.5
 		_: return 2.0
 
-func apply_on_hit(target: Node, _projectile_direction: Vector2 = Vector2(0, 0)) -> void:
+func apply_on_hit(
+	target: Node,
+	_projectile_direction: Vector2 = Vector2(0, 0),
+	_hack: int = 0,
+	_hack_direction: Vector2 = Vector2.ZERO
+) -> void:
 	if target.has_method("apply_slow"):
 		target.apply_slow(get_multiplier(), get_duration())
 

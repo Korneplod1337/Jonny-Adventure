@@ -89,7 +89,12 @@ func _deal_single(target: Node, info: DamageInfo) -> void:
 	hit_info.target = target
 	_apply_modifiers(hit_info, true)
 	if hit_info.enchantment:
-		hit_info.enchantment.apply_on_hit(target, hit_info.direction)
+		hit_info.enchantment.apply_on_hit(
+			target,
+			hit_info.direction,
+			hit_info.hack,
+			hit_info.hack_direction
+		)
 	target.hit(hit_info.damage, hit_info.is_clear)
 
 func _deal_area(from_node: Node, info: DamageInfo, radius: float, primary_target: Node) -> void:

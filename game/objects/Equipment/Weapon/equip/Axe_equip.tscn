@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://c8glpvvgfk441"]
+
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_equip"]
+[ext_resource type="Texture2D" uid="uid://bfqjmy8anxk32" path="res://image/equip/weapon_effects/axe1.png" id="2_icon"]
+[ext_resource type="PackedScene" uid="uid://i1apvmmwpg1r" path="res://game/objects/Equipment/Weapon/scene/Axe.tscn" id="3_axe"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_interact"]
+[ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="5_enchant"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0twu3"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojoxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_icon")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Axe_equip" type="Area2D" unique_id=1859475580]
+collision_mask = 0
+script = ExtResource("1_equip")
+equip_icon = ExtResource("2_icon")
+equip_id = "Axe"
+projectile = ExtResource("3_axe")
+equip_tooltip = "Axe"
+interact_name = "Axe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1196538062]
+shape = SubResource("CircleShape2D_qqy2x")
+
+[node name="Interactable" parent="." unique_id=2013580233 instance=ExtResource("4_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=2008104906]
+shape = SubResource("CircleShape2D_0twu3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1744033655]
+clip_children = 2
+position = Vector2(8, 9)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ojoxv")
+offset = Vector2(0, 5)
+
+[node name="enchant_shader" parent="AnimatedSprite2D" unique_id=229462888 instance=ExtResource("5_enchant")]
+position = Vector2(8.000001, -20)
+rotation = 0.0
+scale = Vector2(0.8, 0.8)
