@@ -13,6 +13,7 @@ func _on_interact() -> void:
 	var player = get_tree().get_first_node_in_group('player')
 	var luck = StatManager.get_stat(player, 'luck')
 	if interactable.is_interactable:
+		SoundManager.play_skrip()
 		EquipManager.spawn(equip_pool, equip_tier, self.global_position + Vector2(00, -80))
 		animated_sprite_2d.frame = 1
 		interactable.is_interactable = false

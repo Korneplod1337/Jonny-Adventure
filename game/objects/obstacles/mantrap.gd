@@ -55,8 +55,9 @@ func _on_hit_area_area_entered(area: Area2D) -> void:
 	if shot.exploded:
 		return
 	if shot._register_pierce_hit(self, shot._get_final_damage()):
-		shot.exploded = true
-		shot.explosion(0)
+		if not shot._try_ricochet(self):
+			shot.exploded = true
+			shot.explosion(0)
 
 
 func _capture_player(player: Node2D) -> void:

@@ -16,3 +16,7 @@ func _on_exit_button_mouse_entered() -> void:
 	$exit_button/exit_button_sprite.show()
 func _on_exit_button_mouse_exited() -> void:
 	$exit_button/exit_button_sprite.hide()
+
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed('Escape'):
+		_on_exit_button_pressed()

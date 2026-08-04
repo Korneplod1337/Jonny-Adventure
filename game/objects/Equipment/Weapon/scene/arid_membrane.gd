@@ -33,8 +33,9 @@ func _on_body_entered(body) -> void:
 		_stick_to(body)
 		return
 
-	exploded = true
-	explosion(0)
+	if not _try_ricochet(body):
+		exploded = true
+		explosion(0)
 
 
 func _stick_to(body: Node) -> void:

@@ -10,6 +10,9 @@ func _ready() -> void:
 	visibility_changed.connect(_on_visibility_changed)
 	_update_easy_button()
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed('Escape') and self.visible:
+		_on_exit_pressed()
 
 func _on_visibility_changed() -> void:
 	if visible:

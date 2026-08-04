@@ -85,6 +85,7 @@ func _on_interact() -> void:
 	if player.ability_id:
 		EquipManager.certain_spawn(player.ability_id, global_position, null, drop_cd)
 
+	SoundManager.play_book()
 	apply_equip(player)
 	equip_taken.emit()
 	queue_free()

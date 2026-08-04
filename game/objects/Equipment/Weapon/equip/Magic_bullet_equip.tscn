@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c6exdflntaqki"]
+
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_qvjs7"]
+[ext_resource type="PackedScene" uid="uid://crlgketmkxwkg" path="res://game/objects/Equipment/Weapon/scene/Magic_bullet.tscn" id="3_8qnbn"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_ouydv"]
+[ext_resource type="Texture2D" uid="uid://bmdpbxxt0fo2o" path="res://image/equip/weapon/Equip_magic_bullet.png" id="5_8qnbn"]
+[ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="5_ofs2s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0twu3"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojoxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8qnbn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Equip_magic_bullet" type="Area2D" unique_id=241584314]
+collision_mask = 0
+script = ExtResource("1_qvjs7")
+equip_icon = ExtResource("5_8qnbn")
+equip_id = "Magic pistol"
+projectile = ExtResource("3_8qnbn")
+equip_tooltip = "Magic pistol with magic bullets"
+interact_name = "Magic pistol"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598518005]
+shape = SubResource("CircleShape2D_qqy2x")
+
+[node name="Interactable" parent="." unique_id=918212545 instance=ExtResource("4_ouydv")]
+interact_name = "Swap weapon"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1006580381]
+shape = SubResource("CircleShape2D_0twu3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
+clip_children = 2
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ojoxv")
+
+[node name="enchant_shader" parent="AnimatedSprite2D" unique_id=1041673204 instance=ExtResource("5_ofs2s")]

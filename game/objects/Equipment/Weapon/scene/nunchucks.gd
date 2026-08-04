@@ -24,6 +24,8 @@ func _ready() -> void:
 	_anim_sprite.speed_scale = GameState.animated_world_speed
 	_anim_sprite.play("default")
 	_lifetime_timer.start()
+	if not body_exited.is_connected(_on_body_exited_ricochet):
+		body_exited.connect(_on_body_exited_ricochet)
 
 
 func _on_body_entered(body: Node) -> void:
@@ -31,8 +33,14 @@ func _on_body_entered(body: Node) -> void:
 		if body.has_method("take_damage"):
 			body.take_damage(1)
 		return
+	if _ricochet_overlap_id != 0 and body.get_instance_id() == _ricochet_overlap_id:
+		return
 	if body.has_method("hit"):
-		_deal_hit(body, _get_final_damage())
+		if not _is_ricochet_ignored(body):
+			_deal_hit(body, _get_final_damage())
+		_try_ricochet(body)
+	else:
+		_try_ricochet(body)
 
 
 func _on_timer_timeout() -> void:

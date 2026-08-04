@@ -85,7 +85,7 @@ var enemy_cooldown_multiplier: float = 1.0
 ]
 
 func random_boss_bufs(current_floor) -> void:
-	boss_bufs[12][1] = true
+	#boss_bufs[12][1] = true
 	if current_floor > 1:
 		if randi() % 100 > 70:
 			pass

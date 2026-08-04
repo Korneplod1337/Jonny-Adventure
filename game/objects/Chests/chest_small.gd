@@ -13,6 +13,7 @@ func _on_interact() -> void:
 	var player = get_tree().get_first_node_in_group('player')
 	var luck = StatManager.get_stat(player, 'luck')
 	if interactable.is_interactable:
+		SoundManager.play_skrip()
 		_spawn_loot(Vector2(0, -80))
 		if GameState.extra_chest_loot_chance > 0.0 and randf() < GameState.extra_chest_loot_chance:
 			_spawn_loot(Vector2(40, -80))

@@ -67,8 +67,8 @@ var POOLS := {
 		 #"tier": 2, "weight": 10.0},
 		#{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
 		#"tier": 3, "weight": 0.0},
-		{"id": "arid_membrane", "scene": preload("uid://ck8xe35a25xmt"),
-		 "tier": 2, "weight": 10.0},
+		#{"id": "arid_membrane", "scene": preload("uid://ck8xe35a25xmt"),
+		# "tier": 2, "weight": 10.0},
 		
 		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
 		 "tier": 1, "weight": 10.0},
@@ -93,6 +93,8 @@ var POOLS := {
 		 #"tier": 2, "weight": 10.0},
 		#{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
 		 #"tier": 3, "weight": 10.0},
+		{"id": "Magic pistol", "scene": preload("uid://c6exdflntaqki"),
+		 "tier": 3, "weight": 10.0},
 		],
 	"ability": [ ## дебаг / certain_spawn, пока не в сундуках
 		{"id": "Dash", "scene": preload("res://game/objects/Equipment/Ability/equip/Dash_equip.tscn"),
@@ -134,6 +136,8 @@ var POOLS := {
 		{"id": "Scatterhand", "scene": preload("uid://ixfqllfdouf6"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
+		 "tier": 3, "weight": 10.0},
+		{"id": "Magic pistol", "scene": preload("uid://c6exdflntaqki"),
 		 "tier": 3, "weight": 10.0},
 		
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),

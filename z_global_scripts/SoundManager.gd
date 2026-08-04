@@ -2,12 +2,12 @@ extends Node
 
 const COIN_SFX := preload("res://sound/sound/coin_test.mp3")
 const TRACK_ARCADE := preload("res://sound/music/arcade.ogg")
-const TRACK_SOUNDTRACK_MB := preload("res://sound/music/soundtrack_mb.mp3")
+const TRACK_SOUNDTRACK_MB := preload("res://sound/music/soundtrack_mb.ogg")
 
 const SFX_HEAL := preload("res://sound/sound/heal.mp3")
 const SFX_HIT := preload("res://sound/sound/hit.mp3")
 const SFX_HEARTBEAT := preload("res://sound/sound/heartbeat.mp3")
-const SFX_WALKING := preload("res://sound/sound/walking.mp3")
+const SFX_WALKING := preload("res://sound/sound/walking.ogg")
 const SFX_SHINE := preload("res://sound/sound/shine.mp3")
 const SFX_MEGACRIT := preload("res://sound/sound/megacrit.mp3")
 const SFX_REVIVE := preload("res://sound/sound/revive.mp3")
@@ -32,11 +32,23 @@ const SFX_SLASHES: Array[AudioStream] = [
 	preload("res://sound/sound/slash3.mp3"),
 	preload("res://sound/sound/slash4.mp3"),
 ]
+const SFX_SKRIP: Array[AudioStream] = [
+	preload("res://sound/sound/skrip1.ogg"),
+	preload("res://sound/sound/skrip2.ogg"),
+	preload("res://sound/sound/skrip3.ogg"),
+	preload("res://sound/sound/skrip4.ogg"),
+]
+const SFX_BOOK: Array[AudioStream] = [
+	preload("res://sound/sound/book1.ogg"),
+	preload("res://sound/sound/book2.ogg"),
+	preload("res://sound/sound/book3.ogg"),
+]
 
 const LOOP_HEARTBEAT := &"heartbeat"
 const LOOP_WALKING := &"walking"
 
 ## Относительные громкости SFX (дБ к дефолту 0). Master bus не трогаем.
+const VOL_WALKING := 6.0
 const VOL_HEARTBEAT := 6.0
 const VOL_GUN_SHOT := 3.5
 const VOL_MEGACRIT := 4.0
@@ -203,6 +215,14 @@ func play_slash() -> void:
 	play_random(SFX_SLASHES)
 
 
+func play_skrip() -> void:
+	play_random(SFX_SKRIP)
+
+
+func play_book() -> void:
+	play_random(SFX_BOOK,20)
+
+
 func start_heartbeat() -> void:
 	play_loop(LOOP_HEARTBEAT, SFX_HEARTBEAT, VOL_HEARTBEAT)
 
@@ -212,11 +232,19 @@ func stop_heartbeat() -> void:
 
 
 func start_walking() -> void:
-	play_loop(LOOP_WALKING, SFX_WALKING)
+	var existing: AudioStreamPlayer = _loop_players.get(LOOP_WALKING) as AudioStreamPlayer
+	if existing and is_instance_valid(existing):
+		existing.stream_paused = false
+		if not existing.playing:
+			existing.play()
+		return
+	play_loop(LOOP_WALKING, SFX_WALKING, VOL_WALKING)
 
 
 func stop_walking() -> void:
-	stop_loop(LOOP_WALKING)
+	var existing: AudioStreamPlayer = _loop_players.get(LOOP_WALKING) as AudioStreamPlayer
+	if existing and is_instance_valid(existing):
+		existing.stream_paused = true
 
 
 func play_coins(count: int, delay: float = 0.1) -> void:

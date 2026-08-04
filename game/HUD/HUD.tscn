@@ -474,7 +474,6 @@ offset_bottom = 112.75
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("86_p0ac8")
-theme_override_font_sizes/font_size = 128
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m045i")
 text = "Nothing"
 label_settings = SubResource("LabelSettings_m045i")

@@ -30,16 +30,22 @@ func _on_body_entered(body: Node) -> void:
 		return
 	if body.is_in_group("player"):
 		return
+	if _ricochet_overlap_id != 0 and body.get_instance_id() == _ricochet_overlap_id:
+		return
 
 	if body.has_method("hit"):
+		if _is_ricochet_ignored(body):
+			return
 		_handle_enemy_contact(body)
 	else:
-		_break_shot()
+		if not _try_ricochet(body):
+			_break_shot()
 
 
 func _handle_enemy_contact(enemy: Node) -> void:
 	if _register_pierce_hit(enemy, _get_final_damage()):
-		_break_shot()
+		if not _try_ricochet(enemy):
+			_break_shot()
 
 
 func _break_shot() -> void:

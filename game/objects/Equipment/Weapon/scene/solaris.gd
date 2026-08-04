@@ -130,6 +130,14 @@ func _on_body_entered(_body: Node) -> void:
 	pass
 
 
+func _allows_ricochet() -> bool:
+	return false
+
+
+func _uses_melee_ricochet() -> bool:
+	return false
+
+
 func _on_frame_changed() -> void:
 	pass
 

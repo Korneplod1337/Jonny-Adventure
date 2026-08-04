@@ -58,6 +58,9 @@ func _ready() -> void:
 	update_character_unlocks()
 	_refresh_carousel()
 
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed('Escape') and self.visible:
+		_on_exit_pressed()
 
 func update_character_unlocks() -> void:
 	for ach_id in AchivStatsRegistry.CHARACTER_UNLOCKS.keys():

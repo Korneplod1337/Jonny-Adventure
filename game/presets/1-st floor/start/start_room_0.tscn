@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="11_6cfgv"]
 [ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn" id="14_i3tqa"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_o41he"]
+[ext_resource type="PackedScene" uid="uid://d4nmsl38t7ni6" path="res://game/objects/Equipment/Ability/equip/Dash_equip.tscn" id="16_qeb2j"]
+[ext_resource type="PackedScene" uid="uid://3p4virvlmdu2" path="res://game/objects/chests/Chest_small.tscn" id="17_vombo"]
+[ext_resource type="PackedScene" uid="uid://c6exdflntaqki" path="res://game/objects/Equipment/Weapon/equip/Magic_bullet_equip.tscn" id="18_vombo"]
 [ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="25_ww7l6"]
 [ext_resource type="PackedScene" uid="uid://lcbyc42s480y" path="res://game/objects/Equipment/boots/Speed_boots.tscn" id="26_bxm0y"]
 
@@ -152,7 +155,7 @@ position = Vector2(-375, 157)
 position = Vector2(380, -188)
 
 [node name="CoinBag2" parent="." unique_id=947796805 instance=ExtResource("6_ww7l6")]
-position = Vector2(-146.00002, -135)
+position = Vector2(-96, -28)
 
 [node name="Speed_boots" parent="." unique_id=1914859512 instance=ExtResource("26_bxm0y")]
 position = Vector2(-376, 99)
@@ -171,3 +174,18 @@ position = Vector2(-149, 93)
 
 [node name="Sword_equip" parent="." unique_id=1046444052 instance=ExtResource("15_o41he")]
 position = Vector2(-258, 93)
+
+[node name="Dash_equip" parent="." unique_id=566211452 instance=ExtResource("16_qeb2j")]
+position = Vector2(204, 25)
+
+[node name="Dash_equip2" parent="." unique_id=193084275 instance=ExtResource("16_qeb2j")]
+position = Vector2(212, -64)
+
+[node name="ChestSmall2" parent="." unique_id=633015614 instance=ExtResource("17_vombo")]
+position = Vector2(-389, -21)
+
+[node name="ChestSmall3" parent="." unique_id=1876507997 instance=ExtResource("17_vombo")]
+position = Vector2(-234, -23)
+
+[node name="Equip_magic_bullet" parent="." unique_id=175635965 instance=ExtResource("18_vombo")]
+position = Vector2(76, 89)

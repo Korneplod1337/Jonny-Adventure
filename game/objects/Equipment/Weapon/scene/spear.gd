@@ -30,6 +30,12 @@ func _on_body_entered(body: Node) -> void:
 		return
 	if body.name == "Player":
 		return
+	if _ricochet_overlap_id != 0 and body.get_instance_id() == _ricochet_overlap_id:
+		return
 	if body.has_method("hit"):
-		_deal_hit(body, _get_final_damage())
+		if not _is_ricochet_ignored(body):
+			_deal_hit(body, _get_final_damage())
+		_try_ricochet(body)
+	else:
+		_try_ricochet(body)
 	StatsManager.add_statistic_progress('bad_spear_kills', 1)

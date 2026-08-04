@@ -40,9 +40,9 @@ var speed_bonus: 			int = 0
 var luck_bonus: 				int = 0
 var magic_bonus: 			int = 0
 var damage_bonus: 			int = 1
-var accuracy_bonus: 			int = 0
-var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 0
+var accuracy_bonus: 			int = 10
+var range_bonus: 			int = 15
+var fire_rate_bonus:			int = 15
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0
@@ -56,7 +56,7 @@ var force_shield_charges: 	int = 0
 var minimap: 				int = 1
 var revival_count: 			int = 0
 var penetration_bonus: 		int = 0
-var hack_bonus: 			int = 0
+var hack_bonus: 				int = 0
 var attack_locked: 			bool = false
 
 @export_range(1.0, 10.0, 1.0) var hit_points_level: 	float = 1.0
@@ -155,10 +155,10 @@ func _process(delta: float) -> void:
 	total_time_alive += delta
 	total_distance_travelled += now_move_direction.length() * delta
 	#ходьба
-	'''
+	#'''
 	velocity = Vector2(Input.get_axis('move_left', 'move_right'),
 		Input.get_axis('move_up', 'move_down')).normalized() * move_speed
-	'''
+	#'''
 	
 	var ability_moved := false
 	if current_ability:

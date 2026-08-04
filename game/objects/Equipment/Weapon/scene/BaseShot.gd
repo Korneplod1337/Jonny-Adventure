@@ -20,6 +20,8 @@ var extra_reload: float = 1.0 # только для слёз множитель 
 @export var boomerang_power: int = 0
 ## Сколько прорубаний создать за целью при попадании (0 = нет).
 @export var hack: int = 0
+## Сколько рикошетов осталось (0 — без отскока). Пробивание имеет приоритет.
+@export var ricochet: int = 0
 
 var distance_travelled := 0.0
 var exploded := false
@@ -35,6 +37,14 @@ var enchantment: EnchantmentResource
 
 var penetration: int = 0 ## Число врагов, сквозь которых снаряд проходит, не исчезая (0 — остановка на первом).
 var _enemy_hit_count: int = 0
+
+## Цели, по которым копия ближнего рикошета не бьёт повторно.
+var _ricochet_ignore_ids: Array[int] = []
+## Пока не вышли из оверлапа с телом, от которого только что отскочили.
+var _ricochet_overlap_id: int = 0
+
+const RICOCHET_SEPARATION := 6.0
+const RICOCHET_SPREAD_DEG := 5.0
 
 var spread_angle: float
 var spawned_spread := false
@@ -59,6 +69,8 @@ func _ready() -> void:
 		spawned_spread = true
 		_spawn_spread()
 	_init_boomerang()
+	if not body_exited.is_connected(_on_body_exited_ricochet):
+		body_exited.connect(_on_body_exited_ricochet)
 
 
 func _play_attack_sfx() -> void:
@@ -147,15 +159,155 @@ func _finish_boomerang_path() -> void:
 func _on_body_entered(body):
 	if exploded:
 		return
-	if body.name == "Player":
+	if body.name == "Player" or body.is_in_group("player"):
 		return
+	if _ricochet_overlap_id != 0 and body.get_instance_id() == _ricochet_overlap_id:
+		return
+	_resolve_collision(body)
+
+
+func _resolve_collision(body: Node) -> void:
 	if body.has_method("hit"):
+		if _is_ricochet_ignored(body):
+			return
 		if _register_pierce_hit(body, _get_final_damage()):
-			exploded = true
-			explosion(0)
+			# Пробивание исчерпано — рикошет, иначе уничтожение.
+			if not _try_ricochet(body):
+				exploded = true
+				explosion(0)
 		return
-	exploded = true
-	explosion(0)
+
+	if not _try_ricochet(body):
+		exploded = true
+		explosion(0)
+
+
+func _on_body_exited_ricochet(body: Node) -> void:
+	if body.get_instance_id() == _ricochet_overlap_id:
+		_ricochet_overlap_id = 0
+
+
+func _allows_ricochet() -> bool:
+	return true
+
+
+func _uses_melee_ricochet() -> bool:
+	return false
+
+
+func _is_ricochet_ignored(body: Node) -> bool:
+	return body.get_instance_id() in _ricochet_ignore_ids
+
+
+func _get_flight_direction() -> Vector2:
+	var dir := direction.normalized()
+	if dir != Vector2.ZERO:
+		return dir
+	return Vector2.RIGHT
+
+
+## Возвращает true, если снаряд отскочил и продолжает жить.
+func _try_ricochet(body: Node) -> bool:
+	if ricochet <= 0 or not _allows_ricochet():
+		return false
+	if _uses_melee_ricochet():
+		return _perform_melee_ricochet(body)
+	return _perform_projectile_ricochet(body)
+
+
+func _perform_melee_ricochet(_body: Node) -> bool:
+	return false
+
+
+func _perform_projectile_ricochet(body: Node) -> bool:
+	var bounce := _compute_bounce_info(body)
+	var normal: Vector2 = bounce.normal
+	var in_dir := _get_flight_direction()
+	var out_dir := _apply_ricochet_spread(in_dir.bounce(normal))
+	if out_dir.length_squared() < 0.0001:
+		out_dir = _apply_ricochet_spread(-in_dir)
+
+	ricochet -= 1
+	direction = out_dir
+	_sync_facing_after_redirect()
+	global_position += normal * RICOCHET_SEPARATION
+	if is_instance_valid(body):
+		_ricochet_overlap_id = body.get_instance_id()
+	return true
+
+
+func _apply_ricochet_spread(dir: Vector2) -> Vector2:
+	if dir.length_squared() < 0.0001:
+		return Vector2.RIGHT
+	var spread := deg_to_rad(randf_range(-RICOCHET_SPREAD_DEG, RICOCHET_SPREAD_DEG))
+	return dir.normalized().rotated(spread)
+
+
+## { "normal": Vector2, "point": Vector2 }
+func _compute_bounce_info(body: Node) -> Dictionary:
+	var in_dir := _get_flight_direction()
+	var fallback_n := -in_dir
+	var fallback_p := _get_weapon_hit_point()
+	if body is Node2D:
+		var body_2d := body as Node2D
+		var away: Vector2 = global_position - body_2d.global_position
+		if away.length_squared() > 0.0001:
+			fallback_n = away.normalized()
+		fallback_p = DamageDealer.get_hit_contact_point(self, body_2d, fallback_p)
+
+	var space := get_world_2d().direct_space_state
+	if space == null:
+		return {"normal": fallback_n, "point": fallback_p}
+
+	var col := get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if col and col.shape:
+		var params := PhysicsShapeQueryParameters2D.new()
+		params.shape = col.shape
+		params.transform = col.global_transform
+		params.collision_mask = collision_mask
+		params.collide_with_areas = false
+		params.collide_with_bodies = true
+		var rest := space.get_rest_info(params)
+		if not rest.is_empty():
+			var n: Vector2 = rest.get("normal", Vector2.ZERO)
+			var p: Vector2 = rest.get("point", fallback_p)
+			if n != Vector2.ZERO:
+				return {"normal": n.normalized(), "point": p}
+
+	var from := global_position - in_dir * 4.0
+	var to := global_position + in_dir * 48.0
+	var query := PhysicsRayQueryParameters2D.create(from, to)
+	query.collision_mask = collision_mask
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	var result := space.intersect_ray(query)
+	if result and result.normal != Vector2.ZERO:
+		return {"normal": result.normal.normalized(), "point": result.position}
+
+	if body is Node2D:
+		var target: Vector2 = (body as Node2D).global_position
+		if global_position.distance_squared_to(target) > 1.0:
+			query = PhysicsRayQueryParameters2D.create(global_position, target)
+			query.collision_mask = collision_mask
+			query.collide_with_areas = false
+			query.collide_with_bodies = true
+			result = space.intersect_ray(query)
+			if result and result.normal != Vector2.ZERO:
+				return {"normal": result.normal.normalized(), "point": result.position}
+
+	return {"normal": fallback_n, "point": fallback_p}
+
+
+func _compute_bounce_normal(body: Node) -> Vector2:
+	return _compute_bounce_info(body).normal
+
+
+func _sync_facing_after_redirect() -> void:
+	rotation = direction.angle()
+	var crit_node := get_node_or_null("Crit")
+	if crit_node is AnimatedSprite2D:
+		crit_node.position = CRIT_WORLD_OFFSET.rotated(-rotation)
+		crit_node.rotation = -rotation
 
 
 func _get_player() -> Node:
@@ -331,11 +483,13 @@ func _spawn_spread() -> void:
 		bullet.self_range_multiplier = self_range_multiplier
 		bullet.boomerang_power = boomerang_power
 		bullet.hack = hack
+		bullet.ricochet = ricochet
 		bullet.enchantment = enchantment
 		bullet.penetration = penetration
 		bullet.use_spread = use_spread
 		bullet.pellet_count = pellet_count
 		bullet.spread_angle = spread_angle
+		bullet._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 
 		bullet.base_crit_bonus = self.base_crit_bonus
 
