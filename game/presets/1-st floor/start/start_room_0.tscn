@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d4nmsl38t7ni6" path="res://game/objects/Equipment/Ability/equip/Dash_equip.tscn" id="16_qeb2j"]
 [ext_resource type="PackedScene" uid="uid://3p4virvlmdu2" path="res://game/objects/chests/Chest_small.tscn" id="17_vombo"]
 [ext_resource type="PackedScene" uid="uid://c6exdflntaqki" path="res://game/objects/Equipment/Weapon/equip/Magic_bullet_equip.tscn" id="18_vombo"]
+[ext_resource type="PackedScene" uid="uid://smi175qgauq2" path="res://game/enemy/all/Mimic.tscn" id="19_8sdh4"]
 [ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="25_ww7l6"]
 [ext_resource type="PackedScene" uid="uid://lcbyc42s480y" path="res://game/objects/Equipment/boots/Speed_boots.tscn" id="26_bxm0y"]
 
@@ -176,16 +177,16 @@ position = Vector2(-149, 93)
 position = Vector2(-258, 93)
 
 [node name="Dash_equip" parent="." unique_id=566211452 instance=ExtResource("16_qeb2j")]
-position = Vector2(204, 25)
+position = Vector2(366, 47)
 
 [node name="Dash_equip2" parent="." unique_id=193084275 instance=ExtResource("16_qeb2j")]
-position = Vector2(212, -64)
+position = Vector2(418, -16)
 
 [node name="ChestSmall2" parent="." unique_id=633015614 instance=ExtResource("17_vombo")]
-position = Vector2(-389, -21)
-
-[node name="ChestSmall3" parent="." unique_id=1876507997 instance=ExtResource("17_vombo")]
-position = Vector2(-234, -23)
+position = Vector2(-418, -160)
 
 [node name="Equip_magic_bullet" parent="." unique_id=175635965 instance=ExtResource("18_vombo")]
 position = Vector2(76, 89)
+
+[node name="Mimic" parent="." unique_id=2133096440 instance=ExtResource("19_8sdh4")]
+position = Vector2(-125.000015, -159)

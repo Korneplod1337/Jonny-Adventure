@@ -112,6 +112,8 @@
 [ext_resource type="PackedScene" uid="uid://ck8xe35a25xmt" path="res://game/objects/Equipment/Weapon/equip/AridMembrane_equip.tscn" id="110_r0oqo"]
 [ext_resource type="PackedScene" uid="uid://c8glpvvgfk441" path="res://game/objects/Equipment/Weapon/equip/Axe_equip.tscn" id="111_1yr5r"]
 [ext_resource type="PackedScene" uid="uid://c6exdflntaqki" path="res://game/objects/Equipment/Weapon/equip/Magic_bullet_equip.tscn" id="112_13bi0"]
+[ext_resource type="PackedScene" uid="uid://smi175qgauq2" path="res://game/enemy/all/Mimic.tscn" id="113_wc11c"]
+[ext_resource type="PackedScene" uid="uid://dh77dsffykcnc" path="res://game/enemy/all/Mimic_boss.tscn" id="114_kvn2i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -573,3 +575,9 @@ position = Vector2(1157, 476)
 
 [node name="Equip_magic_bullet" parent="." unique_id=1003427081 instance=ExtResource("112_13bi0")]
 position = Vector2(500, 476)
+
+[node name="Mimic" parent="." unique_id=1309373218 instance=ExtResource("113_wc11c")]
+position = Vector2(-1135, -564)
+
+[node name="Mimic_boss" parent="." unique_id=2133096441 instance=ExtResource("114_kvn2i")]
+position = Vector2(-1134, -472)

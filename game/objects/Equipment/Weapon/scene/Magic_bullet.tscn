@@ -37,7 +37,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"miss",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ie2s"]
@@ -101,6 +101,7 @@ fire_sfx_kind = 1
 position = Vector2(0, -1.5)
 rotation = 0.7853982
 sprite_frames = SubResource("SpriteFrames_xhdno")
+animation = &"miss"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
 rotation = 1.5707964

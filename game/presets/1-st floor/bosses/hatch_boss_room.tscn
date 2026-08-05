@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cs4tdfiitr06y" path="res://game/presets/doors/hatch.tscn" id="5_mn21p"]
 [ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/1-st floor basement/Spider_small.tscn" id="6_7k5rr"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgard"]
 size = Vector2(1270, 711)
 

@@ -27,7 +27,7 @@ animations = [{
 
 [node name="ChestWeapon" type="StaticBody2D" unique_id=55639212]
 scale = Vector2(3, 3)
-collision_layer = 6
+collision_layer = 40
 script = ExtResource("1_kgits")
 
 [node name="Interactable" parent="." unique_id=1949431272 instance=ExtResource("2_gaius")]

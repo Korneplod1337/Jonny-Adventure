@@ -1,17 +1,17 @@
-[gd_scene format=4 uid="uid://bbhecc2jtnmpr"]
+[gd_scene format=4 uid="uid://e8vf31lieg73"]
 
-[ext_resource type="Script" uid="uid://8dsbbf343e01" path="res://game/presets/1-st floor/bosses/boss_room.gd" id="1_7483b"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/tile background_1.png" id="2_wsaan"]
-[ext_resource type="Texture2D" uid="uid://5eibh5egrc5o" path="res://image/rooms/1-st floor/background_bounds_1.2x.png" id="3_ohyy4"]
-[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_1ki0k"]
-[ext_resource type="PackedScene" uid="uid://cs4tdfiitr06y" path="res://game/presets/doors/hatch.tscn" id="5_5b0nq"]
-[ext_resource type="PackedScene" uid="uid://ce5ei6v0m2h2e" path="res://game/enemy/1-st floor basement/Spider_queen_boss.tscn" id="6_iqa5g"]
+[ext_resource type="Script" uid="uid://8dsbbf343e01" path="res://game/presets/1-st floor/bosses/boss_room.gd" id="1_81pxa"]
+[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/tile background_1.png" id="2_wfoqa"]
+[ext_resource type="Texture2D" uid="uid://5eibh5egrc5o" path="res://image/rooms/1-st floor/background_bounds_1.2x.png" id="3_81pxa"]
+[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_38h4p"]
+[ext_resource type="PackedScene" uid="uid://ce5ei6v0m2h2e" path="res://game/enemy/1-st floor basement/Spider_queen_boss.tscn" id="6_t5yr1"]
+[ext_resource type="PackedScene" uid="uid://cs4tdfiitr06y" path="res://game/presets/doors/hatch.tscn" id="7_5a48l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgard"]
 size = Vector2(1388, 711)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ur2v"]
-texture = ExtResource("2_wsaan")
+texture = ExtResource("2_wfoqa")
 separation = Vector2i(2, 2)
 0:0/0 = 0
 1:0/0 = 0
@@ -60,7 +60,7 @@ size = Vector2(1440, 40)
 size = Vector2(40, 726)
 
 [node name="BossRoom" type="Node2D" unique_id=133483040]
-script = ExtResource("1_7483b")
+script = ExtResource("1_81pxa")
 
 [node name="Detecter_player" type="Area2D" parent="." unique_id=1378419140]
 collision_layer = 0
@@ -68,7 +68,6 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detecter_player" unique_id=566184526]
 visible = false
-position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_tgard")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=579914741]
@@ -80,7 +79,7 @@ tile_set = SubResource("TileSet_g0c75")
 [node name="BG_bounds" type="Sprite2D" parent="." unique_id=346515156]
 z_index = -5
 scale = Vector2(2, 2)
-texture = ExtResource("3_ohyy4")
+texture = ExtResource("3_81pxa")
 
 [node name="CameraBounds" type="Area2D" parent="." unique_id=1686679619]
 
@@ -109,38 +108,36 @@ shape = SubResource("RectangleShape2D_7q3g2")
 position = Vector2(-509.94, 240)
 shape = SubResource("RectangleShape2D_7q3g2")
 
-[node name="Door_Up" parent="." unique_id=650211907 instance=ExtResource("4_1ki0k")]
+[node name="Door_Up" parent="." unique_id=650211907 instance=ExtResource("4_38h4p")]
 position = Vector2(0, -370)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
-[node name="Door_Down" parent="." unique_id=60275189 instance=ExtResource("4_1ki0k")]
+[node name="Door_Down" parent="." unique_id=60275189 instance=ExtResource("4_38h4p")]
 position = Vector2(0, 370)
 rotation = 3.1415927
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
-[node name="Door_Left" parent="." unique_id=1774901095 instance=ExtResource("4_1ki0k")]
+[node name="Door_Left" parent="." unique_id=1774901095 instance=ExtResource("4_38h4p")]
 position = Vector2(-706, 0)
 rotation = -1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
-[node name="Door_Right" parent="." unique_id=970584351 instance=ExtResource("4_1ki0k")]
+[node name="Door_Right" parent="." unique_id=970584351 instance=ExtResource("4_38h4p")]
 position = Vector2(706, 0)
 rotation = 1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
-[node name="Hatch" parent="." unique_id=197674772 instance=ExtResource("5_5b0nq")]
+[node name="Hatch" parent="." unique_id=197674772 instance=ExtResource("7_5a48l")]
 position = Vector2(191, 0)
 scale = Vector2(2, 2)
 
-[node name="Spider_queen_boss" parent="." unique_id=1352998397 instance=ExtResource("6_iqa5g")]
+[node name="Spider_queen_boss" parent="." unique_id=1352998397 instance=ExtResource("6_t5yr1")]
 position = Vector2(0, -25)
-boss_projectile_range = 800.0
 wait_idle_time = 0.8
-shot_charge_time = 1.0
 spawn_distance_buffer = 25.0
 boss_move_speed = 200.0
 

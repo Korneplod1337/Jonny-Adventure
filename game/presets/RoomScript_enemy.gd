@@ -3,6 +3,7 @@ extends "res://game/presets/RoomScript.gd" #no enemy
 const CHEST_SMALL := preload("res://game/objects/chests/Chest_small.tscn")
 const CHEST_BIG := preload("res://game/objects/chests/Chest_big.tscn")
 const CHEST_WEAPON := preload("res://game/objects/chests/Chest_weapon.tscn")
+const MIMIC := preload("res://game/enemy/all/Mimic.tscn")
 const SHRINE_SCENE_PATH := "res://game/presets/shrines/shrine.tscn"
 const SHRINE_REMOVE_CHANCE := 0.5
 
@@ -126,7 +127,14 @@ func _get_clear_reward_spawn_position() -> Vector2:
 	return Vector2.ZERO
 
 func _spawn_clear_reward_chest() -> void:
-	var chest := _pick_chest_scene().instantiate()
+	var scene := _pick_chest_scene()
+	if (
+		scene != CHEST_WEAPON
+		and GameState.mimic_chest_chance > 0.0
+		and randf() < GameState.mimic_chest_chance
+	):
+		scene = MIMIC
+	var chest := scene.instantiate()
 	chest.position = _get_clear_reward_spawn_position()
 	call_deferred("add_child", chest)
 

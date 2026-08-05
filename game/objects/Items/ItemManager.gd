@@ -16,7 +16,7 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'sp
  #'zerotohundred', 'salamandra', 'dragonheart', 'uranium', 'executionersaxe', 'eagleseye',
  #'laserscope', 'scope', 'hunter', 'astrolabia', 'planetary', 'telescope', 'lantern',
  #'balllightning', 'waterelemental', 'goldnugget', 'goldbar', 'well',
- 'starmap', 'secondheart', 'penetrating',
+ 'starmap', 'secondheart', 'penetrating', 'mimic', 'treasuremap', 'opulence',
  'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
 var DEFAULT_PICK := ["heal"]
 
@@ -110,6 +110,9 @@ var POOLS := {
 		{"id": "starmap", 		"scene": preload("res://game/objects/items/scenes/tier 2/StarMap.tscn"), "tier": 2},
 		#{"id": "secondheart", 	"scene": preload("res://game/objects/items/scenes/tier 2/SecondHeart.tscn"), "tier": 2},
 		{"id": "penetrating", 	"scene": preload("res://game/objects/items/scenes/tier 2/Penetrating.tscn"), "tier": 2},
+		{"id": "mimic", 		"scene": preload("res://game/objects/items/scenes/tier 2/Mimic_item.tscn"), "tier": 2},
+		{"id": "treasuremap", 	"scene": preload("res://game/objects/items/scenes/tier 2/TreasureMap.tscn"), "tier": 2},
+		{"id": "opulence", 		"scene": preload("res://game/objects/items/scenes/tier 2/Opulence.tscn"), "tier": 2},
 		{"id": "guts", 			"scene": preload("res://game/objects/items/scenes/tier 2/Guts.tscn"), "tier": 2},
 		{"id": "blackdeal", 	"scene": preload("res://game/objects/items/scenes/tier 2/BlackDeal.tscn"), "tier": 2},
 		#{"id": "ouroboros", 	"scene": preload("res://game/objects/items/scenes/tier 2/Ouroboros.tscn"), "tier": 2},

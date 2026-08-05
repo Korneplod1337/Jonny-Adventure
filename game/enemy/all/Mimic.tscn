@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://smi175qgauq2"]
+
+[ext_resource type="Script" uid="uid://beita3ybter21" path="res://game/enemy/all/mimic.gd" id="1_qbuee"]
+[ext_resource type="PackedScene" uid="uid://de8bysc6b02gw" path="res://game/enemy/projectiles/MimicShot.tscn" id="2_shot"]
+[ext_resource type="Texture2D" uid="uid://b2xlsoiitorp" path="res://image/enemy/bodies/Mimic1.png" id="3_qbuee"]
+[ext_resource type="Texture2D" uid="uid://b5qlx6iurvb6x" path="res://image/enemy/bodies/Mimic2.png" id="4_32d8u"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="4_hlwg8"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="5_646mt"]
+[ext_resource type="Texture2D" uid="uid://cir7lkb78jk3t" path="res://image/enemy/bodies/Mimic3.png" id="5_owwb2"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="6_41npl"]
+[ext_resource type="Texture2D" uid="uid://bot3r3v2cvi5g" path="res://image/enemy/bodies/Mimic4.png" id="6_twi2t"]
+[ext_resource type="Texture2D" uid="uid://f2cnw6bxykmd" path="res://image/enemy/bodies/Mimic7.png" id="7_5e6aa"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="7_hwww7"]
+[ext_resource type="Texture2D" uid="uid://dfj5wbbaplql5" path="res://image/enemy/bodies/Mimic8.png" id="8_hsxqm"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="8_qmgvy"]
+[ext_resource type="Texture2D" uid="uid://c3xvu0vhythkv" path="res://image/enemy/bodies/Mimic5.png" id="9_bmkci"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="9_q57dw"]
+[ext_resource type="Texture2D" uid="uid://b6gm52bf3d66h" path="res://image/enemy/bodies/Mimic6.png" id="10_48dfu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_af8il"]
+radius = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
+size = Vector2(44, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
+size = Vector2(56, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qbuee")
+}],
+"loop": false,
+"name": &"Non-active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_32d8u")
+}],
+"loop": false,
+"name": &"activation",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_owwb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_twi2t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5e6aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hsxqm")
+}],
+"loop": false,
+"name": &"die",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_bmkci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_48dfu")
+}],
+"loop": false,
+"name": &"preparing shot",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
+radius = 984.0
+
+[node name="Mimic" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 182
+script = ExtResource("1_qbuee")
+hard_move_speed = 200.0
+hard_base_hp = 120
+hard_projectile_speed = 400.0
+projectile_scene = ExtResource("2_shot")
+use_pathfinding = true
+drop_coin_on_death = false
+
+[node name="Interactable" parent="." unique_id=1597460607 instance=ExtResource("9_q57dw")]
+interact_name = "Open chest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1631147308]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_af8il")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ps82n")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_hoiul")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_17ibq")
+animation = &"Non-active"
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=272051664]
+visible = false
+shape = SubResource("CircleShape2D_2eqer")
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1995691531]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=186013657]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1316312069]
+wait_time = 1.5
+one_shot = true
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1547975255]
+script = ExtResource("4_hlwg8")
+spacing = 25.0
+freeze_icon = ExtResource("5_646mt")
+poison_icon = ExtResource("6_41npl")
+fire_icon0 = ExtResource("7_hwww7")
+fire_icon1 = ExtResource("8_qmgvy")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

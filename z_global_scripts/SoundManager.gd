@@ -13,6 +13,7 @@ const SFX_MEGACRIT := preload("res://sound/sound/megacrit.mp3")
 const SFX_REVIVE := preload("res://sound/sound/revive.mp3")
 const SFX_DEATH := preload("res://sound/sound/death.mp3")
 const SFX_MISFIRE := preload("res://sound/sound/misfire.mp3")
+const SFX_MIMIC_BOSS_ROAR := preload("res://sound/sound/mimic boss roar.mp3")
 
 const SFX_SHOTS: Array[AudioStream] = [
 	preload("res://sound/sound/shot1.mp3"),
@@ -217,6 +218,10 @@ func play_slash() -> void:
 
 func play_skrip() -> void:
 	play_random(SFX_SKRIP)
+
+
+func play_mimic_boss_roar() -> void:
+	play(SFX_MIMIC_BOSS_ROAR)
 
 
 func play_book() -> void:
