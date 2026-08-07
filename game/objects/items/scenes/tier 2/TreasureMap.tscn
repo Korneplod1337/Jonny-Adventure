@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bd8dyatql1hlv"]
 
 [ext_resource type="Script" uid="uid://dvxg0kwtt1niq" path="res://game/objects/items/scripts/treasure_map.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://dbrhyguncyij5" path="res://image/items/Treasure_map.png" id="2_w76ly"]
+[ext_resource type="Texture2D" uid="uid://dbrhyguncyij5" path="res://image/items/2 tier/Treasure_map.png" id="2_w76ly"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]

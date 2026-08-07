@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ccx5bybdqevjv"]
 
 [ext_resource type="Script" uid="uid://rma1vhqgjr5t" path="res://game/objects/items/scripts/opulence.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://bjq3ye5tq02ef" path="res://image/items/Opulence.png" id="2_6oyg1"]
+[ext_resource type="Texture2D" uid="uid://bjq3ye5tq02ef" path="res://image/items/2 tier/Opulence.png" id="2_6oyg1"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]

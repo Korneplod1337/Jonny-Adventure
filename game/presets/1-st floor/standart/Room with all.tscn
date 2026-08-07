@@ -114,6 +114,9 @@
 [ext_resource type="PackedScene" uid="uid://c6exdflntaqki" path="res://game/objects/Equipment/Weapon/equip/Magic_bullet_equip.tscn" id="112_13bi0"]
 [ext_resource type="PackedScene" uid="uid://smi175qgauq2" path="res://game/enemy/all/Mimic.tscn" id="113_wc11c"]
 [ext_resource type="PackedScene" uid="uid://dh77dsffykcnc" path="res://game/enemy/all/Mimic_boss.tscn" id="114_kvn2i"]
+[ext_resource type="PackedScene" uid="uid://bppmceu2mcbfr" path="res://game/enemy/1-st floor basement/Bug_gunslinger.tscn" id="115_kvn2i"]
+[ext_resource type="PackedScene" path="res://game/enemy/1-st floor basement/Bug_sniper.tscn" id="116_5m63l"]
+[ext_resource type="PackedScene" path="res://game/enemy/1-st floor basement/Bug_soldier.tscn" id="117_r226l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -277,7 +280,7 @@ position = Vector2(-956, 393)
 position = Vector2(-139, -460)
 
 [node name="EnemyBat" parent="." unique_id=2112646817 instance=ExtResource("15_x04md")]
-position = Vector2(-261, -494)
+position = Vector2(-261, -498)
 
 [node name="Hog" parent="." unique_id=875395071 instance=ExtResource("16_ltcm7")]
 position = Vector2(-145, -280)
@@ -525,7 +528,7 @@ position = Vector2(-376, 40)
 position = Vector2(-614, -519)
 
 [node name="Spider_queen_boss" parent="." unique_id=1352998397 instance=ExtResource("97_ahchr")]
-position = Vector2(-752, -531)
+position = Vector2(114, -587)
 
 [node name="EmenyWormInsected" parent="." unique_id=338583932 instance=ExtResource("98_l3f4i")]
 position = Vector2(-138, -519)
@@ -557,7 +560,7 @@ burn_out_time = 100.0
 player_phy_damage = 0
 
 [node name="lightning" parent="." unique_id=1026476125 instance=ExtResource("107_0qir2")]
-position = Vector2(-838, 520)
+position = Vector2(1162, 115)
 mag_damage = 0
 active_duration = 20.0
 
@@ -580,4 +583,13 @@ position = Vector2(500, 476)
 position = Vector2(-1135, -564)
 
 [node name="Mimic_boss" parent="." unique_id=2133096441 instance=ExtResource("114_kvn2i")]
-position = Vector2(-1134, -472)
+position = Vector2(275, -512)
+
+[node name="Bug_gunslinger" parent="." unique_id=717668300 instance=ExtResource("115_kvn2i")]
+position = Vector2(-720, -517)
+
+[node name="Bug_sniper" parent="." unique_id=971643715 instance=ExtResource("116_5m63l")]
+position = Vector2(-799, -517)
+
+[node name="Bug_soldier" parent="." unique_id=1904249125 instance=ExtResource("117_r226l")]
+position = Vector2(-875.00006, -517)

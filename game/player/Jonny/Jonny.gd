@@ -40,9 +40,9 @@ var speed_bonus: 			int = 0
 var luck_bonus: 				int = 0
 var magic_bonus: 			int = 0
 var damage_bonus: 			int = 1
-var accuracy_bonus: 			int = 10
-var range_bonus: 			int = 15
-var fire_rate_bonus:			int = 15
+var accuracy_bonus: 			int = 1
+var range_bonus: 			int = 5
+var fire_rate_bonus:			int = 5
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0

@@ -1,0 +1,210 @@
+[gd_scene format=3 uid="uid://342ksx741ov1"]
+
+[ext_resource type="Script" uid="uid://cbugsoldiergd1" path="res://game/enemy/1-st floor basement/bug_soldier.gd" id="1_wjlqy"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier13.png" id="2_befns"]
+[ext_resource type="PackedScene" uid="uid://bkrkbcba4lrit" path="res://game/enemy/projectiles/EnemyShot.tscn" id="2_shot"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier14.png" id="3_37gq8"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier15.png" id="4_4rp6c"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier16.png" id="5_n7ipu"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier11.png" id="6_jcqnl"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier4.png" id="7_jcqnl"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier12.png" id="7_kkxdc"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier5.png" id="8_kkxdc"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier10.png" id="8_rc1he"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier6.png" id="9_rc1he"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier7.png" id="10_d5o1w"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="10_kkxdc"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier17.png" id="10_rc1he"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier1.png" id="11_15wax"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="11_rc1he"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="12_d5o1w"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier2.png" id="12_t2f30"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="13_15wax"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="14_t2f30"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier8.png" id="16_d5o1w"]
+[ext_resource type="Texture2D" path="res://image/enemy/bodies/BugSoldier9.png" id="17_15wax"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
+size = Vector2(44, 47)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
+radius = 984.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
+size = Vector2(48, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_rc1he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_15wax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_d5o1w")
+}],
+"loop": false,
+"name": &"after-fire",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_befns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_37gq8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4rp6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n7ipu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rc1he")
+}],
+"loop": false,
+"name": &"die",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jcqnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kkxdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rc1he")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_jcqnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kkxdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rc1he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d5o1w")
+}],
+"loop": false,
+"name": &"hiding",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_15wax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_t2f30")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_d5o1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_15wax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rc1he")
+}],
+"loop": false,
+"name": &"pre-fire",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_d5o1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rc1he")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kkxdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jcqnl")
+}],
+"loop": false,
+"name": &"showing",
+"speed": 4.0
+}]
+
+[node name="Bug_soldier" type="CharacterBody2D" unique_id=2133096440 groups=["Enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 182
+script = ExtResource("1_wjlqy")
+projectile_scene = ExtResource("2_shot")
+use_pathfinding = true
+stop_on_melee_hit = false
+melee_hit_cooldown = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+position = Vector2(-1, 5)
+shape = SubResource("RectangleShape2D_ps82n")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=272051664]
+visible = false
+shape = SubResource("CircleShape2D_2eqer")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
+position = Vector2(-1, 5)
+shape = SubResource("RectangleShape2D_hoiul")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_17ibq")
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1995691531]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=186013657]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1316312069]
+wait_time = 1.5
+one_shot = true
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1547975255]
+script = ExtResource("10_kkxdc")
+spacing = 25.0
+freeze_icon = ExtResource("11_rc1he")
+poison_icon = ExtResource("12_d5o1w")
+fire_icon0 = ExtResource("13_15wax")
+fire_icon1 = ExtResource("14_t2f30")
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

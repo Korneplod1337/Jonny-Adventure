@@ -24,12 +24,15 @@ var damage: int = 1
 @export var deals_melee_damage: bool = true
 ## Останавливать движение, пока враг наносит урон через HitArea (Hog и Aries отключают).
 @export var stop_on_melee_hit: bool = true
+## Пауза между ударами HitArea. 0 = каждый кадр, пока игрок в зоне.
+@export var melee_hit_cooldown: float = 0.0
 var base_move_stop_distance: float = 8.0
 const NAV_LOCAL_MAX_DISTANCE_SQ := 250.0 * 250.0
 const PATHFIND_UPDATE_INTERVAL := 0.25
 
 var _pathfind_cooldown: float = 0.0
 var _cached_nav_path: PackedVector2Array = PackedVector2Array()
+var _melee_hit_cooldown_left: float = 0.0
 
 var player_in_hit_range: bool = false
 var player_in_vision: bool = false
@@ -76,6 +79,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if _melee_hit_cooldown_left > 0.0:
+		_melee_hit_cooldown_left = maxf(0.0, _melee_hit_cooldown_left - delta)
+
 	if not is_instance_valid(player):
 		player = get_tree().get_first_node_in_group("player")
 	if not active or is_dead:
@@ -253,8 +259,12 @@ func _scale_cooldown(hard_cd: float, med_offset: float, easy_offset: float) -> f
 func _deal_melee_damage_to_player() -> bool:
 	if not player_in_hit_range or not deals_melee_damage or not player:
 		return false
+	if _melee_hit_cooldown_left > 0.0:
+		return false
 	var atk := get_attack_damage()
 	player.take_damage(atk.x, atk.y, atk.z, self)
+	if melee_hit_cooldown > 0.0:
+		_melee_hit_cooldown_left = melee_hit_cooldown
 	return true
 
 
