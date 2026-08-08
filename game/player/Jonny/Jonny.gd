@@ -23,29 +23,31 @@ var player_name = 'Jonny'
 	"black": 2, # shield
 	}
 
-const base_max_hp: 				int  = 3    #6
-const base_move_speed:			float = 250.0
-const base_luck: 				float = 0.2
-const base_magic: 				float = 0.0
-const base_damage: 				float = 25.0
-const base_spread: 				float = 14.0
-const base_range: 				float = 150.0
-const base_fire_rate: 			float = 0.5
+var base_max_hp: 			int  = 3    #6
+var base_move_speed:			float = 250.0
+var base_luck: 				float = 0.2
+var base_magic: 				float = 0.0
+var base_damage: 			float = 25.0
+var base_spread: 			float = 14.0
+var base_range: 				float = 150.0
+var base_fire_rate: 			float = 0.5
 
 const ENEMY_COLLISION_BITS := 4 | 64
 const BASE_IMMUNE_TIME := 0.3
 
-var hp_bonus: 				int = 0
+var hp_bonus: 				int = 1
 var speed_bonus: 			int = 0
 var luck_bonus: 				int = 0
 var magic_bonus: 			int = 0
-var damage_bonus: 			int = 1
-var accuracy_bonus: 			int = 1
-var range_bonus: 			int = 5
-var fire_rate_bonus:			int = 5
+var damage_bonus: 			int = 0
+var accuracy_bonus: 			int = 0
+var range_bonus: 			int = 0
+var fire_rate_bonus:			int = 1
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0
+## -1 = без капа; иначе макс. суммарный урон за один удар (Magic Seal)
+var incoming_damage_cap: 	int = -1
 var pass_through_enemies: 	bool = false
 var _revive_pass_through: 	bool = false
 var _base_collision_mask: 	int = 0
@@ -59,14 +61,14 @@ var penetration_bonus: 		int = 0
 var hack_bonus: 				int = 0
 var attack_locked: 			bool = false
 
-@export_range(1.0, 10.0, 1.0) var hit_points_level: 	float = 1.0
-@export_range(1.0, 10.0, 1.0) var move_speed_level: 	float = 2.0
+@export_range(1.0, 10.0, 1.0) var hit_points_level: 	float = 2.0
+@export_range(1.0, 10.0, 1.0) var move_speed_level: 	float = 1.0
 @export_range(1.0, 10.0, 1.0) var luck_level: 		float = 1.0
 @export_range(1.0, 10.0, 1.0) var magic_level: 		float = 1.0
 @export_range(1.0, 10.0, 1.0) var damage_level: 		float = 1.0
 @export_range(1.0, 10.0, 1.0) var spread_level: 		float = 1.0
 @export_range(1.0, 10.0, 1.0) var range_level: 		float = 1.0
-@export_range(1.0, 10.0, 1.0) var fire_rate_level: 	float = 1.0
+@export_range(1.0, 10.0, 1.0) var fire_rate_level: 	float = 2.0
 
 @onready var max_hp: 		= int(ST.get_stat(self, "hp"))
 @onready var move_speed: float	= ST.get_stat(self, "move_speed")
@@ -302,6 +304,12 @@ func take_damage(phy_damage: int = 0,
 	if invulnerable or is_dashing:
 		return
 	
+	if incoming_damage_cap >= 0:
+		var capped := _cap_incoming_damage(phy_damage, mag_damage, clr_damage, incoming_damage_cap)
+		phy_damage = capped[0]
+		mag_damage = capped[1]
+		clr_damage = capped[2]
+	
 	var incoming := phy_damage + mag_damage + clr_damage
 	if incoming <= 0 and attacker == null:
 		return
@@ -380,6 +388,18 @@ func _start_invulnerability() -> void:
 	imuneTimer.start()
 	_set_invuln_visual(true)
 	_emit_hp_visual_changed()
+
+func _cap_incoming_damage(phy: int, mag: int, clr: int, cap: int) -> Array[int]:
+	var total := phy + mag + clr
+	if total <= cap:
+		return [phy, mag, clr]
+	var remaining := cap
+	var new_phy := mini(phy, remaining)
+	remaining -= new_phy
+	var new_mag := mini(mag, remaining)
+	remaining -= new_mag
+	var new_clr := mini(clr, remaining)
+	return [new_phy, new_mag, new_clr]
 
 func _retaliate_ez(attacker: Node) -> void:
 	if ez_retaliation_count <= 0:

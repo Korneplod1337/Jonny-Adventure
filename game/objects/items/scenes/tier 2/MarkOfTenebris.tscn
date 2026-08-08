@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cyytbjj2bm4iq"]
+
+[ext_resource type="Script" uid="uid://cbn11dmpibi1x" path="res://game/objects/items/scripts/markoftenebris.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bwfnhvxipk37i" path="res://image/items/2 tier/Mark of Tenebris.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="MarkOfTenebris" type="Area2D" unique_id=1382342051]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_tex")
+item_tooltip = "Mark of Tenebris"
+item_tooltip2 = "Gain atk per current life HP"
+item_id = "markoftenebris"
+effect_power = 5.0
+
+[node name="Interactable" parent="." unique_id=334958547 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=275002495]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2113527758]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=758571490]
+position = Vector2(-1, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")

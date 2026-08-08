@@ -827,7 +827,6 @@ offset_bottom = 640.0
 text = "main menu"
 
 [node name="DeathMenu" type="Panel" parent="HUD" unique_id=1050572832 groups=["HUD"]]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -884,6 +883,58 @@ offset_bottom = 133.0
 layout_mode = 2
 label_settings = SubResource("LabelSettings_ekhi8")
 
+[node name="VictoryMenu" type="Panel" parent="HUD" unique_id=1847203951]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="HUD/VictoryMenu" unique_id=1847203952]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/VictoryMenu" unique_id=1847203953]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -120.0
+offset_right = 220.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="HUD/VictoryMenu/VBoxContainer" unique_id=1847203954]
+layout_mode = 2
+text = "Victory"
+label_settings = SubResource("LabelSettings_ekhi8")
+horizontal_alignment = 1
+
+[node name="DetailLabel" type="Label" parent="HUD/VictoryMenu/VBoxContainer" unique_id=1847203955]
+layout_mode = 2
+text = "Location cleared"
+label_settings = SubResource("LabelSettings_ekhi8")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ButtonMainmenu" type="Button" parent="HUD/VictoryMenu/VBoxContainer" unique_id=1847203956]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Main menu"
+
 [node name="Achivements" type="Panel" parent="HUD" unique_id=2095020457]
 visible = false
 layout_mode = 1
@@ -913,4 +964,5 @@ one_shot = true
 [connection signal="pressed" from="HUD/PauseMenu/ButtonMain" to="." method="_on_button_main_pressed"]
 [connection signal="pressed" from="HUD/DeathMenu/Restart_button" to="." method="_on_button_restart_pressed"]
 [connection signal="pressed" from="HUD/DeathMenu/ButtonMainmenu" to="." method="_on_button_main_pressed"]
+[connection signal="pressed" from="HUD/VictoryMenu/VBoxContainer/ButtonMainmenu" to="." method="_on_button_main_pressed"]
 [connection signal="timeout" from="HUD/Achivements/achiv_timer" to="." method="_on_achiv_timer_timeout"]

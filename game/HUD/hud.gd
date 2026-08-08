@@ -9,6 +9,7 @@ var _last_bonuses: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0]
 
 func _ready() -> void:
 	death_menu.visible = false
+	victory_menu.visible = false
 	pause_menu.visible = false
 	equip_panel.visible = false
 		#Деньги
@@ -47,12 +48,16 @@ func _ready() -> void:
 var ui_locked := false
 
 func _process(_delta) -> void:
+	if _is_run_ended():
+		if Input.is_action_just_pressed("button_L"):
+			_on_button_main_pressed()
+		return
 	if Input.is_action_just_pressed("tab_button") and not ui_locked:
 		_toggle_full_ui()
 	if Input.is_action_just_pressed("Escape"):
 		_toggle_pause()
 	if Input.is_action_just_pressed("button_L"):
-		if pause_menu.visible or death_menu.visible:
+		if pause_menu.visible:
 			_on_button_main_pressed()
 
 
@@ -182,22 +187,45 @@ func _refresh_bonus_labels() -> void:
 			label.hide()
 
 
-# Смерть и пауза
+# Смерть, победа и пауза
+func _is_run_ended() -> bool:
+	return death_menu.visible or victory_menu.visible
+
+
 func show_death_menu(total_time_alive: float, distance_travelled: float) -> void:
 	death_menu.visible = true
+	victory_menu.visible = false
+	pause_menu.visible = false
 	distance_travelled = snappedf(distance_travelled / 100, 0.1)
 	total_time_alive = snappedf(total_time_alive, 0.1)
 	distance_label.text = "Distance: %.1f m" % distance_travelled
 
-	
 	StatsManager.add_statistic_progress("lifetime", total_time_alive)
 	StatsManager.add_statistic_progress("distance_traveled", distance_travelled)
 
+
+func show_victory_menu(completed_location_1based: int, newly_unlocked_next: bool) -> void:
+	victory_menu.visible = true
+	death_menu.visible = false
+	pause_menu.visible = false
+	victory_title_label.text = "Victory"
+	if completed_location_1based >= CharacterMedalsManager.LOCATION_COUNT:
+		victory_detail_label.text = "Location %d cleared\nFinal medal earned" % completed_location_1based
+	elif newly_unlocked_next:
+		victory_detail_label.text = "Location %d cleared\nLocation %d unlocked" % [
+			completed_location_1based,
+			completed_location_1based + 1,
+		]
+	else:
+		victory_detail_label.text = "Location %d cleared" % completed_location_1based
+
+
 func _toggle_pause() -> void:
-	if not death_menu.visible:
-		var tree := get_tree()
-		tree.paused = not tree.paused
-		pause_menu.visible = tree.paused
+	if _is_run_ended():
+		return
+	var tree := get_tree()
+	tree.paused = not tree.paused
+	pause_menu.visible = tree.paused
 
 
 # Предметы инвентарь
@@ -304,6 +332,9 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 
 @onready var death_menu: Control = $HUD/DeathMenu
 @onready var distance_label: Label = $HUD/DeathMenu/VBoxContainer/DistanceLabel
+@onready var victory_menu: Control = $HUD/VictoryMenu
+@onready var victory_title_label: Label = $HUD/VictoryMenu/VBoxContainer/TitleLabel
+@onready var victory_detail_label: Label = $HUD/VictoryMenu/VBoxContainer/DetailLabel
 @onready var pause_menu: Control = $HUD/PauseMenu
 
 @onready var coins_container: GridContainer = $HUD/LeftUpVBoxContainer/CoinsContainer

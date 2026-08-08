@@ -7,7 +7,8 @@ class_name NunchucksShot
 
 func _ready() -> void:
 	speed = 0
-	self_damage_multiplier = 1.2
+	extra_reload = 0.9
+	self_damage_multiplier = 1.4
 	rotation = direction.angle()
 	if not _melee_boomerang_copy:
 		_play_attack_sfx()

@@ -13,15 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://q4qd8e0uku10" path="res://game/objects/obstacles/floor_pike.tscn" id="11_6cfgv"]
 [ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn" id="14_i3tqa"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_o41he"]
-[ext_resource type="PackedScene" uid="uid://d4nmsl38t7ni6" path="res://game/objects/Equipment/Ability/equip/Dash_equip.tscn" id="16_qeb2j"]
-[ext_resource type="PackedScene" uid="uid://3p4virvlmdu2" path="res://game/objects/chests/Chest_small.tscn" id="17_vombo"]
+[ext_resource type="PackedScene" uid="uid://xi3j7etugnhg" path="res://game/objects/Equipment/Weapon/equip/ShotGun_equip.tscn" id="16_qeb2j"]
+[ext_resource type="PackedScene" uid="uid://ixfqllfdouf6" path="res://game/objects/Equipment/Weapon/equip/Scatterhand_equip.tscn" id="17_vombo"]
+[ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/JonnyShot_equip.tscn" id="18_hfl2y"]
 [ext_resource type="PackedScene" uid="uid://c6exdflntaqki" path="res://game/objects/Equipment/Weapon/equip/Magic_bullet_equip.tscn" id="18_vombo"]
 [ext_resource type="PackedScene" uid="uid://smi175qgauq2" path="res://game/enemy/all/Mimic.tscn" id="19_8sdh4"]
-[ext_resource type="PackedScene" uid="uid://342ksx741ov1" path="res://game/enemy/1-st floor basement/Bug_soldier.tscn" id="20_8sdh4"]
-[ext_resource type="PackedScene" uid="uid://341h5ul5k1a" path="res://game/enemy/1-st floor basement/Bug_sniper.tscn" id="21_h6u4y"]
-[ext_resource type="PackedScene" uid="uid://bppmceu2mcbfr" path="res://game/enemy/1-st floor basement/Bug_gunslinger.tscn" id="22_2ue0t"]
-[ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="25_ww7l6"]
-[ext_resource type="PackedScene" uid="uid://lcbyc42s480y" path="res://game/objects/Equipment/boots/Speed_boots.tscn" id="26_bxm0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -147,58 +143,37 @@ position = Vector2(352, 232)
 initial_delay = 0.0
 player_phy_damage = 100
 
-[node name="Rock" parent="." unique_id=1046045028 instance=ExtResource("3_yfpwr")]
-position = Vector2(-375, 237)
-
-[node name="Rock3" parent="." unique_id=189083648 instance=ExtResource("3_yfpwr")]
-position = Vector2(-375, 157)
-
 [node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=298626992]
 
 [node name="EnemyTest5" parent="." unique_id=1206335830 instance=ExtResource("5_tvg8h")]
 position = Vector2(380, -188)
 
 [node name="CoinBag2" parent="." unique_id=947796805 instance=ExtResource("6_ww7l6")]
-position = Vector2(-96, -28)
-
-[node name="Speed_boots" parent="." unique_id=1914859512 instance=ExtResource("26_bxm0y")]
-position = Vector2(-376, 99)
-
-[node name="Fire" parent="." unique_id=1442893126 instance=ExtResource("25_ww7l6")]
-position = Vector2(-417, 93)
-
-[node name="Fire2" parent="." unique_id=1912039661 instance=ExtResource("25_ww7l6")]
-position = Vector2(-333, 93)
-
-[node name="Fire3" parent="." unique_id=6822186 instance=ExtResource("25_ww7l6")]
-position = Vector2(-375, 93)
+position = Vector2(-171, -14.000002)
 
 [node name="Pistol" parent="." unique_id=241584314 instance=ExtResource("14_i3tqa")]
-position = Vector2(-149, 93)
+position = Vector2(-211, 144)
 
 [node name="Sword_equip" parent="." unique_id=1046444052 instance=ExtResource("15_o41he")]
-position = Vector2(-258, 93)
-
-[node name="Dash_equip" parent="." unique_id=566211452 instance=ExtResource("16_qeb2j")]
-position = Vector2(366, 47)
-
-[node name="Dash_equip2" parent="." unique_id=193084275 instance=ExtResource("16_qeb2j")]
-position = Vector2(418, -16)
-
-[node name="ChestSmall2" parent="." unique_id=633015614 instance=ExtResource("17_vombo")]
-position = Vector2(-418, -160)
+position = Vector2(-320, 144)
 
 [node name="Equip_magic_bullet" parent="." unique_id=175635965 instance=ExtResource("18_vombo")]
-position = Vector2(76, 89)
+position = Vector2(-432, 147)
 
 [node name="Mimic" parent="." unique_id=2133096440 instance=ExtResource("19_8sdh4")]
 position = Vector2(161.99998, -189)
 
-[node name="Bug_soldier" parent="." unique_id=1349412532 instance=ExtResource("20_8sdh4")]
-position = Vector2(-254, -27)
+[node name="Pistol2" parent="." unique_id=1201033203 instance=ExtResource("14_i3tqa")]
+position = Vector2(-386, -194)
 
-[node name="Bug_sniper" parent="." unique_id=987254237 instance=ExtResource("21_h6u4y")]
-position = Vector2(-351, -58)
+[node name="ShotGun" parent="." unique_id=2000665238 instance=ExtResource("16_qeb2j")]
+position = Vector2(-273, -192)
 
-[node name="Bug_gunslinger" parent="." unique_id=1129307210 instance=ExtResource("22_2ue0t")]
-position = Vector2(-274, -130)
+[node name="Scatterhand" parent="." unique_id=1563825519 instance=ExtResource("17_vombo")]
+position = Vector2(-165, -81)
+
+[node name="Equip_magic_bullet2" parent="." unique_id=1412632172 instance=ExtResource("18_vombo")]
+position = Vector2(-163, -192)
+
+[node name="JonnyShot" parent="." unique_id=2068174714 instance=ExtResource("18_hfl2y")]
+position = Vector2(86, -25)

@@ -18,6 +18,7 @@ var _melee_spin_duration := 0.0
 func _ready() -> void:
 	speed = 0
 	extra_reload = 1
+	self_damage_multiplier = 0.8
 	rotation = direction.angle()
 	if not _melee_boomerang_copy:
 		_play_attack_sfx()

@@ -3,8 +3,8 @@ class_name EXSpearShot
 
 func _ready() -> void:
 	super()
-	extra_reload = 1
-	self_damage_multiplier = 1.25
+	extra_reload = 1.1
+	self_damage_multiplier = 1.15
 
 func _on_frame_changed() -> void:
 	var frame = anim_sprite.frame

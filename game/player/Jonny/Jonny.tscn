@@ -200,20 +200,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=2016157039 groups=["player"]]
+[node name="Jonny" type="CharacterBody2D" unique_id=2016157039 groups=["player"]]
 z_index = 10
 position = Vector2(1, 0)
 scale = Vector2(1.9, 1.9)
 collision_mask = 183
 script = ExtResource("1_fwoqh")
-hit_points_level = 2.0
-move_speed_level = 4.0
-luck_level = 2.0
-magic_level = 2.0
-damage_level = 2.0
-spread_level = 2.0
-range_level = 2.0
-fire_rate_level = 5.0
 start_ability = false
 on_ice = false
 

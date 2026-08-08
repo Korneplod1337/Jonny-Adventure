@@ -5,7 +5,7 @@ class_name AxeShot
 func _ready() -> void:
 	super()
 	extra_reload = 1
-	self_damage_multiplier = 1.15
+	self_damage_multiplier = 1.25
 	_melee_size_scale = clampf(0.6 + atk_range / 300.0, 0.8, 4.0)
 	scale = Vector2(_melee_size_scale, _melee_size_scale)
 

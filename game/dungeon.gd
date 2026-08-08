@@ -9,7 +9,7 @@ var hud_instance: Node = null
 
 @export var player_scene: Dictionary = {
 	"Jonny": 		preload("uid://c2ej24f1hgto1"),
-	"Jonnytta": 		preload("uid://c2ej24f1hgto1"),
+	"Jonnytta": 		preload("uid://b5851ol0emjdx"),
 	"Jovita": 		preload("uid://c2ej24f1hgto1"),
 	"JonnyAlt": 		preload("uid://c2ej24f1hgto1"),
 	"JonnyttaAlt": 	preload("uid://c2ej24f1hgto1"),
@@ -137,10 +137,7 @@ func _ready():
 
 
 func _location_preset_index() -> int:
-	# Локация 1: этажи 0–3; дальше по 2 этажа на локацию
-	if current_floor < 4:
-		return 0
-	return (current_floor - 2) / 2
+	return CharacterMedalsManager.location_index_for_floor(current_floor)
 
 
 func instance_room(room: Room) -> Node:
@@ -364,7 +361,30 @@ func refresh_minimap() -> void:
 
 func go_to_next_floor(hatch: Node2D) -> void:
 	var next_floor := current_floor + 1
-	if next_floor >= floors_config.size():
+	var current_loc := CharacterMedalsManager.location_index_for_floor(current_floor)
+	var past_last_floor := next_floor >= floors_config.size()
+	var next_loc := -1 if past_last_floor else CharacterMedalsManager.location_index_for_floor(next_floor)
+	var is_location_transition := past_last_floor or next_loc != current_loc
+
+	if is_location_transition and CharacterMedalsManager.PROGRESSION_ENABLED:
+		var char_id := str(DungeonManager.selected_character)
+		var completed_1based := current_loc + 1
+		CharacterMedalsManager.award_location_medal(char_id, current_loc)
+
+		var newly_unlocked := false
+		var should_victory := past_last_floor
+		if not past_last_floor:
+			var next_1based := next_loc + 1
+			if not CharacterMedalsManager.is_location_unlocked(next_1based):
+				newly_unlocked = CharacterMedalsManager.unlock_location(next_1based)
+				should_victory = true
+
+		CharacterMedalsManager.notify_location_completed(char_id, completed_1based, newly_unlocked)
+		if should_victory:
+			await _finish_run_with_victory(hatch, completed_1based, newly_unlocked)
+			return
+
+	if past_last_floor:
 		push_warning("Dungeon: no more floors after %d" % current_floor)
 		return
 
@@ -406,6 +426,17 @@ func go_to_next_floor(hatch: Node2D) -> void:
 	_reset_player_interactions()
 	print_map()
 	refresh_minimap()
+
+
+func _finish_run_with_victory(hatch: Node2D, completed_location_1based: int, newly_unlocked_next: bool) -> void:
+	_reset_player_interactions()
+	var hatch_center := hatch.global_position
+	if player.has_method("play_hatch_exit"):
+		await player.play_hatch_exit(hatch_center)
+	player.visible = false
+	if is_instance_valid(hud_instance) and hud_instance.has_method("show_victory_menu"):
+		hud_instance.show_victory_menu(completed_location_1based, newly_unlocked_next)
+	get_tree().paused = true
 
 
 func regenerate_floor(new_floor: int) -> void:

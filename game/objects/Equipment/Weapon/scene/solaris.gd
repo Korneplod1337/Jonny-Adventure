@@ -11,8 +11,9 @@ var _cooldown := 0.0
 func _ready() -> void:
 	visible = false
 	set_physics_process(false)
-	speed = 0
 	extra_reload = 1
+	self_damage_multiplier = 1
+	speed = 0
 	use_spread = false
 	pellet_count = 1
 	rotation = 0.0
