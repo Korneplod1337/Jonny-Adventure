@@ -30,7 +30,7 @@ const MEDAL_FILLED_BIG := preload("res://image/main_menu/locations_mark9.png")
 const MEDAL_TEXTURE_SIZE := 48
 const MEDAL_SMALL_SIZE := Vector2(MEDAL_TEXTURE_SIZE * 4, MEDAL_TEXTURE_SIZE * 4)
 const MEDAL_BIG_SIZE := Vector2(MEDAL_TEXTURE_SIZE * 4, MEDAL_TEXTURE_SIZE * 4)
-const MEDAL_SMALL_SEPARATION := -80 
+const MEDAL_SMALL_SEPARATION := -80
 const MEDAL_BIG_SEPARATION := -40
 
 @onready var _medals_panel: HBoxContainer = $MedalsPanel
@@ -45,6 +45,9 @@ const MEDAL_BIG_SEPARATION := -40
 	$MedalsPanel/SmallMedals/Medal6,
 ]
 @onready var _medal_big: TextureRect = $MedalsPanel/MedalBig
+@onready var _skin_panel: Control = $SkinPanel
+@onready var _switch_skin_button: Button = $SkinPanel/SwitchSkinButton
+@onready var _skin_name_label: Label = $SkinPanel/SkinNameLabel
 
 var _current_index := 0
 var _carousel_slots: Array[Control] = []
@@ -55,12 +58,18 @@ func _ready() -> void:
 	_setup_medal_sizes()
 	visibility_changed.connect(_on_visibility_changed)
 	_connect_carousel()
+	_switch_skin_button.pressed.connect(_on_switch_skin_pressed)
+	CharacterMedalsManager.load_medals()
+	CharacterMedalsManager.ensure_all_characters()
 	update_character_unlocks()
+	_restore_last_character()
 	_refresh_carousel()
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('Escape') and self.visible:
 		_on_exit_pressed()
+
 
 func update_character_unlocks() -> void:
 	for ach_id in AchivStatsRegistry.CHARACTER_UNLOCKS.keys():
@@ -128,7 +137,26 @@ func _on_visibility_changed() -> void:
 		CharacterMedalsManager.load_medals()
 		CharacterMedalsManager.ensure_all_characters()
 		update_character_unlocks()
+		_restore_last_character()
 		_refresh_carousel()
+	else:
+		_persist_current_character()
+
+
+func _persist_current_character() -> void:
+	var entry := _get_character_at(0)
+	if entry != null and not entry.id.is_empty():
+		CharacterMedalsManager.set_last_character(entry.id)
+
+
+func _restore_last_character() -> void:
+	var last_id := CharacterMedalsManager.get_last_character()
+	if last_id.is_empty() or characters.is_empty():
+		return
+	for i in characters.size():
+		if characters[i] != null and characters[i].id == last_id:
+			_current_index = i
+			return
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -181,6 +209,7 @@ func _refresh_carousel() -> void:
 		_apply_slot(_carousel_slots[i], _get_character_at(offsets[i]), is_center)
 	_slot_center.disabled = not _get_character_at(0).unlocked
 	_refresh_medals(_get_character_at(0))
+	_refresh_skin_panel(_get_character_at(0))
 	_position_medals_panel.call_deferred()
 
 
@@ -207,6 +236,44 @@ func _refresh_medals(entry: CharacterSelectEntry) -> void:
 			MEDAL_FILLED_SMALL[i] if medals[i] else MEDAL_EMPTY_SMALL
 		)
 	_medal_big.texture = MEDAL_FILLED_BIG if medals[6] else MEDAL_EMPTY_BIG
+
+
+func _refresh_skin_panel(entry: CharacterSelectEntry) -> void:
+	if entry == null or not entry.unlocked:
+		_skin_panel.hide()
+		return
+	var unlocked := entry.get_unlocked_skins()
+	if unlocked.size() <= 1:
+		_skin_panel.hide()
+		return
+	_skin_panel.show()
+	var skin := entry.get_selected_skin()
+	_skin_name_label.text = skin.display_name if skin else ""
+	_position_skin_name.call_deferred()
+
+
+func _position_skin_name() -> void:
+	if not _skin_panel.visible:
+		return
+	_switch_skin_button.reset_size()
+	_skin_name_label.reset_size()
+	var gap := 16.0
+	var btn_pos := _switch_skin_button.position
+	var btn_size := _switch_skin_button.size
+	_skin_name_label.position = Vector2(
+		btn_pos.x + btn_size.x + gap,
+		btn_pos.y + (btn_size.y - _skin_name_label.size.y) * 0.5
+	)
+
+
+func _on_switch_skin_pressed() -> void:
+	var entry := _get_character_at(0)
+	if entry == null or not entry.unlocked:
+		return
+	var next := entry.cycle_next_skin()
+	if next:
+		_skin_name_label.text = next.display_name
+		_position_skin_name.call_deferred()
 
 
 func _apply_slot(slot: Control, entry: CharacterSelectEntry, is_center: bool) -> void:
@@ -263,7 +330,13 @@ func _on_center_pressed() -> void:
 	var entry := _get_character_at(0)
 	if entry == null or not entry.unlocked:
 		return
+	var skin := entry.get_selected_skin()
 	DungeonManager.selected_character = entry.id
+	DungeonManager.selected_skin_id = skin.id if skin else CharacterMedalsManager.DEFAULT_SKIN_ID
+	DungeonManager.selected_skin = skin
+	CharacterMedalsManager.set_last_character(entry.id)
+	if skin:
+		CharacterMedalsManager.set_selected_skin(entry.id, skin.id)
 	hide()
 	get_parent().get_node("Diff_select_menu").show()
 

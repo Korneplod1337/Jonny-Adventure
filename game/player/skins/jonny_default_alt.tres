@@ -1,0 +1,125 @@
+[gd_resource type="Resource" script_class="CharacterSkin" format=3 uid="uid://bvqvahldj4l6m"]
+
+[ext_resource type="Script" path="res://menu_scripts/CharacterSkin.gd" id="1_skin"]
+[ext_resource type="Texture2D" uid="uid://cbev4xncngh58" path="res://image/players/Jonny_textures/player_afk1.png" id="2_afk1"]
+[ext_resource type="Texture2D" uid="uid://bfxhsl3rjpg4c" path="res://image/players/Jonny_textures/player_afk2.png" id="3_afk2"]
+[ext_resource type="Texture2D" uid="uid://c5erhh4uehlpi" path="res://image/players/Jonny_textures/back_afk1.png" id="4_back1"]
+[ext_resource type="Texture2D" uid="uid://dkhg788bd6a5m" path="res://image/players/Jonny_textures/back_afk2.png" id="5_back2"]
+[ext_resource type="Texture2D" uid="uid://bfia7rvuukf1n" path="res://image/players/Jonny_textures/down_go1.png" id="6_down1"]
+[ext_resource type="Texture2D" uid="uid://tlx51w2cw47n" path="res://image/players/Jonny_textures/down_go2.png" id="7_down2"]
+[ext_resource type="Texture2D" uid="uid://cd60v7t7c4yf7" path="res://image/players/Jonny_textures/right_go1.png" id="8_right1"]
+[ext_resource type="Texture2D" uid="uid://cnl1u6vbdfoot" path="res://image/players/Jonny_textures/right_go2.png" id="9_right2"]
+[ext_resource type="Texture2D" uid="uid://b2xcidd4y7wqv" path="res://image/players/Jonny_textures/right_go3.png" id="10_right3"]
+[ext_resource type="Texture2D" uid="uid://cgjb87rvt1gum" path="res://image/players/Jonny_textures/right_go4.png" id="11_right4"]
+[ext_resource type="Texture2D" uid="uid://drk5fan5nlkj0" path="res://image/players/Jonny_textures/top_go1.png" id="12_top1"]
+[ext_resource type="Texture2D" uid="uid://dmb51csbxme3d" path="res://image/players/Jonny_textures/top_go2.png" id="13_top2"]
+[ext_resource type="Texture2D" uid="uid://x5h4ymhq175k" path="res://image/players/Jonny_textures/shot_down.png" id="14_shot_d"]
+[ext_resource type="Texture2D" uid="uid://cewm4x2xepd2o" path="res://image/players/Jonny_textures/shot_left.png" id="15_shot_l"]
+[ext_resource type="Texture2D" uid="uid://ch0j2w0i653co" path="res://image/players/Jonny_textures/shot_rightt.png" id="16_shot_r"]
+[ext_resource type="Texture2D" uid="uid://ds81cajpn1qa8" path="res://image/players/Jonny_textures/shot_up.png" id="17_shot_u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_body"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_afk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_afk2")
+}],
+"loop": true,
+"name": &"afk_default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_back1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_back2")
+}],
+"loop": true,
+"name": &"afk_up",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_down1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_down2")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_right1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_right2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_right3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_right4")
+}],
+"loop": true,
+"name": &"walk_h",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_top1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_top2")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_shot_d")
+}],
+"loop": false,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_shot_l")
+}],
+"loop": false,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_shot_r")
+}],
+"loop": false,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_shot_u")
+}],
+"loop": false,
+"name": &"up",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_skin")
+id = "default_alt"
+display_name = "Default Alt"
+body_frames = SubResource("SpriteFrames_body")
+shot_frames = SubResource("SpriteFrames_shot")

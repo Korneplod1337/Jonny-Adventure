@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CharacterSkin" format=3 uid="uid://c2mc8epnvn3hw"]
+
+[ext_resource type="Script" path="res://menu_scripts/CharacterSkin.gd" id="1_skin"]
+
+[resource]
+script = ExtResource("1_skin")
+textures_folder = "res://image/players/Jonnytta_textures"

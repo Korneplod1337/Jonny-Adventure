@@ -1,17 +1,20 @@
 extends Node
 
-## Прогресс медалей за прохождение локаций каждым персонажем
-## и глобальный unlock локаций (общий для всех персонажей).
+## Прогресс медалей за прохождение локаций каждым персонажем,
+## глобальный unlock локаций, скины и последний выбранный персонаж.
 ## user://character_medals.cfg
-##   секция персонажа: medal_1 … medal_6, medal_final
+##   секция персонажа: medal_1 … medal_6, medal_final, selected_skin, skin_<id>=true
 ##   секция _locations: max_unlocked (1…7)
+##   секция _selection: last_character
 ## Windows: %APPDATA%\Godot\app_userdata\Jonny adventure\character_medals.cfg
 
 const SAVE_PATH := "user://character_medals.cfg"
 const LOCATIONS_SECTION := "_locations"
+const SELECTION_SECTION := "_selection"
 const MEDAL_COUNT := 7
 const LOCATION_COUNT := 7
 const DEFAULT_MAX_UNLOCKED_LOCATION := 1
+const DEFAULT_SKIN_ID := "default"
 
 ## false = бета: все локации открыты, медали не выдаются, люк всегда ведёт дальше.
 ## true = релиз: гейт локаций, медали и экран победы на frontier.
@@ -32,6 +35,11 @@ const CHARACTER_IDS: Array[String] = [
 ]
 
 var _medals: Dictionary = {}
+## character_id -> Array[String] unlocked skin ids (explicit unlocks in save).
+var _unlocked_skins: Dictionary = {}
+## character_id -> selected skin id.
+var _selected_skins: Dictionary = {}
+var _last_character: String = ""
 ## 1-based: сколько локаций доступно глобально (1 = только подвал).
 var _max_unlocked_location: int = DEFAULT_MAX_UNLOCKED_LOCATION
 
@@ -119,7 +127,6 @@ func award_location_medal(character_id: String, location_0based: int) -> void:
 
 
 ## Заготовка под будущие unlock’и персонажей/предметов через AchivementAndStatsRegistry.
-## Пока ничего не делает.
 func notify_location_completed(
 	_character_id: String,
 	_completed_location_1based: int,
@@ -127,7 +134,50 @@ func notify_location_completed(
 ) -> void:
 	if not PROGRESSION_ENABLED:
 		return
-	pass
+
+
+func get_last_character() -> String:
+	return _last_character
+
+
+func set_last_character(character_id: String) -> void:
+	_last_character = character_id
+	save_medals()
+
+
+func get_selected_skin(character_id: String) -> String:
+	_ensure_character(character_id)
+	return str(_selected_skins.get(character_id, DEFAULT_SKIN_ID))
+
+
+func set_selected_skin(character_id: String, skin_id: String) -> void:
+	_ensure_character(character_id)
+	if skin_id.is_empty():
+		skin_id = DEFAULT_SKIN_ID
+	_selected_skins[character_id] = skin_id
+	save_medals()
+
+
+func is_skin_unlocked(character_id: String, skin_id: String, unlocked_by_default: bool = false) -> bool:
+	if skin_id.is_empty():
+		return false
+	if unlocked_by_default or skin_id == DEFAULT_SKIN_ID:
+		return true
+	_ensure_character(character_id)
+	var list: Array = _unlocked_skins.get(character_id, [])
+	return skin_id in list
+
+
+func unlock_skin(character_id: String, skin_id: String) -> void:
+	if skin_id.is_empty():
+		return
+	_ensure_character(character_id)
+	var list: Array = _unlocked_skins.get(character_id, [])
+	if skin_id in list:
+		return
+	list.append(skin_id)
+	_unlocked_skins[character_id] = list
+	save_medals()
 
 
 ## Создаёт файл и пустые записи для всех персонажей, если их ещё нет.
@@ -158,16 +208,27 @@ func load_medals() -> void:
 	var config := ConfigFile.new()
 	if config.load(SAVE_PATH) != OK:
 		_max_unlocked_location = DEFAULT_MAX_UNLOCKED_LOCATION
+		_last_character = ""
 		return
 	_medals.clear()
+	_unlocked_skins.clear()
+	_selected_skins.clear()
 	for section in config.get_sections():
-		if section == LOCATIONS_SECTION:
+		if section == LOCATIONS_SECTION or section == SELECTION_SECTION:
 			continue
 		var entry: Array = []
 		for i in range(6):
 			entry.append(config.get_value(section, "medal_%d" % (i + 1), false))
 		entry.append(config.get_value(section, "medal_final", false))
 		_medals[section] = entry
+		_selected_skins[section] = str(config.get_value(section, "selected_skin", DEFAULT_SKIN_ID))
+		var unlocked: Array = []
+		for key in config.get_section_keys(section):
+			var key_str := str(key)
+			if key_str.begins_with("skin_") and bool(config.get_value(section, key_str, false)):
+				unlocked.append(key_str.trim_prefix("skin_"))
+		_unlocked_skins[section] = unlocked
+	_last_character = str(config.get_value(SELECTION_SECTION, "last_character", ""))
 	if config.has_section_key(LOCATIONS_SECTION, "max_unlocked"):
 		_max_unlocked_location = clampi(
 			int(config.get_value(LOCATIONS_SECTION, "max_unlocked", DEFAULT_MAX_UNLOCKED_LOCATION)),
@@ -186,7 +247,6 @@ func _infer_max_unlocked_from_medals() -> int:
 		for i in medals.size():
 			if not bool(medals[i]):
 				continue
-			# Прохождение локации i+1 открывает следующую (кроме финала).
 			if i >= LOCATION_COUNT - 1:
 				max_unlocked = maxi(max_unlocked, LOCATION_COUNT)
 			else:
@@ -200,7 +260,16 @@ func save_medals() -> void:
 		for i in range(6):
 			config.set_value(character_id, "medal_%d" % (i + 1), _medals[character_id][i])
 		config.set_value(character_id, "medal_final", _medals[character_id][6])
+		config.set_value(
+			character_id,
+			"selected_skin",
+			str(_selected_skins.get(character_id, DEFAULT_SKIN_ID))
+		)
+		var unlocked: Array = _unlocked_skins.get(character_id, [])
+		for skin_id in unlocked:
+			config.set_value(character_id, "skin_%s" % str(skin_id), true)
 	config.set_value(LOCATIONS_SECTION, "max_unlocked", _max_unlocked_location)
+	config.set_value(SELECTION_SECTION, "last_character", _last_character)
 	config.save(SAVE_PATH)
 
 
@@ -211,3 +280,7 @@ func _ensure_character(character_id: String) -> void:
 		_medals[character_id] = []
 		_medals[character_id].resize(MEDAL_COUNT)
 		_medals[character_id].fill(false)
+	if not _unlocked_skins.has(character_id):
+		_unlocked_skins[character_id] = []
+	if not _selected_skins.has(character_id):
+		_selected_skins[character_id] = DEFAULT_SKIN_ID

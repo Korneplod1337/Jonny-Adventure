@@ -64,6 +64,10 @@
 [ext_resource type="Texture2D" uid="uid://cgebh0h4g5kd2" path="res://image/main_menu/button_med.png" id="52_a0i4q"]
 [ext_resource type="Texture2D" uid="uid://cwcve060opkbo" path="res://image/main_menu/button_hard.png" id="53_pw383"]
 [ext_resource type="Script" uid="uid://rf5hnoay7fia" path="res://menu_scripts/CharacterSelectEntry.gd" id="54_char_entry"]
+[ext_resource type="Script" path="res://menu_scripts/CharacterSkin.gd" id="54_char_skin"]
+[ext_resource type="Resource" path="res://game/player/skins/jonny_default.tres" id="55_jonny_skin"]
+[ext_resource type="Resource" uid="uid://bvqvahldj4l6m" path="res://game/player/skins/jonny_default_alt.tres" id="56_jonny_skin_alt"]
+[ext_resource type="Resource" uid="uid://c2mc8epnvn3hw" path="res://game/player/skins/jonnytta_default.tres" id="57_jonnytta_skin"]
 [ext_resource type="Texture2D" uid="uid://xgknvutvuned" path="res://image/main_menu/char_select_name_Jonny.png" id="57_name_jonny"]
 [ext_resource type="Texture2D" uid="uid://c5ckpwbn3iiqr" path="res://image/main_menu/char_select_name_Jonnytta.png" id="58_name_jonnytta"]
 [ext_resource type="Texture2D" uid="uid://1a7rcprvo255" path="res://image/main_menu/char_select_name_Joker.png" id="59_name_joker"]
@@ -133,6 +137,7 @@ display_name = "Jonny"
 portrait = ExtResource("45_t7jce")
 portrait_selected = ExtResource("47_x8o75")
 name_texture = ExtResource("57_name_jonny")
+skins = Array[ExtResource("54_char_skin")]([ExtResource("55_jonny_skin"), ExtResource("56_jonny_skin_alt")])
 
 [sub_resource type="Resource" id="CharEntry_jonnytta"]
 script = ExtResource("54_char_entry")
@@ -142,6 +147,7 @@ display_name = "Pashe
 portrait = ExtResource("47_ao1gk")
 portrait_selected = ExtResource("48_kmf6r")
 name_texture = ExtResource("58_name_jonnytta")
+skins = Array[ExtResource("54_char_skin")]([ExtResource("57_jonnytta_skin")])
 
 [sub_resource type="Resource" id="Resource_tfjan"]
 script = ExtResource("54_char_entry")
@@ -1014,6 +1020,48 @@ visible = false
 position = Vector2(4, 4)
 texture = ExtResource("13_1aqqx")
 centered = false
+
+[node name="SkinPanel" type="Control" parent="Char_select_menu" unique_id=1985578201]
+visible = false
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="SwitchSkinButton" type="Button" parent="Char_select_menu/SkinPanel" unique_id=1985578202]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "switch skin"
+flat = true
+
+[node name="SkinNameLabel" type="Label" parent="Char_select_menu/SkinPanel" unique_id=1985578203]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "Default"
+vertical_alignment = 1
 
 [node name="Diff_select_menu" type="CanvasLayer" parent="." unique_id=942898487]
 visible = false

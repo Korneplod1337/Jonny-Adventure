@@ -110,13 +110,49 @@ var animated_speed := 1
 
 func _ready() -> void:
 	_base_collision_mask = collision_mask
+	_apply_selected_skin()
 	$AnimatedSprite2D.play()
 	_emit_stats_changed()	 # Вызвать это когда меняем стат
 	update_equipment_visuals()
+	if not StatsManager.stat_changed.is_connected(_on_stat_changed):
+		StatsManager.stat_changed.connect(_on_stat_changed)
 	if start_weapon:
 		call_deferred("_equip_start_weapon")
 	if start_ability:
 		call_deferred("_equip_start_ability")
+
+
+func _apply_selected_skin() -> void:
+	var skin: CharacterSkin = DungeonManager.selected_skin
+	if skin == null:
+		return
+	apply_character_skin(skin)
+
+
+func apply_character_skin(skin: CharacterSkin) -> void:
+	if skin == null:
+		return
+	var body := skin.get_body_frames()
+	var shot := skin.get_shot_frames()
+	var body_sprite: AnimatedSprite2D = $AnimatedSprite2D
+	var shot_sprite: AnimatedSprite2D = $AnimatedShot
+	if body != null and body.get_animation_names().size() > 0:
+		var anim := body_sprite.animation
+		var playing := body_sprite.is_playing()
+		body_sprite.sprite_frames = body
+		if body.has_animation(anim):
+			body_sprite.animation = anim
+		elif body.get_animation_names().size() > 0:
+			body_sprite.animation = body.get_animation_names()[0]
+		if playing:
+			body_sprite.play()
+	if shot != null and shot.get_animation_names().size() > 0:
+		var shot_anim := shot_sprite.animation
+		shot_sprite.sprite_frames = shot
+		if shot.has_animation(shot_anim):
+			shot_sprite.animation = shot_anim
+		elif shot.get_animation_names().size() > 0:
+			shot_sprite.animation = shot.get_animation_names()[0]
 
 func _equip_start_weapon() -> void:
 	var equip: BaseShot_equip = START_WEAPON_EQUIP.instantiate()
@@ -456,7 +492,7 @@ func die() -> void:
 	# SoundManager.play_death()
 	var hud := get_tree().get_first_node_in_group("HUD")
 	if hud:
-		hud.show_death_menu(total_time_alive, total_distance_travelled)
+		hud.show_death_menu(total_time_alive, total_distance_travelled, total_kills)
 	get_tree().paused = true
 	AchievementManager.unlock_achievement('First time')
 
@@ -693,6 +729,12 @@ func _apply_camera_limits(rect: Rect2) -> void:
 # cтаты и ачивки
 var total_distance_travelled: float = 0.0
 var total_time_alive: float = 0.0
+var total_kills: int = 0
+
+
+func _on_stat_changed(stat_name: String, _new_value: float) -> void:
+	if stat_name == "kills":
+		total_kills += 1
 
 @onready var imuneTimer = $immune_Timer
 var invulnerable: bool = false

@@ -192,13 +192,14 @@ func _is_run_ended() -> bool:
 	return death_menu.visible or victory_menu.visible
 
 
-func show_death_menu(total_time_alive: float, distance_travelled: float) -> void:
+func show_death_menu(total_time_alive: float, distance_travelled: float, kills: int = 0) -> void:
 	death_menu.visible = true
 	victory_menu.visible = false
 	pause_menu.visible = false
 	distance_travelled = snappedf(distance_travelled / 100, 0.1)
 	total_time_alive = snappedf(total_time_alive, 0.1)
 	distance_label.text = "Distance: %.1f m" % distance_travelled
+	kills_label.text = "Kills: %d" % kills
 
 	StatsManager.add_statistic_progress("lifetime", total_time_alive)
 	StatsManager.add_statistic_progress("distance_traveled", distance_travelled)
@@ -332,6 +333,7 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 
 @onready var death_menu: Control = $HUD/DeathMenu
 @onready var distance_label: Label = $HUD/DeathMenu/VBoxContainer/DistanceLabel
+@onready var kills_label: Label = $HUD/DeathMenu/VBoxContainer/KillsLabel
 @onready var victory_menu: Control = $HUD/VictoryMenu
 @onready var victory_title_label: Label = $HUD/VictoryMenu/VBoxContainer/TitleLabel
 @onready var victory_detail_label: Label = $HUD/VictoryMenu/VBoxContainer/DetailLabel
