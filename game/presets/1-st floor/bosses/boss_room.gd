@@ -15,6 +15,7 @@ const HAZARD_SPAWN_MARGIN := 80.0
 var _reward_spawned := false
 var _intro_played := false
 var _intro_running := false
+var _player_in_room := false
 var _hazard_timer: Timer = null
 var _hazard_kind: String = ""
 @onready var _hatch: Node2D = $Hatch
@@ -27,10 +28,28 @@ func init_room() -> void:
 		_hatch.hide_hatch()
 	_apply_boss_complication()
 	_set_boss_combat_enabled(false)
+	_bind_boss_hp_signals()
+
+
+func _bind_boss_hp_signals() -> void:
+	for boss in _find_bosses():
+		if boss == null:
+			continue
+		if not boss._enemy_die.is_connected(_on_tracked_boss_died):
+			boss._enemy_die.connect(_on_tracked_boss_died)
+
+
+func _on_tracked_boss_died(_damage: int) -> void:
+	# Дать кадру на спавн детей (split), затем обновить бары.
+	await get_tree().process_frame
+	_refresh_boss_hp_hud()
+	if not _has_living_boss():
+		_hide_boss_hp_hud()
 
 
 func show_doors() -> void:
 	_stop_boss_hazards()
+	_hide_boss_hp_hud()
 	super()
 	_show_hatch_and_reward()
 
@@ -184,6 +203,7 @@ func _spawn_boss_pair(original: Boss, _siamese: bool) -> Boss:
 	original.add_collision_exception_with(clone)
 	clone.add_collision_exception_with(original)
 	connect_single_enemy(clone, true)
+	_bind_boss_hp_signals()
 	return clone
 
 
@@ -300,13 +320,66 @@ func _random_hazard_global_position() -> Vector2:
 func _on_player_detection_area_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
+	_player_in_room = true
+	if _intro_played and not _intro_running:
+		_refresh_boss_hp_hud()
 	if _intro_played or _intro_running:
 		return
 	_play_boss_intro(body)
 
 
-func _on_player_detection_area_body_exited(_body: Node2D) -> void:
-	pass
+func _on_player_detection_area_body_exited(body: Node2D) -> void:
+	if not body.is_in_group("player"):
+		return
+	_player_in_room = false
+	_hide_boss_hp_hud()
+
+
+func on_boss_minion_spawned(boss: Boss) -> void:
+	if boss == null:
+		return
+	# Боевой режим уже после интро — активируем зрение новых боссов.
+	if _intro_played and not _intro_running:
+		var field := boss.get_node_or_null("FieldViewArea") as Area2D
+		if field:
+			field.set_deferred("monitoring", true)
+			call_deferred("_activate_boss_field_overlap", boss)
+	if not boss._enemy_die.is_connected(_on_tracked_boss_died):
+		boss._enemy_die.connect(_on_tracked_boss_died)
+	_refresh_boss_hp_hud()
+
+
+func _activate_boss_field_overlap(boss: Boss) -> void:
+	if not is_instance_valid(boss) or boss.is_dead:
+		return
+	var field := boss.get_node_or_null("FieldViewArea") as Area2D
+	if field == null or not field.monitoring:
+		return
+	for body in field.get_overlapping_bodies():
+		if body.is_in_group("player"):
+			boss._on_field_view_area_body_entered(body)
+			break
+
+
+func _refresh_boss_hp_hud() -> void:
+	if not _player_in_room or _intro_running:
+		return
+	var hud := _get_hud()
+	if hud and hud.has_method("show_boss_hp_bars"):
+		hud.show_boss_hp_bars(_find_bosses())
+
+
+func _hide_boss_hp_hud() -> void:
+	var hud := _get_hud()
+	if hud and hud.has_method("hide_boss_hp_bars"):
+		hud.hide_boss_hp_bars()
+
+
+func _get_hud() -> Node:
+	var dungeon = get_tree().current_scene
+	if dungeon and ("hud_instance" in dungeon):
+		return dungeon.hud_instance
+	return null
 
 
 func _get_boss_focus_point(boss: Node2D) -> Vector2:
@@ -428,3 +501,4 @@ func _finish_boss_intro(player: Node2D, hud: Node) -> void:
 	if hud and hud.has_method("set_ui_locked"):
 		hud.set_ui_locked(false)
 	_intro_running = false
+	_refresh_boss_hp_hud()

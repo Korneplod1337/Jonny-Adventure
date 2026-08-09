@@ -19,19 +19,24 @@ var _cached_shot: SpriteFrames
 
 
 func get_body_frames() -> SpriteFrames:
+	# Папка приоритетнее готовых SpriteFrames (надёжнее и без UID-коллизий).
+	if not _folder().is_empty():
+		if _cached_body == null:
+			_cached_body = _build_body_frames()
+		return _cached_body
 	if body_frames != null:
 		return body_frames
-	if _cached_body == null:
-		_cached_body = _build_body_frames()
-	return _cached_body
+	return SpriteFrames.new()
 
 
 func get_shot_frames() -> SpriteFrames:
+	if not _folder().is_empty():
+		if _cached_shot == null:
+			_cached_shot = _build_shot_frames()
+		return _cached_shot
 	if shot_frames != null:
 		return shot_frames
-	if _cached_shot == null:
-		_cached_shot = _build_shot_frames()
-	return _cached_shot
+	return SpriteFrames.new()
 
 
 func _folder() -> String:

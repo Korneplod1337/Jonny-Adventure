@@ -82,6 +82,66 @@ func hide_boss_effect() -> void:
 	effect_label.hide()
 
 
+func show_boss_hp_bars(bosses: Array) -> void:
+	_ensure_boss_hp_ui()
+	_clear_boss_hp_bars()
+	var living: Array = []
+	for b in bosses:
+		if b is Boss and is_instance_valid(b) and not b.is_dead:
+			living.append(b)
+	if living.is_empty():
+		_boss_hp_root.visible = false
+		return
+	var count: int = living.size()
+	var bar_h := 14.0
+	if count >= 4:
+		bar_h = 12.0
+	_boss_hp_root.add_theme_constant_override("separation", 6)
+	for boss in living:
+		var bar: BossHpBar = BossHpBar.new()
+		_boss_hp_root.add_child(bar)
+		bar.setup(boss, bar_h)
+	_boss_hp_root.visible = true
+
+
+func hide_boss_hp_bars() -> void:
+	if _boss_hp_root == null:
+		return
+	_clear_boss_hp_bars()
+	_boss_hp_root.visible = false
+
+
+func _ensure_boss_hp_ui() -> void:
+	if _boss_hp_root != null:
+		return
+	# Одна горизонтальная линия баров, узкая и по центру.
+	_boss_hp_root = HBoxContainer.new()
+	_boss_hp_root.name = "BossHpBars"
+	_boss_hp_root.visible = false
+	_boss_hp_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_boss_hp_root.alignment = BoxContainer.ALIGNMENT_CENTER
+	_boss_hp_root.anchor_left = 0.5
+	_boss_hp_root.anchor_right = 0.5
+	_boss_hp_root.anchor_top = 0.0
+	_boss_hp_root.anchor_bottom = 0.0
+	var half := BOSS_HP_ROW_MAX_WIDTH * 0.5
+	_boss_hp_root.offset_left = -half
+	_boss_hp_root.offset_right = half
+	_boss_hp_root.offset_top = 10.0
+	_boss_hp_root.offset_bottom = 36.0
+	_boss_hp_root.add_theme_constant_override("separation", 6)
+	$HUD.add_child(_boss_hp_root)
+
+
+func _clear_boss_hp_bars() -> void:
+	if _boss_hp_root == null:
+		return
+	while _boss_hp_root.get_child_count() > 0:
+		var child := _boss_hp_root.get_child(0)
+		_boss_hp_root.remove_child(child)
+		child.free()
+
+
 # Здоровье
 func _on_hp_visual_changed(hp_array: Array) -> void:
 	for child in hearts_row.get_children():
@@ -363,6 +423,8 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var minimap_label: Label = $HUD/Minimap/MapLabel
 var _minimap_text := ""
 var _minimap_level := 1
+const BOSS_HP_ROW_MAX_WIDTH := 360.0
+var _boss_hp_root: HBoxContainer = null
 
 
 func _configure_minimap() -> void:

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cq1e35ccwm0yt"]
 
-[ext_resource type="Texture2D" uid="uid://bc67f5n7c2hd7" path="res://image/rooms/1-st floor/background3.png" id="1_0krqc"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background_bounds.png" id="2_4kb0c"]
+[ext_resource type="Texture2D" uid="uid://wttm6lol258j" path="res://image/rooms/1-st floor/background4.png" id="1_8cds4"]
+[ext_resource type="Texture2D" uid="uid://dpomjj5pp6fag" path="res://image/rooms/2-st floor/background_bounds3.png" id="2_0krqc"]
 [ext_resource type="PackedScene" uid="uid://ch8qkvh1kb427" path="res://game/objects/obstacles/lightning.tscn" id="4_1cm4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
@@ -26,12 +26,12 @@ shape = SubResource("RectangleShape2D_85tg8")
 [node name="BG_floor" type="Sprite2D" parent="." unique_id=1940620195]
 z_index = -10
 scale = Vector2(2, 2)
-texture = ExtResource("1_0krqc")
+texture = ExtResource("1_8cds4")
 
 [node name="BG_bounds" type="Sprite2D" parent="." unique_id=326775904]
 z_index = -5
 scale = Vector2(2, 2)
-texture = ExtResource("2_4kb0c")
+texture = ExtResource("2_0krqc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=962677030]
 position = Vector2(-207, -240)
@@ -57,9 +57,21 @@ shape = SubResource("RectangleShape2D_sw7ps")
 [node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=468390853]
 
 [node name="lightning" parent="." unique_id=2035113601 instance=ExtResource("4_1cm4y")]
-position = Vector2(-300, 0)
+position = Vector2(-350, 150)
 prepare_time = 1.0
+spawn_fire = true
 
 [node name="lightning2" parent="." unique_id=658856937 instance=ExtResource("4_1cm4y")]
-position = Vector2(300, 0)
+position = Vector2(350, 150)
 prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning3" parent="." unique_id=455330942 instance=ExtResource("4_1cm4y")]
+position = Vector2(400, -50)
+prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning4" parent="." unique_id=333067909 instance=ExtResource("4_1cm4y")]
+position = Vector2(-400, -50)
+prepare_time = 1.0
+spawn_fire = true

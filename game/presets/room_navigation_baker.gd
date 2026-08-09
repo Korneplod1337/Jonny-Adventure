@@ -3,8 +3,9 @@ class_name RoomNavigationBaker
 const WALL_LAYER_MASK := 16
 const OBSTACLE_LAYER_MASK := 32
 const GAP_LAYER_MASK := 128
-const AGENT_RADIUS := 48.0
-const WALKABLE_INSET := 32.0
+## Отступ bake вокруг препятствий/стен. Меньше = пути ближе к объектам.
+const AGENT_RADIUS := 28.0
+const WALKABLE_INSET := 20.0
 
 
 static func setup_for_room(room: Node2D) -> void:

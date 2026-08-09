@@ -64,19 +64,24 @@ const REVIVE_MUSIC_FADE_SEC := 5.0
 
 ## Плейлисты по индексу локации: массив словарей {stream, weight}.
 ## Локация 1 (index 0): arcade ~70%, soundtrack_mb ~30%.
-## Локация 2 (index 1): cheetah_boss_egypt (пока единственный трек).
+## Локация 2–3 (index 1–2): cheetah_boss_egypt (пока единственный трек).
 ## Остальные локации временно используют плейлист локации 1.
 var _location_playlists: Dictionary = {}
 
+const TRACK_FADE_OUT_SEC := 1.0
 const TRACK_SWITCH_SILENCE_SEC := 5.0
 
 var _music_player: AudioStreamPlayer
 var _current_location: int = -1
 var _last_track: AudioStream = null
+var _pending_next_track: AudioStream = null
 var _play_token: int = 0
+var _end_watch_token: int = 0
+var _music_transitioning: bool = false
 var _loop_players: Dictionary = {}
 var _music_duck_tween: Tween
 var _music_duck_token: int = 0
+var _music_fade_tween: Tween
 
 
 func _ready() -> void:
@@ -92,10 +97,11 @@ func _ready() -> void:
 	var location_2_playlist: Array = [
 		{"stream": TRACK_CHEETAH_BOSS_EGYPT, "weight": 100},
 	]
-	# 7 локаций; 3+ пока с плейлистом локации 1
+	# 7 локаций; 4+ пока с плейлистом локации 1
 	for i in range(7):
 		_location_playlists[i] = location_1_playlist.duplicate(true)
-	_location_playlists[1] = location_2_playlist
+	_location_playlists[1] = location_2_playlist.duplicate(true)
+	_location_playlists[2] = location_2_playlist.duplicate(true)
 
 
 func play(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0) -> void:
@@ -269,14 +275,19 @@ func play_location_music(location: int) -> void:
 	if location == _current_location and _music_player.playing:
 		return
 	_current_location = location
+	_pending_next_track = null
 	_play_weighted_track()
 
 
 func stop_music() -> void:
 	_play_token += 1
+	_end_watch_token += 1
 	_music_duck_token += 1
+	_music_transitioning = false
 	_current_location = -1
 	_last_track = null
+	_pending_next_track = null
+	_kill_music_fade()
 	if _music_duck_tween != null:
 		_music_duck_tween.kill()
 		_music_duck_tween = null
@@ -291,32 +302,53 @@ func set_location_playlist(location: int, playlist: Array) -> void:
 
 
 func _on_music_finished() -> void:
-	if _current_location < 0:
+	if _current_location < 0 or _music_transitioning:
 		return
-	_play_weighted_track()
+	var next := _pending_next_track
+	_pending_next_track = null
+	_play_weighted_track(next)
 
 
-func _play_weighted_track() -> void:
+func _play_weighted_track(preselected: AudioStream = null) -> void:
 	var playlist: Array = _location_playlists.get(_current_location, [])
 	if playlist.is_empty():
 		stop_music()
 		return
 
-	var stream := _pick_weighted_stream(playlist)
+	var stream := preselected if preselected != null else _pick_weighted_stream(playlist)
 	if stream == null:
 		stop_music()
 		return
 
 	_play_token += 1
+	_end_watch_token += 1
 	var token := _play_token
-	var needs_silence := _last_track != null and _last_track != stream
-	if needs_silence:
-		_music_player.stop()
-		_music_player.stream = null
+	var switching := _last_track != null and _last_track != stream
+
+	if switching:
+		_music_transitioning = true
+		if _music_player.playing:
+			await _fade_music_out(token)
+			if token != _play_token or _current_location < 0:
+				_music_transitioning = false
+				return
+		else:
+			_music_player.stop()
+			_music_player.stream = null
 		await get_tree().create_timer(TRACK_SWITCH_SILENCE_SEC).timeout
 		if token != _play_token or _current_location < 0:
+			_music_transitioning = false
 			return
 
+	_start_music_stream(stream)
+	_music_transitioning = false
+	# Следующий трек выбирается сразу после старта текущего.
+	_pending_next_track = _pick_weighted_stream(playlist)
+	_schedule_pre_end_fade(stream, _pending_next_track, token)
+
+
+func _start_music_stream(stream: AudioStream) -> void:
+	_kill_music_fade()
 	_last_track = stream
 	var play_stream := stream.duplicate()
 	_disable_stream_loop(play_stream)
@@ -324,6 +356,64 @@ func _play_weighted_track() -> void:
 	_music_player.stream = play_stream
 	_music_player.volume_db = MUSIC_DEFAULT_DB
 	_music_player.play()
+
+
+## Если следующий трек другой — заранее затухаем за 1 с до конца текущего.
+func _schedule_pre_end_fade(current: AudioStream, next: AudioStream, play_token: int) -> void:
+	if next == null or next == current:
+		return
+	var length := 0.0
+	if _music_player.stream != null:
+		length = _music_player.stream.get_length()
+	if length <= TRACK_FADE_OUT_SEC:
+		return
+
+	_end_watch_token += 1
+	var watch_token := _end_watch_token
+	var wait_sec := length - TRACK_FADE_OUT_SEC
+	await get_tree().create_timer(wait_sec).timeout
+	if watch_token != _end_watch_token or play_token != _play_token or _current_location < 0:
+		return
+	if not _music_player.playing or _pending_next_track != next:
+		return
+
+	var next_stream := _pending_next_track
+	_pending_next_track = null
+	_play_weighted_track(next_stream)
+
+
+func _fade_music_out(token: int) -> void:
+	_kill_music_fade()
+	if _music_duck_tween != null:
+		_music_duck_tween.kill()
+		_music_duck_tween = null
+	if not is_instance_valid(_music_player) or not _music_player.playing:
+		return
+
+	var from_db := _music_player.volume_db
+	_music_fade_tween = create_tween()
+	_music_fade_tween.tween_method(
+		func(v: float):
+			if token != _play_token or not is_instance_valid(_music_player):
+				return
+			_music_player.volume_db = v,
+		from_db,
+		-80.0,
+		TRACK_FADE_OUT_SEC
+	)
+	await _music_fade_tween.finished
+	if token != _play_token:
+		return
+	if is_instance_valid(_music_player):
+		_music_player.stop()
+		_music_player.stream = null
+		_music_player.volume_db = MUSIC_DEFAULT_DB
+
+
+func _kill_music_fade() -> void:
+	if _music_fade_tween != null:
+		_music_fade_tween.kill()
+		_music_fade_tween = null
 
 
 func _pick_weighted_stream(playlist: Array) -> AudioStream:

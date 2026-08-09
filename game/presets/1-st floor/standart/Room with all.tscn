@@ -117,6 +117,8 @@
 [ext_resource type="PackedScene" uid="uid://bppmceu2mcbfr" path="res://game/enemy/1-st floor basement/Bug_gunslinger.tscn" id="115_kvn2i"]
 [ext_resource type="PackedScene" uid="uid://341h5ul5k1a" path="res://game/enemy/1-st floor basement/Bug_sniper.tscn" id="116_5m63l"]
 [ext_resource type="PackedScene" uid="uid://342ksx741ov1" path="res://game/enemy/1-st floor basement/Bug_soldier.tscn" id="117_r226l"]
+[ext_resource type="PackedScene" uid="uid://bltt30qk8jp62" path="res://game/objects/obstacles/gap.tscn" id="118_r226l"]
+[ext_resource type="PackedScene" uid="uid://clopakcle4tk4" path="res://game/enemy/1-st floor basement/Spider_big_boss.tscn" id="119_xqp2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -295,16 +297,16 @@ position = Vector2(45, 342)
 position = Vector2(-60, 480)
 
 [node name="Potion Heal" parent="." unique_id=1431943573 instance=ExtResource("20_0h76k")]
-position = Vector2(-128, 38)
+position = Vector2(-109, 40)
 
 [node name="Black potion" parent="." unique_id=606213143 instance=ExtResource("21_1kwnq")]
-position = Vector2(-314, 39)
+position = Vector2(-295, 41)
 
 [node name="Green potion" parent="." unique_id=17014257 instance=ExtResource("22_t02pl")]
-position = Vector2(-256, 38)
+position = Vector2(-237, 40)
 
 [node name="Potion Heal Big" parent="." unique_id=99192180 instance=ExtResource("23_qh7pm")]
-position = Vector2(-193, 43)
+position = Vector2(-174, 45)
 
 [node name="Story book" parent="." unique_id=5682892 instance=ExtResource("24_m4mvj")]
 position = Vector2(-66, 347)
@@ -495,34 +497,34 @@ position = Vector2(-228, 242)
 position = Vector2(-249, 126)
 
 [node name="Card6" parent="." unique_id=1711463305 instance=ExtResource("86_ugp8v")]
-position = Vector2(-844, 35)
+position = Vector2(-885, 39)
 
 [node name="Card7" parent="." unique_id=1351884921 instance=ExtResource("87_yw3f5")]
-position = Vector2(-804, 31)
+position = Vector2(-845, 35)
 
 [node name="Card8" parent="." unique_id=1481180605 instance=ExtResource("88_26vy3")]
-position = Vector2(-764, 31)
+position = Vector2(-805, 35)
 
 [node name="Card9" parent="." unique_id=1459212385 instance=ExtResource("89_dvhxs")]
-position = Vector2(-713, 35)
+position = Vector2(-754, 39)
 
 [node name="Card10" parent="." unique_id=304719859 instance=ExtResource("90_uoe7b")]
-position = Vector2(-661, 32)
+position = Vector2(-702, 36)
 
 [node name="CardAce" parent="." unique_id=240421783 instance=ExtResource("91_hbfap")]
-position = Vector2(-465, 32)
+position = Vector2(-506, 36)
 
 [node name="CardJack" parent="." unique_id=1592392379 instance=ExtResource("92_0ngq4")]
-position = Vector2(-567, 32)
+position = Vector2(-608, 36)
 
 [node name="CardKing" parent="." unique_id=1344834729 instance=ExtResource("93_o1jkl")]
-position = Vector2(-513, 31)
+position = Vector2(-554, 35)
 
 [node name="CardQueen" parent="." unique_id=176635328 instance=ExtResource("94_j02fn")]
-position = Vector2(-612, 32)
+position = Vector2(-653, 36)
 
 [node name="Item LvlUP" parent="." unique_id=1882218243 instance=ExtResource("95_xs4ol")]
-position = Vector2(-376, 40)
+position = Vector2(-437, 40)
 
 [node name="Spider_queen" parent="." unique_id=222572111 instance=ExtResource("96_kjqnc")]
 position = Vector2(-614, -519)
@@ -593,3 +595,9 @@ position = Vector2(-799, -517)
 
 [node name="Bug_soldier" parent="." unique_id=1904249125 instance=ExtResource("117_r226l")]
 position = Vector2(-875.00006, -517)
+
+[node name="Gap" parent="." unique_id=1148295091 instance=ExtResource("118_r226l")]
+position = Vector2(-741, 595)
+
+[node name="Spider_big_boss" parent="." unique_id=1210663031 instance=ExtResource("119_xqp2j")]
+position = Vector2(485, -543)

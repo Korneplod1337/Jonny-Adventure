@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://clopakcle4tk4"]
+
+[ext_resource type="Script" uid="uid://d2mhordb4r2cw" path="res://game/enemy/1-st floor basement/spider_big_boss.gd" id="1_tl65e"]
+[ext_resource type="Texture2D" uid="uid://cdcccjcdal7a6" path="res://image/enemy/bodies/spider_big3.png" id="2_hjtyh"]
+[ext_resource type="Texture2D" uid="uid://dagniakky270" path="res://image/enemy/bodies/spider_big4.png" id="3_c3kxu"]
+[ext_resource type="Texture2D" uid="uid://dh58v7f3x3dso" path="res://image/enemy/bodies/spider_big5.png" id="4_sk4cx"]
+[ext_resource type="Texture2D" uid="uid://dtbnfitk64mgu" path="res://image/enemy/bodies/spider_big6.png" id="5_km2or"]
+[ext_resource type="Texture2D" uid="uid://d1pe5ow1xfhbk" path="res://image/enemy/bodies/spider_big7.png" id="6_kw8nm"]
+[ext_resource type="Texture2D" uid="uid://do81lrn2y3jf0" path="res://image/enemy/bodies/spider_big8.png" id="7_37hhv"]
+[ext_resource type="Texture2D" uid="uid://u6hbovfgbhsx" path="res://image/enemy/bodies/spider_big1.png" id="8_0k6to"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="8_37hhv"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="9_0k6to"]
+[ext_resource type="Texture2D" uid="uid://b2rqdwouaqq50" path="res://image/enemy/bodies/spider_big2.png" id="9_2pmvb"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="10_2pmvb"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="11_jcsju"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="12_pxxjn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
+size = Vector2(34, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
+radius = 984.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
+size = Vector2(32, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hjtyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c3kxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sk4cx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_km2or")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kw8nm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_37hhv")
+}],
+"loop": false,
+"name": &"die",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_0k6to")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2pmvb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="Spider_big_boss" type="CharacterBody2D" unique_id=2133096441 groups=["Enemy"]]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 182
+script = ExtResource("1_tl65e")
+boss_move_speed_min = 280.0
+BossName = "Big Spider"
+boss_base_hp = 400
+boss_damage = 2
+boss_move_speed = 200.0
+boss_model_scale = 4.0
+use_pathfinding = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ps82n")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=272051664]
+visible = false
+shape = SubResource("CircleShape2D_2eqer")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
+position = Vector2(0, 4.5)
+scale = Vector2(1.1, 1.1)
+shape = SubResource("RectangleShape2D_hoiul")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
+scale = Vector2(1.25, 1.25)
+sprite_frames = SubResource("SpriteFrames_17ibq")
+animation = &"idle"
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1995691531]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=186013657]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1316312069]
+wait_time = 1.5
+one_shot = true
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1593217570]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1547975255]
+script = ExtResource("8_37hhv")
+spacing = 25.0
+freeze_icon = ExtResource("9_0k6to")
+poison_icon = ExtResource("10_2pmvb")
+fire_icon0 = ExtResource("11_jcsju")
+fire_icon1 = ExtResource("12_pxxjn")
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

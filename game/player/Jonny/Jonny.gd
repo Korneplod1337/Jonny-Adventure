@@ -42,7 +42,7 @@ var magic_bonus: 			int = 0
 var damage_bonus: 			int = 0
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 1
+var fire_rate_bonus:			int = 10
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0
@@ -60,6 +60,9 @@ var revival_count: 			int = 0
 var penetration_bonus: 		int = 0
 var hack_bonus: 				int = 0
 var attack_locked: 			bool = false
+
+## Режим бога: все статы на максимум (10), бонусы = 15
+@export var god_mode: bool = false
 
 @export_range(1.0, 10.0, 1.0) var hit_points_level: 	float = 2.0
 @export_range(1.0, 10.0, 1.0) var move_speed_level: 	float = 1.0
@@ -108,6 +111,29 @@ var last_move_dir := 1
 
 var animated_speed := 1
 
+func _enter_tree() -> void:
+	# До @onready-статов, чтобы get_stat сразу видел макс. уровни/бонусы
+	if god_mode:
+		_apply_god_mode()
+
+func _apply_god_mode() -> void:
+	hit_points_level = 10.0
+	move_speed_level = 10.0
+	luck_level = 10.0
+	magic_level = 10.0
+	damage_level = 10.0
+	spread_level = 10.0
+	range_level = 10.0
+	fire_rate_level = 10.0
+	hp_bonus = 15
+	speed_bonus = 15
+	luck_bonus = 15
+	magic_bonus = 15
+	damage_bonus = 15
+	accuracy_bonus = 15
+	range_bonus = 15
+	fire_rate_bonus = 15
+
 func _ready() -> void:
 	_base_collision_mask = collision_mask
 	_apply_selected_skin()
@@ -138,21 +164,23 @@ func apply_character_skin(skin: CharacterSkin) -> void:
 	var shot_sprite: AnimatedSprite2D = $AnimatedShot
 	if body != null and body.get_animation_names().size() > 0:
 		var anim := body_sprite.animation
+		var frame := body_sprite.frame
 		var playing := body_sprite.is_playing()
-		body_sprite.sprite_frames = body
-		if body.has_animation(anim):
+		body_sprite.sprite_frames = body.duplicate(true)
+		if body_sprite.sprite_frames.has_animation(anim):
 			body_sprite.animation = anim
-		elif body.get_animation_names().size() > 0:
-			body_sprite.animation = body.get_animation_names()[0]
+			body_sprite.frame = mini(frame, maxi(body_sprite.sprite_frames.get_frame_count(anim) - 1, 0))
+		elif body_sprite.sprite_frames.get_animation_names().size() > 0:
+			body_sprite.animation = body_sprite.sprite_frames.get_animation_names()[0]
 		if playing:
 			body_sprite.play()
 	if shot != null and shot.get_animation_names().size() > 0:
 		var shot_anim := shot_sprite.animation
-		shot_sprite.sprite_frames = shot
-		if shot.has_animation(shot_anim):
+		shot_sprite.sprite_frames = shot.duplicate(true)
+		if shot_sprite.sprite_frames.has_animation(shot_anim):
 			shot_sprite.animation = shot_anim
-		elif shot.get_animation_names().size() > 0:
-			shot_sprite.animation = shot.get_animation_names()[0]
+		elif shot_sprite.sprite_frames.get_animation_names().size() > 0:
+			shot_sprite.animation = shot_sprite.sprite_frames.get_animation_names()[0]
 
 func _equip_start_weapon() -> void:
 	var equip: BaseShot_equip = START_WEAPON_EQUIP.instantiate()

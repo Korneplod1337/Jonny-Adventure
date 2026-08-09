@@ -28,7 +28,7 @@ var damage: int = 1
 @export var melee_hit_cooldown: float = 0.0
 var base_move_stop_distance: float = 8.0
 const NAV_LOCAL_MAX_DISTANCE_SQ := 250.0 * 250.0
-const PATHFIND_UPDATE_INTERVAL := 0.25
+const PATHFIND_UPDATE_INTERVAL := 0.2
 
 var _pathfind_cooldown: float = 0.0
 var _cached_nav_path: PackedVector2Array = PackedVector2Array()

@@ -74,7 +74,7 @@ const SETTINGS_PATH := "user://settings.cfg"
 
 var secret_codes := {
 	"bobrinaya ohota": "achiv",
-	"dlc skin": "skin",
+	"steve_skin": "steve_skin",
 	"dlc artbook": "artbook",
 	"easy": "easy",
 }
@@ -85,17 +85,20 @@ func _SecretCode_pressed() -> void:
 		match secret_codes[code]:
 			"achiv":
 				pass
-			
-			"skin":
-				pass
-			
+
+			"steve_skin":
+				CharacterMedalsManager.unlock_skin("Jonny", "default_alt")
+				print("Открыт новый скин")
+
 			"artbook":
 				pass
-			
+
 			"easy":
 				_unlock_easy_difficulty()
-		print("Верный код (no)")
-	
+				print("Открыта лёгкая сложность")
+		print("Верный код")
+		line_edit.clear()
+
 	else:
 		print("Неверный код")
 
