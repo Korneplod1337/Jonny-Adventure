@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://yiee6myo56e2"]
+
+[ext_resource type="Script" path="res://game/enemy/2-st floor pyramid/worm_insected_fly.gd" id="1_ia7e4"]
+[ext_resource type="Curve" uid="uid://drnniuw17325" path="res://game/enemy/base/worm_curve.tres" id="2_2unst"]
+[ext_resource type="Texture2D" uid="uid://cftj2av2fbxtn" path="res://image/enemy/bodies/WormFly1.png" id="3_ia7e4"]
+[ext_resource type="Texture2D" uid="uid://daos8julbyxas" path="res://image/enemy/bodies/WormFly2.png" id="4_2unst"]
+[ext_resource type="Texture2D" uid="uid://cifvs6xmhy7om" path="res://image/enemy/bodies/WormFly3.png" id="5_tptc7"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="6_3arlu"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="7_inf7p"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="8_6jnww"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="9_gjq8j"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="10_6t4w0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huv4u"]
+size = Vector2(49, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn8fk"]
+radius = 984.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmj20"]
+size = Vector2(66, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d423"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ia7e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2unst")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tptc7")
+}],
+"loop": false,
+"name": &"die",
+"speed": 1.0
+}]
+
+[node name="EmenyWormInsectedFly" type="CharacterBody2D" unique_id=1655288545 groups=["Enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 182
+script = ExtResource("1_ia7e4")
+hard_move_step_distance = 125.0
+hard_move_speed = 50.0
+hard_base_hp = 75
+hard_cooldown_time = 1.6
+dash_curve = ExtResource("2_2unst")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=59623340]
+shape = SubResource("RectangleShape2D_huv4u")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=607490412]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=862790983]
+visible = false
+shape = SubResource("CircleShape2D_cn8fk")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=982591408]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1413603581]
+shape = SubResource("RectangleShape2D_wmj20")
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1132297483]
+wait_time = 0.2
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=2010852584]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1085292099]
+wait_time = 1.5
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1963768320]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_0d423")
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=521838655]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1584987421]
+script = ExtResource("6_3arlu")
+spacing = 25.0
+freeze_icon = ExtResource("7_inf7p")
+poison_icon = ExtResource("8_6jnww")
+fire_icon0 = ExtResource("9_gjq8j")
+fire_icon1 = ExtResource("10_6t4w0")
+
+[node name="MinionSpawnPoint" type="Marker2D" parent="." unique_id=583137938]
+position = Vector2(-16, 3)
+
+[node name="MinionSpawnPoint2" type="Marker2D" parent="." unique_id=269030869]
+position = Vector2(16, 3)
+
+[node name="MinionSpawnPoint3" type="Marker2D" parent="."]
+position = Vector2(0, 18)
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

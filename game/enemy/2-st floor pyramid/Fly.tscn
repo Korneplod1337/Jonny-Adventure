@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://bg8l17bqn1vun"]
+
+[ext_resource type="Script" uid="uid://b6ht1qsg3ss1w" path="res://game/enemy/2-st floor pyramid/fly.gd" id="1_fly"]
+[ext_resource type="PackedScene" uid="uid://bkrkbcba4lrit" path="res://game/enemy/projectiles/EnemyShot.tscn" id="2_shot"]
+[ext_resource type="Texture2D" uid="uid://d4mcm7bt4hi3g" path="res://image/enemy/bodies/fly1.png" id="3_f1"]
+[ext_resource type="Texture2D" uid="uid://bnme074lr2xxf" path="res://image/enemy/bodies/fly2.png" id="4_f2"]
+[ext_resource type="Texture2D" uid="uid://cpi3mq7maob2e" path="res://image/enemy/bodies/fly3.png" id="5_f3"]
+[ext_resource type="Texture2D" uid="uid://comqs4wskjknf" path="res://image/enemy/bodies/fly4.png" id="6_f4"]
+[ext_resource type="Texture2D" uid="uid://dgju8sn5sdfg2" path="res://image/enemy/bodies/fly5.png" id="7_f5"]
+[ext_resource type="Texture2D" uid="uid://vugehswl7byu" path="res://image/enemy/bodies/fly6.png" id="8_f6"]
+[ext_resource type="Texture2D" uid="uid://jj2ru432asyy" path="res://image/enemy/bodies/fly7.png" id="9_f7"]
+[ext_resource type="Texture2D" uid="uid://dogxwk86l2bdb" path="res://image/enemy/bodies/fly8.png" id="10_f8"]
+[ext_resource type="Texture2D" uid="uid://bcr2ssig26k81" path="res://image/enemy/bodies/fly9.png" id="11_f9"]
+[ext_resource type="Texture2D" uid="uid://df6bnlqmfwy3p" path="res://image/enemy/bodies/fly10.png" id="12_f10"]
+[ext_resource type="Texture2D" uid="uid://6tp77jonjp2b" path="res://image/enemy/bodies/fly11.png" id="13_f11"]
+[ext_resource type="Texture2D" uid="uid://bc63ldfh2t3r" path="res://image/enemy/bodies/fly12.png" id="14_f12"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="15_fx"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="16_snow"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="17_poi"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="18_f1i"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="19_f2i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dt17h"]
+radius = 12.000001
+height = 44.57143
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_view"]
+radius = 984.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hit"]
+size = Vector2(4, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_f1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_f8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_f11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_f12")
+}],
+"loop": false,
+"name": &"die",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_f9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f10")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 4.0
+}]
+
+[node name="Fly" type="CharacterBody2D" unique_id=227024778 groups=["Enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 64
+collision_mask = 82
+script = ExtResource("1_fly")
+hard_move_speed = 200.0
+hard_projectile_range = 450.0
+shots_per_volley = 4
+approach_stop_distance = 240.0
+projectile_scene = ExtResource("2_shot")
+hard_projectile_damage = 2
+cooldown_time = 0.6
+deals_melee_damage = false
+knockback_friction = 600.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1394743112]
+position = Vector2(1.1920928e-07, 0)
+rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("CapsuleShape2D_dt17h")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=132905642]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=256917112]
+visible = false
+shape = SubResource("CircleShape2D_view")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=1967183838]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1872899050]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_hit")
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=257288963]
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=2006915805]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1713533770]
+wait_time = 1.5
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1103740991]
+position = Vector2(3, 0)
+sprite_frames = SubResource("SpriteFrames_fly")
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1824600733]
+position = Vector2(0, -28)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1801417262]
+script = ExtResource("15_fx")
+spacing = 25.0
+freeze_icon = ExtResource("16_snow")
+poison_icon = ExtResource("17_poi")
+fire_icon0 = ExtResource("18_f1i")
+fire_icon1 = ExtResource("19_f2i")
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

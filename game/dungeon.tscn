@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b777y3m4083ll" path="res://game/presets/1-st floor/bosses/hatch_boss_room.tscn" id="5_2xsro"]
 [ext_resource type="PackedScene" uid="uid://bfpw6t7witksl" path="res://game/presets/2-st floor/standart/2standart_room1.tscn" id="5_o8gq0"]
 [ext_resource type="PackedScene" uid="uid://cq1e35ccwm0yt" path="res://game/presets/1-st floor/start/start_room_END BETA.tscn" id="5_qso4u"]
+[ext_resource type="PackedScene" uid="uid://dk3llybmdb0fa" path="res://game/presets/1-st floor/standart/standart_room6.tscn" id="5_vurpx"]
 [ext_resource type="PackedScene" uid="uid://b7qvxj2i104cp" path="res://game/presets/1-st floor/shops/armory_room.tscn" id="6_2xsro"]
 [ext_resource type="PackedScene" uid="uid://ctpm02rpg8gfx" path="res://game/presets/1-st floor/buff/treasure_room.tscn" id="6_3jp2u"]
 [ext_resource type="PackedScene" uid="uid://cmlobl77iwbor" path="res://game/presets/2-st floor/start/start_room_Egypt.tscn" id="9_o8gq0"]
@@ -23,7 +24,7 @@
 
 [node name="Dungeon" type="Node" unique_id=1730459875]
 script = ExtResource("1_u4sk0")
-standard_room_presets_floor1 = Array[PackedScene]([ExtResource("2_2xsro"), ExtResource("3_1u0ww"), ExtResource("4_qso4u")])
+standard_room_presets_floor1 = Array[PackedScene]([ExtResource("2_2xsro"), ExtResource("3_1u0ww"), ExtResource("4_qso4u"), ExtResource("5_vurpx")])
 standard_room_presets_floor2 = Array[PackedScene]([ExtResource("5_o8gq0")])
 start_room_preset = Array[PackedScene]([ExtResource("3_0t1uw"), ExtResource("4_bdqim"), ExtResource("3_0t1uw"), ExtResource("3_0t1uw"), ExtResource("9_o8gq0"), ExtResource("9_o8gq0"), ExtResource("5_qso4u")])
 shop_room_preset = Array[PackedScene]([ExtResource("2_0t1uw"), ExtResource("2_0t1uw")])

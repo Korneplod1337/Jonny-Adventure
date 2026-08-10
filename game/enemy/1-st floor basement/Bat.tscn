@@ -63,7 +63,6 @@ collision_layer = 64
 collision_mask = 82
 script = ExtResource("1_0xlom")
 projectile_scene = ExtResource("2_26cec")
-hard_projectile_damage = 2
 cooldown_time = 1.0
 deals_melee_damage = false
 knockback_friction = 600.0

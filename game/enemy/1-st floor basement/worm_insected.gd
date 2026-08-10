@@ -11,7 +11,7 @@ var _spawned_minions: Array[CharacterBody2D] = []
 func die() -> void:
 	super()
 	var spawned_spider: CharacterBody2D = spider_small_scene.instantiate()
-	
+
 	var room := _get_room_node()
 	if room:
 		if room.has_method("reserve_enemy_slot"):
@@ -20,11 +20,13 @@ func die() -> void:
 		if room.has_method("connect_single_enemy"):
 			room.connect_single_enemy(spawned_spider, false)
 	else:
-		get_parent().call_deferred('add_child', spawned_spider)
+		get_parent().call_deferred("add_child", spawned_spider)
 
-	spawned_spider.global_position = _minion_spawn_point.global_position
-	
-	#register spawned minion
+	if is_instance_valid(_minion_spawn_point):
+		spawned_spider.global_position = _minion_spawn_point.global_position
+	else:
+		spawned_spider.global_position = global_position + spawn_below_offset
+
 	_spawned_minions.append(spawned_spider)
 	_set_collision_ignored(spawned_spider, self)
 	for other in _spawned_minions:

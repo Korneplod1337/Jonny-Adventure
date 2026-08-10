@@ -16,13 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="12_pxxjn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
-size = Vector2(26, 15)
+size = Vector2(25, 14)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
 radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(32.5, 20)
+size = Vector2(30, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{
@@ -79,6 +79,7 @@ use_pathfinding = true
 knockback_friction = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
+position = Vector2(-1, 1)
 scale = Vector2(1.25, 1.25)
 shape = SubResource("RectangleShape2D_ps82n")
 

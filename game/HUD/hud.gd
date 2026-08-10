@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 const font: FontFile = preload("res://Fonts/JonnyAdventureFont.ttf")
+const WIN_MENU_TEX: Texture2D = preload("res://image/interface/HUD/Win_menu.png")
+const TRUE_WIN_MENU_TEX: Texture2D = preload("res://image/interface/HUD/True_Win_menu.png")
 const BONUS_CLAMP_MIN := -40
 const BONUS_CLAMP_MAX := 40
 var ui_open := false
@@ -265,20 +267,25 @@ func show_death_menu(total_time_alive: float, distance_travelled: float, kills: 
 	StatsManager.add_statistic_progress("distance_traveled", distance_travelled)
 
 
-func show_victory_menu(completed_location_1based: int, newly_unlocked_next: bool) -> void:
+func show_victory_menu(
+	completed_location_1based: int,
+	_newly_unlocked_next: bool,
+	distance_travelled: float = 0.0,
+	kills: int = 0,
+	total_time_alive: float = 0.0,
+) -> void:
 	victory_menu.visible = true
 	death_menu.visible = false
 	pause_menu.visible = false
-	victory_title_label.text = "Victory"
-	if completed_location_1based >= CharacterMedalsManager.LOCATION_COUNT:
-		victory_detail_label.text = "Location %d cleared\nFinal medal earned" % completed_location_1based
-	elif newly_unlocked_next:
-		victory_detail_label.text = "Location %d cleared\nLocation %d unlocked" % [
-			completed_location_1based,
-			completed_location_1based + 1,
-		]
-	else:
-		victory_detail_label.text = "Location %d cleared" % completed_location_1based
+	var is_true_victory := completed_location_1based >= CharacterMedalsManager.LOCATION_COUNT
+	victory_texture.texture = TRUE_WIN_MENU_TEX if is_true_victory else WIN_MENU_TEX
+	distance_travelled = snappedf(distance_travelled / 100, 0.1)
+	total_time_alive = snappedf(total_time_alive, 0.1)
+	victory_distance_label.text = "Distance: %.1f m" % distance_travelled
+	victory_kills_label.text = "Kills: %d" % kills
+
+	StatsManager.add_statistic_progress("lifetime", total_time_alive)
+	StatsManager.add_statistic_progress("distance_traveled", distance_travelled)
 
 
 func _toggle_pause() -> void:
@@ -395,8 +402,9 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var distance_label: Label = $HUD/DeathMenu/VBoxContainer/DistanceLabel
 @onready var kills_label: Label = $HUD/DeathMenu/VBoxContainer/KillsLabel
 @onready var victory_menu: Control = $HUD/VictoryMenu
-@onready var victory_title_label: Label = $HUD/VictoryMenu/VBoxContainer/TitleLabel
-@onready var victory_detail_label: Label = $HUD/VictoryMenu/VBoxContainer/DetailLabel
+@onready var victory_texture: TextureRect = $HUD/VictoryMenu/TextureRect
+@onready var victory_distance_label: Label = $HUD/VictoryMenu/VBoxContainer/DistanceLabel
+@onready var victory_kills_label: Label = $HUD/VictoryMenu/VBoxContainer/KillsLabel
 @onready var pause_menu: Control = $HUD/PauseMenu
 
 @onready var coins_container: GridContainer = $HUD/LeftUpVBoxContainer/CoinsContainer

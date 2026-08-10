@@ -75,7 +75,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_305xt")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1184620657]
-position = Vector2(-207.06, -240)
+position = Vector2(-207, -240)
 collision_layer = 16
 collision_mask = 23
 
@@ -196,10 +196,10 @@ position = Vector2(512, 80)
 variant = 7
 
 [node name="Fire" parent="." unique_id=2035113601 instance=ExtResource("7_305xt")]
-position = Vector2(-299, 44)
+position = Vector2(-200, -100)
 
 [node name="Fire2" parent="." unique_id=1894287921 instance=ExtResource("7_305xt")]
-position = Vector2(304, -31)
+position = Vector2(200, 100)
 
 [node name="Fire3" parent="." unique_id=1073084091 instance=ExtResource("7_305xt")]
 
@@ -211,9 +211,6 @@ position = Vector2(501, 236)
 
 [node name="Spider_big2" parent="." unique_id=553436192 instance=ExtResource("9_nqkej")]
 position = Vector2(-493, -248)
-
-[node name="Spider_big3" parent="." unique_id=1882445746 instance=ExtResource("9_nqkej")]
-position = Vector2(-153, 64)
 
 [node name="Spider_egg_small" parent="." unique_id=1895989306 instance=ExtResource("10_08rya")]
 visible = false
@@ -236,7 +233,3 @@ position = Vector2(502, -248)
 [node name="Spider_egg_small6" parent="." unique_id=720762100 instance=ExtResource("10_08rya")]
 visible = false
 position = Vector2(543, -170)
-
-[node name="Spider_big4" parent="." unique_id=2126675509 instance=ExtResource("9_nqkej")]
-visible = false
-position = Vector2(-69, 64)

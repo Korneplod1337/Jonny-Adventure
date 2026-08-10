@@ -437,7 +437,20 @@ func _finish_run_with_victory(hatch: Node2D, completed_location_1based: int, new
 		await player.play_hatch_exit(hatch_center)
 	player.visible = false
 	if is_instance_valid(hud_instance) and hud_instance.has_method("show_victory_menu"):
-		hud_instance.show_victory_menu(completed_location_1based, newly_unlocked_next)
+		var distance := 0.0
+		var kills := 0
+		var time_alive := 0.0
+		if is_instance_valid(player):
+			distance = float(player.total_distance_travelled)
+			kills = int(player.total_kills)
+			time_alive = float(player.total_time_alive)
+		hud_instance.show_victory_menu(
+			completed_location_1based,
+			newly_unlocked_next,
+			distance,
+			kills,
+			time_alive,
+		)
 	get_tree().paused = true
 
 
