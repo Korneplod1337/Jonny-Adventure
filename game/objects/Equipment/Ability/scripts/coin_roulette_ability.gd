@@ -1,3 +1,4 @@
+## CoinRoulette — 60% +1 монета, 40% 1 физ. урон себе. CD: время.
 class_name CoinRouletteAbility
 extends BaseAbility
 

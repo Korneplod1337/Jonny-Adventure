@@ -93,6 +93,8 @@ var boots_id: String
 var ability_id: String = ""
 var current_ability: BaseAbility = null
 var is_dashing: bool = false
+## When true, the next steal-life marked shot that hits an enemy heals once.
+var steal_life_heal_ready: bool = false
 @export var start_weapon := true
 @export var start_ability := true
 const START_WEAPON_EQUIP := preload("uid://bwiytmmsxjtk5")
@@ -683,6 +685,12 @@ func fire (shot_dir: Vector2) -> void:
 	shot.boomerang_power += boomerang_bonus
 	shot.penetration += penetration_bonus
 	shot.hack += hack_bonus
+
+	steal_life_heal_ready = false
+	if current_ability and current_ability.has_method("consume_for_next_shot"):
+		if current_ability.consume_for_next_shot():
+			shot.steal_life = true
+			steal_life_heal_ready = true
 	
 	if shot_enchantment:
 		shot.enchantment = shot_enchantment.duplicate(true)
@@ -798,6 +806,8 @@ func end_floor_transition() -> void:
 	set_collision_mask(_saved_collision_mask)
 	_update_enemy_collision()
 	set_movement_locked(false)
+	if current_ability:
+		current_ability.notify_floor_advanced()
 
 
 func play_hatch_exit(hatch_center: Vector2) -> void:

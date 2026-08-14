@@ -28,19 +28,19 @@ func _ready() -> void:
 		interactable.interact_name = "Take " + interact_name \
 			+ " by %s coins" % ((cost + GS.cost_plus) * GS.cost_multiplier)
 	if _has_active_saved_cd():
-		_ensure_kill_cd_listener()
+		_ensure_saved_cd_listeners()
 
 
 func _exit_tree() -> void:
-	_disconnect_kill_cd_listener()
+	_disconnect_saved_cd_listeners()
 
 
 func set_saved_cooldown(state: Dictionary) -> void:
 	_saved_cd = state.duplicate(true)
 	if _has_active_saved_cd():
-		_ensure_kill_cd_listener()
+		_ensure_saved_cd_listeners()
 	else:
-		_disconnect_kill_cd_listener()
+		_disconnect_saved_cd_listeners()
 		_saved_cd.clear()
 
 
@@ -60,7 +60,7 @@ func apply_equip(player: Node) -> void:
 	if not _saved_cd.is_empty():
 		ability.apply_cooldown_state(_saved_cd)
 		_saved_cd.clear()
-		_disconnect_kill_cd_listener()
+		_disconnect_saved_cd_listeners()
 
 	var hud = player.get_tree().get_first_node_in_group("HUD")
 	if hud == null:
@@ -122,7 +122,7 @@ func _process(delta: float) -> void:
 	var time_left := float(_saved_cd.get("time_left", 0.0)) - delta
 	if time_left <= 0.0:
 		_saved_cd.clear()
-		_disconnect_kill_cd_listener()
+		_disconnect_saved_cd_listeners()
 	else:
 		_saved_cd["time_left"] = time_left
 
@@ -137,25 +137,43 @@ func _on_stat_changed(stat_name: String, _new_value: float) -> void:
 	var kills_left := int(_saved_cd.get("kills_left", 0)) - 1
 	if kills_left <= 0:
 		_saved_cd.clear()
-		_disconnect_kill_cd_listener()
+		_disconnect_saved_cd_listeners()
 	else:
 		_saved_cd["kills_left"] = kills_left
+
+
+func _on_room_cleared_saved() -> void:
+	if not _has_active_saved_cd():
+		return
+	if int(_saved_cd.get("cooldown_type", 0)) != BaseAbility.CooldownType.ROOMS:
+		return
+	var rooms_left := int(_saved_cd.get("rooms_left", 0)) - 1
+	if rooms_left <= 0:
+		_saved_cd.clear()
+		_disconnect_saved_cd_listeners()
+	else:
+		_saved_cd["rooms_left"] = rooms_left
 
 
 func _has_active_saved_cd() -> bool:
 	return bool(_saved_cd.get("on_cooldown", false))
 
 
-func _ensure_kill_cd_listener() -> void:
-	if int(_saved_cd.get("cooldown_type", 0)) != BaseAbility.CooldownType.KILLS:
-		return
-	if not StatsManager.stat_changed.is_connected(_on_stat_changed):
-		StatsManager.stat_changed.connect(_on_stat_changed)
+func _ensure_saved_cd_listeners() -> void:
+	var cd_type := int(_saved_cd.get("cooldown_type", 0))
+	if cd_type == BaseAbility.CooldownType.KILLS:
+		if not StatsManager.stat_changed.is_connected(_on_stat_changed):
+			StatsManager.stat_changed.connect(_on_stat_changed)
+	if cd_type == BaseAbility.CooldownType.ROOMS:
+		if not GameState.room_cleared.is_connected(_on_room_cleared_saved):
+			GameState.room_cleared.connect(_on_room_cleared_saved)
 
 
-func _disconnect_kill_cd_listener() -> void:
+func _disconnect_saved_cd_listeners() -> void:
 	if StatsManager.stat_changed.is_connected(_on_stat_changed):
 		StatsManager.stat_changed.disconnect(_on_stat_changed)
+	if GameState.room_cleared.is_connected(_on_room_cleared_saved):
+		GameState.room_cleared.disconnect(_on_room_cleared_saved)
 
 
 func _set_equip_icon(new_icon: Texture2D) -> void:

@@ -10,6 +10,7 @@ const SHRINE_REMOVE_CHANCE := 0.5
 @export var spawn_clear_reward := true
 var _clear_reward_spawned := false
 var _skip_wave2_trigger := false
+var _room_clear_emitted := false
 
 
 func init_room() -> void:
@@ -85,6 +86,9 @@ func show_doors() -> void:
 		_clear_reward_spawned = true
 		if not GameState.has_level_buf("Barren"):
 			_spawn_clear_reward_chest()
+	if not _room_clear_emitted:
+		_room_clear_emitted = true
+		GameState.notify_room_cleared()
 
 func _get_player_luck_factor() -> float:
 	var player = get_tree().get_first_node_in_group("player")

@@ -1,30 +1,39 @@
 class_name BaseAbility
 extends Node
 
-enum CooldownType { TIME, KILLS }
+enum CooldownType { TIME, KILLS, FLOOR, ROOMS }
 
 var ability_id: String = ""
 var cooldown_type: CooldownType = CooldownType.TIME
 var cooldown_time: float = 5.0
 var cooldown_kills: int = 5
+var cooldown_rooms: int = 5
+## If >= 0, ability starts on ROOMS cooldown with this many rooms already progressed.
+var start_rooms_progress: int = -1
 
 var player: Node = null
 
 var _on_cooldown: bool = false
 var _cd_time_left: float = 0.0
 var _cd_kills_left: int = 0
+var _cd_rooms_left: int = 0
 
 
 func setup(p: Node) -> void:
 	player = p
 	if not StatsManager.stat_changed.is_connected(_on_stat_changed):
 		StatsManager.stat_changed.connect(_on_stat_changed)
+	if not GameState.room_cleared.is_connected(_on_room_cleared):
+		GameState.room_cleared.connect(_on_room_cleared)
+	_apply_initial_rooms_cooldown()
 	_update_hud_cooldown()
 
 
 func _exit_tree() -> void:
 	if StatsManager.stat_changed.is_connected(_on_stat_changed):
 		StatsManager.stat_changed.disconnect(_on_stat_changed)
+	if GameState.room_cleared.is_connected(_on_room_cleared):
+		GameState.room_cleared.disconnect(_on_room_cleared)
 
 
 func get_magic() -> float:
@@ -69,6 +78,12 @@ func start_cooldown() -> void:
 			_cd_time_left = cooldown_time
 		CooldownType.KILLS:
 			_cd_kills_left = cooldown_kills
+		CooldownType.FLOOR:
+			_cd_time_left = 0.0
+			_cd_kills_left = 0
+			_cd_rooms_left = 0
+		CooldownType.ROOMS:
+			_cd_rooms_left = cooldown_rooms
 	_update_hud_cooldown()
 
 
@@ -78,8 +93,10 @@ func get_cooldown_state() -> Dictionary:
 		"cooldown_type": cooldown_type,
 		"time_left": _cd_time_left,
 		"kills_left": _cd_kills_left,
+		"rooms_left": _cd_rooms_left,
 		"cooldown_time": cooldown_time,
 		"cooldown_kills": cooldown_kills,
+		"cooldown_rooms": cooldown_rooms,
 	}
 
 
@@ -88,18 +105,25 @@ func apply_cooldown_state(state: Dictionary) -> void:
 		_on_cooldown = false
 		_cd_time_left = 0.0
 		_cd_kills_left = 0
+		_cd_rooms_left = 0
 		_update_hud_cooldown()
 		return
 	_on_cooldown = bool(state.get("on_cooldown", false))
 	_cd_time_left = float(state.get("time_left", 0.0))
 	_cd_kills_left = int(state.get("kills_left", 0))
+	_cd_rooms_left = int(state.get("rooms_left", 0))
+	if state.has("cooldown_rooms"):
+		cooldown_rooms = int(state["cooldown_rooms"])
 	if not _on_cooldown:
 		_cd_time_left = 0.0
 		_cd_kills_left = 0
+		_cd_rooms_left = 0
 		_update_hud_cooldown()
 	elif cooldown_type == CooldownType.TIME and _cd_time_left <= 0.0:
 		_finish_cooldown()
 	elif cooldown_type == CooldownType.KILLS and _cd_kills_left <= 0:
+		_finish_cooldown()
+	elif cooldown_type == CooldownType.ROOMS and _cd_rooms_left <= 0:
 		_finish_cooldown()
 	else:
 		_update_hud_cooldown()
@@ -118,6 +142,12 @@ func get_cooldown_ratio() -> float:
 			if cooldown_kills <= 0:
 				return 0.0
 			return clampf(float(_cd_kills_left) / float(cooldown_kills), 0.0, 1.0)
+		CooldownType.FLOOR:
+			return 1.0
+		CooldownType.ROOMS:
+			if cooldown_rooms <= 0:
+				return 0.0
+			return clampf(float(_cd_rooms_left) / float(cooldown_rooms), 0.0, 1.0)
 	return 0.0
 
 
@@ -145,6 +175,40 @@ func notify_enemy_killed() -> void:
 		_update_hud_cooldown()
 
 
+func notify_floor_advanced() -> void:
+	if not _is_equipped():
+		return
+	if _on_cooldown and cooldown_type == CooldownType.FLOOR:
+		_finish_cooldown()
+
+
+func notify_room_cleared() -> void:
+	if not _is_equipped():
+		return
+	if not _on_cooldown or cooldown_type != CooldownType.ROOMS:
+		return
+	_cd_rooms_left -= 1
+	if _cd_rooms_left <= 0:
+		_finish_cooldown()
+	else:
+		_update_hud_cooldown()
+
+
+func _on_room_cleared() -> void:
+	notify_room_cleared()
+
+
+func _apply_initial_rooms_cooldown() -> void:
+	if cooldown_type != CooldownType.ROOMS:
+		return
+	if start_rooms_progress < 0:
+		return
+	_on_cooldown = true
+	_cd_rooms_left = maxi(0, cooldown_rooms - start_rooms_progress)
+	if _cd_rooms_left <= 0:
+		_finish_cooldown()
+
+
 func _on_stat_changed(stat_name: String, _new_value: float) -> void:
 	if stat_name == "kills":
 		notify_enemy_killed()
@@ -154,6 +218,7 @@ func _finish_cooldown() -> void:
 	_on_cooldown = false
 	_cd_time_left = 0.0
 	_cd_kills_left = 0
+	_cd_rooms_left = 0
 	_update_hud_cooldown()
 
 

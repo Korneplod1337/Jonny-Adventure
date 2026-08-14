@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://ce5cd12i0l3tf"]
+
+[ext_resource type="Script" uid="uid://d1l0unv3a6o35" path="res://game/objects/Equipment/Ability/scripts/cracked_eruption.gd" id="1_b1i5w"]
+[ext_resource type="Texture2D" uid="uid://bp01tdp3vmexc" path="res://image/effect_sprites/Cracked Eruption/Cracked Eruption5.png" id="2_s7lxg"]
+[ext_resource type="Texture2D" uid="uid://duawnr7o4d8c7" path="res://image/effect_sprites/Cracked Eruption/Cracked Eruption1.png" id="3_0145w"]
+[ext_resource type="Texture2D" uid="uid://bed8hy20hvw5j" path="res://image/effect_sprites/Cracked Eruption/Cracked Eruption4.png" id="4_x6bio"]
+[ext_resource type="Texture2D" uid="uid://bqxoiur3ir81e" path="res://image/effect_sprites/Cracked Eruption/Cracked Eruption2.png" id="5_ig8um"]
+[ext_resource type="Texture2D" uid="uid://dusv10tv65h1t" path="res://image/effect_sprites/Cracked Eruption/Cracked Eruption3.png" id="6_y51k5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s7lxg")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0145w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x6bio")
+}],
+"loop": false,
+"name": &"variation 1",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ig8um")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x6bio")
+}],
+"loop": false,
+"name": &"variation 2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_y51k5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x6bio")
+}],
+"loop": false,
+"name": &"variation 3",
+"speed": 8.0
+}]
+
+[node name="Cracked Eruption" type="Area2D" unique_id=278677877]
+z_index = 11
+collision_layer = 2
+collision_mask = 116
+script = ExtResource("1_b1i5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
+shape = SubResource("CircleShape2D_34718")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
+position = Vector2(-3, -1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_xhdno")
+animation = &"variation 2"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

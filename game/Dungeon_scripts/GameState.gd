@@ -2,10 +2,15 @@ extends Node
 
 var coins: int = 0
 signal coins_changed(new_value: int)
+signal room_cleared
 
 func add_coins(amount: int) -> void:
 	coins += amount
 	emit_signal("coins_changed", coins)
+
+
+func notify_room_cleared() -> void:
+	room_cleared.emit()
 
 # мир
 var cost_multiplier := 1.0

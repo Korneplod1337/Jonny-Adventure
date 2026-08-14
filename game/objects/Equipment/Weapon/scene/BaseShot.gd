@@ -37,6 +37,8 @@ var enchantment: EnchantmentResource
 
 var penetration: int = 0 ## Число врагов, сквозь которых снаряд проходит, не исчезая (0 — остановка на первом).
 var _enemy_hit_count: int = 0
+## Следующий удар по врагу может восстановить HP (Steal Life).
+var steal_life: bool = false
 
 ## Цели, по которым копия ближнего рикошета не бьёт повторно.
 var _ricochet_ignore_ids: Array[int] = []
@@ -396,6 +398,23 @@ func _deal_hit(target: Node, amount: float) -> void:
 	DamageDealer.deal_damage(self, target, _build_damage_info(target, amount))
 	_show_crit_effect()
 	_spawn_hack_effects(target, amount)
+	_try_steal_life_heal()
+
+
+func _try_steal_life_heal() -> void:
+	if not steal_life:
+		return
+	if player == null or not is_instance_valid(player):
+		return
+	if not player.steal_life_heal_ready:
+		return
+	player.steal_life_heal_ready = false
+	steal_life = false
+	var free_slots: int = player.max_hp - (player.hp_list["red"] + player.hp_list["green"])
+	if free_slots > 0:
+		player.heal(0, 1, 0, 0)
+	else:
+		player.heal(0, 0, 1, 0)
 
 
 func _spawn_hack_effects(target: Node, dealt_damage: float) -> void:

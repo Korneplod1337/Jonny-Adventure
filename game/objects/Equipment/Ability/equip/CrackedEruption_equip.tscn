@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dnrvrxdec763n"]
+
+[ext_resource type="Script" uid="uid://cdreuanfktvo7" path="res://game/objects/Equipment/Ability/BaseAbility_equip.gd" id="1_equip"]
+[ext_resource type="Script" uid="uid://bbgwuq85c0i4m" path="res://game/objects/Equipment/Ability/scripts/cracked_eruption_ability.gd" id="2_ability"]
+[ext_resource type="Texture2D" uid="uid://jd3ql7t7or3p" path="res://image/ttttt30.png" id="3_icon"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+radius = 54.08327
+
+[node name="CrackedEruption_equip" type="Area2D" unique_id=1849554563]
+script = ExtResource("1_equip")
+ability_script = ExtResource("2_ability")
+equip_icon = ExtResource("3_icon")
+equip_id = "CrackedEruption"
+equip_tooltip = "Cracked Eruption"
+interact_name = "Cracked Eruption"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1321745959]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Interactable" parent="." unique_id=1768384819 instance=ExtResource("4_interact")]
+interact_name = "Take Cracked Eruption"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=181538507]
+shape = SubResource("CircleShape2D_interact")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1022475236]
+scale = Vector2(2, 2)
+texture = ExtResource("3_icon")

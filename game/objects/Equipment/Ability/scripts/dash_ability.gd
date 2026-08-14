@@ -1,3 +1,4 @@
+## Dash — рывок в направлении движения (speed×2, дистанция, сквозь врагов/снаряды). CD: время.
 class_name DashAbility
 extends BaseAbility
 
