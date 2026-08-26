@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://xv5kb5hy6emi"]
+
+[ext_resource type="Script" uid="uid://t8oa6pakxd3k" path="res://game/objects/items/scripts/genoremap.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dd510xr8gjwpn" path="res://image/items/2 tier/ItemGenomeMap.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="GenomeMap" type="Area2D" unique_id=1372793885]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_tex")
+item_tooltip = "Genome Map"
+item_tooltip2 = "Reduces all enemies HP by 20%"
+item_id = "genoremap"
+effect_power = 0.8
+
+[node name="Interactable" parent="." unique_id=903820775 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=203711431]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086463650]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=218743216]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")

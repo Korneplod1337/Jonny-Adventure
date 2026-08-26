@@ -129,7 +129,7 @@
 [ext_resource type="PackedScene" uid="uid://d4nmsl38t7ni6" path="res://game/objects/Equipment/Ability/equip/Dash_equip.tscn" id="126_d822m"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/StealLife_equip.tscn" id="127_u3e44"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/DoomedChance_equip.tscn" id="128_xs4ol"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/Ember_equip.tscn" id="129_kjqnc"]
+[ext_resource type="PackedScene" uid="uid://bh55uvxw80yd4" path="res://game/objects/Equipment/Ability/equip/Ember_equip.tscn" id="129_kjqnc"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/Expedition_equip.tscn" id="130_ahchr"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/GoldHoard_equip.tscn" id="131_l3f4i"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/KeresCall_equip.tscn" id="132_vdaq7"]
@@ -139,6 +139,50 @@
 [ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="137_y65ao"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/TatteredTrade_equip.tscn" id="138_a8jy2"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/ThePilgrimage_equip.tscn" id="139_uxhbi"]
+[ext_resource type="PackedScene" uid="uid://bqqaij56u4g60" path="res://game/objects/items/scenes/tier 2/Amplifier.tscn" id="140_tx4ls"]
+[ext_resource type="PackedScene" uid="uid://cavmbtc0bbm3n" path="res://game/objects/items/scenes/tier 2/Astrolabia.tscn" id="141_oteyw"]
+[ext_resource type="PackedScene" uid="uid://c4rnfi40fehnl" path="res://game/objects/items/scenes/tier 2/BallLightning.tscn" id="142_6kqs7"]
+[ext_resource type="PackedScene" uid="uid://ce8xh7hfpeaqj" path="res://game/objects/items/scenes/tier 2/BlackBrand.tscn" id="143_euevc"]
+[ext_resource type="PackedScene" uid="uid://b5dyeias61mx5" path="res://game/objects/items/scenes/tier 2/BlackDeal.tscn" id="144_7s242"]
+[ext_resource type="PackedScene" uid="uid://bs7anpo72stns" path="res://game/objects/items/scenes/tier 2/Clover.tscn" id="145_o1tyc"]
+[ext_resource type="PackedScene" uid="uid://dafsdhbprw661" path="res://game/objects/items/scenes/tier 2/Desperado.tscn" id="146_lvrqc"]
+[ext_resource type="PackedScene" uid="uid://dp2ctvwob8nia" path="res://game/objects/items/scenes/tier 2/Diamond.tscn" id="147_uqrar"]
+[ext_resource type="PackedScene" uid="uid://bcpsr0b6b6125" path="res://game/objects/items/scenes/tier 2/DragonHeart.tscn" id="148_1gxfk"]
+[ext_resource type="PackedScene" uid="uid://ciyvalw1w2is5" path="res://game/objects/items/scenes/tier 2/EaglesEye.tscn" id="149_ggfob"]
+[ext_resource type="PackedScene" uid="uid://bel860xmjjfag" path="res://game/objects/items/scenes/tier 2/ExecutionersAxe.tscn" id="150_v1ojs"]
+[ext_resource type="PackedScene" uid="uid://su5svp3wtnp6" path="res://game/objects/items/scenes/tier 2/FernLucky.tscn" id="151_opvix"]
+[ext_resource type="PackedScene" uid="uid://xv5kb5hy6emi" path="res://game/objects/items/scenes/tier 2/GenomeMap.tscn" id="152_8ylcu"]
+[ext_resource type="PackedScene" uid="uid://xvsw6wxx7ab5" path="res://game/objects/items/scenes/tier 2/GigantRing.tscn" id="153_4hvg8"]
+[ext_resource type="PackedScene" uid="uid://dsp7qelt6iu0" path="res://game/objects/items/scenes/tier 2/GoldBar.tscn" id="154_6sjhw"]
+[ext_resource type="PackedScene" uid="uid://6ebje77kuh68" path="res://game/objects/items/scenes/tier 2/GoldNugget.tscn" id="155_eealk"]
+[ext_resource type="PackedScene" uid="uid://bxf020mqyr5re" path="res://game/objects/items/scenes/tier 2/Guts.tscn" id="156_n6x0b"]
+[ext_resource type="PackedScene" uid="uid://dui73hjb0ag5n" path="res://game/objects/items/scenes/tier 2/Hunter.tscn" id="157_kbimq"]
+[ext_resource type="PackedScene" uid="uid://dcw4e61kntemi" path="res://game/objects/items/scenes/tier 2/IronMaiden.tscn" id="158_4hkn1"]
+[ext_resource type="PackedScene" uid="uid://cgdrpbguyb166" path="res://game/objects/items/scenes/tier 2/Joker.tscn" id="159_mrdsv"]
+[ext_resource type="PackedScene" uid="uid://clg2wj2o3t8oj" path="res://game/objects/items/scenes/tier 2/Lantern.tscn" id="160_13rb2"]
+[ext_resource type="PackedScene" uid="uid://cuyt31frb24ri" path="res://game/objects/items/scenes/tier 2/LaserScope.tscn" id="161_om2vm"]
+[ext_resource type="PackedScene" uid="uid://djaov1i5f05cp" path="res://game/objects/items/scenes/tier 2/MagicGrimoire.tscn" id="162_jk0ox"]
+[ext_resource type="PackedScene" uid="uid://clx2qietet6to" path="res://game/objects/items/scenes/tier 2/MagicSeal.tscn" id="163_67q5j"]
+[ext_resource type="PackedScene" uid="uid://cvrwp146ivecy" path="res://game/objects/items/scenes/tier 2/ManaFlame.tscn" id="164_i4jns"]
+[ext_resource type="PackedScene" uid="uid://cyytbjj2bm4iq" path="res://game/objects/items/scenes/tier 2/MarkOfTenebris.tscn" id="165_4dgnj"]
+[ext_resource type="PackedScene" uid="uid://bqmimicitemt2" path="res://game/objects/items/scenes/tier 2/Mimic_item.tscn" id="166_hqnbv"]
+[ext_resource type="PackedScene" uid="uid://sgkfhl4mab2w" path="res://game/objects/items/scenes/tier 2/Occult.tscn" id="167_3i2bg"]
+[ext_resource type="PackedScene" uid="uid://ccx5bybdqevjv" path="res://game/objects/items/scenes/tier 2/Opulence.tscn" id="168_7dwou"]
+[ext_resource type="PackedScene" uid="uid://dblxkruv8gxpc" path="res://game/objects/items/scenes/tier 2/Ouroboros.tscn" id="169_k8me7"]
+[ext_resource type="PackedScene" uid="uid://bfc4l6acsnytu" path="res://game/objects/items/scenes/tier 2/Penetrating.tscn" id="170_1bfo3"]
+[ext_resource type="PackedScene" uid="uid://n0yseedxdttp" path="res://game/objects/items/scenes/tier 2/Planetary.tscn" id="171_3d4py"]
+[ext_resource type="PackedScene" uid="uid://cj5vqd251k2h8" path="res://game/objects/items/scenes/tier 2/Salamandra.tscn" id="172_akf5g"]
+[ext_resource type="PackedScene" uid="uid://caq1tkcui7crx" path="res://game/objects/items/scenes/tier 2/Scope.tscn" id="173_ql2qb"]
+[ext_resource type="PackedScene" uid="uid://buvm0xxu4d42i" path="res://game/objects/items/scenes/tier 2/SecondHeart.tscn" id="174_h6uh4"]
+[ext_resource type="PackedScene" uid="uid://sydlimfjnk7i" path="res://game/objects/items/scenes/tier 2/StarMap.tscn" id="175_1dbv8"]
+[ext_resource type="PackedScene" uid="uid://7x2gkv4ajax" path="res://game/objects/items/scenes/tier 2/Telescope.tscn" id="176_rmvc6"]
+[ext_resource type="PackedScene" uid="uid://cny6bkl1ykrc7" path="res://game/objects/items/scenes/tier 2/ToyCastle.tscn" id="177_ungww"]
+[ext_resource type="PackedScene" uid="uid://bd8dyatql1hlv" path="res://game/objects/items/scenes/tier 2/TreasureMap.tscn" id="178_a7pxr"]
+[ext_resource type="PackedScene" uid="uid://bnxf47yrffxrq" path="res://game/objects/items/scenes/tier 2/Uranium.tscn" id="179_xiccb"]
+[ext_resource type="PackedScene" uid="uid://b2et1i4fg00r8" path="res://game/objects/items/scenes/tier 2/WaterElemental.tscn" id="180_ogphl"]
+[ext_resource type="PackedScene" uid="uid://bsvpgfa05mc10" path="res://game/objects/items/scenes/tier 2/Well.tscn" id="181_jtm6e"]
+[ext_resource type="PackedScene" uid="uid://dbih72l55o41u" path="res://game/objects/items/scenes/tier 2/WildWind.tscn" id="182_c6siu"]
+[ext_resource type="PackedScene" uid="uid://cnmgffejiu4wf" path="res://game/objects/items/scenes/tier 2/ZeroToHundred.tscn" id="183_56n5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -317,7 +361,7 @@ position = Vector2(152, 127)
 position = Vector2(45, 342)
 
 [node name="Boomerang" parent="." unique_id=1430574395 instance=ExtResource("19_vm4yr")]
-position = Vector2(-60, 480)
+position = Vector2(-64, 556)
 
 [node name="Potion Heal" parent="." unique_id=1431943573 instance=ExtResource("20_0h76k")]
 position = Vector2(-109, 40)
@@ -338,7 +382,7 @@ position = Vector2(-328, 0)
 position = Vector2(-255, 2)
 
 [node name="Story book" parent="." unique_id=5682892 instance=ExtResource("24_m4mvj")]
-position = Vector2(-66, 347)
+position = Vector2(-70, 303)
 
 [node name="Pistol" parent="." unique_id=241584314 instance=ExtResource("27_a1qv4")]
 position = Vector2(277, 474)
@@ -626,7 +670,7 @@ position = Vector2(-875.00006, -517)
 position = Vector2(-741, 595)
 
 [node name="Spider_big_boss" parent="." unique_id=1210663031 instance=ExtResource("119_xqp2j")]
-position = Vector2(485, -543)
+position = Vector2(464, -543)
 
 [node name="Fly" parent="." unique_id=227024778 instance=ExtResource("121_3d2wa")]
 position = Vector2(-403.00003, -372)
@@ -684,3 +728,135 @@ position = Vector2(692, 780)
 
 [node name="ThePilgrimage_equip" parent="." unique_id=1718991709 instance=ExtResource("139_uxhbi")]
 position = Vector2(314, 782)
+
+[node name="Amplifier" parent="." unique_id=1402795943 instance=ExtResource("140_tx4ls")]
+position = Vector2(-200, 363)
+
+[node name="Astrolabia" parent="." unique_id=2052924217 instance=ExtResource("141_oteyw")]
+position = Vector2(-495, 488)
+
+[node name="BallLightning" parent="." unique_id=1392559626 instance=ExtResource("142_6kqs7")]
+position = Vector2(-442, 484)
+
+[node name="BlackBrand" parent="." unique_id=1097777955 instance=ExtResource("143_euevc")]
+position = Vector2(-381, 480)
+
+[node name="BlackDeal" parent="." unique_id=1570026820 instance=ExtResource("144_7s242")]
+position = Vector2(-320, 484)
+
+[node name="Clover" parent="." unique_id=1811522804 instance=ExtResource("145_o1tyc")]
+position = Vector2(-271, 480)
+
+[node name="Desperado" parent="." unique_id=610514940 instance=ExtResource("146_lvrqc")]
+position = Vector2(-209, 487)
+
+[node name="Diamond" parent="." unique_id=1413541549 instance=ExtResource("147_uqrar")]
+position = Vector2(-141, 485)
+
+[node name="DragonHeart" parent="." unique_id=2128063774 instance=ExtResource("148_1gxfk")]
+position = Vector2(-79, 486)
+
+[node name="EaglesEye" parent="." unique_id=721309246 instance=ExtResource("149_ggfob")]
+position = Vector2(-84, 423)
+
+[node name="ExecutionersAxe" parent="." unique_id=9406316 instance=ExtResource("150_v1ojs")]
+position = Vector2(-147, 423)
+
+[node name="FernLucky" parent="." unique_id=438033537 instance=ExtResource("151_opvix")]
+position = Vector2(-203, 430)
+
+[node name="GenomeMap" parent="." unique_id=2049404346 instance=ExtResource("152_8ylcu")]
+position = Vector2(-257, 426)
+
+[node name="GigantRing" parent="." unique_id=1197635827 instance=ExtResource("153_4hvg8")]
+position = Vector2(-312, 419)
+
+[node name="GoldBar" parent="." unique_id=1219058154 instance=ExtResource("154_6sjhw")]
+position = Vector2(-369, 422)
+
+[node name="GoldNugget" parent="." unique_id=345053404 instance=ExtResource("155_eealk")]
+position = Vector2(-420, 422)
+
+[node name="Guts" parent="." unique_id=954278657 instance=ExtResource("156_n6x0b")]
+position = Vector2(-472, 425)
+
+[node name="Hunter" parent="." unique_id=1314339164 instance=ExtResource("157_kbimq")]
+position = Vector2(-529, 432)
+
+[node name="IronMaiden" parent="." unique_id=2064462516 instance=ExtResource("158_4hkn1")]
+position = Vector2(-581, 426)
+
+[node name="Joker" parent="." unique_id=1378068918 instance=ExtResource("159_mrdsv")]
+position = Vector2(-964, 38)
+
+[node name="Lantern" parent="." unique_id=1888337913 instance=ExtResource("160_13rb2")]
+position = Vector2(-630, 425)
+
+[node name="LaserScope" parent="." unique_id=230417532 instance=ExtResource("161_om2vm")]
+position = Vector2(-693, 424)
+
+[node name="MagicGrimoire" parent="." unique_id=1971240502 instance=ExtResource("162_jk0ox")]
+position = Vector2(-75, 360)
+
+[node name="MagicSeal" parent="." unique_id=1792819021 instance=ExtResource("163_67q5j")]
+position = Vector2(-141, 359)
+
+[node name="ManaFlame" parent="." unique_id=433509010 instance=ExtResource("164_i4jns")]
+position = Vector2(-249, 367)
+
+[node name="MarkOfTenebris" parent="." unique_id=1382342051 instance=ExtResource("165_4dgnj")]
+position = Vector2(-304, 367)
+
+[node name="Mimic_item" parent="." unique_id=653485260 instance=ExtResource("166_hqnbv")]
+position = Vector2(-360, 364)
+
+[node name="Occult" parent="." unique_id=1262848687 instance=ExtResource("167_3i2bg")]
+position = Vector2(-414, 368)
+
+[node name="Opulence" parent="." unique_id=303627950 instance=ExtResource("168_7dwou")]
+position = Vector2(-478, 370)
+
+[node name="Ouroboros" parent="." unique_id=1426745928 instance=ExtResource("169_k8me7")]
+position = Vector2(-531, 374)
+
+[node name="Penetrating" parent="." unique_id=554965135 instance=ExtResource("170_1bfo3")]
+position = Vector2(-138, 306)
+
+[node name="Planetary" parent="." unique_id=293584389 instance=ExtResource("171_3d4py")]
+position = Vector2(-191, 306)
+
+[node name="Salamandra" parent="." unique_id=668935188 instance=ExtResource("172_akf5g")]
+position = Vector2(-246, 309)
+
+[node name="Scope" parent="." unique_id=218130736 instance=ExtResource("173_ql2qb")]
+position = Vector2(-583, 373)
+
+[node name="SecondHeart" parent="." unique_id=1358123504 instance=ExtResource("174_h6uh4")]
+position = Vector2(-639, 369)
+
+[node name="StarMap" parent="." unique_id=1973571722 instance=ExtResource("175_1dbv8")]
+position = Vector2(-691, 367)
+
+[node name="Telescope" parent="." unique_id=1031812696 instance=ExtResource("176_rmvc6")]
+position = Vector2(-303, 308)
+
+[node name="ToyCastle" parent="." unique_id=1002636992 instance=ExtResource("177_ungww")]
+position = Vector2(-357, 304)
+
+[node name="TreasureMap" parent="." unique_id=1512399715 instance=ExtResource("178_a7pxr")]
+position = Vector2(-418, 311)
+
+[node name="Uranium" parent="." unique_id=482354516 instance=ExtResource("179_xiccb")]
+position = Vector2(-476, 310)
+
+[node name="WaterElemental" parent="." unique_id=1193798674 instance=ExtResource("180_ogphl")]
+position = Vector2(-534, 310)
+
+[node name="Well" parent="." unique_id=754039520 instance=ExtResource("181_jtm6e")]
+position = Vector2(-589, 307)
+
+[node name="WildWind" parent="." unique_id=878578471 instance=ExtResource("182_c6siu")]
+position = Vector2(-640, 311)
+
+[node name="ZeroToHundred" parent="." unique_id=1199965967 instance=ExtResource("183_56n5d")]
+position = Vector2(-691, 315)

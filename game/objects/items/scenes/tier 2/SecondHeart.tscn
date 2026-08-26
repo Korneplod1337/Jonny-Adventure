@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_yfcly")
 item_tooltip = "Second Heart"
-item_tooltip2 = "In case the first one fails."
+item_tooltip2 = "Second Heart in case the first one fails"
 item_id = "secondheart"
 
 [node name="Interactable" parent="." unique_id=362369975 instance=ExtResource("3_interact")]

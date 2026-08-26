@@ -2,6 +2,9 @@ class_name BaseEnemy
 extends CharacterBody2D
 
 var coin_scene = preload("res://game/objects/coins/Coin.tscn")
+const IRON_MAIDEN_EXPLOSION := preload("res://game/combat/combat_effects/iron_maiden_explosion.tscn")
+const IRON_MAIDEN_DAMAGE_RATIO := 0.5
+const IRON_MAIDEN_RADIUS := 50.0
 
 @export var move_speed: float = 100.0
 var base_move_speed := move_speed
@@ -465,6 +468,8 @@ func die() -> void:
 	player_in_vision = false
 	velocity = Vector2.ZERO
 
+	_try_iron_maiden_explosion()
+
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	$HitArea/CollisionShape2D.call_deferred("set_disabled", true)
 	$FieldViewArea.hide()
@@ -474,6 +479,17 @@ func die() -> void:
 	poison_timer.stop()
 	sprite.play("die")
 	_enemy_die.emit(1)
+
+
+func _try_iron_maiden_explosion() -> void:
+	if GameState.iron_maiden_chance <= 0.0:
+		return
+	if randf() >= GameState.iron_maiden_chance:
+		return
+	var explosion: CombatExplosion = IRON_MAIDEN_EXPLOSION.instantiate()
+	explosion.global_position = global_position
+	explosion.setup(IRON_MAIDEN_RADIUS, float(base_hp) * IRON_MAIDEN_DAMAGE_RATIO)
+	get_tree().current_scene.call_deferred("add_child", explosion)
 
 func _on_sprite_animation_finished() -> void:
 	if sprite.animation == "die":

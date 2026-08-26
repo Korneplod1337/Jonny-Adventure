@@ -73,6 +73,15 @@
 [ext_resource type="Texture2D" uid="uid://1a7rcprvo255" path="res://image/main_menu/char_select_name_Joker.png" id="59_name_joker"]
 [ext_resource type="Script" uid="uid://dqhbl1wi87kbh" path="res://menu_scripts/patch_note_menu.gd" id="65_gdt60"]
 [ext_resource type="Texture2D" uid="uid://d2seur3kw6maw" path="res://image/main_menu/patch_note_menu_bg.png" id="66_a8x8j"]
+[ext_resource type="Script" uid="uid://ctuusr116xe67" path="res://menu_scripts/tutorial_menu.gd" id="67_tutscr"]
+[ext_resource type="Texture2D" uid="uid://blewc7533wx23" path="res://image/items/0 tier/ItemHealthPotion.png" id="68_item"]
+[ext_resource type="Texture2D" uid="uid://bt81kotqen7yl" path="res://image/interface/stats/Pink_Gem1.png" id="69_empty"]
+[ext_resource type="Texture2D" uid="uid://bmqvfwktqvcwb" path="res://image/interface/equip/equip_slots.png" id="70_slots"]
+[ext_resource type="Texture2D" uid="uid://cy5g2dinhwkkw" path="res://image/equip/weapon/sword_equip.png" id="71_sword"]
+[ext_resource type="Texture2D" uid="uid://btfgu7jwcf8xp" path="res://image/equip/ability/dash.png" id="72_dash"]
+[ext_resource type="Texture2D" uid="uid://v64xroqphvob" path="res://image/enchants/fire enchant1.png" id="73_enchant"]
+[ext_resource type="Texture2D" uid="uid://cpjkcrdccfbo8" path="res://image/equip/weapon/Spit_bullet.png" id="74_tears"]
+[ext_resource type="Texture2D" uid="uid://bknhx5ubqubto" path="res://image/equip/weapon/pistol.png" id="75_gun"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ni8h3"]
 animations = [{
@@ -1124,6 +1133,411 @@ parameters/looping = true
 
 [node name="Tutorial_select_menu" type="CanvasLayer" parent="." unique_id=291529005]
 visible = false
+script = ExtResource("67_tutscr")
+
+[node name="background" type="Sprite2D" parent="Tutorial_select_menu" unique_id=291529010]
+scale = Vector2(2, 2)
+texture = ExtResource("66_a8x8j")
+centered = false
+
+[node name="Pages" type="Control" parent="Tutorial_select_menu" unique_id=291529011]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Page1" type="VBoxContainer" parent="Tutorial_select_menu/Pages" unique_id=291529020]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -280.0
+offset_right = 480.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Title" type="Label" parent="Tutorial_select_menu/Pages/Page1" unique_id=291529021]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Items"
+horizontal_alignment = 1
+
+[node name="Images" type="HBoxContainer" parent="Tutorial_select_menu/Pages/Page1" unique_id=291529022]
+layout_mode = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="Item" type="VBoxContainer" parent="Tutorial_select_menu/Pages/Page1/Images" unique_id=291529023]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/Page1/Images/Item" unique_id=291529028]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("68_item")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/Page1/Images/Item" unique_id=291529029]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "Item"
+horizontal_alignment = 1
+
+[node name="Stat" type="VBoxContainer" parent="Tutorial_select_menu/Pages/Page1/Images" unique_id=291529030]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/Page1/Images/Stat" unique_id=291529031]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("69_empty")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/Page1/Images/Stat" unique_id=291529032]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "Stat"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="Tutorial_select_menu/Pages/Page1" unique_id=291529024]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Items give extra bonuses on top of your stats.
+
+Stats are the diamonds."
+horizontal_alignment = 1
+
+[node name="PageWeapons" type="VBoxContainer" parent="Tutorial_select_menu/Pages" unique_id=291529047]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -280.0
+offset_right = 480.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Title" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons" unique_id=291529048]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Weapons"
+horizontal_alignment = 1
+
+[node name="Images" type="HBoxContainer" parent="Tutorial_select_menu/Pages/PageWeapons" unique_id=291529049]
+layout_mode = 2
+theme_override_constants/separation = 36
+alignment = 1
+
+[node name="Tears" type="VBoxContainer" parent="Tutorial_select_menu/Pages/PageWeapons/Images" unique_id=291529050]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/PageWeapons/Images/Tears" unique_id=291529051]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("74_tears")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons/Images/Tears" unique_id=291529052]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Tears"
+horizontal_alignment = 1
+
+[node name="Trade" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons/Images/Tears" unique_id=291529053]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "+ attack speed
+- accuracy"
+horizontal_alignment = 1
+
+[node name="Guns" type="VBoxContainer" parent="Tutorial_select_menu/Pages/PageWeapons/Images" unique_id=291529054]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/PageWeapons/Images/Guns" unique_id=291529055]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("75_gun")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons/Images/Guns" unique_id=291529056]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Guns"
+horizontal_alignment = 1
+
+[node name="Trade" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons/Images/Guns" unique_id=291529057]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "+ accuracy and crits
+- fire rate (clip)"
+horizontal_alignment = 1
+
+[node name="Melee" type="VBoxContainer" parent="Tutorial_select_menu/Pages/PageWeapons/Images" unique_id=291529058]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/PageWeapons/Images/Melee" unique_id=291529059]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("71_sword")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons/Images/Melee" unique_id=291529060]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Melee"
+horizontal_alignment = 1
+
+[node name="Trade" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons/Images/Melee" unique_id=291529061]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "+ splash
+- range
+accuracy does nothing"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons" unique_id=291529062]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Every weapon belongs to one side of this triangle.
+Pick a type, then lean into its strength."
+horizontal_alignment = 1
+
+[node name="Page2" type="VBoxContainer" parent="Tutorial_select_menu/Pages" unique_id=291529025]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -280.0
+offset_right = 480.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Title" type="Label" parent="Tutorial_select_menu/Pages/Page2" unique_id=291529026]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Loadout"
+horizontal_alignment = 1
+
+[node name="Images" type="HBoxContainer" parent="Tutorial_select_menu/Pages/Page2" unique_id=291529027]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Slots" type="VBoxContainer" parent="Tutorial_select_menu/Pages/Page2/Images" unique_id=291529033]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/Page2/Images/Slots" unique_id=291529034]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+texture = ExtResource("70_slots")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/Page2/Images/Slots" unique_id=291529035]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "Slots"
+horizontal_alignment = 1
+
+[node name="Weapon" type="VBoxContainer" parent="Tutorial_select_menu/Pages/Page2/Images" unique_id=291529036]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/Page2/Images/Weapon" unique_id=291529037]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("71_sword")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/Page2/Images/Weapon" unique_id=291529039]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "Weapon"
+horizontal_alignment = 1
+
+[node name="Ability" type="VBoxContainer" parent="Tutorial_select_menu/Pages/Page2/Images" unique_id=291529040]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/Page2/Images/Ability" unique_id=291529041]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("72_dash")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/Page2/Images/Ability" unique_id=291529042]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "Ability"
+horizontal_alignment = 1
+
+[node name="Enchant" type="VBoxContainer" parent="Tutorial_select_menu/Pages/Page2/Images" unique_id=291529043]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/Page2/Images/Enchant" unique_id=291529044]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("73_enchant")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/Page2/Images/Enchant" unique_id=291529045]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 32
+text = "Enchant"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="Tutorial_select_menu/Pages/Page2" unique_id=291529046]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Weapons can be enchanted.
+There are also abilities and equipment.
+
+Everything goes into special slots."
+horizontal_alignment = 1
+
+[node name="BtnPrev" type="Button" parent="Tutorial_select_menu" unique_id=291529015]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -64.0
+offset_right = 88.0
+offset_bottom = 64.0
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "<"
+flat = true
+
+[node name="BtnNext" type="Button" parent="Tutorial_select_menu" unique_id=291529016]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -64.0
+offset_right = -24.0
+offset_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = ">"
+flat = true
+
+[node name="PageLabel" type="Label" parent="Tutorial_select_menu" unique_id=291529017]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -56.0
+offset_right = 80.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "1 / 3"
+horizontal_alignment = 1
+
+[node name="exit" type="Button" parent="Tutorial_select_menu" unique_id=291529018]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -105.0
+offset_right = 72.0
+offset_bottom = -37.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+focus_mode = 0
+icon = ExtResource("12_4tbtp")
+flat = true
+
+[node name="exit_select" type="Sprite2D" parent="Tutorial_select_menu/exit" unique_id=291529019]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("13_1aqqx")
+centered = false
 
 [node name="Patch_note_menu" type="CanvasLayer" parent="." unique_id=1425480142]
 visible = false
@@ -1230,6 +1644,11 @@ centered = false
 [connection signal="pressed" from="Diff_select_menu/easy" to="Diff_select_menu" method="_on_easy_pressed"]
 [connection signal="pressed" from="Diff_select_menu/med" to="Diff_select_menu" method="_on_med_pressed"]
 [connection signal="pressed" from="Diff_select_menu/hard" to="Diff_select_menu" method="_on_hard_pressed"]
+[connection signal="pressed" from="Tutorial_select_menu/BtnPrev" to="Tutorial_select_menu" method="_on_btn_prev_pressed"]
+[connection signal="pressed" from="Tutorial_select_menu/BtnNext" to="Tutorial_select_menu" method="_on_btn_next_pressed"]
+[connection signal="mouse_entered" from="Tutorial_select_menu/exit" to="Tutorial_select_menu" method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="Tutorial_select_menu/exit" to="Tutorial_select_menu" method="_on_exit_mouse_exited"]
+[connection signal="pressed" from="Tutorial_select_menu/exit" to="Tutorial_select_menu" method="_on_exit_pressed"]
 [connection signal="mouse_entered" from="Patch_note_menu/exitpn" to="Patch_note_menu" method="_on_exitpn_mouse_entered"]
 [connection signal="mouse_exited" from="Patch_note_menu/exitpn" to="Patch_note_menu" method="_on_exitpn_mouse_exited"]
 [connection signal="pressed" from="Patch_note_menu/exitpn" to="Patch_note_menu" method="_on_exitpn_pressed"]

@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Desperado"
-item_tooltip2 = "Sometimes desperado can help."
+item_tooltip2 = "Sometimes desperado can help"
 item_id = "desperado"
 
 [node name="Interactable" parent="." unique_id=809956221 instance=ExtResource("3_interact")]

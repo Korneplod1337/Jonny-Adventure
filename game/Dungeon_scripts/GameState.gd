@@ -73,7 +73,13 @@ var enemy_ms_multiplier: float = 1.0
 var enemy_hp_multiplier: float = 1.0
 var enemy_dmg_multiplier: float = 1.0
 var enemy_cooldown_multiplier: float = 1.0
+## Iron Maiden: шанс взрыва врага при смерти (стакается)
+var iron_maiden_chance: float = 0.0
 #босс
+## Игрушечный замок и т.п. — множители поверх Boss_*_buff
+var boss_hp_multiplier: float = 1.0
+var boss_size_multiplier: float = 1.0
+
 @onready var boss_bufs :Array = [
  ["Emaciated", 		false, Color.LAWN_GREEN],
  ["Inhibited", 		false, Color.LAWN_GREEN],
@@ -128,6 +134,9 @@ func obnulenie() -> void:
 	enemy_hp_multiplier = 1.0
 	enemy_dmg_multiplier = 1.0
 	enemy_cooldown_multiplier = 1.0
+	iron_maiden_chance = 0.0
+	boss_hp_multiplier = 1.0
+	boss_size_multiplier = 1.0
 	cost_multiplier = 1.0
 	cost_plus = 0.0
 	_clear_boss_bufs()

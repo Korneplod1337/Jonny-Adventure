@@ -6,24 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
 [ext_resource type="PackedScene" uid="uid://d4nmsl38t7ni6" path="res://game/objects/Equipment/Ability/equip/Dash_equip.tscn" id="9_4rw6f"]
-[ext_resource type="PackedScene" uid="uid://f4b3smaiwaup" path="res://game/objects/Equipment/Ability/equip/CoinRoulette_equip.tscn" id="10_r6k7x"]
-[ext_resource type="PackedScene" uid="uid://dnrvrxdec763n" path="res://game/objects/Equipment/Ability/equip/CrackedEruption_equip.tscn" id="11_g1cmb"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/StealLife_equip.tscn" id="13_g1cmb"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/DoomedChance_equip.tscn" id="14_7fgpm"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/BoonOfKeres_equip.tscn" id="14_i3tqa"]
 [ext_resource type="PackedScene" uid="uid://bltt30qk8jp62" path="res://game/objects/obstacles/gap.tscn" id="14_oy27w"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_o41he"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/Ember_equip.tscn" id="15_tvg8h"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/Expedition_equip.tscn" id="16_ww7l6"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/GoldHoard_equip.tscn" id="17_bxm0y"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/JonnyShot_equip.tscn" id="18_hfl2y"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/KeresCall_equip.tscn" id="18_iqmaw"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/MariaCall_equip.tscn" id="19_p8hec"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/MiromirBlessing_equip.tscn" id="20_jo4v1"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/MiromirGift_equip.tscn" id="21_6cfgv"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="22_f67eu"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/TatteredTrade_equip.tscn" id="23_j72gn"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/ThePilgrimage_equip.tscn" id="24_kmixf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -141,50 +126,5 @@ position = Vector2(80, 0)
 position = Vector2(76, 0)
 variant = 5
 
-[node name="BoonOfKeres_equip" parent="." unique_id=517738756 instance=ExtResource("14_i3tqa")]
-position = Vector2(-279, -86)
-
-[node name="CoinRoulette_equip" parent="." unique_id=33336715 instance=ExtResource("10_r6k7x")]
-position = Vector2(203, -199)
-
-[node name="CrackedEruption_equip" parent="." unique_id=1849554563 instance=ExtResource("11_g1cmb")]
-position = Vector2(-278, 23)
-
 [node name="Dash_equip" parent="." unique_id=566211452 instance=ExtResource("9_4rw6f")]
-position = Vector2(-506, -209)
-
-[node name="DoomedChance_equip" parent="." unique_id=1866726377 instance=ExtResource("14_7fgpm")]
-position = Vector2(-173, -192)
-
-[node name="Ember_equip" parent="." unique_id=1530813683 instance=ExtResource("15_tvg8h")]
-position = Vector2(-168, 21)
-
-[node name="Expedition_equip" parent="." unique_id=1902967721 instance=ExtResource("16_ww7l6")]
-position = Vector2(-281, -196)
-
-[node name="GoldHoard_equip" parent="." unique_id=663453525 instance=ExtResource("17_bxm0y")]
-position = Vector2(96, -197)
-
-[node name="KeresCall_equip" parent="." unique_id=1799448595 instance=ExtResource("18_iqmaw")]
-position = Vector2(-279, 134)
-
-[node name="MariaCall_equip" parent="." unique_id=1865122079 instance=ExtResource("19_p8hec")]
-position = Vector2(-393, 135)
-
-[node name="MiromirBlessing_equip" parent="." unique_id=1145489847 instance=ExtResource("20_jo4v1")]
-position = Vector2(-390, -87)
-
-[node name="MiromirGift_equip" parent="." unique_id=1541406420 instance=ExtResource("21_6cfgv")]
-position = Vector2(311, -196)
-
-[node name="StealLife_equip" parent="." unique_id=423280076 instance=ExtResource("13_g1cmb")]
-position = Vector2(-393, 24)
-
-[node name="Surge_equip" parent="." unique_id=1137060251 instance=ExtResource("22_f67eu")]
-position = Vector2(-508, -98)
-
-[node name="TatteredTrade_equip" parent="." unique_id=1525814999 instance=ExtResource("23_j72gn")]
-position = Vector2(-13, -198)
-
-[node name="ThePilgrimage_equip" parent="." unique_id=2104899165 instance=ExtResource("24_kmixf")]
-position = Vector2(-390, -200)
+position = Vector2(-184, 144)

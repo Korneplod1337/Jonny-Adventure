@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://k3waiqukbwpx"]
+
+[ext_resource type="Script" uid="uid://ropm2d26aj03" path="res://game/combat/combat_effects/explosion.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b1nbemcnis223" path="res://image/effect_sprites/Iron Maiden effects/ironMaidenExplosion1.png" id="2_f1"]
+[ext_resource type="Texture2D" uid="uid://bu4n4obo1cmv3" path="res://image/effect_sprites/Iron Maiden effects/ironMaidenExplosion2.png" id="3_f2"]
+[ext_resource type="Texture2D" uid="uid://18iv0kfbx7ui" path="res://image/effect_sprites/Iron Maiden effects/ironMaidenExplosion3.png" id="4_f3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iron"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iron"]
+radius = 32.0
+
+[node name="IronMaidenExplosion" type="Area2D" unique_id=1980645512]
+collision_mask = 68
+script = ExtResource("1_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1396002208]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_iron")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=865898714]
+shape = SubResource("CircleShape2D_iron")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

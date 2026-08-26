@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_0q85c")
 item_tooltip = "Laser Scope"
-item_tooltip2 = "Oh yes, it's time to \"shoot from the hip\" with tears of the eyes."
+item_tooltip2 = "Oh yes, it's time to \"shoot from the hip\" with tears of the eyes"
 item_id = "laserscope"
 
 [node name="Interactable" parent="." unique_id=720002157 instance=ExtResource("3_interact")]

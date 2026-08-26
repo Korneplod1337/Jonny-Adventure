@@ -111,14 +111,14 @@ func _unlock_easy_difficulty() -> void:
 
 
 func _on_button_tutorial_button_down() -> void:
-	#get_parent().get_parent().get_node('start_menu').hide()
-	#get_parent().get_parent().get_node('Tutorial_select_menu').show()
-	pass
+	get_parent().get_parent().get_node('start_menu').hide()
+	get_parent().get_parent().get_node('Tutorial_select_menu').open()
+
 
 func _on_button_tutorial_mouse_entered() -> void:
-	$Button_tutorial/Select_tutorial.show()
+	$Button_tutorial/Select_tutorial2.show()
 func _on_button_tutorial_mouse_exited() -> void:
-	$Button_tutorial/Select_tutorial.hide()
+	$Button_tutorial/Select_tutorial2.hide()
 
 
 func _on_button_patch_note_pressed() -> void:

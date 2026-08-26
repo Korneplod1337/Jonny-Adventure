@@ -1,18 +1,17 @@
-[gd_scene format=4 uid="uid://dk3llybmdb0fa"]
+[gd_scene format=4 uid="uid://bbeq5h2qu8ccq"]
 
-[ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/RoomScript_enemy.gd" id="1_7twl0"]
-[ext_resource type="Texture2D" uid="uid://csa0hbebj00qm" path="res://image/rooms/1-st floor/tile background_1.png" id="2_4gera"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background_bounds.png" id="3_305xt"]
-[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_ytqdi"]
-[ext_resource type="PackedScene" uid="uid://bltt30qk8jp62" path="res://game/objects/obstacles/gap.tscn" id="6_4gera"]
-[ext_resource type="PackedScene" uid="uid://kk1iof18jdrv" path="res://game/objects/obstacles/fire.tscn" id="7_305xt"]
-[ext_resource type="PackedScene" uid="uid://4otoknedbda1" path="res://game/enemy/1-st floor basement/Spider_queen.tscn" id="8_ytqdi"]
-[ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="9_2je1d"]
-[ext_resource type="PackedScene" uid="uid://c7xpw4mtilp2j" path="res://game/enemy/1-st floor basement/Spider_big.tscn" id="9_nqkej"]
-[ext_resource type="PackedScene" uid="uid://dx5hdeerhyxeh" path="res://game/enemy/1-st floor basement/Spider_egg_small.tscn" id="10_08rya"]
+[ext_resource type="Script" uid="uid://bd1njhop0m3wj" path="res://game/presets/RoomScript_enemy.gd" id="1_nm1x2"]
+[ext_resource type="Texture2D" uid="uid://c1fayecx4hnfp" path="res://image/rooms/2-st floor/tile background_1.png" id="2_choqg"]
+[ext_resource type="Texture2D" uid="uid://dpomjj5pp6fag" path="res://image/rooms/2-st floor/background_bounds3.png" id="3_snevy"]
+[ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_bnybc"]
+[ext_resource type="PackedScene" uid="uid://b0piavs5d5xfi" path="res://game/objects/obstacles/egyptrockSmall.tscn" id="6_choqg"]
+[ext_resource type="PackedScene" uid="uid://bl4su1qgsyt7b" path="res://game/objects/obstacles/egyptrockSmallest.tscn" id="7_snevy"]
+[ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="7_vdqck"]
+[ext_resource type="PackedScene" uid="uid://4otoknedbda1" path="res://game/enemy/1-st floor basement/Spider_queen.tscn" id="8_snevy"]
+[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="9_fv2d2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
-texture = ExtResource("2_4gera")
+texture = ExtResource("2_choqg")
 separation = Vector2i(2, 2)
 0:0/0 = 0
 1:0/0 = 0
@@ -52,16 +51,16 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_sud2i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sud2i"]
-size = Vector2(1136, 40)
+size = Vector2(1136.44, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic6a2"]
-size = Vector2(40, 654)
+size = Vector2(41.03, 654.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yij7n"]
 size = Vector2(1280, 720)
 
-[node name="Room5" type="Node2D" unique_id=2062400061]
-script = ExtResource("1_7twl0")
+[node name="TestRoom1" type="Node2D" unique_id=2062400061]
+script = ExtResource("1_nm1x2")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1114126759]
 z_index = -10
@@ -72,47 +71,51 @@ tile_set = SubResource("TileSet_2tq2k")
 [node name="BG_bounds" type="Sprite2D" parent="." unique_id=1926935037]
 z_index = -5
 scale = Vector2(2, 2)
-texture = ExtResource("3_305xt")
+texture = ExtResource("3_snevy")
+
+[node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=1431920777]
+position = Vector2(0, -40)
+gizmo_extents = 30.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1184620657]
-position = Vector2(-207, -240)
+position = Vector2(-207.06, -240)
 collision_layer = 16
 collision_mask = 23
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=367172696]
-position = Vector2(207.06, -72)
+position = Vector2(207, -72)
 shape = SubResource("RectangleShape2D_sud2i")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1932436105]
-position = Vector2(207.06, 548)
+position = Vector2(207.28, 547.4)
 shape = SubResource("RectangleShape2D_sud2i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=975352996]
-position = Vector2(795.06, 240)
+position = Vector2(795.545, 239.75)
 shape = SubResource("RectangleShape2D_ic6a2")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=451787501]
-position = Vector2(-380.94, 239)
+position = Vector2(-381.94, 239)
 shape = SubResource("RectangleShape2D_ic6a2")
 
-[node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("4_ytqdi")]
+[node name="Door_Up" parent="." unique_id=1297143987 instance=ExtResource("5_bnybc")]
 position = Vector2(0, -298)
 scale = Vector2(2, 2)
 dir = Vector2(0, -1)
 
-[node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("4_ytqdi")]
+[node name="Door_Down" parent="." unique_id=42923306 instance=ExtResource("5_bnybc")]
 position = Vector2(0, 298)
 rotation = 3.1415927
 scale = Vector2(2, 2)
 dir = Vector2(0, 1)
 
-[node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("4_ytqdi")]
+[node name="Door_Left" parent="." unique_id=1898134436 instance=ExtResource("5_bnybc")]
 position = Vector2(-578, 0)
 rotation = -1.5707964
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
-[node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("4_ytqdi")]
+[node name="Door_Right" parent="." unique_id=840839784 instance=ExtResource("5_bnybc")]
 position = Vector2(578, 0)
 rotation = 1.5707964
 scale = Vector2(2, 2)
@@ -125,104 +128,82 @@ input_pickable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds" unique_id=1583514558]
 shape = SubResource("RectangleShape2D_yij7n")
 
-[node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("9_2je1d")]
-position = Vector2(-522, 209)
+[node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("7_vdqck")]
+position = Vector2(-536, 221)
 
-[node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=1118385925]
-gizmo_extents = 30.0
+[node name="Rock small" parent="." unique_id=1046045028 instance=ExtResource("6_choqg")]
+position = Vector2(-96, 254)
 
-[node name="Gap" parent="." unique_id=1148295091 instance=ExtResource("6_4gera")]
-position = Vector2(80, -232)
-variant = 8
+[node name="Rock smallest" parent="Rock small" unique_id=1592290452 instance=ExtResource("7_snevy")]
+position = Vector2(-0.5, -55.5)
+scale = Vector2(1, 1)
 
-[node name="Gap2" parent="." unique_id=1653008983 instance=ExtResource("6_4gera")]
-position = Vector2(80, -152)
-variant = 2
+[node name="Rock small2" parent="Rock small" unique_id=322684990 instance=ExtResource("6_choqg")]
+position = Vector2(0, -31.5)
+scale = Vector2(1, 1)
 
-[node name="Gap3" parent="." unique_id=445443855 instance=ExtResource("6_4gera")]
-position = Vector2(160, -152)
-variant = 4
+[node name="Rock small3" parent="." unique_id=942132676 instance=ExtResource("6_choqg")]
+position = Vector2(90, 257)
 
-[node name="Gap4" parent="." unique_id=1758258418 instance=ExtResource("6_4gera")]
-position = Vector2(160, -232)
-variant = 7
+[node name="Rock smallest2" parent="Rock small3" unique_id=2004547659 instance=ExtResource("7_snevy")]
+position = Vector2(-0.5, -55.5)
+scale = Vector2(1, 1)
 
-[node name="Gap5" parent="." unique_id=799874751 instance=ExtResource("6_4gera")]
-position = Vector2(-512, -160)
-variant = 8
+[node name="Rock small4" parent="Rock small3" unique_id=53816805 instance=ExtResource("6_choqg")]
+position = Vector2(0, -31.5)
+scale = Vector2(1, 1)
 
-[node name="Gap6" parent="." unique_id=2095797501 instance=ExtResource("6_4gera")]
-position = Vector2(-512, -80)
-variant = 2
+[node name="Rock small2" parent="." unique_id=505631911 instance=ExtResource("6_choqg")]
+position = Vector2(-400, 256)
 
-[node name="Gap7" parent="." unique_id=1887005437 instance=ExtResource("6_4gera")]
-position = Vector2(-432, -80)
-variant = 4
+[node name="Rock smallest" parent="Rock small2" unique_id=1155258271 instance=ExtResource("7_snevy")]
+position = Vector2(-0.5, -55.5)
+scale = Vector2(1, 1)
 
-[node name="Gap8" parent="." unique_id=370194157 instance=ExtResource("6_4gera")]
-position = Vector2(-432, -160)
-variant = 7
+[node name="Rock small2" parent="Rock small2" unique_id=718701513 instance=ExtResource("6_choqg")]
+position = Vector2(0, -31.5)
+scale = Vector2(1, 1)
 
-[node name="Gap9" parent="." unique_id=1652861394 instance=ExtResource("6_4gera")]
-position = Vector2(-160, 152)
-variant = 8
+[node name="Rock small3" parent="Rock small2" unique_id=1956493850 instance=ExtResource("6_choqg")]
+position = Vector2(-96, 254)
 
-[node name="Gap10" parent="." unique_id=96596097 instance=ExtResource("6_4gera")]
-position = Vector2(-160, 232)
-variant = 2
+[node name="Rock smallest" parent="Rock small2/Rock small3" unique_id=234995397 instance=ExtResource("7_snevy")]
+position = Vector2(-0.5, -55.5)
+scale = Vector2(1, 1)
 
-[node name="Gap11" parent="." unique_id=1924434083 instance=ExtResource("6_4gera")]
-position = Vector2(-80, 232)
-variant = 4
+[node name="Rock small2" parent="Rock small2/Rock small3" unique_id=20154192 instance=ExtResource("6_choqg")]
+position = Vector2(0, -31.5)
+scale = Vector2(1, 1)
 
-[node name="Gap12" parent="." unique_id=1525059225 instance=ExtResource("6_4gera")]
-position = Vector2(-80, 152)
-variant = 7
+[node name="Rock small4" parent="." unique_id=464314643 instance=ExtResource("6_choqg")]
+position = Vector2(-106, -242)
+rotation = 3.1415927
 
-[node name="Gap13" parent="." unique_id=1557648721 instance=ExtResource("6_4gera")]
-position = Vector2(432, 80)
-variant = 8
+[node name="Rock smallest" parent="Rock small4" unique_id=1650291277 instance=ExtResource("7_snevy")]
+position = Vector2(-0.5, -55.5)
+scale = Vector2(1, 1)
 
-[node name="Gap14" parent="." unique_id=173531989 instance=ExtResource("6_4gera")]
-position = Vector2(432, 160)
-variant = 2
+[node name="Rock small2" parent="Rock small4" unique_id=654819447 instance=ExtResource("6_choqg")]
+position = Vector2(0, -31.5)
+scale = Vector2(1, 1)
 
-[node name="Gap15" parent="." unique_id=482370670 instance=ExtResource("6_4gera")]
-position = Vector2(512, 160)
-variant = 4
+[node name="Rock small5" parent="." unique_id=274718705 instance=ExtResource("6_choqg")]
+position = Vector2(114, -243)
+rotation = 3.1415927
 
-[node name="Gap16" parent="." unique_id=1700339320 instance=ExtResource("6_4gera")]
-position = Vector2(512, 80)
-variant = 7
+[node name="Rock smallest" parent="Rock small5" unique_id=1162463633 instance=ExtResource("7_snevy")]
+position = Vector2(-0.5, -55.5)
+scale = Vector2(1, 1)
 
-[node name="Fire" parent="." unique_id=2035113601 instance=ExtResource("7_305xt")]
-position = Vector2(-200, -100)
+[node name="Rock small2" parent="Rock small5" unique_id=1784904962 instance=ExtResource("6_choqg")]
+position = Vector2(0, -31.5)
+scale = Vector2(1, 1)
 
-[node name="Fire2" parent="." unique_id=1894287921 instance=ExtResource("7_305xt")]
-position = Vector2(200, 100)
+[node name="Spider_queen" parent="." unique_id=2133096440 instance=ExtResource("8_snevy")]
+position = Vector2(513, 202)
 
-[node name="Fire3" parent="." unique_id=1073084091 instance=ExtResource("7_305xt")]
+[node name="Spider_queen2" parent="." unique_id=1535679098 instance=ExtResource("8_snevy")]
+position = Vector2(-503, -217)
 
-[node name="Spider_queen" parent="." unique_id=2133096440 instance=ExtResource("8_ytqdi")]
-position = Vector2(419, -187)
-
-[node name="Spider_big" parent="." unique_id=2124567455 instance=ExtResource("9_nqkej")]
-visible = false
-position = Vector2(501, 236)
-
-[node name="Spider_big2" parent="." unique_id=553436192 instance=ExtResource("9_nqkej")]
-position = Vector2(-493, -248)
-
-[node name="Spider_egg_small2" parent="." unique_id=24584981 instance=ExtResource("10_08rya")]
-position = Vector2(543, -249)
-
-[node name="Spider_egg_small3" parent="." unique_id=1710265172 instance=ExtResource("10_08rya")]
-visible = false
-position = Vector2(543, -209)
-
-[node name="Spider_egg_small4" parent="." unique_id=136940208 instance=ExtResource("10_08rya")]
-visible = false
-position = Vector2(502, -209)
-
-[node name="Spider_egg_small5" parent="." unique_id=895354256 instance=ExtResource("10_08rya")]
-position = Vector2(502, -248)
+[node name="EmenyWorm" parent="." unique_id=1655288545 instance=ExtResource("9_fv2d2")]
+position = Vector2(-305, 248)

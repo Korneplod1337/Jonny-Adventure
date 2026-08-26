@@ -15,7 +15,7 @@ collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Black Deal"
-item_tooltip2 = "Not everyone can tolerate such a necromatic energy."
+item_tooltip2 = "Not everyone can tolerate such a necromatic energy"
 item_id = "blackdeal"
 
 [node name="Interactable" parent="." unique_id=379883143 instance=ExtResource("3_interact")]

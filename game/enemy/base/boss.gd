@@ -37,7 +37,7 @@ var vengeful_enabled := false
 
 
 func _apply_level_buffs() -> void:
-	base_hp = int(round(float(boss_base_hp) * Boss_HP_buff))
+	base_hp = int(round(float(boss_base_hp) * Boss_HP_buff * GameState.boss_hp_multiplier))
 	damage = int(round(float(boss_damage) * Boss_damage_buff))
 	move_speed = boss_move_speed * Boss_move_speed_buff
 	cooldown_time = get_phase_switch_time()
@@ -47,7 +47,7 @@ func _apply_level_buffs() -> void:
 
 
 func _apply_boss_model_scale() -> void:
-	var s := boss_model_scale * Boss_model_size_buff
+	var s := boss_model_scale * Boss_model_size_buff * GameState.boss_size_multiplier
 	scale = Vector2(s, s)
 
 

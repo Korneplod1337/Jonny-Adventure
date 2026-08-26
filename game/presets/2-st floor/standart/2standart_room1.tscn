@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_gbum8"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/1-st floor basement/Bat.tscn" id="7_d8sa7"]
 [ext_resource type="PackedScene" uid="uid://bwqk0wfbgdpjp" path="res://game/objects/obstacles/egyptrock.tscn" id="8_6tbt6"]
+[ext_resource type="PackedScene" uid="uid://dx5hdeerhyxeh" path="res://game/enemy/1-st floor basement/Spider_egg_small.tscn" id="8_eekmk"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="8_tm8bw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
@@ -130,7 +131,37 @@ input_pickable = false
 shape = SubResource("RectangleShape2D_yij7n")
 
 [node name="EnemyBat" parent="." unique_id=2133096440 instance=ExtResource("7_d8sa7")]
-position = Vector2(-1, -121.00001)
+position = Vector2(271, 171)
 
 [node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("8_tm8bw")]
 position = Vector2(535, 225)
+
+[node name="Spider_egg_small" parent="." unique_id=1766684357 instance=ExtResource("8_eekmk")]
+visible = false
+position = Vector2(-236, -128)
+
+[node name="Spider_egg_small2" parent="." unique_id=720952465 instance=ExtResource("8_eekmk")]
+visible = false
+position = Vector2(-232, -74)
+
+[node name="Spider_egg_small3" parent="." unique_id=477034327 instance=ExtResource("8_eekmk")]
+visible = false
+position = Vector2(454, 269)
+
+[node name="Spider_egg_small4" parent="." unique_id=2097889213 instance=ExtResource("8_eekmk")]
+position = Vector2(-233, 177)
+
+[node name="Spider_egg_small5" parent="." unique_id=1588336057 instance=ExtResource("8_eekmk")]
+position = Vector2(311, -113)
+
+[node name="Spider_egg_small6" parent="." unique_id=1723223832 instance=ExtResource("8_eekmk")]
+position = Vector2(280, -144)
+
+[node name="Spider_egg_small7" parent="." unique_id=1672595950 instance=ExtResource("8_eekmk")]
+position = Vector2(318, -153)
+
+[node name="Spider_egg_small8" parent="." unique_id=1472548483 instance=ExtResource("8_eekmk")]
+position = Vector2(355, -124)
+
+[node name="EnemyBat2" parent="." unique_id=719567705 instance=ExtResource("7_d8sa7")]
+position = Vector2(339, 94)
