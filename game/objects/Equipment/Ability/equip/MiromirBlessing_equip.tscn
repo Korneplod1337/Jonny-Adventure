@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://dgpgc4ry80scd"]
 
-[ext_resource type="Script" path="res://game/objects/Equipment/Ability/BaseAbility_equip.gd" id="1_equip"]
-[ext_resource type="Script" path="res://game/objects/Equipment/Ability/scripts/miromir_blessing_ability.gd" id="2_ability"]
-[ext_resource type="Texture2D" uid="uid://jd3ql7t7or3p" path="res://image/ttttt30.png" id="3_icon"]
+[ext_resource type="Script" uid="uid://cdreuanfktvo7" path="res://game/objects/Equipment/Ability/BaseAbility_equip.gd" id="1_equip"]
+[ext_resource type="Script" uid="uid://c6ujdvik77xw4" path="res://game/objects/Equipment/Ability/scripts/miromir_blessing_ability.gd" id="2_ability"]
+[ext_resource type="Texture2D" uid="uid://b7btdelvr30q8" path="res://image/equip/ability/Miromir's Blessing.png" id="3_icon"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
@@ -11,23 +11,23 @@ radius = 19.026299
 [sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
 radius = 54.08327
 
-[node name="MiromirBlessing_equip" type="Area2D"]
+[node name="MiromirBlessing_equip" type="Area2D" unique_id=1647040613]
 script = ExtResource("1_equip")
 ability_script = ExtResource("2_ability")
 equip_icon = ExtResource("3_icon")
 equip_id = "MiromirBlessing"
 equip_tooltip = "Heal 1 red heart"
-interact_name = "Miromir Blessing"
+interact_name = "Miromir's Blessing"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=141707729]
 shape = SubResource("CircleShape2D_body")
 
-[node name="Interactable" parent="." instance=ExtResource("4_interact")]
+[node name="Interactable" parent="." unique_id=194472661 instance=ExtResource("4_interact")]
 interact_name = "Take Miromir Blessing"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1990344081]
 shape = SubResource("CircleShape2D_interact")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1272143643]
 scale = Vector2(2, 2)
 texture = ExtResource("3_icon")

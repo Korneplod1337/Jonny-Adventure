@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cdreuanfktvo7" path="res://game/objects/Equipment/Ability/BaseAbility_equip.gd" id="1_equip"]
 [ext_resource type="Script" uid="uid://bbxm67fqcb5s1" path="res://game/objects/Equipment/Ability/scripts/dash_ability.gd" id="2_ability"]
-[ext_resource type="Texture2D" uid="uid://cb3rq7686hdkp" path="res://image/ttttt.png" id="3_icon"]
-[ext_resource type="Texture2D" uid="uid://jd3ql7t7or3p" path="res://image/ttttt30.png" id="3_lfp4h"]
+[ext_resource type="Texture2D" uid="uid://btfgu7jwcf8xp" path="res://image/equip/ability/dash.png" id="3_icon"]
+
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
@@ -15,7 +15,7 @@ radius = 54.08327
 [node name="Dash_equip" type="Area2D" unique_id=566211452]
 script = ExtResource("1_equip")
 ability_script = ExtResource("2_ability")
-equip_icon = ExtResource("3_lfp4h")
+equip_icon = ExtResource("3_icon")
 equip_id = "Dash"
 equip_tooltip = "Dash"
 interact_name = "Dash"

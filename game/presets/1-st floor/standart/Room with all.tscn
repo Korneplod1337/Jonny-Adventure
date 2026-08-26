@@ -134,9 +134,9 @@
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/GoldHoard_equip.tscn" id="131_l3f4i"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/KeresCall_equip.tscn" id="132_vdaq7"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/MariaCall_equip.tscn" id="133_u3xpl"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/MiromirBlessing_equip.tscn" id="134_bq5ai"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/MiromirGift_equip.tscn" id="135_mexhk"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="137_y65ao"]
+[ext_resource type="PackedScene" uid="uid://dgpgc4ry80scd" path="res://game/objects/Equipment/Ability/equip/MiromirBlessing_equip.tscn" id="134_bq5ai"]
+[ext_resource type="PackedScene" uid="uid://bnkea2r7svn6q" path="res://game/objects/Equipment/Ability/equip/MiromirGift_equip.tscn" id="135_mexhk"]
+[ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="137_y65ao"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/TatteredTrade_equip.tscn" id="138_a8jy2"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/ThePilgrimage_equip.tscn" id="139_uxhbi"]
 
@@ -683,4 +683,4 @@ position = Vector2(112, 895)
 position = Vector2(692, 780)
 
 [node name="ThePilgrimage_equip" parent="." unique_id=1718991709 instance=ExtResource("139_uxhbi")]
-position = Vector2(315, 778)
+position = Vector2(314, 782)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdreuanfktvo7" path="res://game/objects/Equipment/Ability/BaseAbility_equip.gd" id="1_equip"]
 [ext_resource type="Script" uid="uid://bbgwuq85c0i4m" path="res://game/objects/Equipment/Ability/scripts/cracked_eruption_ability.gd" id="2_ability"]
-[ext_resource type="Texture2D" uid="uid://jd3ql7t7or3p" path="res://image/ttttt30.png" id="3_icon"]
+[ext_resource type="Texture2D" uid="uid://pdm15imn6mg0" path="res://image/equip/ability/Cracked Eruption.png" id="3_icon"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
