@@ -707,14 +707,17 @@ offset_top = -36.0
 offset_right = 36.0
 offset_bottom = 36.0
 
-[node name="AbilitySlot" type="Control" parent="HUD/EquipPanel" unique_id=857007076]
-anchors_preset = 0
-offset_left = -13.0
-offset_top = -160.0
-offset_right = 91.0
-offset_bottom = -56.0
+offset_bottom = 36.0
 
-[node name="Slot" parent="HUD/EquipPanel/AbilitySlot" unique_id=1269520431 instance=ExtResource("89_w87tb")]
+[node name="AbilitySlot" type="Control" parent="HUD" unique_id=857007076]
+visible = false
+layout_mode = 0
+offset_left = 17.0
+offset_top = 160.0
+offset_right = 121.0
+offset_bottom = 264.0
+
+[node name="Slot" parent="HUD/AbilitySlot" unique_id=1269520431 instance=ExtResource("89_w87tb")]
 custom_minimum_size = Vector2(88, 88)
 layout_mode = 1
 anchors_preset = 8

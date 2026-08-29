@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b0piavs5d5xfi" path="res://game/objects/obstacles/egyptrockSmall.tscn" id="6_choqg"]
 [ext_resource type="PackedScene" uid="uid://bl4su1qgsyt7b" path="res://game/objects/obstacles/egyptrockSmallest.tscn" id="7_snevy"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="7_vdqck"]
-[ext_resource type="PackedScene" uid="uid://4otoknedbda1" path="res://game/enemy/1-st floor basement/Spider_queen.tscn" id="8_snevy"]
-[ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="9_fv2d2"]
+[ext_resource type="PackedScene" uid="uid://b5rgjmixl46ja" path="res://game/enemy/2-st floor pyramid/Knot.tscn" id="8_nm1x2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
 texture = ExtResource("2_choqg")
@@ -87,7 +86,7 @@ position = Vector2(207, -72)
 shape = SubResource("RectangleShape2D_sud2i")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1932436105]
-position = Vector2(207.28, 547.4)
+position = Vector2(207.28, 548)
 shape = SubResource("RectangleShape2D_sud2i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=975352996]
@@ -164,17 +163,6 @@ scale = Vector2(1, 1)
 position = Vector2(0, -31.5)
 scale = Vector2(1, 1)
 
-[node name="Rock small3" parent="Rock small2" unique_id=1956493850 instance=ExtResource("6_choqg")]
-position = Vector2(-96, 254)
-
-[node name="Rock smallest" parent="Rock small2/Rock small3" unique_id=234995397 instance=ExtResource("7_snevy")]
-position = Vector2(-0.5, -55.5)
-scale = Vector2(1, 1)
-
-[node name="Rock small2" parent="Rock small2/Rock small3" unique_id=20154192 instance=ExtResource("6_choqg")]
-position = Vector2(0, -31.5)
-scale = Vector2(1, 1)
-
 [node name="Rock small4" parent="." unique_id=464314643 instance=ExtResource("6_choqg")]
 position = Vector2(-106, -242)
 rotation = 3.1415927
@@ -199,11 +187,31 @@ scale = Vector2(1, 1)
 position = Vector2(0, -31.5)
 scale = Vector2(1, 1)
 
-[node name="Spider_queen" parent="." unique_id=2133096440 instance=ExtResource("8_snevy")]
-position = Vector2(513, 202)
+[node name="EnemyKnot" parent="." unique_id=1655288545 instance=ExtResource("8_nm1x2")]
+position = Vector2(-1, 9)
 
-[node name="Spider_queen2" parent="." unique_id=1535679098 instance=ExtResource("8_snevy")]
-position = Vector2(-503, -217)
+[node name="EnemyKnot2" parent="." unique_id=1886400607 instance=ExtResource("8_nm1x2")]
+position = Vector2(-461, 191)
 
-[node name="EmenyWorm" parent="." unique_id=1655288545 instance=ExtResource("9_fv2d2")]
-position = Vector2(-305, 248)
+[node name="EnemyKnot3" parent="." unique_id=757437861 instance=ExtResource("8_nm1x2")]
+position = Vector2(175, -178)
+
+[node name="EnemyKnot4" parent="." unique_id=64230776 instance=ExtResource("8_nm1x2")]
+position = Vector2(164, 191)
+
+[node name="EnemyKnot5" parent="." unique_id=1668058313 instance=ExtResource("8_nm1x2")]
+position = Vector2(-163, 191)
+
+[node name="EnemyKnot6" parent="." unique_id=1392052577 instance=ExtResource("8_nm1x2")]
+position = Vector2(-334, 192)
+
+[node name="EnemyKnot7" parent="." unique_id=1624742279 instance=ExtResource("8_nm1x2")]
+position = Vector2(-178, -180)
+
+[node name="EnemyKnot8" parent="." unique_id=704147621 instance=ExtResource("8_nm1x2")]
+visible = false
+position = Vector2(197, 4.000001)
+
+[node name="EnemyKnot9" parent="." unique_id=79284620 instance=ExtResource("8_nm1x2")]
+visible = false
+position = Vector2(-220, 2)

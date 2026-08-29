@@ -87,7 +87,7 @@ position = Vector2(207, -72)
 shape = SubResource("RectangleShape2D_sud2i")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1932436105]
-position = Vector2(207.28, 547.4)
+position = Vector2(207.28, 548)
 shape = SubResource("RectangleShape2D_sud2i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=975352996]

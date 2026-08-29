@@ -68,6 +68,7 @@ func apply_equip(player: Node) -> void:
 	hud.AbilitySlot.set_icon(equip_icon)
 	hud.AbilitySlot.set_tooltip(equip_tooltip)
 	hud.AbilitySlot.set_cooldown_progress(ability.get_cooldown_ratio())
+	hud.set_ability_hud_active(true)
 
 
 func _on_interact() -> void:
@@ -108,6 +109,7 @@ func effect_off() -> void:
 		hud.AbilitySlot.set_icon(null)
 		hud.AbilitySlot.set_tooltip("")
 		hud.AbilitySlot.set_cooldown_progress(0.0)
+		hud.set_ability_hud_active(false)
 
 
 func effect_on() -> void:
@@ -145,14 +147,22 @@ func _on_stat_changed(stat_name: String, _new_value: float) -> void:
 func _on_room_cleared_saved() -> void:
 	if not _has_active_saved_cd():
 		return
-	if int(_saved_cd.get("cooldown_type", 0)) != BaseAbility.CooldownType.ROOMS:
-		return
-	var rooms_left := int(_saved_cd.get("rooms_left", 0)) - 1
-	if rooms_left <= 0:
-		_saved_cd.clear()
-		_disconnect_saved_cd_listeners()
-	else:
-		_saved_cd["rooms_left"] = rooms_left
+	var cd_type := int(_saved_cd.get("cooldown_type", 0))
+	if cd_type == BaseAbility.CooldownType.ROOMS:
+		var rooms_left := int(_saved_cd.get("rooms_left", 0)) - 1
+		if rooms_left <= 0:
+			_saved_cd.clear()
+			_disconnect_saved_cd_listeners()
+		else:
+			_saved_cd["rooms_left"] = rooms_left
+	elif cd_type == BaseAbility.CooldownType.TIME \
+			and int(_saved_cd.get("cooldown_room_recharge", 0)) > 0:
+		var rooms_left := int(_saved_cd.get("rooms_left", 0)) - 1
+		if rooms_left <= 0:
+			_saved_cd.clear()
+			_disconnect_saved_cd_listeners()
+		else:
+			_saved_cd["rooms_left"] = rooms_left
 
 
 func _has_active_saved_cd() -> bool:
@@ -164,7 +174,9 @@ func _ensure_saved_cd_listeners() -> void:
 	if cd_type == BaseAbility.CooldownType.KILLS:
 		if not StatsManager.stat_changed.is_connected(_on_stat_changed):
 			StatsManager.stat_changed.connect(_on_stat_changed)
-	if cd_type == BaseAbility.CooldownType.ROOMS:
+	if cd_type == BaseAbility.CooldownType.ROOMS \
+			or (cd_type == BaseAbility.CooldownType.TIME \
+			and int(_saved_cd.get("cooldown_room_recharge", 0)) > 0):
 		if not GameState.room_cleared.is_connected(_on_room_cleared_saved):
 			GameState.room_cleared.connect(_on_room_cleared_saved)
 

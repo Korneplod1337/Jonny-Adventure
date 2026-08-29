@@ -1,4 +1,4 @@
-## Dash — рывок в направлении движения (speed×2, дистанция, сквозь врагов/снаряды). CD: время.
+## Dash — рывок в направлении движения (speed×2, дистанция, сквозь врагов/снаряды). CD: время или 1 зачищенная комната.
 class_name DashAbility
 extends BaseAbility
 
@@ -14,6 +14,7 @@ func _init() -> void:
 	ability_id = "Dash"
 	cooldown_type = CooldownType.TIME
 	cooldown_time = 20.0
+	cooldown_room_recharge = 1
 
 
 func activate() -> bool:

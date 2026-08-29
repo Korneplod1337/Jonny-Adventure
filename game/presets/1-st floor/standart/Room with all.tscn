@@ -183,6 +183,8 @@
 [ext_resource type="PackedScene" uid="uid://bsvpgfa05mc10" path="res://game/objects/items/scenes/tier 2/Well.tscn" id="181_jtm6e"]
 [ext_resource type="PackedScene" uid="uid://dbih72l55o41u" path="res://game/objects/items/scenes/tier 2/WildWind.tscn" id="182_c6siu"]
 [ext_resource type="PackedScene" uid="uid://cnmgffejiu4wf" path="res://game/objects/items/scenes/tier 2/ZeroToHundred.tscn" id="183_56n5d"]
+[ext_resource type="PackedScene" uid="uid://b5rgjmixl46ja" path="res://game/enemy/2-st floor pyramid/Knot.tscn" id="184_oteyw"]
+[ext_resource type="PackedScene" uid="uid://dhpj5kkmutejy" path="res://game/enemy/2-st floor pyramid/weak_skull.tscn" id="185_6kqs7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -860,3 +862,9 @@ position = Vector2(-640, 311)
 
 [node name="ZeroToHundred" parent="." unique_id=1199965967 instance=ExtResource("183_56n5d")]
 position = Vector2(-691, 315)
+
+[node name="EnemyKnot" parent="." unique_id=1654487569 instance=ExtResource("184_oteyw")]
+position = Vector2(-486, -372)
+
+[node name="EnemyWeakSkull" parent="." unique_id=1889659422 instance=ExtResource("185_6kqs7")]
+position = Vector2(-546, -368)

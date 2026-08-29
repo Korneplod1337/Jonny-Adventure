@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://dhpj5kkmutejy"]
+
+[ext_resource type="Script" uid="uid://drltjcvub8lsc" path="res://game/enemy/2-st floor pyramid/weak_skull.gd" id="1_jv8ic"]
+[ext_resource type="Texture2D" uid="uid://drpagt8awmt0n" path="res://image/enemy/bodies/weak_skull5.png" id="2_jv8ic"]
+[ext_resource type="Texture2D" uid="uid://45kqp75yi463" path="res://image/enemy/bodies/weak_skull6.png" id="3_86i0p"]
+[ext_resource type="Texture2D" uid="uid://584k4mqr3500" path="res://image/enemy/bodies/weak_skull7.png" id="4_k20r4"]
+[ext_resource type="Texture2D" uid="uid://2uyvapsso0a5" path="res://image/enemy/bodies/weak_skull11.png" id="4_qnqwv"]
+[ext_resource type="Texture2D" uid="uid://cckwkdarx8cwm" path="res://image/enemy/bodies/weak_skull1.png" id="5_2lce1"]
+[ext_resource type="Texture2D" uid="uid://csn1med8ek8wd" path="res://image/enemy/bodies/weak_skull9.png" id="5_8ck6g"]
+[ext_resource type="Texture2D" uid="uid://dwaci1lhhatgu" path="res://image/enemy/bodies/weak_skull10.png" id="6_6g514"]
+[ext_resource type="Texture2D" uid="uid://de4k4ccaaawjc" path="res://image/enemy/bodies/weak_skull2.png" id="6_qnqwv"]
+[ext_resource type="Texture2D" uid="uid://chmdj5ifq3q1e" path="res://image/enemy/bodies/weak_skull3.png" id="7_8ck6g"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="8_6g514"]
+[ext_resource type="Texture2D" uid="uid://b7rahomnlmpa3" path="res://image/enemy/bodies/weak_skull4.png" id="8_bnewo"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="9_bnewo"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="10_jnpd1"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="11_ttvju"]
+[ext_resource type="Texture2D" uid="uid://bh87wrjgti2yh" path="res://image/enemy/bodies/weak_skull8.png" id="12_bnewo"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="12_o2ohf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnqwv"]
+size = Vector2(22, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn8fk"]
+radius = 340.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wextg"]
+radius = 15.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d423"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jv8ic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_86i0p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qnqwv")
+}],
+"loop": false,
+"name": &"die",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8ck6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6g514")
+}],
+"loop": true,
+"name": &"down",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2lce1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qnqwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8ck6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bnewo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_k20r4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bnewo")
+}],
+"loop": true,
+"name": &"up",
+"speed": 2.0
+}]
+
+[node name="EnemyWeakSkull" type="CharacterBody2D" unique_id=1655288545 groups=["Enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 182
+script = ExtResource("1_jv8ic")
+hard_base_hp = 50
+hard_move_speed = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=59623340]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_qnqwv")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=607490412]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=862790983]
+visible = false
+shape = SubResource("CircleShape2D_cn8fk")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=982591408]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1413603581]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_wextg")
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1132297483]
+wait_time = 0.2
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=2010852584]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1085292099]
+wait_time = 1.5
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1963768320]
+sprite_frames = SubResource("SpriteFrames_0d423")
+animation = &"idle"
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=521838655]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=1584987421]
+script = ExtResource("8_6g514")
+spacing = 25.0
+freeze_icon = ExtResource("9_bnewo")
+poison_icon = ExtResource("10_jnpd1")
+fire_icon0 = ExtResource("11_ttvju")
+fire_icon1 = ExtResource("12_o2ohf")
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

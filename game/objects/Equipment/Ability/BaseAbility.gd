@@ -8,6 +8,8 @@ var cooldown_type: CooldownType = CooldownType.TIME
 var cooldown_time: float = 5.0
 var cooldown_kills: int = 5
 var cooldown_rooms: int = 5
+## For TIME cooldown: also recharge after this many cleared rooms (0 = time only).
+var cooldown_room_recharge: int = 0
 ## If >= 0, ability starts on ROOMS cooldown with this many rooms already progressed.
 var start_rooms_progress: int = -1
 
@@ -76,6 +78,8 @@ func start_cooldown() -> void:
 	match cooldown_type:
 		CooldownType.TIME:
 			_cd_time_left = cooldown_time
+			if cooldown_room_recharge > 0:
+				_cd_rooms_left = cooldown_room_recharge
 		CooldownType.KILLS:
 			_cd_kills_left = cooldown_kills
 		CooldownType.FLOOR:
@@ -97,6 +101,7 @@ func get_cooldown_state() -> Dictionary:
 		"cooldown_time": cooldown_time,
 		"cooldown_kills": cooldown_kills,
 		"cooldown_rooms": cooldown_rooms,
+		"cooldown_room_recharge": cooldown_room_recharge,
 	}
 
 
@@ -114,12 +119,16 @@ func apply_cooldown_state(state: Dictionary) -> void:
 	_cd_rooms_left = int(state.get("rooms_left", 0))
 	if state.has("cooldown_rooms"):
 		cooldown_rooms = int(state["cooldown_rooms"])
+	if state.has("cooldown_room_recharge"):
+		cooldown_room_recharge = int(state["cooldown_room_recharge"])
 	if not _on_cooldown:
 		_cd_time_left = 0.0
 		_cd_kills_left = 0
 		_cd_rooms_left = 0
 		_update_hud_cooldown()
 	elif cooldown_type == CooldownType.TIME and _cd_time_left <= 0.0:
+		_finish_cooldown()
+	elif cooldown_type == CooldownType.TIME and cooldown_room_recharge > 0 and _cd_rooms_left <= 0:
 		_finish_cooldown()
 	elif cooldown_type == CooldownType.KILLS and _cd_kills_left <= 0:
 		_finish_cooldown()
@@ -137,7 +146,13 @@ func get_cooldown_ratio() -> float:
 		CooldownType.TIME:
 			if cooldown_time <= 0.0:
 				return 0.0
-			return clampf(_cd_time_left / cooldown_time, 0.0, 1.0)
+			var time_ratio := clampf(_cd_time_left / cooldown_time, 0.0, 1.0)
+			if cooldown_room_recharge <= 0:
+				return time_ratio
+			var room_ratio := clampf(
+				float(_cd_rooms_left) / float(cooldown_room_recharge), 0.0, 1.0
+			)
+			return minf(time_ratio, room_ratio)
 		CooldownType.KILLS:
 			if cooldown_kills <= 0:
 				return 0.0
@@ -185,13 +200,20 @@ func notify_floor_advanced() -> void:
 func notify_room_cleared() -> void:
 	if not _is_equipped():
 		return
-	if not _on_cooldown or cooldown_type != CooldownType.ROOMS:
+	if not _on_cooldown:
 		return
-	_cd_rooms_left -= 1
-	if _cd_rooms_left <= 0:
-		_finish_cooldown()
-	else:
-		_update_hud_cooldown()
+	if cooldown_type == CooldownType.ROOMS:
+		_cd_rooms_left -= 1
+		if _cd_rooms_left <= 0:
+			_finish_cooldown()
+		else:
+			_update_hud_cooldown()
+	elif cooldown_type == CooldownType.TIME and cooldown_room_recharge > 0 and _cd_rooms_left > 0:
+		_cd_rooms_left -= 1
+		if _cd_rooms_left <= 0:
+			_finish_cooldown()
+		else:
+			_update_hud_cooldown()
 
 
 func _on_room_cleared() -> void:

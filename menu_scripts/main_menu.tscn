@@ -1221,7 +1221,9 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
 theme_override_font_sizes/font_size = 64
-text = "Items give extra bonuses on top of your stats.
+text = "Items give extra bonuses on top of your stats 
+or a special bonus/mechanic.
+You can take several identical items.
 
 Stats are the diamonds."
 horizontal_alignment = 1
@@ -1280,7 +1282,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
 theme_override_font_sizes/font_size = 32
-text = "+ attack speed
+text = "+ fire rate
 - accuracy"
 horizontal_alignment = 1
 
@@ -1309,7 +1311,7 @@ theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
 theme_override_font_sizes/font_size = 32
 text = "+ accuracy and crits
-- fire rate (clip)"
+- fire rate"
 horizontal_alignment = 1
 
 [node name="Melee" type="VBoxContainer" parent="Tutorial_select_menu/Pages/PageWeapons/Images" unique_id=291529058]
@@ -1338,7 +1340,7 @@ theme_override_fonts/font = ExtResource("46_1exqm")
 theme_override_font_sizes/font_size = 32
 text = "+ splash
 - range
-accuracy does nothing"
+accuracy does nothing "
 horizontal_alignment = 1
 
 [node name="Body" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons" unique_id=291529062]
@@ -1461,9 +1463,10 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
 theme_override_font_sizes/font_size = 64
-text = "Weapons can be enchanted.
-There are also abilities and equipment.
+text = "Weapons can be enchanted when they drop
+ or in the store.
 
+There are also abilities and equipment.
 Everything goes into special slots."
 horizontal_alignment = 1
 
@@ -1479,7 +1482,7 @@ grow_vertical = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 128
 text = "<"
 flat = true
 
@@ -1498,7 +1501,7 @@ grow_vertical = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.8745098, 0.44313726, 0.14901961, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 128
 text = ">"
 flat = true
 

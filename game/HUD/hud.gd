@@ -6,6 +6,7 @@ const TRUE_WIN_MENU_TEX: Texture2D = preload("res://image/interface/HUD/True_Win
 const BONUS_CLAMP_MIN := -40
 const BONUS_CLAMP_MAX := 40
 var ui_open := false
+var _has_ability_equipped := false
 var _bonus_labels: Dictionary = {}
 var _last_bonuses: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0]
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	victory_menu.visible = false
 	pause_menu.visible = false
 	equip_panel.visible = false
+	ability_slot_container.visible = false
 		#Деньги
 	GameState.coins_changed.connect(_on_coins_changed) 
 	_on_coins_changed(GameState.coins) 
@@ -40,6 +42,8 @@ func _ready() -> void:
 		_on_player_bonuses_changed(player.hp_bonus, player.speed_bonus,\
 			player.luck_bonus, player.magic_bonus, player.damage_bonus,\
 			player.accuracy_bonus, player.range_bonus, player.fire_rate_bonus)
+		if player.current_ability != null or player.ability_id != "":
+			set_ability_hud_active(true)
 	
 	else: print('Худ не нашёл Игрока')
 	GameState.alchemists_glasses_changed.connect(_on_alchemists_glasses_changed)
@@ -61,6 +65,15 @@ func _process(_delta) -> void:
 	if Input.is_action_just_pressed("button_L"):
 		if pause_menu.visible:
 			_on_button_main_pressed()
+
+
+func set_ability_hud_active(active: bool) -> void:
+	_has_ability_equipped = active
+	_refresh_ability_hud_visibility()
+
+
+func _refresh_ability_hud_visibility() -> void:
+	ability_slot_container.visible = _has_ability_equipped
 
 
 func set_ui_locked(locked: bool) -> void:
@@ -391,11 +404,12 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var items_scroll: ScrollContainer = $HUD/InventoryList/ItemsScroll
 
 @onready var equip_panel: Panel = $HUD/EquipPanel
+@onready var ability_slot_container: Control = $HUD/AbilitySlot
 @onready var HeadSlot: InventorySlotAlt = $HUD/EquipPanel/HeadSlot/Slot
 @onready var ChestSlot: InventorySlotAlt = $HUD/EquipPanel/ChestSlot/Slot
 @onready var WeaponSlot: InventorySlotAlt = $HUD/EquipPanel/WeaponSlot/Slot
 @onready var BootsSlot: InventorySlotAlt = $HUD/EquipPanel/BootsSlot/Slot
-@onready var AbilitySlot: InventorySlotAlt = $HUD/EquipPanel/AbilitySlot/Slot
+@onready var AbilitySlot: InventorySlotAlt = $HUD/AbilitySlot/Slot
 
 
 @onready var death_menu: Control = $HUD/DeathMenu
