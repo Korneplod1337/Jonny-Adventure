@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
 [ext_resource type="PackedScene" uid="uid://d4nmsl38t7ni6" path="res://game/objects/Equipment/Ability/equip/Dash_equip.tscn" id="9_4rw6f"]
+[ext_resource type="PackedScene" uid="uid://bh55uvxw80yd4" path="res://game/objects/Equipment/Ability/equip/Ember_equip.tscn" id="10_4rw6f"]
+[ext_resource type="PackedScene" uid="uid://bbm1q3q5ue22w" path="res://game/objects/Equipment/Ability/equip/Shield_equip.tscn" id="11_r6k7x"]
+[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="12_r6k7x"]
 [ext_resource type="PackedScene" uid="uid://bltt30qk8jp62" path="res://game/objects/obstacles/gap.tscn" id="14_oy27w"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_o41he"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/JonnyShot_equip.tscn" id="18_hfl2y"]
@@ -128,3 +131,18 @@ variant = 5
 
 [node name="Dash_equip" parent="." unique_id=566211452 instance=ExtResource("9_4rw6f")]
 position = Vector2(-184, 144)
+
+[node name="Ember_equip" parent="." unique_id=1022176132 instance=ExtResource("10_4rw6f")]
+position = Vector2(-294, 144)
+
+[node name="Shield_equip" parent="." unique_id=1945167134 instance=ExtResource("11_r6k7x")]
+position = Vector2(-403, 145)
+
+[node name="Coin" parent="." unique_id=2054458591 instance=ExtResource("12_r6k7x")]
+position = Vector2(-106, 146)
+
+[node name="Coin2" parent="." unique_id=308619926 instance=ExtResource("12_r6k7x")]
+position = Vector2(-293, 229)
+
+[node name="Coin3" parent="." unique_id=300928666 instance=ExtResource("12_r6k7x")]
+position = Vector2(-480, 146)

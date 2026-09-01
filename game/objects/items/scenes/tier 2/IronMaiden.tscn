@@ -14,10 +14,10 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Iron Maiden"
-item_tooltip2 = "+15% chance enemies explode on death"
+item_tooltip = "mini Iron Maiden"
+item_tooltip2 = "+10% chance enemies explode on death"
 item_id = "ironmaiden"
-effect_power = 0.15
+effect_power = 0.1
 
 [node name="Interactable" parent="." unique_id=1297604313 instance=ExtResource("3_interact")]
 

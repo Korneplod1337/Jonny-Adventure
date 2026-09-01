@@ -116,9 +116,9 @@ func _on_button_tutorial_button_down() -> void:
 
 
 func _on_button_tutorial_mouse_entered() -> void:
-	$Button_tutorial/Select_tutorial2.show()
+	$Button_tutorial/Select_tutorial.show()
 func _on_button_tutorial_mouse_exited() -> void:
-	$Button_tutorial/Select_tutorial2.hide()
+	$Button_tutorial/Select_tutorial.hide()
 
 
 func _on_button_patch_note_pressed() -> void:

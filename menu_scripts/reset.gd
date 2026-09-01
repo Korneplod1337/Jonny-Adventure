@@ -7,7 +7,8 @@ const FILES_TO_WIPE := [
 	"user://achievements.cfg",
 	"user://items.cfg",
 	"user://equip.cfg",
-	"user://character_medals.cfg"
+	"user://character_medals.cfg",
+	"user://game_state.cfg",
 ]
 
 

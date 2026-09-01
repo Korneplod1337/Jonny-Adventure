@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://biovhdjq8hra2"]
+
+[ext_resource type="Texture2D" uid="uid://c8imnheadtex2" path="res://image/equip/head/Iron_Maiden2.png" id="1_down"]
+[ext_resource type="Texture2D" uid="uid://bd3q2fg0smi7d" path="res://image/equip/head/Iron_Maiden4.png" id="2_left"]
+[ext_resource type="Texture2D" uid="uid://d3q2fg0smi7c" path="res://image/equip/head/Iron_Maiden3.png" id="3_right"]
+[ext_resource type="Texture2D" uid="uid://cd3q2fg0smi7e" path="res://image/equip/head/Iron_Maiden5.png" id="4_up"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_down")
+}],
+"loop": true,
+"name": &"down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_left")
+}],
+"loop": true,
+"name": &"left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_right")
+}],
+"loop": true,
+"name": &"right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_up")
+}],
+"loop": true,
+"name": &"up",
+"speed": 1.0
+}]

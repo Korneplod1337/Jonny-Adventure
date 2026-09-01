@@ -47,9 +47,16 @@ var _ricochet_overlap_id: int = 0
 
 const RICOCHET_SEPARATION := 6.0
 const RICOCHET_SPREAD_DEG := 5.0
+const SPREAD_SHOT_DISTANCE := 50.0
+const SPREAD_SHOT_COUNT := 6
+const SPREAD_SHOT_CONE_DEG := 90.0
+const SPREAD_SHOT_SCALE := 0.25
+const SPREAD_SHOT_DAMAGE := 0.25
+const SPREAD_SHOT_MELEE_SCALE := 0.6
 
 var spread_angle: float
 var spawned_spread := false
+var _spread_shot_done := false
 
 var base_crit_bonus: float = 60.0
 var crit_sprite: int = -1
@@ -105,6 +112,8 @@ func _physics_process_linear(delta: float) -> void:
 	if distance_travelled >= atk_range * self_range_multiplier:
 		exploded = true
 		explosion(1)
+		return
+	_try_spread_shot_split()
 
 
 func _physics_process_boomerang(delta: float) -> void:
@@ -129,6 +138,7 @@ func _physics_process_boomerang(delta: float) -> void:
 	var t_rate := maxf(absf(mult), BOOMERANG_MIN_CURVE_T_RATE)
 	_segment_curve_t += (t_rate * delta) / _segment_trip_duration
 	_segment_curve_t = minf(_segment_curve_t, 1.0)
+	_try_spread_shot_split()
 
 
 func _init_boomerang() -> void:
@@ -511,6 +521,141 @@ func _spawn_spread() -> void:
 		bullet._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 
 		bullet.base_crit_bonus = self.base_crit_bonus
+		bullet.steal_life = steal_life
+		bullet._spread_shot_done = _spread_shot_done
 
 		get_parent().add_child.call_deferred(bullet)
 		bullet.global_position = global_position
+
+
+func _try_spread_shot_split() -> void:
+	if _spread_shot_done or exploded:
+		return
+	if not GameState.SpreadShot:
+		return
+	if distance_travelled < SPREAD_SHOT_DISTANCE:
+		return
+	_spread_shot_done = true
+	_spawn_spread_shot()
+
+
+func _try_spread_shot_melee() -> void:
+	if _spread_shot_done or exploded:
+		return
+	if not GameState.SpreadShot:
+		return
+	if not _uses_melee_ricochet():
+		return
+	if self is SwordShot and (self as SwordShot)._melee_boomerang_copy:
+		return
+	_spread_shot_done = true
+	_spawn_spread_shot_melee()
+	queue_free()
+
+
+func _spread_shot_melee_origin() -> Vector2:
+	var shooter := _get_player()
+	if shooter:
+		return shooter.global_position
+	return global_position
+
+
+func _spread_shot_cone_dirs() -> Array[Vector2]:
+	var base_dir := direction.normalized()
+	if base_dir == Vector2.ZERO:
+		base_dir = Vector2.RIGHT
+	var half_spread := deg_to_rad(SPREAD_SHOT_CONE_DEG) / 2.0
+	var step := deg_to_rad(SPREAD_SHOT_CONE_DEG) / float(SPREAD_SHOT_COUNT)
+	var start_angle := -half_spread + step / 2.0
+	var dirs: Array[Vector2] = []
+	for i in range(SPREAD_SHOT_COUNT):
+		dirs.append(base_dir.rotated(start_angle + step * i))
+	return dirs
+
+
+func _spawn_spread_shot() -> void:
+	scale *= SPREAD_SHOT_SCALE
+	self_damage_multiplier *= SPREAD_SHOT_DAMAGE
+
+	var parent := get_parent()
+	if parent == null:
+		return
+	var dirs := _spread_shot_cone_dirs()
+	for i in range(dirs.size()):
+		if i == 0:
+			direction = dirs[i]
+			_sync_facing_after_redirect()
+			continue
+		_spawn_spread_shot_clone(parent, dirs[i])
+
+
+func _spawn_spread_shot_melee() -> void:
+	var parent := get_parent()
+	if parent == null:
+		return
+	var origin := _spread_shot_melee_origin()
+	for dir in _spread_shot_cone_dirs():
+		_spawn_spread_shot_melee_clone(parent, dir, origin)
+
+
+func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2) -> void:
+	var copy: BaseShot = duplicate()
+	copy.spawned_spread = true
+	copy._spread_shot_done = true
+	copy.pellet_count = 1
+	copy.boomerang_power = 0
+	copy.direction = dir
+	if copy is SwordShot:
+		var melee := copy as SwordShot
+		melee._melee_boomerang_copy = true
+		melee._melee_boomerang_legs = []
+		melee._fire_direction = dir
+	parent.add_child(copy)
+	copy.global_position = origin + dir * SPREAD_SHOT_DISTANCE
+	copy.direction = dir
+	copy.scale = scale * SPREAD_SHOT_MELEE_SCALE
+	copy.damage = damage
+	copy.atk_range = atk_range
+	copy.extra_reload = extra_reload
+	copy.self_damage_multiplier = self_damage_multiplier * SPREAD_SHOT_DAMAGE
+	copy.self_speed_multiplier = self_speed_multiplier
+	copy.self_range_multiplier = self_range_multiplier
+	copy.hack = hack
+	copy.ricochet = ricochet
+	copy.enchantment = enchantment
+	copy.penetration = penetration
+	copy.spread_angle = spread_angle
+	copy._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
+	copy.base_crit_bonus = base_crit_bonus
+	copy.steal_life = steal_life
+	copy.rotation = dir.angle()
+
+
+func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
+	var bullet: BaseShot = duplicate()
+	bullet.spawned_spread = true
+	bullet._spread_shot_done = true
+	bullet.pellet_count = 1
+	bullet.boomerang_power = 0
+	parent.add_child(bullet)
+	bullet.global_position = global_position
+	bullet.direction = dir
+	bullet.scale = scale
+	bullet.damage = damage
+	bullet.speed = speed
+	bullet.atk_range = atk_range
+	bullet.extra_reload = extra_reload
+	bullet.self_damage_multiplier = self_damage_multiplier
+	bullet.self_speed_multiplier = self_speed_multiplier
+	bullet.self_range_multiplier = self_range_multiplier
+	bullet.hack = hack
+	bullet.ricochet = ricochet
+	bullet.enchantment = enchantment
+	bullet.penetration = penetration
+	bullet.use_spread = use_spread
+	bullet.spread_angle = spread_angle
+	bullet.distance_travelled = distance_travelled
+	bullet._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
+	bullet.base_crit_bonus = base_crit_bonus
+	bullet.steal_life = steal_life
+	bullet._sync_facing_after_redirect()

@@ -16,7 +16,7 @@ script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_tooltip = "Genome Map"
 item_tooltip2 = "Reduces all enemies HP by 20%"
-item_id = "genoremap"
+item_id = "genomemap"
 effect_power = 0.8
 
 [node name="Interactable" parent="." unique_id=903820775 instance=ExtResource("3_interact")]

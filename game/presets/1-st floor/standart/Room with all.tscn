@@ -185,6 +185,10 @@
 [ext_resource type="PackedScene" uid="uid://cnmgffejiu4wf" path="res://game/objects/items/scenes/tier 2/ZeroToHundred.tscn" id="183_56n5d"]
 [ext_resource type="PackedScene" uid="uid://b5rgjmixl46ja" path="res://game/enemy/2-st floor pyramid/Knot.tscn" id="184_oteyw"]
 [ext_resource type="PackedScene" uid="uid://dhpj5kkmutejy" path="res://game/enemy/2-st floor pyramid/weak_skull.tscn" id="185_6kqs7"]
+[ext_resource type="PackedScene" path="res://game/enemy/2-st floor pyramid/Knot_boss.tscn" id="186_euevc"]
+[ext_resource type="PackedScene" uid="uid://bbm1q3q5ue22w" path="res://game/objects/Equipment/Ability/equip/Shield_equip.tscn" id="187_7s242"]
+[ext_resource type="PackedScene" uid="uid://7ut8up4cjsgr" path="res://game/objects/Equipment/head/Iron_Maiden.tscn" id="188_imnhead"]
+[ext_resource type="PackedScene" path="res://game/objects/Equipment/head/Spread_Shot.tscn" id="189_spread"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -637,6 +641,12 @@ position = Vector2(148, 233)
 [node name="lucky Head" parent="." unique_id=679354868 instance=ExtResource("103_lmqaq")]
 position = Vector2(371, 131)
 
+[node name="Iron Maiden" parent="." unique_id=1482736901 instance=ExtResource("188_imnhead")]
+position = Vector2(483, 131)
+
+[node name="Spread Shot" parent="." unique_id=1482736902 instance=ExtResource("189_spread")]
+position = Vector2(590, 131)
+
 [node name="Slot machine" parent="." unique_id=90725484 instance=ExtResource("105_ugc3l")]
 position = Vector2(-1166, 831)
 
@@ -678,7 +688,7 @@ position = Vector2(464, -543)
 position = Vector2(-403.00003, -372)
 
 [node name="Fly_boss" parent="." unique_id=1776074767 instance=ExtResource("122_pcwib")]
-position = Vector2(118.99999, -383.99997)
+position = Vector2(270, -376)
 
 [node name="EmenyWormInsectedFly" parent="." unique_id=577138784 instance=ExtResource("123_pcwib")]
 position = Vector2(-143.00003, -376)
@@ -868,3 +878,9 @@ position = Vector2(-486, -372)
 
 [node name="EnemyWeakSkull" parent="." unique_id=1889659422 instance=ExtResource("185_6kqs7")]
 position = Vector2(-546, -368)
+
+[node name="Knot_boss" parent="." unique_id=1232534718 instance=ExtResource("186_euevc")]
+position = Vector2(117, -378)
+
+[node name="Shield_equip" parent="." unique_id=1128700325 instance=ExtResource("187_7s242")]
+position = Vector2(115, 1011)

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bbm1q3q5ue22w"]
+
+[ext_resource type="Script" uid="uid://cdreuanfktvo7" path="res://game/objects/Equipment/Ability/BaseAbility_equip.gd" id="1_equip"]
+[ext_resource type="Script" uid="uid://8kw5ubq1x3c4" path="res://game/objects/Equipment/Ability/scripts/shield_ability.gd" id="2_ability"]
+[ext_resource type="Texture2D" uid="uid://c1g88annif7dg" path="res://image/equip/ability/time_shield.png" id="3_n6qi0"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
+radius = 54.08327
+
+[node name="Shield_equip" type="Area2D" unique_id=2084747083]
+script = ExtResource("1_equip")
+ability_script = ExtResource("2_ability")
+equip_icon = ExtResource("3_n6qi0")
+equip_id = "Shield"
+equip_tooltip = "Brief invulnerability"
+interact_name = "Shield"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=394192643]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Interactable" parent="." unique_id=606268399 instance=ExtResource("4_interact")]
+interact_name = "Take Shield"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=929663394]
+shape = SubResource("CircleShape2D_interact")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1214882335]
+scale = Vector2(2, 2)
+texture = ExtResource("3_n6qi0")

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://df7bbmmt0s5xg"]
+
+[ext_resource type="Script" uid="uid://d2amsxteof63d" path="res://game/objects/Equipment/Ability/scripts/fireball.gd" id="1_fireball"]
+[ext_resource type="Texture2D" uid="uid://g6sn5jk4mhci" path="res://image/effect_sprites/fireball/fireball1.png" id="2_fb1"]
+[ext_resource type="Texture2D" uid="uid://ddxq2sgnnsof1" path="res://image/effect_sprites/fireball/fireball2.png" id="3_fb2"]
+[ext_resource type="Texture2D" uid="uid://pvkqwaim0c10" path="res://image/effect_sprites/fireball/fireball4.png" id="4_6vgvc"]
+[ext_resource type="Texture2D" uid="uid://cjqrvmets36wg" path="res://image/effect_sprites/fireball/fireball3.png" id="5_o18lt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hit"]
+radius = 14.035668
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fireball"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fb2")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6vgvc")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_o18lt")
+}],
+"loop": false,
+"name": &"miss",
+"speed": 4.0
+}]
+
+[node name="Fireball" type="Area2D" unique_id=1440562031]
+z_index = 11
+collision_layer = 2
+collision_mask = 116
+script = ExtResource("1_fireball")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1383097435]
+shape = SubResource("CircleShape2D_hit")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=2049622323]
+position = Vector2(-5, 0)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fireball")
+animation = &"fly"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

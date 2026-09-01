@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://y3qn4sv1dgst" path="res://image/rooms/1-st floor/door_rect.png" id="2_fnhlo"]
 [ext_resource type="Texture2D" uid="uid://b858nwdhy14rr" path="res://image/rooms/1-st floor/Empty_door.png" id="2_nppai"]
 [ext_resource type="Texture2D" uid="uid://5vrhd6umh6xn" path="res://image/rooms/1-st floor/standart_door.png" id="3_dywht"]
+[ext_resource type="Texture2D" uid="uid://cupic1ef60jq8" path="res://image/rooms/1-st floor/bank_door.png" id="3_m2315"]
 [ext_resource type="Texture2D" uid="uid://cfracdioyj8ya" path="res://image/rooms/1-st floor/shop_door.png" id="4_m2315"]
 [ext_resource type="Texture2D" uid="uid://bdfxasq34mg05" path="res://image/rooms/1-st floor/start_door.png" id="5_j0d1f"]
 [ext_resource type="Texture2D" uid="uid://378ai2i2spfx" path="res://image/rooms/1-st floor/Treasure_door.png" id="6_6mkc6"]
@@ -17,6 +18,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"armory",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_m2315")
+}],
+"loop": true,
+"name": &"bank",
 "speed": 5.0
 }, {
 "frames": [{

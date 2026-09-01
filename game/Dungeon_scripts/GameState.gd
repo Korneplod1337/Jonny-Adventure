@@ -1,12 +1,50 @@
 extends Node
 
+const SAVE_PATH := "user://game_state.cfg"
+
 var coins: int = 0
 signal coins_changed(new_value: int)
 signal room_cleared
 
+## Монеты в банке — переносятся между забегами.
+var bank_coins: int = 0
+signal bank_coins_changed(new_value: int)
+
+
+func _ready() -> void:
+	load_persistent_state()
+
 func add_coins(amount: int) -> void:
 	coins += amount
 	emit_signal("coins_changed", coins)
+
+
+func add_bank_coins(amount: int) -> void:
+	bank_coins = maxi(0, bank_coins + amount)
+	bank_coins_changed.emit(bank_coins)
+	save_persistent_state()
+
+
+func withdraw_bank_coins(amount: int) -> bool:
+	if bank_coins < amount:
+		return false
+	bank_coins -= amount
+	bank_coins_changed.emit(bank_coins)
+	save_persistent_state()
+	return true
+
+
+func load_persistent_state() -> void:
+	var config := ConfigFile.new()
+	if config.load(SAVE_PATH) != OK:
+		return
+	bank_coins = int(config.get_value("bank", "coins", 0))
+
+
+func save_persistent_state() -> void:
+	var config := ConfigFile.new()
+	config.set_value("bank", "coins", bank_coins)
+	config.save(SAVE_PATH)
 
 
 func notify_room_cleared() -> void:
@@ -15,7 +53,7 @@ func notify_room_cleared() -> void:
 # мир
 var cost_multiplier := 1.0
 var cost_plus := 0.0
-var animated_world_speed := 1
+var animated_world_speed := 1.0
 
 signal alchemists_glasses_changed
 
@@ -27,6 +65,7 @@ var AlchemistsGlasses: bool:
 		_alchemists_glasses = value
 		alchemists_glasses_changed.emit()
 var Surestrike := false # убирает разброс выстрела, не меняя стат точности
+var SpreadShot := false # через 50 дистанции снаряд рассыпается на 6 уменьшенных
 var LuckyHead := false # за этаж: +1 luck_level и enemy_hp_multiplier *= 0.97
 var extra_chest_loot_chance := 0.0 # шанс доп. лута из сундуков (цветок папоротника и т.п.)
 var mimic_chest_chance := 0.0 # шанс, что clear-reward small/big сундук станет мимиком
@@ -127,6 +166,7 @@ func obnulenie() -> void:
 	DamageDealer.clear_modifiers()
 	AlchemistsGlasses = false
 	Surestrike = false
+	SpreadShot = false
 	LuckyHead = false
 	extra_chest_loot_chance = 0.0
 	mimic_chest_chance = 0.0
@@ -139,4 +179,5 @@ func obnulenie() -> void:
 	boss_size_multiplier = 1.0
 	cost_multiplier = 1.0
 	cost_plus = 0.0
+	animated_world_speed = 1.0
 	_clear_boss_bufs()

@@ -4,21 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://c1fayecx4hnfp" path="res://image/rooms/2-st floor/tile background_1.png" id="2_sa6yv"]
 [ext_resource type="Texture2D" uid="uid://dpomjj5pp6fag" path="res://image/rooms/2-st floor/background_bounds3.png" id="3_3fv0c"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7351j"]
-[ext_resource type="Texture2D" uid="uid://cn65588s28bg8" path="res://image/rooms/1-st floor/shop_anim1.png" id="5_41o7q"]
-[ext_resource type="Texture2D" uid="uid://ixr642ptkps" path="res://image/rooms/1-st floor/shop_anim2.png" id="6_3fuy1"]
-[ext_resource type="Texture2D" uid="uid://dvxewsi4ls4ni" path="res://image/rooms/1-st floor/shop_anim3.png" id="7_kbbwe"]
-[ext_resource type="Texture2D" uid="uid://drxeb4k5gc40e" path="res://image/rooms/1-st floor/shop_anim4.png" id="8_68grf"]
-[ext_resource type="Texture2D" uid="uid://d2mp4er7dobdy" path="res://image/rooms/1-st floor/shop_anim5.png" id="9_1uexh"]
-[ext_resource type="Texture2D" uid="uid://cpt5fhvsf5c5x" path="res://image/rooms/1-st floor/shop_anim6.png" id="10_i1kjv"]
-[ext_resource type="Texture2D" uid="uid://bt3hf6uugg4yu" path="res://image/rooms/1-st floor/shop_anim7.png" id="11_bv8bg"]
-[ext_resource type="Texture2D" uid="uid://p3iwx6iaec47" path="res://image/rooms/1-st floor/shop_anim8.png" id="12_l1ifj"]
-[ext_resource type="Texture2D" uid="uid://cgu5vmvghypxq" path="res://image/rooms/1-st floor/shop_anim9.png" id="13_1e4ni"]
-[ext_resource type="Texture2D" uid="uid://ckam41xksrg8k" path="res://image/rooms/1-st floor/shop_anim10.png" id="14_yvggs"]
-[ext_resource type="Texture2D" uid="uid://cjbjwo5c3ro70" path="res://image/rooms/1-st floor/shop_anim11.png" id="15_bh6hu"]
-[ext_resource type="Texture2D" uid="uid://bvsscy1b2qucp" path="res://image/rooms/1-st floor/shop_anim12.png" id="16_046n4"]
-[ext_resource type="Texture2D" uid="uid://dhotvuq8to5ao" path="res://image/rooms/1-st floor/shop_anim13.png" id="17_31rs8"]
-[ext_resource type="Texture2D" uid="uid://bip77fw4bevsy" path="res://image/rooms/1-st floor/shop_anim14.png" id="18_7yu1w"]
-[ext_resource type="Texture2D" uid="uid://6vxuja34lrgv" path="res://image/rooms/1-st floor/shop_anim15.png" id="19_5rpl7"]
+[ext_resource type="Texture2D" uid="uid://cutvwpjerq6ps" path="res://image/rooms/2-st floor/shop_anim_egypt1.png" id="5_3fv0c"]
+[ext_resource type="Texture2D" uid="uid://bfeknqhpr6gvs" path="res://image/rooms/2-st floor/shop_anim_egypt2.png" id="6_74c4f"]
+[ext_resource type="Texture2D" uid="uid://to1rri66vtuv" path="res://image/rooms/2-st floor/shop_anim_egypt3.png" id="7_f3mfw"]
+[ext_resource type="Texture2D" uid="uid://gbwmli7y5mdt" path="res://image/rooms/2-st floor/shop_anim_egypt4.png" id="8_uydvd"]
+[ext_resource type="Texture2D" uid="uid://dohglfd037q30" path="res://image/rooms/2-st floor/shop_anim_egypt5.png" id="9_kdhnl"]
+[ext_resource type="Texture2D" uid="uid://dcfugkuvwr5dj" path="res://image/rooms/2-st floor/shop_anim_egypt6.png" id="10_5sja3"]
+[ext_resource type="Texture2D" uid="uid://b8ttsbadeky7y" path="res://image/rooms/2-st floor/shop_anim_egypt7.png" id="11_sbbit"]
+[ext_resource type="Texture2D" uid="uid://c5s865x2yqci6" path="res://image/rooms/2-st floor/shop_anim_egypt8.png" id="12_nxgdg"]
+[ext_resource type="Texture2D" uid="uid://b8vfnwvr5bhq3" path="res://image/rooms/2-st floor/shop_anim_egypt9.png" id="13_u2vxi"]
+[ext_resource type="Texture2D" uid="uid://cbnsyt288d62g" path="res://image/rooms/2-st floor/shop_anim_egypt10.png" id="14_1p8rn"]
+[ext_resource type="Texture2D" uid="uid://bycm8ebihpwgp" path="res://image/rooms/2-st floor/shop_anim_egypt11.png" id="15_53e24"]
+[ext_resource type="Texture2D" uid="uid://ntiswlkh7tm1" path="res://image/rooms/2-st floor/shop_anim_egypt12.png" id="16_7aud1"]
+[ext_resource type="Texture2D" uid="uid://cr0vsee3kxtm4" path="res://image/rooms/2-st floor/shop_anim_egypt13.png" id="17_s0wmi"]
+[ext_resource type="Texture2D" uid="uid://cvjfh3a4lk4g0" path="res://image/rooms/2-st floor/shop_anim_egypt14.png" id="18_q8mmq"]
+[ext_resource type="Texture2D" uid="uid://bmch6s35hnatu" path="res://image/rooms/2-st floor/shop_anim_egypt15.png" id="19_cbukx"]
+[ext_resource type="Texture2D" uid="uid://bt0xj0qwrq7j4" path="res://image/rooms/2-st floor/shop_anim_egypt16.png" id="20_cx701"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sa6yv"]
 texture = ExtResource("2_sa6yv")
@@ -73,46 +74,49 @@ size = Vector2(1280, 720)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_41o7q")
+"texture": ExtResource("5_3fv0c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_3fuy1")
+"texture": ExtResource("6_74c4f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_kbbwe")
+"texture": ExtResource("7_f3mfw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_68grf")
+"texture": ExtResource("8_uydvd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_1uexh")
+"texture": ExtResource("9_kdhnl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_i1kjv")
+"texture": ExtResource("10_5sja3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_bv8bg")
+"texture": ExtResource("11_sbbit")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_l1ifj")
+"texture": ExtResource("12_nxgdg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_1e4ni")
+"texture": ExtResource("13_u2vxi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_yvggs")
+"texture": ExtResource("14_1p8rn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_bh6hu")
+"texture": ExtResource("15_53e24")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_046n4")
+"texture": ExtResource("16_7aud1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_31rs8")
+"texture": ExtResource("17_s0wmi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_7yu1w")
+"texture": ExtResource("18_q8mmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_cbukx")
 }],
 "loop": false,
 "name": &"default",
@@ -120,7 +124,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("19_5rpl7")
+"texture": ExtResource("20_cx701")
 }],
 "loop": false,
 "name": &"love",
@@ -198,7 +202,7 @@ scale = Vector2(2, 2)
 dir = Vector2(1, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1139766159]
-position = Vector2(314, -160)
+position = Vector2(307, -176)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_shi8m")
 

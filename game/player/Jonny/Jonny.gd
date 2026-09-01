@@ -93,6 +93,7 @@ var boots_id: String
 var ability_id: String = ""
 var current_ability: BaseAbility = null
 var is_dashing: bool = false
+var _ability_shield_active: bool = false
 ## When true, the next steal-life marked shot that hits an enemy heals once.
 var steal_life_heal_ready: bool = false
 @export var start_weapon := true
@@ -111,7 +112,7 @@ var input_vector = Vector2(0, 0)
 var now_move_direction := Vector2.ZERO
 var last_move_dir := 1
 
-var animated_speed := 1
+var animated_speed := 1.0
 
 func _enter_tree() -> void:
 	# До @onready-статов, чтобы get_stat сразу видел макс. уровни/бонусы
@@ -455,6 +456,24 @@ func _start_invulnerability() -> void:
 	_set_invuln_visual(true)
 	_emit_hp_visual_changed()
 
+
+func begin_ability_shield(_duration: float) -> void:
+	_ability_shield_active = true
+	invulnerable = true
+	_set_invuln_visual(true)
+
+
+func end_ability_shield() -> void:
+	if not _ability_shield_active:
+		return
+	_ability_shield_active = false
+	if imuneTimer.time_left > 0.0:
+		invulnerable = true
+		_set_invuln_visual(true)
+		return
+	invulnerable = false
+	_set_invuln_visual(false)
+
 func _cap_incoming_damage(phy: int, mag: int, clr: int, cap: int) -> Array[int]:
 	var total := phy + mag + clr
 	if total <= cap:
@@ -593,6 +612,10 @@ func _update_walking_sfx() -> void:
 		SoundManager.start_walking()
 
 func _on_immune_timer_timeout() -> void:
+	if _ability_shield_active:
+		invulnerable = true
+		_set_invuln_visual(true)
+		return
 	invulnerable = false
 	_set_invuln_visual(false)
 	if _revive_pass_through:

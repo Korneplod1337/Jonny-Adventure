@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://b2qjpuacq4ky6"]
+
+[ext_resource type="Script" uid="uid://driy2eo477cn7" path="res://game/objects/Equipment/Ability/scripts/shield_effect.gd" id="1_shield_fx"]
+[ext_resource type="Texture2D" uid="uid://b53uq4iprne11" path="res://image/effect_sprites/time_shield/time_shield1.png" id="2_ompp4"]
+[ext_resource type="Texture2D" uid="uid://c5ccvdm30mksi" path="res://image/effect_sprites/time_shield/time_shield2.png" id="3_y537x"]
+[ext_resource type="Texture2D" uid="uid://bl1d7q1tbimwd" path="res://image/effect_sprites/time_shield/time_shield3.png" id="4_bjfmp"]
+[ext_resource type="Texture2D" uid="uid://duaepncrfylb5" path="res://image/effect_sprites/time_shield/time_shield4.png" id="5_xjtqc"]
+[ext_resource type="Texture2D" uid="uid://dccr2c2dqele7" path="res://image/effect_sprites/time_shield/time_shield5.png" id="6_vppdh"]
+[ext_resource type="Texture2D" uid="uid://cru7c652yldn8" path="res://image/effect_sprites/time_shield/time_shield6.png" id="7_t6ck2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6h2ir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ompp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y537x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bjfmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xjtqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vppdh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6ck2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="ShieldEffect" type="Node2D" unique_id=549528777]
+z_index = 12
+script = ExtResource("1_shield_fx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1370791395]
+sprite_frames = SubResource("SpriteFrames_6h2ir")
+
+[node name="Timer" type="Timer" parent="." unique_id=1263019539]

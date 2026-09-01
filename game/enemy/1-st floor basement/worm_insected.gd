@@ -16,7 +16,7 @@ func die() -> void:
 	if room:
 		if room.has_method("reserve_enemy_slot"):
 			room.reserve_enemy_slot()
-		room.add_child(spawned_spider)
+		room.call_deferred('add_child', spawned_spider)
 		if room.has_method("connect_single_enemy"):
 			room.connect_single_enemy(spawned_spider, false)
 	else:

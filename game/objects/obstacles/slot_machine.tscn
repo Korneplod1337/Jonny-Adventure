@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d21vlt2wtdmkm"]
 
 [ext_resource type="Script" uid="uid://djuams11aamo" path="res://game/objects/obstacles/slot_machine.gd" id="1_4bjjm"]
-[ext_resource type="Script" path="res://game/objects/obstacles/slot_machine_hurtbox.gd" id="1_hurtbox"]
 [ext_resource type="Texture2D" uid="uid://ba7i3k31rpn30" path="res://image/objects/obstacles/slot-machine1.png" id="1_4pwwf"]
+[ext_resource type="Script" uid="uid://qttgvx1poedi" path="res://game/objects/obstacles/slot_machine_hurtbox.gd" id="1_hurtbox"]
 [ext_resource type="Texture2D" uid="uid://twt7wcn63fq3" path="res://image/objects/obstacles/slot-machine2.png" id="2_4bjjm"]
 [ext_resource type="Texture2D" uid="uid://chc1x4m5lxbhx" path="res://image/objects/obstacles/slot-machine3.png" id="3_120bw"]
 [ext_resource type="Texture2D" uid="uid://ccua6dj3101da" path="res://image/objects/obstacles/slot-machine4.png" id="4_1jh8x"]

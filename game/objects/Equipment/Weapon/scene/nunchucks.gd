@@ -10,15 +10,19 @@ func _ready() -> void:
 	extra_reload = 0.9
 	self_damage_multiplier = 1.4
 	rotation = direction.angle()
-	if not _melee_boomerang_copy:
-		_play_attack_sfx()
-		_fire_direction = direction.normalized()
-		if boomerang_power > 0:
-			_melee_boomerang_legs = BoomerangPath.build_legs(boomerang_power)
-
+	_fire_direction = direction.normalized()
 	_melee_size_scale = clampf(0.6 + atk_range / 600.0, 0.8, 2.0)
 	scale = Vector2(_melee_size_scale, _melee_size_scale)
+
+	if GameState.SpreadShot and not _melee_boomerang_copy:
+		_play_attack_sfx()
+		call_deferred("_try_spread_shot_melee")
+		return
+
 	if not _melee_boomerang_copy:
+		_play_attack_sfx()
+		if boomerang_power > 0:
+			_melee_boomerang_legs = BoomerangPath.build_legs(boomerang_power)
 		_melee_spin_duration = _lifetime_timer.wait_time
 	_lifetime_timer.wait_time = _melee_spin_duration
 
