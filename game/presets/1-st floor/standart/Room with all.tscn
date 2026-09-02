@@ -188,7 +188,8 @@
 [ext_resource type="PackedScene" path="res://game/enemy/2-st floor pyramid/Knot_boss.tscn" id="186_euevc"]
 [ext_resource type="PackedScene" uid="uid://bbm1q3q5ue22w" path="res://game/objects/Equipment/Ability/equip/Shield_equip.tscn" id="187_7s242"]
 [ext_resource type="PackedScene" uid="uid://7ut8up4cjsgr" path="res://game/objects/Equipment/head/Iron_Maiden.tscn" id="188_imnhead"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/head/Spread_Shot.tscn" id="189_spread"]
+[ext_resource type="PackedScene" uid="uid://b1b2frqkhkt14" path="res://game/objects/Equipment/head/Spread_Shot.tscn" id="189_spread"]
+[ext_resource type="PackedScene" path="res://game/objects/Equipment/Chest/Armory_plate.tscn" id="190_armory"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -634,6 +635,9 @@ position = Vector2(262, 343)
 
 [node name="Cleaving" parent="." unique_id=1091059177 instance=ExtResource("101_80cog")]
 position = Vector2(263, 230)
+
+[node name="armory_plate" parent="." unique_id=1482736903 instance=ExtResource("190_armory")]
+position = Vector2(371, 230)
 
 [node name="Kaliya\'s accelerator cloak" parent="." unique_id=30116406 instance=ExtResource("102_2imyw")]
 position = Vector2(148, 233)

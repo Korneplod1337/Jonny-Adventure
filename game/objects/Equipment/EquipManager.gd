@@ -21,6 +21,8 @@ var POOLS := {
 		 #"tier": 3, "weight": 10.0},
 		#{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
 		 #"tier": 2, "weight": 10.0},
+		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
+		 "tier": 2, "weight": 10.0},
 		#{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
 		 #"tier": 3, "weight": 10.0},
 		#{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
@@ -29,8 +31,8 @@ var POOLS := {
 		 #"tier": 2, "weight": 10.0},
 		#{"id": "Kaliya_boots", "scene": preload("uid://by8qnvewpw3v3"),
 		 #"tier": 3, "weight": 10.0},
-		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
-		 "tier": 1, "weight": 10.0},
+		#{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
+		 #"tier": 1, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
@@ -62,6 +64,8 @@ var POOLS := {
 		 "tier": 1, "weight": 10.0},
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
 		 "tier": 1, "weight": 10.0},
+		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
+		 "tier": 2, "weight": 10.0},
 		
 		{"id": "Dash", "scene": preload("res://game/objects/Equipment/Ability/equip/Dash_equip.tscn"),
 		 "tier": 1, "weight": 10.0},
@@ -190,6 +194,8 @@ var POOLS := {
 		 "tier": 3, "weight": 10.0},
 		{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
 		 "tier": 3, "weight": 10.0},
 		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
@@ -236,6 +242,8 @@ var equip_visuals := {
 		preload("uid://d1xaywuwy2w1e"),
 	"Cleaving":
 		preload("uid://ceswef8mjmxf4"),
+	"armory_plate":
+		preload("res://image/equip/chest/armory_plate.tres"),
 	
 	# BOOTS
 	"Poison_boots":
