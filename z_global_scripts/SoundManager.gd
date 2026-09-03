@@ -15,6 +15,7 @@ const SFX_REVIVE := preload("res://sound/sound/revive.mp3")
 const SFX_DEATH := preload("res://sound/sound/death.mp3")
 const SFX_MISFIRE := preload("res://sound/sound/misfire.mp3")
 const SFX_MIMIC_BOSS_ROAR := preload("res://sound/sound/mimic boss roar.mp3")
+const SFX_BREAKING := preload("res://sound/sound/breaking.ogg")
 
 const SFX_SHOTS: Array[AudioStream] = [
 	preload("res://sound/sound/shot1.mp3"),
@@ -182,6 +183,10 @@ func play_megacrit() -> void:
 
 func play_revive() -> void:
 	play(SFX_REVIVE, VOL_REVIVE)
+
+
+func play_breaking() -> void:
+	play(SFX_BREAKING)
 
 
 func play_death() -> void:

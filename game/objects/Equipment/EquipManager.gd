@@ -23,6 +23,8 @@ var POOLS := {
 		 #"tier": 2, "weight": 10.0},
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Lion_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lion_Shield.tscn"),
+		 "tier": 2, "weight": 10.0},
 		#{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
 		 #"tier": 3, "weight": 10.0},
 		#{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
@@ -65,6 +67,8 @@ var POOLS := {
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Lion_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lion_Shield.tscn"),
 		 "tier": 2, "weight": 10.0},
 		
 		{"id": "Dash", "scene": preload("res://game/objects/Equipment/Ability/equip/Dash_equip.tscn"),
@@ -196,6 +200,8 @@ var POOLS := {
 		 "tier": 2, "weight": 10.0},
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Lion_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lion_Shield.tscn"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
 		 "tier": 3, "weight": 10.0},
 		{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
@@ -244,6 +250,8 @@ var equip_visuals := {
 		preload("uid://ceswef8mjmxf4"),
 	"armory_plate":
 		preload("res://image/equip/chest/armory_plate.tres"),
+	"Lion_Shield":
+		preload("res://image/equip/chest/lion_shield.tres"),
 	
 	# BOOTS
 	"Poison_boots":

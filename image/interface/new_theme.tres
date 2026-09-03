@@ -1,10 +1,10 @@
 [gd_resource type="Theme" format=3 uid="uid://c626wtnojhto8"]
 
-[ext_resource type="Texture2D" uid="uid://7ynrxursa4cd" path="res://image/interface/HUD/style/style.png" id="1_dnh2d"]
-[ext_resource type="Texture2D" uid="uid://bplqmt5343xm1" path="res://image/interface/HUD/style/scrol_test1.svg" id="2_dnh2d"]
-[ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="2_rw3gs"]
-[ext_resource type="Texture2D" uid="uid://c27203bfum6jq" path="res://image/interface/HUD/style/scrol_test2.svg" id="3_v46i8"]
-[ext_resource type="Texture2D" uid="uid://dycp31coe0t0e" path="res://image/interface/HUD/style/scrol_test3.svg" id="4_oxf80"]
+[ext_resource type="Texture2D" uid="uid://1lbexm1kd2db" path="res://image/interface/HUD/style/style.png" id="1_dnh2d"]
+[ext_resource type="Texture2D" uid="uid://tfs42cxp4gbe" path="res://image/interface/HUD/style/scrol_test1.svg" id="2_dnh2d"]
+[ext_resource type="FontFile" uid="uid://da2aij2x8g1mb" path="res://Fonts/JonnyAdventureFont2.ttf" id="2_rw3gs"]
+[ext_resource type="Texture2D" uid="uid://i1dtem5unqv7" path="res://image/interface/HUD/style/scrol_test2.svg" id="3_v46i8"]
+[ext_resource type="Texture2D" uid="uid://ckekf6dpklqyf" path="res://image/interface/HUD/style/scrol_test3.svg" id="4_oxf80"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6av8"]
 texture = ExtResource("1_dnh2d")

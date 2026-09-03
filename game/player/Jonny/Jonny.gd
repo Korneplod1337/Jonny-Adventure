@@ -558,6 +558,9 @@ func try_revive() -> bool:
 	hp_list["blue"] = 0
 	hp_list["black"] = 0
 
+	if revival_count <= 0 and chest_id == "Lion_Shield":
+		_break_lion_shield()
+
 	SoundManager.play_revive()
 	SoundManager.duck_music_for_revive()
 
@@ -574,6 +577,16 @@ func try_revive() -> bool:
 	_update_heartbeat_sfx()
 	_emit_stats_changed()
 	return true
+
+
+func _break_lion_shield() -> void:
+	chest_id = ""
+	update_equipment_visuals()
+	var hud := get_tree().get_first_node_in_group("HUD")
+	if hud and hud.ChestSlot:
+		hud.ChestSlot.set_icon(null)
+		hud.ChestSlot.set_tooltip("")
+	SoundManager.play_breaking()
 
 
 func _on_revive_attack_unlock() -> void:

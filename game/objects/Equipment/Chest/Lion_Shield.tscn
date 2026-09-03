@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://tb7b5p0pubh1"]
+
+[ext_resource type="Script" uid="uid://tb7b5p0pict1" path="res://game/objects/Equipment/Chest/lion_shield.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b7i80c4dbccsv" path="res://image/equip/chest/lion_shield6.png" id="2_icon"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+[ext_resource type="Texture2D" uid="uid://b7i80c4dbccsq" path="res://image/equip/chest/lion_shield1.png" id="4_sprite"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjk28"]
+radius = 54.08327
+
+[node name="Lion_Shield" type="Area2D" unique_id=1914859512]
+script = ExtResource("1_script")
+type = "chest"
+equip_icon = ExtResource("2_icon")
+equip_id = "Lion_Shield"
+equip_tooltip = "Grants one revival"
+interact_name = "Lion Shield"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1191125084]
+shape = SubResource("CircleShape2D_amy5j")
+
+[node name="Interactable" parent="." unique_id=663750920 instance=ExtResource("3_interact")]
+interact_name = "Swap on test_chest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=384725513]
+shape = SubResource("CircleShape2D_kjk28")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_sprite")
+offset = Vector2(0, -2)
