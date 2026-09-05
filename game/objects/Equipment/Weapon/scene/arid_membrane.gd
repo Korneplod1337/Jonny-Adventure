@@ -105,6 +105,7 @@ func _deal_membrane_hit(target: Node, damage_mult: float, apply_enchant: bool) -
 	var info := _build_damage_info(target, amount)
 	if not apply_enchant:
 		info.enchantment = null
+		info.extra_enchantment = null
 	DamageDealer.deal_damage(self, target, info)
 	_show_crit_effect()
 	_spawn_hack_effects(target, amount)
@@ -113,8 +114,10 @@ func _deal_membrane_hit(target: Node, damage_mult: float, apply_enchant: bool) -
 func _get_membrane_damage(damage_mult: float, apply_enchant_mult: bool) -> float:
 	crit_sprite = -1
 	var final_damage := float(damage * self_damage_multiplier) * damage_mult
-	if apply_enchant_mult and enchantment and enchantment.has_method("get_damage_low"):
-		final_damage *= enchantment.get_damage_low()
+	if apply_enchant_mult:
+		for e in _get_active_enchantments():
+			if e.has_method("get_damage_low"):
+				final_damage *= e.get_damage_low()
 
 	var chance := _get_crit_chance()
 	var spread_val := 20.0

@@ -320,6 +320,10 @@ func _random_hazard_global_position() -> Vector2:
 func _on_player_detection_area_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
+	if body.get("floor_transition_active"):
+		return
+	if not _is_current_dungeon_room():
+		return
 	_player_in_room = true
 	if _intro_played and not _intro_running:
 		_refresh_boss_hp_hud()
@@ -380,6 +384,14 @@ func _get_hud() -> Node:
 	if dungeon and ("hud_instance" in dungeon):
 		return dungeon.hud_instance
 	return null
+
+
+func _is_current_dungeon_room() -> bool:
+	var dungeon = get_tree().current_scene
+	if dungeon == null or not ("rooms" in dungeon) or not ("current_room_pos" in dungeon):
+		return false
+	var room = dungeon.rooms.get(dungeon.current_room_pos)
+	return room != null and room.scene == self
 
 
 func _get_boss_focus_point(boss: Node2D) -> Vector2:

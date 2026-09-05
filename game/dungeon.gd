@@ -39,7 +39,7 @@ var floors_config: Array[Dictionary] = [
 #{"total_rooms": 6, 	"shop_rooms": randi()%2, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 # локация 2
 {"total_rooms": 5, 	"shop_rooms": 1, "buff_rooms": 1, 	"dop_rooms": 0}, 
-{"total_rooms": 7, 	"shop_rooms": 1, "buff_rooms": 1, 	"dop_rooms": 0}, 
+{"total_rooms": 8, 	"shop_rooms": 1, "buff_rooms": 2, 	"dop_rooms": 0}, 
 #{"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
 #{"total_rooms": 12, "shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 # локация 3
@@ -105,6 +105,7 @@ var floors_config: Array[Dictionary] = [
 var last_door_dir: Vector2 = Vector2.ZERO
 
 const FLOOR_ENTER_DROP := 100.0
+const FLOOR_LOAD_PARK := Vector2(-100000, -100000)
 
 
 var rooms := {} # Все сгенерированные комнаты: ключ — Vector2 позиции, значение — Room
@@ -211,10 +212,7 @@ func _ensure_player_draw_order() -> void:
 
 
 func spawn_player_in_start(start_instance: Node) -> void:
-	for key in rooms.keys():
-		if rooms[key].type == RoomType.START:
-			current_room_pos = key
-			break
+	_sync_current_room_to_start()
 	player.global_position = start_instance.global_position
 	player.set_room(start_instance)
 	refresh_minimap()
@@ -293,8 +291,8 @@ func teleport_player(door: Node, body: Node2D) -> void:
 
 	# временно отключаем эту дверь
 	spawn_door.call_deferred("set_temporarily_inactive")
-	body.global_position = spawn_pos
 	current_room_pos = target_pos
+	body.global_position = spawn_pos
 	refresh_minimap()
 
 	if body.has_method("set_room"): #камера тп
@@ -469,6 +467,7 @@ func regenerate_floor(new_floor: int) -> void:
 func _load_floor(new_floor: int) -> void:
 	current_floor = new_floor
 	_reset_player_interactions()
+	var saved_layer := _park_player_for_floor_load()
 	clear_floor_content()
 	await get_tree().process_frame
 	await get_tree().physics_frame
@@ -486,7 +485,11 @@ func _load_floor(new_floor: int) -> void:
 		config['buff_rooms'],
 		config['dop_rooms'])
 
+	_park_player_for_floor_load()
 	spawn_rooms()
+	_sync_current_room_to_start()
+	await get_tree().physics_frame
+	_restore_player_layer_after_floor_load(saved_layer)
 	player.update_level_buffs()
 	ItemManager.recharge_floor_items(player)
 
@@ -505,6 +508,31 @@ func _get_start_room_instance() -> Node:
 		if room.type == RoomType.START and room.scene:
 			return room.scene
 	return null
+
+
+func _sync_current_room_to_start() -> void:
+	for key in rooms.keys():
+		if rooms[key].type == RoomType.START:
+			current_room_pos = key
+			return
+	current_room_pos = Vector2.ZERO
+
+
+func _park_player_for_floor_load() -> int:
+	if not is_instance_valid(player):
+		return 0
+	var saved_layer := player.collision_layer
+	player.collision_layer = 0
+	player.global_position = FLOOR_LOAD_PARK
+	return saved_layer
+
+
+func _restore_player_layer_after_floor_load(saved_layer: int) -> void:
+	if not is_instance_valid(player):
+		return
+	if player.get("floor_transition_active"):
+		return
+	player.collision_layer = saved_layer
 
 
 func _reset_player_interactions() -> void:

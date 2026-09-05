@@ -190,7 +190,8 @@
 [ext_resource type="PackedScene" uid="uid://7ut8up4cjsgr" path="res://game/objects/Equipment/head/Iron_Maiden.tscn" id="188_imnhead"]
 [ext_resource type="PackedScene" uid="uid://b1b2frqkhkt14" path="res://game/objects/Equipment/head/Spread_Shot.tscn" id="189_spread"]
 [ext_resource type="PackedScene" uid="uid://bewj2j21thwfg" path="res://game/objects/Equipment/Chest/Armory_plate.tscn" id="190_armory"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Chest/Lion_Shield.tscn" id="191_lion"]
+[ext_resource type="PackedScene" uid="uid://tb7b5p0pubh1" path="res://game/objects/Equipment/Chest/Lion_Shield.tscn" id="191_lion"]
+[ext_resource type="PackedScene" path="res://game/objects/Equipment/boots/Wild_Boots.tscn" id="192_wild"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -633,6 +634,9 @@ position = Vector2(119, 340)
 
 [node name="Speed_boots" parent="." unique_id=201011230 instance=ExtResource("100_lmqaq")]
 position = Vector2(196, 339)
+
+[node name="Wild_Boots" parent="." unique_id=1482736905 instance=ExtResource("192_wild")]
+position = Vector2(275, 339)
 
 [node name="Cleaving" parent="." unique_id=1091059177 instance=ExtResource("101_80cog")]
 position = Vector2(196, 230)

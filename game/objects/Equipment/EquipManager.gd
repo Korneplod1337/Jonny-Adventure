@@ -22,9 +22,11 @@ var POOLS := {
 		#{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
 		 #"tier": 2, "weight": 10.0},
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
 		 "tier": 2, "weight": 10.0},
-		{"id": "Lion_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lion_Shield.tscn"),
-		 "tier": 2, "weight": 10.0},
+		#{"id": "Lion_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lion_Shield.tscn"),
+		 #"tier": 2, "weight": 10.0},
 		#{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
 		 #"tier": 3, "weight": 10.0},
 		#{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
@@ -40,7 +42,7 @@ var POOLS := {
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 2, "weight": 10.0},
 		#{"id": "Iron_Maiden", "scene": preload("res://game/objects/Equipment/head/Iron_Maiden.tscn"),
 		 #"tier": 1, "weight": 10.0},
 		#{"id": "lucky_head", "scene": preload("uid://b6vskrremanrc"),
@@ -56,20 +58,27 @@ var POOLS := {
 		 "tier": 1, "weight": 10.0},
 		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
 		 "tier": 1, "weight": 10.0},
+		{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
+		 "tier": 2, "weight": 10.0},
+		
+		
 		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
 		 "tier": 1, "weight": 10.0},
+		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
 		 "tier": 1, "weight": 10.0},
-		{"id": "Iron_Maiden", "scene": preload("res://game/objects/Equipment/head/Iron_Maiden.tscn"),
-		 "tier": 1, "weight": 10.0},
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 2, "weight": 10.0},
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
-		 "tier": 2, "weight": 10.0},
-		{"id": "Lion_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lion_Shield.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 1, "weight": 10.0},
+
 		
 		{"id": "Dash", "scene": preload("res://game/objects/Equipment/Ability/equip/Dash_equip.tscn"),
 		 "tier": 1, "weight": 10.0},
@@ -97,19 +106,19 @@ var POOLS := {
 		 "tier": 1, "weight": 10.0},
 		#{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
 		 #"tier": 3, "weight": 0.0},
-		#{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
-		 #"tier": 2, "weight": 10.0},
+		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
+		 "tier": 2, "weight": 10.0},
 		#{"id": "Nunchucks", "scene": preload("uid://buh4o48vfo1ln"),
 		 #"tier": 2, "weight": 10.0},
-		#{"id": "Solaris", "scene": preload("uid://ci4paxr8kkjx2"),
-		# "tier": 3, "weight": 10.0},
 		#{"id": "Axe", "scene": preload("uid://c8glpvvgfk441"),
 		# "tier": 2, "weight": 10.0},
+		#{"id": "Solaris", "scene": preload("uid://ci4paxr8kkjx2"),
+		# "tier": 3, "weight": 10.0},
 		
 		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
 		 "tier": 1, "weight": 10.0},
-		#{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
-		 #"tier": 2, "weight": 10.0},
+		{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
+		 "tier": 2, "weight": 10.0},
 		#{"id": "Sniper_Gun", "scene": preload("uid://i6kqba6ow2yq"),
 		 #"tier": 2, "weight": 10.0},
 		#{"id": "Scatterhand", "scene": preload("uid://ixfqllfdouf6"),
@@ -212,6 +221,8 @@ var POOLS := {
 		 "tier": 3, "weight": 10.0},
 		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
@@ -260,6 +271,8 @@ var equip_visuals := {
 		preload("uid://b5n6x6aiv8j01"),
 	"Speed_boots":
 		preload("uid://37cru6ygwhba"),
+	"Wild_Boots":
+		preload("res://image/equip/boots/Wild_boots.tres"),
 	
 }
 
@@ -320,6 +333,15 @@ func roll_enchantment() -> EnchantmentResource:
 		print(e, e.get_tooltip_text())
 		return e
 	return null
+
+
+func roll_guaranteed_enchantment() -> EnchantmentResource:
+	if ENCHANTMENT_TEMPLATES.is_empty():
+		return null
+	var template: EnchantmentResource = ENCHANTMENT_TEMPLATES[rng.randi_range(0, ENCHANTMENT_TEMPLATES.size() - 1)]
+	var e: EnchantmentResource = template.duplicate(true)
+	e.level = rng.randi_range(1, 3)
+	return e
 
 func spawn(pool_type: String, tiers: Array, pos: Vector2, cost: int = -1) -> void:
 	var equipment := random_pick(pool_type, tiers)

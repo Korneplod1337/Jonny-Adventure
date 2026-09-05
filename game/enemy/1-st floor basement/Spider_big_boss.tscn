@@ -22,7 +22,7 @@ size = Vector2(34, 28)
 radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(32, 30)
+size = Vector2(35, 31)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{
@@ -73,7 +73,7 @@ collision_mask = 182
 script = ExtResource("1_tl65e")
 boss_move_speed_min = 280.0
 BossName = "Big Spider"
-boss_base_hp = 400
+boss_base_hp = 350
 boss_damage = 2
 boss_move_speed = 200.0
 boss_model_scale = 4.0
@@ -95,7 +95,6 @@ shape = SubResource("CircleShape2D_2eqer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
 position = Vector2(0, 4.5)
-scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_hoiul")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]

@@ -32,5 +32,8 @@ func _deal_hit(target: Node, amount: float) -> void:
 	DamageDealer.deal_damage(self, target, info)
 	_show_crit_effect()
 	_spawn_hack_effects(target, amount)
-	if enchantment and randf() < StatManager.get_stat(player, "luck") / 1.5:
-		enchantment.apply_on_hit(target, info.direction, hack, info.hack_direction)
+	var luck := StatManager.get_stat(player, "luck")
+	var double_chance := luck / 1.5
+	for e in _get_active_enchantments():
+		if randf() < double_chance:
+			e.apply_on_hit(target, info.direction, hack, info.hack_direction)

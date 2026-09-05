@@ -1332,7 +1332,7 @@ theme_override_fonts/font = ExtResource("46_1exqm")
 theme_override_font_sizes/font_size = 32
 text = "+ splash
 - range
-accuracy does nothing "
+accuracy does nothing"
 horizontal_alignment = 1
 
 [node name="Body" type="Label" parent="Tutorial_select_menu/Pages/PageWeapons" unique_id=291529062]

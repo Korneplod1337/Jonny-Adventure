@@ -13,7 +13,7 @@ func _init() -> void:
 	base_magic = 0.0
 	base_damage = 32.0
 	base_spread = 42.0
-	base_range = 160.0
+	base_range = 180.0
 	base_fire_rate = 0.5
 	spread_level = 3.0
 	range_level = 2.0

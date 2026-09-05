@@ -167,28 +167,28 @@ position = Vector2(-344, -247)
 position = Vector2(-244, -247)
 
 [node name="Maze_N_10" parent="." unique_id=340041164 instance=ExtResource("9_rock25")]
-position = Vector2(236, -301)
+position = Vector2(236, -252)
 
 [node name="Maze_N_11" parent="." unique_id=1330696747 instance=ExtResource("9_rock25")]
-position = Vector2(336, -301)
+position = Vector2(336, -252)
 
 [node name="Maze_N_12" parent="." unique_id=348782643 instance=ExtResource("9_rock25")]
-position = Vector2(436, -301)
+position = Vector2(436, -252)
 
 [node name="Maze_N_13" parent="." unique_id=1196309127 instance=ExtResource("9_rock25")]
-position = Vector2(540, -300)
+position = Vector2(540, -251)
 
 [node name="Maze_N_14" parent="." unique_id=1241094426 instance=ExtResource("9_rock25")]
-position = Vector2(640, -300)
+position = Vector2(640, -251)
 
 [node name="Maze_N_15" parent="." unique_id=1382085939 instance=ExtResource("9_rock25")]
-position = Vector2(740, -300)
+position = Vector2(740, -251)
 
 [node name="Maze_N_16" parent="." unique_id=1117418910 instance=ExtResource("9_rock25")]
-position = Vector2(840, -300)
+position = Vector2(840, -251)
 
 [node name="Maze_N_17" parent="." unique_id=115282554 instance=ExtResource("9_rock25")]
-position = Vector2(940, -300)
+position = Vector2(940, -251)
 
 [node name="Maze_S_20" parent="." unique_id=977159116 instance=ExtResource("9_rock25")]
 position = Vector2(-942.5, 254)
@@ -230,34 +230,34 @@ position = Vector2(853.3, 340)
 position = Vector2(946.7, 340)
 
 [node name="Maze_E_35" parent="." unique_id=894385390 instance=ExtResource("9_rock25")]
-position = Vector2(540, -460)
+position = Vector2(540, -411)
 
 [node name="Maze_E_36" parent="." unique_id=901915848 instance=ExtResource("9_rock25")]
-position = Vector2(540, -380)
+position = Vector2(540, -331)
 
 [node name="Maze_E_37" parent="." unique_id=1520985112 instance=ExtResource("9_rock25")]
 position = Vector2(481, 446)
 
 [node name="Maze_E_38" parent="." unique_id=1480305464 instance=ExtResource("9_rock25")]
-position = Vector2(481, 539.3)
+position = Vector2(401, 446)
 
 [node name="Maze_NW_39" parent="." unique_id=1959681917 instance=ExtResource("9_rock25")]
-position = Vector2(-765, -463)
+position = Vector2(-839, -436)
 
 [node name="Maze_NW_40" parent="." unique_id=400218323 instance=ExtResource("8_rock")]
-position = Vector2(-867, -463)
+position = Vector2(-840, -356)
 
 [node name="Maze_SE_41" parent="." unique_id=245560035 instance=ExtResource("9_rock25")]
-position = Vector2(674, -8)
+position = Vector2(674, 41)
 
 [node name="Maze_SE_42" parent="." unique_id=2031026828 instance=ExtResource("9_rock25")]
-position = Vector2(674, 82)
+position = Vector2(933, 41)
 
 [node name="Maze_SE_43" parent="." unique_id=1292380832 instance=ExtResource("9_rock25")]
-position = Vector2(760, -8)
+position = Vector2(760, 41)
 
 [node name="Maze_SE_44" parent="." unique_id=1958626880 instance=ExtResource("9_rock25")]
-position = Vector2(847.3, -8)
+position = Vector2(847.3, 41)
 
 [node name="Maze_SW_45" parent="." unique_id=758286340 instance=ExtResource("9_rock25")]
 position = Vector2(-630, 608)
@@ -284,13 +284,13 @@ position = Vector2(-450, 528)
 position = Vector2(-360, 528)
 
 [node name="Maze_NE_53" parent="." unique_id=1673624366 instance=ExtResource("9_rock25")]
-position = Vector2(620, -380)
+position = Vector2(620, -331)
 
 [node name="Maze_NE_54" parent="." unique_id=903374377 instance=ExtResource("9_rock25")]
-position = Vector2(700, -380)
+position = Vector2(700, -331)
 
 [node name="Maze_NE_55" parent="." unique_id=167264789 instance=ExtResource("8_rock")]
-position = Vector2(802, -460)
+position = Vector2(802, -411)
 
 [node name="Maze_MID_56" parent="." unique_id=747335049 instance=ExtResource("8_rock")]
 position = Vector2(-503, 3)
@@ -299,13 +299,13 @@ position = Vector2(-503, 3)
 position = Vector2(-200, 253)
 
 [node name="Maze_MID_59" parent="." unique_id=185975972 instance=ExtResource("9_rock25")]
-position = Vector2(236, -208)
+position = Vector2(236, -159)
 
 [node name="Maze_CR_60" parent="." unique_id=1192824543 instance=ExtResource("8_rock")]
 position = Vector2(-380, -533)
 
 [node name="Maze_CR_61" parent="." unique_id=1979119568 instance=ExtResource("8_rock")]
-position = Vector2(438, -381)
+position = Vector2(438, -332)
 
 [node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=1128471653]
 position = Vector2(-120, 0)

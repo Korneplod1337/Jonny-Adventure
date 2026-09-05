@@ -34,6 +34,8 @@ var _segment_trip_duration := 1.0
 var _boomerang_active := false
 
 var enchantment: EnchantmentResource
+## Доп. зачарование поверх оружия (например Wild_Boots).
+var extra_enchantment: EnchantmentResource
 
 var penetration: int = 0 ## Число врагов, сквозь которых снаряд проходит, не исчезая (0 — остановка на первом).
 var _enemy_hit_count: int = 0
@@ -338,8 +340,9 @@ func _get_crit_chance() -> float:
 func _get_final_damage() -> float:
 	crit_sprite = -1
 	var final_damage := float(damage * self_damage_multiplier)
-	if enchantment and enchantment.has_method("get_damage_low"):
-		final_damage *= enchantment.get_damage_low() #для яда
+	for e in _get_active_enchantments():
+		if e.has_method("get_damage_low"):
+			final_damage *= e.get_damage_low()
 
 	var chance := _get_crit_chance()
 	var spread_val := 20.0
@@ -362,6 +365,20 @@ func _get_final_damage() -> float:
 	return final_damage * total_crit
 
 
+func _get_active_enchantments() -> Array[EnchantmentResource]:
+	var result: Array[EnchantmentResource] = []
+	if enchantment:
+		result.append(enchantment)
+	if extra_enchantment:
+		result.append(extra_enchantment)
+	return result
+
+
+func _copy_enchantments_to(bullet: BaseShot) -> void:
+	bullet.enchantment = enchantment
+	bullet.extra_enchantment = extra_enchantment
+
+
 func _show_crit_effect() -> void:
 	if crit_sprite < 0:
 		return
@@ -380,6 +397,7 @@ func _build_damage_info(target: Node, amount: float) -> DamageInfo:
 	var weapon_point := _get_weapon_hit_point()
 	info.hit_position = DamageDealer.get_hit_contact_point(self, target, weapon_point)
 	info.enchantment = enchantment
+	info.extra_enchantment = extra_enchantment
 	info.penetration = penetration
 	info.hack = hack
 	var flight_dir := direction.normalized()
@@ -514,6 +532,7 @@ func _spawn_spread() -> void:
 		bullet.hack = hack
 		bullet.ricochet = ricochet
 		bullet.enchantment = enchantment
+		bullet.extra_enchantment = extra_enchantment
 		bullet.penetration = penetration
 		bullet.use_spread = use_spread
 		bullet.pellet_count = pellet_count
@@ -623,6 +642,7 @@ func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2)
 	copy.hack = hack
 	copy.ricochet = ricochet
 	copy.enchantment = enchantment
+	copy.extra_enchantment = extra_enchantment
 	copy.penetration = penetration
 	copy.spread_angle = spread_angle
 	copy._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
@@ -651,6 +671,7 @@ func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
 	bullet.hack = hack
 	bullet.ricochet = ricochet
 	bullet.enchantment = enchantment
+	bullet.extra_enchantment = extra_enchantment
 	bullet.penetration = penetration
 	bullet.use_spread = use_spread
 	bullet.spread_angle = spread_angle

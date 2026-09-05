@@ -10,6 +10,8 @@ var hit_position: Vector2 = Vector2.ZERO
 var direction: Vector2 = Vector2.RIGHT
 
 var enchantment: EnchantmentResource = null
+## Доп. зачарование поверх основного (Wild_Boots и т.п.).
+var extra_enchantment: EnchantmentResource = null
 
 var aoe_radius: float = 0.0
 var explosive: bool = false
@@ -32,6 +34,7 @@ func duplicate_info() -> DamageInfo:
 	copy.hit_position = hit_position
 	copy.direction = direction
 	copy.enchantment = enchantment
+	copy.extra_enchantment = extra_enchantment
 	copy.aoe_radius = aoe_radius
 	copy.explosive = explosive
 	copy.explosive_radius = explosive_radius

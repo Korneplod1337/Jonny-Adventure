@@ -202,10 +202,10 @@ func _try_use_ability() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Ability"):
 		_try_use_ability()
-	if Input.is_action_just_pressed("button_K"):
-		take_damage(1)
-	if Input.is_action_just_pressed("button_L"):
-		heal(1)
+	#if Input.is_action_just_pressed("button_K"):
+		#take_damage(1)
+	#if Input.is_action_just_pressed("button_L"):
+		#heal(1)
 	#if Input.is_action_just_pressed("o"):
 	#	ItemManager.spawn("treasure", [0,1,4], self.global_position)
 	#if Input.is_action_just_pressed("i"):
@@ -730,6 +730,11 @@ func fire (shot_dir: Vector2) -> void:
 	
 	if shot_enchantment:
 		shot.enchantment = shot_enchantment.duplicate(true)
+	if GameState.WildBoots:
+		var magic := StatManager.get_stat(self, "magic")
+		var chance := lerpf(0.2, 0.4, clampf(magic / 4.0, 0.0, 1.0))
+		if randf() < chance:
+			shot.extra_enchantment = EquipManager.roll_guaranteed_enchantment()
 	get_tree().current_scene.add_child(shot)
 	
 	extra_fire_rate = shot.extra_reload
@@ -826,22 +831,29 @@ const HATCH_ENTER_TIME := 1.5
 const HATCH_SPIN_TURNS := 2.0
 
 var _saved_collision_mask: int = 0
+var _saved_collision_layer: int = 0
 var _floor_transition_tween: Tween = null
+var floor_transition_active: bool = false
 
 
 func begin_floor_transition() -> void:
+	floor_transition_active = true
 	set_movement_locked(true)
 	_saved_collision_mask = collision_mask
+	_saved_collision_layer = collision_layer
 	set_collision_mask(0)
+	set_collision_layer(0)
 
 
 func end_floor_transition() -> void:
 	if _floor_transition_tween and _floor_transition_tween.is_valid():
 		_floor_transition_tween.kill()
 	rotation = 0.0
+	set_collision_layer(_saved_collision_layer)
 	set_collision_mask(_saved_collision_mask)
 	_update_enemy_collision()
 	set_movement_locked(false)
+	floor_transition_active = false
 	if current_ability:
 		current_ability.notify_floor_advanced()
 

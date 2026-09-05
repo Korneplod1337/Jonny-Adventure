@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dh77dsffykcnc"]
 
-[ext_resource type="Script" path="res://game/enemy/all/mimic_boss.gd" id="1_qbuee"]
+[ext_resource type="Script" uid="uid://c7g3i6brieuuq" path="res://game/enemy/all/mimic_boss.gd" id="1_qbuee"]
 [ext_resource type="Texture2D" uid="uid://b2xlsoiitorp" path="res://image/enemy/bodies/Mimic1.png" id="3_qbuee"]
 [ext_resource type="Texture2D" uid="uid://b5qlx6iurvb6x" path="res://image/enemy/bodies/Mimic2.png" id="4_32d8u"]
 [ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="4_hlwg8"]
@@ -85,8 +85,9 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 4
 collision_mask = 182
 script = ExtResource("1_qbuee")
+boss_projectile_speed = 520.0
 BossName = "Just a ...chest?"
-boss_base_hp = 360
+boss_base_hp = 450
 boss_move_speed = 200.0
 boss_model_scale = 1.5
 use_pathfinding = true

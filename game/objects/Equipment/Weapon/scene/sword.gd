@@ -124,6 +124,7 @@ func _configure_melee_copy(copy: SwordShot, out_dir: Vector2, bounce_body_id: in
 	copy.boomerang_power = boomerang_power
 	copy.damage = damage
 	copy.enchantment = enchantment
+	copy.extra_enchantment = extra_enchantment
 	copy.self_damage_multiplier = self_damage_multiplier
 	copy.self_range_multiplier = self_range_multiplier
 	copy.spawned_spread = true
@@ -187,6 +188,7 @@ func _try_spawn_melee_boomerang_copy() -> bool:
 	copy.boomerang_power = boomerang_power
 	copy.damage = damage
 	copy.enchantment = enchantment
+	copy.extra_enchantment = extra_enchantment
 	copy.self_damage_multiplier = self_damage_multiplier
 	copy.self_range_multiplier = self_range_multiplier
 	copy.spawned_spread = true

@@ -65,6 +65,12 @@ func _physics_process(delta: float) -> void:
 	damage = player.damage
 	atk_range = player.atk_range
 	enchantment = player.shot_enchantment
+	extra_enchantment = null
+	if GameState.WildBoots:
+		var magic := StatManager.get_stat(player, "magic")
+		var chance := lerpf(0.2, 0.4, clampf(magic / 4.0, 0.0, 1.0))
+		if randf() < chance:
+			extra_enchantment = EquipManager.roll_guaranteed_enchantment()
 	_deal_aura_damage()
 
 	_cooldown = StatManager.get_stat(player, "fire_rate")

@@ -76,7 +76,7 @@ var secret_codes := {
 	"bobrinaya ohota": "achiv",
 	"steve": "steve",
 	"dlc artbook": "artbook",
-	"easy": "easy",
+	"easyysae": "easy",
 }
 
 func _SecretCode_pressed() -> void:
