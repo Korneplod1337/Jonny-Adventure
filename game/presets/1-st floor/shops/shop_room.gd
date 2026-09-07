@@ -9,6 +9,8 @@ func _ready() -> void:
 	call_deferred("init_room")
 	animated_sprite_2d.animation_finished.connect(_on_sprite_animation_finished)
 
+# +1 бесплатный стол с 0 тиром
+
 func tabels_spawn():
 	var TableScene = preload("uid://pk82t1kne84x")
 	
@@ -42,6 +44,14 @@ func tabels_spawn():
 		table4.tier = [1] as Array[int]
 		table4.pool = 'shop'
 		get_tree().current_scene.add_child(table4)
+	
+	if loyality > 60:
+		var table6 = TableScene.instantiate()
+		table6.position = self.position + Vector2(0, 0)
+		table6.cost = 0
+		table6.tier = [0] as Array[int]
+		table6.pool = 'shop'
+		get_tree().current_scene.add_child(table6)
 	
 	if loyality > 80:
 		var table5 = TableScene.instantiate()

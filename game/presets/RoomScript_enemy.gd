@@ -5,7 +5,7 @@ const CHEST_BIG := preload("res://game/objects/chests/Chest_big.tscn")
 const CHEST_WEAPON := preload("res://game/objects/chests/Chest_weapon.tscn")
 const MIMIC := preload("res://game/enemy/all/Mimic.tscn")
 const SHRINE_SCENE_PATH := "res://game/presets/shrines/shrine.tscn"
-const SHRINE_REMOVE_CHANCE := 0.5
+const SHRINE_REMOVE_CHANCE := 0.1
 
 @export var spawn_clear_reward := true
 var _clear_reward_spawned := false

@@ -74,7 +74,7 @@ script = ExtResource("1_tl65e")
 hard_direction_change_min = 0.4
 hard_direction_change_max = 1.0
 hard_base_hp = 100
-hard_angle_deviation = 40.0
+hard_angle_deviation = 30.0
 use_pathfinding = true
 knockback_friction = 600.0
 

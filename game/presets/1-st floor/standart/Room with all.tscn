@@ -191,7 +191,7 @@
 [ext_resource type="PackedScene" uid="uid://b1b2frqkhkt14" path="res://game/objects/Equipment/head/Spread_Shot.tscn" id="189_spread"]
 [ext_resource type="PackedScene" uid="uid://bewj2j21thwfg" path="res://game/objects/Equipment/Chest/Armory_plate.tscn" id="190_armory"]
 [ext_resource type="PackedScene" uid="uid://tb7b5p0pubh1" path="res://game/objects/Equipment/Chest/Lion_Shield.tscn" id="191_lion"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/boots/Wild_Boots.tscn" id="192_wild"]
+[ext_resource type="PackedScene" uid="uid://bl7cqej1s468g" path="res://game/objects/Equipment/boots/Wild_Boots.tscn" id="192_wild"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)

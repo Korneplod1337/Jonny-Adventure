@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://5hbxypjn78sj"]
+
+[ext_resource type="Script" uid="uid://cheptp8xig5sy" path="res://game/presets/shrines/knife_blood_shrine.gd" id="1_ymp1u"]
+[ext_resource type="Texture2D" uid="uid://b47oujr8pfhba" path="res://image/rooms/shrines/shrine_blood3.png" id="2_pck6o"]
+[ext_resource type="Texture2D" uid="uid://5yqpss1lru7n" path="res://image/rooms/shrines/shrine_blood4.png" id="3_rltow"]
+[ext_resource type="Texture2D" uid="uid://c1j0l1o2q6r8i" path="res://image/rooms/shrines/shrine_blood2.png" id="4_ycnau"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xy4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pck6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rltow")
+}],
+"loop": true,
+"name": &"active",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ycnau")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="knife" type="Node2D" unique_id=1541189603]
+script = ExtResource("1_ymp1u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=434765893]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_0xy4y")

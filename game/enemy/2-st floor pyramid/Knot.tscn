@@ -68,8 +68,7 @@ script = ExtResource("1_3mjkt")
 hard_roll_speed = 300.0
 hard_idle_time_min = 1.5
 hard_idle_time_max = 2.5
-hard_roll_time = 1.0
-roll_bounce_window = 0.8
+hard_roll_time = 1.2
 hard_base_hp = 75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=59623340]
