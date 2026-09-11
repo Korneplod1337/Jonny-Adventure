@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bvy7i2nw65tyy"]
 
-[ext_resource type="Script" uid="uid://qypg6l131j4v" path="res://game/objects/items/scripts/Poison Red.gd" id="1_l3ggq"]
+[ext_resource type="Script" uid="uid://bujfouatyok66" path="res://game/objects/items/scripts/potion_red_big.gd" id="1_py8gh"]
 [ext_resource type="Texture2D" uid="uid://bs5tqdxq4j3rq" path="res://image/items/0 tier/ItemHealthPotionBig.png" id="2_py8gh"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_kkn65"]
 
@@ -12,7 +12,7 @@ radius = 19.0
 
 [node name="Potion Heal Big" type="Area2D" unique_id=1430574395]
 collision_layer = 0
-script = ExtResource("1_l3ggq")
+script = ExtResource("1_py8gh")
 item_icon = ExtResource("2_py8gh")
 item_name = "Big red potion"
 item_tooltip = "This potion makes me feel better"
