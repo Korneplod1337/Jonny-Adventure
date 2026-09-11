@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Hunter"
-item_tooltip2 = "It's time to become a hunter"
+item_name = "Hunter"
+item_tooltip = "It's time to become a hunter"
+item_tooltip2 = "+++ accuracy\n++ range\n+ damage"
 item_id = "hunter"
 
 [node name="Interactable" parent="." unique_id=1061523062 instance=ExtResource("3_interact")]

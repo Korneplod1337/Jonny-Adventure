@@ -49,3 +49,6 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ojoxv")
 
 [node name="enchant_shader" parent="AnimatedSprite2D" unique_id=322286018 instance=ExtResource("enchant_shader_scene")]
+position = Vector2(-4, 0)
+rotation = 0.2617994
+scale = Vector2(2, 2)

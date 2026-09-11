@@ -16,6 +16,7 @@ script = ExtResource("1_script")
 luck_delta = -1
 magic_delta = 3
 item_icon = ExtResource("2_tex")
+item_name = "Card Six"
 item_tooltip = "Card Six"
 item_tooltip2 = "Magic +3, Luck -1"
 item_id = "card6"

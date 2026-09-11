@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_yh22j")
-item_tooltip = "Water Elemental"
-item_tooltip2 = "An element that knows no friction. It speeds up everything it touches, including your hands"
+item_name = "Water Elemental"
+item_tooltip = "An element that knows no friction. It speeds up everything it touches, including your hands"
+item_tooltip2 = "+++ fire rate\n+ luck"
 item_id = "waterelemental"
 
 [node name="Interactable" parent="." unique_id=1322825166 instance=ExtResource("3_interact")]

@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Virus"
-item_tooltip2 = "Reduces all enemies HP just a little bit"
+item_name = "Virus"
+item_tooltip = "Reduces all enemies HP just a little bit"
+item_tooltip2 = "-3% enemy hp"
 item_id = "virus"
 effect_power = 0.97
 

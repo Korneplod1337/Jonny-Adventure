@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_3gajf")
-item_tooltip = "Uranium"
-item_tooltip2 = "The shining poison burns my hands"
+item_name = "Uranium"
+item_tooltip = "The shining poison burns my hands"
+item_tooltip2 = "++++ damage\n++ magic\n--- hp\n- range"
 item_id = "uranium"
 
 [node name="Interactable" parent="." unique_id=1779219909 instance=ExtResource("3_interact")]

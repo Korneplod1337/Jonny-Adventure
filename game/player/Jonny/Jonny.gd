@@ -710,6 +710,8 @@ func fire (shot_dir: Vector2) -> void:
 	var final_dir := Vector2.RIGHT.rotated(angle)
 	
 	shot.direction = final_dir + now_move_direction.normalized()/3 
+	
+	#print('effective_spread ', effective_spread)
 	#+ shot_dir.normalized()/3
 	
 	shot.damage = damage

@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Occult"
-item_tooltip2 = "Weakens all enemies"
+item_name = "Occult"
+item_tooltip = "Weakens all enemies"
+item_tooltip2 = "+++hp -10% enemy hp"
 item_id = "occult"
 effect_power = 0.9
 

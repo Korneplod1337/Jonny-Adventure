@@ -14,6 +14,7 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
+item_name = "Blueprint"
 item_tooltip = "Blueprint"
 item_tooltip2 = "Duplicates the last picked item"
 item_id = "blueprint"

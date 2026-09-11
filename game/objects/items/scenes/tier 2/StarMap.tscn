@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_h8yos")
-item_tooltip = "Star Map"
-item_tooltip2 = "Every dot is a path. Every path is a choice"
+item_name = "Star Map"
+item_tooltip = "Every dot is a path. Every path is a choice"
+item_tooltip2 = "Man, press tab, don't you see anything new??"
 item_id = "starmap"
 
 [node name="Interactable" parent="." unique_id=323038731 instance=ExtResource("3_interact")]

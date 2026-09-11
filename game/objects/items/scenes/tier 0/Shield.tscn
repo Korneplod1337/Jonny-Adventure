@@ -14,6 +14,7 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_qqxj7")
 item_icon = ExtResource("2_qqxj7")
+item_name = "Shield"
 item_tooltip = "Shield"
 item_tooltip2 = "Simple shield"
 item_id = "shield"

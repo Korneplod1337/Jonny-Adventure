@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_nh3i3")
-item_tooltip = "Telescope"
-item_tooltip2 = "Are you kidding? How to use this underground?"
+item_name = "Telescope"
+item_tooltip = "Are you kidding? How to use this underground?"
+item_tooltip2 = "+++ range"
 item_id = "telescope"
 
 [node name="Interactable" parent="." unique_id=616598550 instance=ExtResource("3_interact")]

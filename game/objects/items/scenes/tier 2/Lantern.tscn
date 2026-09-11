@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_kwsom")
-item_tooltip = "Lantern"
-item_tooltip2 = "Light your way with this"
+item_name = "Lantern"
+item_tooltip = "Light your way with this"
+item_tooltip2 = "++ range\n+++ luck"
 item_id = "lantern"
 
 [node name="Interactable" parent="." unique_id=1229487989 instance=ExtResource("3_interact")]

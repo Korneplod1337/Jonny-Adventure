@@ -14,7 +14,8 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_sqr04")
 item_icon = ExtResource("2_ly48v")
-item_tooltip = "Strange black potion"
+item_name = "Strange black potion"
+item_tooltip = "I think this potion gives me something. But it makes me feel bad :("
 item_tooltip2 = "I think this potion gives me something. But it makes me feel bad :("
 item_id = "healblack"
 

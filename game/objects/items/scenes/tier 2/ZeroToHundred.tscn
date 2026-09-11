@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
+item_name = "Zero-to-hundred"
 item_tooltip = "Zero-to-hundred"
-item_tooltip2 = "Zero-to-hundred"
+item_tooltip2 = "++++ speed"
 item_id = "zerotohundred"
 
 [node name="Interactable" parent="." unique_id=1481799263 instance=ExtResource("3_interact")]

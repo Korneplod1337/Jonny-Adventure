@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_q0tfc")
-item_tooltip = "Optical Scope"
-item_tooltip2 = "How should I install this on the sword?"
+item_name = "Optical Scope"
+item_tooltip = "How should I install this on the sword?"
+item_tooltip2 = "++++ accuracy"
 item_id = "scope"
 
 [node name="Interactable" parent="." unique_id=1692016799 instance=ExtResource("3_interact")]

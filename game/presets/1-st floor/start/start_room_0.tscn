@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://d4nmsl38t7ni6" path="res://game/objects/Equipment/Ability/equip/Dash_equip.tscn" id="9_4rw6f"]
 [ext_resource type="PackedScene" uid="uid://bh55uvxw80yd4" path="res://game/objects/Equipment/Ability/equip/Ember_equip.tscn" id="10_4rw6f"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="12_r6k7x"]
+[ext_resource type="PackedScene" uid="uid://8nlac1wigti" path="res://game/objects/Equipment/head/Alchemists_glasses.tscn" id="13_g1cmb"]
+[ext_resource type="PackedScene" uid="uid://cclc1nro4132n" path="res://game/enemy/1-st floor basement/Spider_small.tscn" id="14_i3tqa"]
 [ext_resource type="PackedScene" uid="uid://bltt30qk8jp62" path="res://game/objects/obstacles/gap.tscn" id="14_oy27w"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_o41he"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/JonnyShot_equip.tscn" id="18_hfl2y"]
@@ -142,3 +144,9 @@ position = Vector2(-290, 95)
 
 [node name="Coin3" parent="." unique_id=300928666 instance=ExtResource("12_r6k7x")]
 position = Vector2(-470, 95)
+
+[node name="Alchemist\'s glasses" parent="." unique_id=1914859512 instance=ExtResource("13_g1cmb")]
+position = Vector2(93, -1)
+
+[node name="Spider_small" parent="." unique_id=2133096440 instance=ExtResource("14_i3tqa")]
+position = Vector2(204, -99)

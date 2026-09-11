@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Fountain"
-item_tooltip2 = "The water from here seems to be charged with mana"
+item_name = "Fountain"
+item_tooltip = "The water from here seems to be charged with mana"
+item_tooltip2 = "++ magic"
 item_id = "fountain"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_interact")]

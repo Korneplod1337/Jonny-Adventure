@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Target"
-item_tooltip2 = "+6% crit chance and some accuracy"
+item_name = "Target"
+item_tooltip = "Good precision training"
+item_tooltip2 = "+6% crit chance ++accuracy"
 item_id = "target"
 effect_power = 0.06
 

@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_vkyil")
-item_tooltip = "Fire Salamander"
-item_tooltip2 = "Fire salamander is not afraid of heat"
+item_name = "Fire Salamander"
+item_tooltip = "Fire salamander is not afraid of heat"
+item_tooltip2 = "+++ damage"
 item_id = "salamandra"
 
 [node name="Interactable" parent="." unique_id=496520471 instance=ExtResource("3_interact")]

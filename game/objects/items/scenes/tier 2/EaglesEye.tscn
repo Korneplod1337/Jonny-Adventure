@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_idgit")
-item_tooltip = "Eagle's Eye"
-item_tooltip2 = "A keen eye does not miss the details"
+item_name = "Eagle's Eye"
+item_tooltip = "A keen eye does not miss the details"
+item_tooltip2 = "++ accuracy\n++ speed"
 item_id = "eagleseye"
 
 [node name="Interactable" parent="." unique_id=106199967 instance=ExtResource("3_interact")]

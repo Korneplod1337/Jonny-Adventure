@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_885je")
 item_icon = ExtResource("3_hpmg7")
-item_tooltip = "Aegis"
-item_tooltip2 = "A tiny piece of the aegis of the gods hardens your skin."
+item_name = "Aegis"
+item_tooltip = "A tiny piece of the aegis of the gods hardens your skin."
+item_tooltip2 = "+++ hp"
 item_id = "aegis"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_ovk18")]

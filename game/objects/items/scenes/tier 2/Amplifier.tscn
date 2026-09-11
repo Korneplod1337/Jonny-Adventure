@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_15sdt")
-item_tooltip = "Amplifier"
-item_tooltip2 = "An amplifier of your magical abilities"
+item_name = "Amplifier"
+item_tooltip = "An amplifier of your magical abilities"
+item_tooltip2 = "++++ magic"
 item_id = "amplifier"
 
 [node name="Interactable" parent="." unique_id=1930314298 instance=ExtResource("3_interact")]

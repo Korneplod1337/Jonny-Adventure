@@ -52,6 +52,7 @@ animations = [{
 [node name="Item LvlUP" type="Area2D" unique_id=1430574395]
 collision_layer = 0
 script = ExtResource("1_rftd4")
+item_name = "-"
 item_tooltip = "-"
 item_tooltip2 = "-"
 item_id = "lvlup"

@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_gek3y")
-item_tooltip = "Planetarium"
-item_tooltip2 = "A system where distances are shortened and the pulse becomes deeper."
+item_name = "Planetarium"
+item_tooltip = "A system where distances are shortened and the pulse becomes deeper."
+item_tooltip2 = "++ range\n+ hp"
 item_id = "planetary"
 
 [node name="Interactable" parent="." unique_id=1972976615 instance=ExtResource("3_interact")]

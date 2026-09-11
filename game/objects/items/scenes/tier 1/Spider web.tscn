@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_h5cln")
 item_icon = ExtResource("3_g211f")
-item_tooltip = "Spider Web"
-item_tooltip2 = "Sticky cobwebs entangle the feet of enemies"
+item_name = "Spider Web"
+item_tooltip = "Sticky cobwebs entangle the feet of enemies"
+item_tooltip2 = "-10% enemy ms"
 item_id = "spiderweb"
 effect_power = 0.1
 

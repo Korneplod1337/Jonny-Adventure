@@ -52,6 +52,9 @@ var POOLS := {
 	
 	],
 	"armory": [
+		{"id": "lvlup",   "scene": preload("uid://ywfb4cg1rk1u"), # Оружейный кейс
+		 "tier": 0, "weight": 10.0},
+		
 		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # Оружейный кейс
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),

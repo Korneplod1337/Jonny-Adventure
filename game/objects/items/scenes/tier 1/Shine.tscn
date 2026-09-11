@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Shine"
-item_tooltip2 = "False magic light, in your hands will illuminate good luck"
+item_name = "Shine"
+item_tooltip = "False magic light, in your hands will illuminate good luck"
+item_tooltip2 = "+ luck\n+ magic"
 item_id = "shine"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_interact")]

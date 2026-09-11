@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_0fgfj")
-item_tooltip = "Astrolabia"
-item_tooltip2 = "A navigation device that can shorten any distance"
+item_name = "Astrolabia"
+item_tooltip = "A navigation device that can shorten any distance"
+item_tooltip2 = "++++ range"
 item_id = "astrolabia"
 
 [node name="Interactable" parent="." unique_id=393670843 instance=ExtResource("3_interact")]

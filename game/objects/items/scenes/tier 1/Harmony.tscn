@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Harmony"
-item_tooltip2 = "Harmony in the body is more precisely a shot"
+item_name = "Harmony"
+item_tooltip = "Harmony in the body is more precisely a shot"
+item_tooltip2 = "++ accuracy\n+ range"
 item_id = "harmony"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_interact")]

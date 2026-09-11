@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_rscul")
-item_tooltip = "Gold Bar"
-item_tooltip2 = "Inertia of the precious metal. The more often you hit, the more brilliant it is"
+item_name = "Gold Bar"
+item_tooltip = "Inertia of the precious metal. The more often you hit, the more brilliant it is"
+item_tooltip2 = "++++ fire rate"
 item_id = "goldbar"
 
 [node name="Interactable" parent="." unique_id=1135128948 instance=ExtResource("3_interact")]

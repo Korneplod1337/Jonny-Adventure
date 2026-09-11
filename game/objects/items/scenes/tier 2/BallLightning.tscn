@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Ball Lightning"
-item_tooltip2 = "A pulsating mass of plasma, synchronized with your mana"
+item_name = "Ball Lightning"
+item_tooltip = "A pulsating mass of plasma, synchronized with your mana"
+item_tooltip2 = "++ fire rate\n++ magic"
 item_id = "balllightning"
 
 [node name="Interactable" parent="." unique_id=1969016787 instance=ExtResource("3_interact")]

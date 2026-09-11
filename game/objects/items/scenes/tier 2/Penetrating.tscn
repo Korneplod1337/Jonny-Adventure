@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_1q5ob")
-item_tooltip = "Penetrating"
-item_tooltip2 = "Shot doesn't stop. It doesn't care"
+item_name = "Penetrating"
+item_tooltip = "Shot doesn't stop. It doesn't care"
+item_tooltip2 = "+1 penetrating"
 item_id = "penetrating"
 
 [node name="Interactable" parent="." unique_id=880629960 instance=ExtResource("3_interact")]

@@ -22,6 +22,7 @@ accuracy_delta = 1
 range_delta = 1
 fire_rate_delta = 1
 item_icon = ExtResource("2_tex")
+item_name = "Card Ace"
 item_tooltip = "Card Ace"
 item_tooltip2 = "All stats +1"
 item_id = "cardace"

@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_6oyg1")
-item_tooltip = "Opulence"
-item_tooltip2 = "Wealth appears at your sides"
+item_name = "Opulence"
+item_tooltip = "Wealth appears at your sides"
+item_tooltip2 = "+fire rate ++chest near"
 item_id = "opulence"
 
 [node name="Interactable" parent="." unique_id=1455932727 instance=ExtResource("3_interact")]

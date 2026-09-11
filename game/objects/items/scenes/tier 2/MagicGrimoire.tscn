@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Magic Grimoire"
-item_tooltip2 = "Magic oozes out of him"
+item_name = "Magic Grimoire"
+item_tooltip = "Magic oozes out of him"
+item_tooltip2 = "+++ magic"
 item_id = "magicgrimoire"
 
 [node name="Interactable" parent="." unique_id=983347106 instance=ExtResource("3_interact")]

@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_38w8w")
-item_tooltip = "Dragon Heart"
-item_tooltip2 = "A fragment of the greatest power. There's meat and fire in it"
+item_name = "Dragon Heart"
+item_tooltip = "A fragment of the greatest power. There's meat and fire in it"
+item_tooltip2 = "++ damage\n++ hp"
 item_id = "dragonheart"
 
 [node name="Interactable" parent="." unique_id=1497970326 instance=ExtResource("3_interact")]

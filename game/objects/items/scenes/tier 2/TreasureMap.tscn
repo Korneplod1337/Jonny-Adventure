@@ -14,6 +14,7 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_w76ly")
+item_name = "Treasure map"
 item_tooltip = "Treasure map"
 item_tooltip2 = "Marks a chest in some room nearby"
 item_id = "treasuremap"

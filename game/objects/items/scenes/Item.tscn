@@ -15,6 +15,7 @@ radius = 40.04997
 collision_layer = 0
 script = ExtResource("1_4xlni")
 item_icon = ExtResource("2_n8bc5")
+item_name = "Test Item"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
 shape = SubResource("CircleShape2D_oisx2")

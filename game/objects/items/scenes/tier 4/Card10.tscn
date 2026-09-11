@@ -14,6 +14,7 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
+item_name = "Card Ten"
 item_tooltip = "Card Ten"
 item_tooltip2 = "Accuracy +3, Fire rate -1"
 item_id = "card10"

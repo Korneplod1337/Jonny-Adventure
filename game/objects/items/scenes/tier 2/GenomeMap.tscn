@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Genome Map"
-item_tooltip2 = "Reduces all enemies HP by 20%"
+item_name = "Genome Map"
+item_tooltip = "Strongly educes all enemies HP"
+item_tooltip2 = "-20% enemy hp"
 item_id = "genomemap"
 effect_power = 0.8
 

@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Grail"
-item_tooltip2 = "A cup overflowing with pace"
+item_name = "Grail"
+item_tooltip = "A cup overflowing with pace"
+item_tooltip2 = "++ fire rate"
 item_id = "grail"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_interact")]

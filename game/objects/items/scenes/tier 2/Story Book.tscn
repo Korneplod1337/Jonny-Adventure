@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_mscv5")
 item_icon = ExtResource("2_qfh24")
-item_tooltip = "Story book"
-item_tooltip2 = "It seems that after reading this book, it takes me back to my childhood"
+item_name = "Story book"
+item_tooltip = "It seems that after reading this book, it takes me back to my childhood"
+item_tooltip2 = "-15% size"
 item_id = "storybook"
 effect_power = 0.85
 

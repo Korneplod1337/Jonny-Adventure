@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Force Shield"
-item_tooltip2 = "The edge accepts your pain, but only one time. Maybe one time"
+item_name = "Force Shield"
+item_tooltip = "The edge accepts your pain, but only one time. Maybe one time"
+item_tooltip2 = "+1 force shield"
 item_id = "forceshield"
 
 [node name="Interactable" parent="." unique_id=114306975 instance=ExtResource("3_interact")]

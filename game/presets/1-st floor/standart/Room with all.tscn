@@ -561,7 +561,6 @@ position = Vector2(-427, -2)
 
 [node name="Seed" parent="Guillotine" unique_id=280839398 instance=ExtResource("78_pcwib")]
 position = Vector2(-619, 6)
-item_tooltip2 = "The sprout that rewrote the probability of your decay"
 
 [node name="Sextant" parent="Guillotine" unique_id=1088839078 instance=ExtResource("79_x7but")]
 position = Vector2(-556, 3)

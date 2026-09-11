@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Gigant Ring"
-item_tooltip2 = "Gigant Ring makes you larger"
+item_name = "Gigant Ring"
+item_tooltip = "Gigant Ring makes you larger"
+item_tooltip2 = "++++hp +15% size"
 item_id = "gigantring"
 effect_power = 1.15
 

@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "LuckyCoin"
-item_tooltip2 = "Random coins, but from clear gold"
+item_name = "LuckyCoin"
+item_tooltip = "Random coins, but from clear gold"
+item_tooltip2 = "+ fire rate -3+6:coins"
 item_id = "luckycoin"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_interact")]

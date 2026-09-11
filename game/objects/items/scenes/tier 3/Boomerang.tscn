@@ -14,6 +14,7 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_gewhg")
 item_icon = ExtResource("2_3x7iy")
+item_name = "Boomerang"
 item_tooltip = "Boomerang"
 item_tooltip2 = "Boomerang. Magic boomerang"
 item_id = "boomerang"

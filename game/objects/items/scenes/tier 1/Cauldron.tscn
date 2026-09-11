@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Cauldron"
-item_tooltip2 = "Anger trapped in cast iron like in a boiling belly"
+item_name = "Cauldron"
+item_tooltip = "Anger trapped in cast iron like in a boiling belly"
+item_tooltip2 = "++ damage"
 item_id = "cauldron"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_interact")]

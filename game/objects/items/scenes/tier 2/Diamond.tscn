@@ -14,8 +14,11 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_nlr8h")
-item_tooltip = "Diamond"
-item_tooltip2 = "The edge of perfection"
+item_name = "Diamond"
+item_tooltip = "The edge of perfection"
+item_tooltip2 = "+++ luck
+++ range
++++ fire rate"
 item_id = "diamond"
 
 [node name="Interactable" parent="." unique_id=1263884426 instance=ExtResource("3_interact")]

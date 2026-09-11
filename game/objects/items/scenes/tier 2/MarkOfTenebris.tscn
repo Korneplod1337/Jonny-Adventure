@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Mark of Tenebris"
-item_tooltip2 = "Gain atk per current life HP"
+item_name = "Mark of Tenebris"
+item_tooltip = "Gain atk per current life HP"
+item_tooltip2 = "++ hp +base damage per hp"
 item_id = "markoftenebris"
 effect_power = 5.0
 

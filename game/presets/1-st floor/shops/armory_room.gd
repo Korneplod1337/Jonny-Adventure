@@ -41,9 +41,18 @@ func tabels_spawn():
 	
 	if loyality > 40:
 		var table4 = TableScene.instantiate()
-		table4.position = self.position + Vector2(400, 0)
-		table4.cost = 3
+		table4.position = self.position + Vector2(0, 0)
+		table4.cost = 0
 		table4.tier = [0] as Array
+		table4.room = 'armory'
+		table4.pool = 'armory'
+		get_tree().current_scene.add_child(table4)
+	
+	if loyality > 60:
+		var table4 = TableScene.instantiate()
+		table4.position = self.position + Vector2(400, 0)
+		table4.cost = 20
+		table4.tier = [1,2,3] as Array
 		table4.room = 'armory'
 		table4.pool = 'armory'
 		get_tree().current_scene.add_child(table4)

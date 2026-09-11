@@ -55,9 +55,9 @@ func _refresh_interact_label(node: Node) -> void:
 	var shown_cost: int = int((node.cost + gs.cost_plus) * gs.cost_multiplier)
 	if node is Item:
 		if node.cost < 1:
-			interactable.interact_name = node.item_tooltip
+			interactable.interact_name = node.item_name
 		else:
-			interactable.interact_name = "%s by %s coins" % [node.item_tooltip, shown_cost]
+			interactable.interact_name = "%s by %s coins" % [node.item_name, shown_cost]
 		return
 	if "interact_name" in node:
 		var base_name: String = str(node.interact_name)

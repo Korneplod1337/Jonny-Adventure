@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
-item_tooltip = "Sextant"
-item_tooltip2 = "Star compass for blade and bullet"
+item_name = "Sextant"
+item_tooltip = "Star compass for blade and bullet"
+item_tooltip2 = "+ range\n+ accuracy"
 item_id = "sextant"
 
 [node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("3_interact")]

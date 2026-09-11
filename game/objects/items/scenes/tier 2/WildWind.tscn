@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_jnolq")
-item_tooltip = "Wild Wind"
-item_tooltip2 = "The Wild Wind is blowing at your back"
+item_name = "Wild Wind"
+item_tooltip = "The Wild Wind is blowing at your back"
+item_tooltip2 = "+++ speed"
 item_id = "wildwind"
 
 [node name="Interactable" parent="." unique_id=180197026 instance=ExtResource("3_interact")]

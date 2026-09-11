@@ -14,7 +14,8 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_5uw0k")
 item_icon = ExtResource("2_lor3b")
-item_tooltip = "Red potion"
+item_name = "Red potion"
+item_tooltip = "This potion makes me feel better"
 item_tooltip2 = "This potion makes me feel better"
 item_id = "heal"
 

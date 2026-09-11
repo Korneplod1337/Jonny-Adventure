@@ -14,8 +14,10 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_87uca")
-item_tooltip = "Well"
-item_tooltip2 = "An ancient well where the shots are faster"
+item_name = "Well"
+item_tooltip = "An ancient well where the shots are faster"
+item_tooltip2 = "++ fire rate
++ luck + hp"
 item_id = "well"
 
 [node name="Interactable" parent="." unique_id=687890098 instance=ExtResource("3_interact")]

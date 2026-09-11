@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_74ahb")
-item_tooltip = "Ouroboros"
-item_tooltip2 = "The magic symbol of Ouroboros"
+item_name = "Ouroboros"
+item_tooltip = "The magic symbol of Ouroboros"
+item_tooltip2 = "++ hp\n++ magic"
 item_id = "ouroboros"
 
 [node name="Interactable" parent="." unique_id=1150100234 instance=ExtResource("3_interact")]

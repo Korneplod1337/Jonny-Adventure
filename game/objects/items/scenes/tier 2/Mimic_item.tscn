@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_iqx2r")
 item_icon = ExtResource("2_cmdsv")
-item_tooltip = "Mimic"
-item_tooltip2 = "Chests start looking at you"
+item_name = "Mimic"
+item_tooltip = "Chests start looking at you"
+item_tooltip2 = "+20% mimic"
 item_id = "mimic"
 
 [node name="Interactable" parent="." unique_id=1390405400 instance=ExtResource("3_f2s8d")]

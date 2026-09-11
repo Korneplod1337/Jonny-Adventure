@@ -16,6 +16,7 @@ script = ExtResource("1_script")
 hp_delta = 3
 damage_delta = -1
 item_icon = ExtResource("2_tex")
+item_name = "Card Queen"
 item_tooltip = "Card Queen"
 item_tooltip2 = "HP +3, Damage -1"
 item_id = "cardqueen"

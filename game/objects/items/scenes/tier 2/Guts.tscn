@@ -14,8 +14,9 @@ radius = 19.0
 collision_layer = 0
 script = ExtResource("1_script")
 item_icon = ExtResource("2_1e6sr")
-item_tooltip = "Raw Guts"
-item_tooltip2 = "Thank God they're clean"
+item_name = "Raw Guts"
+item_tooltip = "Thank God they're clean"
+item_tooltip2 = "++++ hp"
 item_id = "guts"
 
 [node name="Interactable" parent="." unique_id=614593497 instance=ExtResource("3_interact")]

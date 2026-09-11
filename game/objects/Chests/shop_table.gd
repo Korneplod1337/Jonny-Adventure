@@ -11,12 +11,12 @@ func _ready() -> void:
 		return
 	match room:
 		'shop':
-			ItemManager.spawn(pool, tier, self.global_position + Vector2(0, -20), cost)
+			ItemManager.spawn(pool, tier, self.global_position + Vector2(0, -25), cost)
 		'armory':
 			if tier == [0]:
-				ItemManager.spawn(pool, tier, self.global_position + Vector2(0, -20), cost)
+				ItemManager.spawn(pool, tier, self.global_position + Vector2(0, -25), cost)
 			else:
-				EquipManager.spawn(pool, tier, self.global_position + Vector2(0, -20), cost)
+				EquipManager.spawn(pool, tier, self.global_position + Vector2(0, -25), cost)
 
 
 func _replace_with_coin() -> void:
