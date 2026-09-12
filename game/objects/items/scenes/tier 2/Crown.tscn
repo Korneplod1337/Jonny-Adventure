@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://7c81iauheaea"]
+
+[ext_resource type="Script" uid="uid://bboc5n5maa7e1" path="res://game/objects/items/scripts/crown.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cjsv121rnpr8j" path="res://image/items/2 tier/ItemCrown.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Crown" type="Area2D" unique_id=1806495879]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_tex")
+item_name = "Crown"
+item_tooltip = "The crown is only strong for someone who has gathered a lot of things under him"
+item_tooltip2 = "+2 base damage per picked item"
+item_id = "crown"
+effect_power = 2.0
+
+[node name="Interactable" parent="." unique_id=1708352021 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=543105625]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=18499130]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=597618373]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")

@@ -23,7 +23,14 @@ func get_stat(p: Node, stat: String) -> float :
 			magic = clamp(magic, 0.0, 4.0) #4.05
 			return magic 
 		"damage":
-			var damage = p.base_damage + lerp(0.0, 45.0, (p.damage_level - 1.0) / 9.0) 
+			var base := float(p.base_damage)
+			if p.sacrosanct_power > 0.0 and p.max_hp > 0:
+				var live := float(p.hp_list["red"] + p.hp_list["green"])
+				if live / float(p.max_hp) > 0.75:
+					base *= (1.0 + p.sacrosanct_power)
+			var damage = base + lerp(0.0, 45.0, (p.damage_level - 1.0) / 9.0)
+			if p.accelerator_power > 0.0:
+				damage += p.accelerator_power * (float(p.move_speed) / 100.0)
 			damage *= clamp((1 + p.damage_bonus * 0.1), 0.1, 3)  					# 20
 			damage = clamp(damage, 0.1, 1000.0)
 			return damage 

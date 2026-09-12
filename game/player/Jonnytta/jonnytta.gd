@@ -7,6 +7,7 @@ const START_SWORD_EQUIP := preload("res://game/objects/Equipment/Weapon/equip/Sw
 ## считаются ДО _ready() и иначе остаются с дефолтами Jonny.
 func _init() -> void:
 	player_name = "Jonnytta"
+	base_fire_rate = 0.5
 	base_max_hp = 5
 	base_move_speed = 250.0
 	base_luck = 0.2

@@ -30,24 +30,30 @@ var base_magic: 				float = 0.0
 var base_damage: 			float = 25.0
 var base_spread: 			float = 14.0
 var base_range: 				float = 150.0
-var base_fire_rate: 			float = 0.5
+var base_fire_rate: 			float = 0.4
 
 const ENEMY_COLLISION_BITS := 4 | 64
 const BASE_IMMUNE_TIME := 0.3
 
-var hp_bonus: 				int = 1
+var hp_bonus: 				int = 0
 var speed_bonus: 			int = 0
 var luck_bonus: 				int = 0
 var magic_bonus: 			int = 0
 var damage_bonus: 			int = 0
 var accuracy_bonus: 			int = 0
 var range_bonus: 			int = 0
-var fire_rate_bonus:			int = 1
+var fire_rate_bonus:			int = 0
 
 var crit_chance_bonus: 		float = 0.0
 var immune_time_bonus: 		float = 0.0
 ## -1 = без капа; иначе макс. суммарный урон за один удар (Magic Seal)
 var incoming_damage_cap: 	int = -1
+## Sacrosanct: доля бонуса к base_damage при HP > 75% (0.2 = +20%)
+var sacrosanct_power: 		float = 0.0
+## Accelerator: доп. урон = power * (move_speed / 100)
+var accelerator_power: 		float = 0.0
+## Crown: +N к base_damage за каждый подобранный предмет
+var crown_damage_per_item: 	float = 0.0
 var pass_through_enemies: 	bool = false
 var _revive_pass_through: 	bool = false
 var _base_collision_mask: 	int = 0
@@ -714,7 +720,7 @@ func fire (shot_dir: Vector2) -> void:
 	#print('effective_spread ', effective_spread)
 	#+ shot_dir.normalized()/3
 	
-	shot.damage = damage
+	shot.damage = StatManager.get_stat(self, "damage")
 	
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)

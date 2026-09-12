@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cq1e35ccwm0yt"]
 
-[ext_resource type="Texture2D" uid="uid://wttm6lol258j" path="res://image/rooms/1-st floor/background4.png" id="1_8cds4"]
-[ext_resource type="Texture2D" uid="uid://dpomjj5pp6fag" path="res://image/rooms/2-st floor/background_bounds3.png" id="2_0krqc"]
+[ext_resource type="Texture2D" uid="uid://c8xekhutrps2q" path="res://image/rooms/1-st floor/background5.png" id="1_8cds4"]
+[ext_resource type="Texture2D" uid="uid://dp0ws2wi2nt0u" path="res://image/rooms/3-st floor/background_bounds2.png" id="2_0krqc"]
 [ext_resource type="PackedScene" uid="uid://ch8qkvh1kb427" path="res://game/objects/obstacles/lightning.tscn" id="4_1cm4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
@@ -57,21 +57,67 @@ shape = SubResource("RectangleShape2D_sw7ps")
 [node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=468390853]
 
 [node name="lightning" parent="." unique_id=2035113601 instance=ExtResource("4_1cm4y")]
-position = Vector2(-350, 150)
+position = Vector2(250, 130)
 prepare_time = 1.0
 spawn_fire = true
 
-[node name="lightning2" parent="." unique_id=658856937 instance=ExtResource("4_1cm4y")]
-position = Vector2(350, 150)
+[node name="lightning2" parent="lightning" unique_id=658856937 instance=ExtResource("4_1cm4y")]
+position = Vector2(25, -27.5)
+scale = Vector2(1, 1)
 prepare_time = 1.0
 spawn_fire = true
 
-[node name="lightning3" parent="." unique_id=455330942 instance=ExtResource("4_1cm4y")]
-position = Vector2(400, -50)
+[node name="lightning5" parent="lightning/lightning2" unique_id=752777348 instance=ExtResource("4_1cm4y")]
 prepare_time = 1.0
 spawn_fire = true
 
-[node name="lightning4" parent="." unique_id=333067909 instance=ExtResource("4_1cm4y")]
-position = Vector2(-400, -50)
+[node name="lightning3" parent="lightning" unique_id=455330942 instance=ExtResource("4_1cm4y")]
+position = Vector2(0, -55)
+scale = Vector2(1, 1)
+prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning4" parent="lightning" unique_id=333067909 instance=ExtResource("4_1cm4y")]
+position = Vector2(50, -55)
+scale = Vector2(1, 1)
+prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning5" parent="lightning" unique_id=1124041329 instance=ExtResource("4_1cm4y")]
+position = Vector2(50, 0)
+scale = Vector2(1, 1)
+prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning2" parent="." unique_id=2092538317 instance=ExtResource("4_1cm4y")]
+position = Vector2(-350, 130)
+prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning2" parent="lightning2" unique_id=1863224767 instance=ExtResource("4_1cm4y")]
+position = Vector2(25, -27.5)
+scale = Vector2(1, 1)
+prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning5" parent="lightning2/lightning2" unique_id=1335529462 instance=ExtResource("4_1cm4y")]
+prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning3" parent="lightning2" unique_id=675836351 instance=ExtResource("4_1cm4y")]
+position = Vector2(0, -55)
+scale = Vector2(1, 1)
+prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning4" parent="lightning2" unique_id=1759320696 instance=ExtResource("4_1cm4y")]
+position = Vector2(50, -55)
+scale = Vector2(1, 1)
+prepare_time = 1.0
+spawn_fire = true
+
+[node name="lightning5" parent="lightning2" unique_id=1131218359 instance=ExtResource("4_1cm4y")]
+position = Vector2(50, 0)
+scale = Vector2(1, 1)
 prepare_time = 1.0
 spawn_fire = true

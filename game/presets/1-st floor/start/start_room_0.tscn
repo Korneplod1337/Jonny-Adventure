@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
 [ext_resource type="PackedScene" uid="uid://d4nmsl38t7ni6" path="res://game/objects/Equipment/Ability/equip/Dash_equip.tscn" id="9_4rw6f"]
-[ext_resource type="PackedScene" uid="uid://bh55uvxw80yd4" path="res://game/objects/Equipment/Ability/equip/Ember_equip.tscn" id="10_4rw6f"]
+[ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="10_1f72t"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="12_r6k7x"]
-[ext_resource type="PackedScene" uid="uid://bltt30qk8jp62" path="res://game/objects/obstacles/gap.tscn" id="14_oy27w"]
 [ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_o41he"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/JonnyShot_equip.tscn" id="18_hfl2y"]
 
@@ -109,30 +108,8 @@ rotation = 4.066617
 [node name="JonnyShot" parent="." unique_id=2068174714 instance=ExtResource("18_hfl2y")]
 position = Vector2(209, 174)
 
-[node name="Gap2" parent="." unique_id=1720145431 instance=ExtResource("14_oy27w")]
-position = Vector2(432, 152)
-variant = 8
-
-[node name="Gap" parent="Gap2" unique_id=1355426593 instance=ExtResource("14_oy27w")]
-position = Vector2(80, 0)
-variant = 7
-
-[node name="Gap2" parent="Gap2" unique_id=538851108 instance=ExtResource("14_oy27w")]
-position = Vector2(-76, 80)
-variant = 8
-
-[node name="Gap" parent="Gap2/Gap2" unique_id=1582826753 instance=ExtResource("14_oy27w")]
-position = Vector2(80, 0)
-
-[node name="Gap" parent="Gap2/Gap2/Gap" unique_id=578909659 instance=ExtResource("14_oy27w")]
-position = Vector2(76, 0)
-variant = 5
-
 [node name="Dash_equip" parent="." unique_id=566211452 instance=ExtResource("9_4rw6f")]
 position = Vector2(-200, 95)
-
-[node name="Ember_equip" parent="." unique_id=1022176132 instance=ExtResource("10_4rw6f")]
-position = Vector2(-380, 95)
 
 [node name="Coin" parent="." unique_id=2054458591 instance=ExtResource("12_r6k7x")]
 position = Vector2(-110, 94)
@@ -142,3 +119,6 @@ position = Vector2(-290, 95)
 
 [node name="Coin3" parent="." unique_id=300928666 instance=ExtResource("12_r6k7x")]
 position = Vector2(-470, 95)
+
+[node name="Surge_equip" parent="." unique_id=1060883570 instance=ExtResource("10_1f72t")]
+position = Vector2(-380, 95)

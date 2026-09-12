@@ -47,6 +47,10 @@ func _on_interact():
 		var hud = get_tree().get_first_node_in_group("HUD")
 		hud.add_item(item_icon, item_tooltip, item_tooltip2, item_id)
 		ItemManager.mark_picked(item_id)
+		if player.crown_damage_per_item > 0.0:
+			player.base_damage += player.crown_damage_per_item
+			player.damage = StatManager.get_stat(player, "damage")
+			player._emit_stats_changed()
 		queue_free()
 
 func _set_item_icon(new_icon: Texture2D) -> void:

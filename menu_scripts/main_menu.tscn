@@ -363,7 +363,7 @@ grow_vertical = 0
 theme = ExtResource("13_5uchu")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "Ver. Beta 0.2.2"
+text = "Ver. Beta 0.3.0"
 
 [node name="settings_menu" type="Node" parent="." unique_id=981361797]
 

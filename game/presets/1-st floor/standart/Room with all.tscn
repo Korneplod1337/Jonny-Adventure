@@ -192,6 +192,10 @@
 [ext_resource type="PackedScene" uid="uid://bewj2j21thwfg" path="res://game/objects/Equipment/Chest/Armory_plate.tscn" id="190_armory"]
 [ext_resource type="PackedScene" uid="uid://tb7b5p0pubh1" path="res://game/objects/Equipment/Chest/Lion_Shield.tscn" id="191_lion"]
 [ext_resource type="PackedScene" uid="uid://bl7cqej1s468g" path="res://game/objects/Equipment/boots/Wild_Boots.tscn" id="192_wild"]
+[ext_resource type="PackedScene" uid="uid://bex05fya70aea" path="res://game/objects/items/scenes/tier 2/Cyborg.tscn" id="193_4hvg8"]
+[ext_resource type="PackedScene" uid="uid://8dmpj13werc7" path="res://game/objects/items/scenes/tier 2/Sacrosanct.tscn" id="194_6sjhw"]
+[ext_resource type="PackedScene" uid="uid://cmelkf4y78v41" path="res://game/objects/items/scenes/tier 2/Accelerator.tscn" id="195_eealk"]
+[ext_resource type="PackedScene" uid="uid://7c81iauheaea" path="res://game/objects/items/scenes/tier 2/Crown.tscn" id="196_n6x0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -370,7 +374,7 @@ position = Vector2(121, 126)
 position = Vector2(45, 342)
 
 [node name="Boomerang" parent="." unique_id=1430574395 instance=ExtResource("19_vm4yr")]
-position = Vector2(-64, 556)
+position = Vector2(-77, 555)
 
 [node name="Potion Heal" parent="." unique_id=1431943573 instance=ExtResource("20_0h76k")]
 position = Vector2(-109, 40)
@@ -667,7 +671,7 @@ burn_out_time = 100.0
 player_phy_damage = 0
 
 [node name="lightning" parent="." unique_id=1026476125 instance=ExtResource("107_0qir2")]
-position = Vector2(1162, 115)
+position = Vector2(1201, 1199)
 mag_damage = 0
 active_duration = 20.0
 
@@ -888,10 +892,22 @@ position = Vector2(-691, 315)
 position = Vector2(-486, -372)
 
 [node name="EnemyWeakSkull" parent="." unique_id=1889659422 instance=ExtResource("185_6kqs7")]
-position = Vector2(-546, -368)
+position = Vector2(-954.00006, -504)
 
 [node name="Knot_boss" parent="." unique_id=1232534718 instance=ExtResource("186_euevc")]
 position = Vector2(117, -378)
 
 [node name="Shield_equip" parent="." unique_id=1128700325 instance=ExtResource("187_7s242")]
 position = Vector2(115, 1011)
+
+[node name="Cyborg" parent="." unique_id=255343700 instance=ExtResource("193_4hvg8")]
+position = Vector2(-744, 492)
+
+[node name="Sacrosanct" parent="." unique_id=1328113183 instance=ExtResource("194_6sjhw")]
+position = Vector2(-676, 492)
+
+[node name="Accelerator" parent="." unique_id=121020180 instance=ExtResource("195_eealk")]
+position = Vector2(-613, 490)
+
+[node name="Crown" parent="." unique_id=1806495879 instance=ExtResource("196_n6x0b")]
+position = Vector2(-552, 488)

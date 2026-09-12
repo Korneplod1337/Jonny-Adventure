@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bex05fya70aea"]
+
+[ext_resource type="Script" uid="uid://dptmod1xjtp78" path="res://game/objects/items/scripts/cyborg.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://mqlfgwdfkauc" path="res://image/items/2 tier/ItemCyborg.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Cyborg" type="Area2D" unique_id=255343700]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_tex")
+item_name = "Cyborg"
+item_tooltip = "Converts meat into iron, granting the power of the machine"
+item_tooltip2 = "Converts hp into shield, +10 dmg each"
+item_id = "cyborg"
+effect_power = 10.0
+
+[node name="Interactable" parent="." unique_id=2095105291 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=520233841]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=189539138]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1296671251]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")

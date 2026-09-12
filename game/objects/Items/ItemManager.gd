@@ -19,6 +19,7 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'sp
  'starmap', 'secondheart', 'penetrating', 'mimic', 'treasuremap', 'opulence',
  'gigantring', 'occult', 'markoftenebris', 'magicseal',
  'genoremap', 'toycastle', 'ironmaiden',
+ 'sacrosanct', 'crown', 'accelerator', 'cyborg',
  'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
 var DEFAULT_PICK := ["heal"]
 
@@ -145,6 +146,10 @@ var POOLS := {
 		#{"id": "genomemap", 	"scene": preload("res://game/objects/items/scenes/tier 2/GenomeMap.tscn"), "tier": 2},
 		{"id": "toycastle", 	"scene": preload("res://game/objects/items/scenes/tier 2/ToyCastle.tscn"), "tier": 2},
 		{"id": "ironmaiden", 	"scene": preload("res://game/objects/items/scenes/tier 2/IronMaiden.tscn"), "tier": 2},
+		{"id": "sacrosanct", 	"scene": preload("res://game/objects/items/scenes/tier 2/Sacrosanct.tscn"), "tier": 2},
+		{"id": "crown", 		"scene": preload("res://game/objects/items/scenes/tier 2/Crown.tscn"), "tier": 2},
+		{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
+		{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
 		#{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
 
 		#{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
@@ -251,6 +256,10 @@ var POOLS := {
 		#{"id": "genomemap", 	"scene": preload("res://game/objects/items/scenes/tier 2/GenomeMap.tscn"), "tier": 2},
 		{"id": "toycastle", 	"scene": preload("res://game/objects/items/scenes/tier 2/ToyCastle.tscn"), "tier": 2},
 		{"id": "ironmaiden", 	"scene": preload("res://game/objects/items/scenes/tier 2/IronMaiden.tscn"), "tier": 2},
+		{"id": "sacrosanct", 	"scene": preload("res://game/objects/items/scenes/tier 2/Sacrosanct.tscn"), "tier": 2},
+		{"id": "crown", 		"scene": preload("res://game/objects/items/scenes/tier 2/Crown.tscn"), "tier": 2},
+		{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
+		{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
 		#{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
 
 	],

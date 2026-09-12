@@ -3,7 +3,7 @@ class_name GoldHoardAbility
 extends BaseAbility
 
 const COIN_SCENE := preload("res://game/objects/coins/Coin.tscn")
-const SPAWN_FORWARD := 40.0
+const SPAWN_FORWARD := 50.0
 const SPAWN_JITTER := 12.0
 
 
@@ -27,7 +27,7 @@ func activate() -> bool:
 			Input.get_axis("move_up", "move_down")
 		)
 	if forward == Vector2.ZERO:
-		forward = Vector2.DOWN
+		forward = Vector2.UP
 	forward = forward.normalized()
 
 	var parent: Node = player.get_tree().current_scene
