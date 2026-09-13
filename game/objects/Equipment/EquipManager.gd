@@ -205,6 +205,8 @@ var POOLS := {
 		 "tier": 3, "weight": 10.0},
 		{"id": "Magic pistol", "scene": preload("uid://c6exdflntaqki"),
 		 "tier": 3, "weight": 10.0},
+		{"id": "special_weapon", "scene": preload("res://game/objects/Equipment/Weapon/equip/Special_weapon_equip.tscn"),
+		 "tier": 3, "weight": 10.0},
 		
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 "tier": 3, "weight": 10.0},

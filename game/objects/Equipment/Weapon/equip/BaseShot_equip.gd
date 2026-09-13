@@ -50,6 +50,9 @@ func _on_interact():
 	if not player: 
 		print('эквип не видит игрока')
 		return
+	# Special flask: пока надет — другое оружие подобрать нельзя.
+	if player.shot_id == "special_weapon" and equip_id != "special_weapon":
+		return
 	if GameState.coins < cost:
 		return
 	GameState.add_coins(-cost)

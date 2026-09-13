@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://6xrfrxfwum25"]
+
+[ext_resource type="Script" uid="uid://ctglvc5q4pbdi" path="res://game/objects/Equipment/Weapon/equip/BaseShot_equip.gd" id="1_equip"]
+[ext_resource type="Texture2D" uid="uid://ji5347vctbsl" path="res://image/equip/weapon/special.png" id="2_etcat"]
+[ext_resource type="PackedScene" uid="uid://ddbx56057drdb" path="res://game/objects/Equipment/Weapon/scene/Special_weapon.tscn" id="2_proj"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+[ext_resource type="Texture2D" uid="uid://l6ahh4mvvwd2" path="res://image/equip/weapon_effects/special_hit1.png" id="4_icon"]
+[ext_resource type="PackedScene" uid="uid://crtkbhmubifki" path="res://game/objects/Equipment/_enchantments/enchant_shader.tscn" id="5_enchant"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qqy2x"]
+radius = 19.026299
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0twu3"]
+radius = 54.08327
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojoxv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_icon")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Special_weapon" type="Area2D" unique_id=406102991]
+collision_mask = 0
+script = ExtResource("1_equip")
+equip_icon = ExtResource("2_etcat")
+equip_id = "special_weapon"
+projectile = ExtResource("2_proj")
+equip_tooltip = "Special flask with a potion soaked in necrotic magic"
+interact_name = "special flask"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=485041429]
+shape = SubResource("CircleShape2D_qqy2x")
+
+[node name="Interactable" parent="." unique_id=1151579235 instance=ExtResource("3_interact")]
+interact_name = "Swap weapon"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1405850250]
+shape = SubResource("CircleShape2D_0twu3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1548370649]
+clip_children = 2
+sprite_frames = SubResource("SpriteFrames_ojoxv")
+
+[node name="enchant_shader" parent="AnimatedSprite2D" unique_id=2118447425 instance=ExtResource("5_enchant")]

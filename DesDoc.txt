@@ -409,7 +409,7 @@ Owerall:
 		
 	Jonnytta -
 		открывается -  пройти 1 локу
-		оружие JonnyShot
+		оружие Sword
 		Итоговое хп 5/0/0/0
 		 base_max_hp: 				int  = 5
 		 base_move_speed:			float = 250.0
@@ -426,9 +426,9 @@ Owerall:
 	Jovita - 
 		открывается - пройти 4 локу (казино)
 		оружие scatterhand
-		Итоговое хп 1/1/0/2
-		 base_max_hp: 				int  = 1
-		 base_move_speed:			float = 260.0
+		Итоговое хп 1/2/0/1
+		 base_max_hp: 				int  = 2
+		 base_move_speed:			float = 300.0
 		 base_luck: 					float = 0.4
 		 base_magic: 				float = 0.0
 		 base_damage: 				float = 25.0
@@ -438,48 +438,141 @@ Owerall:
 		 luck_level			float = 4.0
 		 move_speed_level	float = 5.0
 		 hit_points_level 	float = 2.0
-		имя означает «счастливая»
+		#имя означает «счастливая»
 		открывает - 
 		
 	Альтернативный Джонни (красный) JonnyAlt
+		оружие test_shot
 		Мишени становятся со скином Джонни
-		test_shot
+		особенность- медленно стеляет, но по 2 выстрела сразу (вылетает копия через 0.2 секунды)
+		Итоговое хп 2/0/0/4
+		 base_max_hp: 				int  = 2
+		 base_move_speed:			float = 250.0
+		 base_luck: 					float = 0.2
+		 base_magic: 				float = 0.0
+		 base_damage: 				float = 25.0
+		 base_spread: 				float = 14.0
+		 base_range: 				float = 150.0
+		 base_fire_rate: 			float = 0.8
+		 damage_level: 		float = 3.0
+		 range_level: 		float = 3.0
 		открывается -  пройти 4 локу за Джонни, 
 		открывает - 5-ю локу (шахта)
+	
 	Альт Джоннитта (синяя) 
-		Мишени становятся со скином Джоннитты
-		все оружия меньше scale в 2 раза, но их 3.
+		открывается -  пройти 4 локу за Джоннитту
+		оружие Spear
+		Мишени становятся со скином Джонни
+		особенность- все оружия меньше scale в 2 раза, но их 3.
+		Итоговое хп 6/0/0/0
+		 base_max_hp: 				int  = 5
+		 base_move_speed:			float = 250.0
+		 base_luck: 					float = 0.2
+		 base_magic: 				float = 0.0
+		 base_damage: 				float = 32.0
+		 base_spread: 				float = 30.0
+		 base_range: 				float = 160.0
+		 base_fire_rate: 			float = 0.5
+		 hit_points_level 	float = 2.0
+		 spread_level: 		float = 4.0
+		 range_level: 		float = 3.0
+		
 		открывается -  пройти 4 локу за Джоннитту,
 		открывает - 
 	Jo - 
 		арморированный чел без хп с снайперкой??
 		открывается -  пройти за Jonny, Jonnytta 5 локи
+		оружие Sniper_Gun
+		особенность- любой урон который по нему проходит - всегда физический
+		всё, что увеличивает ему пустое сердце вместо этого даёт ему щиты.
+		таким образов у него всегда 0 красный/зелёных/синих сердец, только щиты (чёрные)
+		Итоговое хп 0/0/0/6
+		 base_max_hp: 				int  = 0
+		 base_move_speed:			float = 250.0
+		 base_luck: 					float = 0.2
+		 base_magic: 				float = 0.2
+		 base_damage: 				float = 32.0
+		 base_spread: 				float = 0.0
+		 base_range: 				float = 150.0
+		 base_fire_rate: 			float = 0.5
+		 range_level: 		float = 5.0
+		 magic_level: 		float = 2.0
+		
 		открывает - 6-ю локу
 	
 	John - 
 		Жиробасина без мув/атак спида, но с ебейшим снарядом 
 		трек биг джон
-		открывается - замаксить стат хп
-		открывает - 
+		открывается - замаксить стат хп/иметь 14 слотов для сердец
+		оружие Jonny_shot_Alt
+		особенность - любое оружие больше в 1.5 раза, а scale игрока больше на 0.25
+			Итоговое хп 6/0/2/0
+		 base_max_hp: 				int  = 6
+		 base_move_speed:			float = 200.0
+		 base_luck: 					float = 0.2
+		 base_magic: 				float = 0.2
+		 base_damage: 				float = 50.0
+		 base_spread: 				float = 16.0
+		 base_range: 				float = 150.0
+		 base_fire_rate: 			float = 1.0
+		 hit_points_level 	float = 3.0
+		 spread_level 		float = 2.0
+		 range_level 		float = 2.0
+		 fire_rate_level 	float = 2.0
+		
 	Joker - 
-		уникальная карточная механика 
-		открывается - карты предметы, подбор туза
-		открывает - предмет джокер и своё оружие
+		оружие - CardWeapon
+				Итоговое хп 0/4/0/2
+		 base_max_hp: 				int  = 3
+		 base_move_speed:			float = 260.0
+		 base_luck: 					float = 0.4
+		 base_magic: 				float = 0.4
+		 base_damage: 				float = 25.0
+		 base_spread: 				float = 12.0
+		 base_range: 				float = 160.0
+		 base_fire_rate: 			float = 0.5
+		 magic_level 		float = 4.0
+		 fire_rate_level 	float = 2.0
+		 move_speed_level 	float = 2.0
+		
+		открывается - подобранно 10 карт предметов
+		открывает - предмет джокер и CardWeapon
 	Joab - 
 		чёрное хп, necromancer
-		хилится от чёрных зелий, все красные зелья наносят урон
-		имеет уникальное неснимаемое оружие которое и сплеш, и криты, и множитель слезы,
+		особенность - хилится от чёрных зелий, все красные зелья наносят урон
+		в Hud сердца особенные, тёмные
+		имеет уникальное неснимаемое (незаменяемое) оружие SpecialFlask
 		 но слабое в стоке - кидаться зельями
+			Итоговое хп 4/0/2/0
+		 base_max_hp: 				int  = 6
+		 base_move_speed:			float = 280.0
+		 base_luck: 					float = 0.0
+		 base_magic: 				float = 0.4
+		 base_damage: 				float = 20.0
+		 base_spread: 				float = 10.0
+		 base_range: 				float = 160.0
+		 base_fire_rate: 			float = 0.4
 		библейское имя, означает «Яхве — отец» на иврите, поклоняется Кересу
 		открывается - выиграть после того как выпил 4 чёрных зелья
 		открывает - черепок
 	
 	Joaquin 
-		имя испанское, означает «Бог даёт силу»
-		нищета ебаная с отрицательными статами
-		
+		#имя испанское, означает «Бог даёт силу»
+		#нищета ебаная с отрицательными статами
+		особенность - не может получать хп или армор (умирает с одного удара если нет щита или доп жизней)
+		оружие Base_Gun
+		Итоговое хп 0/0/0/0
+		 base_max_hp: 				int  = 0
+		 base_move_speed:			float = 253.0
+		 base_luck: 					float = 0.3
+		 base_magic: 				float = 0.3
+		 base_damage: 				float = 25.3
+		 base_spread: 				float = 14.3
+		 base_range: 				float = 150.3
+		 base_fire_rate: 			float = 0.53
+
 		открывается- пройти за всех остальных персонажей 6 локу
-		Открывает - последнюю 7 локу, улицу
+		Открывает - последнюю, 7 локу (улицу)
 	
 	
 	заставки при открытии персонажей

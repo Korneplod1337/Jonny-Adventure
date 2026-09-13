@@ -9,7 +9,6 @@ func _ready() -> void:
 	call_deferred("init_room")
 	animated_sprite_2d.animation_finished.connect(_on_sprite_animation_finished)
 
-# +1 бесплатный стол с 0 тиром
 
 func tabels_spawn():
 	var TableScene = preload("uid://pk82t1kne84x")

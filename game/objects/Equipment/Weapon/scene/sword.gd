@@ -131,6 +131,7 @@ func _configure_melee_copy(copy: SwordShot, out_dir: Vector2, bounce_body_id: in
 	copy.atk_range = atk_range
 	copy.ricochet = ricochet
 	copy.penetration = penetration
+	copy.aoe_radius = aoe_radius
 	copy.hack = hack
 	copy._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 	if bounce_body_id != 0:
@@ -195,6 +196,7 @@ func _try_spawn_melee_boomerang_copy() -> bool:
 	copy.atk_range = atk_range * MELEE_COPY_DECAY
 	copy.ricochet = ricochet
 	copy.penetration = penetration
+	copy.aoe_radius = aoe_radius
 	copy.hack = hack
 	copy._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 	if _melee_spin_duration > 0.0:

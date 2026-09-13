@@ -18,8 +18,8 @@ var player_name = 'Jonny'
 
 @onready var hp_list := {
 	"red": max(0, StatManager.get_stat(self, 'hp')),
-	"green": 0,
-	"blue": 0,  # magic shield
+	"green": 0, # magic shield
+	"blue": 0,  # clear shield
 	"black": 2, # shield
 	}
 

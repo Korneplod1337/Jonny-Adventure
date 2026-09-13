@@ -196,6 +196,7 @@
 [ext_resource type="PackedScene" uid="uid://8dmpj13werc7" path="res://game/objects/items/scenes/tier 2/Sacrosanct.tscn" id="194_6sjhw"]
 [ext_resource type="PackedScene" uid="uid://cmelkf4y78v41" path="res://game/objects/items/scenes/tier 2/Accelerator.tscn" id="195_eealk"]
 [ext_resource type="PackedScene" uid="uid://7c81iauheaea" path="res://game/objects/items/scenes/tier 2/Crown.tscn" id="196_n6x0b"]
+[ext_resource type="PackedScene" uid="uid://6xrfrxfwum25" path="res://game/objects/Equipment/Weapon/equip/Special_weapon_equip.tscn" id="197_6sjhw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -760,25 +761,25 @@ position = Vector2(314, 782)
 position = Vector2(-200, 363)
 
 [node name="Astrolabia" parent="." unique_id=2052924217 instance=ExtResource("141_oteyw")]
-position = Vector2(-495, 488)
+position = Vector2(-472, 484)
 
 [node name="BallLightning" parent="." unique_id=1392559626 instance=ExtResource("142_6kqs7")]
-position = Vector2(-442, 484)
+position = Vector2(-420, 480)
 
 [node name="BlackBrand" parent="." unique_id=1097777955 instance=ExtResource("143_euevc")]
-position = Vector2(-381, 480)
+position = Vector2(-364, 480)
 
 [node name="BlackDeal" parent="." unique_id=1570026820 instance=ExtResource("144_7s242")]
-position = Vector2(-320, 484)
+position = Vector2(-308, 484)
 
 [node name="Clover" parent="." unique_id=1811522804 instance=ExtResource("145_o1tyc")]
-position = Vector2(-271, 480)
+position = Vector2(-253, 482)
 
 [node name="Desperado" parent="." unique_id=610514940 instance=ExtResource("146_lvrqc")]
-position = Vector2(-209, 487)
+position = Vector2(-199, 486)
 
 [node name="Diamond" parent="." unique_id=1413541549 instance=ExtResource("147_uqrar")]
-position = Vector2(-141, 485)
+position = Vector2(-136, 484)
 
 [node name="DragonHeart" parent="." unique_id=2128063774 instance=ExtResource("148_1gxfk")]
 position = Vector2(-79, 486)
@@ -847,7 +848,7 @@ position = Vector2(-478, 370)
 position = Vector2(-531, 374)
 
 [node name="Penetrating" parent="." unique_id=554965135 instance=ExtResource("170_1bfo3")]
-position = Vector2(-138, 306)
+position = Vector2(-131, 305)
 
 [node name="Planetary" parent="." unique_id=293584389 instance=ExtResource("171_3d4py")]
 position = Vector2(-191, 306)
@@ -901,13 +902,16 @@ position = Vector2(117, -378)
 position = Vector2(115, 1011)
 
 [node name="Cyborg" parent="." unique_id=255343700 instance=ExtResource("193_4hvg8")]
-position = Vector2(-744, 492)
+position = Vector2(-694, 486)
 
 [node name="Sacrosanct" parent="." unique_id=1328113183 instance=ExtResource("194_6sjhw")]
-position = Vector2(-676, 492)
+position = Vector2(-632, 484)
 
 [node name="Accelerator" parent="." unique_id=121020180 instance=ExtResource("195_eealk")]
-position = Vector2(-613, 490)
+position = Vector2(-579, 484)
 
 [node name="Crown" parent="." unique_id=1806495879 instance=ExtResource("196_n6x0b")]
-position = Vector2(-552, 488)
+position = Vector2(-528, 488)
+
+[node name="Special_weapon" parent="." unique_id=327284959 instance=ExtResource("197_6sjhw")]
+position = Vector2(168, 586)

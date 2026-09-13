@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bbhvj86ymey0h"]
+
+[ext_resource type="Script" uid="uid://beedooa8xqqlt" path="res://game/combat/combat_effects/special_flask_puddle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://5g0oggu4ubia" path="res://image/effect_sprites/special_weapon_effect/special_effect1.png" id="2_e1"]
+[ext_resource type="Texture2D" uid="uid://ccqcht2etxn1x" path="res://image/effect_sprites/special_weapon_effect/special_effect2.png" id="3_e2"]
+[ext_resource type="Texture2D" uid="uid://72fodnq8do4j" path="res://image/effect_sprites/special_weapon_effect/special_effect3.png" id="4_e3"]
+[ext_resource type="Texture2D" uid="uid://bvpt0y4phjcru" path="res://image/effect_sprites/special_weapon_effect/special_effect4.png" id="5_e4"]
+[ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="6_crit"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_puddle"]
+radius = 15.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_puddle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_e4")
+}],
+"loop": false,
+"name": &"end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e1")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 5.0
+}]
+
+[node name="SpecialFlaskPuddle" type="Area2D"]
+z_index = -1
+collision_mask = 68
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_puddle")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_puddle")
+
+[node name="Crit" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 20
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("6_crit")
+frame = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_damage_timer_timeout"]

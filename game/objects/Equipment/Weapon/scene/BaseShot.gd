@@ -22,6 +22,10 @@ var extra_reload: float = 1.0 # только для слёз множитель 
 @export var hack: int = 0
 ## Сколько рикошетов осталось (0 — без отскока). Пробивание имеет приоритет.
 @export var ricochet: int = 0
+## Число врагов, сквозь которых снаряд проходит, не исчезая (0 — остановка на первом).
+@export var penetration: int = 0
+## Радиус AoE при ударе (0 — только основная цель).
+@export var aoe_radius: float = 0.0
 
 var distance_travelled := 0.0
 var exploded := false
@@ -37,7 +41,6 @@ var enchantment: EnchantmentResource
 ## Доп. зачарование поверх оружия (например Wild_Boots).
 var extra_enchantment: EnchantmentResource
 
-var penetration: int = 0 ## Число врагов, сквозь которых снаряд проходит, не исчезая (0 — остановка на первом).
 var _enemy_hit_count: int = 0
 ## Следующий удар по врагу может восстановить HP (Steal Life).
 var steal_life: bool = false
@@ -399,6 +402,7 @@ func _build_damage_info(target: Node, amount: float) -> DamageInfo:
 	info.enchantment = enchantment
 	info.extra_enchantment = extra_enchantment
 	info.penetration = penetration
+	info.aoe_radius = aoe_radius
 	info.hack = hack
 	var flight_dir := direction.normalized()
 	if flight_dir == Vector2.ZERO:
@@ -534,6 +538,7 @@ func _spawn_spread() -> void:
 		bullet.enchantment = enchantment
 		bullet.extra_enchantment = extra_enchantment
 		bullet.penetration = penetration
+		bullet.aoe_radius = aoe_radius
 		bullet.use_spread = use_spread
 		bullet.pellet_count = pellet_count
 		bullet.spread_angle = spread_angle
@@ -644,6 +649,7 @@ func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2)
 	copy.enchantment = enchantment
 	copy.extra_enchantment = extra_enchantment
 	copy.penetration = penetration
+	copy.aoe_radius = aoe_radius
 	copy.spread_angle = spread_angle
 	copy._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 	copy.base_crit_bonus = base_crit_bonus
@@ -673,6 +679,7 @@ func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
 	bullet.enchantment = enchantment
 	bullet.extra_enchantment = extra_enchantment
 	bullet.penetration = penetration
+	bullet.aoe_radius = aoe_radius
 	bullet.use_spread = use_spread
 	bullet.spread_angle = spread_angle
 	bullet.distance_travelled = distance_travelled
