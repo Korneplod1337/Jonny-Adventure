@@ -210,7 +210,6 @@ hit_points_level = 1.0
 spread_level = 3.0
 range_level = 2.0
 fire_rate_level = 1.0
-start_ability = false
 on_ice = false
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("2_rabuk")]

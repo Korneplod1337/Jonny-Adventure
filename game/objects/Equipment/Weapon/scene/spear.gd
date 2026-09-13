@@ -3,8 +3,8 @@ class_name SpearShot
 
 func _ready() -> void:
 	super()
-	self_damage_multiplier = 0.8
-	extra_reload = 0.8
+	extra_reload = 0.9
+	self_damage_multiplier = 0.95
 
 func _on_frame_changed() -> void:
 	var frame = anim_sprite.frame

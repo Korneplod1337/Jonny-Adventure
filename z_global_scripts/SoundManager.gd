@@ -4,6 +4,7 @@ const COIN_SFX := preload("res://sound/sound/coin_test.mp3")
 const TRACK_ARCADE := preload("res://sound/music/arcade.ogg")
 const TRACK_SOUNDTRACK_MB := preload("res://sound/music/soundtrack_mb.ogg")
 const TRACK_CHEETAH_BOSS_EGYPT := preload("res://sound/music/cheetah_boss_swag_egypt_228_1337.ogg")
+const TRACK_FOREST1 := preload("res://sound/music/Forest1.wav")
 
 const SFX_HEAL := preload("res://sound/sound/heal.mp3")
 const SFX_HIT := preload("res://sound/sound/hit.mp3")
@@ -65,7 +66,8 @@ const REVIVE_MUSIC_FADE_SEC := 5.0
 
 ## Плейлисты по индексу локации: массив словарей {stream, weight}.
 ## Локация 1 (index 0): arcade ~70%, soundtrack_mb ~30%.
-## Локация 2–3 (index 1–2): cheetah_boss_egypt (пока единственный трек).
+## Локация 2 (index 1): cheetah_boss_egypt.
+## Локация 3–4 (index 2–3): Forest1.
 ## Остальные локации временно используют плейлист локации 1.
 var _location_playlists: Dictionary = {}
 
@@ -98,11 +100,15 @@ func _ready() -> void:
 	var location_2_playlist: Array = [
 		{"stream": TRACK_CHEETAH_BOSS_EGYPT, "weight": 100},
 	]
-	# 7 локаций; 4+ пока с плейлистом локации 1
+	var location_3_playlist: Array = [
+		{"stream": TRACK_FOREST1, "weight": 100},
+	]
+	# 7 локаций; 5+ пока с плейлистом локации 1
 	for i in range(7):
 		_location_playlists[i] = location_1_playlist.duplicate(true)
 	_location_playlists[1] = location_2_playlist.duplicate(true)
-	_location_playlists[2] = location_2_playlist.duplicate(true)
+	_location_playlists[2] = location_3_playlist.duplicate(true)
+	_location_playlists[3] = location_3_playlist.duplicate(true)
 
 
 func play(stream: AudioStream, volume_db: float = 0.0, pitch_scale: float = 1.0) -> void:

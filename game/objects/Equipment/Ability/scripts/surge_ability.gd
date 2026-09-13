@@ -12,7 +12,7 @@ var _boost_applied: bool = false
 func _init() -> void:
 	ability_id = "Surge"
 	cooldown_type = CooldownType.TIME
-	cooldown_time = 3.0
+	cooldown_time = 4.0
 
 
 func activate() -> bool:

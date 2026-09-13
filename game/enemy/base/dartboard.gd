@@ -6,16 +6,24 @@ var dps: float = 0.0
 var total_damage_recent: float = 0.0  # Сумма урона за последние 2 сек
 var no_damage_timer: float = 0.0      # Счетчик без хита
 var hit_time: float = 0.0
+var hit_count: int = 0
+var time_since_last_hit: float = 0.0
+var show_dps: bool = false
 
 func _physics_process(delta: float) -> void:
 	super(delta)
 	player = get_tree().get_first_node_in_group("player")
 	no_damage_timer += delta
-	hit_time += delta
+	if hit_count > 0:
+		hit_time += delta
+		time_since_last_hit += delta
 	if no_damage_timer >= 2.0:
 		total_damage_recent = 0.0
 		dps = 0.0
-		hit_time = 0.5
+		hit_time = 0.0
+		hit_count = 0
+		time_since_last_hit = 0.0
+		show_dps = false
 		label.hide()
 	update_label()
 
@@ -43,10 +51,31 @@ func hit(damage: float, clear:= false) -> void:
 	damage_last_hit = damage
 	total_damage_recent += damage
 	no_damage_timer = 0.0
-	dps = total_damage_recent / hit_time
-	print(total_damage_recent, ' / ', hit_time)
-	#super.hit(damage, clear)
+	hit_count += 1
+
+	if hit_count == 1:
+		# Интервал ещё неизвестен — DPS не показываем
+		hit_time = 0.0
+		time_since_last_hit = 0.0
+		dps = 0.0
+		show_dps = false
+	elif hit_count == 2:
+		# Интервал 1→2 × 2 ≈ окно включая задержку до первого выстрела
+		hit_time = time_since_last_hit * 2.0
+		dps = total_damage_recent / hit_time
+		show_dps = true
+		time_since_last_hit = 0.0
+	else:
+		dps = total_damage_recent / hit_time
+		time_since_last_hit = 0.0
 
 
 func update_label() -> void:
-	label.text = "Last hit = %.1f\nDPS: %.1f" % [damage_last_hit, dps]
+	if show_dps:
+		label.text = "Total: %.1f\nLast hit = %.1f\nDPS: %.1f" % [
+			total_damage_recent, damage_last_hit, dps
+		]
+	else:
+		label.text = "Total: %.1f\nLast hit = %.1f" % [
+			total_damage_recent, damage_last_hit
+		]

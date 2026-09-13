@@ -403,9 +403,9 @@ Owerall:
 		 base_damage: 				float = 25.0
 		 base_spread: 				float = 14.0
 		 base_range: 				float = 150.0
-		 base_fire_rate: 			float = 0.5
+		 base_fire_rate: 			float = 0.4
 		 hit_points_level 	float = 2.0
-		 fire_rate_level: 	float = 2.0
+		 fire_rate_level: 	float = 3.0
 		
 	Jonnytta -
 		открывается -  пройти 1 локу
@@ -424,11 +424,23 @@ Owerall:
 		открывает -
 
 	Jovita - 
-		быстрая, счастливая но мало хп и scatterhand
+		открывается - пройти 4 локу (казино)
+		оружие scatterhand
+		Итоговое хп 1/1/0/2
+		 base_max_hp: 				int  = 1
+		 base_move_speed:			float = 260.0
+		 base_luck: 					float = 0.4
+		 base_magic: 				float = 0.0
+		 base_damage: 				float = 25.0
+		 base_spread: 				float = 14.0
+		 base_range: 				float = 140.0
+		 base_fire_rate: 			float = 0.5
+		 luck_level			float = 4.0
+		 move_speed_level	float = 5.0
+		 hit_points_level 	float = 2.0
 		имя означает «счастливая»
-		
-		открывается -   пройти 4 локу (казино)
 		открывает - 
+		
 	Альтернативный Джонни (красный) JonnyAlt
 		Мишени становятся со скином Джонни
 		test_shot
