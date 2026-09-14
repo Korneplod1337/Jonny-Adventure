@@ -120,7 +120,7 @@ animations = [{
 [resource]
 script = ExtResource("1_skin")
 id = "default_alt"
-display_name = "Steve"
+display_name = "avto MAT1C"
 unlocked_by_default = false
 textures_folder = "res://image/players/Jonny_skins"
 body_frames = SubResource("SpriteFrames_body")

@@ -142,7 +142,6 @@ var POOLS := {
 		{"id": "gigantring", 	"scene": preload("res://game/objects/items/scenes/tier 2/GigantRing.tscn"), "tier": 2},
 		#{"id": "occult", 		"scene": preload("res://game/objects/items/scenes/tier 2/Occult.tscn"), "tier": 2},
 		#{"id": "markoftenebris","scene": preload("res://game/objects/items/scenes/tier 2/MarkOfTenebris.tscn"), "tier": 2},
-		#{"id": "magicseal", 	"scene": preload("res://game/objects/items/scenes/tier 2/MagicSeal.tscn"), "tier": 2},
 		#{"id": "genomemap", 	"scene": preload("res://game/objects/items/scenes/tier 2/GenomeMap.tscn"), "tier": 2},
 		#{"id": "toycastle", 	"scene": preload("res://game/objects/items/scenes/tier 2/ToyCastle.tscn"), "tier": 2},
 		{"id": "ironmaiden", 	"scene": preload("res://game/objects/items/scenes/tier 2/IronMaiden.tscn"), "tier": 2},
@@ -151,7 +150,9 @@ var POOLS := {
 		#{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
 		#{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
 		{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
-
+		#{"id": "magicseal", 	"scene": preload("res://game/objects/items/scenes/tier 2/MagicSeal.tscn"), "tier": 2} treasure
+		
+		
 		#{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
 
 		#{"id": "card6", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card6.tscn"), 		"tier": 4},

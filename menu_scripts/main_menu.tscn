@@ -55,8 +55,6 @@
 [ext_resource type="Texture2D" uid="uid://ck8nq5ikn4h5a" path="res://image/main_menu/char_select_1.png" id="45_t7jce"]
 [ext_resource type="FontFile" uid="uid://da2aij2x8g1mb" path="res://Fonts/JonnyAdventureFont2.ttf" id="46_1exqm"]
 [ext_resource type="Texture2D" uid="uid://dogalfqy0wwvh" path="res://image/main_menu/char_select_2.png" id="47_ao1gk"]
-[ext_resource type="Texture2D" uid="uid://dgfi13wcjnhwa" path="res://image/main_menu/char_select_1_select.png" id="47_x8o75"]
-[ext_resource type="Texture2D" uid="uid://ddoju64hqdmr0" path="res://image/main_menu/char_select_2_select.png" id="48_kmf6r"]
 [ext_resource type="Script" uid="uid://jyn34jplqxu6" path="res://menu_scripts/diff_select_menu.gd" id="49_qyqc0"]
 [ext_resource type="Texture2D" uid="uid://bhk82x5qqd0do" path="res://image/main_menu/diff_select.png" id="50_jsmax"]
 [ext_resource type="Texture2D" uid="uid://bpctbrutib668" path="res://image/main_menu/button_easy.png" id="51_e4x8i"]
@@ -64,23 +62,34 @@
 [ext_resource type="Texture2D" uid="uid://cwcve060opkbo" path="res://image/main_menu/button_hard.png" id="53_pw383"]
 [ext_resource type="Script" uid="uid://rf5hnoay7fia" path="res://menu_scripts/CharacterSelectEntry.gd" id="54_char_entry"]
 [ext_resource type="Script" uid="uid://0h8twd6w5m6c" path="res://menu_scripts/CharacterSkin.gd" id="54_char_skin"]
+[ext_resource type="Texture2D" uid="uid://445blux3ucxh" path="res://image/main_menu/char_select_1_select1.png" id="54_yl4kq"]
 [ext_resource type="Resource" uid="uid://ci7clfxl3d4ko" path="res://game/player/skins/jonny_default.tres" id="55_jonny_skin"]
 [ext_resource type="Resource" uid="uid://bvqvahldj4l6m" path="res://game/player/skins/jonny_default_alt.tres" id="56_jonny_skin_alt"]
 [ext_resource type="Resource" uid="uid://c2mc8epnvn3hw" path="res://game/player/skins/jonnytta_default.tres" id="57_jonnytta_skin"]
 [ext_resource type="Texture2D" uid="uid://xgknvutvuned" path="res://image/main_menu/char_select_name_Jonny.png" id="57_name_jonny"]
 [ext_resource type="Texture2D" uid="uid://c5ckpwbn3iiqr" path="res://image/main_menu/char_select_name_Jonnytta.png" id="58_name_jonnytta"]
 [ext_resource type="Texture2D" uid="uid://1a7rcprvo255" path="res://image/main_menu/char_select_name_Joker.png" id="59_name_joker"]
+[ext_resource type="Texture2D" uid="uid://c5kleiv6f865y" path="res://image/main_menu/char_select_1_select2.png" id="60_cyjse"]
+[ext_resource type="Texture2D" uid="uid://ufwg4dfuagh5" path="res://image/main_menu/char_select_name_Jovita.png" id="62_4qakg"]
+[ext_resource type="Texture2D" uid="uid://b1t0pqj7nbpyc" path="res://image/main_menu/char_select_3.png" id="63_mthxo"]
+[ext_resource type="Texture2D" uid="uid://f4cug4w8nx0m" path="res://image/main_menu/char_select_name_JonnyAlt.png" id="64_cyjse"]
+[ext_resource type="Texture2D" uid="uid://0hnayxh5lyct" path="res://image/main_menu/char_select_1_select3.png" id="64_q6fyy"]
 [ext_resource type="Script" uid="uid://dqhbl1wi87kbh" path="res://menu_scripts/patch_note_menu.gd" id="65_gdt60"]
+[ext_resource type="Texture2D" uid="uid://b5mtrypd56h7r" path="res://image/main_menu/char_select_name_AltJonnytta.png" id="66_3w473"]
 [ext_resource type="Texture2D" uid="uid://d2seur3kw6maw" path="res://image/main_menu/patch_note_menu_bg.png" id="66_a8x8j"]
 [ext_resource type="Script" uid="uid://ctuusr116xe67" path="res://menu_scripts/tutorial_menu.gd" id="67_tutscr"]
 [ext_resource type="Texture2D" uid="uid://blewc7533wx23" path="res://image/items/0 tier/ItemHealthPotion.png" id="68_item"]
+[ext_resource type="Texture2D" uid="uid://b3nmy3egsblbw" path="res://image/main_menu/char_select_name_Jo.png" id="68_yl4kq"]
 [ext_resource type="Texture2D" uid="uid://bt81kotqen7yl" path="res://image/interface/stats/Pink_Gem1.png" id="69_empty"]
+[ext_resource type="Texture2D" uid="uid://cf4if3yeciwo4" path="res://image/main_menu/char_select_name_John.png" id="70_mthxo"]
 [ext_resource type="Texture2D" uid="uid://bmqvfwktqvcwb" path="res://image/interface/equip/equip_slots.png" id="70_slots"]
 [ext_resource type="Texture2D" uid="uid://cy5g2dinhwkkw" path="res://image/equip/weapon/sword_equip.png" id="71_sword"]
 [ext_resource type="Texture2D" uid="uid://btfgu7jwcf8xp" path="res://image/equip/ability/dash.png" id="72_dash"]
 [ext_resource type="Texture2D" uid="uid://v64xroqphvob" path="res://image/enchants/fire enchant1.png" id="73_enchant"]
+[ext_resource type="Texture2D" uid="uid://bhw4c7sd7cxhr" path="res://image/main_menu/char_select_name_Joab.png" id="74_q6fyy"]
 [ext_resource type="Texture2D" uid="uid://cpjkcrdccfbo8" path="res://image/equip/weapon/Spit_bullet.png" id="74_tears"]
 [ext_resource type="Texture2D" uid="uid://bknhx5ubqubto" path="res://image/equip/weapon/pistol.png" id="75_gun"]
+[ext_resource type="Texture2D" uid="uid://cnx0jxm4jc3y" path="res://image/main_menu/char_select_name_Joaquin.png" id="76_0dgn4"]
 [ext_resource type="Resource" path="res://game/player/skins/jovita_default.tres" id="80_jovita_skin"]
 [ext_resource type="Resource" path="res://game/player/skins/jonny_alt_default.tres" id="81_jonny_alt_skin"]
 [ext_resource type="Resource" path="res://game/player/skins/jonnytta_alt_default.tres" id="82_jonnytta_alt_skin"]
@@ -151,7 +160,7 @@ script = ExtResource("54_char_entry")
 id = "Jonny"
 display_name = "Jonny"
 portrait = ExtResource("45_t7jce")
-portrait_selected = ExtResource("47_x8o75")
+portrait_selected = ExtResource("54_yl4kq")
 name_texture = ExtResource("57_name_jonny")
 skins = Array[ExtResource("54_char_skin")]([ExtResource("55_jonny_skin"), ExtResource("56_jonny_skin_alt")])
 
@@ -161,7 +170,7 @@ id = "Jonnytta"
 display_name = "Pashe
 (femboy)"
 portrait = ExtResource("47_ao1gk")
-portrait_selected = ExtResource("48_kmf6r")
+portrait_selected = ExtResource("60_cyjse")
 name_texture = ExtResource("58_name_jonnytta")
 skins = Array[ExtResource("54_char_skin")]([ExtResource("57_jonnytta_skin")])
 
@@ -169,15 +178,16 @@ skins = Array[ExtResource("54_char_skin")]([ExtResource("57_jonnytta_skin")])
 script = ExtResource("54_char_entry")
 id = "Jovita"
 display_name = "Jovita"
-name_texture = ExtResource("59_name_joker")
-unlocked = false
+portrait = ExtResource("63_mthxo")
+portrait_selected = ExtResource("64_q6fyy")
+name_texture = ExtResource("62_4qakg")
 skins = Array[ExtResource("54_char_skin")]([ExtResource("80_jovita_skin")])
 
 [sub_resource type="Resource" id="CharEntry_jonny_alt"]
 script = ExtResource("54_char_entry")
 id = "JonnyAlt"
 display_name = "JonnyAlt"
-name_texture = ExtResource("59_name_joker")
+name_texture = ExtResource("64_cyjse")
 unlocked = false
 skins = Array[ExtResource("54_char_skin")]([ExtResource("81_jonny_alt_skin")])
 
@@ -185,7 +195,7 @@ skins = Array[ExtResource("54_char_skin")]([ExtResource("81_jonny_alt_skin")])
 script = ExtResource("54_char_entry")
 id = "JonnyttaAlt"
 display_name = "JonnyttaAlt"
-name_texture = ExtResource("59_name_joker")
+name_texture = ExtResource("66_3w473")
 unlocked = false
 skins = Array[ExtResource("54_char_skin")]([ExtResource("82_jonnytta_alt_skin")])
 
@@ -193,7 +203,7 @@ skins = Array[ExtResource("54_char_skin")]([ExtResource("82_jonnytta_alt_skin")]
 script = ExtResource("54_char_entry")
 id = "Jo"
 display_name = "Jo"
-name_texture = ExtResource("59_name_joker")
+name_texture = ExtResource("68_yl4kq")
 unlocked = false
 skins = Array[ExtResource("54_char_skin")]([ExtResource("83_jo_skin")])
 
@@ -201,7 +211,7 @@ skins = Array[ExtResource("54_char_skin")]([ExtResource("83_jo_skin")])
 script = ExtResource("54_char_entry")
 id = "John"
 display_name = "John"
-name_texture = ExtResource("59_name_joker")
+name_texture = ExtResource("70_mthxo")
 unlocked = false
 skins = Array[ExtResource("54_char_skin")]([ExtResource("84_john_skin")])
 
@@ -217,7 +227,7 @@ skins = Array[ExtResource("54_char_skin")]([ExtResource("85_joker_skin")])
 script = ExtResource("54_char_entry")
 id = "Joab"
 display_name = "Joab"
-name_texture = ExtResource("59_name_joker")
+name_texture = ExtResource("74_q6fyy")
 unlocked = false
 skins = Array[ExtResource("54_char_skin")]([ExtResource("86_joab_skin")])
 
@@ -225,7 +235,7 @@ skins = Array[ExtResource("54_char_skin")]([ExtResource("86_joab_skin")])
 script = ExtResource("54_char_entry")
 id = "Joaquin"
 display_name = "Joaquin"
-name_texture = ExtResource("59_name_joker")
+name_texture = ExtResource("76_0dgn4")
 unlocked = false
 skins = Array[ExtResource("54_char_skin")]([ExtResource("87_joaquin_skin")])
 
@@ -253,6 +263,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("2_72qvv")
+metadata/_edit_use_anchors_ = true
 
 [node name="Button_NewGame" type="Button" parent="start_menu/Control_main" unique_id=22861616]
 layout_mode = 1
@@ -263,6 +274,7 @@ offset_bottom = 182.0
 focus_mode = 0
 icon = ExtResource("2_pv6v7")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Select_NewGame" type="Sprite2D" parent="start_menu/Control_main/Button_NewGame" unique_id=1926639719]
 visible = false
@@ -279,6 +291,7 @@ offset_bottom = 182.0
 focus_mode = 0
 icon = ExtResource("3_fjq68")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Select_Settings" type="Sprite2D" parent="start_menu/Control_main/Button_Settings" unique_id=956673802]
 visible = false
@@ -295,6 +308,7 @@ offset_bottom = 194.0
 focus_mode = 0
 icon = ExtResource("7_misp6")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Select_Quit" type="Sprite2D" parent="start_menu/Control_main/Button_Quit" unique_id=441596983]
 visible = false
@@ -310,6 +324,7 @@ offset_bottom = 88.0
 focus_mode = 0
 icon = ExtResource("9_m0epi")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Select_achivement" type="Sprite2D" parent="start_menu/Control_main/Button_achivement" unique_id=68510486]
 visible = false
@@ -325,6 +340,7 @@ offset_bottom = 88.0
 focus_mode = 0
 icon = ExtResource("11_bnn4y")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Select_stats" type="Sprite2D" parent="start_menu/Control_main/Button_stats" unique_id=564091291]
 visible = false
@@ -340,6 +356,7 @@ offset_bottom = 72.0
 focus_mode = 0
 icon = ExtResource("13_xy68n")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Select_tutorial" type="Sprite2D" parent="start_menu/Control_main/Button_tutorial" unique_id=613215127]
 visible = false
@@ -356,6 +373,7 @@ offset_bottom = -96.0
 focus_mode = 0
 icon = ExtResource("17_3lt5t")
 flat = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Select_patch_note" type="Sprite2D" parent="start_menu/Control_main/Button_patch_note" unique_id=900387114]
 visible = false
@@ -371,6 +389,7 @@ theme_override_font_sizes/font_size = 32
 placeholder_text = "Type your secret code here"
 max_length = 16
 emoji_menu_enabled = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="start_menu/LineEdit" unique_id=745506018]
 layout_mode = 0
@@ -380,6 +399,7 @@ offset_right = 410.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 32
 text = "activate"
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="start_menu" unique_id=2111077641]
 anchors_preset = 3
@@ -395,6 +415,7 @@ theme = ExtResource("13_5uchu")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Ver. Beta 0.3.0"
+metadata/_edit_use_anchors_ = true
 
 [node name="settings_menu" type="Node" parent="." unique_id=981361797]
 
