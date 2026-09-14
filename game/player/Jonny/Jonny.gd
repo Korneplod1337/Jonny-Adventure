@@ -665,8 +665,8 @@ func _build_hp_array() -> Array:
 		for i in range(hp_list.get(t, 0)):
 			hp_array.append({"type": _heart_type_to_int(t),})
 	
-	# 4) Сортировка по типам: 1, 2, 0, 3, 4
-	var order := {1: 0, 2: 1, 0: 2, 3: 3, 4: 4}
+	# 4) Сортировка по типам: 1, 2, 5, 0, 3, 4
+	var order := {1: 0, 2: 1, 5: 2, 0: 3, 3: 4, 4: 5}
 	hp_array.sort_custom(
 		func(a: Dictionary, b: Dictionary) -> bool:
 			var at: int = order.get(a["type"], 999)
@@ -769,6 +769,7 @@ func _emit_stats_changed() -> void:
 	emit_signal("stats_changed", move_speed_level, luck_level, damage_level,\
 	 spread_level, range_level, hit_points_level, fire_rate_level, magic_level)
 	_emit_bonuses_changed()
+	CharacterMedalsManager.try_unlock_john_from_player(self)
 
 func _emit_bonuses_changed() -> void:
 	emit_signal("bonuses_changed", hp_bonus, speed_bonus, luck_bonus, magic_bonus,\

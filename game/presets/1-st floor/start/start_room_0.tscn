@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="3_yfpwr"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
-[ext_resource type="PackedScene" uid="uid://6xrfrxfwum25" path="res://game/objects/Equipment/Weapon/equip/Special_weapon_equip.tscn" id="8_8to1f"]
 [ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="10_1f72t"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="12_r6k7x"]
 
@@ -108,5 +107,5 @@ position = Vector2(-289, 100)
 [node name="Surge_equip" parent="." unique_id=1060883570 instance=ExtResource("10_1f72t")]
 position = Vector2(-203, 98)
 
-[node name="Special_weapon" parent="." unique_id=406102991 instance=ExtResource("8_8to1f")]
-position = Vector2(186, 92)
+[node name="Coin3" parent="." unique_id=1127824908 instance=ExtResource("12_r6k7x")]
+position = Vector2(-205, 12)

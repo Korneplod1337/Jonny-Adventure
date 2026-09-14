@@ -177,6 +177,7 @@ func _render_heart_icon(icon: Node, type: int, side: int) -> void:
 		2: sprite.animation = "green"
 		3: sprite.animation = "blue"
 		4: sprite.animation = "black"
+		5: sprite.animation = "special"
 		0: sprite.animation = "empty"
 		_: sprite.animation = "empty"
 	

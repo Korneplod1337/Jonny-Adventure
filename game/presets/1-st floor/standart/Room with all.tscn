@@ -672,7 +672,7 @@ burn_out_time = 100.0
 player_phy_damage = 0
 
 [node name="lightning" parent="." unique_id=1026476125 instance=ExtResource("107_0qir2")]
-position = Vector2(1201, 1199)
+position = Vector2(-1297, 820)
 mag_damage = 0
 active_duration = 20.0
 

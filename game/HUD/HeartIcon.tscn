@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://ci1mpsbris4mh" path="res://image/interface/HUD/Hearts/green_h1.png" id="8_ndrl2"]
 [ext_resource type="Texture2D" uid="uid://bf40en6t384h6" path="res://image/interface/HUD/Hearts/red_h2.png" id="9_bhwwj"]
 [ext_resource type="Texture2D" uid="uid://coc7t36chbrg1" path="res://image/interface/HUD/Hearts/red_h1.png" id="10_jkaix"]
+[ext_resource type="Texture2D" uid="uid://nshqklgfmt0s" path="res://image/interface/HUD/Hearts/special_h2.png" id="11_special2"]
+[ext_resource type="Texture2D" uid="uid://bifor665bebwc" path="res://image/interface/HUD/Hearts/special_h1.png" id="12_special1"]
 
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_feigw"]
@@ -67,6 +69,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_special2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_special1")
+}],
+"loop": true,
+"name": &"special",
 "speed": 5.0
 }]
 

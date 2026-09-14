@@ -111,6 +111,7 @@ const STATS := {
 	"death_potions_picked": {
 		"desc": "Death potions picked",
 		"show_in_menu": false,
+		"run_scoped": true,
 	},
 	"cards_picked": {
 		"desc": "Cards picked",
@@ -119,10 +120,10 @@ const STATS := {
 		"achievement": {
 			"id": "cards_collector",
 			"name": "Cardmaster",
-			"desc": "Pick up many cards in one run",
-			"goal": 8,
-			"menu_icon":"res://image/achievements/menu_achiv/Joker.png",
-			"hud_popup": "res://image/achievements/hud_achiv/Joker_unlock_hud.png",
+			"desc": "Pick up 10 cards in one run",
+			"goal": 10,
+			"menu_icon": "",
+			"hud_popup": "",
 		},
 	},
 }
@@ -143,6 +144,55 @@ const STANDALONE_ACHIEVEMENTS := {
 		"goal": 1,
 		"menu_icon": "uid://dd3h2d8s2ybqi",
 		"hud_popup": "uid://buyhcb1qmt5gw",
+	},
+	"unlock_jovita": {
+		"name": "Lucky girl",
+		"desc": "Complete location 4 (Casino)",
+		"goal": 1,
+		"menu_icon": "",
+		"hud_popup": "",
+	},
+	"unlock_jonny_alt": {
+		"name": "Red Jonny",
+		"desc": "Complete location 4 as Jonny",
+		"goal": 1,
+		"menu_icon": "",
+		"hud_popup": "",
+	},
+	"unlock_jonnytta_alt": {
+		"name": "Blue Jonnytta",
+		"desc": "Complete location 4 as Jonnytta",
+		"goal": 1,
+		"menu_icon": "",
+		"hud_popup": "",
+	},
+	"unlock_jo": {
+		"name": "Armored",
+		"desc": "Complete location 5 as Jonny and Jonnytta",
+		"goal": 1,
+		"menu_icon": "",
+		"hud_popup": "",
+	},
+	"unlock_john": {
+		"name": "Big John",
+		"desc": "Max HP level or reach 14 heart slots",
+		"goal": 1,
+		"menu_icon": "",
+		"hud_popup": "",
+	},
+	"unlock_joab": {
+		"name": "Necromancer",
+		"desc": "Drink 4 black potions in one run, then win or enter a hatch",
+		"goal": 1,
+		"menu_icon": "",
+		"hud_popup": "",
+	},
+	"unlock_joaquin": {
+		"name": "God gives strength",
+		"desc": "Complete location 6 with every other character",
+		"goal": 1,
+		"menu_icon": "",
+		"hud_popup": "",
 	},
 }
 
@@ -165,6 +215,7 @@ const ITEM_PICKUP_STATS := {
 const ITEM_UNLOCKS := {
 	"first_kill": ["torch"],
 	"cards_collector": ["joker"],
+	"unlock_joab": ["blackdeal"],
 }
 
 ## Разблокировка экипировки в пулах EquipManager при получении достижения.
@@ -178,12 +229,30 @@ const EQUIP_UNLOCKS := {
 		{"pool": "weapon", "equipment_id": "CardWeapon"},
 		{"pool": "all", "equipment_id": "CardWeapon"},
 	],
+	"unlock_jovita": [
+		{"pool": "weapon", "equipment_id": "Scatterhand"},
+		{"pool": "all", "equipment_id": "Scatterhand"},
+	],
 }
 
 ## Разблокировка персонажей в меню выбора (CharacterSelectEntry.id).
 ## Ключ — id достижения из achievement.id выше.
 const CHARACTER_UNLOCKS := {
+	"unlock_jovita": ["Jovita"],
+	"unlock_jonny_alt": ["JonnyAlt"],
+	"unlock_jonnytta_alt": ["JonnyttaAlt"],
+	"unlock_jo": ["Jo"],
+	"unlock_john": ["John"],
 	"cards_collector": ["Joker"],
+	"unlock_joab": ["Joab"],
+	"unlock_joaquin": ["Joaquin"],
+}
+
+## Разблокировка локаций (1-based) при получении достижения.
+const LOCATION_UNLOCKS := {
+	"unlock_jonny_alt": 5,
+	"unlock_jo": 6,
+	"unlock_joaquin": 7,
 }
 
 
@@ -316,6 +385,13 @@ pass
         "my_achievement": ["Joker"],
    b) В main_menu.tscn у персонажа unlocked = false (стартово заблокирован).
    c) char_select_menu.update_character_unlocks() выставит unlocked при открытии меню.
+
+ -----------------------------------------------------------------------------
+ 7b. Достижение → локация (5/6/7)
+   a) Добавь в LOCATION_UNLOCKS:
+        "my_achievement": 5,   # 1-based номер локации
+   b) AchievementManager.unlock_achievement сам вызовет CharacterMedalsManager.unlock_location.
+   c) Локации 2–4 открывает dungeon.gd при прохождении предыдущей; 5–7 — только так.
 
  -----------------------------------------------------------------------------
  8. Временно отключить весь трекинг

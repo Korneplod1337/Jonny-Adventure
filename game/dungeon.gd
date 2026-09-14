@@ -10,14 +10,14 @@ var hud_instance: Node = null
 @export var player_scene: Dictionary = {
 	"Jonny": 		preload("uid://c2ej24f1hgto1"),
 	"Jonnytta": 		preload("uid://b5851ol0emjdx"),
-	"Jovita": 		preload("uid://c2ej24f1hgto1"),
-	"JonnyAlt": 		preload("uid://c2ej24f1hgto1"),
-	"JonnyttaAlt": 	preload("uid://c2ej24f1hgto1"),
-	"Jo": 			preload("uid://c2ej24f1hgto1"),
-	"John": 			preload("uid://c2ej24f1hgto1"),
-	"Joker": 		preload("uid://c2ej24f1hgto1"),
-	"Joab": 			preload("uid://c2ej24f1hgto1"),
-	"Joaquin": 		preload("uid://c2ej24f1hgto1"),
+	"Jovita": 		preload("uid://jgk8mgmh1yil"),
+	"JonnyAlt": 		preload("uid://bcm7v8ot77cj0"),
+	"JonnyttaAlt": 	preload("uid://cw60w77j4na2"),
+	"Jo": 			preload("uid://d03wp68votit7"),
+	"John": 			preload("uid://b7fndy5apfkma"),
+	"Joker": 		preload("uid://cni2jok4pqgdn"),
+	"Joab": 			preload("uid://c07wihgtgms54"),
+	"Joaquin": 		preload("uid://cib4mwo34l505"),
 	}
 var char_name := DungeonManager.selected_character
 var player : CharacterBody2D = player_scene[char_name].instantiate()
@@ -366,6 +366,9 @@ func go_to_next_floor(hatch: Node2D) -> void:
 	var next_loc := -1 if past_last_floor else CharacterMedalsManager.location_index_for_floor(next_floor)
 	var is_location_transition := past_last_floor or next_loc != current_loc
 
+	# Joab: 4 чёрных зелья за забег + любой люк.
+	CharacterMedalsManager.try_unlock_joab_from_run()
+
 	if is_location_transition and CharacterMedalsManager.PROGRESSION_ENABLED:
 		var char_id := str(DungeonManager.selected_character)
 		var completed_1based := current_loc + 1
@@ -376,7 +379,9 @@ func go_to_next_floor(hatch: Node2D) -> void:
 		if not past_last_floor:
 			var next_1based := next_loc + 1
 			if not CharacterMedalsManager.is_location_unlocked(next_1based):
-				newly_unlocked = CharacterMedalsManager.unlock_location(next_1based)
+				# 2–4 открываются прохождением предыдущей; 5–7 — только достижениями.
+				if next_1based <= 4:
+					newly_unlocked = CharacterMedalsManager.unlock_location(next_1based)
 				should_victory = true
 
 		CharacterMedalsManager.notify_location_completed(char_id, completed_1based, newly_unlocked)
@@ -430,6 +435,7 @@ func go_to_next_floor(hatch: Node2D) -> void:
 
 func _finish_run_with_victory(hatch: Node2D, completed_location_1based: int, newly_unlocked_next: bool) -> void:
 	_reset_player_interactions()
+	CharacterMedalsManager.try_unlock_joab_from_run()
 	var hatch_center := hatch.global_position
 	if player.has_method("play_hatch_exit"):
 		await player.play_hatch_exit(hatch_center)

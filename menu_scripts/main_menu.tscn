@@ -81,6 +81,14 @@
 [ext_resource type="Texture2D" uid="uid://v64xroqphvob" path="res://image/enchants/fire enchant1.png" id="73_enchant"]
 [ext_resource type="Texture2D" uid="uid://cpjkcrdccfbo8" path="res://image/equip/weapon/Spit_bullet.png" id="74_tears"]
 [ext_resource type="Texture2D" uid="uid://bknhx5ubqubto" path="res://image/equip/weapon/pistol.png" id="75_gun"]
+[ext_resource type="Resource" path="res://game/player/skins/jovita_default.tres" id="80_jovita_skin"]
+[ext_resource type="Resource" path="res://game/player/skins/jonny_alt_default.tres" id="81_jonny_alt_skin"]
+[ext_resource type="Resource" path="res://game/player/skins/jonnytta_alt_default.tres" id="82_jonnytta_alt_skin"]
+[ext_resource type="Resource" path="res://game/player/skins/jo_default.tres" id="83_jo_skin"]
+[ext_resource type="Resource" path="res://game/player/skins/john_default.tres" id="84_john_skin"]
+[ext_resource type="Resource" path="res://game/player/skins/joker_default.tres" id="85_joker_skin"]
+[ext_resource type="Resource" path="res://game/player/skins/joab_default.tres" id="86_joab_skin"]
+[ext_resource type="Resource" path="res://game/player/skins/joaquin_default.tres" id="87_joaquin_skin"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ni8h3"]
 animations = [{
@@ -157,46 +165,69 @@ portrait_selected = ExtResource("48_kmf6r")
 name_texture = ExtResource("58_name_jonnytta")
 skins = Array[ExtResource("54_char_skin")]([ExtResource("57_jonnytta_skin")])
 
-[sub_resource type="Resource" id="Resource_tfjan"]
+[sub_resource type="Resource" id="CharEntry_jovita"]
 script = ExtResource("54_char_entry")
 id = "Jovita"
-display_name = "---"
+display_name = "Jovita"
 name_texture = ExtResource("59_name_joker")
 unlocked = false
+skins = Array[ExtResource("54_char_skin")]([ExtResource("80_jovita_skin")])
 
-[sub_resource type="Resource" id="Resource_mup2x"]
+[sub_resource type="Resource" id="CharEntry_jonny_alt"]
 script = ExtResource("54_char_entry")
 id = "JonnyAlt"
-display_name = "---"
-portrait = ExtResource("59_name_joker")
+display_name = "JonnyAlt"
 name_texture = ExtResource("59_name_joker")
 unlocked = false
-metadata/_custom_type_script = "uid://rf5hnoay7fia"
+skins = Array[ExtResource("54_char_skin")]([ExtResource("81_jonny_alt_skin")])
 
-[sub_resource type="Resource" id="Resource_3lt5t"]
+[sub_resource type="Resource" id="CharEntry_jonnytta_alt"]
 script = ExtResource("54_char_entry")
 id = "JonnyttaAlt"
-display_name = "Jo???"
-portrait_locked = ExtResource("59_name_joker")
+display_name = "JonnyttaAlt"
 name_texture = ExtResource("59_name_joker")
 unlocked = false
-metadata/_custom_type_script = "uid://rf5hnoay7fia"
+skins = Array[ExtResource("54_char_skin")]([ExtResource("82_jonnytta_alt_skin")])
+
+[sub_resource type="Resource" id="CharEntry_jo"]
+script = ExtResource("54_char_entry")
+id = "Jo"
+display_name = "Jo"
+name_texture = ExtResource("59_name_joker")
+unlocked = false
+skins = Array[ExtResource("54_char_skin")]([ExtResource("83_jo_skin")])
+
+[sub_resource type="Resource" id="CharEntry_john"]
+script = ExtResource("54_char_entry")
+id = "John"
+display_name = "John"
+name_texture = ExtResource("59_name_joker")
+unlocked = false
+skins = Array[ExtResource("54_char_skin")]([ExtResource("84_john_skin")])
 
 [sub_resource type="Resource" id="CharEntry_joker"]
 script = ExtResource("54_char_entry")
 id = "Joker"
-display_name = "-"
-portrait_locked = ExtResource("59_name_joker")
+display_name = "Joker"
 name_texture = ExtResource("59_name_joker")
 unlocked = false
+skins = Array[ExtResource("54_char_skin")]([ExtResource("85_joker_skin")])
 
-[sub_resource type="Resource" id="Resource_gr0d0"]
+[sub_resource type="Resource" id="CharEntry_joab"]
 script = ExtResource("54_char_entry")
-id = "Jo"
-display_name = "Jo???"
-portrait_locked = ExtResource("59_name_joker")
+id = "Joab"
+display_name = "Joab"
+name_texture = ExtResource("59_name_joker")
 unlocked = false
-metadata/_custom_type_script = "uid://rf5hnoay7fia"
+skins = Array[ExtResource("54_char_skin")]([ExtResource("86_joab_skin")])
+
+[sub_resource type="Resource" id="CharEntry_joaquin"]
+script = ExtResource("54_char_entry")
+id = "Joaquin"
+display_name = "Joaquin"
+name_texture = ExtResource("59_name_joker")
+unlocked = false
+skins = Array[ExtResource("54_char_skin")]([ExtResource("87_joaquin_skin")])
 
 [node name="MainMenu" type="Node2D" unique_id=1398218460]
 
@@ -622,7 +653,7 @@ layout_mode = 2
 [node name="Char_select_menu" type="CanvasLayer" parent="." unique_id=504680637]
 visible = false
 script = ExtResource("43_bkji5")
-characters = Array[ExtResource("54_char_entry")]([SubResource("CharEntry_jonny"), SubResource("CharEntry_jonnytta"), SubResource("Resource_tfjan"), SubResource("Resource_mup2x"), SubResource("Resource_3lt5t"), SubResource("CharEntry_joker"), SubResource("Resource_gr0d0")])
+characters = Array[ExtResource("54_char_entry")]([SubResource("CharEntry_jonny"), SubResource("CharEntry_jonnytta"), SubResource("CharEntry_jovita"), SubResource("CharEntry_jonny_alt"), SubResource("CharEntry_jonnytta_alt"), SubResource("CharEntry_jo"), SubResource("CharEntry_john"), SubResource("CharEntry_joker"), SubResource("CharEntry_joab"), SubResource("CharEntry_joaquin")])
 
 [node name="char_bg" type="Sprite2D" parent="Char_select_menu" unique_id=1365344464]
 scale = Vector2(2, 2)

@@ -16,8 +16,16 @@ func _ready() -> void:
 	StatsManager.stat_changed.connect(_on_stat_changed)
 	# StatsManager грузится после нас — перепроверяем пороги на следующем кадре.
 	call_deferred("_recheck_stat_achievements")
+	call_deferred("_apply_location_unlocks_from_achievements")
 	#unlock_achievement('Alpha test')
 
+
+func _apply_location_unlocks_from_achievements() -> void:
+	for ach_id in AchivStatsRegistry.LOCATION_UNLOCKS.keys():
+		if not is_unlocked(ach_id):
+			continue
+		var loc: int = int(AchivStatsRegistry.LOCATION_UNLOCKS[ach_id])
+		CharacterMedalsManager.unlock_location(loc)
 
 func _on_stat_changed(stat_name: String, new_value: float) -> void:
 	if not AchivStatsRegistry.TRACKING_ENABLED:
@@ -49,6 +57,9 @@ func unlock_achievement(key: String) -> void:
 		return
 	ach["unlocked"] = true
 	save_achievements()
+	if AchivStatsRegistry.LOCATION_UNLOCKS.has(key):
+		var loc: int = int(AchivStatsRegistry.LOCATION_UNLOCKS[key])
+		CharacterMedalsManager.unlock_location(loc)
 	# Всегда уведомляем слушателей (ItemManager / EquipManager / меню).
 	# HUD сам игнорирует пустой путь и "-".
 	achievement_unlocked.emit(ach["popup_window"])

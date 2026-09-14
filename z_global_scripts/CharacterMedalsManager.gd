@@ -126,14 +126,51 @@ func award_location_medal(character_id: String, location_0based: int) -> void:
 	set_medal(character_id, location_0based, true)
 
 
-## Заготовка под будущие unlock’и персонажей/предметов через AchivementAndStatsRegistry.
+## Разблокировки персонажей/локаций после прохождения локации.
 func notify_location_completed(
-	_character_id: String,
-	_completed_location_1based: int,
+	character_id: String,
+	completed_location_1based: int,
 	_newly_unlocked_next: bool
 ) -> void:
 	if not PROGRESSION_ENABLED:
 		return
+	if completed_location_1based >= 4:
+		AchievementManager.unlock_achievement("unlock_jovita")
+	if completed_location_1based >= 4 and character_id == "Jonny":
+		AchievementManager.unlock_achievement("unlock_jonny_alt")
+	if completed_location_1based >= 4 and character_id == "Jonnytta":
+		AchievementManager.unlock_achievement("unlock_jonnytta_alt")
+	# Jo: медаль локации 5 (index 4) у Jonny и Jonnytta.
+	if is_medal_unlocked("Jonny", 4) and is_medal_unlocked("Jonnytta", 4):
+		AchievementManager.unlock_achievement("unlock_jo")
+	# Joaquin: медаль локации 6 (index 5) у всех, кроме него.
+	var all_loc6 := true
+	for other_id in CHARACTER_IDS:
+		if other_id == "Joaquin":
+			continue
+		if not is_medal_unlocked(other_id, 5):
+			all_loc6 = false
+			break
+	if all_loc6:
+		AchievementManager.unlock_achievement("unlock_joaquin")
+	try_unlock_joab_from_run()
+
+
+## 4 чёрных зелья за забег + люк или победа.
+func try_unlock_joab_from_run() -> void:
+	var pot_data: Dictionary = StatsManager.get_stat_display("death_potions_picked")
+	if float(pot_data.get("value", 0.0)) >= 4.0:
+		AchievementManager.unlock_achievement("unlock_joab")
+
+
+func try_unlock_john_from_player(player: Node) -> void:
+	if player == null:
+		return
+	var hp_lvl := float(player.get("hit_points_level"))
+	var max_hp := int(player.get("max_hp"))
+	var computed_hp := int(StatManager.get_stat(player, "hp"))
+	if hp_lvl >= 10.0 or max_hp >= 14 or computed_hp >= 14:
+		AchievementManager.unlock_achievement("unlock_john")
 
 
 func get_last_character() -> String:

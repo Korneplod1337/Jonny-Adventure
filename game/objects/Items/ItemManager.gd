@@ -11,7 +11,7 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'sp
  'exorcism', 'virus', 'basilisk',
  'guillotine', 'wraith', 'target', 'radar',
  'luckycoin', 'ez', 'petroglyph', 'forceshield', 'blueprint',
- 'guts', 'blackdeal', 'ouroboros', 'fernlucky', 'diamond', 'clover',
+ 'guts', 'ouroboros', 'fernlucky', 'diamond', 'clover',
  'magicgrimoire', 'manaflame', 'amplifier', 'blackbrand', 'desperado', 'wildwind',
  'zerotohundred', 'salamandra', 'dragonheart', 'uranium', 'executionersaxe', 'eagleseye',
  'laserscope', 'scope', 'hunter', 'astrolabia', 'planetary', 'telescope', 'lantern',
@@ -150,7 +150,7 @@ var POOLS := {
 		#{"id": "crown", 		"scene": preload("res://game/objects/items/scenes/tier 2/Crown.tscn"), "tier": 2},
 		#{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
 		#{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
-		#{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
+		{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
 
 		#{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
 
@@ -261,7 +261,7 @@ var POOLS := {
 		#{"id": "crown", 		"scene": preload("res://game/objects/items/scenes/tier 2/Crown.tscn"), "tier": 2},
 		#{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
 		#{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
-		#{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
+		{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
 
 	],
 	"chest": [

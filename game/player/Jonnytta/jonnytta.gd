@@ -7,17 +7,23 @@ const START_SWORD_EQUIP := preload("res://game/objects/Equipment/Weapon/equip/Sw
 ## считаются ДО _ready() и иначе остаются с дефолтами Jonny.
 func _init() -> void:
 	player_name = "Jonnytta"
-	base_fire_rate = 0.5
 	base_max_hp = 5
 	base_move_speed = 250.0
 	base_luck = 0.2
 	base_magic = 0.0
 	base_damage = 32.0
 	base_spread = 42.0
-	base_range = 180.0
+	base_range = 160.0
 	base_fire_rate = 0.5
+	# Сброс наследства Jonny (hit_points=2, fire_rate=3), затем свои уровни.
+	hit_points_level = 1.0
+	move_speed_level = 1.0
+	luck_level = 1.0
+	magic_level = 1.0
+	damage_level = 1.0
 	spread_level = 3.0
 	range_level = 2.0
+	fire_rate_level = 1.0
 
 
 func _ready() -> void:

@@ -1,4 +1,38 @@
 ToDo:
+	ID		Условие		Открывает
+	unlock_jovita
+	Пройти локацию 4 (любым)
+	Jovita + Scatterhand
+
+	unlock_jonny_alt
+	Пройти локацию 4 за Jonny
+	JonnyAlt + локация 5
+
+	unlock_jonnytta_alt
+	Пройти локацию 4 за Jonnytta
+	JonnyttaAlt
+
+	unlock_jo
+	Медаль локации 5 у Jonny и Jonnytta (AND)
+	Jo + локация 6
+
+	unlock_john
+	hit_points_level >= 10 ИЛИ max_hp >= 14
+	John
+
+	cards_collector
+	10 карт предметов за один забег
+	Joker + item joker + CardWeapon
+
+	unlock_joab
+	4× healblack за забег, затем люк или победа
+	Joab + item blackdeal
+
+	unlock_joaquin
+	Медаль локации 6 у всех 9 остальных
+	Joaquin + локация 7
+	
+	
 	враг нужно попасть и убить, иначе бежит на тебя и взрывается крипер
 	мумия
 	не все комнаты разблокированы изначально
@@ -460,7 +494,6 @@ Owerall:
 		открывает - 5-ю локу (шахта)
 	
 	Альт Джоннитта (синяя) 
-		открывается -  пройти 4 локу за Джоннитту
 		оружие Spear
 		Мишени становятся со скином Джонни
 		особенность- все оружия меньше scale в 2 раза, но их 3.
@@ -493,7 +526,7 @@ Owerall:
 		 base_magic: 				float = 0.2
 		 base_damage: 				float = 32.0
 		 base_spread: 				float = 0.0
-		 base_range: 				float = 150.0
+		 base_range: 				float = 180.0
 		 base_fire_rate: 			float = 0.5
 		 range_level: 		float = 5.0
 		 magic_level: 		float = 2.0
@@ -501,11 +534,12 @@ Owerall:
 		открывает - 6-ю локу
 	
 	John - 
-		Жиробасина без мув/атак спида, но с ебейшим снарядом 
+		scale всей модельки по умолчанию не 1.9x1.9, а 2.25x1.75
 		трек биг джон
 		открывается - замаксить стат хп/иметь 14 слотов для сердец
 		оружие Jonny_shot_Alt
-		особенность - любое оружие больше в 1.5 раза, а scale игрока больше на 0.25
+		особенность - любое эквипнутое оружие scale x2 раза, кроме ближнего. Ближнее оружие (мечи например) в x1.5
+			и так же имеет +10 урона (в самом конце любых сложений и бафов)
 			Итоговое хп 6/0/2/0
 		 base_max_hp: 				int  = 6
 		 base_move_speed:			float = 200.0
@@ -513,7 +547,7 @@ Owerall:
 		 base_magic: 				float = 0.2
 		 base_damage: 				float = 50.0
 		 base_spread: 				float = 16.0
-		 base_range: 				float = 150.0
+		 base_range: 				float = 180.0
 		 base_fire_rate: 			float = 1.0
 		 hit_points_level 	float = 3.0
 		 spread_level 		float = 2.0
@@ -536,7 +570,7 @@ Owerall:
 		 move_speed_level 	float = 2.0
 		
 		открывается - подобранно 10 карт предметов
-		открывает - предмет джокер и CardWeapon
+		открывает - предмет Joker и CardWeapon
 	Joab - 
 		чёрное хп, necromancer
 		особенность - хилится от чёрных зелий, все красные зелья наносят урон
@@ -550,11 +584,11 @@ Owerall:
 		 base_magic: 				float = 0.4
 		 base_damage: 				float = 20.0
 		 base_spread: 				float = 10.0
-		 base_range: 				float = 160.0
+		 base_range: 				float = 130.0
 		 base_fire_rate: 			float = 0.4
 		библейское имя, означает «Яхве — отец» на иврите, поклоняется Кересу
 		открывается - выиграть после того как выпил 4 чёрных зелья
-		открывает - черепок
+		открывает - Black Deal
 	
 	Joaquin 
 		#имя испанское, означает «Бог даёт силу»
@@ -568,7 +602,7 @@ Owerall:
 		 base_magic: 				float = 0.3
 		 base_damage: 				float = 25.3
 		 base_spread: 				float = 14.3
-		 base_range: 				float = 150.3
+		 base_range: 				float = 153.0
 		 base_fire_rate: 			float = 0.53
 
 		открывается- пройти за всех остальных персонажей 6 локу
