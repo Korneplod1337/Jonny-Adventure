@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bl7cqej1s468g"]
 
-[ext_resource type="Script" path="res://game/objects/Equipment/boots/wild_boots.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bl7cqej1sr8lg" path="res://game/objects/Equipment/boots/wild_boots.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bpasm3wvosfet" path="res://image/equip/boots/wild_boots13.png" id="2_icon"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 

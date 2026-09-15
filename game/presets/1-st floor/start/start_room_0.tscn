@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dk2be1gdyetpo"]
 
-[ext_resource type="Texture2D" uid="uid://bren70dc4jfro" path="res://image/rooms/1-st floor/background1.png" id="1_h6u4y"]
-[ext_resource type="Texture2D" uid="uid://cxlfiq2v1l7w6" path="res://image/rooms/1-st floor/background_bounds.png" id="2_2ue0t"]
+[ext_resource type="Texture2D" uid="uid://cyci6n11ayu43" path="res://image/rooms/1-st floor/background1.png" id="1_h6u4y"]
+[ext_resource type="Texture2D" uid="uid://k75crvu7d5by" path="res://image/rooms/1-st floor/background_bounds.png" id="2_2ue0t"]
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="3_yfpwr"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
 [ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="10_1f72t"]
-[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="12_r6k7x"]
+[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/Coins/Coin.tscn" id="12_r6k7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)

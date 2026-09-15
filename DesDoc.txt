@@ -358,13 +358,25 @@ Owerall:
 
 
 -------------- Заклинания --------------
-	Нужно продумать:
-	деши, 
-	щиты, 
-	рулетка
-	и т.д.
-
-
+	Dash const DASH_DISTANCE := 180.0 SPEED_MULT := 4.0 cooldown_time = 20.0
+	CoinRoulette SUCCESS_CHANCE := 0.6
+	CrackedEruption  CONE_DEG := 45.0 RANGE_MULT := 0.25 MAGIC_PER_SHOT := 0.15 cooldown_time = 2.0
+	Ember  cooldown_time = 5.0 const BASE_DAMAGE := 40.0 MAGIC_DAMAGE_STEP := 0.2
+	Shield 
+	StealLife
+	TatteredTrade 
+	DoomedChance
+	MiromirBlessing
+	BoonOfKeres
+	Surge
+	GoldHoard
+	ThePilgrimage
+	Expedition
+	MiromirGift
+	poisonoting potions- замена на чёрные зелья
+	KeresCall
+	MariaCall
+	
 -------------- Модификаторы уровня --------------
 	Красные:
 	Invasion			Нашествие + 50% кол-ву									✓

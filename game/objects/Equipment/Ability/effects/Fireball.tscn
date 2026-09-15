@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://df7bbmmt0s5xg"]
 
 [ext_resource type="Script" uid="uid://d2amsxteof63d" path="res://game/objects/Equipment/Ability/scripts/fireball.gd" id="1_fireball"]
-[ext_resource type="Texture2D" uid="uid://g6sn5jk4mhci" path="res://image/effect_sprites/fireball/fireball1.png" id="2_fb1"]
-[ext_resource type="Texture2D" uid="uid://ddxq2sgnnsof1" path="res://image/effect_sprites/fireball/fireball2.png" id="3_fb2"]
-[ext_resource type="Texture2D" uid="uid://pvkqwaim0c10" path="res://image/effect_sprites/fireball/fireball4.png" id="4_6vgvc"]
-[ext_resource type="Texture2D" uid="uid://cjqrvmets36wg" path="res://image/effect_sprites/fireball/fireball3.png" id="5_o18lt"]
+[ext_resource type="Texture2D" uid="uid://bn2oavdfjf2jf" path="res://image/effect_sprites/fireball/fireball1.png" id="2_fb1"]
+[ext_resource type="Texture2D" uid="uid://ddxhpg4r53cd8" path="res://image/effect_sprites/fireball/fireball2.png" id="3_fb2"]
+[ext_resource type="Texture2D" uid="uid://cdsbsff2gi6ge" path="res://image/effect_sprites/fireball/fireball4.png" id="4_6vgvc"]
+[ext_resource type="Texture2D" uid="uid://cbe3aibj1malw" path="res://image/effect_sprites/fireball/fireball3.png" id="5_o18lt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hit"]
 radius = 14.035668
