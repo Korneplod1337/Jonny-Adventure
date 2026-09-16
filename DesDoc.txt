@@ -1,4 +1,5 @@
 ToDo:
+	в дверь не пройти. Just teleported убрать
 	ID		Условие		Открывает
 	unlock_jovita
 	Пройти локацию 4 (любым)
