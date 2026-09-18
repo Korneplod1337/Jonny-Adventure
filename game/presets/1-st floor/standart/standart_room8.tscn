@@ -126,7 +126,7 @@ input_pickable = false
 shape = SubResource("RectangleShape2D_yij7n")
 
 [node name="Shrine" parent="." unique_id=1541189603 instance=ExtResource("5_j0wbj")]
-position = Vector2(-536, -270)
+position = Vector2(-480, -212)
 
 [node name="Spider_big" parent="." unique_id=2133096440 instance=ExtResource("7_qyodo")]
 

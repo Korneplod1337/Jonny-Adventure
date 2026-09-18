@@ -18,7 +18,10 @@ func _on_interact() -> void:
 	var luck = StatManager.get_stat(player, 'luck')
 	if interactable.is_interactable:
 		SoundManager.play_skrip()
-		EquipManager.spawn(equip_pool, equip_tier, self.global_position + Vector2(00, -80))
+		var eq_tiers: Array = equip_tier
+		if player and player.has_method("get_chest_equip_tiers"):
+			eq_tiers = player.get_chest_equip_tiers(equip_tier)
+		EquipManager.spawn(equip_pool, eq_tiers, self.global_position + Vector2(0, -70))
 		animated_sprite_2d.frame = 1
 		interactable.is_interactable = false
 		_start_despawn_sequence()

@@ -22,7 +22,6 @@ const ROOM_TYPE_TO_ANIM := {
 @export var entrance_offset: Vector2  # локальный оффсет точки появления внутри целевой комнаты
 
 var active := true
-var just_teleported := false
 var _player_inside: Node2D = null
 var _hold_timer := 0.0
 
@@ -66,11 +65,11 @@ func _physics_process(delta: float) -> void:
 	if _hold_timer < HOLD_TIME:
 		return
 
-	active = false
 	_hold_timer = 0.0
-	var dungeon := get_tree().current_scene
-	dungeon.teleport_player(self, _player_inside)
+	var body := _player_inside
 	_player_inside = null
+	var dungeon := get_tree().current_scene
+	dungeon.teleport_player(self, body)
 
 
 func _is_pressing_door_direction() -> bool:
@@ -93,21 +92,8 @@ func _on_body_exited(body: Node2D) -> void:
 	if _player_inside == body:
 		_player_inside = null
 		_hold_timer = 0.0
-	if just_teleported:
-		just_teleported = false
-		active = true
-		return
-	active = true
-
-
-func set_temporarily_inactive() -> void:
-	active = false
-	just_teleported = true
-	_player_inside = null
-	_hold_timer = 0.0
 
 
 func reactivate_after_room_clear() -> void:
 	active = true
-	just_teleported = false
 	_hold_timer = 0.0

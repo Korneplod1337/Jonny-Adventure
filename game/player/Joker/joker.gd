@@ -6,7 +6,7 @@ const START_CARD_EQUIP := preload("res://game/objects/Equipment/Weapon/equip/Car
 
 func _init() -> void:
 	player_name = "Joker"
-	base_max_hp = 3
+	base_max_hp = 4
 	base_move_speed = 260.0
 	base_luck = 0.4
 	base_magic = 0.4

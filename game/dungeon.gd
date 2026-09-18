@@ -289,8 +289,6 @@ func teleport_player(door: Node, body: Node2D) -> void:
 	if spawn_door != null:
 		spawn_pos = spawn_door.global_position
 
-	# временно отключаем эту дверь
-	spawn_door.call_deferred("set_temporarily_inactive")
 	current_room_pos = target_pos
 	body.global_position = spawn_pos
 	refresh_minimap()

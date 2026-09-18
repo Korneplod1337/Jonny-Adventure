@@ -9,10 +9,9 @@ var _spin_angle := 0.0
 
 
 func _ready() -> void:
-	penetration = 1
 	extra_reload = 1.1
-	self_damage_multiplier = 0.75
-	self_range_multiplier = 0.75
+	self_damage_multiplier = 0.9
+	boomerang_first_leg_mult = 0.8
 	animaited_speed = GameState.animated_world_speed
 	rotation = direction.angle()
 	super()

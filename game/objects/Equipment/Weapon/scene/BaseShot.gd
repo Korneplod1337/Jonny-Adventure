@@ -1,7 +1,7 @@
 extends Area2D
 class_name BaseShot
 
-const BOOMERANG_MIN_CURVE_T_RATE := 0.06
+const BOOMERANG_MIN_CURVE_T_RATE := 0.18
 const BOOMERANG_SPEED_CURVE := preload("res://game/combat/boomerang_speed_curve.tres")
 
 var player
@@ -18,6 +18,8 @@ var extra_reload: float = 1.0 # только для слёз множитель 
 @export var self_range_multiplier: float = 1
 ## 0 — прямой полёт; 1 — туда + обратно; 2+ — дополнительные отрезки пути.
 @export var boomerang_power: int = 0
+## Множитель дальности только для первого отрезка бумеранга (до первого разворота).
+@export var boomerang_first_leg_mult: float = 1.0
 ## Сколько прорубаний создать за целью при попадании (0 = нет).
 @export var hack: int = 0
 ## Сколько рикошетов осталось (0 — без отскока). Пробивание имеет приоритет.
@@ -155,8 +157,27 @@ func _init_boomerang() -> void:
 	_boomerang_segment_count = boomerang_power + 1
 	_boomerang_segment = 0
 	_segment_curve_t = 0.0
-	_segment_trip_duration = _max_boomerang_range / maxf(speed * self_speed_multiplier, 1.0)
+	_segment_trip_duration = _get_boomerang_segment_duration(0)
 	_boomerang_active = true
+
+
+func _get_boomerang_segment_duration(segment: int) -> float:
+	var range_len := _max_boomerang_range
+	if segment == 0:
+		range_len *= boomerang_first_leg_mult
+	return range_len / maxf(speed * self_speed_multiplier, 1.0)
+
+
+## Скопировать прогресс бумеранга (оставшуюся дистанцию текущего отрезка).
+func _copy_boomerang_flight_state(source: BaseShot) -> void:
+	_boomerang_active = source._boomerang_active
+	_max_boomerang_range = source._max_boomerang_range
+	_boomerang_segment_count = source._boomerang_segment_count
+	_boomerang_segment = source._boomerang_segment
+	_segment_curve_t = source._segment_curve_t
+	_segment_trip_duration = source._segment_trip_duration
+	boomerang_power = source.boomerang_power
+	boomerang_first_leg_mult = source.boomerang_first_leg_mult
 
 
 func _advance_boomerang_segment() -> void:
@@ -165,7 +186,8 @@ func _advance_boomerang_segment() -> void:
 	_segment_curve_t = 0.0
 	if _boomerang_segment >= _boomerang_segment_count:
 		_finish_boomerang_path()
-
+		return
+	_segment_trip_duration = _get_boomerang_segment_duration(_boomerang_segment)
 func _finish_boomerang_path() -> void:
 	if exploded:
 		return
@@ -533,6 +555,7 @@ func _spawn_spread() -> void:
 		bullet.self_speed_multiplier = self_speed_multiplier
 		bullet.self_range_multiplier = self_range_multiplier
 		bullet.boomerang_power = boomerang_power
+		bullet.boomerang_first_leg_mult = boomerang_first_leg_mult
 		bullet.hack = hack
 		bullet.ricochet = ricochet
 		bullet.enchantment = enchantment
@@ -627,13 +650,17 @@ func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2)
 	copy.spawned_spread = true
 	copy._spread_shot_done = true
 	copy.pellet_count = 1
-	copy.boomerang_power = 0
 	copy.direction = dir
 	if copy is SwordShot:
 		var melee := copy as SwordShot
+		# Не давать клонам снова вызвать SpreadShot, но сохранить бумеранг.
 		melee._melee_boomerang_copy = true
-		melee._melee_boomerang_legs = []
 		melee._fire_direction = dir
+		melee._melee_boomerang_leg_index = 0
+		if boomerang_power > 0:
+			melee._melee_boomerang_legs = BoomerangPath.build_legs(boomerang_power)
+		else:
+			melee._melee_boomerang_legs = []
 	parent.add_child(copy)
 	copy.global_position = origin + dir * SPREAD_SHOT_DISTANCE
 	copy.direction = dir
@@ -644,6 +671,8 @@ func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2)
 	copy.self_damage_multiplier = self_damage_multiplier * SPREAD_SHOT_DAMAGE
 	copy.self_speed_multiplier = self_speed_multiplier
 	copy.self_range_multiplier = self_range_multiplier
+	copy.boomerang_power = boomerang_power
+	copy.boomerang_first_leg_mult = boomerang_first_leg_mult
 	copy.hack = hack
 	copy.ricochet = ricochet
 	copy.enchantment = enchantment
@@ -651,6 +680,7 @@ func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2)
 	copy.penetration = penetration
 	copy.aoe_radius = aoe_radius
 	copy.spread_angle = spread_angle
+	copy._enemy_hit_count = 0
 	copy._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 	copy.base_crit_bonus = base_crit_bonus
 	copy.steal_life = steal_life
@@ -662,7 +692,6 @@ func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
 	bullet.spawned_spread = true
 	bullet._spread_shot_done = true
 	bullet.pellet_count = 1
-	bullet.boomerang_power = 0
 	parent.add_child(bullet)
 	bullet.global_position = global_position
 	bullet.direction = dir
@@ -674,6 +703,8 @@ func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
 	bullet.self_damage_multiplier = self_damage_multiplier
 	bullet.self_speed_multiplier = self_speed_multiplier
 	bullet.self_range_multiplier = self_range_multiplier
+	bullet.boomerang_power = boomerang_power
+	bullet.boomerang_first_leg_mult = boomerang_first_leg_mult
 	bullet.hack = hack
 	bullet.ricochet = ricochet
 	bullet.enchantment = enchantment
@@ -683,7 +714,13 @@ func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
 	bullet.use_spread = use_spread
 	bullet.spread_angle = spread_angle
 	bullet.distance_travelled = distance_travelled
+	bullet._enemy_hit_count = 0
 	bullet._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 	bullet.base_crit_bonus = base_crit_bonus
 	bullet.steal_life = steal_life
+	# _ready клона мог заново стартовать бумеранг — берём прогресс оригинала на момент сплита.
+	if _boomerang_active:
+		bullet._copy_boomerang_flight_state(self)
+	elif bullet.boomerang_power > 0:
+		bullet._boomerang_active = false
 	bullet._sync_facing_after_redirect()

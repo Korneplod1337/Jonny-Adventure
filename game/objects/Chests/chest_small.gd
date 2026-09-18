@@ -18,9 +18,9 @@ func _on_interact() -> void:
 	var luck = StatManager.get_stat(player, 'luck')
 	if interactable.is_interactable:
 		SoundManager.play_skrip()
-		_spawn_loot(Vector2(0, -80))
+		_spawn_loot(Vector2(0, -70))
 		if GameState.extra_chest_loot_chance > 0.0 and randf() < GameState.extra_chest_loot_chance:
-			_spawn_loot(Vector2(40, -80))
+			_spawn_loot(Vector2(40, -70))
 		animated_sprite_2d.frame = 1
 		interactable.is_interactable = false
 		_start_despawn_sequence()
@@ -28,7 +28,11 @@ func _on_interact() -> void:
 func _spawn_loot(offset: Vector2) -> void:
 	var random = randi_range(1, 100)
 	if random >= 70:
-		ItemManager.spawn(pool, tier, self.global_position + offset, cost)
+		var player = get_tree().get_first_node_in_group("player")
+		var item_tiers: Array = tier
+		if player and player.has_method("get_chest_item_tiers"):
+			item_tiers = player.get_chest_item_tiers(tier)
+		ItemManager.spawn(pool, item_tiers, self.global_position + offset, cost)
 	else:
 		var inst = coin.instantiate()
 		inst.position = self.global_position + offset

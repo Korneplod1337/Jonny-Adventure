@@ -1,5 +1,4 @@
 ToDo:
-	в дверь не пройти. Just teleported убрать
 	ID		Условие		Открывает
 	unlock_jovita
 	Пройти локацию 4 (любым)
@@ -564,7 +563,7 @@ Owerall:
 	Joker - 
 		оружие - CardWeapon
 				Итоговое хп 0/4/0/2
-		 base_max_hp: 				int  = 3
+		 base_max_hp: 				int  = 4
 		 base_move_speed:			float = 260.0
 		 base_luck: 					float = 0.4
 		 base_magic: 				float = 0.4
@@ -599,15 +598,17 @@ Owerall:
 	Joaquin 
 		#имя испанское, означает «Бог даёт силу»
 		#нищета ебаная с отрицательными статами
-		особенность - не может получать хп или армор (умирает с одного удара если нет щита или доп жизней)
+		особенность - не может получать хп или армор (умирает с одного удара если нет щита или доп жизней).
+			Поднимая стат здоровья или получая hpBonus он перенаправляется в другой случайный незаполненный до максимума стат.
+			Если всё замакшенно - сгорает. Так же для неё при открытии сундука всегда ролл из всех тиров, а не заготовленных.
 		оружие Base_Gun
 		Итоговое хп 0/0/0/0
 		 base_max_hp: 				int  = 0
 		 base_move_speed:			float = 253.0
 		 base_luck: 					float = 0.3
 		 base_magic: 				float = 0.3
-		 base_damage: 				float = 25.3
-		 base_spread: 				float = 14.3
+		 base_damage: 				float = 33.0
+		 base_spread: 				float = 13.0
 		 base_range: 				float = 153.0
 		 base_fire_rate: 			float = 0.53
 

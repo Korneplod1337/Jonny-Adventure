@@ -20,19 +20,26 @@ func _on_interact() -> void:
 	var luck = StatManager.get_stat(player, 'luck')
 	if interactable.is_interactable:
 		SoundManager.play_skrip()
-		_spawn_loot(Vector2(0, -80))
+		_spawn_loot(Vector2(0, -70))
 		if GameState.extra_chest_loot_chance > 0.0 and randf() < GameState.extra_chest_loot_chance:
-			_spawn_loot(Vector2(40, -80))
+			_spawn_loot(Vector2(40, -70))
 		animated_sprite_2d.frame = 1
 		interactable.is_interactable = false
 		_start_despawn_sequence()
 
 func _spawn_loot(offset: Vector2) -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	var item_tiers: Array = item_tier
+	var eq_tiers: Array = equip_tier
+	if player and player.has_method("get_chest_item_tiers"):
+		item_tiers = player.get_chest_item_tiers(item_tier)
+	if player and player.has_method("get_chest_equip_tiers"):
+		eq_tiers = player.get_chest_equip_tiers(equip_tier)
 	var random = randi_range(1, 100)
 	if random >= 75:
-		EquipManager.spawn(equip_pool, equip_tier, self.global_position + offset)
+		EquipManager.spawn(equip_pool, eq_tiers, self.global_position + offset)
 	else:
-		ItemManager.spawn(item_pool, item_tier, self.global_position + offset, cost)
+		ItemManager.spawn(item_pool, item_tiers, self.global_position + offset, cost)
 
 func _start_despawn_sequence() -> void:
 	if _despawn_started:

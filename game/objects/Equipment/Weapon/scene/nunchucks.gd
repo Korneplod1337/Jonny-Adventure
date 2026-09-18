@@ -24,6 +24,8 @@ func _ready() -> void:
 		if boomerang_power > 0:
 			_melee_boomerang_legs = BoomerangPath.build_legs(boomerang_power)
 		_melee_spin_duration = _lifetime_timer.wait_time
+	elif _melee_spin_duration <= 0.0:
+		_melee_spin_duration = _lifetime_timer.wait_time
 	_lifetime_timer.wait_time = _melee_spin_duration
 
 	_anim_sprite.speed_scale = GameState.animated_world_speed

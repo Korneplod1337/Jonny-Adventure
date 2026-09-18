@@ -25,13 +25,13 @@
 [ext_resource type="Texture2D" uid="uid://ud7s61sej2wj" path="res://image/enemy/bodies/spider_queen14.png" id="17_wnql3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
-size = Vector2(22, 36)
+size = Vector2(22, 44)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
 radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(20, 60)
+size = Vector2(20, 33)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{
@@ -136,7 +136,7 @@ hard_base_hp = 260
 hard_angle_deviation = 40.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
-position = Vector2(0.5, 18)
+position = Vector2(0.5, 14)
 shape = SubResource("RectangleShape2D_ps82n")
 
 [node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
@@ -150,7 +150,7 @@ shape = SubResource("CircleShape2D_2eqer")
 [node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
-position = Vector2(0.5, 4)
+position = Vector2(0.5, 17.5)
 shape = SubResource("RectangleShape2D_hoiul")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]

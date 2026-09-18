@@ -26,6 +26,9 @@ func init_room() -> void:
 		for enemy in get_tree().get_nodes_in_group("Enemy"):
 			enemy.visible = true
 	connect_enemies()
+	# Пустая комната: иначе двери останутся скрытыми навсегда
+	if enemy_count == 0:
+		show_doors()
 
 
 # хуйня с дверьми и врагами (рот её ебал)

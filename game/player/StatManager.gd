@@ -59,6 +59,10 @@ func get_stat(p: Node, stat: String) -> float :
 
 
 func upgrade_stat(p: Node, stat:String, lvl: int) -> void:
+	if stat == "hp" and p.has_method("try_redirect_hp_upgrade"):
+		if p.try_redirect_hp_upgrade(lvl):
+			p._emit_stats_changed()
+			return
 	match stat:
 		'hp':
 			var hp_list = p.hp_list

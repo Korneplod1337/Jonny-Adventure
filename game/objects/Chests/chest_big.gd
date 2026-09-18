@@ -21,26 +21,33 @@ func _on_interact() -> void:
 	var luck = StatManager.get_stat(player, 'luck')
 	if interactable.is_interactable:
 		SoundManager.play_skrip()
-		_spawn_loot(Vector2(0, -80))
+		_spawn_loot(Vector2(0, -70))
 		if GameState.extra_chest_loot_chance > 0.0 and randf() < GameState.extra_chest_loot_chance:
-			_spawn_loot(Vector2(40, -80))
+			_spawn_loot(Vector2(40, -70))
 		animated_sprite_2d.frame = 1
 		interactable.is_interactable = false
 		_start_despawn_sequence()
 '''5 20 25 50'''
 
 func _spawn_loot(offset: Vector2) -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	var item_tiers: Array = tier
+	var eq_tiers: Array = equip_tier
+	if player and player.has_method("get_chest_item_tiers"):
+		item_tiers = player.get_chest_item_tiers(tier)
+	if player and player.has_method("get_chest_equip_tiers"):
+		eq_tiers = player.get_chest_equip_tiers(equip_tier)
 	var random = randi_range(1, 100)
 	if random >= 90:
-		EquipManager.spawn(equip_pool, equip_tier, self.global_position + offset)
+		EquipManager.spawn(equip_pool, eq_tiers, self.global_position + offset)
 	elif random >= 70:
-		ItemManager.spawn(pool, tier, self.global_position + offset, cost)
+		ItemManager.spawn(pool, item_tiers, self.global_position + offset, cost)
 	elif random >= 50:
 		spawner(coinBag, offset)
 	else:
 		spawner(coin, offset)
 
-func spawner(ini, offset: Vector2 = Vector2(0, -80)) -> void:
+func spawner(ini, offset: Vector2 = Vector2(0, -70)) -> void:
 	var inst = ini.instantiate()
 	inst.position = self.global_position + offset
 	get_tree().current_scene.add_child(inst)

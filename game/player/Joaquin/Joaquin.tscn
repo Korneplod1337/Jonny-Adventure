@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cib4mwo34l505"]
 
-[ext_resource type="Script" path="res://game/player/Joaquin/joaquin.gd" id="1_gr2vb"]
+[ext_resource type="Script" uid="uid://cm6xxm2yaq8cc" path="res://game/player/Joaquin/joaquin.gd" id="1_gr2vb"]
 [ext_resource type="PackedScene" uid="uid://dw14oijigxyr4" path="res://game/interact_tools/InteractingComponents.tscn" id="2_rabuk"]
 [ext_resource type="Texture2D" uid="uid://dret1tve5qask" path="res://image/players/Joaquin_textures/player_afk1.png" id="3_y4ktv"]
 [ext_resource type="Texture2D" uid="uid://d25ioqc4kkh1k" path="res://image/players/Joaquin_textures/player_afk2.png" id="4_mcgai"]

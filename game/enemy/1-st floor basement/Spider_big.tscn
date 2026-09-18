@@ -15,14 +15,16 @@
 [ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="11_jcsju"]
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="12_pxxjn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
-size = Vector2(25, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjtyh"]
+radius = 8.5
+height = 31.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
 radius = 984.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(30, 18)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c3kxu"]
+radius = 11.0
+height = 35.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{
@@ -78,10 +80,10 @@ hard_angle_deviation = 30.0
 use_pathfinding = true
 knockback_friction = 600.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
-position = Vector2(-1, 1)
-scale = Vector2(1.25, 1.25)
-shape = SubResource("RectangleShape2D_ps82n")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1932892107]
+position = Vector2(-1.5, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_hjtyh")
 
 [node name="FieldViewArea" type="Area2D" parent="." unique_id=40824753]
 scale = Vector2(0.75, 0.75)
@@ -93,10 +95,10 @@ shape = SubResource("CircleShape2D_2eqer")
 
 [node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
-position = Vector2(-2, 1)
-scale = Vector2(1.25, 1.25)
-shape = SubResource("RectangleShape2D_hoiul")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=127284217]
+position = Vector2(-1.5, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_c3kxu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
 scale = Vector2(1.25, 1.25)
