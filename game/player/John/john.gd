@@ -1,7 +1,7 @@
 extends Jonny
 class_name John #ПОФИКСИТЬ - дочерние снаряды нак например дробь дробовика тоже должны быть увеличены и иметь бонус в 10 урона.
 
-const START_ALT_SHOT_EQUIP := preload("res://game/objects/Equipment/Weapon/equip/JonnyShotGreen_equip.tscn")
+#const START_ALT_SHOT_EQUIP := preload("res://game/objects/Equipment/Weapon/equip/Spear_equip.tscn")
 const RANGED_WEAPON_SCALE := 2.0
 const MELEE_WEAPON_SCALE := 1.5
 const MELEE_FLAT_DAMAGE_BONUS := 10
@@ -29,7 +29,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	hp_list = {
-		"red": 6,
+		"red": 8,
 		"green": 0,
 		"blue": 2,
 		"black": 0,
@@ -38,9 +38,9 @@ func _ready() -> void:
 	super()
 
 
-func _equip_start_weapon() -> void:
-	var equip: BaseShot_equip = START_ALT_SHOT_EQUIP.instantiate()
-	equip.apply_equip(self)
+#func _equip_start_weapon() -> void:
+	#var equip: BaseShot_equip = START_ALT_SHOT_EQUIP.instantiate()
+	#equip.apply_equip(self)
 
 
 func fire(shot_dir: Vector2) -> void:

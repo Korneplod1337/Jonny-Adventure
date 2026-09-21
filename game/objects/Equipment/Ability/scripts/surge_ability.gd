@@ -2,7 +2,7 @@
 class_name SurgeAbility
 extends BaseAbility
 
-const BOOST := 300.0
+const BOOST := 200.0
 const DURATION := 3.0
 
 var _surge_left: float = 0.0

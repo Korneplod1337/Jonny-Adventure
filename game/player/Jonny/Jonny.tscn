@@ -119,7 +119,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm61y"]
-size = Vector2(20, 24.054054)
+size = Vector2(20, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h4d6h"]
 animations = [{
@@ -215,7 +215,7 @@ position = Vector2(0, -10)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=222282461]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_g617h")
-animation = &"afk_up"
+animation = &"afk_default"
 
 [node name="AnimatedShot" type="AnimatedSprite2D" parent="." unique_id=2140154797]
 position = Vector2(0, -26)

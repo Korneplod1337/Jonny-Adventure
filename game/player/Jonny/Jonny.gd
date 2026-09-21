@@ -134,14 +134,14 @@ func _apply_god_mode() -> void:
 	spread_level = 10.0
 	range_level = 10.0
 	fire_rate_level = 10.0
-	hp_bonus = 15
-	speed_bonus = 15
-	luck_bonus = 15
-	magic_bonus = 15
-	damage_bonus = 15
-	accuracy_bonus = 15
-	range_bonus = 15
-	fire_rate_bonus = 15
+	hp_bonus = 18
+	speed_bonus = 18
+	luck_bonus = 18
+	magic_bonus = 18
+	damage_bonus = 18
+	accuracy_bonus = 18
+	range_bonus = 18
+	fire_rate_bonus = 18
 
 func _ready() -> void:
 	_base_collision_mask = collision_mask
@@ -230,10 +230,10 @@ func _process(delta: float) -> void:
 	total_time_alive += delta
 	total_distance_travelled += now_move_direction.length() * delta
 	#ходьба
-	#'''
+	'''
 	velocity = Vector2(Input.get_axis('move_left', 'move_right'),
 		Input.get_axis('move_up', 'move_down')).normalized() * move_speed
-	#'''
+	'''
 	
 	var ability_moved := false
 	if current_ability:
@@ -254,7 +254,9 @@ func _process(delta: float) -> void:
 			if dir == Vector2.ZERO:
 				velocity = velocity.move_toward(Vector2.ZERO, delta * move_speed)
 		else:
-			velocity = dir * move_speed
+			#velocity = dir * move_speed
+			velocity = Vector2(Input.get_axis('move_left', 'move_right'),
+		Input.get_axis('move_up', 'move_down')).normalized() * move_speed
 
 	move_and_slide()
 	now_move_direction = get_real_velocity()
@@ -264,8 +266,10 @@ func _process(delta: float) -> void:
 # BODY ANIMATION
 	if velocity.length() < 1:
 		if last_move_dir > 0:
+			flip_body(velocity.x < 0)
 			play_body("afk_default")
 		else:
+			flip_body(velocity.x < 0)
 			play_body("afk_up")
 	else:
 		if abs(velocity.x) < abs(velocity.y):

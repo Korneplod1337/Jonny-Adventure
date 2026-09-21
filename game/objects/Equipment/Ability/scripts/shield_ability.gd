@@ -8,7 +8,7 @@ const EFFECT_SCENE := preload("res://game/objects/Equipment/Ability/effects/Shie
 func _init() -> void:
 	ability_id = "Shield"
 	cooldown_type = CooldownType.TIME
-	cooldown_time = 2.0
+	cooldown_time = 3.0
 
 
 func activate() -> bool:

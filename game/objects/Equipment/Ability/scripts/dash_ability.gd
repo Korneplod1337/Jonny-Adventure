@@ -13,7 +13,7 @@ var _dash_travelled: float = 0.0
 func _init() -> void:
 	ability_id = "Dash"
 	cooldown_type = CooldownType.TIME
-	cooldown_time = 20.0
+	cooldown_time = 10.0
 	cooldown_room_recharge = 1
 
 
