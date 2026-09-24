@@ -2,6 +2,7 @@ extends Jonny
 class_name JonnyAlt
 
 const START_TEST_SHOT_EQUIP := preload("res://game/objects/Equipment/Weapon/equip/TestShot_equip.tscn")
+const START_DODGE_EQUIP := preload("res://game/objects/Equipment/Ability/equip/Dodge_equip.tscn")
 const EXTRA_SHOT_DELAY := 0.2
 
 
@@ -38,6 +39,10 @@ func _ready() -> void:
 func _equip_start_weapon() -> void:
 	var equip: BaseShot_equip = START_TEST_SHOT_EQUIP.instantiate()
 	equip.apply_equip(self)
+
+
+func _get_start_ability_scene() -> PackedScene:
+	return START_DODGE_EQUIP
 
 
 func fire(shot_dir: Vector2) -> void:

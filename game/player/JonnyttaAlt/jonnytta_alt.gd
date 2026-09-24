@@ -2,6 +2,7 @@ extends Jonny
 class_name JonnyttaAlt
 
 const START_SPEAR_EQUIP := preload("res://game/objects/Equipment/Weapon/equip/Spear_equip.tscn")
+const START_DODGE_EQUIP := preload("res://game/objects/Equipment/Ability/equip/Dodge_equip.tscn")
 const TRIPLE_ANGLES_DEG: Array[float] = [-30.0, 0.0, 30.0]
 const WEAPON_SCALE_MULT := 0.75
 
@@ -39,6 +40,10 @@ func _ready() -> void:
 func _equip_start_weapon() -> void:
 	var equip: BaseShot_equip = START_SPEAR_EQUIP.instantiate()
 	equip.apply_equip(self)
+
+
+func _get_start_ability_scene() -> PackedScene:
+	return START_DODGE_EQUIP
 
 
 func fire(shot_dir: Vector2) -> void:

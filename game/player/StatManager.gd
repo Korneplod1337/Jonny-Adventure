@@ -32,7 +32,7 @@ func get_stat(p: Node, stat: String) -> float :
 			if p.accelerator_power > 0.0:
 				damage += p.accelerator_power * (float(p.move_speed) / 100.0)
 			damage *= clamp((1 + p.damage_bonus * 0.1), 0.1, 3)  					# 20
-			damage = clamp(damage, 0.1, 1000.0)
+			#damage = clamp(damage, 0.1, 1000.0)
 			return damage 
 		"spread":
 			var spread_deg: float = p.base_spread + lerp(36.0, 0.0, (p.spread_level - 1.0) / 9.0)

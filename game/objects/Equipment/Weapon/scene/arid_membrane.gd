@@ -124,7 +124,7 @@ func _get_membrane_damage(damage_mult: float, apply_enchant_mult: bool) -> float
 	var shooter := _get_player()
 	if shooter:
 		spread_val = StatManager.get_stat(shooter, "spread")
-	var crit_bonus := base_crit_bonus / (spread_val + 20)
+	var crit_bonus := base_crit_bonus / (spread_val + crit_spread_offset)
 	var total_crit := 1.0
 	while true:
 		if randf() < chance:

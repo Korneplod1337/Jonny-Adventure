@@ -2,6 +2,7 @@ extends Jonny
 class_name Joab
 
 const START_SPECIAL_FLASK_EQUIP := preload("res://game/objects/Equipment/Weapon/equip/Special_weapon_equip.tscn")
+const START_POISONOTING_EQUIP := preload("res://game/objects/Equipment/Ability/equip/PoisonotingPotion_equip.tscn")
 
 
 func _init() -> void:
@@ -37,6 +38,10 @@ func _ready() -> void:
 func _equip_start_weapon() -> void:
 	var equip: BaseShot_equip = START_SPECIAL_FLASK_EQUIP.instantiate()
 	equip.apply_equip(self)
+
+
+func _get_start_ability_scene() -> PackedScene:
+	return START_POISONOTING_EQUIP
 
 
 func _heart_type_to_int(t: String) -> int:

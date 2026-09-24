@@ -55,6 +55,20 @@ func _ensure_cooldown_overlay() -> void:
 	_cd_overlay.color = COOLDOWN_OVERLAY_COLOR
 	_cd_overlay.visible = false
 	add_child(_cd_overlay)
+	move_child(_cd_overlay, get_child_count() - 1)
+
+
+func _cooldown_cover_size() -> Vector2:
+	var slot_size := size
+	if slot_size.x <= 0.0 or slot_size.y <= 0.0:
+		slot_size = custom_minimum_size
+	# Icon uses scale (e.g. ×3); cover the visual footprint, not just Control.size.
+	if icon:
+		var icon_visual := icon.size * icon.scale
+		slot_size.x = maxf(slot_size.x, icon_visual.x)
+		slot_size.y = maxf(slot_size.y, icon_visual.y)
+	# Ceil so float→pixel rounding never leaves a 1px gap at the edge.
+	return Vector2(ceili(slot_size.x), ceili(slot_size.y))
 
 
 ## ratio 1.0 = full cooldown lock, 0.0 = ready. Dark bar shrinks from top.
@@ -67,12 +81,11 @@ func set_cooldown_progress(ratio: float) -> void:
 	if ratio <= 0.001:
 		_cd_overlay.visible = false
 		return
-	var slot_size := size
-	if slot_size.x <= 0.0 or slot_size.y <= 0.0:
-		slot_size = custom_minimum_size
+	var cover := _cooldown_cover_size()
 	_cd_overlay.visible = true
 	_cd_overlay.position = Vector2.ZERO
-	_cd_overlay.size = Vector2(slot_size.x, slot_size.y * ratio)
+	_cd_overlay.size = Vector2(cover.x, ceili(cover.y * ratio))
+
 
 func _ready():
 	count_label = get_node_or_null("CountLabel")

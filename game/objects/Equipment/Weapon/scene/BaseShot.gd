@@ -65,7 +65,9 @@ var spread_angle: float
 var spawned_spread := false
 var _spread_shot_done := false
 
-var base_crit_bonus: float = 60.0
+var base_crit_bonus: float = 50.0
+## Добавка к spread в формуле силы крита: bonus = base_crit_bonus / (spread + offset).
+var crit_spread_offset: float = 40.0
 var crit_sprite: int = -1
 
 enum FireSfxKind { TEAR, GUN, SLASH, NONE }
@@ -374,7 +376,7 @@ func _get_final_damage() -> float:
 	var shooter := _get_player()
 	if shooter:
 		spread_val = StatManager.get_stat(shooter, "spread")
-	var crit_bonus := base_crit_bonus / (spread_val + 20)
+	var crit_bonus := base_crit_bonus / (spread_val + crit_spread_offset)
 	var total_crit := 1.0
 	while true:
 		if randf() < chance:
@@ -568,6 +570,7 @@ func _spawn_spread() -> void:
 		bullet._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 
 		bullet.base_crit_bonus = self.base_crit_bonus
+		bullet.crit_spread_offset = self.crit_spread_offset
 		bullet.steal_life = steal_life
 		bullet._spread_shot_done = _spread_shot_done
 
@@ -683,6 +686,7 @@ func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2)
 	copy._enemy_hit_count = 0
 	copy._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 	copy.base_crit_bonus = base_crit_bonus
+	copy.crit_spread_offset = crit_spread_offset
 	copy.steal_life = steal_life
 	copy.rotation = dir.angle()
 
@@ -717,6 +721,7 @@ func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
 	bullet._enemy_hit_count = 0
 	bullet._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 	bullet.base_crit_bonus = base_crit_bonus
+	bullet.crit_spread_offset = crit_spread_offset
 	bullet.steal_life = steal_life
 	# _ready клона мог заново стартовать бумеранг — берём прогресс оригинала на момент сплита.
 	if _boomerang_active:

@@ -80,8 +80,8 @@ const STATS := {
 			"name": "Pepyaka's friend",
 			"desc": "up armory loyality",
 			"goal": 100,
-			"menu_icon": "",
-			"hud_popup": "",
+			"menu_icon": "res://image/achievements/menu_achiv/armory_loyality.png",
+			"hud_popup": "res://image/achievements/hud_achiv/armory_loyality_hud.png",
 		},
 	},
 	"Mega_crit": {
@@ -97,13 +97,13 @@ const STATS := {
 		},
 	},
 	"bad_spear_kills": {
-		"desc": "Kills by weak spear",
+		"desc": "Hits by weak spear",
 		"show_in_menu": false,
 		"achievement": {
 			"id": "bad_spear_kills",
 			"name": "Spear!",
-			"desc": "hit by weak spear",
-			"goal": 2,
+			"desc": "Hit 100 times with weak spear",
+			"goal": 100,
 			"menu_icon": "res://image/achievements/menu_achiv/Spear_unlock.png",
 			"hud_popup": "res://image/achievements/hud_achiv/Spear_unlock_hud.png",
 		},
@@ -122,8 +122,8 @@ const STATS := {
 			"name": "Cardmaster",
 			"desc": "Pick up 10 cards in one run",
 			"goal": 10,
-			"menu_icon": "",
-			"hud_popup": "",
+			"menu_icon": "res://image/achievements/menu_achiv/cards_collector.png",
+			"hud_popup": "res://image/achievements/hud_achiv/cards_collector_unlock_hud.png",
 		},
 	},
 }
@@ -135,64 +135,78 @@ const STANDALONE_ACHIEVEMENTS := {
 		"name": "Alpha test",
 		"desc": "Survive until game released",
 		"goal": 1,
-		"menu_icon": "uid://csy0vboist6bo",
+		"menu_icon": "res://image/achievements/menu_achiv/survive.png",
 		"hud_popup": "",
 	},
 	"First time": {
 		"name": "First time ?",
 		"desc": "",
 		"goal": 1,
-		"menu_icon": "uid://dd3h2d8s2ybqi",
-		"hud_popup": "uid://buyhcb1qmt5gw",
+		"menu_icon": "res://image/achievements/menu_achiv/first_time.png",
+		"hud_popup": "res://image/achievements/hud_achiv/first_time_hud.png",
 	},
 	"unlock_jovita": {
 		"name": "Lucky girl",
-		"desc": "Complete location 4 (Casino)",
+		"desc": "Complete location 4",
 		"goal": 1,
-		"menu_icon": "",
-		"hud_popup": "",
+		"menu_icon": "res://image/achievements/menu_achiv/unlock_jovita.png",
+		"hud_popup": "res://image/achievements/hud_achiv/unlock_jovita_hud.png",
 	},
 	"unlock_jonny_alt": {
-		"name": "Red Jonny",
-		"desc": "Complete location 4 as Jonny",
+		"name": "Alternative Jonny",
+		"desc": "Complete stock game as Jonny",
 		"goal": 1,
 		"menu_icon": "",
 		"hud_popup": "",
 	},
 	"unlock_jonnytta_alt": {
-		"name": "Blue Jonnytta",
-		"desc": "Complete location 4 as Jonnytta",
+		"name": "Alternative Jonnytta",
+		"desc": "Complete stock game as Jonnytta",
 		"goal": 1,
 		"menu_icon": "",
 		"hud_popup": "",
 	},
 	"unlock_jo": {
 		"name": "Armored",
-		"desc": "Complete location 5 as Jonny and Jonnytta",
+		"desc": "Complete mine as Jonny and Jonnytta",
 		"goal": 1,
 		"menu_icon": "",
 		"hud_popup": "",
 	},
 	"unlock_john": {
 		"name": "Big John",
-		"desc": "Max HP level or reach 14 heart slots",
+		"desc": "got a lot of heart slots",
 		"goal": 1,
 		"menu_icon": "",
 		"hud_popup": "",
 	},
 	"unlock_joab": {
 		"name": "Necromancer",
-		"desc": "Drink 4 black potions in one run, then win or enter a hatch",
+		"desc": "Drink many black potions and stay alive",
 		"goal": 1,
 		"menu_icon": "",
 		"hud_popup": "",
 	},
 	"unlock_joaquin": {
 		"name": "God gives strength",
-		"desc": "Complete location 6 with every other character",
+		"desc": "Complete fairy tale with every character",
 		"goal": 1,
 		"menu_icon": "",
 		"hud_popup": "",
+	},
+	"unlock_arid_membrane": {
+		"name": "First boss",
+		"desc": "Complete basement",
+		"goal": 1,
+		"menu_icon": "res://image/achievements/menu_achiv/unlock_arid_membrane.png",
+		"hud_popup": "res://image/achievements/hud_achiv/unlock_arid_membrane_hud.png",
+	},
+	"unlock_forest_gear": {
+		"name": "Rotting forest",
+		"desc": "Complete location 2 (Pyramid)",
+		"goal": 1,
+		"menu_icon": "res://image/achievements/menu_achiv/unlock_forest_gear.png",
+		"hud_popup": "res://image/achievements/hud_achiv/unlock_forest_gear_hud.png",
 	},
 }
 
@@ -224,6 +238,7 @@ const EQUIP_UNLOCKS := {
 	"bad_spear_kills": [
 		{"pool": "armory", "equipment_id": "EXSpear"},
 		{"pool": "weapon", "equipment_id": "EXSpear"},
+		{"pool": "all", "equipment_id": "EXSpear"},
 	],
 	"cards_collector": [
 		{"pool": "weapon", "equipment_id": "CardWeapon"},
@@ -232,6 +247,31 @@ const EQUIP_UNLOCKS := {
 	"unlock_jovita": [
 		{"pool": "weapon", "equipment_id": "Scatterhand"},
 		{"pool": "all", "equipment_id": "Scatterhand"},
+		{"pool": "weapon", "equipment_id": "Sniper_Gun"},
+		{"pool": "all", "equipment_id": "Sniper_Gun"},
+	],
+	"unlock_jonny_alt": [
+		{"pool": "weapon", "equipment_id": "test_shot"},
+		{"pool": "armory", "equipment_id": "test_shot"},
+		{"pool": "all", "equipment_id": "test_shot"},
+		{"pool": "weapon", "equipment_id": "Solaris"},
+		{"pool": "all", "equipment_id": "Solaris"},
+	],
+	"unlock_jo": [
+		{"pool": "weapon", "equipment_id": "tome_of_fairy_tales"},
+		{"pool": "all", "equipment_id": "tome_of_fairy_tales"},
+		{"pool": "weapon", "equipment_id": "Magic pistol"},
+		{"pool": "all", "equipment_id": "Magic pistol"},
+	],
+	"unlock_arid_membrane": [
+		{"pool": "weapon", "equipment_id": "arid_membrane"},
+		{"pool": "all", "equipment_id": "arid_membrane"},
+	],
+	"unlock_forest_gear": [
+		{"pool": "weapon", "equipment_id": "Jonny_shot_Alt"},
+		{"pool": "all", "equipment_id": "Jonny_shot_Alt"},
+		{"pool": "weapon", "equipment_id": "Nunchucks"},
+		{"pool": "all", "equipment_id": "Nunchucks"},
 	],
 }
 
@@ -250,7 +290,7 @@ const CHARACTER_UNLOCKS := {
 
 ## Разблокировка локаций (1-based) при получении достижения.
 const LOCATION_UNLOCKS := {
-	"unlock_jonny_alt": 5,
+	"unlock_jovita": 5,
 	"unlock_jo": 6,
 	"unlock_joaquin": 7,
 }

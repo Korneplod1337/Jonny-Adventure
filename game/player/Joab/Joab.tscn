@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c07wihgtgms54"]
 
-[ext_resource type="Script" path="res://game/player/Joab/joab.gd" id="1_gr2vb"]
+[ext_resource type="Script" uid="uid://cwwx0hify13m7" path="res://game/player/Joab/joab.gd" id="1_gr2vb"]
 [ext_resource type="PackedScene" uid="uid://dw14oijigxyr4" path="res://game/interact_tools/InteractingComponents.tscn" id="2_rabuk"]
 [ext_resource type="Texture2D" uid="uid://grd43kky63cf" path="res://image/players/Joab_textures/player_afk1.png" id="3_y4ktv"]
 [ext_resource type="Texture2D" uid="uid://dpifu858ucmwq" path="res://image/players/Joab_textures/player_afk2.png" id="4_mcgai"]

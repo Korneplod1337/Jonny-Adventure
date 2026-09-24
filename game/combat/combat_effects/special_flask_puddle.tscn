@@ -8,7 +8,7 @@
 [ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="6_crit"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_puddle"]
-radius = 15.0
+radius = 12.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_puddle"]
 animations = [{
@@ -46,18 +46,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SpecialFlaskPuddle" type="Area2D"]
+[node name="SpecialFlaskPuddle" type="Area2D" unique_id=1655031101]
 z_index = -1
 collision_mask = 68
 script = ExtResource("1_script")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1434626299]
 shape = SubResource("CircleShape2D_puddle")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=229417030]
 sprite_frames = SubResource("SpriteFrames_puddle")
 
-[node name="Crit" type="AnimatedSprite2D" parent="."]
+[node name="Crit" type="AnimatedSprite2D" parent="." unique_id=1524837938]
 visible = false
 z_index = 20
 position = Vector2(0, -60)
@@ -65,7 +65,7 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("6_crit")
 frame = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1773576155]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

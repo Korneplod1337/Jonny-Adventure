@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jgk8mgmh1yil"]
 
-[ext_resource type="Script" path="res://game/player/Jovita/jovita.gd" id="1_gr2vb"]
+[ext_resource type="Script" uid="uid://c7don07w725du" path="res://game/player/Jovita/jovita.gd" id="1_gr2vb"]
 [ext_resource type="PackedScene" uid="uid://dw14oijigxyr4" path="res://game/interact_tools/InteractingComponents.tscn" id="2_rabuk"]
 [ext_resource type="Texture2D" uid="uid://b43ssnwm4fcun" path="res://image/players/Jovita_textures/player_afk1.png" id="3_y4ktv"]
 [ext_resource type="Texture2D" uid="uid://3jowtysqe47q" path="res://image/players/Jovita_textures/player_afk2.png" id="4_mcgai"]

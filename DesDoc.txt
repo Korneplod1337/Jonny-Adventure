@@ -1,41 +1,20 @@
 ToDo:
 	лояльность банка случайным сундуком от 40 и +маленький от 80
 	Статуя монеты за бафф
+		Destroyed		На этом этаже не будет шрайнов (заменяются на разрушенные)
 	Джоанин не сразу умирает, после полёт. 
 	Спелл Джоаб
 	
-	ID		Условие		Открывает
-	unlock_jovita
-	Пройти локацию 4 (любым)
-	Jovita + Scatterhand
-
+	Keres / Maria + Kalia
+	
+	ачивки
+	Пустые пути в реестре:
 	unlock_jonny_alt
-	Пройти локацию 4 за Jonny
-	JonnyAlt + локация 5
-
 	unlock_jonnytta_alt
-	Пройти локацию 4 за Jonnytta
-	JonnyttaAlt
-
 	unlock_jo
-	Медаль локации 5 у Jonny и Jonnytta (AND)
-	Jo + локация 6
-
 	unlock_john
-	hit_points_level >= 10 ИЛИ max_hp >= 14
-	John
-
-	cards_collector
-	10 карт предметов за один забег
-	Joker + item joker + CardWeapon
-
 	unlock_joab
-	4× healblack за забег, затем люк или победа
-	Joab + item blackdeal
-
 	unlock_joaquin
-	Медаль локации 6 у всех 9 остальных
-	Joaquin + локация 7
 	
 	
 	враг нужно попасть и убить, иначе бежит на тебя и взрывается крипер
@@ -46,10 +25,7 @@ ToDo:
 	4 и 5 лока, 3 в общий доступ хотя бы обрезанную
 	Хпбар босса сделать красивым
 	первый реальный босс
-	Продумать всех персонажей и статы
-	персонажей добавить которых можно
 	предметы 2-го и 3-го тира и настроить их в менеджере
-	ачивки
 	
 	Ивент: зайти в игру с локами героев, двойной кнопкой new_game, и логами дебага, 
 	
@@ -184,8 +160,8 @@ Owerall:
 
 ------- Оружие -------
 	слеза Джонни 	1.6 ✓ atckspd
-	альт слеза2  	1.5 ✓ range spread - разблокируется вместе с локацией лес
-	альт слеза		1.4 ✓ damage - разблокируется вместе с altJonny
+	альт слеза	 	1.5 ✓ range spread - разблокируется вместе с локацией лес
+	test_shot		1.4 ✓ damage - разблокируется вместе с altJonny
 	том сказок	 	1.3 ✓ - разблокируется вместе с локацией сказки
 	Arid membrane	1.2 ✓ - разблокируется вместе с локацией пирамида
 	Игральная Карта 	1.1 ✓ (бумеранг, Джокер) - разблокируется вместе с героем Джокер
@@ -363,24 +339,24 @@ Owerall:
 
 
 -------------- Заклинания --------------
-	Dash const DASH_DISTANCE := 180.0 SPEED_MULT := 4.0 cooldown_time = 20.0
-	CoinRoulette SUCCESS_CHANCE := 0.6
-	CrackedEruption  CONE_DEG := 45.0 RANGE_MULT := 0.25 MAGIC_PER_SHOT := 0.15 cooldown_time = 2.0
-	Ember  cooldown_time = 5.0 const BASE_DAMAGE := 40.0 MAGIC_DAMAGE_STEP := 0.2
-	Shield 
-	StealLife
-	TatteredTrade 
-	DoomedChance
-	MiromirBlessing
-	BoonOfKeres
-	Surge
-	GoldHoard
-	ThePilgrimage
-	Expedition
-	MiromirGift
-	poisonoting potions- замена на чёрные зелья
-	KeresCall
-	MariaCall
+	Dash 				cooldown_time = 20.0 DASH_DISTANCE := 180.0 SPEED_MULT := 4.0 
+	Surge				cooldown_time = 4.0 BOOST := 200.0  DURATION := 3.0
+	CoinRoulette 		SUCCESS_CHANCE = 0.6 to coin/damage
+	DoomedChance			cooldown_time = 1.0 damage(0, 1) upgrade_stat luck +1
+	CrackedEruption 		cooldown_time = 2.0 CONE_DEG = 45.0 RANGE_MULT = 0.25 MAGIC_PER_SHOT = 0.1
+	Ember 				cooldown_time = 5.0 BASE_DAMAGE = 40.0 MAGIC_DAMAGE_STEP = 0.2
+	Shield 				cooldown_time = 3.0 duration = 0.6
+	TatteredTrade 		CooldownType.FLOOR  _discount_by_scan cost -1
+	StealLife			cooldown_time = floor player.heal(0, 1, 0, 0)
+	MiromirBlessing		cooldown_rooms = 5 start_rooms_progress = 2 player.heal(1, 0, 0, 0)
+	BoonOfKeres			cooldown_rooms = 4 player.heal(0, 0, 0, 1)
+	GoldHoard			cooldown_rooms = 2 Spawn 2-3 coins
+	ThePilgrimage		cooldown_rooms = 15 +1 to all stats
+	Expedition			cooldown_rooms = 8 +1 to all bonuses
+	MiromirGift			CooldownType.FLOOR Spawn a random chest
+	poisonoting potion	замена на чёрные зелья
+	KeresCall			
+	MariaCall			
 	
 -------------- Модификаторы уровня --------------
 	Красные:
@@ -391,8 +367,9 @@ Owerall:
 	Жёлтые:
 	Toxic			Весь урон врагов становится магическим					✓
 	Castle			На уровне есть уникальная вертикальная комната с Головорезом,
-	 который стреляет лучами в игрока, и сундук с оружием.
+						который стреляет лучами в игрока, и сундук с оружием.
 	Shopless			На этом этаже не будет магазинов 						✓
+	Destroyed		На этом этаже не будет шрайнов (заменяются на разрушенные)
 
 	Зелёные:
 	Confusing space	Запутанное пространство двери							✓
@@ -689,6 +666,84 @@ Owerall:
 
 
 -------------- Ачивки --------------
+id	Условие	Открывает
+	first_kill
+	1 убийство
+	item torch
+
+	long_distance
+	10000 дистанции
+	—
+
+	first_item
+	надеть 1 предмет
+	—
+
+	shop_loyality
+	лояльность шопа 100
+	—
+	
+	armory_loyality
+	лояльность армори 100
+	—
+	
+	Mega_crit
+	1 мегакрит
+	—
+	
+	bad_spear_kills
+	100 хитов слабым Spear
+	EXSpear
+	
+	cards_collector
+	10 карт за забег
+	Joker + item joker + CardWeapon
+	
+	Alpha test
+	вручную
+	—
+	
+	First time
+	первая смерть
+	—
+	
+	unlock_arid_membrane
+	пройти локацию 1
+	arid_membrane
+	
+	unlock_forest_gear
+	пройти локацию 2 (пирамида)
+	Jonny_shot_Alt + Nunchucks
+	
+	unlock_jovita
+	пройти локацию 4 (любым)
+	Jovita + Scatterhand + Sniper_Gun + локация 5
+	
+	unlock_jonny_alt
+	пройти локацию 4 за Jonny
+	JonnyAlt + test_shot + Solaris
+	
+	unlock_jonnytta_alt
+	пройти локацию 4 за Jonnytta
+	JonnyttaAlt
+	
+	unlock_jo
+	медаль лок.5 у Jonny и Jonnytta
+	Jo + локация 6 + tome_of_fairy_tales + Magic pistol
+	
+	unlock_john
+	hp_level≥10 или max_hp≥14
+	John
+	
+	unlock_joab
+	4× healblack за забег + люк/победа
+	Joab + item blackdeal
+	
+	unlock_joaquin
+	медаль лок.6 у всех 9 остальных
+	Joaquin + локация 7
+	
+	
 	Донимать купца - антон чигур
 
 

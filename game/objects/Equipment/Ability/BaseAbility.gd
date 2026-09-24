@@ -117,6 +117,12 @@ func apply_cooldown_state(state: Dictionary) -> void:
 	_cd_time_left = float(state.get("time_left", 0.0))
 	_cd_kills_left = int(state.get("kills_left", 0))
 	_cd_rooms_left = int(state.get("rooms_left", 0))
+	if state.has("cooldown_type"):
+		cooldown_type = int(state["cooldown_type"]) as CooldownType
+	if state.has("cooldown_time"):
+		cooldown_time = float(state["cooldown_time"])
+	if state.has("cooldown_kills"):
+		cooldown_kills = int(state["cooldown_kills"])
 	if state.has("cooldown_rooms"):
 		cooldown_rooms = int(state["cooldown_rooms"])
 	if state.has("cooldown_room_recharge"):

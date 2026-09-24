@@ -5,7 +5,7 @@ extends BaseAbility
 const PROJECTILE_SCENE := preload("res://game/objects/Equipment/Ability/effects/CrackedEruption.tscn")
 const CONE_DEG := 45.0
 const RANGE_MULT := 0.25
-const MAGIC_PER_SHOT := 0.15
+const MAGIC_PER_SHOT := 0.1 #0.15
 const SPAWN_OFFSET := Vector2(0, -10)
 const SPAWN_JITTER := 15.0
 
@@ -28,7 +28,7 @@ func activate() -> bool:
 		return false
 
 	var magic := get_magic()
-	var count := int(floor(magic / MAGIC_PER_SHOT))
+	var count := int(floor(magic / MAGIC_PER_SHOT)) + 1
 	if count <= 0:
 		return true
 

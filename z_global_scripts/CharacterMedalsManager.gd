@@ -134,6 +134,10 @@ func notify_location_completed(
 ) -> void:
 	if not PROGRESSION_ENABLED:
 		return
+	if completed_location_1based >= 1:
+		AchievementManager.unlock_achievement("unlock_arid_membrane")
+	if completed_location_1based >= 2:
+		AchievementManager.unlock_achievement("unlock_forest_gear")
 	if completed_location_1based >= 4:
 		AchievementManager.unlock_achievement("unlock_jovita")
 	if completed_location_1based >= 4 and character_id == "Jonny":

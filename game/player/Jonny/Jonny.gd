@@ -195,8 +195,12 @@ func _equip_start_weapon() -> void:
 	var equip: BaseShot_equip = START_WEAPON_EQUIP.instantiate()
 	equip.apply_equip(self)
 
+func _get_start_ability_scene() -> PackedScene:
+	return START_ABILITY_EQUIP
+
+
 func _equip_start_ability() -> void:
-	var equip: BaseAbility_equip = START_ABILITY_EQUIP.instantiate()
+	var equip: BaseAbility_equip = _get_start_ability_scene().instantiate()
 	equip.apply_equip(self)
 	equip.queue_free()
 

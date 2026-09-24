@@ -41,11 +41,15 @@ static func scale_from_player(p: Node) -> Dictionary:
 	var sum := get_player_level_sum(p)
 	var t := clampf((sum - 8.0) / 72.0, 0.0, 1.0)
 	return {
-		"lifetime": lerpf(2.0, 4.0, t),
+		"lifetime": lerpf(4.0, 2.0, t),
 		"radius": lerpf(60.0, 180.0, t),
-		"tick_interval": lerpf(1, 0.5, t),
+		"tick_interval": lerpf(2, 0.5, t),
 	}
+# 0.5 * 2 / 1 = 1 x60r 
+# 0.5 * 4 / 0.5 = 4 x180r
 
+# 0.5 * 4 / 2 = 1 x60r
+# 0.5 * 2 / 0.5 = 2 x180r
 
 func setup_from_shot(shot: BaseShot, at_position: Vector2) -> void:
 	global_position = at_position
@@ -136,7 +140,7 @@ func _roll_player_damage() -> float:
 	chance += _player.crit_chance_bonus
 
 	var spread_val := StatManager.get_stat(_player, "spread")
-	var crit_bonus := 60.0 / (spread_val + 20.0)
+	var crit_bonus := 50.0 / (spread_val + 40.0)
 	var total_crit := 1.0
 	while true:
 		if randf() < chance:
