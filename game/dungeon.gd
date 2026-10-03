@@ -471,7 +471,7 @@ func regenerate_floor(new_floor: int) -> void:
 func _load_floor(new_floor: int) -> void:
 	current_floor = new_floor
 	_reset_player_interactions()
-	var saved_layer := _park_player_for_floor_load()
+	_park_player_for_floor_load()
 	clear_floor_content()
 	await get_tree().process_frame
 	await get_tree().physics_frame
@@ -493,7 +493,6 @@ func _load_floor(new_floor: int) -> void:
 	spawn_rooms()
 	_sync_current_room_to_start()
 	await get_tree().physics_frame
-	_restore_player_layer_after_floor_load(saved_layer)
 	player.update_level_buffs()
 	ItemManager.recharge_floor_items(player)
 
@@ -522,21 +521,12 @@ func _sync_current_room_to_start() -> void:
 	current_room_pos = Vector2.ZERO
 
 
-func _park_player_for_floor_load() -> int:
+func _park_player_for_floor_load() -> void:
 	if not is_instance_valid(player):
-		return 0
-	var saved_layer := player.collision_layer
-	player.collision_layer = 0
+		return
+	# Уводим далеко от сетки комнат, чтобы Detecter босса не сработал на старой позиции.
+	# collision_layer не трогаем — иначе Area2D дверей перестают видеть игрока.
 	player.global_position = FLOOR_LOAD_PARK
-	return saved_layer
-
-
-func _restore_player_layer_after_floor_load(saved_layer: int) -> void:
-	if not is_instance_valid(player):
-		return
-	if player.get("floor_transition_active"):
-		return
-	player.collision_layer = saved_layer
 
 
 func _reset_player_interactions() -> void:

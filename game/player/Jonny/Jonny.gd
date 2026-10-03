@@ -258,9 +258,7 @@ func _process(delta: float) -> void:
 			if dir == Vector2.ZERO:
 				velocity = velocity.move_toward(Vector2.ZERO, delta * move_speed)
 		else:
-			#velocity = dir * move_speed
-			velocity = Vector2(Input.get_axis('move_left', 'move_right'),
-		Input.get_axis('move_up', 'move_down')).normalized() * move_speed
+			velocity = target
 
 	move_and_slide()
 	now_move_direction = get_real_velocity()
@@ -848,7 +846,6 @@ const HATCH_ENTER_TIME := 1.5
 const HATCH_SPIN_TURNS := 2.0
 
 var _saved_collision_mask: int = 0
-var _saved_collision_layer: int = 0
 var _floor_transition_tween: Tween = null
 var floor_transition_active: bool = false
 
@@ -857,16 +854,15 @@ func begin_floor_transition() -> void:
 	floor_transition_active = true
 	set_movement_locked(true)
 	_saved_collision_mask = collision_mask
-	_saved_collision_layer = collision_layer
+	# Layer оставляем: двери/Area2D смотрят на layer игрока.
+	# Mask=0 — чтобы во время анимации люка не упираться в стены.
 	set_collision_mask(0)
-	set_collision_layer(0)
 
 
 func end_floor_transition() -> void:
 	if _floor_transition_tween and _floor_transition_tween.is_valid():
 		_floor_transition_tween.kill()
 	rotation = 0.0
-	set_collision_layer(_saved_collision_layer)
 	set_collision_mask(_saved_collision_mask)
 	_update_enemy_collision()
 	set_movement_locked(false)

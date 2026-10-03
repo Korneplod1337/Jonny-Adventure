@@ -15,6 +15,7 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 Тир 3- имбовые оружки/имба эквип 
 '''
 
+# Обновить разблокировку в ачивках для armory
 var POOLS := {
 	"treasure": [ ## только шмотки
 		#{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),

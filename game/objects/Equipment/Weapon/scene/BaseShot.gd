@@ -54,7 +54,7 @@ var _ricochet_overlap_id: int = 0
 
 const RICOCHET_SEPARATION := 6.0
 const RICOCHET_SPREAD_DEG := 5.0
-const SPREAD_SHOT_DISTANCE := 50.0
+const SPREAD_SHOT_DISTANCE := 75.0
 const SPREAD_SHOT_COUNT := 6
 const SPREAD_SHOT_CONE_DEG := 90.0
 const SPREAD_SHOT_SCALE := 0.25
