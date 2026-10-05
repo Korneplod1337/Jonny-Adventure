@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c3xvu0vhythkv" path="res://image/enemy/bodies/Mimic5.png" id="9_bmkci"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="9_q57dw"]
 [ext_resource type="Texture2D" uid="uid://b6gm52bf3d66h" path="res://image/enemy/bodies/Mimic6.png" id="10_48dfu"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_af8il"]
 radius = 48.0
@@ -92,6 +93,10 @@ hard_projectile_speed = 400.0
 projectile_scene = ExtResource("2_shot")
 use_pathfinding = true
 drop_coin_on_death = false
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 24)
 
 [node name="Interactable" parent="." unique_id=1597460607 instance=ExtResource("9_q57dw")]
 interact_name = "Open chest"

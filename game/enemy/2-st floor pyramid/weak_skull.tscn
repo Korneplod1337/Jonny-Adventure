@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="11_ttvju"]
 [ext_resource type="Texture2D" uid="uid://bh87wrjgti2yh" path="res://image/enemy/bodies/weak_skull8.png" id="12_bnewo"]
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="12_o2ohf"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnqwv"]
 size = Vector2(22, 22)
@@ -96,8 +97,12 @@ script = ExtResource("1_jv8ic")
 hard_base_hp = 50
 hard_move_speed = 60.0
 
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0.5, 3)
+sprite_type = 1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=59623340]
-position = Vector2(0, -2)
+position = Vector2(0.5, -2)
 shape = SubResource("RectangleShape2D_qnqwv")
 
 [node name="FieldViewArea" type="Area2D" parent="." unique_id=607490412]
@@ -111,7 +116,7 @@ shape = SubResource("CircleShape2D_cn8fk")
 [node name="HitArea" type="Area2D" parent="." unique_id=982591408]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1413603581]
-position = Vector2(0, -2)
+position = Vector2(0.5, -2)
 shape = SubResource("CircleShape2D_wextg")
 
 [node name="BlindTimer" type="Timer" parent="." unique_id=1132297483]

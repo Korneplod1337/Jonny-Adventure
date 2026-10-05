@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dhxgvnfiva5xu" path="res://image/enemy/bodies/Angry_Jonny.png" id="1_78b7b"]
 [ext_resource type="Script" uid="uid://drffttooudxmu" path="res://game/enemy/base/dartboard.gd" id="1_svwm6"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="2_p25qt"]
 [ext_resource type="FontFile" uid="uid://da2aij2x8g1mb" path="res://Fonts/JonnyAdventureFont2.ttf" id="3_c2jts"]
 [ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="4_2cvpx"]
 [ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="5_i337d"]
@@ -16,13 +17,13 @@ font = ExtResource("3_c2jts")
 font_size = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hocc"]
-size = Vector2(35.833336, 71.166664)
+size = Vector2(36, 70)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ewoj8"]
 radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqygm"]
-size = Vector2(38, 76.5)
+size = Vector2(38, 78)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2qrow"]
 animations = [{
@@ -47,6 +48,9 @@ animations = [{
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_svwm6")
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("2_p25qt")]
+position = Vector2(0, 39)
 
 [node name="Label" type="Label" parent="." unique_id=1638107935]
 visible = false

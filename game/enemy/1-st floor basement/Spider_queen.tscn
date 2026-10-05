@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dwojqipwed30b" path="res://image/enemy/bodies/spider_queen12.png" id="15_3ls0l"]
 [ext_resource type="Texture2D" uid="uid://dubsc8tyjyi4t" path="res://image/enemy/bodies/spider_queen13.png" id="16_45mca"]
 [ext_resource type="Texture2D" uid="uid://ud7s61sej2wj" path="res://image/enemy/bodies/spider_queen14.png" id="17_wnql3"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
 size = Vector2(22, 44)
@@ -134,6 +135,9 @@ wait_idle_time = 0.5
 spawn_distance_buffer = 30.0
 hard_base_hp = 260
 hard_angle_deviation = 40.0
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
 position = Vector2(0.5, 14)

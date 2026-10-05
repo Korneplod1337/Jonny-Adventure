@@ -19,10 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="17_poi"]
 [ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="18_f1i"]
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="19_f2i"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dt17h"]
-radius = 12.000001
-height = 44.57143
+radius = 18.000004
+height = 44.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_view"]
 radius = 984.0
@@ -99,8 +100,11 @@ cooldown_time = 0.6
 deals_melee_damage = false
 knockback_friction = 600.0
 
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 18)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1394743112]
-position = Vector2(1.1920928e-07, 0)
+position = Vector2(0, 6)
 rotation = 1.5707964
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("CapsuleShape2D_dt17h")

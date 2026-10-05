@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="18_poi"]
 [ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="19_f1i"]
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="20_f2i"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(60.200005, 23.000002)
@@ -96,6 +97,10 @@ boss_move_speed = 185.0
 boss_model_scale = 2.5
 deals_melee_damage = false
 knockback_friction = 600.0
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 11.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=931312946]
 position = Vector2(-2, 1)

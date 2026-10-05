@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="14_t2f30"]
 [ext_resource type="Texture2D" uid="uid://cclcd1tqqyanj" path="res://image/enemy/bodies/Bug8.png" id="16_d5o1w"]
 [ext_resource type="Texture2D" uid="uid://boxpn88qquvik" path="res://image/enemy/bodies/Bug9.png" id="17_15wax"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
 size = Vector2(44, 47)
@@ -158,6 +159,9 @@ projectile_scene = ExtResource("2_shot")
 use_pathfinding = true
 stop_on_melee_hit = false
 melee_hit_cooldown = 1.0
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(-1.5, 26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
 position = Vector2(-1, 5)

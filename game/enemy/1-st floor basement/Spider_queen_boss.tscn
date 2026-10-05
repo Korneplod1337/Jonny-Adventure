@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dwojqipwed30b" path="res://image/enemy/bodies/spider_queen12.png" id="15_3ls0l"]
 [ext_resource type="Texture2D" uid="uid://dubsc8tyjyi4t" path="res://image/enemy/bodies/spider_queen13.png" id="16_45mca"]
 [ext_resource type="Texture2D" uid="uid://ud7s61sej2wj" path="res://image/enemy/bodies/spider_queen14.png" id="17_wnql3"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
 size = Vector2(22, 64)
@@ -135,6 +136,10 @@ boss_base_hp = 500
 boss_move_speed = 150.0
 boss_model_scale = 3.0
 knockback_friction = 100.0
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=240624342]
 position = Vector2(0.5, 4)

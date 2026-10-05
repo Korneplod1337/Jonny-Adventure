@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cktm5k73hagjs" path="res://image/enemy/bodies/spider_small6.png" id="7_0bmqy"]
 [ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="7_qsq5w"]
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="8_ogbxm"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps82n"]
 size = Vector2(14, 14)
@@ -20,7 +21,6 @@ size = Vector2(14, 14)
 radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(22, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{
@@ -69,6 +69,10 @@ script = ExtResource("1_aan63")
 hard_base_hp = 25
 knockback_friction = 600.0
 
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(-1, 7.0000005)
+scale = Vector2(0.455, 0.455)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=374857758]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_ps82n")
@@ -84,7 +88,6 @@ shape = SubResource("CircleShape2D_2eqer")
 [node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
-position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_hoiul")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://djfqyjlqt38vb"]
+
+[ext_resource type="Script" uid="uid://bqx7shadowsprite01" path="res://game/objects/shadow/shadow.gd" id="1_shadow"]
+[ext_resource type="Texture2D" uid="uid://mmlwxhku7b2p" path="res://image/objects/shadow/shadow1.png" id="1_pqyxi"]
+[ext_resource type="Texture2D" uid="uid://bsqhm0dpplfqj" path="res://image/objects/shadow/shadow2.png" id="2_dgs0l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ev8ww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pqyxi")
+}],
+"loop": true,
+"name": &"oval",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dgs0l")
+}],
+"loop": true,
+"name": &"round",
+"speed": 1.0
+}]
+
+[node name="Shadow" type="Node2D" unique_id=1792752795]
+script = ExtResource("1_shadow")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1070179105]
+sprite_frames = SubResource("SpriteFrames_ev8ww")
+animation = &"oval"

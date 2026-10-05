@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="10_2pmvb"]
 [ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="11_jcsju"]
 [ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="12_pxxjn"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjtyh"]
 radius = 8.5
@@ -79,6 +80,10 @@ hard_base_hp = 75
 hard_angle_deviation = 30.0
 use_pathfinding = true
 knockback_friction = 600.0
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(-3.5, 19.5)
+scale = Vector2(0.7, 0.7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1932892107]
 position = Vector2(-1.5, 1)
