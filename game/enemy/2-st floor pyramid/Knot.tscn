@@ -72,9 +72,9 @@ hard_idle_time_max = 2.5
 hard_roll_time = 1.2
 hard_base_hp = 75
 
-
 [node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
-position = Vector2(0, 21)
+position = Vector2(0, 5)
+scale = Vector2(1.25, 1.25)
 sprite_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=59623340]

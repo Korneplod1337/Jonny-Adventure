@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dqujrffd8o0dg" path="res://image/equip/weapon_effects/tome_of_fairy_tales12.png" id="13_2pqcr"]
 [ext_resource type="Texture2D" uid="uid://c8l0d4hgco1fp" path="res://image/equip/weapon_effects/tome_of_fairy_tales13.png" id="14_gwnpi"]
 [ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="15_crit"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -81,6 +82,12 @@ z_index = 11
 collision_layer = 2
 collision_mask = 116
 script = ExtResource("1_q5ia4")
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
+sprite_type = 1
 
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
 sprite_frames = SubResource("SpriteFrames_xhdno")

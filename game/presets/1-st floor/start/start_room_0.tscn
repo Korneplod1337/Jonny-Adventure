@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
 [ext_resource type="PackedScene" uid="uid://xi3j7etugnhg" path="res://game/objects/Equipment/Weapon/equip/ShotGun_equip.tscn" id="8_l37qo"]
-[ext_resource type="PackedScene" uid="uid://bg8l17bqn1vun" path="res://game/enemy/2-st floor pyramid/Fly.tscn" id="9_l37qo"]
 [ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="10_1f72t"]
 [ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="12_r6k7x"]
 
@@ -111,6 +110,3 @@ position = Vector2(-205, 12)
 
 [node name="ShotGun" parent="." unique_id=241584314 instance=ExtResource("8_l37qo")]
 position = Vector2(176, 45)
-
-[node name="Fly" parent="." unique_id=227024778 instance=ExtResource("9_l37qo")]
-position = Vector2(401, 12)

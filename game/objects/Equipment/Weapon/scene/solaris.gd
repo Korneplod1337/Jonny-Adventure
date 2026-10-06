@@ -127,10 +127,10 @@ func _show_crit_effect() -> void:
 		return
 	var crit_node := get_node_or_null("Crit")
 	if crit_node is AnimatedSprite2D:
-		crit_node.position = CRIT_WORLD_OFFSET
-		crit_node.rotation = 0.0
 		crit_node.frame = crit_sprite
 		crit_node.show()
+		crit_node.global_rotation = 0.0
+		crit_node.global_position = global_position + CRIT_WORLD_OFFSET
 
 
 func _on_body_entered(_body: Node) -> void:

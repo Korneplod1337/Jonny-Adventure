@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://f2wm20hiryyr" path="res://image/equip/weapon_effects/special_hit4.png" id="5_h4"]
 [ext_resource type="Texture2D" uid="uid://dwstcfx6s7f3h" path="res://image/equip/weapon_effects/special_hit5.png" id="6_h5"]
 [ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="7_crit"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shot"]
 
@@ -38,6 +39,12 @@ z_index = 11
 collision_layer = 2
 collision_mask = 116
 script = ExtResource("1_script")
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
+sprite_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=608864501]
 shape = SubResource("CircleShape2D_shot")

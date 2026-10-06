@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c2ej24f1hgto1"]
 
 [ext_resource type="Script" uid="uid://cpip77fiv4ddh" path="res://game/player/Jonny/Jonny.gd" id="1_fwoqh"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="2_50ein"]
 [ext_resource type="Texture2D" uid="uid://c5erhh4uehlpi" path="res://image/players/Jonny_textures/back_afk1.png" id="3_3pvxu"]
 [ext_resource type="Texture2D" uid="uid://dkhg788bd6a5m" path="res://image/players/Jonny_textures/back_afk2.png" id="4_50ein"]
 [ext_resource type="Texture2D" uid="uid://cbev4xncngh58" path="res://image/players/Jonny_textures/player_afk1.png" id="5_vwt7v"]
@@ -207,6 +208,11 @@ scale = Vector2(1.9, 1.9)
 collision_mask = 183
 script = ExtResource("1_fwoqh")
 on_ice = false
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("2_50ein")]
+position = Vector2(0, 8)
+scale = Vector2(0.6, 0.6)
+sprite_type = 1
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("17_gh012")]
 z_index = 20

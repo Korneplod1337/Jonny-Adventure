@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dbrvp0s6kxcyj" path="res://image/equip/weapon_effects/shot_bullet_miss3.png" id="9_yncuk"]
 [ext_resource type="Texture2D" uid="uid://bs7jli5svta07" path="res://image/equip/weapon_effects/shot_bullet_miss4.png" id="10_yd3f7"]
 [ext_resource type="Texture2D" uid="uid://co6fgudpdctvd" path="res://image/equip/weapon_effects/shot_bullet_miss5.png" id="11_cbovc"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -92,6 +93,12 @@ collision_mask = 116
 script = ExtResource("1_otytm")
 use_spread = false
 fire_sfx_kind = 1
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
+sprite_type = 1
 
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
 position = Vector2(1, 1)

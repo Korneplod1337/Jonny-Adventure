@@ -74,6 +74,7 @@ enum FireSfxKind { TEAR, GUN, SLASH, NONE }
 @export var fire_sfx_kind: FireSfxKind = FireSfxKind.TEAR
 
 const CRIT_WORLD_OFFSET := Vector2(0, -60)
+const DEFAULT_SHADOW_WORLD_DOWN := Vector2(0, 20)
 
 func _ready() -> void:
 	animaited_speed = GameState.animated_world_speed
@@ -82,6 +83,7 @@ func _ready() -> void:
 	spread_angle = StatManager.get_stat(player, "spread")
 	if GameState.Surestrike:
 		spread_angle = 0.0
+	_align_shadow_to_world()
 	_play_attack_sfx()
 	if pellet_count > 1 and not spawned_spread:
 		spawned_spread = true
@@ -89,6 +91,11 @@ func _ready() -> void:
 	_init_boomerang()
 	if not body_exited.is_connected(_on_body_exited_ricochet):
 		body_exited.connect(_on_body_exited_ricochet)
+
+
+func _process(_delta: float) -> void:
+	_align_shadow_to_world()
+	_align_crit_to_world()
 
 
 func _play_attack_sfx() -> void:
@@ -345,10 +352,8 @@ func _compute_bounce_normal(body: Node) -> Vector2:
 
 func _sync_facing_after_redirect() -> void:
 	rotation = direction.angle()
-	var crit_node := get_node_or_null("Crit")
-	if crit_node is AnimatedSprite2D:
-		crit_node.position = CRIT_WORLD_OFFSET.rotated(-rotation)
-		crit_node.rotation = -rotation
+	_align_crit_to_world()
+	_align_shadow_to_world()
 
 
 func _get_player() -> Node:
@@ -411,10 +416,9 @@ func _show_crit_effect() -> void:
 		return
 	var crit_node := get_node_or_null("Crit")
 	if crit_node is AnimatedSprite2D:
-		crit_node.position = CRIT_WORLD_OFFSET.rotated(-rotation)
-		crit_node.rotation = -rotation
 		crit_node.frame = crit_sprite
 		crit_node.show()
+		_align_crit_to_world()
 
 
 func _build_damage_info(target: Node, amount: float) -> DamageInfo:
@@ -495,8 +499,56 @@ func explosion(animation_index):
 	elif animation_index == 1:
 		$shot_Animated.play("miss")
 
+	_start_shadow_shrink()
+
 	if not $shot_Animated.is_connected("animation_finished", Callable(self, "_on_explosion_finished")):
 		$shot_Animated.connect("animation_finished", Callable(self, "_on_explosion_finished"))
+
+
+func _start_shadow_shrink() -> void:
+	_align_shadow_to_world()
+	var shadow := get_node_or_null("Shadow")
+	if shadow == null or not shadow.has_method("shrink_to_zero"):
+		return
+	shadow.shrink_to_zero(_get_sprite_anim_duration($shot_Animated))
+
+
+## Тень всегда под снарядом в мире, независимо от rotation / duplicate дробинок.
+func _align_shadow_to_world() -> void:
+	var shadow := get_node_or_null("Shadow") as Node2D
+	if shadow == null or not is_inside_tree():
+		return
+	var down := DEFAULT_SHADOW_WORLD_DOWN
+	if "world_down_offset" in shadow:
+		down = shadow.world_down_offset
+	shadow.global_rotation = 0.0
+	shadow.global_position = global_position + down
+
+
+## Крит всегда сверху и без переворота (как тень — через world transform).
+func _align_crit_to_world() -> void:
+	var crit_node := get_node_or_null("Crit") as Node2D
+	if crit_node == null or not is_inside_tree():
+		return
+	crit_node.global_rotation = 0.0
+	crit_node.global_position = global_position + CRIT_WORLD_OFFSET
+
+
+func _get_sprite_anim_duration(sprite: AnimatedSprite2D) -> float:
+	if sprite == null or sprite.sprite_frames == null:
+		return 0.25
+	var anim_name := sprite.animation
+	var sf := sprite.sprite_frames
+	if not sf.has_animation(anim_name):
+		return 0.25
+	var total := 0.0
+	for i in sf.get_frame_count(anim_name):
+		total += sf.get_frame_duration(anim_name, i)
+	var spd := sf.get_animation_speed(anim_name) * maxf(sprite.speed_scale, 0.001)
+	if spd <= 0.0:
+		return 0.25
+	return total / spd
+
 
 func _on_explosion_finished():
 	queue_free()
@@ -536,10 +588,8 @@ func _spawn_spread() -> void:
 		if is_even and i == 0:
 			direction = base_dir.rotated(angle)
 			rotation = direction.angle()
-			if has_node("Crit"):
-				var crit_node: AnimatedSprite2D = $Crit
-				crit_node.position = Vector2(0, -60).rotated(-rotation)
-				crit_node.rotation = -rotation
+			_align_crit_to_world()
+			_align_shadow_to_world()
 			continue
 
 		var bullet: BaseShot = duplicate()
@@ -576,6 +626,7 @@ func _spawn_spread() -> void:
 
 		get_parent().add_child.call_deferred(bullet)
 		bullet.global_position = global_position
+		bullet.call_deferred("_align_shadow_to_world")
 
 
 func _try_spread_shot_split() -> void:
@@ -689,6 +740,7 @@ func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2)
 	copy.crit_spread_offset = crit_spread_offset
 	copy.steal_life = steal_life
 	copy.rotation = dir.angle()
+	copy._align_shadow_to_world()
 
 
 func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:

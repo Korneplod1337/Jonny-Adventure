@@ -7,9 +7,7 @@ func _ready() -> void:
 	super()
 	self_speed_multiplier *= 1.5
 	extra_reload = 0.9
-	# Crit всегда сверху и смотрит вверх в мировых координатах
-	crit.position = CRIT_WORLD_OFFSET.rotated(-rotation)
-	crit.rotation = -rotation
+	_align_crit_to_world()
 
 
 func _get_crit_chance() -> float:

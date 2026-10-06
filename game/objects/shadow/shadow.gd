@@ -4,6 +4,9 @@ extends Node2D
 const ANIM_OVAL := &"oval"
 const ANIM_ROUND := &"round"
 
+## Смещение тени вниз в МИРОВЫХ координатах (не зависит от rotation снаряда).
+@export var world_down_offset := Vector2(0, 20)
+
 var _sprite_type := 0
 
 @export_enum("Oval", "Round")
@@ -29,3 +32,14 @@ func _apply_sprite_type() -> void:
 	sprite.animation = anim
 	sprite.frame = 0
 	sprite.stop()
+
+
+## Плавно сжимает тень до нуля за `duration` секунд (анимация разрушения снаряда).
+func shrink_to_zero(duration: float) -> void:
+	if duration <= 0.0:
+		scale = Vector2.ZERO
+		return
+	var tween := create_tween()
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, "scale", Vector2.ZERO, duration)

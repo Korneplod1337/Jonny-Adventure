@@ -11,9 +11,7 @@ func _ready() -> void:
 	self_damage_multiplier = FLASK_DAMAGE_MULT
 	extra_reload = 1.2
 	super()
-	if crit:
-		crit.position = CRIT_WORLD_OFFSET.rotated(-rotation)
-		crit.rotation = -rotation
+	_align_crit_to_world()
 
 
 func _get_crit_chance() -> float:
@@ -48,6 +46,7 @@ func explosion(_animation_index) -> void:
 	$shot_Animated.speed_scale = animaited_speed
 	# Всегда разбитие, miss нет.
 	$shot_Animated.play("default")
+	_start_shadow_shrink()
 	if not $shot_Animated.is_connected("animation_finished", Callable(self, "_on_explosion_finished")):
 		$shot_Animated.connect("animation_finished", Callable(self, "_on_explosion_finished"))
 

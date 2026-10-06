@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cgxg2ge12u3px" path="res://image/equip/weapon_effects/CardWeapon7.png" id="8_mi86g"]
 [ext_resource type="Curve" path="res://game/combat/boomerang_speed_curve.tres" id="9_curve"]
 [ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="10_crit"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -59,6 +60,12 @@ script = ExtResource("1_mi86g")
 self_speed_multiplier = 1.1
 boomerang_power = 1
 penetration = 1
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
+sprite_type = 1
 
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
 scale = Vector2(1.5, 1.5)

@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://hh7epeobhm88" path="res://image/effect_sprites/crit/crit3.png" id="14_7m0yv"]
 [ext_resource type="Texture2D" uid="uid://dt7rhc54sbxcw" path="res://image/effect_sprites/crit/crit4.png" id="15_tmpxw"]
 [ext_resource type="Texture2D" uid="uid://binbanvlipmin" path="res://image/effect_sprites/crit/crit5.png" id="16_2f0wx"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xhdno"]
 animations = [{
@@ -93,6 +94,12 @@ script = ExtResource("1_qma8c")
 use_spread = false
 self_damage_multiplier = 0.6
 fire_sfx_kind = 1
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
+sprite_type = 1
 
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=1992093053]
 position = Vector2(1, 1)

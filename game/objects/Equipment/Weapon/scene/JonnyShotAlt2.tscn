@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dkx44dlkph7ik" path="res://image/equip/weapon_effects/spit_miss_Alt4.png" id="10_e5113"]
 [ext_resource type="Texture2D" uid="uid://cemr7gpoeg8oa" path="res://image/equip/weapon_effects/spit_miss_Alt5.png" id="11_l0osi"]
 [ext_resource type="SpriteFrames" path="res://game/objects/Equipment/Weapon/scene/crit_sprite_frames.tres" id="12_83b1e"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34718"]
 
@@ -63,6 +64,12 @@ z_index = 11
 collision_layer = 2
 collision_mask = 116
 script = ExtResource("1_07wkh")
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
+sprite_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1535026914]
 scale = Vector2(0.8, 0.8)

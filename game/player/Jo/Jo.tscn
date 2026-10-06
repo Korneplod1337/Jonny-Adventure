@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bmknx8lney5cw" path="res://image/players/Jo_textures/shot_left.png" id="16_6g6d7"]
 [ext_resource type="Texture2D" uid="uid://cul30rghanhwr" path="res://image/players/Jo_textures/shot_rightt.png" id="17_4mlx5"]
 [ext_resource type="Texture2D" uid="uid://cljnvbflnfokr" path="res://image/players/Jo_textures/shot_up.png" id="18_w3gv7"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g617h"]
 animations = [{
@@ -207,6 +208,12 @@ scale = Vector2(1.9, 1.9)
 collision_mask = 183
 script = ExtResource("1_gr2vb")
 on_ice = false
+
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 8)
+scale = Vector2(0.6, 0.6)
+sprite_type = 1
 
 [node name="InteractingComponents" parent="." unique_id=2012981929 instance=ExtResource("2_rabuk")]
 z_index = 20
