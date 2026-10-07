@@ -13,6 +13,11 @@ signal equip_taken
 @export var interact_name: String = "test_chest2"
 var cost: int = 0
 
+func _enter_tree() -> void:
+	# Survives subclasses that override _ready without super().
+	call_deferred("_start_idle_float")
+
+
 func _ready() -> void:
 	interactable.interact = _on_interact
 	var enchant_text := ""
@@ -21,6 +26,10 @@ func _ready() -> void:
 	else:
 		interactable.interact_name = 'Take ' + enchant_text \
 		+ interact_name + ' by %s coins' % ((cost + GS.cost_plus) * GS.cost_multiplier)
+
+
+func _start_idle_float() -> void:
+	PickupIdleFloat.begin(self)
 
 func _on_interact():
 	var player = get_player()

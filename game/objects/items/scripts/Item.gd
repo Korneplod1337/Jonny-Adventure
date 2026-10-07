@@ -15,6 +15,11 @@ var player : CharacterBody2D
 
 @export var effect_power: float = 1
 
+func _enter_tree() -> void:
+	# Survives subclasses that override _ready without super().
+	call_deferred("_start_idle_float")
+
+
 func _ready() -> void:
 	interactable.interact = _on_interact
 	cost = cost * GameState.cost_multiplier
@@ -22,6 +27,10 @@ func _ready() -> void:
 		interactable.interact_name = item_name
 	else:
 		interactable.interact_name = "%s by %s coins" % [item_name, (cost + GS.cost_plus) * GS.cost_multiplier]
+
+
+func _start_idle_float() -> void:
+	PickupIdleFloat.begin(self)
 
 func _on_interact():
 	player = get_tree().get_first_node_in_group("player")

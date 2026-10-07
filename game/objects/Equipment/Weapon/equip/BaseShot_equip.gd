@@ -16,6 +16,10 @@ var type = 'weapon'
 @onready var weapon_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var enchant_shader: AnimatedSprite2D = $AnimatedSprite2D/enchant_shader
 
+func _enter_tree() -> void:
+	call_deferred("_start_idle_float")
+
+
 func _ready() -> void:
 	interactable.interact = _on_interact
 	_setup_enchant_visual()
@@ -29,6 +33,10 @@ func _ready() -> void:
 	else:
 		interactable.interact_name = 'Take ' + enchant_text \
 		+ interact_name + ' by %s coins' %cost
+
+
+func _start_idle_float() -> void:
+	PickupIdleFloat.begin(self)
 
 
 func apply_equip(player) -> void:

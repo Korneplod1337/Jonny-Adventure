@@ -20,6 +20,10 @@ var type: String = "ability"
 var _saved_cd: Dictionary = {}
 
 
+func _enter_tree() -> void:
+	call_deferred("_start_idle_float")
+
+
 func _ready() -> void:
 	interactable.interact = _on_interact
 	if cost < 1:
@@ -29,6 +33,10 @@ func _ready() -> void:
 			+ " by %s coins" % ((cost + GS.cost_plus) * GS.cost_multiplier)
 	if _has_active_saved_cd():
 		_ensure_saved_cd_listeners()
+
+
+func _start_idle_float() -> void:
+	PickupIdleFloat.begin(self)
 
 
 func _exit_tree() -> void:
