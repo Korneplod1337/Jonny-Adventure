@@ -12,7 +12,9 @@ func init_room() -> void:
 	_shuffle_tilemap_layer()
 	if GameState.level_bufs[0][1]:
 		shuffle_doors()
-	await get_tree().physics_frame
+	# Без await: наследники зовут super() без await, и после free/смены комнаты
+	# это давало "Lambda capture at index 0 was freed".
+
 
 func _shuffle_tilemap_layer() -> void:
 	var used_cells: Array[Vector2i] = tile_map_layer.get_used_cells()

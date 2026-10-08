@@ -11,9 +11,9 @@ func _ready() -> void:
 		cost += 3
 	cost = int(cost * GameState.cost_multiplier)
 	if cost < 1:
-		interactable.interact_name = "lvlup"
+		interactable.interact_name = "def lvlup"
 	else:
-		interactable.interact_name = "Take lvlup by %s coins" % cost
+		interactable.interact_name = "Take def lvlup by %s coins" % cost
 
 
 func _on_interact() -> void:
@@ -47,18 +47,10 @@ func apply_item_effect() -> void:
 			StatManager.upgrade_stat(player, "move_speed", 1)
 		3:
 			StatManager.upgrade_stat(player, "magic", 1)
-		4:
-			StatManager.upgrade_stat(player, "damage", 1)
-		5:
-			StatManager.upgrade_stat(player, "fire_rate", 1)
-		6:
-			StatManager.upgrade_stat(player, "spread", 1)
-		7:
-			StatManager.upgrade_stat(player, "range", 1)
 		_:
-			print("apply item effect error (lvlup)")
+			print("apply item effect error (lvlup_def)")
 
 
 func randomize_stat() -> void:
-	rand = randi() % 8
+	rand = randi() % 4
 	$AnimatedSprite2D.frame = rand

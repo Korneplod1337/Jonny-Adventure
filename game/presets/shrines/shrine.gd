@@ -1,7 +1,9 @@
 extends Node2D
 
 const BLOOD_SHRINE_SCENE := preload("res://game/presets/shrines/bloodShrine.tscn")
-const BLOOD_SHRINE_CHANCE := 0.20
+const OBLATION_SHRINE_SCENE := preload("res://game/presets/shrines/OblationShrine.tscn")
+const BLOOD_SHRINE_CHANCE := 0.12
+const OBLATION_SHRINE_CHANCE := 0.08
 
 @onready var interactable: Area2D = $Interactable
 @onready var Shrn_animation: AnimatedSprite2D = $AnimatedSprite2D
@@ -13,34 +15,74 @@ enum ShrineType {
 @export var shrine_type: int = -1
 @export var flip := false
 var selected_type: ShrineType
+var _finalized := false
 
 func _ready() -> void:
 	Shrn_animation.flip_h = flip
 	interactable.interact = _on_interact
-	if shrine_type == -1 and randf() < BLOOD_SHRINE_CHANCE:
-		visible = false
-		interactable.is_interactable = false
-		call_deferred("_replace_with_blood_shrine")
+	if GameState.has_level_buf("Destroyed"):
+		_make_destroyed()
+		_finalized = true
 		return
-	if shrine_type == -1: 
-		selected_type = ShrineType.values()[randi() % ShrineType.size()] 
-	else: selected_type = ShrineType.values()[shrine_type]
+	# Тип выбирает RoomScript_enemy._process_shrines() через finalize_spawn().
+	# Нельзя await/process_frame-fallback: после queue_free это даёт
+	# "Lambda capture at index 0 was freed".
+	visible = false
+	interactable.is_interactable = false
+
+
+func finalize_spawn() -> void:
+	if _finalized or not is_inside_tree() or is_queued_for_deletion():
+		return
+	_finalized = true
+
+	if shrine_type == -1:
+		var roll := randf()
+		if roll < BLOOD_SHRINE_CHANCE:
+			_replace_with_scene(BLOOD_SHRINE_SCENE, "blood")
+			return
+		if roll < BLOOD_SHRINE_CHANCE + OBLATION_SHRINE_CHANCE:
+			_replace_with_scene(OBLATION_SHRINE_SCENE, "oblation")
+			return
+
+	_setup_normal_shrine()
+
+
+func _setup_normal_shrine() -> void:
+	visible = true
+	interactable.is_interactable = true
+	if shrine_type == -1:
+		selected_type = ShrineType.values()[randi() % ShrineType.size()]
+	else:
+		selected_type = ShrineType.values()[shrine_type]
 	Shrn_animation.animation = ShrineType.keys()[selected_type]
 	Shrn_animation.frame = 0
 	print("Шрайн: ", ShrineType.keys()[selected_type])
 
 
-func _replace_with_blood_shrine() -> void:
+func _make_destroyed() -> void:
+	visible = true
+	interactable.is_interactable = false
+	Shrn_animation.animation = "broken"
+	Shrn_animation.frame = 0
+	print("Шрайн: broken")
+
+
+func _replace_with_scene(scene: PackedScene, label: String) -> void:
 	var parent := get_parent()
 	if parent == null:
 		queue_free()
 		return
-	var blood := BLOOD_SHRINE_SCENE.instantiate()
-	blood.position = position
-	parent.add_child(blood)
-	parent.move_child(blood, get_index())
-	queue_free()
-	print("Шрайн: blood")
+	var replacement := scene.instantiate()
+	replacement.position = position
+	parent.add_child(replacement)
+	parent.move_child(replacement, get_index())
+	visible = false
+	interactable.is_interactable = false
+	# deferred: не рвём текущий call stack init_room
+	call_deferred("queue_free")
+	print("Шрайн: ", label)
+
 
 func _on_interact():
 	var player = get_tree().get_first_node_in_group("player")

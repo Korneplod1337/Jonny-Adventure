@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ywfb4cg1rk1u"]
+[gd_scene format=3 uid="uid://dwb1vf8t7e0xw"]
 
-[ext_resource type="Script" path="res://game/objects/items/scripts/LvlupRandom.gd" id="1_rftd4"]
+[ext_resource type="Script" path="res://game/objects/items/scripts/LvlupAtk.gd" id="1_rftd4"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="2_qknov"]
 [ext_resource type="Texture2D" uid="uid://dhlycfvgl65cp" path="res://image/items/0 tier/LevelupHP.png" id="3_fo011"]
 [ext_resource type="Texture2D" uid="uid://c3urraeen8pxe" path="res://image/items/0 tier/LevelupLuck.png" id="4_qy8gc"]
@@ -49,23 +49,23 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Item LvlUP" type="Area2D" unique_id=1430574395]
+[node name="Item atk LvlUP" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_rftd4")
 item_name = "-"
 item_tooltip = "-"
 item_tooltip2 = "-"
-item_id = "lvlup"
+item_id = "lvlup_atk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=627769741]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oisx2")
 
-[node name="Interactable" parent="." unique_id=114306972 instance=ExtResource("2_qknov")]
+[node name="Interactable" parent="." instance=ExtResource("2_qknov")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("CircleShape2D_lh7he")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=87217535]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, 2)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_m4x2y")

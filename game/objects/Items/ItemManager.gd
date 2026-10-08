@@ -4,7 +4,7 @@ var unlocked_items: Dictionary = {}
 var picked_items: Dictionary = {}
 var run_picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
-var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'spiderweb',
+var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'lvlup_def', 'lvlup_atk', 'spiderweb',
  "mindseye", "storybook", "boomerang", 'aegis', 'cross', 'bone', 'meat', 'beard',
  'homuncules', 'seed', 'shine', 'pocketwatch', 'bomb', 'jetfuel', 'broom', 'sandclock',
  'powerofdamage', 'cauldron', 'harmony', 'fountain', 'grail', 'stardust', 'sextant',
@@ -167,7 +167,7 @@ var POOLS := {
 		
 	],
 	"shop": [
-		{"id": "lvlup", 		"scene": preload("uid://ywfb4cg1rk1u"), 		"tier": 0},
+		{"id": "lvlup_def", 	"scene": preload("res://game/objects/items/scenes/tier 0/LvlupDef.tscn"), "tier": 0},
 		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), 	"tier": 0},
 		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), 	"tier": 0},
 		{"id": "healalt", 	"scene": preload("uid://ujleakh3r3l0"), 		"tier": 0},
@@ -299,7 +299,10 @@ var POOLS := {
 		
 	],
 	"armory": [
-		{"id": "lvlup", 		"scene": preload("uid://ywfb4cg1rk1u"), "tier": 0}
+	],
+	## Ультимативный LvlUP (все 8 статов) — только прямым спавном / Room with all / oblation
+	"all": [
+		{"id": "lvlup", "scene": preload("uid://ywfb4cg1rk1u"), "tier": 0},
 	],
 }
 

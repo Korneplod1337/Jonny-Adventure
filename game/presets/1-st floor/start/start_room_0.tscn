@@ -5,17 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="3_yfpwr"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_7fgpm"]
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
-[ext_resource type="PackedScene" uid="uid://xi3j7etugnhg" path="res://game/objects/Equipment/Weapon/equip/ShotGun_equip.tscn" id="8_l37qo"]
-[ext_resource type="PackedScene" uid="uid://dk3m8x2nq7wp4" path="res://game/objects/items/scenes/tier 1/Cross.tscn" id="9_o41he"]
 [ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="10_1f72t"]
-[ext_resource type="PackedScene" uid="uid://dtsvhaajbte3h" path="res://game/objects/items/scenes/tier 1/Homuncules.tscn" id="10_qeb2j"]
-[ext_resource type="PackedScene" uid="uid://8ubgba6cksps" path="res://game/objects/items/scenes/tier 1/JetFuel.tscn" id="11_vombo"]
-[ext_resource type="PackedScene" uid="uid://dfddouvj147pb" path="res://game/objects/items/scenes/tier 1/LuckyCoin.tscn" id="12_hfl2y"]
-[ext_resource type="PackedScene" uid="uid://ci05xlan24oqs" path="res://game/objects/coins/Coin.tscn" id="12_r6k7x"]
-[ext_resource type="PackedScene" uid="uid://brqtfx7g8231f" path="res://game/objects/items/scenes/tier 1/Meat.tscn" id="13_8sdh4"]
-[ext_resource type="PackedScene" uid="uid://c163ybgdtpmfi" path="res://game/objects/items/scenes/tier 1/PocketWatch.tscn" id="14_h6u4y"]
-[ext_resource type="PackedScene" uid="uid://b0y18ge5o5bo8" path="res://game/objects/items/scenes/tier 1/Stardust.tscn" id="15_2ue0t"]
-[ext_resource type="PackedScene" uid="uid://hjincgy3g0a4" path="res://game/objects/items/scenes/tier 1/PowerOfDamage.tscn" id="16_yfpwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -68,7 +58,7 @@ position = Vector2(-382, 239)
 shape = SubResource("RectangleShape2D_sw7ps")
 
 [node name="Rock2" parent="." unique_id=882224253 instance=ExtResource("3_yfpwr")]
-position = Vector2(254, 232)
+position = Vector2(-268, 232)
 
 [node name="Door_Up" parent="." unique_id=976948045 instance=ExtResource("4_7fgpm")]
 position = Vector2(0, -298)
@@ -104,41 +94,5 @@ position = Vector2(488, -132)
 [node name="EnemyTest5" parent="." unique_id=1206335830 instance=ExtResource("5_tvg8h")]
 position = Vector2(380, -188)
 
-[node name="Coin" parent="." unique_id=2054458591 instance=ExtResource("12_r6k7x")]
-position = Vector2(-122, 95)
-
-[node name="Coin2" parent="." unique_id=308619926 instance=ExtResource("12_r6k7x")]
-position = Vector2(-289, 100)
-
 [node name="Surge_equip" parent="." unique_id=1060883570 instance=ExtResource("10_1f72t")]
-position = Vector2(-203, 98)
-
-[node name="Coin3" parent="." unique_id=1127824908 instance=ExtResource("12_r6k7x")]
-position = Vector2(-205, 12)
-
-[node name="ShotGun" parent="." unique_id=241584314 instance=ExtResource("8_l37qo")]
-position = Vector2(176, 45)
-
-[node name="Cross" parent="." unique_id=1430574395 instance=ExtResource("9_o41he")]
-position = Vector2(-152, -167)
-
-[node name="Homuncules" parent="." unique_id=1467083938 instance=ExtResource("10_qeb2j")]
-position = Vector2(58, -161)
-
-[node name="JetFuel" parent="." unique_id=1507311809 instance=ExtResource("11_vombo")]
-position = Vector2(10, -165)
-
-[node name="LuckyCoin" parent="." unique_id=738769726 instance=ExtResource("12_hfl2y")]
-position = Vector2(-44, -162)
-
-[node name="Meat" parent="." unique_id=1713337504 instance=ExtResource("13_8sdh4")]
-position = Vector2(-100, -164)
-
-[node name="PocketWatch" parent="." unique_id=2075511758 instance=ExtResource("14_h6u4y")]
-position = Vector2(-208, -166)
-
-[node name="Stardust" parent="." unique_id=1524426555 instance=ExtResource("15_2ue0t")]
-position = Vector2(-263, -161)
-
-[node name="PowerOfDamage" parent="." unique_id=1048646446 instance=ExtResource("16_yfpwr")]
-position = Vector2(-322, -166)
+position = Vector2(-254, 170)

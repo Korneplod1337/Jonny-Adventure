@@ -27,6 +27,7 @@ func _init() -> void:
 	spread_level = 1.0
 	range_level = 1.0
 	fire_rate_level = 1.0
+	start_coins = 5
 
 
 func _ready() -> void:

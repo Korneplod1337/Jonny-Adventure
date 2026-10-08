@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dkflcb2mlqx3l"]
+
+[ext_resource type="Script" uid="uid://b2jxm8hx4g8lj" path="res://game/presets/shrines/oblation_shrine.gd" id="1_kuaar"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="2_quy41"]
+[ext_resource type="Texture2D" uid="uid://b7p0vvrdokqof" path="res://image/rooms/shrines/shrine_oblation7.png" id="3_kuaar"]
+[ext_resource type="Texture2D" uid="uid://c2gpkmrg8iyp1" path="res://image/rooms/shrines/shrine_oblation8.png" id="4_dgr4u"]
+[ext_resource type="Texture2D" uid="uid://da36h0r5g8lri" path="res://image/rooms/shrines/shrine_oblation1.png" id="5_ip67b"]
+[ext_resource type="Texture2D" uid="uid://cj1sw5qrj7wbt" path="res://image/rooms/shrines/shrine_oblation2.png" id="6_c3di8"]
+[ext_resource type="Texture2D" uid="uid://dggirk2ewwasp" path="res://image/rooms/shrines/shrine_oblation3.png" id="7_ijjyy"]
+[ext_resource type="Texture2D" uid="uid://cc42uwnv14p8k" path="res://image/rooms/shrines/shrine_oblation4.png" id="8_y70b5"]
+[ext_resource type="Texture2D" uid="uid://2nbjwup5tpdg" path="res://image/rooms/shrines/shrine_oblation5.png" id="9_bgvvn"]
+[ext_resource type="Texture2D" uid="uid://sho6i2shigfh" path="res://image/rooms/shrines/shrine_oblation6.png" id="10_7is3q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwp4v"]
+size = Vector2(80, 75)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_igkc2"]
+radius = 24.0
+height = 62.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xy4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_kuaar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dgr4u")
+}],
+"loop": true,
+"name": &"active",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ip67b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_c3di8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ijjyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y70b5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bgvvn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7is3q")
+}],
+"loop": false,
+"name": &"completion",
+"speed": 1.0
+}]
+
+[node name="Shrine oblation" type="Node2D" unique_id=1541189603]
+script = ExtResource("1_kuaar")
+
+[node name="Interactable" parent="." unique_id=515258723 instance=ExtResource("2_quy41")]
+interact_name = "use shrine"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactable" unique_id=697456273]
+position = Vector2(0, 18)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_rwp4v")
+
+[node name="collision" type="StaticBody2D" parent="." unique_id=1523569493]
+position = Vector2(0.5, 0)
+collision_layer = 16
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=1173996129]
+position = Vector2(0, 32)
+shape = SubResource("CapsuleShape2D_igkc2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=434765893]
+position = Vector2(-1, 0)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_0xy4y")
+animation = &"completion"
+frame = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1748129473]
+
+[node name="MarkerChest" type="Marker2D" parent="." unique_id=904953292]
+position = Vector2(1, -11)

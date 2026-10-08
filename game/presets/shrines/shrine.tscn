@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://w44vcoqbcqy8"]
 
 [ext_resource type="Script" uid="uid://doux8j83sh0ml" path="res://game/presets/shrines/shrine.gd" id="1_ankqj"]
+[ext_resource type="Texture2D" uid="uid://pxbkuy4ht76a" path="res://image/rooms/shrines/broken_shrine.png" id="3_qmpxl"]
 [ext_resource type="Texture2D" uid="uid://clv5gxrxxp2ey" path="res://image/rooms/shrines/shrine_dmg1.png" id="3_rwp4v"]
 [ext_resource type="Texture2D" uid="uid://cikhvt2c84bfa" path="res://image/rooms/shrines/shrine_hp1.png" id="4_hrdi4"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_mml3l"]
@@ -35,6 +36,14 @@ size = Vector2(22, 28)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6c05r"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qmpxl")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_rwp4v")
@@ -213,6 +222,6 @@ shape = SubResource("RectangleShape2D_fydls")
 position = Vector2(-1.5, 0)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_6c05r")
-animation = &"damage"
+animation = &"broken"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1748129473]

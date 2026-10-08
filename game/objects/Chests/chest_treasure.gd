@@ -2,9 +2,9 @@ extends StaticBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interactable: Area2D = $Interactable
 var cost := 0
-var item_tier :Array = [1] # add check floor
+var item_tier :Array = [1] # in treasure room
 var item_pool := 'treasure'
-var equip_tier :Array = [1] #add check floor
+var equip_tier :Array = [1] # in treasure room
 var equip_pool := 'armory'
 const OPENED_BEFORE_FADE_DELAY := 2.0
 const FADE_DURATION := 4.0

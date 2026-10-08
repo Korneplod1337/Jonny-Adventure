@@ -31,8 +31,13 @@ static func begin(host: Node) -> void:
 	if tree == null:
 		_cycle(host, -1.0)
 		return
+	# weakref: иначе после queue_free host → "Lambda capture ... was freed"
+	var host_ref: WeakRef = weakref(host)
 	tree.create_timer(delay, false, true).timeout.connect(
-		func() -> void: _cycle(host, -1.0),
+		func() -> void:
+			var h := host_ref.get_ref() as Node
+			if h != null:
+				_cycle(h, -1.0),
 		CONNECT_ONE_SHOT
 	)
 
@@ -69,8 +74,14 @@ static func _cycle(host: Node, y_dir: float) -> void:
 		if prev and prev.is_valid():
 			prev.kill()
 
+	var host_ref: WeakRef = weakref(host)
 	var tween := host.create_tween()
 	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(visual, "position", target, HALF_PERIOD)
-	tween.tween_callback(func() -> void: _cycle(host, -y_dir))
+	tween.tween_callback(
+		func() -> void:
+			var h := host_ref.get_ref() as Node
+			if h != null:
+				_cycle(h, -y_dir)
+	)
 	host.set_meta(_META_TWEEN, tween)

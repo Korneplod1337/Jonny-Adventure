@@ -31,6 +31,8 @@ var base_damage: 			float = 25.0
 var base_spread: 			float = 14.0
 var base_range: 				float = 150.0
 var base_fire_rate: 			float = 0.4
+## Монеты в начале забега (после GameState.obnulenie)
+var start_coins: 			int = 0
 
 const ENEMY_COLLISION_BITS := 4 | 64
 const BASE_IMMUNE_TIME := 0.3
@@ -120,6 +122,10 @@ var last_move_dir := 1
 
 var animated_speed := 1.0
 
+func _init() -> void:
+	start_coins = 3
+
+
 func _enter_tree() -> void:
 	# До @onready-статов, чтобы get_stat сразу видел макс. уровни/бонусы
 	if god_mode:
@@ -151,6 +157,8 @@ func _ready() -> void:
 	update_equipment_visuals()
 	if not StatsManager.stat_changed.is_connected(_on_stat_changed):
 		StatsManager.stat_changed.connect(_on_stat_changed)
+	if start_coins > 0:
+		GameState.add_coins(start_coins)
 	if start_weapon:
 		call_deferred("_equip_start_weapon")
 	if start_ability:

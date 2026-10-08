@@ -79,6 +79,7 @@ var mimic_chest_chance := 0.0 # шанс, что clear-reward small/big сунд
  ["Barren", 				false, Color.RED],
  ["Toxic", 				false, Color.YELLOW],
  ["Shopless", 			false, Color.YELLOW],
+ ["Destroyed", 			false, Color.YELLOW],
  ["Confusing space", 	false, Color.LAWN_GREEN],
  ["Ice", 				false, Color.LAWN_GREEN],
  ["Bountiful", 			false, Color.LAWN_GREEN],

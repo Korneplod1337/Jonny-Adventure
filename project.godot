@@ -40,6 +40,7 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/resizable=false
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=2
 mouse_cursor/custom_image="res://image/main_menu/cursor.webp"
 
 [dotnet]

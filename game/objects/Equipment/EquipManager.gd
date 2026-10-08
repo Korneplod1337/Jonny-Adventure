@@ -18,6 +18,8 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 # Обновить разблокировку в ачивках для armory
 var POOLS := {
 	"treasure": [ ## только шмотки
+		{"id": "lvlup_atk", "scene": preload("res://game/objects/items/scenes/tier 0/LvlupAtk.tscn"),
+		 "tier": 0, "weight": 10.0},
 		#{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 #"tier": 3, "weight": 10.0},
 		#{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
@@ -53,7 +55,9 @@ var POOLS := {
 	
 	],
 	"armory": [
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # Оружейный кейс
+		{"id": "lvlup_atk", "scene": preload("res://game/objects/items/scenes/tier 0/LvlupAtk.tscn"),
+		 "tier": 0, "weight": 10.0},
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 0.0},
@@ -364,7 +368,7 @@ func spawn(pool_type: String, tiers: Array, pos: Vector2, cost: int = -1) -> voi
 
 	var inst = equipment["scene"].instantiate()
 	inst.position = pos
-	if inst.type == 'weapon':
+	if inst.get("type") == "weapon":
 		inst.enchantment = roll_enchantment()
 
 	if cost != -1:

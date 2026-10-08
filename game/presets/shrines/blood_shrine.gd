@@ -3,6 +3,7 @@ extends Node2D
 const CHEST_SMALL := preload("res://game/objects/chests/Chest_small.tscn")
 const CHEST_BIG := preload("res://game/objects/chests/Chest_big.tscn")
 const CHEST_TREASURE := preload("res://game/objects/chests/Chest_treasure.tscn")
+const SHRINE_SCENE := preload("res://game/presets/shrines/shrine.tscn")
 
 @onready var interactable: Area2D = $Interactable
 @onready var knife: Node2D = $knife
@@ -13,6 +14,23 @@ var _activated := false
 
 func _ready() -> void:
 	interactable.interact = _on_interact
+	if GameState.has_level_buf("Destroyed"):
+		visible = false
+		interactable.is_interactable = false
+		call_deferred("_replace_with_destroyed_shrine")
+		return
+
+
+func _replace_with_destroyed_shrine() -> void:
+	var parent := get_parent()
+	if parent == null:
+		queue_free()
+		return
+	var broken := SHRINE_SCENE.instantiate()
+	broken.position = position
+	parent.add_child(broken)
+	parent.move_child(broken, get_index())
+	queue_free()
 
 
 func _process(_delta: float) -> void:

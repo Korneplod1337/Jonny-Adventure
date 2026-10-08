@@ -5,7 +5,7 @@ const CHEST_BIG := preload("res://game/objects/chests/Chest_big.tscn")
 const CHEST_WEAPON := preload("res://game/objects/chests/Chest_weapon.tscn")
 const MIMIC := preload("res://game/enemy/all/Mimic.tscn")
 const SHRINE_SCENE_PATH := "res://game/presets/shrines/shrine.tscn"
-const SHRINE_REMOVE_CHANCE := 0.1
+const SHRINE_REMOVE_CHANCE := 0.05
 
 @export var spawn_clear_reward := true
 var _clear_reward_spawned := false
@@ -14,11 +14,8 @@ var _room_clear_emitted := false
 
 
 func init_room() -> void:
+	_process_shrines()
 	super()
-	if randf() < SHRINE_REMOVE_CHANCE:
-		for child in get_children():
-			if child.scene_file_path == SHRINE_SCENE_PATH:
-				child.queue_free()
 	cache_active_doors()
 	hide_doors()
 	
@@ -29,6 +26,25 @@ func init_room() -> void:
 	# Пустая комната: иначе двери останутся скрытыми навсегда
 	if enemy_count == 0:
 		show_doors()
+
+
+func _process_shrines() -> void:
+	var shrines: Array = []
+	for child in get_children():
+		if child.scene_file_path == SHRINE_SCENE_PATH:
+			shrines.append(child)
+	if shrines.is_empty():
+		return
+	# Destroyed уже ломает шрайны в их _ready — не удаляем и не роллим тип.
+	if GameState.has_level_buf("Destroyed"):
+		return
+	if randf() < SHRINE_REMOVE_CHANCE:
+		for shrine in shrines:
+			shrine.queue_free()
+		return
+	for shrine in shrines:
+		if shrine.has_method("finalize_spawn"):
+			shrine.finalize_spawn()
 
 
 # хуйня с дверьми и врагами (рот её ебал)

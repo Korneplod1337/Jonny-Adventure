@@ -20,13 +20,16 @@
 [ext_resource type="PackedScene" uid="uid://c1fiyctd2xrli" path="res://game/objects/Equipment/boots/Poison_boots.tscn" id="18_js20t"]
 [ext_resource type="PackedScene" uid="uid://cxmow65o8obwu" path="res://game/objects/items/scenes/tier 3/Boomerang.tscn" id="19_vm4yr"]
 [ext_resource type="PackedScene" uid="uid://baga6mxgrpf1s" path="res://game/objects/items/scenes/tier 0/Potion Red.tscn" id="20_0h76k"]
+[ext_resource type="PackedScene" uid="uid://dkflcb2mlqx3l" path="res://game/presets/shrines/OblationShrine.tscn" id="20_13rb2"]
 [ext_resource type="PackedScene" uid="uid://c83w3v5l3edwc" path="res://game/objects/items/scenes/tier 0/Potion Death.tscn" id="21_1kwnq"]
 [ext_resource type="PackedScene" uid="uid://ujleakh3r3l0" path="res://game/objects/items/scenes/tier 0/Potion Green.tscn" id="22_t02pl"]
 [ext_resource type="PackedScene" uid="uid://bvy7i2nw65tyy" path="res://game/objects/items/scenes/tier 0/Potion Red Big.tscn" id="23_qh7pm"]
 [ext_resource type="PackedScene" uid="uid://m6oyxodimxew" path="res://game/objects/items/scenes/tier 2/Story Book.tscn" id="24_m4mvj"]
 [ext_resource type="PackedScene" uid="uid://b2l04uommikl0" path="res://game/objects/items/scenes/tier 1/Mind's Eye.tscn" id="25_4orec"]
+[ext_resource type="PackedScene" uid="uid://clq6beclm6465" path="res://game/objects/items/scenes/tier 0/LvlupDef.tscn" id="26_4hkn1"]
 [ext_resource type="PackedScene" uid="uid://cgcss4ubm0tjd" path="res://game/objects/items/scenes/tier 1/Spider web.tscn" id="26_phtwq"]
 [ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn" id="27_a1qv4"]
+[ext_resource type="PackedScene" uid="uid://dwb1vf8t7e0xw" path="res://game/objects/items/scenes/tier 0/LvlupAtk.tscn" id="27_mrdsv"]
 [ext_resource type="PackedScene" uid="uid://6ngyovpkns22" path="res://game/objects/Equipment/Weapon/equip/CardWeapon_equip.tscn" id="28_c0p64"]
 [ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/JonnyShot_equip.tscn" id="29_iu86b"]
 [ext_resource type="PackedScene" uid="uid://2dtjjer8eim8" path="res://game/objects/Equipment/Weapon/equip/tome_of_fairy_tales_equip.tscn" id="30_0fqkp"]
@@ -199,6 +202,7 @@
 [ext_resource type="PackedScene" uid="uid://6xrfrxfwum25" path="res://game/objects/Equipment/Weapon/equip/Special_weapon_equip.tscn" id="197_6sjhw"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/PoisonotingPotion_equip.tscn" id="198_eealk"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/Dodge_equip.tscn" id="199_n6x0b"]
+[ext_resource type="PackedScene" uid="uid://ub5ye75q8oum" path="res://game/presets/shrines/bloodShrine.tscn" id="203_om2vm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -379,6 +383,9 @@ position = Vector2(45, 342)
 [node name="Boomerang" parent="." unique_id=1430574395 instance=ExtResource("19_vm4yr")]
 position = Vector2(-77, 555)
 
+[node name="Shrine oblation" parent="." unique_id=1541189603 instance=ExtResource("20_13rb2")]
+position = Vector2(-827, 473)
+
 [node name="Potion Heal" parent="." unique_id=1431943573 instance=ExtResource("20_0h76k")]
 position = Vector2(-109, 40)
 
@@ -396,6 +403,12 @@ position = Vector2(-328, 0)
 
 [node name="Shield" parent="Potion Heal" unique_id=1447954597 instance=ExtResource("120_7x06c")]
 position = Vector2(-255, 2)
+
+[node name="Item def LvlUP" parent="Potion Heal" unique_id=898118414 instance=ExtResource("26_4hkn1")]
+position = Vector2(-361, -78)
+
+[node name="Item atk LvlUP" parent="Potion Heal" unique_id=1601151492 instance=ExtResource("27_mrdsv")]
+position = Vector2(-281, -78)
 
 [node name="Story book" parent="." unique_id=5682892 instance=ExtResource("24_m4mvj")]
 position = Vector2(-70, 303)
@@ -470,7 +483,7 @@ position = Vector2(-1037, 355)
 [node name="CoinBag" parent="." unique_id=108492217 instance=ExtResource("44_0kfrf")]
 position = Vector2(-1089, 349)
 
-[node name="ShrineTest" parent="." unique_id=1541189603 instance=ExtResource("45_gsls4")]
+[node name="ShrineTest" parent="." unique_id=878608521 instance=ExtResource("45_gsls4")]
 position = Vector2(-1157, 327)
 
 [node name="ChestSmall" parent="." unique_id=55639212 instance=ExtResource("46_26j28")]
@@ -923,3 +936,6 @@ position = Vector2(540, 890)
 
 [node name="Dodge_equip" parent="." unique_id=282052378 instance=ExtResource("199_n6x0b")]
 position = Vector2(3, 780)
+
+[node name="Shrine" parent="." unique_id=147523815 instance=ExtResource("203_om2vm")]
+position = Vector2(-833, 354)
