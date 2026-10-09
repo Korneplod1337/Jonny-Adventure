@@ -209,7 +209,6 @@ collision_mask = 183
 script = ExtResource("1_gr2vb")
 on_ice = false
 
-
 [node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
 position = Vector2(0, 8)
 scale = Vector2(0.6, 0.6)

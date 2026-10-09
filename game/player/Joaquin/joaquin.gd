@@ -2,11 +2,17 @@ extends Jonny
 class_name Joaquin
 
 const START_BASE_GUN_EQUIP := preload("res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn")
+const ALT_SKIN := preload("res://game/player/skins/joaquin_alt.tres")
 const REDIRECT_STATS: Array[String] = [
 	"move_speed", "luck", "magic", "damage", "spread", "range", "fire_rate",
 ]
 const CHEST_ITEM_TIERS_ALL: Array = [0, 1, 2, 3, 4]
 const CHEST_EQUIP_TIERS_ALL: Array = [0, 1, 2, 3]
+## Layer 6 (Препятствия) | Layer 8 (Пропасть)
+const OBSTACLE_COLLISION_BITS := 32 | 128
+const PHASE_INVULN_DURATION := 5.0
+
+var _phase_ascended: bool = false
 
 
 func _init() -> void:
@@ -66,6 +72,58 @@ func _emit_stats_changed() -> void:
 	hp_list["blue"] = 0
 	hp_list["black"] = 0
 	super._emit_stats_changed()
+
+
+## Первый летальный удар → фаза Alt вместо смерти.
+func die() -> void:
+	if not _phase_ascended:
+		_enter_ascended_phase()
+		return
+	super.die()
+
+
+func _enter_ascended_phase() -> void:
+	_phase_ascended = true
+
+	# Полёт: сквозь врагов (как Wraith) и сквозь препятствия / пропасти.
+	pass_through_enemies = true
+	_update_enemy_collision()
+
+	# Текстура JoaquinAlt; ботинки скрываются в update_equipment_visuals.
+	apply_character_skin(ALT_SKIN)
+	update_equipment_visuals()
+
+	# Постоянные бонусы фазы.
+	base_damage += 7.0
+	base_spread -= 3.0
+	base_fire_rate -= 0.07
+	base_move_speed += 7.0
+	base_range += 7.0
+	damage = ST.get_stat(self, "damage")
+	spread = ST.get_stat(self, "spread")
+	fire_rate = ST.get_stat(self, "fire_rate")
+	move_speed = ST.get_stat(self, "move_speed")
+	atk_range = ST.get_stat(self, "range")
+	_emit_stats_changed()
+
+	# 5 с неуязвимости.
+	invulnerable = true
+	imuneTimer.wait_time = PHASE_INVULN_DURATION
+	imuneTimer.start()
+	_set_invuln_visual(true)
+	_emit_hp_visual_changed()
+
+
+func _update_enemy_collision() -> void:
+	super._update_enemy_collision()
+	if _phase_ascended:
+		collision_mask = collision_mask & ~OBSTACLE_COLLISION_BITS
+
+
+func update_equipment_visuals() -> void:
+	super.update_equipment_visuals()
+	if _phase_ascended:
+		boots_sprite.visible = false
 
 
 ## Апгрейд стата hp → редирект; вызывается из StatManager через has_method.

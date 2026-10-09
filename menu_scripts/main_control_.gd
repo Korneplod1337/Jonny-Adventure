@@ -110,7 +110,7 @@ func _unlock_easy_difficulty() -> void:
 	config.save(SETTINGS_PATH)
 
 
-func _on_button_tutorial_button_down() -> void:
+func _on_button_tutorial_pressed() -> void:
 	get_parent().get_parent().get_node('start_menu').hide()
 	get_parent().get_parent().get_node('Tutorial_select_menu').open()
 

@@ -47,12 +47,11 @@ func _on_interact() -> void:
 		return
 	if GameState.coins < 1:
 		return
-
 	GameState.add_coins(-1)
 	coins_paid += 1
-	SoundManager.play_shine()
 
 	if coins_paid >= coin_cost:
+		SoundManager.play_shine()
 		_activate()
 	else:
 		sprite.animation = "completion"

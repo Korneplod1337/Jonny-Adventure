@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cqv2mbl2hx37m" path="res://image/main_menu/menu.png" id="1_auw0j"]
 [ext_resource type="Script" uid="uid://d0fo1ay0nvvan" path="res://menu_scripts/main_control_.gd" id="2_72qvv"]
+[ext_resource type="Script" path="res://menu_scripts/floating_menu_button.gd" id="floating_btn"]
 [ext_resource type="Texture2D" uid="uid://cuv4obda3jj7r" path="res://image/main_menu/button_new_game_not.png" id="2_pv6v7"]
 [ext_resource type="Texture2D" uid="uid://c8x6ak6uembjs" path="res://image/main_menu/button_settings_not.png" id="3_fjq68"]
 [ext_resource type="Texture2D" uid="uid://ddjyjynntl4c" path="res://image/main_menu/button_new_game_select.png" id="4_575cf"]
@@ -295,6 +296,7 @@ offset_bottom = 182.0
 focus_mode = 0
 icon = ExtResource("2_pv6v7")
 flat = true
+script = ExtResource("floating_btn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Select_NewGame" type="Sprite2D" parent="start_menu/Control_main/Button_NewGame" unique_id=1926639719]
@@ -312,6 +314,7 @@ offset_bottom = 182.0
 focus_mode = 0
 icon = ExtResource("3_fjq68")
 flat = true
+script = ExtResource("floating_btn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Select_Settings" type="Sprite2D" parent="start_menu/Control_main/Button_Settings" unique_id=956673802]
@@ -329,6 +332,7 @@ offset_bottom = 194.0
 focus_mode = 0
 icon = ExtResource("7_misp6")
 flat = true
+script = ExtResource("floating_btn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Select_Quit" type="Sprite2D" parent="start_menu/Control_main/Button_Quit" unique_id=441596983]
@@ -345,6 +349,7 @@ offset_bottom = 88.0
 focus_mode = 0
 icon = ExtResource("9_m0epi")
 flat = true
+script = ExtResource("floating_btn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Select_achivement" type="Sprite2D" parent="start_menu/Control_main/Button_achivement" unique_id=68510486]
@@ -361,6 +366,7 @@ offset_bottom = 88.0
 focus_mode = 0
 icon = ExtResource("11_bnn4y")
 flat = true
+script = ExtResource("floating_btn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Select_stats" type="Sprite2D" parent="start_menu/Control_main/Button_stats" unique_id=564091291]
@@ -377,6 +383,7 @@ offset_bottom = 72.0
 focus_mode = 0
 icon = ExtResource("13_xy68n")
 flat = true
+script = ExtResource("floating_btn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Select_tutorial" type="Sprite2D" parent="start_menu/Control_main/Button_tutorial" unique_id=613215127]
@@ -394,6 +401,7 @@ offset_bottom = -96.0
 focus_mode = 0
 icon = ExtResource("17_3lt5t")
 flat = true
+script = ExtResource("floating_btn")
 metadata/_edit_use_anchors_ = true
 
 [node name="Select_patch_note" type="Sprite2D" parent="start_menu/Control_main/Button_patch_note" unique_id=900387114]
@@ -581,6 +589,8 @@ scale = Vector2(2, 2)
 focus_mode = 0
 icon = ExtResource("12_4tbtp")
 flat = true
+script = ExtResource("floating_btn")
+detach_threshold = 20.0
 
 [node name="Select_Button_back" type="Sprite2D" parent="settings_menu/Settings_layer/Settings_Control/Button_back" unique_id=1103912102]
 visible = false
@@ -648,6 +658,8 @@ scale = Vector2(1.5, 1.5)
 focus_mode = 0
 icon = ExtResource("12_4tbtp")
 flat = true
+script = ExtResource("floating_btn")
+detach_threshold = 20.0
 
 [node name="exit_button_sprite" type="Sprite2D" parent="Achivements_menu/exit_button" unique_id=2019022943]
 visible = false
@@ -675,6 +687,8 @@ scale = Vector2(1.5, 1.5)
 focus_mode = 0
 icon = ExtResource("38_epd2p")
 flat = true
+script = ExtResource("floating_btn")
+detach_threshold = 20.0
 
 [node name="exit_button_sprite" type="Sprite2D" parent="stats_menu/exit_button" unique_id=829336852]
 visible = false
@@ -1088,6 +1102,8 @@ scale = Vector2(1.5, 1.5)
 focus_mode = 0
 icon = ExtResource("12_4tbtp")
 flat = true
+script = ExtResource("floating_btn")
+detach_threshold = 20.0
 
 [node name="exit_select" type="Sprite2D" parent="Char_select_menu/exit" unique_id=1985578197]
 visible = false
@@ -1158,6 +1174,8 @@ scale = Vector2(1.5, 1.5)
 focus_mode = 0
 icon = ExtResource("12_4tbtp")
 flat = true
+script = ExtResource("floating_btn")
+detach_threshold = 20.0
 
 [node name="exit_select" type="Sprite2D" parent="Diff_select_menu/exit" unique_id=16307067]
 visible = false
@@ -1600,6 +1618,8 @@ scale = Vector2(1.5, 1.5)
 focus_mode = 0
 icon = ExtResource("12_4tbtp")
 flat = true
+script = ExtResource("floating_btn")
+detach_threshold = 20.0
 
 [node name="exit_select" type="Sprite2D" parent="Tutorial_select_menu/exit" unique_id=291529019]
 visible = false
@@ -1650,6 +1670,8 @@ scale = Vector2(1.5, 1.5)
 focus_mode = 0
 icon = ExtResource("12_4tbtp")
 flat = true
+script = ExtResource("floating_btn")
+detach_threshold = 20.0
 
 [node name="exit_select" type="Sprite2D" parent="Patch_note_menu/exitpn" unique_id=225322996]
 visible = false
@@ -1672,7 +1694,7 @@ centered = false
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_exited"]
 [connection signal="pressed" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_pressed"]
-[connection signal="button_down" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_button_down"]
+[connection signal="pressed" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_pressed"]
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_mouse_exited"]
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_patch_note" to="start_menu/Control_main" method="_on_button_patch_note_mouse_entered"]
