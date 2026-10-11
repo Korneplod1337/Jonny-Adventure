@@ -10,6 +10,14 @@ signal room_cleared
 var bank_coins: int = 0
 signal bank_coins_changed(new_value: int)
 
+## Диалоговые ивенты: active — на забег; completed — между забегами (cfg).
+var active_dialog_events: Array[String] = []
+var completed_dialog_events: Dictionary = {}
+signal dialog_events_changed
+
+## Временная скидка от диалога (множитель цены), сбрасывается в obnulenie.
+var dialog_shop_discount: float = 1.0
+
 
 func _ready() -> void:
 	load_persistent_state()
@@ -22,6 +30,7 @@ func add_coins(amount: int) -> void:
 func add_bank_coins(amount: int) -> void:
 	bank_coins = maxi(0, bank_coins + amount)
 	bank_coins_changed.emit(bank_coins)
+	_sync_bank_loyalty()
 	save_persistent_state()
 
 
@@ -30,20 +39,83 @@ func withdraw_bank_coins(amount: int) -> bool:
 		return false
 	bank_coins -= amount
 	bank_coins_changed.emit(bank_coins)
+	_sync_bank_loyalty()
 	save_persistent_state()
 	return true
+
+
+func _sync_bank_loyalty() -> void:
+	if StatsManager and StatsManager.has_method("set_statistic_value"):
+		StatsManager.set_statistic_value("bank_loyalty", float(bank_coins))
+
+
+func notify_prices_changed() -> void:
+	prices_changed.emit()
+
+
+func is_dialog_event_completed(event_id: String) -> bool:
+	return completed_dialog_events.get(event_id, false) == true
+
+
+func is_dialog_event_active(event_id: String) -> bool:
+	return event_id in active_dialog_events
+
+
+func activate_dialog_event(event_id: String) -> void:
+	if event_id.is_empty():
+		return
+	if is_dialog_event_completed(event_id):
+		return
+	if event_id in active_dialog_events:
+		return
+	active_dialog_events.append(event_id)
+	dialog_events_changed.emit()
+
+
+func complete_dialog_event(event_id: String) -> void:
+	if event_id.is_empty():
+		return
+	var changed := false
+	if event_id in active_dialog_events:
+		active_dialog_events.erase(event_id)
+		changed = true
+	if not is_dialog_event_completed(event_id):
+		completed_dialog_events[event_id] = true
+		changed = true
+		save_persistent_state()
+	if changed:
+		dialog_events_changed.emit()
+
+
+func clear_active_dialog_events() -> void:
+	if active_dialog_events.is_empty():
+		return
+	active_dialog_events.clear()
+	dialog_events_changed.emit()
 
 
 func load_persistent_state() -> void:
 	var config := ConfigFile.new()
 	if config.load(SAVE_PATH) != OK:
+		_sync_bank_loyalty()
 		return
 	bank_coins = int(config.get_value("bank", "coins", 0))
+	completed_dialog_events.clear()
+	var completed_keys: PackedStringArray = config.get_value("dialog", "completed", PackedStringArray())
+	for key in completed_keys:
+		completed_dialog_events[str(key)] = true
+	_sync_bank_loyalty()
 
 
 func save_persistent_state() -> void:
 	var config := ConfigFile.new()
+	config.load(SAVE_PATH)
 	config.set_value("bank", "coins", bank_coins)
+	var completed_keys := PackedStringArray()
+	for key in completed_dialog_events.keys():
+		if completed_dialog_events[key]:
+			completed_keys.append(str(key))
+	config.set_value("dialog", "completed", completed_keys)
 	config.save(SAVE_PATH)
 
 
@@ -55,6 +127,7 @@ var cost_multiplier := 1.0
 var cost_plus := 0.0
 var animated_world_speed := 1.0
 
+signal prices_changed
 signal alchemists_glasses_changed
 
 var _alchemists_glasses := false
@@ -182,5 +255,7 @@ func obnulenie() -> void:
 	boss_size_multiplier = 1.0
 	cost_multiplier = 1.0
 	cost_plus = 0.0
+	dialog_shop_discount = 1.0
 	animated_world_speed = 1.0
+	clear_active_dialog_events()
 	_clear_boss_bufs()

@@ -9,11 +9,18 @@ func _ready() -> void:
 	interactable.interact = _on_interact
 	if not skip_base_price:
 		cost += 3
-	cost = int(cost * GameState.cost_multiplier)
-	if cost < 1:
+	_base_cost = cost
+	refresh_price_label()
+	if not GameState.prices_changed.is_connected(refresh_price_label):
+		GameState.prices_changed.connect(refresh_price_label)
+
+
+func refresh_price_label() -> void:
+	var shown: int = int(round((_base_cost + GS.cost_plus) * GS.cost_multiplier))
+	if _base_cost < 1:
 		interactable.interact_name = "atk lvlup"
 	else:
-		interactable.interact_name = "Take atk lvlup by %s coins" % cost
+		interactable.interact_name = "Take atk lvlup by %s coins" % shown
 
 
 func _on_interact() -> void:
@@ -22,8 +29,9 @@ func _on_interact() -> void:
 		print("предмет не видит игрока")
 		return
 
-	if GameState.coins >= cost and player:
-		GameState.add_coins(-cost)
+	var price := _final_price()
+	if GameState.coins >= price and player:
+		GameState.add_coins(-price)
 		apply_item_effect()
 		match where:
 			"shop":

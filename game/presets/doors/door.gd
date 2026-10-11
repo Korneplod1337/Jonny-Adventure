@@ -15,6 +15,7 @@ const ROOM_TYPE_TO_ANIM := {
 	8: "boss",       # BOSS
 	9: "default",    # SECRET
 	10: "default",   # STATUP
+	11: "bank",      # BANK_SECRET
 }
 
 @export var dir: Vector2        # направление выхода: (1,0), (-1,0), (0,1), (0,-1)

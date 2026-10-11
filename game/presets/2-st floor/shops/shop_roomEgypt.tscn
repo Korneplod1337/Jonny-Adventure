@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cvjfh3a4lk4g0" path="res://image/rooms/2-st floor/shop_anim_egypt14.png" id="18_q8mmq"]
 [ext_resource type="Texture2D" uid="uid://bmch6s35hnatu" path="res://image/rooms/2-st floor/shop_anim_egypt15.png" id="19_cbukx"]
 [ext_resource type="Texture2D" uid="uid://bt0xj0qwrq7j4" path="res://image/rooms/2-st floor/shop_anim_egypt16.png" id="20_cx701"]
+[ext_resource type="PackedScene" uid="uid://ctraderdialog01" path="res://game/dialog/trader_dialog.tscn" id="21_trader"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sa6yv"]
 texture = ExtResource("2_sa6yv")
@@ -205,6 +206,11 @@ dir = Vector2(1, 0)
 position = Vector2(307, -176)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_shi8m")
+
+[node name="TraderDialog" parent="." instance=ExtResource("21_trader")]
+position = Vector2(307, -176)
+trader_id = "sherochka"
+focus_path = NodePath("AnimatedSprite2D")
 
 [node name="Sher_bounds" type="StaticBody2D" parent="." unique_id=1758529750]
 collision_mask = 0

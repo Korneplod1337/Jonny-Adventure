@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c4m44xnka6fay"]
+
+[ext_resource type="Script" uid="uid://bd8ja153p0ae6" path="res://game/dialog/trader_dialog.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="2_interact"]
+[ext_resource type="Texture2D" uid="uid://crjox3nyftrjx" path="res://image/effect_sprites/Dialog/exclamation mark.png" id="3_bang"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_imxxe"]
+radius = 120.0
+
+[node name="TraderDialog" type="Node2D" unique_id=1332040832]
+script = ExtResource("1_script")
+
+[node name="Interactable" parent="." unique_id=669257006 instance=ExtResource("2_interact")]
+interact_name = "Talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=988444935]
+shape = SubResource("CircleShape2D_imxxe")
+
+[node name="Exclamation" type="Sprite2D" parent="." unique_id=2119357048]
+visible = false
+position = Vector2(0, -33)
+scale = Vector2(2, 2)
+texture = ExtResource("3_bang")

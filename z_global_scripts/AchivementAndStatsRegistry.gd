@@ -1,7 +1,7 @@
 extends Node
 
 ## Включить весь трекинг статистики и достижений.
-const TRACKING_ENABLED := false
+const TRACKING_ENABLED := true #false
 
 ## Единый реестр счётчиков.
 ##   desc          — подпись в меню статистики
@@ -82,6 +82,18 @@ const STATS := {
 			"goal": 100,
 			"menu_icon": "res://image/achievements/menu_achiv/armory_loyality.png",
 			"hud_popup": "res://image/achievements/hud_achiv/armory_loyality_hud.png",
+		},
+	},
+	"bank_loyalty": {
+		"desc": "Erik's loyalty (bank coins)",
+		"show_in_menu": true,
+		"achievement": {
+			"id": "bank_loyality",
+			"name": "Erik's vault",
+			"desc": "Keep 100 coins in the bank",
+			"goal": 100,
+			"menu_icon": "res://image/achievements/menu_achiv/shop_loyality.png",
+			"hud_popup": "res://image/achievements/hud_achiv/shop_loyality_hud.png",
 		},
 	},
 	"Mega_crit": {

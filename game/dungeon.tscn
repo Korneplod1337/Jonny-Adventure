@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://0pv40ay1iml" path="res://game/presets/2-st floor/shops/armory_roomEgypt.tscn" id="17_vurpx"]
 [ext_resource type="PackedScene" uid="uid://bp8t4kx8ggw34" path="res://game/presets/2-st floor/buff/treasure_roomEgypt.tscn" id="19_7t21y"]
 [ext_resource type="PackedScene" uid="uid://bbi5phanqlouk" path="res://game/presets/2-st floor/buff/bank_room_egypt.tscn" id="25_dek1e"]
+[ext_resource type="PackedScene" uid="uid://cbanksecret001" path="res://game/presets/1-st floor/buff/bank_secret_room.tscn" id="26_vault"]
+[ext_resource type="PackedScene" uid="uid://cbanksecregypt1" path="res://game/presets/2-st floor/buff/bank_secret_room_egypt.tscn" id="27_vault_eg"]
 
 [node name="Dungeon" type="Node" unique_id=1730459875]
 script = ExtResource("1_u4sk0")
@@ -40,4 +42,5 @@ treasure_room_preset = Array[PackedScene]([ExtResource("6_3jp2u"), ExtResource("
 bank_room_preset = Array[PackedScene]([ExtResource("14_u4fuk"), ExtResource("25_dek1e")])
 gambling_room_preset = Array[PackedScene]([ExtResource("10_iyqye")])
 statup_room_preset = Array[PackedScene]([ExtResource("11_statup")])
+bank_secret_room_preset = Array[PackedScene]([ExtResource("26_vault"), ExtResource("27_vault_eg")])
 room_gap = Vector2(800, 800)

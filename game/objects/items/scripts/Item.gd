@@ -15,6 +15,8 @@ var player : CharacterBody2D
 
 @export var effect_power: float = 1
 
+var _base_cost: int = 0
+
 func _enter_tree() -> void:
 	# Survives subclasses that override _ready without super().
 	call_deferred("_start_idle_float")
@@ -22,11 +24,27 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	interactable.interact = _on_interact
-	cost = cost * GameState.cost_multiplier
-	if cost < 1:
+	_base_cost = cost
+	refresh_price_label()
+	if not GameState.prices_changed.is_connected(refresh_price_label):
+		GameState.prices_changed.connect(refresh_price_label)
+
+
+func _exit_tree() -> void:
+	if GameState.prices_changed.is_connected(refresh_price_label):
+		GameState.prices_changed.disconnect(refresh_price_label)
+
+
+func refresh_price_label() -> void:
+	var shown: int = int(round((_base_cost + GS.cost_plus) * GS.cost_multiplier))
+	if _base_cost < 1:
 		interactable.interact_name = item_name
 	else:
-		interactable.interact_name = "%s by %s coins" % [item_name, (cost + GS.cost_plus) * GS.cost_multiplier]
+		interactable.interact_name = "%s by %s coins" % [item_name, shown]
+
+
+func _final_price() -> int:
+	return int(round((_base_cost + GS.cost_plus) * GS.cost_multiplier))
 
 
 func _start_idle_float() -> void:
@@ -38,8 +56,9 @@ func _on_interact():
 		print('предмет не видит игрока')
 		return
 	
-	if GameState.coins >= ((cost + GS.cost_plus) * GS.cost_multiplier) and player:
-		GameState.add_coins((-cost - GS.cost_plus) * GS.cost_multiplier)
+	var price := _final_price()
+	if GameState.coins >= price and player:
+		GameState.add_coins(-price)
 		
 		apply_item_effect()
 		

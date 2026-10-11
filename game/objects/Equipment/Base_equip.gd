@@ -12,6 +12,7 @@ signal equip_taken
 @export var equip_tooltip: String = "test_chest1" # текст для инвентаря
 @export var interact_name: String = "test_chest2"
 var cost: int = 0
+var _base_cost: int = 0
 
 func _enter_tree() -> void:
 	# Survives subclasses that override _ready without super().
@@ -20,12 +21,29 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	interactable.interact = _on_interact
+	_base_cost = cost
+	refresh_price_label()
+	if not GameState.prices_changed.is_connected(refresh_price_label):
+		GameState.prices_changed.connect(refresh_price_label)
+
+
+func _exit_tree() -> void:
+	if GameState.prices_changed.is_connected(refresh_price_label):
+		GameState.prices_changed.disconnect(refresh_price_label)
+
+
+func refresh_price_label() -> void:
 	var enchant_text := ""
-	if cost < 1:
+	if _base_cost < 1:
 		interactable.interact_name = 'Take ' + enchant_text + interact_name
 	else:
+		var shown: int = int(round((_base_cost + GS.cost_plus) * GS.cost_multiplier))
 		interactable.interact_name = 'Take ' + enchant_text \
-		+ interact_name + ' by %s coins' % ((cost + GS.cost_plus) * GS.cost_multiplier)
+			+ interact_name + ' by %s coins' % shown
+
+
+func _final_price() -> int:
+	return int(round((_base_cost + GS.cost_plus) * GS.cost_multiplier))
 
 
 func _start_idle_float() -> void:
@@ -36,9 +54,10 @@ func _on_interact():
 	if not player: 
 		print('эквип не видит игрока')
 		return
-	if GS.coins < (cost + GS.cost_plus) * GS.cost_multiplier:
+	var price := _final_price()
+	if GS.coins < price:
 		return
-	GS.add_coins((-cost - GS.cost_plus) * GS.cost_multiplier)
+	GS.add_coins(-price)
 	
 	var hud = get_tree().get_first_node_in_group("HUD")
 	var tooltip := equip_tooltip

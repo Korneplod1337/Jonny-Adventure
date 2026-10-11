@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c1fayecx4hnfp" path="res://image/rooms/2-st floor/tile background_1.png" id="2_wars6"]
 [ext_resource type="Texture2D" uid="uid://dpomjj5pp6fag" path="res://image/rooms/2-st floor/background_bounds3.png" id="3_k7oi2"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_mw2d0"]
+[ext_resource type="PackedScene" uid="uid://bnfurckyy3jqq" path="res://game/presets/doors/secret_bank_door.tscn" id="4_secretdoor"]
 [ext_resource type="Texture2D" uid="uid://b5lwl2pd2080e" path="res://image/rooms/1-st floor/bank_anim5.png" id="5_d451f"]
 [ext_resource type="Texture2D" uid="uid://dm1bqqfynf5je" path="res://image/rooms/1-st floor/bank_anim6.png" id="6_sjqpb"]
 [ext_resource type="Texture2D" uid="uid://c53qeudhe2y3v" path="res://image/rooms/1-st floor/bank_anim7.png" id="7_liitt"]
@@ -30,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://v0t2uvrm5s0c" path="res://image/rooms/1-st floor/bank.png" id="28_7ixr6"]
 [ext_resource type="FontFile" uid="uid://da2aij2x8g1mb" path="res://Fonts/JonnyAdventureFont2.ttf" id="29_3shw4"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="30_ub24b"]
+[ext_resource type="PackedScene" uid="uid://ctraderdialog01" path="res://game/dialog/trader_dialog.tscn" id="31_trader"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vjedo"]
 texture = ExtResource("2_wars6")
@@ -243,6 +245,10 @@ position = Vector2(0, -298)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
+[node name="SecretBankDoor" parent="." instance=ExtResource("4_secretdoor")]
+position = Vector2(-560, 40)
+dir = Vector2(-1, 0)
+
 [node name="Door_Right" parent="." unique_id=1424844174 instance=ExtResource("4_mw2d0")]
 position = Vector2(578, -190)
 rotation = 1.5707964
@@ -264,6 +270,11 @@ shape = SubResource("RectangleShape2D_gva8g")
 position = Vector2(-300, 196)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_shi8m")
+
+[node name="TraderDialog" parent="." instance=ExtResource("31_trader")]
+position = Vector2(-300, 196)
+trader_id = "erik"
+focus_path = NodePath("AnimatedEZ")
 
 [node name="AnimatedTable" type="AnimatedSprite2D" parent="." unique_id=32952911]
 position = Vector2(-432, 194)

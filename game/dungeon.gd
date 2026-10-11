@@ -25,13 +25,16 @@ var player : CharacterBody2D = player_scene[char_name].instantiate()
 
 var current_floor: int = 1
 enum RoomType {	START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE, 
-				TREASURE, BANK, GAMBLING, BOSS, SECRET, STATUP}
+				TREASURE, BANK, GAMBLING, BOSS, SECRET, STATUP, BANK_SECRET}
+
+const BANK_SECRET_POS := Vector2(50, 50)
 				## shop - shop armory, buff = bank treasure, dop = blood gambling secret statup
 ## локация 1 — 4 этажа (0–3), далее по 2 этажа на локацию
 var floors_config: Array[Dictionary] = [
 # локация 1
 {"total_rooms": 2, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-{"total_rooms": 4, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 4, 	"shop_rooms": 0, 		"buff_rooms": 2, 			"dop_rooms": 0}, 
+#{"total_rooms": 4, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 {"total_rooms": 5, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 {"total_rooms": 6, 	"shop_rooms": 2, 		"buff_rooms": 1, 			"dop_rooms": 0}, 
 #{"total_rooms": 4, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
@@ -97,6 +100,7 @@ var floors_config: Array[Dictionary] = [
 @export var gambling_room_preset: 	Array[PackedScene]
 @export var secret_room_preset: 		Array[PackedScene]
 @export var statup_room_preset: 		Array[PackedScene]
+@export var bank_secret_room_preset: Array[PackedScene]
 
 
 # Размер комнаты в мире и отступ между комнатами
@@ -169,6 +173,11 @@ func instance_room(room: Room) -> Node:
 			return secret_room_preset	[loc].instantiate()
 		RoomType.STATUP:
 			return statup_room_preset	[loc].instantiate()
+		RoomType.BANK_SECRET:
+			if bank_secret_room_preset.is_empty():
+				return null
+			var idx := mini(loc, bank_secret_room_preset.size() - 1)
+			return bank_secret_room_preset[idx].instantiate()
 		
 	return null
 
@@ -192,9 +201,103 @@ func spawn_rooms() -> Node:
 		if room.type == RoomType.START:
 			start_instance = scene
 
+	_spawn_bank_secret_vault(spawned_rooms)
+
 	call_deferred("_bake_room_navigation", spawned_rooms)
 	_ensure_player_draw_order()
 	return start_instance
+
+
+func _find_first_bank_room() -> Room:
+	var banks: Array = rooms.values().filter(func(r): return r.type == RoomType.BANK)
+	if banks.is_empty():
+		return null
+	banks.sort_custom(func(a, b):
+		if a.pos.x != b.pos.x:
+			return a.pos.x < b.pos.x
+		return a.pos.y < b.pos.y
+	)
+	return banks[0]
+
+
+func _spawn_bank_secret_vault(spawned_rooms: Array[Node2D]) -> void:
+	var bank_room: Room = _find_first_bank_room()
+	if bank_room == null or bank_room.scene == null:
+		return
+	if bank_secret_room_preset.is_empty():
+		push_warning("Dungeon: bank_secret_room_preset is empty")
+		return
+	if rooms.has(BANK_SECRET_POS):
+		return
+
+	var vault := Room.new()
+	vault.pos = BANK_SECRET_POS
+	vault.type = RoomType.BANK_SECRET
+	## Логическая связь для teleport (обычные Door_* банка не трогаем)
+	vault.exits[Vector2(1, 0)] = bank_room.pos
+	rooms[BANK_SECRET_POS] = vault
+
+	var vault_scene := instance_room(vault)
+	if vault_scene == null:
+		rooms.erase(BANK_SECRET_POS)
+		return
+	vault_scene.position = vault.pos * room_world_size + vault.pos * room_gap
+	add_child(vault_scene)
+	vault.scene = vault_scene
+	if vault_scene is Node2D:
+		spawned_rooms.append(vault_scene)
+
+	## Выход из vault — Door_Right → банк
+	var exit_door: Node = vault_scene.get_node_or_null("Door_Right")
+	if exit_door and exit_door.has_method("configure"):
+		exit_door.visible = true
+		exit_door.set_process(true)
+		exit_door.set_physics_process(true)
+		exit_door.configure(Vector2(1, 0), bank_room.pos, bank_room.type, Vector2(-64, 0))
+		exit_door.set_meta("spawn_at_secret_door", true)
+		if "active" in exit_door:
+			exit_door.active = true
+	## Остальные двери vault скрыть
+	for door_name in ["Door_Left", "Door_Up", "Door_Down"]:
+		var d: Node = vault_scene.get_node_or_null(door_name)
+		if d == null:
+			continue
+		d.visible = false
+		d.set_process(false)
+		d.set_physics_process(false)
+		if d.is_in_group("Door"):
+			d.remove_from_group("Door")
+		if "active" in d:
+			d.active = false
+		var shape: CollisionShape2D = d.get_node_or_null("Area2D/CollisionShape2D")
+		if shape:
+			shape.disabled = true
+
+	## Секретная дверь уже в сцене банка — только wiring для первого банка
+	_wire_first_bank_secret_door(bank_room)
+	_disable_other_bank_secret_doors(bank_room)
+
+
+func _wire_first_bank_secret_door(bank_room: Room) -> void:
+	var secret_door: Node = bank_room.scene.get_node_or_null("SecretBankDoor")
+	if secret_door == null:
+		push_warning("Dungeon: bank missing SecretBankDoor in scene")
+		return
+	if secret_door.has_method("configure"):
+		var direction: Vector2 = secret_door.dir if "dir" in secret_door else Vector2(-1, 0)
+		var offset: Vector2 = secret_door.entrance_offset if "entrance_offset" in secret_door else Vector2(64, 0)
+		secret_door.configure(direction, BANK_SECRET_POS, RoomType.BANK_SECRET, offset)
+
+
+func _disable_other_bank_secret_doors(first_bank: Room) -> void:
+	for room in rooms.values():
+		if room.type != RoomType.BANK or room == first_bank:
+			continue
+		if room.scene == null:
+			continue
+		var secret_door: Node = room.scene.get_node_or_null("SecretBankDoor")
+		if secret_door and secret_door.has_method("disable_as_unused"):
+			secret_door.disable_as_unused()
 
 
 func _bake_room_navigation(room_scenes: Array[Node2D]) -> void:
@@ -285,6 +388,12 @@ func teleport_player(door: Node, body: Node2D) -> void:
 	if opposite_name != "":
 		spawn_door = target_scene.get_node_or_null(opposite_name)
 
+	## Выход из vault → спавн у секретной двери в банке
+	if door.has_meta("spawn_at_secret_door") and door.get_meta("spawn_at_secret_door"):
+		var secret_spawn: Node2D = target_scene.get_node_or_null("SecretBankDoor") as Node2D
+		if secret_spawn:
+			spawn_door = secret_spawn
+
 	var spawn_pos: Vector2 = door.global_position
 	if spawn_door != null:
 		spawn_pos = spawn_door.global_position
@@ -305,8 +414,15 @@ func build_minimap_text() -> String:
 	if rooms.is_empty():
 		return ""
 
-	var xs = rooms.keys().map(func(v): return v.x)
-	var ys = rooms.keys().map(func(v): return v.y)
+	## BANK_SECRET на (50,50) не раздувает миникарту
+	var map_keys: Array = rooms.keys().filter(func(v):
+		return rooms[v].type != RoomType.BANK_SECRET
+	)
+	if map_keys.is_empty():
+		return ""
+
+	var xs = map_keys.map(func(v): return v.x)
+	var ys = map_keys.map(func(v): return v.y)
 
 	var min_x = int(xs.min())
 	var max_x = int(xs.max())
@@ -319,7 +435,7 @@ func build_minimap_text() -> String:
 		var line_conn := ""
 		for x in range(min_x, max_x + 1):
 			var key := Vector2(x, y)
-			if rooms.has(key):
+			if rooms.has(key) and rooms[key].type != RoomType.BANK_SECRET:
 				# Каждая клетка ровно 2 символа: тип + выход на восток
 				line_room += _room_type_symbol(rooms[key].type)
 				line_room += "-" if rooms[key].exits.has(Vector2(1, 0)) else " "
@@ -344,6 +460,7 @@ func _room_type_symbol(type: int) -> String:
 		RoomType.BOSS: return "B"
 		RoomType.SECRET: return "H"
 		RoomType.STATUP: return "U"
+		RoomType.BANK_SECRET: return "V"
 		_: return "?"
 
 

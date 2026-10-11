@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cgkttkded46pp" path="res://image/rooms/1-st floor/armory_anim14.png" id="26_ao6j6"]
 [ext_resource type="Texture2D" uid="uid://diud4c71nrlrj" path="res://image/rooms/1-st floor/armory_anim15.png" id="27_rvyfl"]
 [ext_resource type="Texture2D" uid="uid://dhknn18irqc5h" path="res://image/rooms/1-st floor/armory_anim16.png" id="28_yholl"]
+[ext_resource type="PackedScene" uid="uid://c4m44xnka6fay" path="res://game/dialog/trader_dialog.tscn" id="29_trader"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8vbt"]
 texture = ExtResource("2_tby85")
@@ -237,6 +238,11 @@ dir = Vector2(1, 0)
 position = Vector2(317, -185)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_shi8m")
+
+[node name="TraderDialog" parent="." unique_id=1185857199 instance=ExtResource("29_trader")]
+position = Vector2(97, -172)
+trader_id = "pepyaka"
+focus_path = NodePath("AnimatedSprite2D")
 
 [node name="Pep_bounds" type="StaticBody2D" parent="." unique_id=1758529750]
 collision_mask = 0

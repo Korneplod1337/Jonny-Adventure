@@ -54,6 +54,17 @@ func add_statistic_progress(key: String, value: float) -> void:
 			save_statistic()
 
 
+## Жёстко выставить значение (например bank_loyalty = bank_coins).
+## Не зависит от TRACKING_ENABLED — зеркало состояния банка должно работать всегда.
+func set_statistic_value(key: String, value: float) -> void:
+	if not stats.has(key):
+		return
+	stats[key]["value"] = value
+	stat_changed.emit(key, stats[key]["value"])
+	if not _is_run_scoped(key):
+		save_statistic()
+
+
 func reset_run_stats() -> void:
 	for key in stats.keys():
 		if _is_run_scoped(key):

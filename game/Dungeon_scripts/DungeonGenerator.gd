@@ -3,7 +3,7 @@ class_name DungeonGenerator
 
 const Room = preload("res://game/Dungeon_scripts/Room.gd")
 enum RoomType { START, STANDARD, SHOP, ARMORY, BLOOD_TRIBUTE,
-				TREASURE, BANK, GAMBLING, BOSS, SECRET, STATUP}
+				TREASURE, BANK, GAMBLING, BOSS, SECRET, STATUP, BANK_SECRET}
 
 # либо как поле класса / ресурса
 const directions := [
