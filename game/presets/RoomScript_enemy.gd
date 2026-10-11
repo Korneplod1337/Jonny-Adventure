@@ -31,7 +31,7 @@ func init_room() -> void:
 func _process_shrines() -> void:
 	var shrines: Array = []
 	for child in get_children():
-		if child.scene_file_path == SHRINE_SCENE_PATH:
+		if _is_ordinary_shrine(child):
 			shrines.append(child)
 	if shrines.is_empty():
 		return
@@ -45,6 +45,15 @@ func _process_shrines() -> void:
 	for shrine in shrines:
 		if shrine.has_method("finalize_spawn"):
 			shrine.finalize_spawn()
+
+
+func _is_ordinary_shrine(node: Node) -> bool:
+	if node == null:
+		return false
+	if node.scene_file_path == SHRINE_SCENE_PATH:
+		return true
+	# Инстанс «Make Local» / тест: path пустой, но скрипт тот же.
+	return node.get_script() == preload("res://game/presets/shrines/shrine.gd")
 
 
 # хуйня с дверьми и врагами (рот её ебал)

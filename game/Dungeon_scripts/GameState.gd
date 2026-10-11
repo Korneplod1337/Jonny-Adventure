@@ -143,6 +143,8 @@ var WildBoots := false # шанс доп. случайного зачарова�
 var LuckyHead := false # за этаж: +1 luck_level и enemy_hp_multiplier *= 0.97
 var extra_chest_loot_chance := 0.0 # шанс доп. лута из сундуков (цветок папоротника и т.п.)
 var mimic_chest_chance := 0.0 # шанс, что clear-reward small/big сундук станет мимиком
+## Ломание обычных шрайнов: каждый сломанный даёт -5. Сброс в obnulenie.
+var KeresMaria: int = 0
 
 
 #уровень
@@ -246,6 +248,7 @@ func obnulenie() -> void:
 	LuckyHead = false
 	extra_chest_loot_chance = 0.0
 	mimic_chest_chance = 0.0
+	KeresMaria = 0
 	enemy_ms_multiplier = 1.0
 	enemy_hp_multiplier = 1.0
 	enemy_dmg_multiplier = 1.0

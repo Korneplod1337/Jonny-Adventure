@@ -11,7 +11,9 @@ const HALF_PERIOD := 2.75
 const SWAY_CHANCE := 0.28
 
 const _META_VISUAL := &"_pickup_idle_visual"
-const _META_BASE := &"_pickup_idle_base"
+const _META_VISUAL_BASE := &"_pickup_idle_visual_base"
+const _META_SHADOW := &"_pickup_idle_shadow"
+const _META_SHADOW_BASE := &"_pickup_idle_shadow_base"
 const _META_TWEEN := &"_pickup_idle_tween"
 
 
@@ -23,7 +25,12 @@ static func begin(host: Node) -> void:
 		return
 
 	host.set_meta(_META_VISUAL, visual)
-	host.set_meta(_META_BASE, visual.position)
+	host.set_meta(_META_VISUAL_BASE, visual.position)
+
+	var shadow := host.get_node_or_null("Shadow") as Node2D
+	if shadow != null:
+		host.set_meta(_META_SHADOW, shadow)
+		host.set_meta(_META_SHADOW_BASE, shadow.position)
 
 	# Desync pickups so they don't bob in lockstep.
 	var delay := randf() * HALF_PERIOD
@@ -55,19 +62,19 @@ static func _find_visual(host: Node) -> Node2D:
 static func _cycle(host: Node, y_dir: float) -> void:
 	if host == null or not is_instance_valid(host) or not host.is_inside_tree():
 		return
-	if not host.has_meta(_META_VISUAL) or not host.has_meta(_META_BASE):
+	if not host.has_meta(_META_VISUAL) or not host.has_meta(_META_VISUAL_BASE):
 		return
 
 	var visual: Node2D = host.get_meta(_META_VISUAL)
 	if not is_instance_valid(visual):
 		return
 
-	var base: Vector2 = host.get_meta(_META_BASE)
-	var target := Vector2(base.x, base.y + AMPLITUDE_Y * y_dir)
+	var visual_base: Vector2 = host.get_meta(_META_VISUAL_BASE)
+	var offset := Vector2(0.0, AMPLITUDE_Y * y_dir)
 
 	# Side sway only on the upward half; downward half returns to center X.
 	if y_dir < 0.0 and randf() < SWAY_CHANCE:
-		target.x = base.x + AMPLITUDE_X * (1.0 if randf() < 0.5 else -1.0)
+		offset.x = AMPLITUDE_X * (1.0 if randf() < 0.5 else -1.0)
 
 	if host.has_meta(_META_TWEEN):
 		var prev: Tween = host.get_meta(_META_TWEEN)
@@ -76,9 +83,17 @@ static func _cycle(host: Node, y_dir: float) -> void:
 
 	var host_ref: WeakRef = weakref(host)
 	var tween := host.create_tween()
+	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(visual, "position", target, HALF_PERIOD)
-	tween.tween_callback(
+	tween.tween_property(visual, "position", visual_base + offset, HALF_PERIOD)
+
+	if host.has_meta(_META_SHADOW) and host.has_meta(_META_SHADOW_BASE):
+		var shadow: Node2D = host.get_meta(_META_SHADOW)
+		if is_instance_valid(shadow):
+			var shadow_base: Vector2 = host.get_meta(_META_SHADOW_BASE)
+			tween.tween_property(shadow, "position", shadow_base + offset, HALF_PERIOD)
+
+	tween.chain().tween_callback(
 		func() -> void:
 			var h := host_ref.get_ref() as Node
 			if h != null:

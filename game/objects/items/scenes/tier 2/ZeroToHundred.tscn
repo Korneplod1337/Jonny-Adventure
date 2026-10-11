@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dupa4hyx1hdqr" path="res://game/objects/items/scripts/zerotohundred.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://dwcbaw4xjb000" path="res://image/items/2 tier/ItemZeroToHundred.png" id="2_tex"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
 radius = 40.04997
@@ -26,6 +27,10 @@ shape = SubResource("CircleShape2D_lh7he")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446748848]
 shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1192579321]
 scale = Vector2(2, 2)

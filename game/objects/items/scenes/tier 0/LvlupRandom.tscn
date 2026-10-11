@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bayxo72spwioo" path="res://image/items/0 tier/LevelupAtkSpeed.png" id="8_v531h"]
 [ext_resource type="Texture2D" uid="uid://c487gax0s4dt3" path="res://image/items/0 tier/LevelupSpread.png" id="9_lo63t"]
 [ext_resource type="Texture2D" uid="uid://c1teqedxe4ioy" path="res://image/items/0 tier/LevelupRange.png" id="10_h64gu"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
 radius = 19.0
@@ -64,6 +65,10 @@ shape = SubResource("CircleShape2D_oisx2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1231250537]
 shape = SubResource("CircleShape2D_lh7he")
+
+[node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=87217535]
 position = Vector2(2, 2)

@@ -2,6 +2,7 @@ extends Boss
 class_name EnemyFlyBoss
 
 ## Босс-муха: тот же паттерн, что у Fly, HP ×3, при стоянии 50% шанс призвать обычную муху.
+#ПЕРЕДЕЛАТЬ
 
 enum State { IDLE, FLYING, SHOOTING, WAITING }
 enum AfterFly { SHOOT, WAIT }

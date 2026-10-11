@@ -24,7 +24,7 @@ func tabels_spawn():
 		var table2 = TableScene.instantiate()
 		table2.position = self.position + Vector2(200, 0)
 		table2.cost = 3
-		table2.tier = [1] as Array[int]
+		table2.tier = [0, 1] as Array[int]
 		table2.pool = 'shop'
 		get_tree().current_scene.add_child(table2)
 	
@@ -32,7 +32,7 @@ func tabels_spawn():
 		var table3 = TableScene.instantiate()
 		table3.position = self.position + Vector2(300, 0)
 		table3.cost = 5
-		table3.tier = [1] as Array[int]
+		table3.tier = [0, 1, 2] as Array[int]
 		table3.pool = 'shop'
 		get_tree().current_scene.add_child(table3)
 	
@@ -40,7 +40,7 @@ func tabels_spawn():
 		var table4 = TableScene.instantiate()
 		table4.position = self.position + Vector2(400, 0)
 		table4.cost = 10
-		table4.tier = [1] as Array[int]
+		table4.tier = [1, 2] as Array[int]
 		table4.pool = 'shop'
 		get_tree().current_scene.add_child(table4)
 	
@@ -56,7 +56,7 @@ func tabels_spawn():
 		var table5 = TableScene.instantiate()
 		table5.position = self.position + Vector2(500, 0)
 		table5.cost = 15
-		table5.tier = [1] as Array[int]
+		table5.tier = [2, 3] as Array[int]
 		table5.pool = 'shop'
 		get_tree().current_scene.add_child(table5)
 
