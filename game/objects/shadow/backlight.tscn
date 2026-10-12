@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b1o762ktgcwjx"]
+
+[ext_resource type="Script" path="res://game/objects/shadow/backlight.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bm5v21o1fd554" path="res://image/objects/shadow/backlight1.png" id="2_tex"]
+
+[node name="Backlight" type="Node2D" unique_id=547565401]
+z_index = -1
+script = ExtResource("1_script")
+tier = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2019682872]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1940759091]
+rect = Rect2(-32, -32, 64, 64)

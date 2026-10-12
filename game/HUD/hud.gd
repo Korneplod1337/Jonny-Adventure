@@ -276,9 +276,17 @@ func show_death_menu(total_time_alive: float, distance_travelled: float, kills: 
 	total_time_alive = snappedf(total_time_alive, 0.1)
 	distance_label.text = "Distance: %.1f m" % distance_travelled
 	kills_label.text = "Kills: %d" % kills
+	time_label.text = "Time: %s" % _format_run_time(total_time_alive)
 
 	StatsManager.add_statistic_progress("lifetime", total_time_alive)
 	StatsManager.add_statistic_progress("distance_traveled", distance_travelled)
+
+
+func _format_run_time(seconds: float) -> String:
+	var total_sec := int(round(seconds))
+	var minutes := total_sec / 60
+	var secs := total_sec % 60
+	return "%d:%02d" % [minutes, secs]
 
 
 func show_victory_menu(
@@ -416,6 +424,7 @@ const HeartIconScene: PackedScene = preload("res://game/HUD/HeartIcon.tscn")
 @onready var death_menu: Control = $HUD/DeathMenu
 @onready var distance_label: Label = $HUD/DeathMenu/VBoxContainer/DistanceLabel
 @onready var kills_label: Label = $HUD/DeathMenu/VBoxContainer/KillsLabel
+@onready var time_label: Label = $HUD/DeathMenu/VBoxContainer/TimeLabel
 @onready var victory_menu: Control = $HUD/VictoryMenu
 @onready var victory_texture: TextureRect = $HUD/VictoryMenu/TextureRect
 @onready var victory_distance_label: Label = $HUD/VictoryMenu/VBoxContainer/DistanceLabel

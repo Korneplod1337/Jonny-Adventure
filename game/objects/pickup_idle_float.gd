@@ -14,6 +14,8 @@ const _META_VISUAL := &"_pickup_idle_visual"
 const _META_VISUAL_BASE := &"_pickup_idle_visual_base"
 const _META_SHADOW := &"_pickup_idle_shadow"
 const _META_SHADOW_BASE := &"_pickup_idle_shadow_base"
+const _META_BACKLIGHT := &"_pickup_idle_backlight"
+const _META_BACKLIGHT_BASE := &"_pickup_idle_backlight_base"
 const _META_TWEEN := &"_pickup_idle_tween"
 
 
@@ -31,6 +33,11 @@ static func begin(host: Node) -> void:
 	if shadow != null:
 		host.set_meta(_META_SHADOW, shadow)
 		host.set_meta(_META_SHADOW_BASE, shadow.position)
+
+	var backlight := host.get_node_or_null("Backlight") as Node2D
+	if backlight != null:
+		host.set_meta(_META_BACKLIGHT, backlight)
+		host.set_meta(_META_BACKLIGHT_BASE, backlight.position)
 
 	# Desync pickups so they don't bob in lockstep.
 	var delay := randf() * HALF_PERIOD
@@ -92,6 +99,12 @@ static func _cycle(host: Node, y_dir: float) -> void:
 		if is_instance_valid(shadow):
 			var shadow_base: Vector2 = host.get_meta(_META_SHADOW_BASE)
 			tween.tween_property(shadow, "position", shadow_base + offset, HALF_PERIOD)
+
+	if host.has_meta(_META_BACKLIGHT) and host.has_meta(_META_BACKLIGHT_BASE):
+		var backlight: Node2D = host.get_meta(_META_BACKLIGHT)
+		if is_instance_valid(backlight):
+			var backlight_base: Vector2 = host.get_meta(_META_BACKLIGHT_BASE)
+			tween.tween_property(backlight, "position", backlight_base + offset, HALF_PERIOD)
 
 	tween.chain().tween_callback(
 		func() -> void:

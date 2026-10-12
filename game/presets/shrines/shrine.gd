@@ -131,11 +131,24 @@ func hit(amount: float, _clear := false) -> void:
 		return
 	if current_hp <= 0:
 		return
+	if not _is_room_cleared():
+		return
 
 	current_hp -= amount
 	_flash_damage()
 	if current_hp <= 0:
 		_begin_break()
+
+
+func _is_room_cleared() -> bool:
+	var room := get_parent()
+	if room == null:
+		return true
+	# RoomScript_enemy выставляет флаг в show_doors() после зачистки.
+	if "_room_clear_emitted" in room:
+		return bool(room._room_clear_emitted)
+	# Не боевая комната — ломать можно сразу.
+	return true
 
 
 func _flash_damage() -> void:

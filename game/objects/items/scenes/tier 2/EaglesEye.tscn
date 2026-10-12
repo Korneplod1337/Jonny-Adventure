@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://blp52ei8224ak" path="res://image/items/2 tier/ItemEagle'sEye.png" id="2_idgit"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 [ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
+[ext_resource type="PackedScene" uid="uid://bitembacklight01" path="res://game/objects/shadow/backlight.tscn" id="backlight_scn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
 radius = 40.04997
@@ -31,6 +32,10 @@ shape = SubResource("CircleShape2D_oisx2")
 [node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
 position = Vector2(0, 20)
 scale = Vector2(0.5, 0.5)
+
+[node name="Backlight" parent="." unique_id=1792752796 instance=ExtResource("backlight_scn")]
+scale = Vector2(1, 1)
+tier = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1002358814]
 scale = Vector2(2, 2)
