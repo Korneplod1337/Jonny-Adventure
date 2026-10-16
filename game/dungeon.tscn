@@ -17,30 +17,43 @@
 [ext_resource type="PackedScene" uid="uid://bbeq5h2qu8ccq" path="res://game/presets/2-st floor/standart/2standart_room2.tscn" id="7_7t21y"]
 [ext_resource type="PackedScene" uid="uid://c1gdxt4ofn7do" path="res://game/presets/2-st floor/standart/2standart_room3.tscn" id="8_lge80"]
 [ext_resource type="PackedScene" uid="uid://cmlobl77iwbor" path="res://game/presets/2-st floor/start/start_room_Egypt.tscn" id="9_o8gq0"]
+[ext_resource type="PackedScene" uid="uid://dr6irds3wlr0b" path="res://game/presets/3-st floor/standart/3standart_room1.tscn" id="10_g18b5"]
 [ext_resource type="PackedScene" uid="uid://cs61w8ntlmjw7" path="res://game/presets/1-st floor/dop/Gambling_room.tscn" id="10_iyqye"]
 [ext_resource type="PackedScene" uid="uid://bkfxd17whnabm" path="res://game/presets/1-st floor/dop/Statup_room.tscn" id="11_statup"]
 [ext_resource type="PackedScene" uid="uid://csd6wrq5wad8e" path="res://game/presets/1-st floor/bosses/boss_room_big_spider.tscn" id="12_i6ffa"]
-[ext_resource type="PackedScene" uid="uid://cxfpd0c5jrv75" path="res://game/presets/2-st floor/bosses/boss_room_egyptMimic.tscn" id="12_vkaom"]
+[ext_resource type="PackedScene" uid="uid://d2wwk3a6dwgik" path="res://game/presets/2-st floor/bosses/boss_room_egyptWeakSkull.tscn" id="12_weakskull"]
+[ext_resource type="PackedScene" uid="uid://l4ujm1gt4as8" path="res://game/presets/3-st floor/start/start_room_Forest.tscn" id="14_mdlc4"]
 [ext_resource type="PackedScene" uid="uid://crst51wbx4fyv" path="res://game/presets/1-st floor/buff/bank_room.tscn" id="14_u4fuk"]
 [ext_resource type="PackedScene" uid="uid://cm7gm4y6rxq48" path="res://game/presets/2-st floor/shops/shop_roomEgypt.tscn" id="15_u4fuk"]
-[ext_resource type="PackedScene" uid="uid://ck3udyefmqgbr" path="res://game/presets/2-st floor/bosses/boss_room_egyptKnot.tscn" id="16_807ne"]
 [ext_resource type="PackedScene" uid="uid://0pv40ay1iml" path="res://game/presets/2-st floor/shops/armory_roomEgypt.tscn" id="17_vurpx"]
+[ext_resource type="PackedScene" uid="uid://66g15bb7ea2n" path="res://game/presets/3-st floor/shops/shop_roomForest.tscn" id="18_hky0l"]
 [ext_resource type="PackedScene" uid="uid://bp8t4kx8ggw34" path="res://game/presets/2-st floor/buff/treasure_roomEgypt.tscn" id="19_7t21y"]
+[ext_resource type="PackedScene" uid="uid://bcytrteytg7bd" path="res://game/presets/2-st floor/bosses/hatch_boss_room_egypt.tscn" id="21_jmmve"]
+[ext_resource type="PackedScene" uid="uid://bxijf1nete3hh" path="res://game/presets/3-st floor/bosses/hatch_boss_room_forest.tscn" id="23_eot0w"]
 [ext_resource type="PackedScene" uid="uid://bbi5phanqlouk" path="res://game/presets/2-st floor/buff/bank_room_egypt.tscn" id="25_dek1e"]
-[ext_resource type="PackedScene" uid="uid://cbanksecret001" path="res://game/presets/1-st floor/buff/bank_secret_room.tscn" id="26_vault"]
-[ext_resource type="PackedScene" uid="uid://cbanksecregypt1" path="res://game/presets/2-st floor/buff/bank_secret_room_egypt.tscn" id="27_vault_eg"]
+[ext_resource type="PackedScene" uid="uid://cqafntwy18eq6" path="res://game/presets/3-st floor/shops/armory_roomForest.tscn" id="26_5ei3o"]
+[ext_resource type="PackedScene" uid="uid://dkprrfphse441" path="res://game/presets/1-st floor/buff/bank_secret_room.tscn" id="26_vault"]
+[ext_resource type="PackedScene" uid="uid://mxjb2thm8guu" path="res://game/presets/2-st floor/buff/bank_secret_room_egypt.tscn" id="27_vault_eg"]
+[ext_resource type="PackedScene" uid="uid://buhjp1k308eis" path="res://game/presets/3-st floor/buff/treasure_room Forest.tscn" id="29_jm27f"]
+[ext_resource type="PackedScene" uid="uid://dw6qw0t1bwi6t" path="res://game/presets/3-st floor/buff/bank_room_Forest.tscn" id="32_3l7ly"]
+[ext_resource type="PackedScene" uid="uid://bs5k0q18t12da" path="res://game/presets/2-st floor/dop/Gambling_room Egypt.tscn" id="34_2w3yj"]
+[ext_resource type="PackedScene" uid="uid://da3kdbrwemq76" path="res://game/presets/3-st floor/dop/Gambling_room Forest.tscn" id="35_p4v5d"]
+[ext_resource type="PackedScene" uid="uid://bogmrnrdi4atd" path="res://game/presets/2-st floor/dop/Statup_room Egypt.tscn" id="37_2gfx3"]
+[ext_resource type="PackedScene" uid="uid://cpn6dllm273yi" path="res://game/presets/3-st floor/dop/Statup_room Forest.tscn" id="38_bfsot"]
+[ext_resource type="PackedScene" uid="uid://cfb3nl46gwin3" path="res://game/presets/3-st floor/buff/bank_secret_room_Forest.tscn" id="41_fi8kc"]
 
 [node name="Dungeon" type="Node" unique_id=1730459875]
 script = ExtResource("1_u4sk0")
 standard_room_presets_floor1 = Array[PackedScene]([ExtResource("2_2xsro"), ExtResource("3_1u0ww"), ExtResource("4_qso4u"), ExtResource("5_vurpx"), ExtResource("6_807ne")])
 standard_room_presets_floor2 = Array[PackedScene]([ExtResource("5_o8gq0"), ExtResource("7_7t21y"), ExtResource("8_lge80")])
-start_room_preset = Array[PackedScene]([ExtResource("3_0t1uw"), ExtResource("4_bdqim"), ExtResource("3_0t1uw"), ExtResource("3_0t1uw"), ExtResource("9_o8gq0"), ExtResource("9_o8gq0"), ExtResource("5_qso4u")])
-shop_room_preset = Array[PackedScene]([ExtResource("2_0t1uw"), ExtResource("15_u4fuk")])
-boss_room_preset = Array[PackedScene]([ExtResource("5_2xsro"), ExtResource("5_2xsro"), ExtResource("5_2xsro"), ExtResource("12_i6ffa"), ExtResource("12_vkaom"), ExtResource("16_807ne"), ExtResource("17_vurpx")])
-armory_room_preset = Array[PackedScene]([ExtResource("6_2xsro"), ExtResource("17_vurpx")])
-treasure_room_preset = Array[PackedScene]([ExtResource("6_3jp2u"), ExtResource("19_7t21y")])
-bank_room_preset = Array[PackedScene]([ExtResource("14_u4fuk"), ExtResource("25_dek1e")])
-gambling_room_preset = Array[PackedScene]([ExtResource("10_iyqye")])
-statup_room_preset = Array[PackedScene]([ExtResource("11_statup")])
-bank_secret_room_preset = Array[PackedScene]([ExtResource("26_vault"), ExtResource("27_vault_eg")])
+standard_room_presets_floor3 = Array[PackedScene]([ExtResource("10_g18b5")])
+start_room_preset = Array[PackedScene]([ExtResource("3_0t1uw"), ExtResource("4_bdqim"), ExtResource("3_0t1uw"), ExtResource("3_0t1uw"), ExtResource("9_o8gq0"), ExtResource("9_o8gq0"), ExtResource("14_mdlc4"), ExtResource("14_mdlc4"), ExtResource("5_qso4u")])
+shop_room_preset = Array[PackedScene]([ExtResource("2_0t1uw"), ExtResource("15_u4fuk"), ExtResource("18_hky0l")])
+boss_room_preset = Array[PackedScene]([ExtResource("5_2xsro"), ExtResource("5_2xsro"), ExtResource("5_2xsro"), ExtResource("12_i6ffa"), ExtResource("21_jmmve"), ExtResource("12_weakskull"), ExtResource("23_eot0w"), ExtResource("23_eot0w"), ExtResource("23_eot0w")])
+armory_room_preset = Array[PackedScene]([ExtResource("6_2xsro"), ExtResource("17_vurpx"), ExtResource("26_5ei3o")])
+treasure_room_preset = Array[PackedScene]([ExtResource("6_3jp2u"), ExtResource("19_7t21y"), ExtResource("29_jm27f")])
+bank_room_preset = Array[PackedScene]([ExtResource("14_u4fuk"), ExtResource("25_dek1e"), ExtResource("32_3l7ly")])
+gambling_room_preset = Array[PackedScene]([ExtResource("10_iyqye"), ExtResource("34_2w3yj"), ExtResource("35_p4v5d")])
+statup_room_preset = Array[PackedScene]([ExtResource("11_statup"), ExtResource("37_2gfx3"), ExtResource("38_bfsot")])
+bank_secret_room_preset = Array[PackedScene]([ExtResource("26_vault"), ExtResource("27_vault_eg"), ExtResource("41_fi8kc")])
 room_gap = Vector2(800, 800)

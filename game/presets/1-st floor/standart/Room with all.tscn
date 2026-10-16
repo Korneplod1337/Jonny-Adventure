@@ -203,6 +203,10 @@
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/PoisonotingPotion_equip.tscn" id="198_eealk"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/Dodge_equip.tscn" id="199_n6x0b"]
 [ext_resource type="PackedScene" uid="uid://ub5ye75q8oum" path="res://game/presets/shrines/bloodShrine.tscn" id="203_om2vm"]
+[ext_resource type="PackedScene" uid="uid://dohma36hlkrc7" path="res://game/objects/upgrade/Upgrade.tscn" id="204_om2vm"]
+[ext_resource type="PackedScene" uid="uid://dnebrm085ouro" path="res://game/enemy/2-st floor pyramid/Weak_skull_boss.tscn" id="205_67q5j"]
+[ext_resource type="PackedScene" path="res://game/enemy/1-st floor basement/Bug_shifter_boss.tscn" id="206_i4jns"]
+[ext_resource type="PackedScene" uid="uid://d1c05r0ykeaea" path="res://game/objects/floor_skip/FloorSkip.tscn" id="207_i4jns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -939,3 +943,16 @@ position = Vector2(3, 780)
 
 [node name="Shrine" parent="." unique_id=147523815 instance=ExtResource("203_om2vm")]
 position = Vector2(-833, 354)
+
+[node name="Upgrade" parent="." unique_id=1333091495 instance=ExtResource("204_om2vm")]
+position = Vector2(-324, -42)
+
+[node name="Weak_skull_boss" parent="." unique_id=512976068 instance=ExtResource("205_67q5j")]
+position = Vector2(472, -337)
+boss_move_speed = 100.0
+
+[node name="Bug_shifter_boss" parent="." unique_id=360834682 instance=ExtResource("206_i4jns")]
+position = Vector2(654, -541)
+
+[node name="FloorSkip" parent="." unique_id=1904784731 instance=ExtResource("207_i4jns")]
+position = Vector2(-243, -49)

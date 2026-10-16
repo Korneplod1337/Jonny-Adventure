@@ -306,7 +306,7 @@ const DIALOGS := {
 		"start": "n0",
 		"nodes": {
 			"n0": {
-				"text": "The vault's secure, man. solid. but your pockets? Ehh... not so much, [wave amp=20 freq=8]hehehe... bummer[/wave], dude...",
+				"text": "The vault's secure, man, solid. but your pockets? Ehh... not so much, [wave amp=20 freq=8]hehehe... bummer[/wave], dude...",
 				"choices": [
 					{"text": "Leave", "next": "", "actions": [{"type": "end"}]},
 				],

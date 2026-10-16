@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://v0t2uvrm5s0c" path="res://image/rooms/1-st floor/bank.png" id="28_7ixr6"]
 [ext_resource type="FontFile" uid="uid://da2aij2x8g1mb" path="res://Fonts/JonnyAdventureFont2.ttf" id="29_3shw4"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="30_ub24b"]
-[ext_resource type="PackedScene" uid="uid://ctraderdialog01" path="res://game/dialog/trader_dialog.tscn" id="31_trader"]
+[ext_resource type="PackedScene" uid="uid://c4m44xnka6fay" path="res://game/dialog/trader_dialog.tscn" id="31_trader"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vjedo"]
 texture = ExtResource("2_wars6")

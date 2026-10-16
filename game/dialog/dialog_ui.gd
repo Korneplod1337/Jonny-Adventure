@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 const CHARS_PER_SEC := 20.0
-const CHARS_PER_SEC_FAST := 80.0
 const CAMERA_DURATION := 1.0
 const CAMERA_ZOOM_MULT := 1.2
 const VIGNETTE_ALPHA := 0.50
@@ -13,6 +12,7 @@ const CHOICE_FONT_SIZE := 32
 @onready var speaker_label: Label = $Panel/Margin/VBox/Speaker
 @onready var text_label: RichTextLabel = $Panel/Margin/VBox/DialogText
 @onready var choices_box: VBoxContainer = $Panel/Margin/VBox/Choices
+@onready var voice_player: AudioStreamPlayer = $VoicePlayer
 
 var _trader_id: String = ""
 var _dialog_id: String = ""
@@ -24,9 +24,14 @@ var _current_node_id: String = ""
 var _chars_per_sec: float = CHARS_PER_SEC
 var _full_char_count: int = 0
 var _visible_chars: float = 0.0
+var _shown_int: int = 0
+var _plain_text: String = ""
+var _pause_left: float = 0.0
 var _typing: bool = false
 var _closing: bool = false
 var _intro_done: bool = false
+
+var _mumble := MumbleSpeech.new()
 
 var _player: Node2D = null
 var _hud: Node = null
@@ -44,6 +49,10 @@ const TRADER_NAMES := {
 }
 
 
+func _ready() -> void:
+	_mumble.setup(voice_player)
+
+
 func begin(trader_id: String, dialog_id: String, event_id: String, focus_node: Node2D) -> void:
 	_trader_id = trader_id
 	_dialog_id = dialog_id
@@ -51,6 +60,8 @@ func begin(trader_id: String, dialog_id: String, event_id: String, focus_node: N
 	_focus_node = focus_node
 	layer = 100
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	_mumble.setup(voice_player)
+	_mumble.load_voice(trader_id)
 
 	var dialog: Dictionary = DialogDB.get_dialog(dialog_id)
 	_nodes = dialog.get("nodes", {})
@@ -72,6 +83,7 @@ func begin(trader_id: String, dialog_id: String, event_id: String, focus_node: N
 	if _hud and _hud.has_method("set_ui_locked"):
 		_hud.set_ui_locked(true)
 
+	SoundManager.set_dialog_music_duck(true, CAMERA_DURATION)
 	await _play_intro()
 	_intro_done = true
 	panel.visible = true
@@ -79,22 +91,54 @@ func begin(trader_id: String, dialog_id: String, event_id: String, focus_node: N
 
 
 func _process(delta: float) -> void:
-	if _closing or not _intro_done:
+	if _closing or not _intro_done or not _typing:
 		return
-	if _typing:
-		_visible_chars += _chars_per_sec * delta
-		var shown := mini(int(_visible_chars), _full_char_count)
-		text_label.visible_characters = shown
-		if shown >= _full_char_count:
-			_finish_typing()
+
+	if _pause_left > 0.0:
+		_pause_left -= delta
+		if _pause_left > 0.0:
+			return
+
+	_visible_chars += _chars_per_sec * delta
+	var target := mini(int(_visible_chars), _full_char_count)
+
+	## Раскрываем по одному символу, чтобы гласные/паузы сработали корректно.
+	while _shown_int < target:
+		_shown_int += 1
+		text_label.visible_characters = _shown_int
+		_on_char_revealed(_shown_int - 1)
+		if _pause_left > 0.0:
+			## Не копим прогресс за время паузы — зафиксировать visible float.
+			_visible_chars = float(_shown_int)
+			break
+
+	if _shown_int >= _full_char_count and _pause_left <= 0.0:
+		_finish_typing()
+
+
+func _on_char_revealed(index: int) -> void:
+	if index < 0 or index >= _plain_text.length():
+		return
+	var ch := _plain_text.substr(index, 1)
+	_mumble.on_char(ch)
+	var pause := MumbleSpeech.pause_for_char_at(_plain_text, index)
+	if pause > 0.0:
+		_pause_left = pause
+
+
+func _skip_typing() -> void:
+	if not _typing:
+		return
+	_mumble.stop()
+	_pause_left = 0.0
+	_finish_typing()
 
 
 func _input(event: InputEvent) -> void:
 	if _closing or not _intro_done or not _typing:
 		return
-	## Клик в любое место — ускорить печать до 60 на всё это окно.
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		_chars_per_sec = CHARS_PER_SEC_FAST
+		_skip_typing()
 		get_viewport().set_input_as_handled()
 
 
@@ -102,7 +146,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if _closing or not _intro_done:
 		return
 	if event.is_action_pressed("button_E") and _typing:
-		_finish_typing()
+		_skip_typing()
 		get_viewport().set_input_as_handled()
 
 
@@ -110,6 +154,7 @@ func _show_node(node_id: String) -> void:
 	if node_id.is_empty() or not _nodes.has(node_id):
 		_close_dialog()
 		return
+	_mumble.stop()
 	_current_node_id = node_id
 	var node: Dictionary = _nodes[node_id]
 	var enter_actions: Array = node.get("enter_actions", [])
@@ -117,8 +162,11 @@ func _show_node(node_id: String) -> void:
 		DialogDB.apply_actions(enter_actions, _focus_node)
 	var raw_text := str(node.get("text", ""))
 	text_label.text = DialogDB.format_dialog_text(raw_text)
+	_plain_text = text_label.get_parsed_text()
 	_full_char_count = text_label.get_total_character_count()
 	_visible_chars = 0.0
+	_shown_int = 0
+	_pause_left = 0.0
 	_typing = true
 	text_label.visible_characters = 0
 	_clear_choices()
@@ -126,7 +174,10 @@ func _show_node(node_id: String) -> void:
 
 func _finish_typing() -> void:
 	_typing = false
+	_pause_left = 0.0
+	_mumble.stop()
 	_visible_chars = float(_full_char_count)
+	_shown_int = _full_char_count
 	text_label.visible_characters = -1
 	_build_choices()
 
@@ -216,8 +267,11 @@ func _close_dialog() -> void:
 	if _closing:
 		return
 	_closing = true
+	_typing = false
+	_mumble.stop()
 	_clear_choices()
 	panel.visible = false
+	SoundManager.set_dialog_music_duck(false, CAMERA_DURATION)
 
 	var tween := create_tween()
 	tween.set_parallel(true)

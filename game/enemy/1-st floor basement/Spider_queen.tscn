@@ -31,9 +31,6 @@ size = Vector2(22, 44)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2eqer"]
 radius = 984.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(20, 33)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{
 "frames": [{
@@ -133,7 +130,7 @@ hard_projectile_speed = 350.0
 hard_projectile_range = 400.0
 wait_idle_time = 0.5
 spawn_distance_buffer = 30.0
-hard_base_hp = 260
+hard_base_hp = 220
 hard_angle_deviation = 40.0
 
 [node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
@@ -150,12 +147,6 @@ monitorable = false
 [node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=272051664]
 visible = false
 shape = SubResource("CircleShape2D_2eqer")
-
-[node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
-position = Vector2(0.5, 17.5)
-shape = SubResource("RectangleShape2D_hoiul")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
 position = Vector2(-0.5, 0)
@@ -190,8 +181,6 @@ fire_icon1 = ExtResource("14_3rxmb")
 
 [connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
 [connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
-[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
 [connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

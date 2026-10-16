@@ -61,3 +61,7 @@ autowrap_mode = 3
 [node name="Choices" type="VBoxContainer" parent="Panel/Margin/VBox" unique_id=829230184]
 layout_mode = 2
 theme_override_constants/separation = 6
+
+[node name="VoicePlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 6.0
+bus = &"Dialog"

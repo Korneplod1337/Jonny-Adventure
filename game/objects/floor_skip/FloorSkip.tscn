@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cfloorskip0001"]
+
+[ext_resource type="Script" path="res://game/objects/floor_skip/floor_skip.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://q6etc7afsp4" path="res://image/rooms/1-st floor/hatch1.png" id="2_hatch1"]
+[ext_resource type="Texture2D" uid="uid://8feipuqehsqk" path="res://image/rooms/1-st floor/hatch2.png" id="3_hatch2"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_skip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hatch1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hatch2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_skip"]
+radius = 24.0
+
+[node name="FloorSkip" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_script")
+value = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_skip")
+
+[node name="Shadow" parent="." instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.6, 0.6)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_skip")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

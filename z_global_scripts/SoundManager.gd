@@ -63,6 +63,9 @@ const VOL_REVIVE := 4.0
 const MUSIC_DEFAULT_DB := 0.0
 const REVIVE_MUSIC_MUTE_HOLD_SEC := 5.0
 const REVIVE_MUSIC_FADE_SEC := 5.0
+## Диалог: музыка чуть тише, не глушится полностью.
+const DIALOG_MUSIC_DB := -8.0
+const DIALOG_MUSIC_FADE_SEC := 0.55
 
 ## Плейлисты по индексу локации: массив словарей {stream, weight}.
 ## Локация 1 (index 0): arcade ~70%, soundtrack_mb ~30%.
@@ -85,6 +88,9 @@ var _loop_players: Dictionary = {}
 var _music_duck_tween: Tween
 var _music_duck_token: int = 0
 var _music_fade_tween: Tween
+var _dialog_music_ducked: bool = false
+var _dialog_duck_tween: Tween
+var _dialog_duck_token: int = 0
 
 
 func _ready() -> void:
@@ -218,9 +224,43 @@ func duck_music_for_revive(
 				return
 			_music_player.volume_db = v,
 		-80.0,
-		MUSIC_DEFAULT_DB,
+		_music_target_db(),
 		fade_sec
 	)
+
+
+## Приглушить / вернуть музыку на время диалога.
+func set_dialog_music_duck(enabled: bool, fade_sec: float = DIALOG_MUSIC_FADE_SEC) -> void:
+	if enabled == _dialog_music_ducked:
+		return
+	_dialog_music_ducked = enabled
+	if not is_instance_valid(_music_player):
+		return
+	_dialog_duck_token += 1
+	var token := _dialog_duck_token
+	if _dialog_duck_tween != null:
+		_dialog_duck_tween.kill()
+		_dialog_duck_tween = null
+	var from_db := _music_player.volume_db
+	var to_db := _music_target_db()
+	if is_equal_approx(from_db, to_db):
+		return
+	_dialog_duck_tween = create_tween()
+	_dialog_duck_tween.tween_method(
+		func(v: float):
+			if token != _dialog_duck_token or not is_instance_valid(_music_player):
+				return
+			_music_player.volume_db = v,
+		from_db,
+		to_db,
+		fade_sec
+	)
+
+
+func _music_target_db() -> float:
+	if _dialog_music_ducked:
+		return DIALOG_MUSIC_DB
+	return MUSIC_DEFAULT_DB
 
 
 func play_gun_shot() -> void:
@@ -365,7 +405,7 @@ func _start_music_stream(stream: AudioStream) -> void:
 	_disable_stream_loop(play_stream)
 	_music_player.stop()
 	_music_player.stream = play_stream
-	_music_player.volume_db = MUSIC_DEFAULT_DB
+	_music_player.volume_db = _music_target_db()
 	_music_player.play()
 
 

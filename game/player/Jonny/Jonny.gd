@@ -232,9 +232,16 @@ func _input(_event: InputEvent) -> void:
 
 @export var on_ice: bool = true
 var movement_locked: bool = false
+## Только WASD; стрельба/абилки остаются (WeakSkull boss mind-control).
+var walk_input_locked: bool = false
 
 func set_movement_locked(locked: bool) -> void:
 	movement_locked = locked
+	if locked:
+		velocity = Vector2.ZERO
+
+func set_walk_input_locked(locked: bool) -> void:
+	walk_input_locked = locked
 	if locked:
 		velocity = Vector2.ZERO
 
@@ -256,7 +263,7 @@ func _process(delta: float) -> void:
 			Input.get_axis("move_left", "move_right"),
 			Input.get_axis("move_up", "move_down")
 		).normalized()
-		if movement_locked:
+		if movement_locked or walk_input_locked:
 			dir = Vector2.ZERO
 
 		var target := dir * move_speed

@@ -3,6 +3,8 @@ Jonny Adventure - Patch Notes
 BETA 0.3.0
 
 Изменения
+- новая локация!
+- новый босс!
 - новый шрайн - Oblation! Так же шрайны можно ломать в угоду бога Кереса
 - более живое меню игры и анимации объектов
 - тени
@@ -19,6 +21,7 @@ Stats
 - Weakspear +15% dmg
 - cooldown dash 20 -> 10
 - hp SpiderBig 100 -> 75
+- hp Spider_queen 260 ->220
 - less crit multiplier
 
 
