@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dpomjj5pp6fag" path="res://image/rooms/2-st floor/background_bounds3.png" id="3_eekmk"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="5_gbum8"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/1-st floor basement/Bat.tscn" id="7_d8sa7"]
-[ext_resource type="PackedScene" uid="uid://bwqk0wfbgdpjp" path="res://game/objects/obstacles/egyptrock.tscn" id="8_6tbt6"]
+[ext_resource type="PackedScene" uid="uid://bwqk0wfbgdpjp" path="res://game/objects/obstacles/egypt rock.tscn" id="8_6tbt6"]
 [ext_resource type="PackedScene" uid="uid://dx5hdeerhyxeh" path="res://game/enemy/1-st floor basement/Spider_egg_small.tscn" id="8_eekmk"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="8_tm8bw"]
 

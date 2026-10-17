@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="5_w678r"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/1-st floor basement/Bat.tscn" id="6_p8tiv"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="7_t3kpj"]
-[ext_resource type="PackedScene" uid="uid://bwqk0wfbgdpjp" path="res://game/objects/obstacles/egyptrock.tscn" id="8_0rjut"]
+[ext_resource type="PackedScene" uid="uid://bwqk0wfbgdpjp" path="res://game/objects/obstacles/egypt rock.tscn" id="8_0rjut"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
 texture = ExtResource("2_34s3i")

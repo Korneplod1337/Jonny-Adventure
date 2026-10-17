@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="5_lmwc1"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/1-st floor basement/Bat.tscn" id="6_tr01q"]
 [ext_resource type="PackedScene" uid="uid://w44vcoqbcqy8" path="res://game/presets/shrines/shrine.tscn" id="7_samay"]
-[ext_resource type="PackedScene" uid="uid://bwqk0wfbgdpjp" path="res://game/objects/obstacles/egyptrock.tscn" id="8_hc1x7"]
+[ext_resource type="PackedScene" uid="uid://bwqk0wfbgdpjp" path="res://game/objects/obstacles/egypt rock.tscn" id="8_hc1x7"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sud2i"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3uw1w"]
 texture = ExtResource("2_btjbg")
 separation = Vector2i(2, 2)
 0:0/0 = 0
@@ -47,7 +47,7 @@ separation = Vector2i(2, 2)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_sud2i")
+sources/0 = SubResource("TileSetAtlasSource_3uw1w")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sud2i"]
 size = Vector2(1136.44, 40)

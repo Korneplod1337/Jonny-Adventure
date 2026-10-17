@@ -44,7 +44,8 @@ func get_stat(p: Node, stat: String) -> float :
 			return spread_deg 
 		"range": 
 			var range_val = p.base_range + lerp(0.0, 360.0, (p.range_level - 1.0) / 9.0)
-			range_val *= clamp((1 + p.range_bonus * 0.1), 0.4, 3.0) 					# 20
+			#range_val *= clamp((1 + p.range_bonus * 0.1), 0.4, 3.0) 					# 20
+			range_val += p.range_bonus * 20
 			return range_val 
 		"fire_rate":
 			var fire_rate = p.base_fire_rate + lerp(1.0, 0.1, (p.fire_rate_level - 1.0) / 9.0)

@@ -8,8 +8,6 @@ const ANIM_ROUND := &"round"
 @export var world_down_offset := Vector2(0, 20)
 
 var _sprite_type := 0
-var _anchor_offset := Vector2.ZERO
-var _anchored_to_body := false
 
 @export_enum("Oval", "Round")
 var sprite_type: int:
@@ -22,35 +20,24 @@ var sprite_type: int:
 
 func _enter_tree() -> void:
 	_apply_sprite_type()
+	# На всякий случай сбрасываем прошлый runtime-хак с top_level.
+	if not Engine.is_editor_hint():
+		top_level = false
 
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	_follow_character_body_unrotated()
+	_counter_rotate_on_character_body()
 
 
-## Для CharacterBody2D (жуки/боссы): тень на фиксированном смещении под ногами,
-## без вращения вместе с телом.
-func _follow_character_body_unrotated() -> void:
+## Тень остаётся дочерней (scale/позиция как в редакторе),
+## но не крутится вместе с прицеливанием жука/босса.
+func _counter_rotate_on_character_body() -> void:
 	var parent_body := get_parent() as CharacterBody2D
-	if parent_body == null or not parent_body.is_inside_tree():
+	if parent_body == null:
 		return
-
-	if not _anchored_to_body:
-		_anchor_offset = position
-		top_level = true
-		# Иначе top_level рисует тень поверх спрайта врага.
-		show_behind_parent = true
-		z_as_relative = true
-		z_index = -1
-		_anchored_to_body = true
-
-	var sx := absf(parent_body.global_scale.x)
-	var sy := absf(parent_body.global_scale.y)
-	global_position = parent_body.global_position + Vector2(_anchor_offset.x * sx, _anchor_offset.y * sy)
-	global_rotation = 0.0
-	global_scale = Vector2(sx, sy)
+	rotation = -parent_body.rotation
 
 
 func _apply_sprite_type() -> void:

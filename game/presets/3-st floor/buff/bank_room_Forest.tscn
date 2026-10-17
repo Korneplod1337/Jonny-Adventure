@@ -183,8 +183,8 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hpd6p"]
-radius = 92.34717
+[sub_resource type="CircleShape2D" id="CircleShape2D_0fc4v"]
+radius = 70.0
 
 [node name="BankRoom" type="Node2D" unique_id=603362692]
 script = ExtResource("1_0fc4v")
@@ -270,11 +270,6 @@ position = Vector2(-300, 196)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_shi8m")
 
-[node name="TraderDialog" parent="." unique_id=942949254 instance=ExtResource("18_mujjj")]
-position = Vector2(-300, 196)
-trader_id = "erik"
-focus_path = NodePath("AnimatedEZ")
-
 [node name="AnimatedTable" type="AnimatedSprite2D" parent="." unique_id=32952911]
 position = Vector2(-432, 194)
 scale = Vector2(4, 4)
@@ -295,16 +290,22 @@ theme_override_fonts/font = ExtResource("31_15twl")
 theme_override_font_sizes/font_size = 16
 text = "1231"
 
+[node name="TraderDialog" parent="." unique_id=1332040832 instance=ExtResource("18_mujjj")]
+position = Vector2(-215.00002, 90.00001)
+scale = Vector2(0.65, 0.65)
+trader_id = "erik"
+focus_path = NodePath("AnimatedEZ")
+
 [node name="Interactable_spend" parent="." unique_id=1597460607 instance=ExtResource("32_6wmo0")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable_spend" unique_id=1570294029]
-position = Vector2(-214, 209)
-shape = SubResource("CircleShape2D_hpd6p")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable_spend" unique_id=1076246534]
+position = Vector2(-146, 220)
+shape = SubResource("CircleShape2D_0fc4v")
 
-[node name="Interactable_give" parent="." unique_id=842374546 instance=ExtResource("32_6wmo0")]
+[node name="Interactable_give" parent="." unique_id=547138611 instance=ExtResource("32_6wmo0")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable_give" unique_id=965591369]
-position = Vector2(-343, 49)
-shape = SubResource("CircleShape2D_hpd6p")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable_give" unique_id=1878305948]
+position = Vector2(-356, 57)
+shape = SubResource("CircleShape2D_0fc4v")
 
 [connection signal="body_entered" from="CameraBounds" to="." method="bounds_body_entered"]

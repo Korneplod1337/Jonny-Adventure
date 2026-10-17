@@ -22,7 +22,7 @@ size = Vector2(24, 24)
 radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(2, 2)
+size = Vector2(0, 0)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{

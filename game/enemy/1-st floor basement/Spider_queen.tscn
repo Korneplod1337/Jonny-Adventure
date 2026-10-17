@@ -148,6 +148,11 @@ monitorable = false
 visible = false
 shape = SubResource("CircleShape2D_2eqer")
 
+[node name="HitArea" type="Area2D" parent="." unique_id=484181840]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=622638965]
+position = Vector2(0, 2)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=13991684]
 position = Vector2(-0.5, 0)
 sprite_frames = SubResource("SpriteFrames_17ibq")

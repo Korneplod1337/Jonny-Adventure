@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://cqv2mbl2hx37m" path="res://image/main_menu/menu.png" id="1_auw0j"]
 [ext_resource type="Script" uid="uid://d0fo1ay0nvvan" path="res://menu_scripts/main_control_.gd" id="2_72qvv"]
-[ext_resource type="Script" path="res://menu_scripts/floating_menu_button.gd" id="floating_btn"]
 [ext_resource type="Texture2D" uid="uid://cuv4obda3jj7r" path="res://image/main_menu/button_new_game_not.png" id="2_pv6v7"]
 [ext_resource type="Texture2D" uid="uid://c8x6ak6uembjs" path="res://image/main_menu/button_settings_not.png" id="3_fjq68"]
 [ext_resource type="Texture2D" uid="uid://ddjyjynntl4c" path="res://image/main_menu/button_new_game_select.png" id="4_575cf"]
@@ -113,6 +112,9 @@
 [ext_resource type="Texture2D" uid="uid://bm5s2mc85hv7h" path="res://image/main_menu/char_select_1_select9.png" id="88_3wd4o"]
 [ext_resource type="Texture2D" uid="uid://x2u1svks306" path="res://image/main_menu/char_select_10.png" id="91_vmaqa"]
 [ext_resource type="Texture2D" uid="uid://mvypkpyqib0" path="res://image/main_menu/char_select_1_select10.png" id="92_58e74"]
+[ext_resource type="Texture2D" uid="uid://crb7vfq40gt4h" path="res://image/main_menu/locations_mark2.png" id="113_blw33"]
+[ext_resource type="Texture2D" uid="uid://csy0vboist6bo" path="res://image/achievements/menu_achiv/survive.png" id="114_0fdid"]
+[ext_resource type="Script" uid="uid://dc6a3u6b268fh" path="res://menu_scripts/floating_menu_button.gd" id="floating_btn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ni8h3"]
 animations = [{
@@ -1553,6 +1555,85 @@ There are also abilities and equipment.
 Everything goes into special slots."
 horizontal_alignment = 1
 
+[node name="PageUnlocks" type="VBoxContainer" parent="Tutorial_select_menu/Pages" unique_id=291529063]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -477.0
+offset_top = -360.0
+offset_right = 483.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Title" type="Label" parent="Tutorial_select_menu/Pages/PageUnlocks" unique_id=291529064]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Unlocks"
+horizontal_alignment = 1
+
+[node name="Images" type="HBoxContainer" parent="Tutorial_select_menu/Pages/PageUnlocks" unique_id=291529065]
+layout_mode = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="Location" type="VBoxContainer" parent="Tutorial_select_menu/Pages/PageUnlocks/Images" unique_id=291529066]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/PageUnlocks/Images/Location" unique_id=291529067]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture = ExtResource("113_blw33")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/PageUnlocks/Images/Location" unique_id=291529068]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Location"
+horizontal_alignment = 1
+
+[node name="Achievement" type="VBoxContainer" parent="Tutorial_select_menu/Pages/PageUnlocks/Images" unique_id=291529069]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Tutorial_select_menu/Pages/PageUnlocks/Images/Achievement" unique_id=291529070]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+texture = ExtResource("114_0fdid")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="Tutorial_select_menu/Pages/PageUnlocks/Images/Achievement" unique_id=291529071]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "Achievement"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="Tutorial_select_menu/Pages/PageUnlocks" unique_id=291529072]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
+theme_override_fonts/font = ExtResource("46_1exqm")
+theme_override_font_sizes/font_size = 64
+text = "If you unlock a location, it unlocks
+for every character at once.
+Characters, items and other unlocks
+come together with achievements."
+horizontal_alignment = 1
+
 [node name="BtnPrev" type="Button" parent="Tutorial_select_menu" unique_id=291529015]
 anchors_preset = 4
 anchor_top = 0.5
@@ -1603,7 +1684,7 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0.101961, 0.101961, 0.180392, 1)
 theme_override_fonts/font = ExtResource("46_1exqm")
 theme_override_font_sizes/font_size = 64
-text = "1 / 3"
+text = "1 / 4"
 horizontal_alignment = 1
 
 [node name="exit" type="Button" parent="Tutorial_select_menu" unique_id=291529018]
@@ -1694,9 +1775,9 @@ centered = false
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_mouse_exited"]
 [connection signal="pressed" from="start_menu/Control_main/Button_stats" to="start_menu/Control_main" method="_on_button_stats_pressed"]
-[connection signal="pressed" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_pressed"]
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_mouse_exited"]
+[connection signal="pressed" from="start_menu/Control_main/Button_tutorial" to="start_menu/Control_main" method="_on_button_tutorial_pressed"]
 [connection signal="mouse_entered" from="start_menu/Control_main/Button_patch_note" to="start_menu/Control_main" method="_on_button_patch_note_mouse_entered"]
 [connection signal="mouse_exited" from="start_menu/Control_main/Button_patch_note" to="start_menu/Control_main" method="_on_button_patch_note_mouse_exited"]
 [connection signal="pressed" from="start_menu/Control_main/Button_patch_note" to="start_menu/Control_main" method="_on_button_patch_note_pressed"]
