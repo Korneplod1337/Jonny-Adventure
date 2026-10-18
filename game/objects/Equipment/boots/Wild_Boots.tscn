@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bl7cqej1s468g"]
 
-[ext_resource type="Script" uid="uid://bl7cqej1sr8lg" path="res://game/objects/Equipment/boots/wild_boots.gd" id="1_script"]
+[ext_resource type="Script" path="res://game/objects/Equipment/boots/wild_boots.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bpasm3wvosfet" path="res://image/equip/boots/wild_boots13.png" id="2_icon"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
@@ -28,7 +28,7 @@ interact_name = "Swap on test_chest"
 shape = SubResource("CircleShape2D_kjk28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
-position = Vector2(21, 40)
+position = Vector2(1.9999999, 2.9999998)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_icon")
 offset = Vector2(0, -2)

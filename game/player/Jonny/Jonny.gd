@@ -140,14 +140,14 @@ func _apply_god_mode() -> void:
 	spread_level = 10.0
 	range_level = 10.0
 	fire_rate_level = 10.0
-	hp_bonus = 18
-	speed_bonus = 18
-	luck_bonus = 18
-	magic_bonus = 18
-	damage_bonus = 18
-	accuracy_bonus = 18
-	range_bonus = 18
-	fire_rate_bonus = 18
+	hp_bonus = 20
+	speed_bonus = 20
+	luck_bonus = 20
+	magic_bonus = 20
+	damage_bonus = 20
+	accuracy_bonus = 20
+	range_bonus = 20
+	fire_rate_bonus = 20
 
 func _ready() -> void:
 	_base_collision_mask = collision_mask

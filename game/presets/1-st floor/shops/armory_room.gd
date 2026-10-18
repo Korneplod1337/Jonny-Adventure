@@ -83,6 +83,7 @@ func _connect_item_signals(node):
 
 func _equip_taken_anim():
 	animated_sprite_2d.play('buy')
+	SoundManager.play_buy()
 
 func _on_sprite_animation_finished()-> void:
 	animated_sprite_2d.play('default')

@@ -3,6 +3,9 @@ extends CanvasLayer
 const font: FontFile = preload("res://Fonts/JonnyAdventureFont.ttf")
 const WIN_MENU_TEX: Texture2D = preload("res://image/interface/HUD/Win_menu.png")
 const TRUE_WIN_MENU_TEX: Texture2D = preload("res://image/interface/HUD/True_Win_menu.png")
+const BossHpBarScene := preload("res://game/HUD/BossHpBar.tscn")
+## Один стиль HP-бара на всех боссов. Настраивается в BossHpBarPreview / этом .tres.
+const SHARED_BOSS_HP_STYLE: BossHpBarStyle = preload("res://game/HUD/styles/boss_hp_bar_template.tres")
 const BONUS_CLAMP_MIN := -40
 const BONUS_CLAMP_MAX := 40
 var ui_open := false
@@ -113,9 +116,9 @@ func show_boss_hp_bars(bosses: Array) -> void:
 		bar_h = 12.0
 	_boss_hp_root.add_theme_constant_override("separation", 6)
 	for boss in living:
-		var bar: BossHpBar = BossHpBar.new()
+		var bar: BossHpBar = BossHpBarScene.instantiate()
 		_boss_hp_root.add_child(bar)
-		bar.setup(boss, bar_h)
+		bar.setup(boss, bar_h, SHARED_BOSS_HP_STYLE)
 	_boss_hp_root.visible = true
 
 

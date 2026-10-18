@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bgrb2i4b1qke2"]
+
+[ext_resource type="Script" uid="uid://brgmru5fjvixk" path="res://game/objects/Equipment/Ability/scripts/maria_keres_shot.gd" id="1_shot"]
+[ext_resource type="Texture2D" uid="uid://c8afor28i4yld" path="res://image/effect_sprites/Maria Keres summons/MariaShot1.png" id="2_s1"]
+[ext_resource type="Texture2D" uid="uid://cy1u1pubwxuri" path="res://image/effect_sprites/Maria Keres summons/MariaShot2.png" id="3_s2"]
+[ext_resource type="Texture2D" uid="uid://ve66tkjm4phj" path="res://image/effect_sprites/Maria Keres summons/MariaShot3.png" id="4_s3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hit"]
+radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s1")
+}],
+"loop": false,
+"name": &"fly",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s3")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 8.0
+}]
+
+[node name="MariaShot" type="Area2D" unique_id=1360777698]
+z_index = 11
+collision_layer = 2
+collision_mask = 84
+script = ExtResource("1_shot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1738471614]
+shape = SubResource("CircleShape2D_hit")
+
+[node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=681361364]
+position = Vector2(-1, -1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_shot")
+animation = &"hit"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

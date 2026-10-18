@@ -2,6 +2,7 @@ extends Node
 
 var unlocked_items: Dictionary = {}
 var picked_items: Dictionary = {}
+var discovered_items: Dictionary = {}
 var run_picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
 var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'lvlup_def', 'lvlup_atk', 'spiderweb',
@@ -319,9 +320,10 @@ func mark_picked(id: String) -> void:
 	run_picked_items[id] = true
 	if id != "blueprint":
 		last_picked_item_id = id
+	discovered_items[id] = true
 	if id not in UNIQUE_ONCE_ITEMS:
 		picked_items[id] = true
-		save_config()
+	save_config()
 
 func reset_run() -> void:
 	run_picked_items.clear()
@@ -353,6 +355,9 @@ func is_unlocked(id: String) -> bool:
 func is_picked(id: String) -> bool:
 	return picked_items.get(id, false)
 
+func is_discovered(id: String) -> bool:
+	return discovered_items.get(id, false) or picked_items.get(id, false)
+
 func is_picked_this_run(id: String) -> bool:
 	return run_picked_items.get(id, false)
 
@@ -378,6 +383,8 @@ func save_config() -> void:
 		cfg.set_value("unlocks", k, true)
 	for k in picked_items:
 		cfg.set_value("picked", k, true)
+	for k in discovered_items:
+		cfg.set_value("discovered", k, true)
 	cfg.save(SAVE_PATH)
 
 func load_config() -> void:
@@ -389,15 +396,21 @@ func load_config() -> void:
 		unlocked_items[id] = true
 	for id in DEFAULT_PICK:
 		picked_items[id] = true
+		discovered_items[id] = true
 
 	if err == OK:
-		for sec in ["unlocks", "picked"]:
+		for sec in ["unlocks", "picked", "discovered"]:
+			if not cfg.has_section(sec):
+				continue
 			for k in cfg.get_section_keys(sec):
 				match sec:
 					"unlocks":
 						unlocked_items[k] = true
 					"picked":
 						picked_items[k] = true
+						discovered_items[k] = true
+					"discovered":
+						discovered_items[k] = true
 	else:
 		save_config()
 

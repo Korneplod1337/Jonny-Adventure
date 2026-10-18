@@ -33,33 +33,40 @@ const BANK_SECRET_POS := Vector2(50, 50)
 var floors_config: Array[Dictionary] = [
 # локация 1
 {"total_rooms": 2, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-{"total_rooms": 4, 	"shop_rooms": 0, 		"buff_rooms": 2, 			"dop_rooms": 0}, 
-#{"total_rooms": 4, 	"shop_rooms": 1, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-{"total_rooms": 5, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
-{"total_rooms": 6, 	"shop_rooms": 2, 		"buff_rooms": 1, 			"dop_rooms": 0}, 
+{"total_rooms": 4, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
+{"total_rooms": 5, 	"shop_rooms": randi()%2, "buff_rooms": 1, 			"dop_rooms": 0}, 
+{"total_rooms": 6, 	"shop_rooms": randi()%2, "buff_rooms": 1, 			"dop_rooms": 0}, 
+
 #{"total_rooms": 4, 	"shop_rooms": 0, 		"buff_rooms": 0, 			"dop_rooms": 0}, 
 #{"total_rooms": 5, 	"shop_rooms": randi()%2, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
 #{"total_rooms": 6, 	"shop_rooms": randi()%2, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+
 # локация 2
-{"total_rooms": 6, 	"shop_rooms": 1, "buff_rooms": 1, 	"dop_rooms": 0}, 
-{"total_rooms": 10, 	"shop_rooms": 1, "buff_rooms": 2, 	"dop_rooms": 0}, 
+{"total_rooms": 7, 	"shop_rooms": 1, "buff_rooms": 1, 	"dop_rooms": 0}, 
+{"total_rooms": 8, 	"shop_rooms": 1, "buff_rooms": 2, 	"dop_rooms": 0}, 
 #{"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": 0}, 
 #{"total_rooms": 12, "shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+
 # локация 3
-{"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
-{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
-# локация 4
+{"total_rooms": 8, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+{"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
 {"total_rooms": 2, 	"shop_rooms": 0, "buff_rooms": 0, 	"dop_rooms": 0}, 
+#{"total_rooms": 10, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
+#{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
+
+# локация 4
 {"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 {"total_rooms": 16, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%2}, 
+
 # локация 5
-{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
-{"total_rooms": 18, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
+{"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
+{"total_rooms": 16, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
+
 # локация 6
-{"total_rooms": 14, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
-{"total_rooms": 18, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
+{"total_rooms": 12, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%3}, 
+{"total_rooms": 16, 	"shop_rooms": randi()%3, "buff_rooms": randi()%3, 	"dop_rooms": randi()%4}, 
+
 # локация 7
-{"total_rooms": 8, 	"shop_rooms": 2,			"buff_rooms": randi()%2, 	"dop_rooms": randi()%2}, 
 {"total_rooms": 2, 	"shop_rooms": 0, 		"buff_rooms": 0, 	"dop_rooms": 0}, 
 ]
 

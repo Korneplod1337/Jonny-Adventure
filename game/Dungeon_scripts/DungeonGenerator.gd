@@ -94,8 +94,9 @@ func generate(total_rooms: int, shop_rooms: int = 0,
 	candidates = rooms.values().filter(func(r): return r.type == RoomType.STANDARD)
 	while placed < dop_rooms and candidates.size() > 0:
 		var r = candidates[randi() % candidates.size()]
-		r.type = [RoomType.BLOOD_TRIBUTE, RoomType.GAMBLING, RoomType.SECRET, RoomType.STATUP][randi() % 4]
+		#r.type = [RoomType.BLOOD_TRIBUTE, RoomType.GAMBLING, RoomType.SECRET, RoomType.STATUP][randi() % 4]
+		r.type = [RoomType.GAMBLING, RoomType.STATUP][randi() % 2] 
 		candidates.erase(r)
 		placed += 1
-	
+	'''ВРЕМЕННО ТУТ УБРАН КРОВЬ КОМНАТА И СЕКРЕТНАЯ'''
 	return rooms

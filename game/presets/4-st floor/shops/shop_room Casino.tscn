@@ -207,15 +207,15 @@ position = Vector2(307, -176)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_shi8m")
 
-[node name="TraderDialog" parent="." unique_id=962482559 instance=ExtResource("21_a240b")]
-position = Vector2(307, -176)
-focus_path = NodePath("AnimatedSprite2D")
-
 [node name="Sher_bounds" type="StaticBody2D" parent="." unique_id=1758529750]
 collision_mask = 0
 
 [node name="Sher_collision" type="CollisionShape2D" parent="Sher_bounds" unique_id=453661200]
 position = Vector2(325, -186)
 shape = SubResource("RectangleShape2D_js3av")
+
+[node name="TraderDialog" parent="." unique_id=1332040832 instance=ExtResource("21_a240b")]
+position = Vector2(26, -170)
+focus_path = NodePath("AnimatedSprite2D")
 
 [connection signal="body_entered" from="CameraBounds" to="." method="bounds_body_entered"]

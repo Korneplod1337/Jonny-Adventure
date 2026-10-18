@@ -36,8 +36,10 @@ func _on_interact() -> void:
 		match where:
 			"shop":
 				StatsManager.add_statistic_progress("shop_loyalty", 1)
-			"armor":
+				SoundManager.play_buy()
+			"armory", "armor":
 				StatsManager.add_statistic_progress("armory_loyalty", 1)
+				SoundManager.play_buy()
 		StatsManager.add_statistic_progress("items_equipped", 1)
 		if AchivStatsRegistry.ITEM_PICKUP_STATS.has(item_id):
 			StatsManager.add_statistic_progress(AchivStatsRegistry.ITEM_PICKUP_STATS[item_id], 1)

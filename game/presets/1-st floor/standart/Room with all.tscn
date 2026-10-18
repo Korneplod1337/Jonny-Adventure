@@ -135,8 +135,8 @@
 [ext_resource type="PackedScene" uid="uid://bh55uvxw80yd4" path="res://game/objects/Equipment/Ability/equip/Ember_equip.tscn" id="129_kjqnc"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/Expedition_equip.tscn" id="130_ahchr"]
 [ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/GoldHoard_equip.tscn" id="131_l3f4i"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/KeresCall_equip.tscn" id="132_vdaq7"]
-[ext_resource type="PackedScene" path="res://game/objects/Equipment/Ability/equip/MariaCall_equip.tscn" id="133_u3xpl"]
+[ext_resource type="PackedScene" uid="uid://uj1vr2g723r6" path="res://game/objects/Equipment/Ability/equip/KeresCall_equip.tscn" id="132_vdaq7"]
+[ext_resource type="PackedScene" uid="uid://ufa2a5y2raxb" path="res://game/objects/Equipment/Ability/equip/MariaCall_equip.tscn" id="133_u3xpl"]
 [ext_resource type="PackedScene" uid="uid://dgpgc4ry80scd" path="res://game/objects/Equipment/Ability/equip/MiromirBlessing_equip.tscn" id="134_bq5ai"]
 [ext_resource type="PackedScene" uid="uid://bnkea2r7svn6q" path="res://game/objects/Equipment/Ability/equip/MiromirGift_equip.tscn" id="135_mexhk"]
 [ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="137_y65ao"]
@@ -759,9 +759,11 @@ position = Vector2(801, 781)
 
 [node name="KeresCall_equip" parent="." unique_id=453958885 instance=ExtResource("132_vdaq7")]
 position = Vector2(426, 1112)
+equip_tooltip = "Summon demon stub"
 
 [node name="MariaCall_equip" parent="." unique_id=939035990 instance=ExtResource("133_u3xpl")]
 position = Vector2(312, 1113)
+equip_tooltip = "Summon angel stub"
 
 [node name="MiromirBlessing_equip" parent="." unique_id=1833598102 instance=ExtResource("134_bq5ai")]
 position = Vector2(315, 891)
@@ -941,7 +943,7 @@ position = Vector2(-528, 488)
 position = Vector2(168, 586)
 
 [node name="PoisonotingPotion_equip" parent="." unique_id=875767875 instance=ExtResource("198_eealk")]
-position = Vector2(540, 890)
+position = Vector2(535, 893)
 
 [node name="Dodge_equip" parent="." unique_id=282052378 instance=ExtResource("199_n6x0b")]
 position = Vector2(3, 780)

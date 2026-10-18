@@ -74,7 +74,7 @@ var POOLS := {
 		
 		
 		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
@@ -237,7 +237,7 @@ var POOLS := {
 		{"id": "Kaliya_boots", "scene": preload("uid://by8qnvewpw3v3"),
 		 "tier": 3, "weight": 10.0},
 		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
@@ -294,11 +294,42 @@ var equip_visuals := {
 }
 
 var rng := RandomNumberGenerator.new()
+var picked_equip: Dictionary = {}
+var SAVE_PATH := "user://equip.cfg"
 
 func _ready() -> void:
 	rng.randomize()
+	load_config()
 	update_unlocks()
 	AchievementManager.achievement_unlocked.connect(_on_achievement_unlocked)
+
+
+func mark_picked(id: String) -> void:
+	if id.is_empty():
+		return
+	picked_equip[id] = true
+	save_config()
+
+
+func is_picked(id: String) -> bool:
+	return picked_equip.get(id, false)
+
+
+func save_config() -> void:
+	var cfg := ConfigFile.new()
+	for k in picked_equip:
+		cfg.set_value("picked", k, true)
+	cfg.save(SAVE_PATH)
+
+
+func load_config() -> void:
+	var cfg := ConfigFile.new()
+	var err := cfg.load(SAVE_PATH)
+	if err != OK:
+		return
+	if cfg.has_section("picked"):
+		for k in cfg.get_section_keys("picked"):
+			picked_equip[k] = true
 
 
 func _on_achievement_unlocked(_popup_path: String) -> void:

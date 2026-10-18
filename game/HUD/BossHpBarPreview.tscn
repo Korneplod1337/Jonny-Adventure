@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dx7t2m07pe608"]
+
+[ext_resource type="Script" uid="uid://dinufkuhixr41" path="res://game/HUD/boss_hp_bar_preview.gd" id="1_preview"]
+[ext_resource type="PackedScene" uid="uid://2htldeyb4pfa" path="res://game/HUD/BossHpBar.tscn" id="2_bar"]
+[ext_resource type="Resource" uid="uid://c0umdnr28w3tg" path="res://game/HUD/styles/boss_hp_bar_template.tres" id="3_style"]
+
+[node name="BossHpBarPreview" type="Control" unique_id=439290771]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_preview")
+shared_style = ExtResource("3_style")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=33708276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.15, 0.14, 0.16, 1)
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1546538229]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -120.0
+offset_right = 300.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=484263570]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Hint" type="Label" parent="Panel/VBox" unique_id=144213300]
+layout_mode = 2
+text = "Общий Boss HP Bar
+Выбери этот корень → Shared Style → Fill Texture
+(или открой game/HUD/styles/boss_hp_bar_template.tres)
+Слайдер = HP. Фон бара всегда остаётся видимым."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BossHpBar" parent="Panel/VBox" unique_id=62869766 instance=ExtResource("2_bar")]
+custom_minimum_size = Vector2(520, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+style = ExtResource("3_style")
+preview_ratio = 0.59
+
+[node name="SliderRow" type="HBoxContainer" parent="Panel/VBox" unique_id=1317909352]
+layout_mode = 2
+
+[node name="HpSlider" type="HSlider" parent="Panel/VBox/SliderRow" unique_id=1521245619]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 59.0
+
+[node name="HpLabel" type="Label" parent="Panel/VBox/SliderRow" unique_id=1106397888]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "59%"
+horizontal_alignment = 2

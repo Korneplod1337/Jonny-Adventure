@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://uj1vr2g723r6"]
 
-[ext_resource type="Script" path="res://game/objects/Equipment/Ability/BaseAbility_equip.gd" id="1_equip"]
-[ext_resource type="Script" path="res://game/objects/Equipment/Ability/scripts/keres_call_ability.gd" id="2_ability"]
-[ext_resource type="Texture2D" uid="uid://jd3ql7t7or3p" path="res://image/ttttt30.png" id="3_icon"]
+[ext_resource type="Script" uid="uid://cdreuanfktvo7" path="res://game/objects/Equipment/Ability/BaseAbility_equip.gd" id="1_equip"]
+[ext_resource type="Script" uid="uid://drob8llf0qnhv" path="res://game/objects/Equipment/Ability/scripts/keres_call_ability.gd" id="2_ability"]
+[ext_resource type="Texture2D" uid="uid://b0iu4mtxfk61t" path="res://image/equip/ability/summon2.png" id="3_cwmea"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="4_interact"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
@@ -11,23 +11,23 @@ radius = 19.026299
 [sub_resource type="CircleShape2D" id="CircleShape2D_interact"]
 radius = 54.08327
 
-[node name="KeresCall_equip" type="Area2D"]
+[node name="KeresCall_equip" type="Area2D" unique_id=1296922222]
 script = ExtResource("1_equip")
 ability_script = ExtResource("2_ability")
-equip_icon = ExtResource("3_icon")
+equip_icon = ExtResource("3_cwmea")
 equip_id = "KeresCall"
-equip_tooltip = "Summon demon stub"
+equip_tooltip = "Call Keres' spirit"
 interact_name = "Keres Call"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1353977084]
 shape = SubResource("CircleShape2D_body")
 
-[node name="Interactable" parent="." instance=ExtResource("4_interact")]
+[node name="Interactable" parent="." unique_id=2090027903 instance=ExtResource("4_interact")]
 interact_name = "Take Keres Call"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1114834539]
 shape = SubResource("CircleShape2D_interact")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=603670061]
 scale = Vector2(2, 2)
-texture = ExtResource("3_icon")
+texture = ExtResource("3_cwmea")

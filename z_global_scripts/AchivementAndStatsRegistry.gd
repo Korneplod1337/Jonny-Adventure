@@ -1,7 +1,7 @@
 extends Node
 
 ## Включить весь трекинг статистики и достижений.
-const TRACKING_ENABLED := true #false
+const TRACKING_ENABLED := false
 
 ## Единый реестр счётчиков.
 ##   desc          — подпись в меню статистики
@@ -85,15 +85,15 @@ const STATS := {
 		},
 	},
 	"bank_loyalty": {
-		"desc": "Erik's loyalty (bank coins)",
+		"desc": "Erik's loyalty",
 		"show_in_menu": true,
 		"achievement": {
 			"id": "bank_loyality",
 			"name": "Erik's vault",
 			"desc": "Keep 100 coins in the bank",
 			"goal": 100,
-			"menu_icon": "res://image/achievements/menu_achiv/shop_loyality.png",
-			"hud_popup": "res://image/achievements/hud_achiv/shop_loyality_hud.png",
+			"menu_icon": "res://image/achievements/menu_achiv/bank_loyality.png",
+			"hud_popup": "res://image/achievements/hud_achiv/bank_loyality_hud.png",
 		},
 	},
 	"Mega_crit": {
@@ -247,6 +247,10 @@ const ITEM_UNLOCKS := {
 ## Разблокировка экипировки в пулах EquipManager при получении достижения.
 ## Ключ — id достижения из achievement.id выше.
 const EQUIP_UNLOCKS := {
+	"long_distance": [
+		{"pool": "armory", "equipment_id": "Speed_boots"},
+		{"pool": "all", "equipment_id": "Speed_boots"},
+	],
 	"bad_spear_kills": [
 		{"pool": "armory", "equipment_id": "EXSpear"},
 		{"pool": "weapon", "equipment_id": "EXSpear"},

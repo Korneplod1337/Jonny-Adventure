@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c8xekhutrps2q" path="res://image/rooms/1-st floor/background5.png" id="1_8cds4"]
 [ext_resource type="Texture2D" uid="uid://dp0ws2wi2nt0u" path="res://image/rooms/3-st floor/background_bounds2.png" id="2_0krqc"]
+[ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="4_0krqc"]
 [ext_resource type="PackedScene" uid="uid://ch8qkvh1kb427" path="res://game/objects/obstacles/lightning.tscn" id="4_1cm4y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
@@ -57,7 +58,7 @@ shape = SubResource("RectangleShape2D_sw7ps")
 [node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=468390853]
 
 [node name="lightning" parent="." unique_id=2035113601 instance=ExtResource("4_1cm4y")]
-position = Vector2(250, 130)
+position = Vector2(-504, -51)
 prepare_time = 1.0
 spawn_fire = true
 
@@ -90,7 +91,7 @@ prepare_time = 1.0
 spawn_fire = true
 
 [node name="lightning2" parent="." unique_id=2092538317 instance=ExtResource("4_1cm4y")]
-position = Vector2(-350, 130)
+position = Vector2(-494, 166)
 prepare_time = 1.0
 spawn_fire = true
 
@@ -121,3 +122,6 @@ position = Vector2(50, 0)
 scale = Vector2(1, 1)
 prepare_time = 1.0
 spawn_fire = true
+
+[node name="EnemyTest5" parent="." unique_id=464290923 instance=ExtResource("4_0krqc")]
+position = Vector2(420, 145)

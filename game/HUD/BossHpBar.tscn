@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://2htldeyb4pfa"]
+
+[ext_resource type="Script" uid="uid://kmdemixjnd7" path="res://game/HUD/boss_hp_bar.gd" id="1_bar"]
+
+[node name="BossHpBar" type="Control"]
+custom_minimum_size = Vector2(360, 22)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 360.0
+offset_bottom = 22.0
+mouse_filter = 2
+clip_contents = false
+script = ExtResource("1_bar")
+preview_ratio = 0.75

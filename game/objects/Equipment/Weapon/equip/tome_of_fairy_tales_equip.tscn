@@ -43,7 +43,6 @@ shape = SubResource("CircleShape2D_0twu3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=473207758]
 clip_children = 2
-position = Vector2(13, 13)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ojoxv")
 

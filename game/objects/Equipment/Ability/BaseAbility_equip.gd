@@ -112,6 +112,7 @@ func _on_interact() -> void:
 	SoundManager.play_book()
 	apply_equip(player)
 	equip_taken.emit()
+	EquipManager.mark_picked(equip_id)
 	queue_free()
 
 

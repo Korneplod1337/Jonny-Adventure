@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bqymkng7nnwe"]
+
+[ext_resource type="Script" uid="uid://nagq10h88fpp" path="res://game/objects/Equipment/Ability/scripts/maria_spirit.gd" id="1_spirit"]
+[ext_resource type="Texture2D" uid="uid://dkq03tmm8g6mj" path="res://image/effect_sprites/Maria Keres summons/Maria summon1.png" id="2_s1"]
+[ext_resource type="Texture2D" uid="uid://karfjgf0hq76" path="res://image/effect_sprites/Maria Keres summons/Maria summon2.png" id="3_s2"]
+[ext_resource type="Texture2D" uid="uid://c8bw3h8p4iawl" path="res://image/effect_sprites/Maria Keres summons/Maria summon3.png" id="4_s3"]
+[ext_resource type="Texture2D" uid="uid://b76fbj053by1b" path="res://image/effect_sprites/Maria Keres summons/Maria summon4.png" id="5_s4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_maria"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="MariaSpirit" type="Node2D" unique_id=1077082297]
+z_index = 9
+script = ExtResource("1_spirit")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1005906154]
+position = Vector2(-1, -2)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_maria")
+animation = &"idle"
+
+[node name="ShotMarker" type="Marker2D" parent="." unique_id=1146666124]
+position = Vector2(1, 3)

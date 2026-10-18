@@ -87,6 +87,7 @@ func _on_interact():
 			hud_slot = hud.HeadSlot
 	
 	equip_taken.emit()
+	EquipManager.mark_picked(equip_id)
 	
 	hud_slot.set_icon(equip_icon)
 	hud_slot.set_tooltip(tooltip)

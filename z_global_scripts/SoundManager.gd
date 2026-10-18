@@ -47,6 +47,13 @@ const SFX_BOOK: Array[AudioStream] = [
 	preload("res://sound/sound/book2.ogg"),
 	preload("res://sound/sound/book3.ogg"),
 ]
+const SFX_BUY: Array[AudioStream] = [
+	preload("res://sound/sound/buy1.wav"),
+	preload("res://sound/sound/buy2.wav"),
+	preload("res://sound/sound/buy3.wav"),
+	preload("res://sound/sound/buy4.wav"),
+	preload("res://sound/sound/buy5.wav"),
+]
 
 const LOOP_HEARTBEAT := &"heartbeat"
 const LOOP_WALKING := &"walking"
@@ -289,6 +296,10 @@ func play_mimic_boss_roar() -> void:
 
 func play_book() -> void:
 	play_random(SFX_BOOK,20)
+
+
+func play_buy() -> void:
+	play_random(SFX_BUY)
 
 
 func start_heartbeat() -> void:

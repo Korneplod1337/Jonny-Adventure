@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BossHpBarStyle" format=3 uid="uid://c0umdnr28w3tg"]
+
+[ext_resource type="Texture2D" uid="uid://c17tny8thib02" path="res://image/interface/HUD/boss_hp/fill2.png" id="1_bfvbh"]
+[ext_resource type="Script" uid="uid://ckqlxh3y6wgfr" path="res://game/HUD/boss_hp_bar_style.gd" id="1_style"]
+[ext_resource type="Texture2D" uid="uid://cu30vlqvomk2v" path="res://image/interface/HUD/boss_hp/fill1.png" id="2_ecm7j"]
+
+[resource]
+script = ExtResource("1_style")
+bg_texture = ExtResource("1_bfvbh")
+fill_texture = ExtResource("2_ecm7j")

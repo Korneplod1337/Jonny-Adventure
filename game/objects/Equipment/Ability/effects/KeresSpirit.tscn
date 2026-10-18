@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://w0d5luky4egh"]
+
+[ext_resource type="Script" uid="uid://dfh42pwvou2jc" path="res://game/objects/Equipment/Ability/scripts/keres_spirit.gd" id="1_spirit"]
+[ext_resource type="Texture2D" uid="uid://bab57ri5own7r" path="res://image/effect_sprites/Maria Keres summons/Keres summon1.png" id="2_s1"]
+[ext_resource type="Texture2D" uid="uid://cosnn3v84fke7" path="res://image/effect_sprites/Maria Keres summons/Keres summon2.png" id="3_s2"]
+[ext_resource type="Texture2D" uid="uid://bvev4svfrb3og" path="res://image/effect_sprites/Maria Keres summons/Keres summon3.png" id="4_s3"]
+[ext_resource type="Texture2D" uid="uid://d3kbib8f174g" path="res://image/effect_sprites/Maria Keres summons/Keres summon4.png" id="5_s4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_keres"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[node name="KeresSpirit" type="Node2D" unique_id=1886306246]
+z_index = 9
+script = ExtResource("1_spirit")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1194493104]
+position = Vector2(-1, -1)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_keres")
+animation = &"idle"
+
+[node name="ShotMarker" type="Marker2D" parent="." unique_id=391244064]
+position = Vector2(0, 2)

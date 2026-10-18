@@ -71,6 +71,7 @@ func _on_interact():
 	
 	apply_equip(player)
 	equip_taken.emit()
+	EquipManager.mark_picked(equip_id)
 	# hud.add_equip(equip_icon, equip_tooltip)
 	queue_free()
 
