@@ -43,11 +43,15 @@ func _fire_wave() -> void:
 	if parent == null:
 		parent = get_parent()
 
+	var spawn_pos := _marker.global_position
 	var angle := 0.0
 	while angle < 360.0 - 0.01:
 		var dir := Vector2.RIGHT.rotated(deg_to_rad(angle))
 		var shot := SHOT_SCENE.instantiate()
 		shot.setup(dir, wave_dmg)
+		if parent is Node2D:
+			shot.position = (parent as Node2D).to_local(spawn_pos)
+		else:
+			shot.position = spawn_pos
 		parent.add_child(shot)
-		shot.global_position = _marker.global_position
 		angle += ANGLE_STEP_DEG

@@ -16,7 +16,7 @@ script = ExtResource("1_equip")
 ability_script = ExtResource("2_ability")
 equip_icon = ExtResource("3_iesq1")
 equip_id = "MariaCall"
-equip_tooltip = "Call Maria's spirit"
+equip_tooltip = "Summon Maria's angel"
 interact_name = "Maria Call"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=58010804]

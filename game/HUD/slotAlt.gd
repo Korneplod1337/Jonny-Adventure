@@ -11,6 +11,15 @@ func _ready():
 		set_tooltip(_pending_tooltip)
 	if _pending_icon:
 		icon.texture = _pending_icon
+	if _pending_enchant_anim != "":
+		var anim := _pending_enchant_anim
+		_pending_enchant_anim = ""
+		_ensure_enchant_sprite()
+		_sync_enchant_mask_texture()
+		icon.visible = false
+		_enchant_mask.visible = true
+		_enchant_sprite.visible = true
+		_enchant_sprite.play(anim)
 	_apply_count(_pending_count)
 	if _pending_cooldown > 0.0:
 		set_cooldown_progress(_pending_cooldown)

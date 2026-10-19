@@ -1,6 +1,8 @@
 extends Control
 class_name InventorySlot
 
+const ENCHANT_FRAMES := preload("res://game/objects/Equipment/_enchantments/enchant_shader_frames.tres")
+
 @onready var icon: TextureRect = $Icon
 @onready var tooltip_panel: Panel = $ToolTipPanel
 @onready var tooltip_label: Label = $ToolTipPanel/Label
@@ -8,6 +10,9 @@ var count_label: Label
 var _hover_overlay: ColorRect
 var _hover_tween: Tween
 var _cd_overlay: ColorRect
+var _enchant_mask: Sprite2D
+var _enchant_sprite: AnimatedSprite2D
+var _pending_enchant_anim: String = ""
 
 var HOVER_OVERLAY_COLOR := Color(0, 0, 0, 0.5)
 var COOLDOWN_OVERLAY_COLOR := Color(0, 0, 0, 0.5)
@@ -21,6 +26,76 @@ func set_icon(tex: Texture2D):
 		icon.texture = tex
 	else:
 		_pending_icon = tex
+	if _enchant_mask and _enchant_mask.visible:
+		_sync_enchant_mask_texture()
+
+
+func set_enchantment(enchantment: EnchantmentResource) -> void:
+	if enchantment == null:
+		clear_enchantment()
+		return
+	var anim_name := enchantment.get_visual_animation()
+	if not ENCHANT_FRAMES.has_animation(anim_name):
+		clear_enchantment()
+		return
+	if not icon:
+		_pending_enchant_anim = anim_name
+		return
+	_ensure_enchant_sprite()
+	_sync_enchant_mask_texture()
+	icon.visible = false
+	_enchant_mask.visible = true
+	_enchant_sprite.visible = true
+	_enchant_sprite.play(anim_name)
+
+
+func clear_enchantment() -> void:
+	_pending_enchant_anim = ""
+	if icon:
+		icon.visible = true
+	if _enchant_sprite:
+		_enchant_sprite.visible = false
+		_enchant_sprite.stop()
+	if _enchant_mask:
+		_enchant_mask.visible = false
+
+
+func _sync_enchant_mask_texture() -> void:
+	if _enchant_mask == null or icon == null or icon.texture == null:
+		return
+	_enchant_mask.texture = icon.texture
+	_enchant_mask.position = icon.position
+	var tex_size := icon.texture.get_size()
+	if tex_size.x <= 0.0 or tex_size.y <= 0.0:
+		return
+	# Fit native texture into the Icon's 24×24 box, then apply Icon.scale.
+	var fit := Vector2(icon.size) / tex_size
+	if icon.size == Vector2.ZERO:
+		fit = Vector2(24, 24) / tex_size
+	_enchant_mask.scale = fit * icon.scale
+	_enchant_sprite.position = tex_size * 0.5
+
+
+func _ensure_enchant_sprite() -> void:
+	if _enchant_mask:
+		return
+	# Sprite2D + CLIP_CHILDREN_AND_DRAW masks by icon alpha (same as world pickups).
+	# TextureRect.clip_contents only clips a rectangle, so transparent pixels leaked.
+	_enchant_mask = Sprite2D.new()
+	_enchant_mask.name = "EnchantMask"
+	_enchant_mask.centered = false
+	_enchant_mask.clip_children = CanvasItem.CLIP_CHILDREN_AND_DRAW
+	_enchant_mask.visible = false
+	add_child(_enchant_mask)
+	move_child(_enchant_mask, icon.get_index() + 1)
+
+	_enchant_sprite = AnimatedSprite2D.new()
+	_enchant_sprite.sprite_frames = ENCHANT_FRAMES
+	_enchant_sprite.centered = true
+	_enchant_sprite.rotation = 0.5235988
+	_enchant_sprite.scale = Vector2(1.5, 1.5)
+	_enchant_sprite.visible = false
+	_enchant_mask.add_child(_enchant_sprite)
 
 func set_count(count: int) -> void:
 	_pending_count = count
@@ -97,6 +172,15 @@ func _ready():
 		set_tooltip(_pending_tooltip)
 	if _pending_icon:
 		icon.texture = _pending_icon
+	if _pending_enchant_anim != "":
+		var anim := _pending_enchant_anim
+		_pending_enchant_anim = ""
+		_ensure_enchant_sprite()
+		_sync_enchant_mask_texture()
+		icon.visible = false
+		_enchant_mask.visible = true
+		_enchant_sprite.visible = true
+		_enchant_sprite.play(anim)
 	_apply_count(_pending_count)
 	if _pending_cooldown > 0.0:
 		set_cooldown_progress(_pending_cooldown)

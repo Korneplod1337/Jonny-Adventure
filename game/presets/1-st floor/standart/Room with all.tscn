@@ -759,11 +759,10 @@ position = Vector2(801, 781)
 
 [node name="KeresCall_equip" parent="." unique_id=453958885 instance=ExtResource("132_vdaq7")]
 position = Vector2(426, 1112)
-equip_tooltip = "Summon demon stub"
+equip_tooltip = "Summon Keres demon"
 
 [node name="MariaCall_equip" parent="." unique_id=939035990 instance=ExtResource("133_u3xpl")]
 position = Vector2(312, 1113)
-equip_tooltip = "Summon angel stub"
 
 [node name="MiromirBlessing_equip" parent="." unique_id=1833598102 instance=ExtResource("134_bq5ai")]
 position = Vector2(315, 891)

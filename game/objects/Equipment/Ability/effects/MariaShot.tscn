@@ -46,6 +46,6 @@ shape = SubResource("CircleShape2D_hit")
 position = Vector2(-1, -1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_shot")
-animation = &"hit"
+animation = &"fly"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

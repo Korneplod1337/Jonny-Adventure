@@ -16,7 +16,7 @@ script = ExtResource("1_equip")
 ability_script = ExtResource("2_ability")
 equip_icon = ExtResource("3_cwmea")
 equip_id = "KeresCall"
-equip_tooltip = "Call Keres' spirit"
+equip_tooltip = "Summon Keres's demon"
 interact_name = "Keres Call"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1353977084]

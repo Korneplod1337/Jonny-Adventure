@@ -50,7 +50,11 @@ func _shoot() -> void:
 	var parent: Node = get_tree().current_scene
 	if parent == null:
 		parent = get_parent()
+	var spawn_pos := _marker.global_position
 	var shot := SHOT_SCENE.instantiate()
 	shot.setup(dir, damage)
+	if parent is Node2D:
+		shot.position = (parent as Node2D).to_local(spawn_pos)
+	else:
+		shot.position = spawn_pos
 	parent.add_child(shot)
-	shot.global_position = _marker.global_position

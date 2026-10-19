@@ -19,11 +19,13 @@ func setup(dir: Vector2, dmg: float, spd: float = DEFAULT_SPEED) -> void:
 		direction = Vector2.UP
 	damage = dmg
 	speed = spd
+	rotation = direction.angle()
 
 
 func _ready() -> void:
 	rotation = direction.angle()
-	_anim.play("fly")
+	if _anim:
+		_anim.play("fly")
 
 
 func _physics_process(delta: float) -> void:

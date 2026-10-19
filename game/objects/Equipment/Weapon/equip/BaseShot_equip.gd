@@ -52,6 +52,7 @@ func apply_equip(player) -> void:
 		tooltip += enchantment.get_tooltip_text()
 	hud.WeaponSlot.set_icon(equip_icon)
 	hud.WeaponSlot.set_tooltip(tooltip)
+	hud.WeaponSlot.set_enchantment(enchantment)
 
 func _on_interact():
 	var player = get_tree().get_first_node_in_group("player")

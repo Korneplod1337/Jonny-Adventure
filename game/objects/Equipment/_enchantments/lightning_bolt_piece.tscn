@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://game/objects/Equipment/_enchantments/lightning_bolt_piece.gd" id="1_script"]
+
+[node name="LightningBoltPiece" type="Node2D"]
+z_index = 20
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 1)
+centered = true

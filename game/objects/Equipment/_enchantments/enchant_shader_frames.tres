@@ -17,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://c5ae81vr1mfr0" path="res://image/enchants/knockback enchant2.png" id="15_knock2"]
 [ext_resource type="Texture2D" uid="uid://ddy0mskg1va6u" path="res://image/enchants/knockback enchant3.png" id="16_knock3"]
 [ext_resource type="Texture2D" uid="uid://bvuaucj25j7s6" path="res://image/enchants/knockback enchant4.png" id="17_knock4"]
+[ext_resource type="Texture2D" uid="uid://co62dl8d1367s" path="res://image/enchants/lightning enchant1.png" id="18_light1"]
+[ext_resource type="Texture2D" uid="uid://cq4m2tug82bmo" path="res://image/enchants/lightning enchant2.png" id="19_light2"]
+[ext_resource type="Texture2D" uid="uid://bdmd6u85bm4wk" path="res://image/enchants/lightning enchant3.png" id="20_light3"]
+[ext_resource type="Texture2D" uid="uid://drknw5r5qy1md" path="res://image/enchants/lightning enchant4.png" id="21_light4"]
 
 [resource]
 animations = [{
@@ -78,6 +82,23 @@ animations = [{
 "loop": true,
 "name": &"knockback",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_light1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_light2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_light3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_light4")
+}],
+"loop": true,
+"name": &"lightning",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,

@@ -17,6 +17,7 @@ const SFX_DEATH := preload("res://sound/sound/death.mp3")
 const SFX_MISFIRE := preload("res://sound/sound/misfire.mp3")
 const SFX_MIMIC_BOSS_ROAR := preload("res://sound/sound/mimic boss roar.mp3")
 const SFX_BREAKING := preload("res://sound/sound/breaking.ogg")
+const SFX_LIGHTNING := preload("res://sound/sound/lightning.wav")
 
 const SFX_SHOTS: Array[AudioStream] = [
 	preload("res://sound/sound/shot1.mp3"),
@@ -206,6 +207,10 @@ func play_revive() -> void:
 
 func play_breaking() -> void:
 	play(SFX_BREAKING)
+
+
+func play_lightning() -> void:
+	play(SFX_LIGHTNING, 0.0, randf_range(0.75, 1.75))
 
 
 func play_death() -> void:

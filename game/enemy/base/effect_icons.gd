@@ -1,11 +1,15 @@
 # EffectIcons.gd
 extends Node2D
 
+const LIGHTNING_ICON := preload("res://image/effect_sprites/status_bar/lightning.png")
+
 @export var spacing: float = 18.0
 @export var freeze_icon: Texture2D
 @export var poison_icon: Texture2D
 @export var fire_icon0: Texture2D
 @export var fire_icon1: Texture2D
+@export var lightning_icon: Texture2D = LIGHTNING_ICON
+
 
 func show_effects(active_effects: Array) -> void:
 	for child in get_children():
@@ -27,6 +31,9 @@ func show_effects(active_effects: Array) -> void:
 			"fire1":
 				if fire_icon1:
 					textures.append(fire_icon1)
+			"lightning":
+				if lightning_icon:
+					textures.append(lightning_icon)
 
 	if textures.is_empty():
 		return

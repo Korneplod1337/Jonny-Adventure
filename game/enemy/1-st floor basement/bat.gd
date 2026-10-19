@@ -127,7 +127,21 @@ func _start_fly_phase() -> void:
 	fly_timer = randf_range(fly_time_min, fly_time_max)
 	fly_distance_travelled = 0.0
 	fly_distance_limit = _get_fly_distance_limit()
-	fly_target = player.global_position + Vector2(
+	fly_target = _pick_fly_target()
+
+
+func _pick_fly_target() -> Vector2:
+	var to_player := player.global_position - global_position
+	var dist := to_player.length()
+
+	# Ближе атаки — уходим перпендикулярно влево или вправо от направления на игрока.
+	if dist <= projectile_range and dist > 0.01:
+		var toward_player := to_player / dist
+		var side := 1.0 if randf() < 0.5 else -1.0
+		var perp := Vector2(-toward_player.y, toward_player.x) * side
+		return global_position + perp * fly_distance_limit
+
+	return player.global_position + Vector2(
 		randf_range(-target_offset, target_offset),
 		randf_range(-target_offset, target_offset)
 	)
@@ -137,8 +151,7 @@ func _get_fly_distance_limit() -> float:
 	if not player:
 		return max_move_distance
 
-	var near_threshold := projectile_range * near_player_range_mult
-	if global_position.distance_to(player.global_position) <= near_threshold:
+	if global_position.distance_to(player.global_position) <= projectile_range:
 		return max_move_distance * near_player_fly_distance_mult
 
 	return max_move_distance

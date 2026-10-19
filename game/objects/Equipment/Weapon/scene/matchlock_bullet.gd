@@ -35,5 +35,6 @@ func _deal_hit(target: Node, amount: float) -> void:
 	var luck := StatManager.get_stat(player, "luck")
 	var double_chance := luck / 1.5
 	for e in _get_active_enchantments():
-		if randf() < double_chance:
+		# Lightning always gets a second cast; other enchants stay luck-gated.
+		if e is LightningEnchantment or randf() < double_chance:
 			e.apply_on_hit(target, info.direction, hack, info.hack_direction)

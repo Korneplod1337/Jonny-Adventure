@@ -392,6 +392,18 @@ func apply_knockback(direction: Vector2, force: float) -> void:
 	hitstun = hitstun_duration
 
 
+var _lightning_token: int = 0
+
+func apply_lightning(duration: float = 0.75) -> void:
+	_lightning_token += 1
+	var my_token := _lightning_token
+	_add_effect("lightning")
+	await get_tree().create_timer(duration).timeout
+	if my_token != _lightning_token:
+		return
+	_remove_effect("lightning")
+
+
 var active_effects: Array[StringName] = []
 func _add_effect(effect: StringName) -> void:
 	if not active_effects.has(effect):
