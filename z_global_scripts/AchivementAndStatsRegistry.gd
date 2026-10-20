@@ -165,14 +165,14 @@ const STANDALONE_ACHIEVEMENTS := {
 		"hud_popup": "res://image/achievements/hud_achiv/unlock_jovita_hud.png",
 	},
 	"unlock_jonny_alt": {
-		"name": "Alternative Jonny",
+		"name": "Alt Jonny",
 		"desc": "Complete stock game as Jonny",
 		"goal": 1,
 		"menu_icon": "res://image/achievements/menu_achiv/unlock_jonny_alt.png",
 		"hud_popup": "res://image/achievements/hud_achiv/unlock_jonny_alt_hud.png",
 	},
 	"unlock_jonnytta_alt": {
-		"name": "Alternative Jonnytta",
+		"name": "Alt Jonnytta",
 		"desc": "Complete stock game as Jonnytta",
 		"goal": 1,
 		"menu_icon": "res://image/achievements/menu_achiv/unlock_jonnytta_alt.png",
@@ -180,7 +180,7 @@ const STANDALONE_ACHIEVEMENTS := {
 	},
 	"unlock_jo": {
 		"name": "Armored",
-		"desc": "Complete mine as Jonny and Jonnytta",
+		"desc": "Complete Mine as Jonny and Jonnytta",
 		"goal": 1,
 		"menu_icon": "res://image/achievements/menu_achiv/unlock_jo.png",
 		"hud_popup": "res://image/achievements/hud_achiv/unlock_jo_hud.png",

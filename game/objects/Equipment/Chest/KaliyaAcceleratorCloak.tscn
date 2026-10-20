@@ -28,7 +28,7 @@ interact_name = "Swap on test_chest"
 shape = SubResource("CircleShape2D_kjk28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
-position = Vector2(7, 24)
+position = Vector2(1, 2)
 scale = Vector2(2, 2)
 texture = ExtResource("2_6e6u0")
 offset = Vector2(0, -2)

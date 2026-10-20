@@ -634,6 +634,7 @@ offset_right = 628.0
 offset_bottom = 259.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("13_5uchu")
 
 [node name="GridContainer" type="GridContainer" parent="Achivements_menu/ScrollContainer" unique_id=1294409420]
 layout_mode = 2

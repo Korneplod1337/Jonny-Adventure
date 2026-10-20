@@ -4,22 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://b17vn0rq0ieb5" path="res://image/rooms/3-st floor/tile backgroundForest.png" id="2_gs0b4"]
 [ext_resource type="Texture2D" uid="uid://dp0ws2wi2nt0u" path="res://image/rooms/3-st floor/background_bounds2.png" id="3_g7skd"]
 [ext_resource type="PackedScene" uid="uid://dlhahqejp67se" path="res://game/presets/doors/door.tscn" id="4_yatrn"]
-[ext_resource type="Texture2D" uid="uid://cutvwpjerq6ps" path="res://image/rooms/2-st floor/shop_anim_egypt1.png" id="5_rhbl5"]
-[ext_resource type="Texture2D" uid="uid://bfeknqhpr6gvs" path="res://image/rooms/2-st floor/shop_anim_egypt2.png" id="6_gaefu"]
-[ext_resource type="Texture2D" uid="uid://to1rri66vtuv" path="res://image/rooms/2-st floor/shop_anim_egypt3.png" id="7_32018"]
-[ext_resource type="Texture2D" uid="uid://gbwmli7y5mdt" path="res://image/rooms/2-st floor/shop_anim_egypt4.png" id="8_3nekm"]
-[ext_resource type="Texture2D" uid="uid://dohglfd037q30" path="res://image/rooms/2-st floor/shop_anim_egypt5.png" id="9_fqigy"]
-[ext_resource type="Texture2D" uid="uid://dcfugkuvwr5dj" path="res://image/rooms/2-st floor/shop_anim_egypt6.png" id="10_p1wmr"]
-[ext_resource type="Texture2D" uid="uid://b8ttsbadeky7y" path="res://image/rooms/2-st floor/shop_anim_egypt7.png" id="11_gcs1u"]
-[ext_resource type="Texture2D" uid="uid://c5s865x2yqci6" path="res://image/rooms/2-st floor/shop_anim_egypt8.png" id="12_gri3j"]
-[ext_resource type="Texture2D" uid="uid://b8vfnwvr5bhq3" path="res://image/rooms/2-st floor/shop_anim_egypt9.png" id="13_sd4mc"]
-[ext_resource type="Texture2D" uid="uid://cbnsyt288d62g" path="res://image/rooms/2-st floor/shop_anim_egypt10.png" id="14_j7eoa"]
-[ext_resource type="Texture2D" uid="uid://bycm8ebihpwgp" path="res://image/rooms/2-st floor/shop_anim_egypt11.png" id="15_lcdy7"]
-[ext_resource type="Texture2D" uid="uid://ntiswlkh7tm1" path="res://image/rooms/2-st floor/shop_anim_egypt12.png" id="16_bxhap"]
-[ext_resource type="Texture2D" uid="uid://cr0vsee3kxtm4" path="res://image/rooms/2-st floor/shop_anim_egypt13.png" id="17_iwccf"]
-[ext_resource type="Texture2D" uid="uid://cvjfh3a4lk4g0" path="res://image/rooms/2-st floor/shop_anim_egypt14.png" id="18_tm1t7"]
-[ext_resource type="Texture2D" uid="uid://bmch6s35hnatu" path="res://image/rooms/2-st floor/shop_anim_egypt15.png" id="19_cq6rm"]
-[ext_resource type="Texture2D" uid="uid://bt0xj0qwrq7j4" path="res://image/rooms/2-st floor/shop_anim_egypt16.png" id="20_43hi1"]
+[ext_resource type="Texture2D" uid="uid://ctl5re7race2c" path="res://image/rooms/3-st floor/shop_anim_forest1.png" id="5_uf0vv"]
+[ext_resource type="Texture2D" uid="uid://ye328mdafqb0" path="res://image/rooms/3-st floor/shop_anim_forest2.png" id="6_mmuea"]
+[ext_resource type="Texture2D" uid="uid://bysovvr0f715v" path="res://image/rooms/3-st floor/shop_anim_forest3.png" id="7_xcx3x"]
+[ext_resource type="Texture2D" uid="uid://4nmlbhk1pj33" path="res://image/rooms/3-st floor/shop_anim_forest4.png" id="8_gobpv"]
+[ext_resource type="Texture2D" uid="uid://c7spevs0w2x62" path="res://image/rooms/3-st floor/shop_anim_forest5.png" id="9_sje4e"]
+[ext_resource type="Texture2D" uid="uid://b7k6g385jxtmp" path="res://image/rooms/3-st floor/shop_anim_forest6.png" id="10_tideq"]
+[ext_resource type="Texture2D" uid="uid://yaa3vged48fg" path="res://image/rooms/3-st floor/shop_anim_forest7.png" id="11_asoi4"]
+[ext_resource type="Texture2D" uid="uid://2l6hytt7w1xj" path="res://image/rooms/3-st floor/shop_anim_forest8.png" id="12_7ey7f"]
+[ext_resource type="Texture2D" uid="uid://cixbl26wpptpu" path="res://image/rooms/3-st floor/shop_anim_forest9.png" id="13_rwjxp"]
+[ext_resource type="Texture2D" uid="uid://cygn1pw8ykdp6" path="res://image/rooms/3-st floor/shop_anim_forest10.png" id="14_ixnwv"]
+[ext_resource type="Texture2D" uid="uid://basxstd33avv4" path="res://image/rooms/3-st floor/shop_anim_forest11.png" id="15_bdxn0"]
+[ext_resource type="Texture2D" uid="uid://cfbbwtbcmiowx" path="res://image/rooms/3-st floor/shop_anim_forest12.png" id="16_f85nu"]
+[ext_resource type="Texture2D" uid="uid://1xin4y3cg15l" path="res://image/rooms/3-st floor/shop_anim_forest13.png" id="17_3niuw"]
+[ext_resource type="Texture2D" uid="uid://d0165y63o2ap8" path="res://image/rooms/3-st floor/shop_anim_forest14.png" id="18_727ov"]
+[ext_resource type="Texture2D" uid="uid://bb5cxa0doxb7i" path="res://image/rooms/3-st floor/shop_anim_forest15.png" id="19_brieu"]
+[ext_resource type="Texture2D" uid="uid://swu4rfsy4vty" path="res://image/rooms/3-st floor/shop_anim_forest16.png" id="20_ks74m"]
 [ext_resource type="PackedScene" uid="uid://c4m44xnka6fay" path="res://game/dialog/trader_dialog.tscn" id="21_jph4c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6po2p"]
@@ -75,49 +75,49 @@ size = Vector2(1280, 720)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_rhbl5")
+"texture": ExtResource("5_uf0vv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_gaefu")
+"texture": ExtResource("6_mmuea")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_32018")
+"texture": ExtResource("7_xcx3x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_3nekm")
+"texture": ExtResource("8_gobpv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_fqigy")
+"texture": ExtResource("9_sje4e")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_p1wmr")
+"texture": ExtResource("10_tideq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_gcs1u")
+"texture": ExtResource("11_asoi4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_gri3j")
+"texture": ExtResource("12_7ey7f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_sd4mc")
+"texture": ExtResource("13_rwjxp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_j7eoa")
+"texture": ExtResource("14_ixnwv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_lcdy7")
+"texture": ExtResource("15_bdxn0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_bxhap")
+"texture": ExtResource("16_f85nu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_iwccf")
+"texture": ExtResource("17_3niuw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_tm1t7")
+"texture": ExtResource("18_727ov")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_cq6rm")
+"texture": ExtResource("19_brieu")
 }],
 "loop": false,
 "name": &"default",
@@ -125,7 +125,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("20_43hi1")
+"texture": ExtResource("20_ks74m")
 }],
 "loop": false,
 "name": &"love",

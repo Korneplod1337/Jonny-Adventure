@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://tx5fxindd6gf" path="res://game/objects/Equipment/Chest/Death_shield.gd" id="1_gedd3"]
 [ext_resource type="Texture2D" uid="uid://b5jcprgwgkxfy" path="res://image/equip/chest/Death_shield6.png" id="2_gedd3"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_fn3ng"]
-[ext_resource type="Texture2D" uid="uid://dvttcgq8mesx4" path="res://image/equip/chest/Death_shield1.png" id="4_pkwew"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
 radius = 19.026299
@@ -29,6 +28,7 @@ interact_name = "Swap on test_chest"
 shape = SubResource("CircleShape2D_kjk28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
+position = Vector2(0, 4)
 scale = Vector2(2, 2)
-texture = ExtResource("4_pkwew")
+texture = ExtResource("2_gedd3")
 offset = Vector2(0, -2)

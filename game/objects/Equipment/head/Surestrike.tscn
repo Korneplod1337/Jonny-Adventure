@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://y7jlah6uyhmm" path="res://game/objects/Equipment/head/surestrike.gd" id="1_ghsht"]
 [ext_resource type="Texture2D" uid="uid://msr7qyrkhllg" path="res://image/equip/head/Surestrike1.png" id="2_suslj"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_au530"]
-[ext_resource type="Texture2D" uid="uid://dv5i7y4db0uxh" path="res://image/equip/head/Surestrike2.png" id="4_oxqdx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
 radius = 19.026299
@@ -29,7 +28,7 @@ interact_name = "Swap on test_chest"
 shape = SubResource("CircleShape2D_kjk28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
-position = Vector2(0, -12)
+position = Vector2(0, 2)
 scale = Vector2(2, 2)
-texture = ExtResource("4_oxqdx")
+texture = ExtResource("2_suslj")
 offset = Vector2(0, -2)

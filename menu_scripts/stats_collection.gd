@@ -8,6 +8,7 @@ const EQUIP_ICON_SIZE := 96
 const ITEM_COLUMNS := 16
 const EQUIP_COLUMNS := 10
 const TOOLTIP_FONT_SIZE := 32
+const TOOLTIP_OFFSET := Vector2(32, 40)
 
 @onready var _items_grid: GridContainer = $Content/ItemsGrid
 @onready var _equip_grid: GridContainer = $Content/EquipGrid
@@ -151,5 +152,4 @@ func _process(_delta: float) -> void:
 
 
 func _position_tooltip() -> void:
-	var pos := get_viewport().get_mouse_position() + Vector2(16, 16)
-	_tooltip.global_position = pos
+	_tooltip.global_position = get_viewport().get_mouse_position() + TOOLTIP_OFFSET

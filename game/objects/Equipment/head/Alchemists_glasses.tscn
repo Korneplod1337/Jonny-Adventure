@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://d2fagehi4cur8" path="res://game/objects/Equipment/head/alchemists_glasses.gd" id="1_06u6f"]
 [ext_resource type="Texture2D" uid="uid://cbva671rex8rl" path="res://image/equip/head/Alchemists_glasses1.png" id="3_06u6f"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_ou7rv"]
-[ext_resource type="Texture2D" uid="uid://dcndrjh7je3wk" path="res://image/equip/head/Alchemists_glasses2.png" id="4_f6r0s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
 radius = 19.026299
@@ -29,7 +28,7 @@ interact_name = "Swap on test_chest"
 shape = SubResource("CircleShape2D_kjk28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
-position = Vector2(0, -12)
+position = Vector2(0, 4)
 scale = Vector2(2, 2)
-texture = ExtResource("4_f6r0s")
+texture = ExtResource("3_06u6f")
 offset = Vector2(0, -2)

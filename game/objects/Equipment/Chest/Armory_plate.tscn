@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bewj2j21thwfg"]
 
-[ext_resource type="Script" path="res://game/objects/Equipment/Chest/armory_plate.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://cw3uup8mtnj6o" path="res://game/objects/Equipment/Chest/armory_plate.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://c2ovq03boeix6" path="res://image/equip/chest/armory_plate6.png" id="2_icon"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
 
@@ -28,7 +28,7 @@ interact_name = "Swap on test_chest"
 shape = SubResource("CircleShape2D_kjk28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
-position = Vector2(7.9999995, 26.999998)
+position = Vector2(4.7683716e-07, 5.000002)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_icon")
 offset = Vector2(0, -2)

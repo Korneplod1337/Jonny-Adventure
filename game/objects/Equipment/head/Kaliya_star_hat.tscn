@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bhaab8v67fvk4" path="res://game/objects/Equipment/head/Kaliya_star_hat.gd" id="1_4t1b2"]
 [ext_resource type="Texture2D" uid="uid://cpoprg7ckha3d" path="res://image/equip/head/Kaliya_star_hat6.png" id="2_wojok"]
 [ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="2_x8n7e"]
-[ext_resource type="Texture2D" uid="uid://8wobd4jjy318" path="res://image/equip/head/Kaliya_star_hat1.png" id="4_x8n7e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_amy5j"]
 radius = 19.026299
@@ -29,7 +28,6 @@ interact_name = "Swap on test_chest"
 shape = SubResource("CircleShape2D_kjk28")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463809239]
-position = Vector2(0, 8)
 scale = Vector2(2, 2)
-texture = ExtResource("4_x8n7e")
+texture = ExtResource("2_wojok")
 offset = Vector2(0, -2)

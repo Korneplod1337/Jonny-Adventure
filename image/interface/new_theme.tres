@@ -6,14 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://i1dtem5unqv7" path="res://image/interface/HUD/style/scrol_test2.svg" id="3_v46i8"]
 [ext_resource type="Texture2D" uid="uid://ckekf6dpklqyf" path="res://image/interface/HUD/style/scrol_test3.svg" id="4_oxf80"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6av8"]
-texture = ExtResource("1_dnh2d")
-texture_margin_left = 69.63783
-texture_margin_top = 35.036392
-texture_margin_right = 70.71807
-texture_margin_bottom = 70.131516
-region_rect = Rect2(2, 2, 92, 92)
-
 [sub_resource type="ImageTexture" id="ImageTexture_rw3gs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dnh2d"]
@@ -25,11 +17,11 @@ texture = ExtResource("3_v46i8")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6vx87"]
 texture = ExtResource("4_oxf80")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vx87"]
-content_margin_left = 4.0
-content_margin_top = 0.0
-content_margin_right = 4.0
-content_margin_bottom = 0.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hscroll"]
+content_margin_left = 0.0
+content_margin_top = 4.0
+content_margin_right = 0.0
+content_margin_bottom = 4.0
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -58,8 +50,39 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r6av8"]
+texture = ExtResource("1_dnh2d")
+texture_margin_left = 69.63783
+texture_margin_top = 35.036392
+texture_margin_right = 70.71807
+texture_margin_bottom = 70.131516
+region_rect = Rect2(2, 2, 92, 92)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vx87"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
 [resource]
 default_font = ExtResource("2_rw3gs")
+HScrollBar/icons/decrement = SubResource("ImageTexture_rw3gs")
+HScrollBar/icons/decrement_highlight = SubResource("ImageTexture_rw3gs")
+HScrollBar/icons/decrement_pressed = SubResource("ImageTexture_rw3gs")
+HScrollBar/icons/increment = SubResource("ImageTexture_rw3gs")
+HScrollBar/icons/increment_highlight = SubResource("ImageTexture_rw3gs")
+HScrollBar/icons/increment_pressed = SubResource("ImageTexture_rw3gs")
+HScrollBar/styles/grabber = SubResource("StyleBoxTexture_dnh2d")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_oxf80")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_6vx87")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_hscroll")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_r6av8")
 Panel/styles/panel = SubResource("StyleBoxTexture_r6av8")
 VScrollBar/icons/decrement = SubResource("ImageTexture_rw3gs")
 VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_rw3gs")
