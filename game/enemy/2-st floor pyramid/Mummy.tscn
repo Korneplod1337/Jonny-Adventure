@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://2l3ntxubtw7g"]
+
+[ext_resource type="Script" uid="uid://cyd5ao36ssp22" path="res://game/enemy/2-st floor pyramid/mummy.gd" id="1_mummy"]
+[ext_resource type="Texture2D" uid="uid://8y1fksopg5rp" path="res://image/enemy/bodies/mummy1.png" id="2_m1"]
+[ext_resource type="Texture2D" uid="uid://duqt35tqn6qww" path="res://image/enemy/bodies/mummy2.png" id="3_m2"]
+[ext_resource type="Texture2D" uid="uid://cv2sce81xrq48" path="res://image/enemy/bodies/mummy3.png" id="4_m3"]
+[ext_resource type="Texture2D" uid="uid://dowje3spdg6gu" path="res://image/enemy/bodies/mummy4.png" id="5_m4"]
+[ext_resource type="Texture2D" uid="uid://brvw28cj3xf31" path="res://image/enemy/bodies/mummy5.png" id="6_m5"]
+[ext_resource type="Texture2D" uid="uid://ct26hpn5lxs7w" path="res://image/enemy/bodies/mummy6.png" id="7_m6"]
+[ext_resource type="Texture2D" uid="uid://bd5xdp1xw3ird" path="res://image/enemy/bodies/mummy7.png" id="8_m7"]
+[ext_resource type="Texture2D" uid="uid://cis2bwv4ev4l8" path="res://image/enemy/bodies/mummy8.png" id="9_m8"]
+[ext_resource type="Texture2D" uid="uid://duw8vdr8ghkef" path="res://image/enemy/bodies/mummy9.png" id="10_m9"]
+[ext_resource type="Texture2D" uid="uid://qdkvg3gx28h5" path="res://image/enemy/bodies/mummy10.png" id="11_m10"]
+[ext_resource type="Script" uid="uid://cgarvnrdn3hjg" path="res://game/enemy/base/effect_icons.gd" id="12_fx"]
+[ext_resource type="Texture2D" uid="uid://dub7g6ity7yke" path="res://image/effect_sprites/status_bar/snowflake.png" id="13_snow"]
+[ext_resource type="Texture2D" uid="uid://dg3jjtv473gdm" path="res://image/effect_sprites/status_bar/poison.png" id="14_poi"]
+[ext_resource type="Texture2D" uid="uid://24j44uy21fc0" path="res://image/effect_sprites/status_bar/fire1.png" id="15_f1"]
+[ext_resource type="Texture2D" uid="uid://bkwfmwcoyg3px" path="res://image/effect_sprites/status_bar/fire2.png" id="16_f2"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(16, 44)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_view"]
+radius = 984.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3lxcq"]
+radius = 14.0
+height = 52.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mummy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_m5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_m7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m8")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_m9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_m10")
+}],
+"loop": false,
+"name": &"die",
+"speed": 2.0
+}]
+
+[node name="EnemyMummy" type="CharacterBody2D" unique_id=310089307 groups=["Enemy"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 182
+script = ExtResource("1_mummy")
+use_pathfinding = true
+stop_on_melee_hit = false
+
+[node name="Shadow" parent="." unique_id=1738389880 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 30)
+scale = Vector2(0.475, 0.475)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1656491324]
+position = Vector2(-2, 4)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="FieldViewArea" type="Area2D" parent="." unique_id=1666814680]
+scale = Vector2(0.75, 0.75)
+monitorable = false
+
+[node name="Field_of_View" type="CollisionShape2D" parent="FieldViewArea" unique_id=125266271]
+visible = false
+shape = SubResource("CircleShape2D_view")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=1435501468]
+position = Vector2(22, 0)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1438361232]
+position = Vector2(-15.5, 4)
+shape = SubResource("CapsuleShape2D_3lxcq")
+
+[node name="BlindTimer" type="Timer" parent="." unique_id=1292815685]
+wait_time = 0.2
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=630147181]
+one_shot = true
+
+[node name="PoisonTimer" type="Timer" parent="." unique_id=1089808056]
+wait_time = 1.5
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=531698895]
+sprite_frames = SubResource("SpriteFrames_mummy")
+animation = &"attack"
+
+[node name="EffectAnchor" type="Marker2D" parent="." unique_id=1570738836]
+position = Vector2(0, -30)
+
+[node name="EffectIcons" type="Node2D" parent="EffectAnchor" unique_id=69692658]
+script = ExtResource("12_fx")
+spacing = 25.0
+freeze_icon = ExtResource("13_snow")
+poison_icon = ExtResource("14_poi")
+fire_icon0 = ExtResource("15_f1")
+fire_icon1 = ExtResource("16_f2")
+
+[connection signal="body_entered" from="FieldViewArea" to="." method="_on_field_view_area_body_entered"]
+[connection signal="body_exited" from="FieldViewArea" to="." method="_on_field_view_area_body_exited"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="HitArea" to="." method="_on_hit_area_body_exited"]
+[connection signal="timeout" from="BlindTimer" to="." method="_on_blind_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="PoisonTimer" to="." method="_on_poison_timer_timeout"]

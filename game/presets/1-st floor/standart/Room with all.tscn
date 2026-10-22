@@ -212,6 +212,7 @@
 [ext_resource type="PackedScene" path="res://game/objects/obstacles/fairy rock.tscn" id="210_1bfo3"]
 [ext_resource type="PackedScene" path="res://game/objects/obstacles/forest rock.tscn" id="211_3d4py"]
 [ext_resource type="PackedScene" path="res://game/objects/obstacles/mine rock.tscn" id="212_akf5g"]
+[ext_resource type="PackedScene" uid="uid://2l3ntxubtw7g" path="res://game/enemy/2-st floor pyramid/Mummy.tscn" id="213_1bfo3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -977,3 +978,6 @@ position = Vector2(-1469, 439)
 
 [node name="Rock5" parent="." unique_id=88588440 instance=ExtResource("212_akf5g")]
 position = Vector2(-1469, 359)
+
+[node name="EnemyMummy" parent="." unique_id=1656884698 instance=ExtResource("213_1bfo3")]
+position = Vector2(-559, -378)
