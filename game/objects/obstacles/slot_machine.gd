@@ -248,7 +248,10 @@ func _grant_result(result: String) -> void:
 		"win_cherry":
 			_spawn_prize("cherry")
 		"win_7":
+			StatsManager.add_statistic_progress("slot_jackpot_7", 1)
 			_spawn_seven_prizes()
+		"loss":
+			StatsManager.add_statistic_progress("slot_empty", 1)
 		_:
 			pass
 

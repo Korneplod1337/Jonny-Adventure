@@ -72,6 +72,11 @@ func _on_interact():
 		StatsManager.add_statistic_progress('items_equipped', 1)
 		if AchivStatsRegistry.ITEM_PICKUP_STATS.has(item_id):
 			StatsManager.add_statistic_progress(AchivStatsRegistry.ITEM_PICKUP_STATS[item_id], 1)
+		var tier := ItemManager.get_item_tier(item_id)
+		if tier == 2:
+			StatsManager.add_statistic_progress("tier2_items_picked", 1)
+		elif tier == 3:
+			StatsManager.add_statistic_progress("tier3_items_picked", 1)
 		
 		# hud
 		var hud = get_tree().get_first_node_in_group("HUD")

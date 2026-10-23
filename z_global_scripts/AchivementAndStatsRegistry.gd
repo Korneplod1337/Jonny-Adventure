@@ -8,20 +8,30 @@ const TRACKING_ENABLED := false
 ##   show_in_menu  — показывать игроку в меню stats (false = только для разблокировок)
 ##   run_scoped    — счётчик забега: не пишется в сейв, сбрасывается в GameState.obnulenie()
 ##   custom_display — особый формат значения ("item_unlock_counts" и т.п.)
-##   achievement   — опционально: достижение, привязанное к этому счётчику
+##   achievement / achievements — одно достижение или массив (несколько порогов на один счётчик)
 
 const STATS := {
 	"kills": {
 		"desc": "Kills",
 		"show_in_menu": true,
-		"achievement": {
-			"id": "first_kill",
-			"name": "First kill",
-			"desc": "Kill 1 enemy",
-			"goal": 1,
-			"menu_icon": "res://image/achievements/menu_achiv/first_enemy.png",
-			"hud_popup": "res://image/achievements/hud_achiv/first_enemy_hud.png",
-		},
+		"achievements": [
+			{
+				"id": "first_kill",
+				"name": "First kill",
+				"desc": "Kill 1 enemy",
+				"goal": 1,
+				"menu_icon": "res://image/achievements/menu_achiv/first_enemy.png",
+				"hud_popup": "res://image/achievements/hud_achiv/first_enemy_hud.png",
+			},
+			{
+				"id": "honestwork",
+				"name": "Honest work",
+				"desc": "Kill 100 enemies",
+				"goal": 100,
+				"menu_icon": "res://image/achievements/menu_achiv/honest_work.png",
+				"hud_popup": "res://image/achievements/hud_achiv/honest_work_hud.png",
+			},
+		],
 	},
 	"lifetime": {
 		"desc": "Lifetime",
@@ -42,13 +52,71 @@ const STATS := {
 	"items_equipped": {
 		"desc": "Items equipped",
 		"show_in_menu": true,
+		"achievements": [
+			{
+				"id": "first_item",
+				"name": "Iron luck",
+				"desc": "Put on 1-st item",
+				"goal": 1,
+				"menu_icon": "res://image/achievements/menu_achiv/first_item.png",
+				"hud_popup": "res://image/achievements/hud_achiv/first_item_hud.png",
+			},
+			{
+				"id": "100i",
+				"name": "100 items",
+				"desc": "Pick up 100 items",
+				"goal": 100,
+				"menu_icon": "res://image/achievements/menu_achiv/100i.png",
+				"hud_popup": "res://image/achievements/hud_achiv/100i_hud.png",
+			},
+		],
+	},
+	"tier2_items_picked": {
+		"desc": "Tier 2 items picked",
+		"show_in_menu": false,
 		"achievement": {
-			"id": "first_item",
-			"name": "Iron luck",
-			"desc": "Put on 1-st item",
+			"id": "someluck",
+			"name": "Some luck",
+			"desc": "Pick up a tier 2 item",
 			"goal": 1,
-			"menu_icon": "res://image/achievements/menu_achiv/first_item.png",
-			"hud_popup": "res://image/achievements/hud_achiv/first_item_hud.png",
+			"menu_icon": "res://image/achievements/menu_achiv/SomeLuck.png",
+			"hud_popup": "res://image/achievements/hud_achiv/SomeLuck_hud.png",
+		},
+	},
+	"tier3_items_picked": {
+		"desc": "Tier 3 items picked",
+		"show_in_menu": false,
+		"achievement": {
+			"id": "manyluck",
+			"name": "Many luck",
+			"desc": "Pick up a tier 3 item",
+			"goal": 1,
+			"menu_icon": "res://image/achievements/menu_achiv/ManyLuck.png",
+			"hud_popup": "res://image/achievements/hud_achiv/ManyLuck_hud.png",
+		},
+	},
+	"slot_jackpot_7": {
+		"desc": "Slot machine 777",
+		"show_in_menu": false,
+		"achievement": {
+			"id": "winner",
+			"name": "Winner",
+			"desc": "Hit 777 on the slot machine",
+			"goal": 1,
+			"menu_icon": "res://image/achievements/menu_achiv/winner.png",
+			"hud_popup": "res://image/achievements/hud_achiv/winner_hud.png",
+		},
+	},
+	"slot_empty": {
+		"desc": "Slot machine empty",
+		"show_in_menu": false,
+		"achievement": {
+			"id": "fCasino",
+			"name": "Failed casino",
+			"desc": "Get nothing from slot machine",
+			"goal": 1,
+			"menu_icon": "res://image/achievements/menu_achiv/fCasino.png",
+			"hud_popup": "res://image/achievements/hud_achiv/fCasino_hud.png",
 		},
 	},
 	"items_unlock": {
@@ -319,27 +387,34 @@ func get_menu_stat_keys() -> Array[String]:
 			keys.append(key)
 	return keys
 
+func _stat_achievement_defs(entry: Dictionary) -> Array:
+	var defs: Array = []
+	if entry.has("achievements"):
+		for ach_def in entry["achievements"]:
+			defs.append(ach_def)
+	elif entry.has("achievement"):
+		defs.append(entry["achievement"])
+	return defs
+
+
 func build_stat_to_achievements() -> Dictionary:
 	var mapping := {}
 	for stat_key in STATS.keys():
 		var entry: Dictionary = STATS[stat_key]
-		if not entry.has("achievement"):
-			continue
-		var ach_id: String = entry["achievement"]["id"]
-		if not mapping.has(stat_key):
-			mapping[stat_key] = []
-		mapping[stat_key].append(ach_id)
+		for ach_def in _stat_achievement_defs(entry):
+			var ach_id: String = ach_def["id"]
+			if not mapping.has(stat_key):
+				mapping[stat_key] = []
+			mapping[stat_key].append(ach_id)
 	return mapping
 
 func build_achievements_data() -> Dictionary:
 	var result := {}
 	for stat_key in STATS.keys():
 		var entry: Dictionary = STATS[stat_key]
-		if not entry.has("achievement"):
-			continue
-		var ach_def: Dictionary = entry["achievement"]
-		var ach_id: String = ach_def["id"]
-		result[ach_id] = _make_achievement_entry(ach_def)
+		for ach_def in _stat_achievement_defs(entry):
+			var ach_id: String = ach_def["id"]
+			result[ach_id] = _make_achievement_entry(ach_def)
 	for ach_id in STANDALONE_ACHIEVEMENTS.keys():
 		result[ach_id] = _make_achievement_entry(STANDALONE_ACHIEVEMENTS[ach_id])
 	return result
@@ -379,11 +454,11 @@ pass
 
  -----------------------------------------------------------------------------
  2. Счётчик + достижение (авторазблокировка по порогу)
-   a) Добавь в STATS блок achievement (id — ключ достижения в коде и сохранении):
+   a) Добавь в STATS блок achievement (одно) или achievements (массив порогов):
         "my_stat": {
             "desc": "...",
             "show_in_menu": false,
-            "achievement": {
+            "achievement": {                 # или "achievements": [ {...}, {...} ]
                 "id": "my_achievement",      # ← этот id используй в коде
                 "name": "Красивое имя",      # ← это видит игрок
                 "desc": "Условие",

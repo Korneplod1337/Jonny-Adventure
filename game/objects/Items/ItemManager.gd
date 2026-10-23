@@ -361,6 +361,15 @@ func is_discovered(id: String) -> bool:
 func is_picked_this_run(id: String) -> bool:
 	return run_picked_items.get(id, false)
 
+## Возвращает tier предмета из пулов, или -1 если id не найден.
+func get_item_tier(id: String) -> int:
+	var found := -1
+	for pool in POOLS.values():
+		for item in pool:
+			if item.id == id:
+				found = maxi(found, int(item.get("tier", -1)))
+	return found
+
 func get_item_unlock_counts() -> String:
 	update_unlocks()
 	var unique_items = {}
