@@ -97,7 +97,6 @@ self_speed_multiplier = 2.0
 self_range_multiplier = 2.0
 fire_sfx_kind = 1
 
-
 [node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]
 position = Vector2(0, 20)
 scale = Vector2(0.5, 0.5)

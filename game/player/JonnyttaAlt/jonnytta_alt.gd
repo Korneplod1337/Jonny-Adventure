@@ -74,9 +74,7 @@ func _spawn_scaled_shot(shot_dir: Vector2, angle_offset_deg: float, apply_abilit
 	shot.damage = StatManager.get_stat(self, "damage")
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8) * 0.05)
-	shot.boomerang_power += boomerang_bonus
-	shot.penetration += penetration_bonus
-	shot.hack += hack_bonus
+	apply_shot_item_bonuses(shot)
 	if apply_ability:
 		steal_life_heal_ready = false
 		if current_ability and current_ability.has_method("consume_for_next_shot"):

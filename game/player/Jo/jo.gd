@@ -52,7 +52,7 @@ func take_damage(phy_damage: int = 0, mag_damage: int = 0, clr_damage: int = 0, 
 
 func heal(red: int = 0, green: int = 0, blue: int = 0, black: int = 0) -> void:
 	# Любые сердца/щиты → только чёрные щиты.
-	var to_black := red + green + blue + black
+	var to_black := blue + black
 	if to_black <= 0:
 		return
 	super.heal(0, 0, 0, to_black)

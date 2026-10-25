@@ -67,6 +67,14 @@ var minimap: 				int = 1
 var revival_count: 			int = 0
 var penetration_bonus: 		int = 0
 var hack_bonus: 				int = 0
+var ricochet_bonus: 			int = 0
+## Siege Hammer: добавка к base_crit_bonus снаряда
+var siege_hammer_power: 		float = 0.0
+## Critical Flower: множитель силы крита от crit chance
+var critical_flower_power: 	float = 0.0
+## Math Circle: угол синус-поворота в радианах (стакается); range_mult только для дальнобойных
+var math_circle_amplitude: 	float = 0.0
+var math_circle_range_mult: 	float = 1.0
 var attack_locked: 			bool = false
 
 ## Режим бога: все статы на максимум (10), бонусы = 15
@@ -747,9 +755,7 @@ func fire (shot_dir: Vector2) -> void:
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
-	shot.boomerang_power += boomerang_bonus
-	shot.penetration += penetration_bonus
-	shot.hack += hack_bonus
+	apply_shot_item_bonuses(shot)
 
 	steal_life_heal_ready = false
 	if current_ability and current_ability.has_method("consume_for_next_shot"):
@@ -771,6 +777,22 @@ func fire (shot_dir: Vector2) -> void:
 	if cloak_fx and cloak_fx.has_method("update_boost"):
 		cloak_fx.update_boost()
 	fire_rate = ST.get_stat(self, "fire_rate")
+
+func apply_shot_item_bonuses(shot: Node) -> void:
+	if shot == null:
+		return
+	shot.boomerang_power += boomerang_bonus
+	shot.penetration += penetration_bonus
+	shot.hack += hack_bonus
+	shot.ricochet += ricochet_bonus
+	if siege_hammer_power > 0.0:
+		shot.base_crit_bonus += siege_hammer_power
+	if critical_flower_power > 0.0:
+		shot.critical_flower_power = critical_flower_power
+	if math_circle_amplitude > 0.0 and shot.has_method("_uses_melee_ricochet") and not shot._uses_melee_ricochet():
+		shot.sine_amplitude = math_circle_amplitude
+		shot.sine_use_cos = randi() % 2 == 0
+		shot.self_range_multiplier *= math_circle_range_mult
 
 # таймер (лоховской)
 func _on_shot_timer_timeout() -> void:

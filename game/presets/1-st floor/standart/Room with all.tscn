@@ -194,9 +194,13 @@
 [ext_resource type="PackedScene" uid="uid://b1b2frqkhkt14" path="res://game/objects/Equipment/head/Spread_Shot.tscn" id="189_spread"]
 [ext_resource type="PackedScene" uid="uid://bewj2j21thwfg" path="res://game/objects/Equipment/Chest/Armory_plate.tscn" id="190_armory"]
 [ext_resource type="PackedScene" uid="uid://tb7b5p0pubh1" path="res://game/objects/Equipment/Chest/Lion_Shield.tscn" id="191_lion"]
+[ext_resource type="PackedScene" uid="uid://48no8qfutm1r" path="res://game/objects/items/scenes/tier 2/Ricochet.tscn" id="192_1dbv8"]
 [ext_resource type="PackedScene" uid="uid://bl7cqej1s468g" path="res://game/objects/Equipment/boots/Wild_Boots.tscn" id="192_wild"]
 [ext_resource type="PackedScene" uid="uid://bex05fya70aea" path="res://game/objects/items/scenes/tier 2/Cyborg.tscn" id="193_4hvg8"]
+[ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 2/MathCircle.tscn" id="193_rmvc6"]
 [ext_resource type="PackedScene" uid="uid://8dmpj13werc7" path="res://game/objects/items/scenes/tier 2/Sacrosanct.tscn" id="194_6sjhw"]
+[ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 2/CriticalFlower.tscn" id="194_ungww"]
+[ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 2/SiegeHammer.tscn" id="195_a7pxr"]
 [ext_resource type="PackedScene" uid="uid://cmelkf4y78v41" path="res://game/objects/items/scenes/tier 2/Accelerator.tscn" id="195_eealk"]
 [ext_resource type="PackedScene" uid="uid://7c81iauheaea" path="res://game/objects/items/scenes/tier 2/Crown.tscn" id="196_n6x0b"]
 [ext_resource type="PackedScene" uid="uid://6xrfrxfwum25" path="res://game/objects/Equipment/Weapon/equip/Special_weapon_equip.tscn" id="197_6sjhw"]
@@ -213,6 +217,7 @@
 [ext_resource type="PackedScene" path="res://game/objects/obstacles/forest rock.tscn" id="211_3d4py"]
 [ext_resource type="PackedScene" path="res://game/objects/obstacles/mine rock.tscn" id="212_akf5g"]
 [ext_resource type="PackedScene" uid="uid://2l3ntxubtw7g" path="res://game/enemy/2-st floor pyramid/Mummy.tscn" id="213_1bfo3"]
+[ext_resource type="PackedScene" uid="uid://bl1pahmvt6i7o" path="res://game/objects/items/scenes/tier 3/MultRicochet.tscn" id="218_xiccb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -874,7 +879,7 @@ position = Vector2(-478, 370)
 position = Vector2(-531, 374)
 
 [node name="Penetrating" parent="." unique_id=554965135 instance=ExtResource("170_1bfo3")]
-position = Vector2(-131, 305)
+position = Vector2(-134, 305)
 
 [node name="Planetary" parent="." unique_id=293584389 instance=ExtResource("171_3d4py")]
 position = Vector2(-191, 306)
@@ -914,6 +919,18 @@ position = Vector2(-640, 311)
 
 [node name="ZeroToHundred" parent="." unique_id=1199965967 instance=ExtResource("183_56n5d")]
 position = Vector2(-691, 315)
+
+[node name="Ricochet" parent="." unique_id=726652365 instance=ExtResource("192_1dbv8")]
+position = Vector2(-741, 309)
+
+[node name="MathCircle" parent="." unique_id=1097788243 instance=ExtResource("193_rmvc6")]
+position = Vector2(-744, 368)
+
+[node name="CriticalFlower" parent="." unique_id=1688070179 instance=ExtResource("194_ungww")]
+position = Vector2(-748.61505, 431.50012)
+
+[node name="SiegeHammer" parent="." unique_id=577486623 instance=ExtResource("195_a7pxr")]
+position = Vector2(-750, 487)
 
 [node name="EnemyKnot" parent="." unique_id=1654487569 instance=ExtResource("184_oteyw")]
 position = Vector2(-486, -372)
@@ -981,3 +998,6 @@ position = Vector2(-1469, 359)
 
 [node name="EnemyMummy" parent="." unique_id=1656884698 instance=ExtResource("213_1bfo3")]
 position = Vector2(-559, -378)
+
+[node name="MultRicochet" parent="." unique_id=2032193475 instance=ExtResource("218_xiccb")]
+position = Vector2(-141, 559)

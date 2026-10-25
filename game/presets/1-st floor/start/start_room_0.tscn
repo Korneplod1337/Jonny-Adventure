@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bx6n81v4l7b8a" path="res://game/enemy/base/dartboard.tscn" id="5_tvg8h"]
 [ext_resource type="PackedScene" uid="uid://dohma36hlkrc7" path="res://game/objects/upgrade/Upgrade.tscn" id="7_37jb7"]
 [ext_resource type="PackedScene" uid="uid://d1c05r0ykeaea" path="res://game/objects/floor_skip/FloorSkip.tscn" id="8_8to1f"]
+[ext_resource type="PackedScene" uid="uid://xi3j7etugnhg" path="res://game/objects/Equipment/Weapon/equip/ShotGun_equip.tscn" id="9_4rw6f"]
 [ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="10_1f72t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
@@ -107,3 +108,6 @@ value = 3
 [node name="Upgrade" parent="." unique_id=1859172790 instance=ExtResource("7_37jb7")]
 position = Vector2(-136, -61)
 effect_power = 2.0
+
+[node name="ShotGun" parent="." unique_id=241584314 instance=ExtResource("9_4rw6f")]
+position = Vector2(127, 124)

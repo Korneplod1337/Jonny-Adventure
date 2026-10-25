@@ -69,6 +69,18 @@ var base_crit_bonus: float = 50.0
 ## Добавка к spread в формуле силы крита: bonus = base_crit_bonus / (spread + offset).
 var crit_spread_offset: float = 40.0
 var crit_sprite: int = -1
+## Critical Flower: crit_bonus *= (1 + chance * power)
+var critical_flower_power: float = 0.0
+## Math Circle: угол отклонения (рад) для синус-поворота; 0 = прямо
+var sine_amplitude: float = 0.0
+## Частота поворота по пройденной дистанции (рад / пиксель пути).
+var sine_frequency: float = 0.025
+## true = cos(+π/2), false = sin; оба стартуют с центра волны.
+var sine_use_cos: bool = false
+var _sine_forward: Vector2 = Vector2.RIGHT
+var _sine_initialized: bool = false
+## Отдельный счётчик фазы волны (сбрасывается при рикошете/развороте).
+var _sine_path_distance: float = 0.0
 
 enum FireSfxKind { TEAR, GUN, SLASH, NONE }
 @export var fire_sfx_kind: FireSfxKind = FireSfxKind.TEAR
@@ -121,6 +133,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _physics_process_linear(delta: float) -> void:
+	if sine_amplitude > 0.0:
+		_physics_process_sine(delta)
+		return
+
 	var movement := direction.normalized() * speed * delta * self_speed_multiplier
 	position += movement
 	distance_travelled += movement.length()
@@ -130,6 +146,47 @@ func _physics_process_linear(delta: float) -> void:
 		explosion(1)
 		return
 	_try_spread_shot_split()
+
+
+func _physics_process_sine(delta: float) -> void:
+	# Как обычный полёт: та же скорость и distance_travelled.
+	# Волна только крутит направление вокруг _sine_forward.
+	if not _sine_initialized:
+		_retarget_sine_base()
+
+	var step_len := speed * delta * self_speed_multiplier
+	var angle_off := _sine_wave_angle(_sine_path_distance) * sine_amplitude
+	var move_dir := _sine_forward.rotated(angle_off)
+	position += move_dir * step_len
+	_sine_path_distance += step_len
+	distance_travelled += step_len
+	direction = move_dir
+	rotation = move_dir.angle()
+
+	if distance_travelled >= atk_range * self_range_multiplier:
+		exploded = true
+		explosion(1)
+		return
+	_try_spread_shot_split()
+
+
+func _sine_wave_angle(path_dist: float) -> float:
+	var t := path_dist * sine_frequency
+	# cos(+π/2) == -sin: тот же центр в нуле, другая фаза
+	if sine_use_cos:
+		return cos(t + PI * 0.5)
+	return sin(t)
+
+
+## После рикошета / разворота бумеранга — новая ось волны, старт снова с центра.
+func _retarget_sine_base() -> void:
+	if sine_amplitude <= 0.0:
+		return
+	_sine_forward = direction.normalized()
+	if _sine_forward == Vector2.ZERO:
+		_sine_forward = Vector2.RIGHT
+	_sine_path_distance = 0.0
+	_sine_initialized = true
 
 
 func _physics_process_boomerang(delta: float) -> void:
@@ -191,6 +248,7 @@ func _copy_boomerang_flight_state(source: BaseShot) -> void:
 
 func _advance_boomerang_segment() -> void:
 	direction = -direction
+	_retarget_sine_base()
 	_boomerang_segment += 1
 	_segment_curve_t = 0.0
 	if _boomerang_segment >= _boomerang_segment_count:
@@ -277,6 +335,7 @@ func _perform_projectile_ricochet(body: Node) -> bool:
 
 	ricochet -= 1
 	direction = out_dir
+	_retarget_sine_base()
 	_sync_facing_after_redirect()
 	global_position += normal * RICOCHET_SEPARATION
 	if is_instance_valid(body):
@@ -382,6 +441,8 @@ func _get_final_damage() -> float:
 	if shooter:
 		spread_val = StatManager.get_stat(shooter, "spread")
 	var crit_bonus := base_crit_bonus / (spread_val + crit_spread_offset)
+	if critical_flower_power > 0.0:
+		crit_bonus *= (1.0 + chance * critical_flower_power)
 	var total_crit := 1.0
 	while true:
 		if randf() < chance:
@@ -621,6 +682,10 @@ func _spawn_spread() -> void:
 
 		bullet.base_crit_bonus = self.base_crit_bonus
 		bullet.crit_spread_offset = self.crit_spread_offset
+		bullet.critical_flower_power = critical_flower_power
+		bullet.sine_amplitude = sine_amplitude
+		bullet.sine_frequency = sine_frequency
+		bullet.sine_use_cos = (randi() % 2 == 0) if sine_amplitude > 0.0 else sine_use_cos
 		bullet.steal_life = steal_life
 		bullet._spread_shot_done = _spread_shot_done
 
@@ -738,6 +803,10 @@ func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2)
 	copy._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 	copy.base_crit_bonus = base_crit_bonus
 	copy.crit_spread_offset = crit_spread_offset
+	copy.critical_flower_power = critical_flower_power
+	copy.sine_amplitude = sine_amplitude
+	copy.sine_frequency = sine_frequency
+	copy.sine_use_cos = sine_use_cos
 	copy.steal_life = steal_life
 	copy.rotation = dir.angle()
 	copy._align_shadow_to_world()
@@ -774,6 +843,10 @@ func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
 	bullet._ricochet_ignore_ids = _ricochet_ignore_ids.duplicate()
 	bullet.base_crit_bonus = base_crit_bonus
 	bullet.crit_spread_offset = crit_spread_offset
+	bullet.critical_flower_power = critical_flower_power
+	bullet.sine_amplitude = sine_amplitude
+	bullet.sine_frequency = sine_frequency
+	bullet.sine_use_cos = (randi() % 2 == 0) if sine_amplitude > 0.0 else sine_use_cos
 	bullet.steal_life = steal_life
 	# _ready клона мог заново стартовать бумеранг — берём прогресс оригинала на момент сплита.
 	if _boomerang_active:

@@ -21,6 +21,7 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'lv
  'gigantring', 'occult', 'markoftenebris', 'magicseal',
  'genoremap', 'toycastle', 'ironmaiden',
  'sacrosanct', 'crown', 'accelerator', 'cyborg',
+ 'siegehammer', 'criticalflower', 'mathcircle', 'ricochet', 'multricochet',
  'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
 var DEFAULT_PICK := ["heal"]
 
@@ -75,7 +76,7 @@ var POOLS := {
 		{"id": "healbig", 	"scene": preload("uid://bvy7i2nw65tyy"), 	"tier": 0},
 		{"id": "shield", 	"scene": preload("uid://bpbfutvulj0wd"), 	"tier": 0},
 		
-
+		
 		#{"id": "homuncules", "scene": preload("uid://ho7q2b6ru1at8"), 	"tier": 1},
 		{"id": "seed", 		"scene": preload("uid://ip8r3c7sv2bu9"), 	"tier": 1},
 		#{"id": "shine", 		"scene": preload("uid://jq9s4d8tw3cv0"), 	"tier": 1},
@@ -150,11 +151,16 @@ var POOLS := {
 		#{"id": "crown", 		"scene": preload("res://game/objects/items/scenes/tier 2/Crown.tscn"), "tier": 2},
 		#{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
 		#{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
-		{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
+		{"id": "joker", 			"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
 		#{"id": "magicseal", 	"scene": preload("res://game/objects/items/scenes/tier 2/MagicSeal.tscn"), "tier": 2} treasure
+		{"id": "siegehammer", 	"scene": preload("res://game/objects/items/scenes/tier 2/SiegeHammer.tscn"), "tier": 2},
+		{"id": "criticalflower","scene": preload("res://game/objects/items/scenes/tier 2/CriticalFlower.tscn"), "tier": 2},
+		{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
+		{"id": "ricochet", 		"scene": preload("res://game/objects/items/scenes/tier 2/Ricochet.tscn"), "tier": 2},
 		
 		
 		#{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
+		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
 
 		#{"id": "card6", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card6.tscn"), 		"tier": 4},
 		#{"id": "card7", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card7.tscn"), 		"tier": 4},
@@ -212,7 +218,6 @@ var POOLS := {
 			{"id": "pocketwatch","scene": preload("uid://kr0t5e9ux4dw1"), 	"tier": 1},
 			{"id": "torch", 		"scene": preload("uid://qx6z1k5ad0jc7"), 	"tier": 1},
 			#{"id": "jetfuel", 	"scene": preload("uid://mt2v7g1wz6fy3"), 	"tier": 1},
-
 		
 		
 		#{"id": "storybook", 	"scene": preload("uid://m6oyxodimxew"), 		"tier": 2},
@@ -264,6 +269,11 @@ var POOLS := {
 		#{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
 		#{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
 		{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
+		{"id": "siegehammer", 	"scene": preload("res://game/objects/items/scenes/tier 2/SiegeHammer.tscn"), "tier": 2},
+		{"id": "criticalflower","scene": preload("res://game/objects/items/scenes/tier 2/CriticalFlower.tscn"), "tier": 2},
+		{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
+		{"id": "ricochet", 		"scene": preload("res://game/objects/items/scenes/tier 2/Ricochet.tscn"), "tier": 2},
+		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
 
 	],
 	"chest": [

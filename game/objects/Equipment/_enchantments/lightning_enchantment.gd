@@ -110,7 +110,7 @@ func apply_on_hit(
 
 func get_tooltip_text() -> String:
 	match level:
-		1: return " with a rare, devastating thunderstrike"
+		1: return " with a devastating thunderstrike"
 		2: return " with crackling arcs of lightning"
 		3: return " with a storm of leaping sparks"
 		_: return " -- !WRONG! --"

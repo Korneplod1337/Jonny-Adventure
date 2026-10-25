@@ -18,9 +18,7 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 
 # Обновить разблокировку в ачивках для armory
 var POOLS := {
-	"treasure": [ ## только шмотки
-		{"id": "lvlup_atk", "scene": preload("res://game/objects/items/scenes/tier 0/LvlupAtk.tscn"),
-		 "tier": 0, "weight": 10.0},
+	"treasure": [ ## шмотки + абилки
 		#{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
 		 #"tier": 3, "weight": 10.0},
 		#{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
@@ -98,45 +96,21 @@ var POOLS := {
 		 "tier": 1, "weight": 10.0},
 
 	],
-	"weapon": [
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # Оружейный кейс
+	"weapon": [ # Оружейный кейс
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 0.0},
-		{"id": "Jonny_shot_Alt", "scene": preload("uid://f07ikj132ro1"),
-		 "tier": 2, "weight": 0.0},
-		{"id": "tome_of_fairy_tales", "scene": preload("uid://2dtjjer8eim8"),
-		 "tier": 2, "weight": 0.0},
-		{"id": "CardWeapon", "scene": preload("uid://6ngyovpkns22"),
-		 "tier": 3, "weight": 0.0},
-		{"id": "arid_membrane", "scene": preload("uid://ck8xe35a25xmt"),
-		 "tier": 2, "weight": 0.0},
-		
+		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
+		 "tier": 2, "weight": 10.0},
 		{"id": "Spear", "scene": preload("uid://d153rj7fiouha"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "EXSpear", "scene": preload("uid://dwqy4pk0blosi"),
 		 "tier": 3, "weight": 0.0},
 		{"id": "Sword", "scene": preload("uid://dke6t1j0r80ny"),
 		 "tier": 2, "weight": 10.0},
-		{"id": "Nunchucks", "scene": preload("uid://buh4o48vfo1ln"),
-		 "tier": 2, "weight": 0.0},
-		#{"id": "Axe", "scene": preload("uid://c8glpvvgfk441"),
-		# "tier": 2, "weight": 10.0},
-		{"id": "Solaris", "scene": preload("uid://ci4paxr8kkjx2"),
-		 "tier": 3, "weight": 0.0},
-		
-		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
-		 "tier": 1, "weight": 10.0},
-		{"id": "Base_Gun", "scene": preload("uid://clqoo37e0j35j"),
-		 "tier": 2, "weight": 10.0},
-		{"id": "Sniper_Gun", "scene": preload("uid://i6kqba6ow2yq"),
-		 "tier": 2, "weight": 0.0},
-		{"id": "Scatterhand", "scene": preload("uid://ixfqllfdouf6"),
-		 "tier": 2, "weight": 0.0},
-		#{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
-		 #"tier": 3, "weight": 10.0},
-		{"id": "Magic pistol", "scene": preload("uid://c6exdflntaqki"),
-		 "tier": 3, "weight": 0.0},
 		],
 	
 	"ability": [ ## дебаг / certain_spawn, пока не в сундуках
@@ -180,7 +154,7 @@ var POOLS := {
 		 "tier": 2, "weight": 10.0},
 	],
 	"all": [ # without ability
-		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"), # Оружейный кейс
+		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "test_shot", "scene": preload("uid://dyq3vlj4jlml5"),
 		 "tier": 1, "weight": 0.0},

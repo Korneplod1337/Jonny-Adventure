@@ -60,9 +60,7 @@ func fire(shot_dir: Vector2) -> void:
 	shot.damage = StatManager.get_stat(self, "damage")
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8) * 0.05)
-	shot.boomerang_power += boomerang_bonus
-	shot.penetration += penetration_bonus
-	shot.hack += hack_bonus
+	apply_shot_item_bonuses(shot)
 	steal_life_heal_ready = false
 	if current_ability and current_ability.has_method("consume_for_next_shot"):
 		if current_ability.consume_for_next_shot():
