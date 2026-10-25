@@ -64,6 +64,9 @@ const SPREAD_SHOT_MELEE_SCALE := 0.6
 var spread_angle: float
 var spawned_spread := false
 var _spread_shot_done := false
+## Сколько стаков Star Fruit навесить после дроби (ставит игрок до add_child).
+var star_fruit_stacks_to_apply: int = 0
+var _star_fruit_applied: bool = false
 
 var base_crit_bonus: float = 50.0
 ## Добавка к spread в формуле силы крита: bonus = base_crit_bonus / (spread + offset).
@@ -103,6 +106,8 @@ func _ready() -> void:
 	_init_boomerang()
 	if not body_exited.is_connected(_on_body_exited_ricochet):
 		body_exited.connect(_on_body_exited_ricochet)
+	# После дроби (deferred add_child) — Star Fruit на каждую дробинку отдельно.
+	call_deferred("_try_apply_star_fruit")
 
 
 func _process(_delta: float) -> void:
@@ -415,6 +420,28 @@ func _sync_facing_after_redirect() -> void:
 	_align_shadow_to_world()
 
 
+func _try_apply_star_fruit() -> void:
+	if _star_fruit_applied or star_fruit_stacks_to_apply <= 0:
+		return
+	if not is_instance_valid(self) or exploded:
+		return
+	var stacks := star_fruit_stacks_to_apply
+	star_fruit_stacks_to_apply = 0
+	_star_fruit_applied = true
+	var shooter := _get_player()
+	if shooter and shooter.has_method("apply_star_fruit_to_shot"):
+		shooter.apply_star_fruit_to_shot(self, stacks)
+
+
+## Ближка + SpreadShot: сначала Star Fruit, потом конус (иначе клоны фрукта
+## с _spread_shot_done / early-return зависают без анимации).
+func _deferred_melee_star_and_spread() -> void:
+	_try_apply_star_fruit()
+	if not is_instance_valid(self) or exploded:
+		return
+	_try_spread_shot_melee()
+
+
 func _get_player() -> Node:
 	if player:
 		return player
@@ -688,6 +715,7 @@ func _spawn_spread() -> void:
 		bullet.sine_use_cos = (randi() % 2 == 0) if sine_amplitude > 0.0 else sine_use_cos
 		bullet.steal_life = steal_life
 		bullet._spread_shot_done = _spread_shot_done
+		bullet.star_fruit_stacks_to_apply = star_fruit_stacks_to_apply
 
 		get_parent().add_child.call_deferred(bullet)
 		bullet.global_position = global_position
@@ -808,6 +836,7 @@ func _spawn_spread_shot_melee_clone(parent: Node, dir: Vector2, origin: Vector2)
 	copy.sine_frequency = sine_frequency
 	copy.sine_use_cos = sine_use_cos
 	copy.steal_life = steal_life
+	copy.star_fruit_stacks_to_apply = star_fruit_stacks_to_apply
 	copy.rotation = dir.angle()
 	copy._align_shadow_to_world()
 
@@ -817,8 +846,7 @@ func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
 	bullet.spawned_spread = true
 	bullet._spread_shot_done = true
 	bullet.pellet_count = 1
-	parent.add_child(bullet)
-	bullet.global_position = global_position
+	# Статы ДО add_child: иначе _ready оружия (Fairy Tales и т.п.) видит нули.
 	bullet.direction = dir
 	bullet.scale = scale
 	bullet.damage = damage
@@ -848,9 +876,25 @@ func _spawn_spread_shot_clone(parent: Node, dir: Vector2) -> void:
 	bullet.sine_frequency = sine_frequency
 	bullet.sine_use_cos = (randi() % 2 == 0) if sine_amplitude > 0.0 else sine_use_cos
 	bullet.steal_life = steal_life
+	bullet.star_fruit_stacks_to_apply = 0
+	bullet._star_fruit_applied = true
+	parent.add_child(bullet)
+	bullet.global_position = global_position
 	# _ready клона мог заново стартовать бумеранг — берём прогресс оригинала на момент сплита.
 	if _boomerang_active:
 		bullet._copy_boomerang_flight_state(self)
 	elif bullet.boomerang_power > 0:
 		bullet._boomerang_active = false
+	# После _ready снова синхронизируем множители (оружие могло сбросить их в _ready).
+	bullet.self_damage_multiplier = self_damage_multiplier
+	bullet.self_speed_multiplier = self_speed_multiplier
+	bullet.self_range_multiplier = self_range_multiplier
+	bullet.extra_reload = extra_reload
+	bullet.speed = speed
+	bullet.damage = damage
+	bullet.atk_range = atk_range
+	if bullet.boomerang_power > 0 and _boomerang_active:
+		bullet._copy_boomerang_flight_state(self)
+	elif bullet.boomerang_power > 0:
+		bullet._init_boomerang()
 	bullet._sync_facing_after_redirect()

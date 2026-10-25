@@ -253,7 +253,8 @@ func _scale_damage(
 	)
 
 func _scale_move_speed(hard_speed: float, med_offset: float, easy_offset: float) -> float:
-	return _apply_difficulty_offset(hard_speed, med_offset, easy_offset) * GameState.enemy_ms_multiplier
+	return _apply_difficulty_offset(hard_speed, med_offset, easy_offset) \
+		* GameState.enemy_ms_multiplier * GameState.time_flow_mult
 
 func _scale_cooldown(hard_cd: float, med_offset: float, easy_offset: float) -> float:
 	return _apply_difficulty_offset(hard_cd, med_offset, easy_offset) * GameState.enemy_cooldown_multiplier
@@ -532,6 +533,9 @@ func _try_spawn_death_loot() -> void:
 		spawn_coin()
 
 	if GameState.has_level_buf("Bountiful") and randf() < 0.2:
+		spawn_coin(global_position + Vector2(randf_range(-24.0, 24.0), randf_range(-24.0, 24.0)))
+
+	if GameState.extra_enemy_coin_chance > 0.0 and randf() < GameState.extra_enemy_coin_chance:
 		spawn_coin(global_position + Vector2(randf_range(-24.0, 24.0), randf_range(-24.0, 24.0)))
 
 

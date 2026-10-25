@@ -16,7 +16,7 @@ func _ready() -> void:
 
 	if GameState.SpreadShot and not _melee_boomerang_copy:
 		_play_attack_sfx()
-		call_deferred("_try_spread_shot_melee")
+		call_deferred("_deferred_melee_star_and_spread")
 		return
 
 	if not _melee_boomerang_copy:
@@ -33,6 +33,7 @@ func _ready() -> void:
 	_lifetime_timer.start()
 	if not body_exited.is_connected(_on_body_exited_ricochet):
 		body_exited.connect(_on_body_exited_ricochet)
+	call_deferred("_try_apply_star_fruit")
 
 
 func _on_body_entered(body: Node) -> void:

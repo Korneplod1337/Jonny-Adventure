@@ -7,17 +7,12 @@ const DETECTION_RANGE_MULTIPLIER := 1.25
 ## Максимальная скорость поворота (рад/с). Меньше — более плавная дуга.
 @export var turn_speed: float = 2.5
 
-var _max_range: float
-var _detection_range: float
-
 
 func _ready() -> void:
 	self_damage_multiplier = 0.6
 	self_speed_multiplier = 0.8
 	self_range_multiplier = 0.8
 	extra_reload = 1.3
-	_max_range = atk_range * self_range_multiplier
-	_detection_range = _max_range * DETECTION_RANGE_MULTIPLIER
 	super()
 	$shot_Animated.play("fly")
 
@@ -46,9 +41,16 @@ func _turn_towards(target_pos: Vector2, delta: float) -> void:
 	direction = current_dir.rotated(clampf(angle_diff, -max_turn, max_turn))
 
 
+## Считаем на лету: у клонов Spread/Fruit atk_range часто выставляется после _ready,
+## кэш _detection_range из _ready тогда оставался 0 и самонаводка «пропадала».
+func _get_detection_range() -> float:
+	return maxf(atk_range * self_range_multiplier * DETECTION_RANGE_MULTIPLIER, 0.0)
+
+
 func _find_nearest_enemy() -> CharacterBody2D:
 	var nearest: CharacterBody2D = null
-	var nearest_dist_sq := _detection_range * _detection_range
+	var detection := _get_detection_range()
+	var nearest_dist_sq := detection * detection
 
 	for enemy in get_tree().get_nodes_in_group(ENEMY_GROUP):
 		if not is_instance_valid(enemy) or not enemy is CharacterBody2D:

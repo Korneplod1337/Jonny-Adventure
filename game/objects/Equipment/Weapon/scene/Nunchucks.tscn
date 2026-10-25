@@ -51,12 +51,13 @@ use_spread = false
 fire_sfx_kind = 2
 
 [node name="shot_Animated" type="AnimatedSprite2D" parent="." unique_id=513681404]
+position = Vector2(4, 0)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ptov3")
 offset = Vector2(35, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1792244404]
-position = Vector2(72, 0)
+position = Vector2(75, 0)
 shape = SubResource("CircleShape2D_ygq3i")
 
 [node name="Timer" type="Timer" parent="." unique_id=784686683]

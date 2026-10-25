@@ -39,7 +39,7 @@ var vengeful_enabled := false
 func _apply_level_buffs() -> void:
 	base_hp = int(round(float(boss_base_hp) * Boss_HP_buff * GameState.boss_hp_multiplier))
 	damage = int(round(float(boss_damage) * Boss_damage_buff))
-	move_speed = boss_move_speed * Boss_move_speed_buff
+	move_speed = boss_move_speed * Boss_move_speed_buff * GameState.time_flow_mult
 	cooldown_time = get_phase_switch_time()
 	_apply_boss_model_scale()
 	super._apply_level_buffs()
@@ -52,7 +52,8 @@ func _apply_boss_model_scale() -> void:
 
 
 func get_phase_switch_time() -> float:
-	return PHASE_SWITCH_BASE + Boss_phase_switch_buff
+	# time_flow_mult ускоряет смену фаз (короче пауза)
+	return (PHASE_SWITCH_BASE + Boss_phase_switch_buff) / maxf(GameState.time_flow_mult, 0.01)
 
 
 func can_act_independently() -> bool:

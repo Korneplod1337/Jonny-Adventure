@@ -79,4 +79,6 @@ func _spawn_extra_shot(shot_dir: Vector2) -> void:
 		var chance := lerpf(0.2, 0.4, clampf(mag / 4.0, 0.0, 1.0))
 		if randf() < chance:
 			shot.extra_enchantment = EquipManager.roll_guaranteed_enchantment()
+	shot.star_fruit_stacks_to_apply = star_fruit_stacks
 	get_tree().current_scene.add_child(shot)
+	_finalize_spawned_shot(shot)

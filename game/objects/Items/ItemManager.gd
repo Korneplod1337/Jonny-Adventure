@@ -22,6 +22,7 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'lv
  'genoremap', 'toycastle', 'ironmaiden',
  'sacrosanct', 'crown', 'accelerator', 'cyborg',
  'siegehammer', 'criticalflower', 'mathcircle', 'ricochet', 'multricochet',
+ 'spacetimecircuit', 'starfruit',
  'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
 var DEFAULT_PICK := ["heal"]
 
@@ -56,6 +57,7 @@ unlock items это те, которые вообще не могут попас
 const UNIQUE_ONCE_ITEMS := [
 	"mindseye",
 	"starmap",
+	"starfruit",
 ]
 
 # Бонус к весу, если предмет уже подбирали (только для не-уникальных)
@@ -161,6 +163,8 @@ var POOLS := {
 		
 		#{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
 		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
+		{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
+		{"id": "starfruit", 	"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
 
 		#{"id": "card6", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card6.tscn"), 		"tier": 4},
 		#{"id": "card7", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card7.tscn"), 		"tier": 4},
@@ -274,6 +278,8 @@ var POOLS := {
 		{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
 		{"id": "ricochet", 		"scene": preload("res://game/objects/items/scenes/tier 2/Ricochet.tscn"), "tier": 2},
 		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
+		{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
+		{"id": "starfruit", 	"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
 
 	],
 	"chest": [

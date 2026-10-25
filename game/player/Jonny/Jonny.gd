@@ -75,6 +75,8 @@ var critical_flower_power: 	float = 0.0
 ## Math Circle: угол синус-поворота в радианах (стакается); range_mult только для дальнобойных
 var math_circle_amplitude: 	float = 0.0
 var math_circle_range_mult: 	float = 1.0
+## Star Fruit: сколько раз применить сплит (×5 лучей, ×0.5 урон за стак)
+var star_fruit_stacks: 		int = 0
 var attack_locked: 			bool = false
 
 ## Режим бога: все статы на максимум (10), бонусы = 15
@@ -732,10 +734,10 @@ var shot_enchantment: EnchantmentResource
 func fire (shot_dir: Vector2) -> void:
 	if not shot_scene:
 		return
-		
+
 	var shot = shot_scene.instantiate()
 	shot.position = global_position + Vector2(0, -15)
-	
+
 	var angle := shot_dir.angle()
 	var effective_spread := spread
 	if not shot.use_spread:
@@ -743,16 +745,10 @@ func fire (shot_dir: Vector2) -> void:
 	if effective_spread > 0.0 and not GameState.Surestrike:
 		angle += deg_to_rad(randf_range(-effective_spread / 2, effective_spread / 2))
 	var final_dir := Vector2.RIGHT.rotated(angle)
-	
-	shot.direction = final_dir + now_move_direction.normalized()/3 
-	
-	#print('effective_spread ', effective_spread)
-	#+ shot_dir.normalized()/3
-	
+
+	shot.direction = final_dir + now_move_direction.normalized()/3
+
 	shot.damage = StatManager.get_stat(self, "damage")
-	
-	shot.atk_range = atk_range
-	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
 	shot.atk_range = atk_range
 	shot.speed = 300 * (1 + (move_speed_level + fire_rate_level - 8)* 0.05)
 	apply_shot_item_bonuses(shot)
@@ -762,7 +758,7 @@ func fire (shot_dir: Vector2) -> void:
 		if current_ability.consume_for_next_shot():
 			shot.steal_life = true
 			steal_life_heal_ready = true
-	
+
 	if shot_enchantment:
 		shot.enchantment = shot_enchantment.duplicate(true)
 	if GameState.WildBoots:
@@ -770,13 +766,114 @@ func fire (shot_dir: Vector2) -> void:
 		var chance := lerpf(0.2, 0.4, clampf(magic / 4.0, 0.0, 1.0))
 		if randf() < chance:
 			shot.extra_enchantment = EquipManager.roll_guaranteed_enchantment()
+	shot.star_fruit_stacks_to_apply = star_fruit_stacks
 	get_tree().current_scene.add_child(shot)
-	
+	_finalize_spawned_shot(shot)
+
 	extra_fire_rate = shot.extra_reload
 	var cloak_fx := get_node_or_null("Accelerator_Cloak")
 	if cloak_fx and cloak_fx.has_method("update_boost"):
 		cloak_fx.update_boost()
 	fire_rate = ST.get_stat(self, "fire_rate")
+
+
+func _finalize_spawned_shot(_shot: Node) -> void:
+	pass
+
+
+## Вызывает BaseShot после дроби: каждый стак — ×5 направлений и ×0.5 урона.
+func apply_star_fruit_to_shot(shot: Node, stacks: int) -> void:
+	if stacks <= 0 or shot == null or not is_instance_valid(shot):
+		return
+	var batch: Array = [shot]
+	for _i in range(stacks):
+		var next_batch: Array = []
+		for s in batch:
+			if s != null and is_instance_valid(s):
+				next_batch.append_array(_fan_shot_into_star(s))
+		batch = next_batch
+
+
+func _fan_shot_into_star(shot: Node) -> Array:
+	var base_angle: float = shot.direction.angle()
+	shot.damage = int(round(float(shot.damage) * 0.5))
+	shot.direction = Vector2.RIGHT.rotated(base_angle)
+	_retarget_shot_after_star_redirect(shot)
+	var result: Array = [shot]
+	var parent: Node = shot.get_parent()
+	if parent == null:
+		parent = get_tree().current_scene
+	for i in range(1, 5):
+		var dir := Vector2.RIGHT.rotated(base_angle + TAU * float(i) / 5.0)
+		var clone: Node = _clone_shot_for_star_fruit(shot, dir, parent)
+		result.append(clone)
+	return result
+
+
+func _retarget_shot_after_star_redirect(shot: Node) -> void:
+	if shot is SwordShot:
+		(shot as SwordShot)._fire_direction = shot.direction.normalized()
+	if shot.has_method("_retarget_sine_base"):
+		shot._retarget_sine_base()
+	if shot.has_method("_sync_facing_after_redirect"):
+		shot._sync_facing_after_redirect()
+
+
+## Свежий instantiate. self_* / extra_reload НЕ копируем до add_child —
+## иначе BaseGun._ready (*= 1.5) и аналоги удваивают множители.
+## _spread_shot_done остаётся false — клоны фрукта тоже получают SpreadShot / полёт.
+func _clone_shot_for_star_fruit(shot: Node, dir: Vector2, parent: Node) -> Node:
+	var clone: Node = shot_scene.instantiate()
+	clone.direction = dir
+	clone.damage = shot.damage
+	clone.speed = shot.speed
+	clone.atk_range = shot.atk_range
+	clone.boomerang_power = shot.boomerang_power
+	clone.boomerang_first_leg_mult = shot.boomerang_first_leg_mult
+	clone.hack = shot.hack
+	clone.ricochet = shot.ricochet
+	clone.penetration = shot.penetration
+	clone.aoe_radius = shot.aoe_radius
+	clone.use_spread = shot.use_spread
+	clone.pellet_count = 1
+	clone.spread_angle = shot.spread_angle
+	clone.enchantment = shot.enchantment
+	clone.extra_enchantment = shot.extra_enchantment
+	clone.base_crit_bonus = shot.base_crit_bonus
+	clone.crit_spread_offset = shot.crit_spread_offset
+	clone.critical_flower_power = shot.critical_flower_power
+	clone.sine_amplitude = shot.sine_amplitude
+	clone.sine_frequency = shot.sine_frequency
+	clone.sine_use_cos = (randi() % 2 == 0) if shot.sine_amplitude > 0.0 else shot.sine_use_cos
+	clone.steal_life = false
+	# Только анти-дробь оружия (pellet_count); НЕ трогаем SpreadShot-флаг.
+	clone.spawned_spread = true
+	clone._spread_shot_done = false
+	clone.star_fruit_stacks_to_apply = 0
+	clone._star_fruit_applied = true
+	clone.position = Vector2.ZERO
+	parent.add_child(clone)
+	clone.global_position = shot.global_position
+	# После _ready оружия — точные финальные множители оригинала (без второго *=).
+	clone.extra_reload = shot.extra_reload
+	clone.self_damage_multiplier = shot.self_damage_multiplier
+	clone.self_speed_multiplier = shot.self_speed_multiplier
+	clone.self_range_multiplier = shot.self_range_multiplier
+	clone.speed = shot.speed
+	clone.damage = shot.damage
+	clone.atk_range = shot.atk_range
+	# Ещё раз боевые статы — _ready мог сбросить boomerang и т.п. у части оружий.
+	clone.boomerang_power = shot.boomerang_power
+	clone.boomerang_first_leg_mult = shot.boomerang_first_leg_mult
+	clone.hack = shot.hack
+	clone.ricochet = shot.ricochet
+	clone.penetration = shot.penetration
+	clone.aoe_radius = shot.aoe_radius
+	if clone.has_method("_init_boomerang") and clone.boomerang_power > 0:
+		clone._init_boomerang()
+	_finalize_spawned_shot(clone)
+	_retarget_shot_after_star_redirect(clone)
+	return clone
 
 func apply_shot_item_bonuses(shot: Node) -> void:
 	if shot == null:

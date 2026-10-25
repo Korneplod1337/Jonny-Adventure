@@ -73,15 +73,20 @@ func fire(shot_dir: Vector2) -> void:
 		var chance := lerpf(0.2, 0.4, clampf(mag / 4.0, 0.0, 1.0))
 		if randf() < chance:
 			shot.extra_enchantment = EquipManager.roll_guaranteed_enchantment()
+	shot.star_fruit_stacks_to_apply = star_fruit_stacks
 	get_tree().current_scene.add_child(shot)
+	_finalize_spawned_shot(shot)
+	extra_fire_rate = shot.extra_reload
+	var cloak_fx := get_node_or_null("Accelerator_Cloak")
+	if cloak_fx and cloak_fx.has_method("update_boost"):
+		cloak_fx.update_boost()
+	fire_rate = ST.get_stat(self, "fire_rate")
+
+
+func _finalize_spawned_shot(shot: Node) -> void:
 	# После _ready оружия: ближнее само ставит scale — множим поверх.
 	if shot is SwordShot:
 		shot.scale *= MELEE_WEAPON_SCALE
 		shot.damage += MELEE_FLAT_DAMAGE_BONUS
 	else:
 		shot.scale *= RANGED_WEAPON_SCALE
-	extra_fire_rate = shot.extra_reload
-	var cloak_fx := get_node_or_null("Accelerator_Cloak")
-	if cloak_fx and cloak_fx.has_method("update_boost"):
-		cloak_fx.update_boost()
-	fire_rate = ST.get_stat(self, "fire_rate")

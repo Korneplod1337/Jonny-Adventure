@@ -41,7 +41,7 @@ func _get_ms_multiplier() -> float:
 
 
 func _apply_level_buffs() -> void:
-	var ms_mult := _get_ms_multiplier() * GameState.enemy_ms_multiplier
+	var ms_mult := _get_ms_multiplier() * GameState.enemy_ms_multiplier * GameState.time_flow_mult
 
 	move_step_distance = _apply_difficulty_offset(
 		hard_move_step_distance, MOVE_STEP_MED_OFFSET, MOVE_STEP_EASY_OFFSET

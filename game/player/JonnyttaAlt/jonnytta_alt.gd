@@ -88,7 +88,11 @@ func _spawn_scaled_shot(shot_dir: Vector2, angle_offset_deg: float, apply_abilit
 		var chance := lerpf(0.2, 0.4, clampf(mag / 4.0, 0.0, 1.0))
 		if randf() < chance:
 			shot.extra_enchantment = EquipManager.roll_guaranteed_enchantment()
+	shot.star_fruit_stacks_to_apply = star_fruit_stacks
 	get_tree().current_scene.add_child(shot)
-	# После _ready ближнего оружия (оно само выставляет scale).
-	shot.scale *= WEAPON_SCALE_MULT
+	_finalize_spawned_shot(shot)
 	extra_fire_rate = shot.extra_reload
+
+
+func _finalize_spawned_shot(shot: Node) -> void:
+	shot.scale *= WEAPON_SCALE_MULT

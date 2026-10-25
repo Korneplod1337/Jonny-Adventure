@@ -59,7 +59,7 @@ func _apply_level_buffs() -> void:
 
 
 func get_phase_switch_time() -> float:
-	return ABILITY_COOLDOWN
+	return ABILITY_COOLDOWN / maxf(GameState.time_flow_mult, 0.01)
 
 
 func _apply_vision_radius() -> void:

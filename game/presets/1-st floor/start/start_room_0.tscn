@@ -9,6 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://d1c05r0ykeaea" path="res://game/objects/floor_skip/FloorSkip.tscn" id="8_8to1f"]
 [ext_resource type="PackedScene" uid="uid://xi3j7etugnhg" path="res://game/objects/Equipment/Weapon/equip/ShotGun_equip.tscn" id="9_4rw6f"]
 [ext_resource type="PackedScene" uid="uid://btgssorntdnfp" path="res://game/objects/Equipment/Ability/equip/Surge_equip.tscn" id="10_1f72t"]
+[ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/StarFruit.tscn" id="10_4rw6f"]
+[ext_resource type="PackedScene" uid="uid://6ngyovpkns22" path="res://game/objects/Equipment/Weapon/equip/CardWeapon_equip.tscn" id="11_8sdh4"]
+[ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn" id="11_r6k7x"]
+[ext_resource type="PackedScene" uid="uid://bwiytmmsxjtk5" path="res://game/objects/Equipment/Weapon/equip/JonnyShot_equip.tscn" id="12_h6u4y"]
+[ext_resource type="PackedScene" uid="uid://2dtjjer8eim8" path="res://game/objects/Equipment/Weapon/equip/tome_of_fairy_tales_equip.tscn" id="13_2ue0t"]
+[ext_resource type="PackedScene" uid="uid://dke6t1j0r80ny" path="res://game/objects/Equipment/Weapon/equip/Sword_equip.tscn" id="15_yfpwr"]
+[ext_resource type="PackedScene" uid="uid://buh4o48vfo1ln" path="res://game/objects/Equipment/Weapon/equip/Nunchucks_equip.tscn" id="16_7fgpm"]
+[ext_resource type="PackedScene" uid="uid://c8glpvvgfk441" path="res://game/objects/Equipment/Weapon/equip/Axe_equip.tscn" id="17_tvg8h"]
+[ext_resource type="PackedScene" uid="uid://ck8xe35a25xmt" path="res://game/objects/Equipment/Weapon/equip/AridMembrane_equip.tscn" id="18_ww7l6"]
+[ext_resource type="PackedScene" uid="uid://c6exdflntaqki" path="res://game/objects/Equipment/Weapon/equip/Magic_bullet_equip.tscn" id="19_bxm0y"]
+[ext_resource type="PackedScene" uid="uid://clqoo37e0j35j" path="res://game/objects/Equipment/Weapon/equip/Pistol_equip.tscn" id="20_iqmaw"]
+[ext_resource type="PackedScene" uid="uid://bi5g2vqe6xdek" path="res://game/objects/Equipment/head/Kaliya_star_hat.tscn" id="21_2ue0t"]
+[ext_resource type="PackedScene" uid="uid://b1b2frqkhkt14" path="res://game/objects/Equipment/head/Spread_Shot.tscn" id="22_yfpwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -109,5 +122,53 @@ value = 3
 position = Vector2(-136, -61)
 effect_power = 2.0
 
-[node name="ShotGun" parent="." unique_id=241584314 instance=ExtResource("9_4rw6f")]
-position = Vector2(127, 124)
+[node name="StarFruit" parent="." unique_id=18060229 instance=ExtResource("10_4rw6f")]
+position = Vector2(183, 47)
+
+[node name="SpaceTimeCircuit" parent="." unique_id=1485260790 instance=ExtResource("11_r6k7x")]
+position = Vector2(293, 74)
+
+[node name="SpaceTimeCircuit2" parent="." unique_id=1291454752 instance=ExtResource("11_r6k7x")]
+position = Vector2(293, 74)
+
+[node name="SpaceTimeCircuit3" parent="." unique_id=1547681392 instance=ExtResource("11_r6k7x")]
+position = Vector2(293, 74)
+
+[node name="SpaceTimeCircuit4" parent="." unique_id=83742644 instance=ExtResource("11_r6k7x")]
+position = Vector2(293, 74)
+
+[node name="CardWeapon_equip" parent="." unique_id=241584314 instance=ExtResource("11_8sdh4")]
+position = Vector2(214, 226)
+
+[node name="JonnyShot" parent="." unique_id=381238599 instance=ExtResource("12_h6u4y")]
+position = Vector2(439, 128)
+
+[node name="tome_of_fairy_tales_equip" parent="." unique_id=1089435341 instance=ExtResource("13_2ue0t")]
+position = Vector2(98, 226)
+
+[node name="ShotGun2" parent="." unique_id=2069756111 instance=ExtResource("9_4rw6f")]
+position = Vector2(216, 130)
+
+[node name="Sword_equip" parent="." unique_id=66488602 instance=ExtResource("15_yfpwr")]
+position = Vector2(531, 132)
+
+[node name="Nunchucks_equip" parent="." unique_id=385110955 instance=ExtResource("16_7fgpm")]
+position = Vector2(417, 225)
+
+[node name="Axe_equip" parent="." unique_id=1859475580 instance=ExtResource("17_tvg8h")]
+position = Vector2(513, 240)
+
+[node name="arid membrane_equip" parent="." unique_id=178701312 instance=ExtResource("18_ww7l6")]
+position = Vector2(321, 224)
+
+[node name="Equip_magic_bullet" parent="." unique_id=1373824206 instance=ExtResource("19_bxm0y")]
+position = Vector2(326, 130)
+
+[node name="Pistol" parent="." unique_id=1194995556 instance=ExtResource("20_iqmaw")]
+position = Vector2(103, 128)
+
+[node name="Kaliya\'s Star Hat" parent="." unique_id=1914859512 instance=ExtResource("21_2ue0t")]
+position = Vector2(-4, -44)
+
+[node name="Spread Shot" parent="." unique_id=1913572246 instance=ExtResource("22_yfpwr")]
+position = Vector2(316, -44)

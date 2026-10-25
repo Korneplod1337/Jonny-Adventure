@@ -26,7 +26,7 @@ func _ready() -> void:
 
 	if GameState.SpreadShot and not _melee_boomerang_copy:
 		_play_attack_sfx()
-		call_deferred("_try_spread_shot_melee")
+		call_deferred("_deferred_melee_star_and_spread")
 		return
 
 	if not _melee_boomerang_copy:
@@ -44,7 +44,8 @@ func _ready() -> void:
 		body_exited.connect(_on_body_exited_ricochet)
 	anim_sprite.play("default")
 	_on_frame_changed()
-	
+	call_deferred("_try_apply_star_fruit")
+
 
 
 func _physics_process(_delta: float) -> void:

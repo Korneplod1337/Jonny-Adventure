@@ -126,6 +126,10 @@ func notify_room_cleared() -> void:
 var cost_multiplier := 1.0
 var cost_plus := 0.0
 var animated_world_speed := 1.0
+## Kalia Space-time: множитель «хода времени» (скорость игрока/врагов, фазы боссов, анимации)
+var time_flow_mult := 1.0
+## Шанс доп. монеты с врага поверх luck (Space-time circuit и т.п.)
+var extra_enemy_coin_chance := 0.0
 
 signal prices_changed
 signal alchemists_glasses_changed
@@ -248,6 +252,7 @@ func obnulenie() -> void:
 	LuckyHead = false
 	extra_chest_loot_chance = 0.0
 	mimic_chest_chance = 0.0
+	extra_enemy_coin_chance = 0.0
 	KeresMaria = 0
 	enemy_ms_multiplier = 1.0
 	enemy_hp_multiplier = 1.0
@@ -260,5 +265,6 @@ func obnulenie() -> void:
 	cost_plus = 0.0
 	dialog_shop_discount = 1.0
 	animated_world_speed = 1.0
+	time_flow_mult = 1.0
 	clear_active_dialog_events()
 	_clear_boss_bufs()

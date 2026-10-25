@@ -11,6 +11,7 @@ func get_stat(p: Node, stat: String) -> float :
 			var speed = p.base_move_speed + lerp(0.0, 225.0, (p.move_speed_level - 1.0) / 9.0)
 			speed *= clamp((1 + p.speed_bonus * 0.03), 0.4, 1.6) 					# 20
 			speed += p.EquipMoveSpeedFlat
+			speed *= GameState.time_flow_mult
 			return speed 
 		"luck":
 			var luck = p.base_luck + lerp(0.0, 0.63, (p.luck_level - 1.0) / 9.0)
@@ -52,6 +53,8 @@ func get_stat(p: Node, stat: String) -> float :
 			#print(fire_rate, ' ', (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.04 * p.extra_fire_rate))
 			fire_rate *= (1 - clamp(p.fire_rate_bonus, -20, 20) * 0.03 * p.extra_fire_rate) # 20
 			fire_rate *= p.EquipFireRateBoost
+			# time_flow_mult ускоряет стрельбу (меньше wait между выстрелами)
+			fire_rate /= maxf(GameState.time_flow_mult, 0.01)
 			print(fire_rate, '- Итого')
 			return fire_rate 
 		_:

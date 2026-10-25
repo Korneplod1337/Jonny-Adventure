@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://game/objects/items/scripts/starfruit.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bp2o8sypqrsrn" path="res://image/items/3 tier/ItemStarFruit.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+[ext_resource type="PackedScene" uid="uid://b1o762ktgcwjx" path="res://game/objects/shadow/backlight.tscn" id="backlight_scn"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="StarFruit" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_tex")
+item_name = "Star Fruit"
+item_tooltip = "Shoot for the stars"
+item_tooltip2 = "Each shot splits ×5, half damage"
+item_id = "starfruit"
+effect_power = 0.5
+
+[node name="Interactable" parent="." instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Shadow" parent="." instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
+
+[node name="Backlight" parent="." instance=ExtResource("backlight_scn")]
+tier = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")

@@ -67,7 +67,7 @@ func _apply_level_buffs() -> void:
 	)
 	max_dash_distance = _apply_difficulty_offset(
 		hard_max_dash_distance, MAX_DASH_MED_OFFSET, MAX_DASH_EASY_OFFSET
-	) * GameState.enemy_ms_multiplier
+	) * GameState.enemy_ms_multiplier * GameState.time_flow_mult
 	cooldown_time = _scale_cooldown(
 		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
 	)
