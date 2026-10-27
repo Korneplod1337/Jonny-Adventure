@@ -22,7 +22,7 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'lv
  'genoremap', 'toycastle', 'ironmaiden',
  'sacrosanct', 'crown', 'accelerator', 'cyborg',
  'siegehammer', 'criticalflower', 'mathcircle', 'ricochet', 'multricochet',
- 'spacetimecircuit', 'starfruit',
+ 'spacetimecircuit', 'starfruit', 'satellitebuff',
  'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
 var DEFAULT_PICK := ["heal"]
 
@@ -68,6 +68,9 @@ const REPEAT_PICKED_BONUS := 1.0
 const WEIGHT_SYNERGIES := [
 	# {"source": "some_card", "targets": ["aegis", "cross"], "multiplier": 3.0},
 ]
+
+## Временный бонус веса за забег (Satellite → satellitebuff и т.п.)
+var runtime_weight_add: Dictionary = {}
 
 # настроить пулы
 var POOLS := {
@@ -159,6 +162,7 @@ var POOLS := {
 		{"id": "criticalflower","scene": preload("res://game/objects/items/scenes/tier 2/CriticalFlower.tscn"), "tier": 2},
 		{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
 		{"id": "ricochet", 		"scene": preload("res://game/objects/items/scenes/tier 2/Ricochet.tscn"), "tier": 2},
+		{"id": "satellitebuff", "scene": preload("res://game/objects/items/scenes/tier 2/SatelliteBuff.tscn"), "tier": 2, "weight": 0.0},
 		
 		
 		#{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
@@ -277,6 +281,7 @@ var POOLS := {
 		{"id": "criticalflower","scene": preload("res://game/objects/items/scenes/tier 2/CriticalFlower.tscn"), "tier": 2},
 		{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
 		{"id": "ricochet", 		"scene": preload("res://game/objects/items/scenes/tier 2/Ricochet.tscn"), "tier": 2},
+		{"id": "satellitebuff", "scene": preload("res://game/objects/items/scenes/tier 2/SatelliteBuff.tscn"), "tier": 2, "weight": 0.0},
 		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
 		{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
 		{"id": "starfruit", 	"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
@@ -344,6 +349,13 @@ func mark_picked(id: String) -> void:
 func reset_run() -> void:
 	run_picked_items.clear()
 	last_picked_item_id = ""
+	runtime_weight_add.clear()
+
+
+func add_runtime_weight(item_id: String, amount: float) -> void:
+	if item_id.is_empty() or amount == 0.0:
+		return
+	runtime_weight_add[item_id] = float(runtime_weight_add.get(item_id, 0.0)) + amount
 
 func apply_item_effect_by_id(id: String, player: Node) -> bool:
 	if id.is_empty() or id == "blueprint":
@@ -474,6 +486,7 @@ func get_spawn_weight(item: Dictionary) -> float:
 		return 0.0
 
 	var w := float(item.get("weight", 1.0))
+	w += float(runtime_weight_add.get(item.id, 0.0))
 
 	if is_picked(item.id) and item.id not in UNIQUE_ONCE_ITEMS:
 		w += REPEAT_PICKED_BONUS

@@ -60,7 +60,11 @@ func setup_from_shot(shot: BaseShot, at_position: Vector2) -> void:
 	aoe_radius = shot.aoe_radius
 	var scaled := scale_from_player(_player)
 	lifetime = scaled.lifetime
-	radius = scaled.radius
+	# Если снаряд уменьшен (scale) — лужа тоже.
+	var shot_sc := maxf(absf(shot.scale.x), absf(shot.scale.y))
+	if shot_sc <= 0.0:
+		shot_sc = 1.0
+	radius = scaled.radius * shot_sc
 	tick_interval = scaled.tick_interval
 
 

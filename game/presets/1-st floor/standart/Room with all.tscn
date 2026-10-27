@@ -220,6 +220,8 @@
 [ext_resource type="PackedScene" uid="uid://bl1pahmvt6i7o" path="res://game/objects/items/scenes/tier 3/MultRicochet.tscn" id="218_xiccb"]
 [ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn" id="219_ungww"]
 [ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/StarFruit.tscn" id="220_a7pxr"]
+[ext_resource type="PackedScene" uid="uid://jj6gu75mw6f" path="res://game/objects/items/scenes/tier 2/SatelliteBuff.tscn" id="221_a7pxr"]
+[ext_resource type="PackedScene" uid="uid://dkir3dn6f6eve" path="res://game/objects/Equipment/head/Satellite.tscn" id="222_xiccb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -384,20 +386,6 @@ scale = Vector2(1, 1)
 
 [node name="EmenyWorm" parent="." unique_id=1655288545 instance=ExtResource("14_7khes")]
 position = Vector2(-139, -460)
-hard_move_step_distance = null
-hard_move_speed = null
-hard_damage = null
-hard_cooldown_time = null
-move_speed = null
-cooldown_time = null
-use_base_move_towards_player = null
-drop_coin_on_death = null
-path_desired_distance = null
-deals_melee_damage = null
-stop_on_melee_hit = null
-melee_hit_cooldown = null
-knockback_friction = null
-hitstun_duration = null
 
 [node name="EnemyBat" parent="." unique_id=2112646817 instance=ExtResource("15_x04md")]
 position = Vector2(-261, -498)
@@ -415,7 +403,7 @@ position = Vector2(45, 342)
 position = Vector2(-77, 555)
 
 [node name="Shrine oblation" parent="." unique_id=1541189603 instance=ExtResource("20_13rb2")]
-position = Vector2(-827, 473)
+position = Vector2(-903, 485)
 
 [node name="Potion Heal" parent="." unique_id=1431943573 instance=ExtResource("20_0h76k")]
 position = Vector2(-109, 40)
@@ -713,7 +701,7 @@ position = Vector2(441, 126)
 position = Vector2(-1166, 831)
 
 [node name="Fire" parent="." unique_id=1969482845 instance=ExtResource("106_kwy8j")]
-position = Vector2(-906, 515)
+position = Vector2(-828, 527)
 burn_out_time = 100.0
 player_phy_damage = 0
 
@@ -934,19 +922,19 @@ position = Vector2(-589, 307)
 position = Vector2(-640, 311)
 
 [node name="ZeroToHundred" parent="." unique_id=1199965967 instance=ExtResource("183_56n5d")]
-position = Vector2(-691, 315)
+position = Vector2(-695, 309)
 
 [node name="Ricochet" parent="." unique_id=726652365 instance=ExtResource("192_1dbv8")]
-position = Vector2(-741, 309)
+position = Vector2(-749, 309)
 
 [node name="MathCircle" parent="." unique_id=1097788243 instance=ExtResource("193_rmvc6")]
-position = Vector2(-744, 368)
+position = Vector2(-753, 371)
 
 [node name="CriticalFlower" parent="." unique_id=1688070179 instance=ExtResource("194_ungww")]
-position = Vector2(-748.61505, 431.50012)
+position = Vector2(-757, 431)
 
 [node name="SiegeHammer" parent="." unique_id=577486623 instance=ExtResource("195_a7pxr")]
-position = Vector2(-750, 487)
+position = Vector2(-752, 489)
 
 [node name="EnemyKnot" parent="." unique_id=1654487569 instance=ExtResource("184_oteyw")]
 position = Vector2(-486, -372)
@@ -982,7 +970,7 @@ position = Vector2(535, 893)
 position = Vector2(3, 780)
 
 [node name="Shrine" parent="." unique_id=147523815 instance=ExtResource("203_om2vm")]
-position = Vector2(-833, 354)
+position = Vector2(-880, 367)
 
 [node name="Upgrade" parent="." unique_id=1333091495 instance=ExtResource("204_om2vm")]
 position = Vector2(-324, -42)
@@ -1019,7 +1007,13 @@ position = Vector2(-559, -378)
 position = Vector2(-141, 559)
 
 [node name="StarFruit" parent="." unique_id=627887000 instance=ExtResource("220_a7pxr")]
-position = Vector2(-451.425, 570.20325)
+position = Vector2(-197, 557)
 
 [node name="SpaceTimeCircuit" parent="." unique_id=761673480 instance=ExtResource("219_ungww")]
-position = Vector2(-376.625, 598.3633)
+position = Vector2(-251, 555)
+
+[node name="SatelliteBuff" parent="." unique_id=2125635162 instance=ExtResource("221_a7pxr")]
+position = Vector2(-959, -49)
+
+[node name="Satellite" parent="." unique_id=1535325803 instance=ExtResource("222_xiccb")]
+position = Vector2(520, 127)

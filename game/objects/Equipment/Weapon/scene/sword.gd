@@ -24,7 +24,7 @@ func _ready() -> void:
 	_melee_size_scale = clampf(0.4 + atk_range / 300.0, 0.6, 4.0)
 	scale = Vector2(_melee_size_scale, _melee_size_scale)
 
-	if GameState.SpreadShot and not _melee_boomerang_copy:
+	if GameState.SpreadShot and not _melee_boomerang_copy and not GameState.SatelliteOrbit:
 		_play_attack_sfx()
 		call_deferred("_deferred_melee_star_and_spread")
 		return
@@ -42,14 +42,38 @@ func _ready() -> void:
 		body_entered.connect(_on_body_entered)
 	if not body_exited.is_connected(_on_body_exited_ricochet):
 		body_exited.connect(_on_body_exited_ricochet)
-	anim_sprite.play("default")
-	_on_frame_changed()
-	call_deferred("_try_apply_star_fruit")
+
+	if GameState.SatelliteOrbit:
+		# Сразу первый кадр — не проигрывать замах до конца (иначе «застревает»).
+		anim_sprite.play("default")
+		anim_sprite.pause()
+		anim_sprite.frame = 0
+		_on_frame_changed()
+		call_deferred("_try_apply_star_fruit")
+		call_deferred("_deferred_melee_satellite_register")
+	else:
+		anim_sprite.play("default")
+		_on_frame_changed()
+		call_deferred("_try_apply_star_fruit")
+		call_deferred("_try_register_satellite")
 
 
+func _deferred_melee_satellite_register() -> void:
+	_try_register_satellite()
+	# Если орбита не взяла снаряд — не оставляем вечный замороженный спрайт.
+	if not exploded and not satellite_orbit:
+		queue_free()
+		return
+	# Анимация больше не управляет жизнью на орбите.
+	if anim_sprite and anim_sprite.is_connected("animation_finished", Callable(self, "_on_animation_finished")):
+		anim_sprite.animation_finished.disconnect(_on_animation_finished)
 
-func _physics_process(_delta: float) -> void:
-	pass
+
+func _physics_process(delta: float) -> void:
+	if exploded:
+		return
+	if satellite_orbit:
+		_physics_process_satellite(delta)
 
 
 func _uses_melee_ricochet() -> bool:
@@ -83,6 +107,15 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _perform_melee_ricochet(body: Node) -> bool:
+	if satellite_orbit:
+		ricochet -= 1
+		satellite_orbit_sign *= -1.0
+		if _satellite_ctrl and _satellite_ctrl.has_method("flip_anchor_sign_for_shot"):
+			_satellite_ctrl.flip_anchor_sign_for_shot(self)
+		if is_instance_valid(body):
+			_ricochet_overlap_id = body.get_instance_id()
+		return true
+
 	var bounce := _compute_bounce_info(body)
 	var normal: Vector2 = bounce.normal
 	var hit_point: Vector2 = bounce.point
@@ -172,6 +205,14 @@ func _on_frame_changed() -> void:
 
 
 func _on_animation_finished() -> void:
+	if exploded:
+		return
+	if GameState.SatelliteOrbit or satellite_orbit or satellite_armed:
+		# На Satellite жизнь считает satellite_time_left — анимацию не зацикливаем.
+		anim_sprite.pause()
+		anim_sprite.frame = 0
+		_on_frame_changed()
+		return
 	_try_spawn_melee_boomerang_copy()
 	queue_free()
 

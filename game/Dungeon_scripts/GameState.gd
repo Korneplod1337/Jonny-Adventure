@@ -143,6 +143,8 @@ var AlchemistsGlasses: bool:
 		alchemists_glasses_changed.emit()
 var Surestrike := false # убирает разброс выстрела, не меняя стат точности
 var SpreadShot := false # через 50 дистанции снаряд рассыпается на 6 уменьшенных
+var SatelliteOrbit := false # снаряды занимают слоты и летят по кругу вокруг игрока
+var satellite_bonus_slots: int = 0 # satellitebuff: +2 за штуку
 var WildBoots := false # шанс доп. случайного зачарования на выстрел
 var LuckyHead := false # за этаж: +1 luck_level и enemy_hp_multiplier *= 0.97
 var extra_chest_loot_chance := 0.0 # шанс доп. лута из сундуков (цветок папоротника и т.п.)
@@ -248,6 +250,8 @@ func obnulenie() -> void:
 	AlchemistsGlasses = false
 	Surestrike = false
 	SpreadShot = false
+	SatelliteOrbit = false
+	satellite_bonus_slots = 0
 	WildBoots = false
 	LuckyHead = false
 	extra_chest_loot_chance = 0.0

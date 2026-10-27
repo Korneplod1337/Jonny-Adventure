@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://8udl6jp6xkc7"]
+
+[ext_resource type="Texture2D" uid="uid://csatiltex002" path="res://image/equip/head/Satilette2.png" id="1_down"]
+[ext_resource type="Texture2D" uid="uid://csatiltex004" path="res://image/equip/head/Satilette4.png" id="2_left"]
+[ext_resource type="Texture2D" uid="uid://csatiltex003" path="res://image/equip/head/Satilette3.png" id="3_right"]
+[ext_resource type="Texture2D" uid="uid://csatiltex005" path="res://image/equip/head/Satilette5.png" id="4_up"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_down")
+}],
+"loop": true,
+"name": &"down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_left")
+}],
+"loop": true,
+"name": &"left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_right")
+}],
+"loop": true,
+"name": &"right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_up")
+}],
+"loop": true,
+"name": &"up",
+"speed": 1.0
+}]

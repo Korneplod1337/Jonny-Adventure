@@ -14,7 +14,7 @@ func _ready() -> void:
 	_melee_size_scale = clampf(0.6 + atk_range / 600.0, 0.8, 2.0)
 	scale = Vector2(_melee_size_scale, _melee_size_scale)
 
-	if GameState.SpreadShot and not _melee_boomerang_copy:
+	if GameState.SpreadShot and not _melee_boomerang_copy and not GameState.SatelliteOrbit:
 		_play_attack_sfx()
 		call_deferred("_deferred_melee_star_and_spread")
 		return
@@ -29,11 +29,24 @@ func _ready() -> void:
 	_lifetime_timer.wait_time = _melee_spin_duration
 
 	_anim_sprite.speed_scale = GameState.animated_world_speed
-	_anim_sprite.play("default")
-	_lifetime_timer.start()
+	if GameState.SatelliteOrbit:
+		_anim_sprite.play("default")
+		_anim_sprite.pause()
+		_anim_sprite.frame = 0
+		call_deferred("_try_apply_star_fruit")
+		call_deferred("_deferred_melee_satellite_register")
+	else:
+		_anim_sprite.play("default")
+		_lifetime_timer.start()
+		call_deferred("_try_apply_star_fruit")
+		call_deferred("_try_register_satellite")
 	if not body_exited.is_connected(_on_body_exited_ricochet):
 		body_exited.connect(_on_body_exited_ricochet)
-	call_deferred("_try_apply_star_fruit")
+
+
+func _satellite_hard_lock() -> bool:
+	# С самого начала намертво на креплении, лицом от игрока.
+	return true
 
 
 func _on_body_entered(body: Node) -> void:

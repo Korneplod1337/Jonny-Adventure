@@ -379,6 +379,22 @@ const LOCATION_UNLOCKS := {
 	"unlock_joaquin": 7,
 }
 
+## 1-based English display names for menus/tooltips.
+const LOCATION_NAMES := {
+	1: "Basement",
+	2: "Pyramid",
+	3: "Rotting Forest",
+	4: "Casino",
+	5: "Mine",
+	6: "Fairy Tale",
+	7: "Streets",
+}
+
+
+func get_location_name(location_1based: int) -> String:
+	return str(LOCATION_NAMES.get(location_1based, "Location %d" % location_1based))
+
+
 
 func get_menu_stat_keys() -> Array[String]:
 	var keys: Array[String] = []

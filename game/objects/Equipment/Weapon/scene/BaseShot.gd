@@ -38,6 +38,9 @@ var _boomerang_segment_count := 0
 var _segment_curve_t := 0.0
 var _segment_trip_duration := 1.0
 var _boomerang_active := false
+## Множитель скорости от кривой бумеранга (1→0→1 при развороте).
+var _boom_speed_scale := 1.0
+var _boom_leg_travelled := 0.0
 
 var enchantment: EnchantmentResource
 ## Доп. зачарование поверх оружия (например Wild_Boots).
@@ -85,6 +88,26 @@ var _sine_initialized: bool = false
 ## Отдельный счётчик фазы волны (сбрасывается при рикошете/развороте).
 var _sine_path_distance: float = 0.0
 
+## Satellite orbit (экип Satellite)
+var satellite_armed: bool = false # свободный полёт до ½ радиуса
+var satellite_orbit: bool = false # chase | docked
+var satellite_phase: String = "free" # free | chase | docked
+var satellite_slot_index: int = -1
+var satellite_current_angle: float = 0.0
+var satellite_orbit_sign: float = 1.0 # зеркало знака якоря (рикошет)
+var satellite_time_left: float = -1.0 # <0 = вечно (дальний); >=0 таймер ближки
+var satellite_spawn_order: int = 0
+var _satellite_vel: Vector2 = Vector2.ZERO
+var _satellite_ctrl: Node = null
+var _satellite_boom_mult: float = 1.0
+var _satellite_arc_travelled: float = 0.0
+var _satellite_melee_life: float = -1.0 # дублирует таймер ближки на орбите
+const SATELLITE_WALL_MASK_BITS := 48 # layer 5 walls + layer 6 obstacles
+const SATELLITE_CAPTURE_BLEND := 5.0
+const SATELLITE_DOCK_DIST := 10.0
+## Множитель длины орбитального полёта ближки (было 2).
+const SATELLITE_MELEE_RANGE_MULT := 4.0
+
 enum FireSfxKind { TEAR, GUN, SLASH, NONE }
 @export var fire_sfx_kind: FireSfxKind = FireSfxKind.TEAR
 
@@ -108,6 +131,7 @@ func _ready() -> void:
 		body_exited.connect(_on_body_exited_ricochet)
 	# После дроби (deferred add_child) — Star Fruit на каждую дробинку отдельно.
 	call_deferred("_try_apply_star_fruit")
+	call_deferred("_try_register_satellite")
 
 
 func _process(_delta: float) -> void:
@@ -131,31 +155,31 @@ func _play_attack_sfx() -> void:
 func _physics_process(delta: float) -> void:
 	if exploded:
 		return
+	if satellite_orbit:
+		_physics_process_satellite(delta)
+		return
 	if _boomerang_active:
 		_physics_process_boomerang(delta)
+	elif sine_amplitude > 0.0:
+		_physics_process_sine(delta)
 	else:
 		_physics_process_linear(delta)
 
 
 func _physics_process_linear(delta: float) -> void:
-	if sine_amplitude > 0.0:
-		_physics_process_sine(delta)
-		return
-
 	var movement := direction.normalized() * speed * delta * self_speed_multiplier
 	position += movement
 	distance_travelled += movement.length()
 
-	if distance_travelled >= atk_range * self_range_multiplier:
+	if not satellite_armed and distance_travelled >= atk_range * self_range_multiplier:
 		exploded = true
 		explosion(1)
 		return
 	_try_spread_shot_split()
+	_try_satellite_capture_check()
 
 
 func _physics_process_sine(delta: float) -> void:
-	# Как обычный полёт: та же скорость и distance_travelled.
-	# Волна только крутит направление вокруг _sine_forward.
 	if not _sine_initialized:
 		_retarget_sine_base()
 
@@ -168,22 +192,21 @@ func _physics_process_sine(delta: float) -> void:
 	direction = move_dir
 	rotation = move_dir.angle()
 
-	if distance_travelled >= atk_range * self_range_multiplier:
+	if not satellite_armed and distance_travelled >= atk_range * self_range_multiplier:
 		exploded = true
 		explosion(1)
 		return
 	_try_spread_shot_split()
+	_try_satellite_capture_check()
 
 
 func _sine_wave_angle(path_dist: float) -> float:
 	var t := path_dist * sine_frequency
-	# cos(+π/2) == -sin: тот же центр в нуле, другая фаза
 	if sine_use_cos:
 		return cos(t + PI * 0.5)
 	return sin(t)
 
 
-## После рикошета / разворота бумеранга — новая ось волны, старт снова с центра.
 func _retarget_sine_base() -> void:
 	if sine_amplitude <= 0.0:
 		return
@@ -194,11 +217,12 @@ func _retarget_sine_base() -> void:
 	_sine_initialized = true
 
 
+## Бумеранг: кривая скорости 1→0→1, в нуле плавный разворот оси.
+## Math Circle — волна вокруг текущей оси direction.
 func _physics_process_boomerang(delta: float) -> void:
 	if _boomerang_segment >= _boomerang_segment_count:
 		_finish_boomerang_path()
 		return
-
 	if _segment_curve_t >= 1.0:
 		_advance_boomerang_segment()
 		return
@@ -206,40 +230,67 @@ func _physics_process_boomerang(delta: float) -> void:
 	var outbound := _boomerang_segment % 2 == 0
 	var sample_t := lerpf(0.0, 0.5, _segment_curve_t) if outbound else lerpf(0.5, 1.0, _segment_curve_t)
 	var mult := BOOMERANG_SPEED_CURVE.sample(sample_t)
-	var move_dir := direction.normalized()
+	# Движение: |mult| (у нуля почти стоп). Прогресс кривой — отдельно, с мин. floor.
+	var axis := direction.normalized()
+	if axis == Vector2.ZERO:
+		axis = Vector2.RIGHT
+	var move_dir := axis
+	if sine_amplitude > 0.0:
+		if not _sine_initialized:
+			_retarget_sine_base()
+		_sine_forward = axis
+		var angle_off := _sine_wave_angle(_sine_path_distance) * sine_amplitude
+		move_dir = _sine_forward.rotated(angle_off)
 
-	var step := move_dir * speed * absf(mult) * delta * self_speed_multiplier
+	var step_len := speed * absf(mult) * delta * self_speed_multiplier
+	var step := move_dir * step_len
 	global_position += step
+	if sine_amplitude > 0.0:
+		_sine_path_distance += step_len
+	distance_travelled += step_len
 	rotation = move_dir.angle()
-	distance_travelled += step.length()
 
 	var t_rate := maxf(absf(mult), BOOMERANG_MIN_CURVE_T_RATE)
-	_segment_curve_t += (t_rate * delta) / _segment_trip_duration
+	_segment_curve_t += (t_rate * delta) / maxf(_segment_trip_duration, 0.001)
 	_segment_curve_t = minf(_segment_curve_t, 1.0)
+	_boom_speed_scale = absf(mult)
 	_try_spread_shot_split()
+	_try_satellite_capture_check()
 
 
 func _init_boomerang() -> void:
 	if boomerang_power <= 0:
 		_boomerang_active = false
+		_boom_speed_scale = 1.0
 		return
 
 	_max_boomerang_range = atk_range * self_range_multiplier
 	_boomerang_segment_count = boomerang_power + 1
 	_boomerang_segment = 0
 	_segment_curve_t = 0.0
+	_boom_leg_travelled = 0.0
 	_segment_trip_duration = _get_boomerang_segment_duration(0)
+	_boom_speed_scale = 1.0
 	_boomerang_active = true
 
 
-func _get_boomerang_segment_duration(segment: int) -> float:
+func _get_boomerang_leg_range(segment: int) -> float:
 	var range_len := _max_boomerang_range
 	if segment == 0:
 		range_len *= boomerang_first_leg_mult
-	return range_len / maxf(speed * self_speed_multiplier, 1.0)
+	return maxf(range_len, 1.0)
 
 
-## Скопировать прогресс бумеранга (оставшуюся дистанцию текущего отрезка).
+func _get_boomerang_segment_duration(segment: int) -> float:
+	return _get_boomerang_leg_range(segment) / maxf(speed * self_speed_multiplier, 1.0)
+
+
+func _sample_boomerang_speed_scale() -> float:
+	var outbound := _boomerang_segment % 2 == 0
+	var sample_t := lerpf(0.0, 0.5, _segment_curve_t) if outbound else lerpf(0.5, 1.0, _segment_curve_t)
+	return absf(BOOMERANG_SPEED_CURVE.sample(sample_t))
+
+
 func _copy_boomerang_flight_state(source: BaseShot) -> void:
 	_boomerang_active = source._boomerang_active
 	_max_boomerang_range = source._max_boomerang_range
@@ -247,22 +298,31 @@ func _copy_boomerang_flight_state(source: BaseShot) -> void:
 	_boomerang_segment = source._boomerang_segment
 	_segment_curve_t = source._segment_curve_t
 	_segment_trip_duration = source._segment_trip_duration
+	_boom_leg_travelled = source._boom_leg_travelled
+	_boom_speed_scale = source._boom_speed_scale
 	boomerang_power = source.boomerang_power
 	boomerang_first_leg_mult = source.boomerang_first_leg_mult
 
 
 func _advance_boomerang_segment() -> void:
-	direction = -direction
-	_retarget_sine_base()
 	_boomerang_segment += 1
 	_segment_curve_t = 0.0
+	_boom_leg_travelled = 0.0
 	if _boomerang_segment >= _boomerang_segment_count:
 		_finish_boomerang_path()
 		return
+	# В нуле кривой — разворот оси (уже почти стоим).
+	direction = -direction.normalized() if direction.length_squared() > 0.0 else Vector2.LEFT
+	_retarget_sine_base()
 	_segment_trip_duration = _get_boomerang_segment_duration(_boomerang_segment)
+	_boom_speed_scale = _sample_boomerang_speed_scale()
+
+
 func _finish_boomerang_path() -> void:
 	if exploded:
 		return
+	_boomerang_active = false
+	_boom_speed_scale = 1.0
 	exploded = true
 	explosion(1)
 
@@ -284,8 +344,14 @@ func _resolve_collision(body: Node) -> void:
 		if _register_pierce_hit(body, _get_final_damage()):
 			# Пробивание исчерпано — рикошет, иначе уничтожение.
 			if not _try_ricochet(body):
+				if satellite_orbit and _satellite_ctrl:
+					_satellite_ctrl.unregister_shot(self)
 				exploded = true
 				explosion(0)
+		return
+
+	# На орбите Satellite стены/препятствия игнорируем.
+	if satellite_orbit:
 		return
 
 	if not _try_ricochet(body):
@@ -331,6 +397,16 @@ func _perform_melee_ricochet(_body: Node) -> bool:
 
 
 func _perform_projectile_ricochet(body: Node) -> bool:
+	ricochet -= 1
+	if satellite_orbit:
+		# Рикошет на круге — разворот крепления/облёта.
+		satellite_orbit_sign *= -1.0
+		if _satellite_ctrl and _satellite_ctrl.has_method("flip_anchor_sign_for_shot"):
+			_satellite_ctrl.flip_anchor_sign_for_shot(self)
+		if is_instance_valid(body):
+			_ricochet_overlap_id = body.get_instance_id()
+		return true
+
 	var bounce := _compute_bounce_info(body)
 	var normal: Vector2 = bounce.normal
 	var in_dir := _get_flight_direction()
@@ -338,7 +414,6 @@ func _perform_projectile_ricochet(body: Node) -> bool:
 	if out_dir.length_squared() < 0.0001:
 		out_dir = _apply_ricochet_spread(-in_dir)
 
-	ricochet -= 1
 	direction = out_dir
 	_retarget_sine_base()
 	_sync_facing_after_redirect()
@@ -431,6 +506,313 @@ func _try_apply_star_fruit() -> void:
 	var shooter := _get_player()
 	if shooter and shooter.has_method("apply_star_fruit_to_shot"):
 		shooter.apply_star_fruit_to_shot(self, stacks)
+
+
+func _try_register_satellite() -> void:
+	if not GameState.SatelliteOrbit or satellite_orbit or satellite_armed or exploded:
+		return
+	if not is_instance_valid(self):
+		return
+	var shooter := _get_player()
+	if shooter == null:
+		return
+	var ctrl := shooter.get_node_or_null("SatelliteOrbit") as SatelliteOrbitController
+	if ctrl == null:
+		ctrl = SatelliteOrbitController.new()
+		ctrl.name = "SatelliteOrbit"
+		shooter.add_child(ctrl)
+	ctrl.register_shot(self)
+
+
+func arm_satellite(ctrl: Node) -> void:
+	_satellite_ctrl = ctrl
+	satellite_armed = true
+	satellite_phase = "free"
+	satellite_slot_index = -1
+	satellite_orbit_sign = 1.0
+	satellite_spawn_order = SatelliteOrbitController.next_spawn_order()
+	satellite_time_left = -1.0
+
+
+func begin_satellite_capture(ctrl: Node, slot_idx: int = -1) -> void:
+	_satellite_ctrl = ctrl
+	satellite_armed = false
+	satellite_orbit = true
+	satellite_phase = "chase"
+	satellite_slot_index = slot_idx
+	satellite_orbit_sign = 1.0
+	_satellite_boom_mult = 1.0
+	if satellite_spawn_order <= 0:
+		satellite_spawn_order = SatelliteOrbitController.next_spawn_order()
+	collision_mask = collision_mask & ~SATELLITE_WALL_MASK_BITS
+	_boomerang_active = false
+
+	var orbit_spd := 48.0
+	if ctrl and ctrl.has_method("get_orbit_speed"):
+		orbit_spd = ctrl.get_orbit_speed()
+
+	var is_melee := _uses_melee_ricochet()
+	_satellite_arc_travelled = 0.0
+	if is_melee:
+		_satellite_freeze_melee_sprite()
+		# Дальность жизни на орбите: множитель к atk_range (дуга и таймер).
+		var melee_orbit_range := atk_range * SATELLITE_MELEE_RANGE_MULT
+		_satellite_melee_life = melee_orbit_range / maxf(orbit_spd, 1.0)
+		satellite_time_left = _satellite_melee_life
+		speed = 0.0
+		var life := maxf(_satellite_melee_life, 0.05)
+		var tree := get_tree()
+		if tree:
+			tree.create_timer(life).timeout.connect(_on_satellite_melee_timer)
+	else:
+		satellite_time_left = -1.0
+		_satellite_melee_life = -1.0
+
+	# Бумеранг на орбите: та же логика — плавно гасим скорость, разворот знака.
+	if boomerang_power > 0:
+		_max_boomerang_range = maxf(atk_range * self_range_multiplier, 1.0)
+		_boomerang_segment_count = boomerang_power + 1
+		_boomerang_segment = 0
+		_segment_curve_t = 0.0
+		_boom_leg_travelled = 0.0
+		_boom_speed_scale = 1.0
+		_satellite_boom_mult = 1.0
+		_segment_trip_duration = _get_boomerang_leg_range(0) / maxf(orbit_spd, 1.0)
+
+	# Вся ближка — сразу на пустом/освободившемся слоте, без подлёта.
+	if is_melee and ctrl and ctrl.has_method("get_anchor_world_pos") and slot_idx >= 0:
+		satellite_phase = "docked"
+		global_position = ctrl.get_anchor_world_pos(slot_idx)
+		_satellite_face_away_from_player()
+		return
+
+	var target := global_position
+	if ctrl and ctrl.has_method("get_anchor_world_pos") and slot_idx >= 0:
+		target = ctrl.get_anchor_world_pos(slot_idx)
+	var to_t := target - global_position
+	var fly := maxf(speed * self_speed_multiplier, orbit_spd)
+	if to_t.length_squared() > 0.01:
+		_satellite_vel = to_t.normalized() * fly
+	elif direction.length_squared() > 0.01:
+		_satellite_vel = direction.normalized() * fly
+	else:
+		_satellite_vel = Vector2.RIGHT * fly
+
+
+func force_satellite_expire() -> void:
+	if exploded:
+		return
+	if _satellite_ctrl and _satellite_ctrl.has_method("unregister_shot"):
+		_satellite_ctrl.unregister_shot(self)
+	_satellite_ctrl = null
+	satellite_orbit = false
+	satellite_armed = false
+	satellite_phase = "free"
+	satellite_slot_index = -1
+	exploded = true
+	monitoring = false
+	set_deferred("monitorable", false)
+	var spr := get_node_or_null("shot_Animated") as AnimatedSprite2D
+	if spr:
+		spr.stop()
+		spr.hide()
+	# Ближка без miss-анимации — сразу убрать с поля.
+	if _uses_melee_ricochet():
+		queue_free()
+		return
+	explosion(1)
+
+
+func _on_satellite_melee_timer() -> void:
+	if not is_instance_valid(self) or exploded:
+		return
+	force_satellite_expire()
+
+
+func get_satellite_boomerang_speed_mult() -> float:
+	if boomerang_power <= 0 or _boomerang_segment_count <= 0:
+		return 1.0
+	return _satellite_boom_mult
+
+
+func notify_satellite_arc(arc_len: float, delta: float) -> void:
+	if arc_len > 0.0:
+		_satellite_arc_travelled += arc_len
+		if _uses_melee_ricochet() and atk_range > 0.0:
+			if _satellite_arc_travelled >= atk_range * SATELLITE_MELEE_RANGE_MULT:
+				force_satellite_expire()
+				return
+	if boomerang_power <= 0 or _boomerang_segment_count <= 0:
+		return
+	if satellite_phase != "docked" and satellite_phase != "chase":
+		return
+	# Как в свободном полёте: кривая по времени → почти стоп → разворот знака орбиты.
+	var orbit_spd := 48.0
+	if _satellite_ctrl and _satellite_ctrl.has_method("get_orbit_speed"):
+		orbit_spd = _satellite_ctrl.get_orbit_speed()
+	if _segment_trip_duration <= 0.0:
+		_segment_trip_duration = _get_boomerang_leg_range(_boomerang_segment) / maxf(orbit_spd, 1.0)
+
+	var outbound := _boomerang_segment % 2 == 0
+	var sample_t := lerpf(0.0, 0.5, _segment_curve_t) if outbound else lerpf(0.5, 1.0, _segment_curve_t)
+	var mult := BOOMERANG_SPEED_CURVE.sample(sample_t)
+	_satellite_boom_mult = absf(mult)
+	_boom_speed_scale = _satellite_boom_mult
+
+	var t_rate := maxf(absf(mult), BOOMERANG_MIN_CURVE_T_RATE)
+	_segment_curve_t += (t_rate * delta) / maxf(_segment_trip_duration, 0.001)
+	_segment_curve_t = minf(_segment_curve_t, 1.0)
+	if _segment_curve_t < 1.0:
+		return
+
+	_segment_curve_t = 0.0
+	_boom_leg_travelled = 0.0
+	_boomerang_segment += 1
+	if _boomerang_segment >= _boomerang_segment_count:
+		_boomerang_segment_count = 0
+		_satellite_boom_mult = 1.0
+		_boom_speed_scale = 1.0
+		return
+	if _satellite_ctrl and _satellite_ctrl.has_method("flip_anchor_sign_for_shot"):
+		_satellite_ctrl.flip_anchor_sign_for_shot(self)
+	if _satellite_ctrl and _satellite_ctrl.has_method("get_anchor_sign"):
+		satellite_orbit_sign = _satellite_ctrl.get_anchor_sign(satellite_slot_index)
+	_segment_trip_duration = _get_boomerang_leg_range(_boomerang_segment) / maxf(orbit_spd, 1.0)
+	_satellite_boom_mult = _sample_boomerang_speed_scale()
+	_boom_speed_scale = _satellite_boom_mult
+
+
+func _satellite_hard_lock() -> bool:
+	return false
+
+
+func _satellite_face_away_from_player() -> void:
+	var shooter := _get_player()
+	if shooter == null:
+		return
+	var away = global_position - shooter.global_position
+	if away.length_squared() < 0.0001:
+		away = Vector2.RIGHT
+	direction = away.normalized()
+	rotation = direction.angle()
+	_align_shadow_to_world()
+	_align_crit_to_world()
+
+
+func _try_satellite_capture_check() -> void:
+	if not satellite_armed or satellite_orbit or exploded:
+		return
+	var shooter := _get_player()
+	if shooter == null or not is_instance_valid(shooter):
+		return
+	var half_r := SatelliteOrbitController.ORBIT_RADIUS * 0.5
+	if _satellite_ctrl and _satellite_ctrl.has_method("get_half_radius"):
+		half_r = _satellite_ctrl.get_half_radius()
+	if global_position.distance_to(shooter.global_position) < half_r:
+		return
+	if _satellite_ctrl and _satellite_ctrl.has_method("begin_capture"):
+		_satellite_ctrl.begin_capture(self)
+
+
+func _satellite_freeze_melee_sprite() -> void:
+	var spr := get_node_or_null("shot_Animated") as AnimatedSprite2D
+	if spr == null:
+		return
+	spr.pause()
+	spr.frame = 0
+	if has_method("_on_frame_changed"):
+		call("_on_frame_changed")
+
+
+func _physics_process_satellite(delta: float) -> void:
+	var shooter := _get_player()
+	if shooter == null or not is_instance_valid(shooter):
+		force_satellite_expire()
+		return
+	var orbit_spd := 48.0
+	if _satellite_ctrl and _satellite_ctrl.has_method("get_orbit_speed"):
+		orbit_spd = _satellite_ctrl.get_orbit_speed()
+
+	_satellite_chase_anchor(delta, orbit_spd)
+
+	if satellite_time_left >= 0.0:
+		satellite_time_left -= delta
+		if satellite_time_left <= 0.0:
+			force_satellite_expire()
+
+
+func _satellite_chase_anchor(delta: float, orbit_spd: float) -> void:
+	if _satellite_ctrl == null or satellite_slot_index < 0:
+		force_satellite_expire()
+		return
+
+	var target: Vector2 = _satellite_ctrl.get_anchor_world_pos(satellite_slot_index)
+	var ang: float = 0.0
+	var sgn: float = satellite_orbit_sign
+	if _satellite_ctrl.has_method("get_anchor_angle"):
+		ang = _satellite_ctrl.get_anchor_angle(satellite_slot_index)
+	if _satellite_ctrl.has_method("get_anchor_sign"):
+		sgn = _satellite_ctrl.get_anchor_sign(satellite_slot_index)
+		satellite_orbit_sign = sgn
+
+	var boom_scl := 1.0
+	if _satellite_ctrl.has_method("get_anchor_omega_scale"):
+		boom_scl = absf(_satellite_ctrl.get_anchor_omega_scale(satellite_slot_index))
+
+	var to_t := target - global_position
+	var dist := to_t.length()
+	satellite_current_angle = ang
+
+	var tang := Vector2.RIGHT.rotated(ang + PI * 0.5 * sgn)
+	var anchor_vel := tang * orbit_spd * boom_scl
+
+	# После стыковки — намертво на креплении (мувспид игрока не сбивает).
+	if _satellite_hard_lock() or satellite_phase == "docked":
+		satellite_phase = "docked"
+		global_position = target
+		_satellite_vel = anchor_vel
+		if _satellite_hard_lock() or _uses_melee_ricochet():
+			_satellite_face_away_from_player()
+		else:
+			direction = tang
+			rotation = direction.angle()
+			_align_shadow_to_world()
+			_align_crit_to_world()
+		return
+
+	# Только фаза подлёта к орбите — мягкий догон с лимитом ±75%.
+	var max_corr = orbit_spd * SatelliteOrbitController.SPEED_CORR_FRAC
+	var catch_vel := Vector2.ZERO
+	if dist > 0.01:
+		catch_vel = to_t.normalized() * minf(dist / maxf(delta, 0.0001), max_corr)
+
+	var desired := anchor_vel + catch_vel
+	var min_spd = orbit_spd * (1.0 - SatelliteOrbitController.SPEED_CORR_FRAC)
+	var max_spd = orbit_spd * (1.0 + SatelliteOrbitController.SPEED_CORR_FRAC)
+	var dlen := desired.length()
+	if dlen > 0.01:
+		desired = desired.normalized() * clampf(dlen, min_spd * boom_scl, maxf(max_spd * boom_scl, min_spd))
+	else:
+		desired = tang * orbit_spd * boom_scl
+
+	_satellite_vel = _satellite_vel.lerp(desired, 1.0 - exp(-SATELLITE_CAPTURE_BLEND * delta))
+	var vlen := _satellite_vel.length()
+	if vlen > 0.01:
+		_satellite_vel = _satellite_vel.normalized() * clampf(vlen, min_spd * boom_scl, maxf(max_spd * boom_scl, min_spd))
+
+	global_position += _satellite_vel * delta
+	if dist <= SATELLITE_DOCK_DIST:
+		satellite_phase = "docked"
+		global_position = target
+		direction = tang
+		if _satellite_ctrl.has_method("on_shot_reached_orbit"):
+			_satellite_ctrl.on_shot_reached_orbit(self)
+	elif _satellite_vel.length_squared() > 0.01:
+		direction = _satellite_vel.normalized()
+
+	rotation = direction.angle()
+	_align_shadow_to_world()
+	_align_crit_to_world()
 
 
 ## Ближка + SpreadShot: сначала Star Fruit, потом конус (иначе клоны фрукта
@@ -580,17 +962,32 @@ func _spawn_hack_effects(target: Node, dealt_damage: float) -> void:
 
 
 func explosion(animation_index):
+	if _satellite_ctrl and _satellite_ctrl.has_method("unregister_shot"):
+		_satellite_ctrl.unregister_shot(self)
+		_satellite_ctrl = null
+	satellite_orbit = false
+	satellite_armed = false
 	speed = 0
-	$shot_Animated.speed_scale = animaited_speed
+	var anim := get_node_or_null("shot_Animated") as AnimatedSprite2D
+	if anim == null:
+		queue_free()
+		return
+	anim.speed_scale = animaited_speed
+	var play_name := ""
 	if animation_index == 0:
-		$shot_Animated.play("default")
+		play_name = "default"
 	elif animation_index == 1:
-		$shot_Animated.play("miss")
+		play_name = "miss"
+	# Ближка и часть снарядов без "miss" — иначе animation_finished не придёт и узел вечный.
+	if play_name == "" or anim.sprite_frames == null or not anim.sprite_frames.has_animation(play_name):
+		queue_free()
+		return
+	anim.play(play_name)
 
 	_start_shadow_shrink()
 
-	if not $shot_Animated.is_connected("animation_finished", Callable(self, "_on_explosion_finished")):
-		$shot_Animated.connect("animation_finished", Callable(self, "_on_explosion_finished"))
+	if not anim.is_connected("animation_finished", Callable(self, "_on_explosion_finished")):
+		anim.connect("animation_finished", Callable(self, "_on_explosion_finished"))
 
 
 func _start_shadow_shrink() -> void:

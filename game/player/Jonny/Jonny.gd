@@ -851,9 +851,13 @@ func _clone_shot_for_star_fruit(shot: Node, dir: Vector2, parent: Node) -> Node:
 	clone._spread_shot_done = false
 	clone.star_fruit_stacks_to_apply = 0
 	clone._star_fruit_applied = true
-	clone.position = Vector2.ZERO
+	# Сразу локальная позиция у родителя — без кадра в (0,0) и «телепорта».
+	if parent is Node2D:
+		clone.position = (parent as Node2D).to_local(shot.global_position)
+	clone.visible = false
 	parent.add_child(clone)
 	clone.global_position = shot.global_position
+	clone.visible = true
 	# После _ready оружия — точные финальные множители оригинала (без второго *=).
 	clone.extra_reload = shot.extra_reload
 	clone.self_damage_multiplier = shot.self_damage_multiplier
@@ -1003,6 +1007,9 @@ func end_floor_transition() -> void:
 	floor_transition_active = false
 	if current_ability:
 		current_ability.notify_floor_advanced()
+	# Solaris живёт в current_scene — после смены этажа пересоздаём/подтягиваем.
+	if shot_id == "Solaris":
+		SolarisShot.ensure_for_player(self)
 
 
 func play_hatch_exit(hatch_center: Vector2) -> void:

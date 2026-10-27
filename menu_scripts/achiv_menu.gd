@@ -83,7 +83,7 @@ func _get_unlock_reward_text(ach_id: String) -> String:
 
 	if AchivStatsRegistry.LOCATION_UNLOCKS.has(ach_id):
 		var loc: int = int(AchivStatsRegistry.LOCATION_UNLOCKS[ach_id])
-		_append_unique(names, seen, "Location %d" % loc)
+		_append_unique(names, seen, AchivStatsRegistry.get_location_name(loc))
 
 	return "\n".join(names)
 

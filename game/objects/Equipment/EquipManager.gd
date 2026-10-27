@@ -45,6 +45,8 @@ var POOLS := {
 		 "tier": 1, "weight": 10.0},
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
 		 "tier": 2, "weight": 10.0},
+		#{"id": "Satellite", "scene": preload("res://game/objects/Equipment/head/Satellite.tscn"),
+		 #"tier": 3, "weight": 10.0},
 		#{"id": "Iron_Maiden", "scene": preload("res://game/objects/Equipment/head/Iron_Maiden.tscn"),
 		 #"tier": 1, "weight": 10.0},
 		#{"id": "lucky_head", "scene": preload("uid://b6vskrremanrc"),
@@ -84,6 +86,8 @@ var POOLS := {
 		 "tier": 2, "weight": 10.0},
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
 		 "tier": 1, "weight": 10.0},
+		{"id": "Satellite", "scene": preload("res://game/objects/Equipment/head/Satellite.tscn"),
+		 "tier": 3, "weight": 10.0},
 
 		
 		{"id": "Dash", "scene": preload("res://game/objects/Equipment/Ability/equip/Dash_equip.tscn"),
@@ -225,6 +229,8 @@ var POOLS := {
 		 "tier": 2, "weight": 10.0},
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "Satellite", "scene": preload("res://game/objects/Equipment/head/Satellite.tscn"),
+		 "tier": 3, "weight": 10.0},
 	]
 }
 
@@ -243,6 +249,8 @@ var equip_visuals := {
 		preload("res://image/equip/head/Iron_Maiden.tres"),
 	"Spread_Shot":
 		preload("res://image/equip/head/Spread_shot.tres"),
+	"Satellite":
+		preload("res://image/equip/head/Satilette.tres"),
 		
 	# CHEST
 	"Death_shield":
