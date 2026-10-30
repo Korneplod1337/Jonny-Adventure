@@ -409,6 +409,10 @@ func teleport_player(door: Node, body: Node2D) -> void:
 	body.global_position = spawn_pos
 	refresh_minimap()
 
+	if GameState.LuckyGoldShield and target_room.type == RoomType.STANDARD:
+		GameState.add_coins(1)
+		SoundManager.play_coin_wild_pitch(-8.0, 8.0)
+
 	if body.has_method("set_room"): #камера тп
 		body.set_room(target_scene)
 

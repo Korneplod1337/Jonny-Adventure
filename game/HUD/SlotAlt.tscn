@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bv384qvqyn0dt" path="res://game/HUD/slotAlt.gd" id="1_blh3v"]
 [ext_resource type="Theme" uid="uid://c626wtnojhto8" path="res://image/interface/new_theme.tres" id="2_7l738"]
-[ext_resource type="FontFile" uid="uid://bjnli87f6ufj6" path="res://Fonts/JonnyAdventureFont2.ttf" id="3_rcop1"]
+[ext_resource type="FontFile" uid="uid://da2aij2x8g1mb" path="res://Fonts/JonnyAdventureFont2.ttf" id="3_rcop1"]
 
 [node name="Slot" type="Control" unique_id=2046426771]
 custom_minimum_size = Vector2(72, 72)
@@ -17,11 +17,15 @@ grow_vertical = 2
 script = ExtResource("1_blh3v")
 
 [node name="Icon" type="TextureRect" parent="." unique_id=257606357]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 0
-offset_right = 24.0
-offset_bottom = 24.0
-scale = Vector2(3, 3)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CountLabel" type="Label" parent="." unique_id=1847293051]
 visible = false

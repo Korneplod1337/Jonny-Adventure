@@ -19,40 +19,24 @@ const ENCHANTMENT_TEMPLATES: Array[EnchantmentResource] = [
 # Обновить разблокировку в ачивках для armory
 var POOLS := {
 	"treasure": [ ## шмотки + абилки
-		#{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
-		 #"tier": 3, "weight": 10.0},
-		#{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
-		 #"tier": 2, "weight": 10.0},
+
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
 		 "tier": 1, "weight": 10.0},
+		{"id": "Dragon_Shield", "scene": preload("res://game/objects/Equipment/Chest/Dragon_Shield.tscn"),
+		 "tier": 2, "weight": 10.0},
+		
 		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
 		 "tier": 2, "weight": 10.0},
-		#{"id": "Lion_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lion_Shield.tscn"),
-		 #"tier": 2, "weight": 10.0},
-		#{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
-		 #"tier": 3, "weight": 10.0},
-		#{"id": "Kaliya_star_hat", "scene": preload("uid://bi5g2vqe6xdek"),
-		 #"tier": 2, "weight": 10.0},
-		#{"id": "Poison_boots", "scene": preload("uid://c1fiyctd2xrli"),
-		 #"tier": 2, "weight": 10.0},
-		#{"id": "Kaliya_boots", "scene": preload("uid://by8qnvewpw3v3"),
-		 #"tier": 3, "weight": 10.0},
-		#{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
-		 #"tier": 1, "weight": 10.0},
+		
+		
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
 		 "tier": 2, "weight": 10.0},
-		#{"id": "Satellite", "scene": preload("res://game/objects/Equipment/head/Satellite.tscn"),
-		 #"tier": 3, "weight": 10.0},
-		#{"id": "Iron_Maiden", "scene": preload("res://game/objects/Equipment/head/Iron_Maiden.tscn"),
-		 #"tier": 1, "weight": 10.0},
-		#{"id": "lucky_head", "scene": preload("uid://b6vskrremanrc"),
-		 #"tier": 2, "weight": 10.0},
-		
-		
+	
+	
 	
 	],
 	"armory": [
@@ -204,8 +188,12 @@ var POOLS := {
 		{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 1, "weight": 10.0},
 		{"id": "Lion_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lion_Shield.tscn"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Lucky_Gold_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lucky_Gold_Shield.tscn"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "Dragon_Shield", "scene": preload("res://game/objects/Equipment/Chest/Dragon_Shield.tscn"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
 		 "tier": 3, "weight": 10.0},
@@ -220,9 +208,9 @@ var POOLS := {
 		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 1, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 1, "weight": 10.0},
 		{"id": "lucky_head", "scene": preload("uid://b6vskrremanrc"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Iron_Maiden", "scene": preload("res://game/objects/Equipment/head/Iron_Maiden.tscn"),
@@ -230,6 +218,10 @@ var POOLS := {
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Satellite", "scene": preload("res://game/objects/Equipment/head/Satellite.tscn"),
+		 "tier": 2, "weight": 10.0},
+		{"id": "Third_Eye", "scene": preload("res://game/objects/Equipment/head/Third_Eye.tscn"),
+		 "tier": 1, "weight": 10.0},
+		{"id": "Saw_Mask", "scene": preload("res://game/objects/Equipment/head/Saw_Mask.tscn"),
 		 "tier": 3, "weight": 10.0},
 	]
 }
@@ -251,6 +243,10 @@ var equip_visuals := {
 		preload("res://image/equip/head/Spread_shot.tres"),
 	"Satellite":
 		preload("res://image/equip/head/Satilette.tres"),
+	"Third_Eye":
+		preload("res://image/equip/head/minimap.tres"),
+	"Saw_Mask":
+		preload("res://image/equip/head/Saw_mask.tres"),
 		
 	# CHEST
 	"Death_shield":
@@ -263,6 +259,10 @@ var equip_visuals := {
 		preload("res://image/equip/chest/armory_plate.tres"),
 	"Lion_Shield":
 		preload("res://image/equip/chest/lion_shield.tres"),
+	"Lucky_Gold_Shield":
+		preload("res://image/equip/chest/lucky_gold_shield.tres"),
+	"Dragon_Shield":
+		preload("res://image/equip/chest/dragon_shield.tres"),
 	
 	# BOOTS
 	"Poison_boots":

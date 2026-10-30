@@ -54,6 +54,8 @@ func _on_interact():
 	if not player: 
 		print('эквип не видит игрока')
 		return
+	if type == "head" and (GameState.SawMask or player.get("saw_mask_active")):
+		return
 	var price := _final_price()
 	if GS.coins < price:
 		return

@@ -77,7 +77,16 @@ var math_circle_amplitude: 	float = 0.0
 var math_circle_range_mult: 	float = 1.0
 ## Star Fruit: сколько раз применить сплит (×5 лучей, ×0.5 урон за стак)
 var star_fruit_stacks: 		int = 0
+## Saw Mask: кат-сцена / без головы / блок Head до конца забега
+var saw_mask_active: 		bool = false
 var attack_locked: 			bool = false
+
+const SAW_MASK_SHOT_SCALE := 1.5
+const SAW_MASK_EXTRA_CHANCE := 0.33
+const SAW_MASK_EXTRA_DMG_DIV := 4.0
+const SAW_MASK_EXTRA_SIZE_DIV := 3.0
+const SAW_MASK_EXTRA_RANGE_DIV := 2.0
+const SAW_MASK_EXTRA_SPREAD_DEG := 18.0
 
 ## Режим бога: все статы на максимум (10), бонусы = 15
 @export var god_mode: bool = false
@@ -380,7 +389,11 @@ func update_equipment_visuals():
 	for p in body_parts:
 		p.frame = 0
 	# HEAD
-	if head_id != "":
+	if saw_mask_active:
+		# После кат-сцены: Head (шлем) и AnimatedShot (голова) скрыты
+		head_sprite.visible = false
+		$AnimatedShot.visible = false
+	elif head_id != "":
 		head_sprite.sprite_frames = EquipManager.equip_visuals[head_id]
 		head_sprite.visible = true
 	else:
@@ -397,6 +410,15 @@ func update_equipment_visuals():
 		boots_sprite.visible = true
 	else:
 		boots_sprite.visible = false
+
+
+func apply_saw_mask_behead_visuals() -> void:
+	saw_mask_active = true
+	GameState.SawMask = true
+	head_sprite.visible = false
+	$AnimatedShot.visible = false
+
+
 
 # ЗДОРОВЬЕ
 const LOW_HP_FULL_HEART := 2 # целое сердце (две половинки)
@@ -777,8 +799,63 @@ func fire (shot_dir: Vector2) -> void:
 	fire_rate = ST.get_stat(self, "fire_rate")
 
 
-func _finalize_spawned_shot(_shot: Node) -> void:
-	pass
+func _finalize_spawned_shot(shot: Node) -> void:
+	_apply_saw_mask_shot_effects(shot)
+
+
+func _apply_saw_mask_shot_effects(shot: Node) -> void:
+	if not GameState.SawMask or shot == null or not is_instance_valid(shot):
+		return
+	if shot.get_meta("saw_mask_extra", false):
+		var s := SAW_MASK_SHOT_SCALE / SAW_MASK_EXTRA_SIZE_DIV
+		shot.scale *= Vector2(s, s)
+		return
+	shot.scale *= Vector2(SAW_MASK_SHOT_SCALE, SAW_MASK_SHOT_SCALE)
+	# +3 доп. снаряда только для tear, не для gun/melee
+	if not (shot is BaseShot) or shot.fire_sfx_kind != BaseShot.FireSfxKind.TEAR:
+		return
+	if randf() >= SAW_MASK_EXTRA_CHANCE:
+		return
+	call_deferred("_spawn_saw_mask_extras", shot)
+
+
+
+func _spawn_saw_mask_extras(source: Node) -> void:
+	if source == null or not is_instance_valid(source) or not shot_scene:
+		return
+	if attack_locked or movement_locked:
+		return
+	var base_angle: float = source.direction.angle()
+	for i in range(3):
+		var offset := (float(i) - 1.0) * SAW_MASK_EXTRA_SPREAD_DEG
+		_spawn_saw_mask_extra_shot(source, base_angle + deg_to_rad(offset))
+
+
+func _spawn_saw_mask_extra_shot(source: Node, angle: float) -> void:
+	var shot = shot_scene.instantiate()
+	shot.set_meta("saw_mask_extra", true)
+	shot.position = global_position + Vector2(0, -15)
+	shot.direction = Vector2.RIGHT.rotated(angle)
+	shot.damage = maxi(1, int(round(float(source.damage) / SAW_MASK_EXTRA_DMG_DIV)))
+	shot.atk_range = float(source.atk_range) / SAW_MASK_EXTRA_RANGE_DIV
+
+	shot.speed = source.speed
+	shot.boomerang_power = source.boomerang_power
+	shot.boomerang_first_leg_mult = source.boomerang_first_leg_mult
+	shot.hack = source.hack
+	shot.ricochet = source.ricochet
+	shot.penetration = source.penetration
+	shot.aoe_radius = source.aoe_radius
+	shot.use_spread = source.use_spread
+	shot.pellet_count = 1
+	shot.spread_angle = source.spread_angle
+	apply_shot_item_bonuses(shot)
+	if shot_enchantment:
+		shot.enchantment = shot_enchantment.duplicate(true)
+	shot.star_fruit_stacks_to_apply = 0
+	shot._star_fruit_applied = true
+	get_tree().current_scene.add_child(shot)
+	_finalize_spawned_shot(shot)
 
 
 ## Вызывает BaseShot после дроби: каждый стак — ×5 направлений и ×0.5 урона.

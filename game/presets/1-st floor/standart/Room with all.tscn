@@ -220,8 +220,12 @@
 [ext_resource type="PackedScene" uid="uid://bl1pahmvt6i7o" path="res://game/objects/items/scenes/tier 3/MultRicochet.tscn" id="218_xiccb"]
 [ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn" id="219_ungww"]
 [ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/StarFruit.tscn" id="220_a7pxr"]
+[ext_resource type="PackedScene" uid="uid://c07ctvibvm14w" path="res://game/objects/Equipment/head/Saw_Mask.tscn" id="220_sawmask"]
 [ext_resource type="PackedScene" uid="uid://jj6gu75mw6f" path="res://game/objects/items/scenes/tier 2/SatelliteBuff.tscn" id="221_a7pxr"]
 [ext_resource type="PackedScene" uid="uid://dkir3dn6f6eve" path="res://game/objects/Equipment/head/Satellite.tscn" id="222_xiccb"]
+[ext_resource type="PackedScene" uid="uid://cthirdscene01" path="res://game/objects/Equipment/head/Third_Eye.tscn" id="223_third"]
+[ext_resource type="PackedScene" uid="uid://cluckyscene01" path="res://game/objects/Equipment/Chest/Lucky_Gold_Shield.tscn" id="224_lucky"]
+[ext_resource type="PackedScene" uid="uid://cdragscene01" path="res://game/objects/Equipment/Chest/Dragon_Shield.tscn" id="225_dragon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -394,10 +398,10 @@ position = Vector2(-261, -498)
 position = Vector2(-145, -280)
 
 [node name="Kaliya\'s Star Hat" parent="." unique_id=1914859512 instance=ExtResource("17_ep2tc")]
-position = Vector2(121, 126)
+position = Vector2(121, 125)
 
 [node name="Poison_boots" parent="." unique_id=1334115580 instance=ExtResource("18_js20t")]
-position = Vector2(45, 342)
+position = Vector2(45, 340)
 
 [node name="Boomerang" parent="." unique_id=1430574395 instance=ExtResource("19_vm4yr")]
 position = Vector2(-77, 555)
@@ -491,10 +495,10 @@ position = Vector2(223, 2)
 position = Vector2(48, 125)
 
 [node name="Surestrike" parent="." unique_id=2116374678 instance=ExtResource("41_rctke")]
-position = Vector2(200, 128)
+position = Vector2(200, 125)
 
 [node name="Death_shield" parent="." unique_id=359456474 instance=ExtResource("42_p34vw")]
-position = Vector2(45, 229)
+position = Vector2(45, 230)
 
 [node name="Coin" parent="." unique_id=2054458591 instance=ExtResource("43_5upo4")]
 position = Vector2(-1037, 355)
@@ -680,22 +684,28 @@ position = Vector2(275, 339)
 position = Vector2(196, 230)
 
 [node name="armory_plate" parent="." unique_id=1482736903 instance=ExtResource("190_armory")]
-position = Vector2(275, 233)
+position = Vector2(275, 230)
 
 [node name="Lion_Shield" parent="." unique_id=1482736904 instance=ExtResource("191_lion")]
-position = Vector2(354, 233)
+position = Vector2(354, 230)
+
+[node name="Lucky_Gold_Shield" parent="." unique_id=1782341606 instance=ExtResource("224_lucky")]
+position = Vector2(433, 230)
+
+[node name="Dragon_Shield" parent="." unique_id=1482736906 instance=ExtResource("225_dragon")]
+position = Vector2(512, 230)
 
 [node name="Kaliya\'s accelerator cloak" parent="." unique_id=30116406 instance=ExtResource("102_2imyw")]
-position = Vector2(121, 231)
+position = Vector2(121, 230)
 
 [node name="lucky Head" parent="." unique_id=679354868 instance=ExtResource("103_lmqaq")]
-position = Vector2(276, 127)
+position = Vector2(276, 125)
 
 [node name="Iron Maiden" parent="." unique_id=1482736901 instance=ExtResource("188_imnhead")]
 position = Vector2(352, 125)
 
 [node name="Spread Shot" parent="." unique_id=1482736902 instance=ExtResource("189_spread")]
-position = Vector2(441, 126)
+position = Vector2(441, 125)
 
 [node name="Slot machine" parent="." unique_id=90725484 instance=ExtResource("105_ugc3l")]
 position = Vector2(-1166, 831)
@@ -1009,6 +1019,9 @@ position = Vector2(-141, 559)
 [node name="StarFruit" parent="." unique_id=627887000 instance=ExtResource("220_a7pxr")]
 position = Vector2(-197, 557)
 
+[node name="SawMask" parent="." unique_id=627887001 instance=ExtResource("220_sawmask")]
+position = Vector2(667, 125)
+
 [node name="SpaceTimeCircuit" parent="." unique_id=761673480 instance=ExtResource("219_ungww")]
 position = Vector2(-251, 555)
 
@@ -1016,4 +1029,7 @@ position = Vector2(-251, 555)
 position = Vector2(-959, -49)
 
 [node name="Satellite" parent="." unique_id=1535325803 instance=ExtResource("222_xiccb")]
-position = Vector2(520, 127)
+position = Vector2(520, 125)
+
+[node name="Third Eye" parent="." unique_id=1535325804 instance=ExtResource("223_third")]
+position = Vector2(592, 125)

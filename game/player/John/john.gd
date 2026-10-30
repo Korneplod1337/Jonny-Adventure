@@ -90,3 +90,4 @@ func _finalize_spawned_shot(shot: Node) -> void:
 		shot.damage += MELEE_FLAT_DAMAGE_BONUS
 	else:
 		shot.scale *= RANGED_WEAPON_SCALE
+	_apply_saw_mask_shot_effects(shot)

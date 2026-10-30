@@ -24,10 +24,21 @@ var _pending_cooldown: float = 0.0
 func set_icon(tex: Texture2D):
 	if icon:
 		icon.texture = tex
+		_fit_icon_to_slot()
 	else:
 		_pending_icon = tex
 	if _enchant_mask and _enchant_mask.visible:
 		_sync_enchant_mask_texture()
+
+
+func _fit_icon_to_slot() -> void:
+	if not icon:
+		return
+	icon.scale = Vector2.ONE
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 func set_enchantment(enchantment: EnchantmentResource) -> void:
@@ -68,11 +79,13 @@ func _sync_enchant_mask_texture() -> void:
 	var tex_size := icon.texture.get_size()
 	if tex_size.x <= 0.0 or tex_size.y <= 0.0:
 		return
-	# Fit native texture into the Icon's 24×24 box, then apply Icon.scale.
-	var fit := Vector2(icon.size) / tex_size
-	if icon.size == Vector2.ZERO:
-		fit = Vector2(24, 24) / tex_size
-	_enchant_mask.scale = fit * icon.scale
+	var box := icon.size
+	if box == Vector2.ZERO:
+		box = size if size != Vector2.ZERO else custom_minimum_size
+	if box == Vector2.ZERO:
+		box = Vector2(72, 72)
+	var fit := box / tex_size
+	_enchant_mask.scale = fit
 	_enchant_sprite.position = tex_size * 0.5
 
 
@@ -172,6 +185,7 @@ func _ready():
 		set_tooltip(_pending_tooltip)
 	if _pending_icon:
 		icon.texture = _pending_icon
+	_fit_icon_to_slot()
 	if _pending_enchant_anim != "":
 		var anim := _pending_enchant_anim
 		_pending_enchant_anim = ""

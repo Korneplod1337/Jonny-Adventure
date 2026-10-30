@@ -11,6 +11,7 @@ func _ready():
 		set_tooltip(_pending_tooltip)
 	if _pending_icon:
 		icon.texture = _pending_icon
+	_fit_icon_to_slot()
 	if _pending_enchant_anim != "":
 		var anim := _pending_enchant_anim
 		_pending_enchant_anim = ""

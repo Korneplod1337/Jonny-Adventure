@@ -17,6 +17,7 @@ const SFX_DEATH := preload("res://sound/sound/death.mp3")
 const SFX_MISFIRE := preload("res://sound/sound/misfire.mp3")
 const SFX_MIMIC_BOSS_ROAR := preload("res://sound/sound/mimic boss roar.mp3")
 const SFX_BREAKING := preload("res://sound/sound/breaking.ogg")
+const SFX_CRACK := preload("res://sound/sound/crack.wav")
 const SFX_LIGHTNING := preload("res://sound/sound/lightning.wav")
 
 const SFX_SHOTS: Array[AudioStream] = [
@@ -336,6 +337,16 @@ func play_coins(count: int, delay: float = 0.1) -> void:
 		if i > 0:
 			await get_tree().create_timer(delay).timeout
 		play(COIN_SFX, 4.0, 0.9)
+
+
+## Lucky Gold Shield: coin SFX with wild random pitch in semitones.
+func play_coin_wild_pitch(semitone_min: float = -8.0, semitone_max: float = 8.0) -> void:
+	var semis := randf_range(semitone_min, semitone_max)
+	play(COIN_SFX, 4.0, pow(2.0, semis / 12.0))
+
+
+func play_crack(volume_db: float = 4.0) -> void:
+	play(SFX_CRACK, volume_db)
 
 
 func play_location_music(location: int) -> void:

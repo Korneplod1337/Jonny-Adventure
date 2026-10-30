@@ -147,6 +147,8 @@ var SatelliteOrbit := false # снаряды занимают слоты и ле
 var satellite_bonus_slots: int = 0 # satellitebuff: +2 за штуку
 var WildBoots := false # шанс доп. случайного зачарования на выстрел
 var LuckyHead := false # за этаж: +1 luck_level и enemy_hp_multiplier *= 0.97
+var LuckyGoldShield := false # вход в STANDARD комнату: +1 монета
+var SawMask := false # saw_mask: без головы, блок Head, усиленные выстрелы
 var extra_chest_loot_chance := 0.0 # шанс доп. лута из сундуков (цветок папоротника и т.п.)
 var mimic_chest_chance := 0.0 # шанс, что clear-reward small/big сундук станет мимиком
 ## Ломание обычных шрайнов: каждый сломанный даёт -5. Сброс в obnulenie.
@@ -254,6 +256,8 @@ func obnulenie() -> void:
 	satellite_bonus_slots = 0
 	WildBoots = false
 	LuckyHead = false
+	LuckyGoldShield = false
+	SawMask = false
 	extra_chest_loot_chance = 0.0
 	mimic_chest_chance = 0.0
 	extra_enemy_coin_chance = 0.0

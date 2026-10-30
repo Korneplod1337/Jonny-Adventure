@@ -1,0 +1,38 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://c07ctvjcbqpww"]
+
+[ext_resource type="Texture2D" uid="uid://b4g0lj75lcays" path="res://image/equip/head/Saw_mask2.png" id="1_5bn80"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5bn80")
+}],
+"loop": true,
+"name": &"down",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5bn80")
+}],
+"loop": true,
+"name": &"left",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5bn80")
+}],
+"loop": true,
+"name": &"right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5bn80")
+}],
+"loop": true,
+"name": &"up",
+"speed": 1.0
+}]
