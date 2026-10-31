@@ -28,14 +28,16 @@ func apply_hit_modifiers(info: DamageInfo) -> void:
 	_apply_modifiers(info, false)
 
 
-## Assassination: первый удар по цели → BaseShot форсит +1 уровень крита.
-func try_assassination_first_hit(target: Node) -> bool:
-	if not _modifier_ids.has("assassination"):
-		return false
-	var mod: HitModifier = _modifier_ids["assassination"]
-	if mod.has_method("should_force_crit"):
-		return bool(mod.should_force_crit(target))
-	return false
+## Assassination: первый удар → сколько уровней крита форсить (стаки предмета).
+func try_assassination_first_hit(target: Node) -> int:
+	var mod := get_modifier_by_id("assassination")
+	if mod != null and mod.has_method("consume_first_hit_stacks"):
+		return int(mod.consume_first_hit_stacks(target))
+	return 0
+
+
+func get_modifier_by_id(id: String) -> HitModifier:
+	return _modifier_ids.get(id) as HitModifier
 
 
 func _apply_modifiers(info: DamageInfo, per_target: bool) -> void:

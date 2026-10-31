@@ -1,9 +1,15 @@
 extends Item
 
-const MODIFIER_ID := "ballista"
+## Общий first-strike бонус с Guillotine.
+const MODIFIER_ID := "first_strike"
+const BONUS := 0.30
 
 
 func apply_item_effect() -> void:
-	var modifier := FullHealthHitModifier.new()
-	modifier.multiplier = 1.30
+	var existing: HitModifier = DamageDealer.get_modifier_by_id(MODIFIER_ID)
+	if existing is FirstStrikeHitModifier:
+		(existing as FirstStrikeHitModifier).bonus += BONUS
+		return
+	var modifier := FirstStrikeHitModifier.new()
+	modifier.bonus = BONUS
 	DamageDealer.add_modifier(modifier, MODIFIER_ID)

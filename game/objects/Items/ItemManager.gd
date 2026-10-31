@@ -59,6 +59,7 @@ const UNIQUE_ONCE_ITEMS := [
 	"mindseye",
 	"starmap",
 	"starfruit",
+	"efirblade",
 ]
 
 # Бонус к весу, если предмет уже подбирали (только для не-уникальных)

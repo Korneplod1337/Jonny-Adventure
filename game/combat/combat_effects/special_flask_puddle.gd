@@ -157,13 +157,17 @@ func _roll_player_damage(target: Node = null) -> float:
 				break
 		else:
 			break
-	if target != null and DamageDealer.try_assassination_first_hit(target):
-		if _crit_sprite < 4:
+	if target != null:
+		var forced := DamageDealer.try_assassination_first_hit(target)
+		for _i in forced:
+			if _crit_sprite >= 4:
+				break
 			_crit_sprite += 1
 			total_crit += crit_bonus
 			if _crit_sprite == 4:
 				StatsManager.add_statistic_progress("Mega_crit", 1)
 				SoundManager.play_megacrit()
+				break
 	return base * total_crit
 
 
