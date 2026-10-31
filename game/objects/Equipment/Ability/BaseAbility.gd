@@ -49,6 +49,8 @@ func can_activate() -> bool:
 		return false
 	if player.movement_locked:
 		return false
+	if player.get("victory_controls"):
+		return false
 	if _on_cooldown:
 		return false
 	return true

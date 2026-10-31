@@ -23,6 +23,7 @@ var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'lv
  'sacrosanct', 'crown', 'accelerator', 'cyborg',
  'siegehammer', 'criticalflower', 'mathcircle', 'ricochet', 'multricochet',
  'spacetimecircuit', 'starfruit', 'satellitebuff',
+ 'assassination', 'ballista', 'efirblade',
  'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
 var DEFAULT_PICK := ["heal"]
 
@@ -169,6 +170,9 @@ var POOLS := {
 		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
 		{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
 		{"id": "starfruit", 	"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
+		{"id": "assassination", "scene": preload("res://game/objects/items/scenes/tier 3/Assassination.tscn"), "tier": 3},
+		{"id": "ballista", 		"scene": preload("res://game/objects/items/scenes/tier 3/Ballista.tscn"), "tier": 3},
+		{"id": "efirblade", 	"scene": preload("res://game/objects/items/scenes/tier 3/EfirBlade.tscn"), "tier": 3},
 
 		#{"id": "card6", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card6.tscn"), 		"tier": 4},
 		#{"id": "card7", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card7.tscn"), 		"tier": 4},
@@ -285,6 +289,9 @@ var POOLS := {
 		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
 		{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
 		{"id": "starfruit", 	"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
+		{"id": "assassination", "scene": preload("res://game/objects/items/scenes/tier 3/Assassination.tscn"), "tier": 3},
+		{"id": "ballista", 		"scene": preload("res://game/objects/items/scenes/tier 3/Ballista.tscn"), "tier": 3},
+		{"id": "efirblade", 	"scene": preload("res://game/objects/items/scenes/tier 3/EfirBlade.tscn"), "tier": 3},
 
 	],
 	"chest": [

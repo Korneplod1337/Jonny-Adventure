@@ -6,6 +6,9 @@ var current_interactions := []
 var can_interact := true
 
 func _input(event: InputEvent) -> void:
+	var player := get_parent()
+	if player and player.get("victory_controls"):
+		return
 	if event.is_action_pressed('button_E') and can_interact:
 		_prune_stale_interactions()
 		if current_interactions:
@@ -15,8 +18,14 @@ func _input(event: InputEvent) -> void:
 			await current_interactions[0].interact.call()
 			
 			can_interact = true
+			if player and player.get("victory_controls"):
+				can_interact = false
 
 func _process(_delta: float) -> void:
+	var player := get_parent()
+	if player and player.get("victory_controls"):
+		interact_label.hide()
+		return
 	_prune_stale_interactions()
 	if current_interactions and can_interact:
 		current_interactions.sort_custom(_sort_by_nearest)

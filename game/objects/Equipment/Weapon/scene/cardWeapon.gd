@@ -42,7 +42,7 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _handle_enemy_contact(enemy: Node) -> void:
-	if _register_pierce_hit(enemy, _get_final_damage()):
+	if _register_pierce_hit(enemy, _get_final_damage(enemy)):
 		if not _try_ricochet(enemy):
 			_break_shot()
 

@@ -58,7 +58,7 @@ func _on_body_entered(body: Node) -> void:
 		return
 	if body.has_method("hit"):
 		if not _is_ricochet_ignored(body):
-			_deal_hit(body, _get_final_damage())
+			_deal_hit(body, _get_final_damage(body))
 		_try_ricochet(body)
 	else:
 		_try_ricochet(body)

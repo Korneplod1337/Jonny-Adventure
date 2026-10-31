@@ -341,7 +341,7 @@ func _resolve_collision(body: Node) -> void:
 	if body.has_method("hit"):
 		if _is_ricochet_ignored(body):
 			return
-		if _register_pierce_hit(body, _get_final_damage()):
+		if _register_pierce_hit(body, _get_final_damage(body)):
 			# Пробивание исчерпано — рикошет, иначе уничтожение.
 			if not _try_ricochet(body):
 				if satellite_orbit and _satellite_ctrl:
@@ -837,7 +837,7 @@ func _get_crit_chance() -> float:
 	return 0.0
 
 
-func _get_final_damage() -> float:
+func _get_final_damage(target: Node = null) -> float:
 	crit_sprite = -1
 	var final_damage := float(damage * self_damage_multiplier)
 	for e in _get_active_enchantments():
@@ -864,6 +864,14 @@ func _get_final_damage() -> float:
 				break
 		else:
 			break
+	# Assassination: первый урон по врагу → +1 уровень крита (кап 5).
+	if target != null and DamageDealer.try_assassination_first_hit(target):
+		if crit_sprite < 4:
+			crit_sprite += 1
+			total_crit += crit_bonus
+			if crit_sprite == 4:
+				StatsManager.add_statistic_progress("Mega_crit", 1)
+				SoundManager.play_megacrit()
 	return final_damage * total_crit
 
 

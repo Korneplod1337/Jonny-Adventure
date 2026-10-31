@@ -8,14 +8,18 @@ const BossHpBarScene := preload("res://game/HUD/BossHpBar.tscn")
 const SHARED_BOSS_HP_STYLE: BossHpBarStyle = preload("res://game/HUD/styles/boss_hp_bar_template.tres")
 const BONUS_CLAMP_MIN := -40
 const BONUS_CLAMP_MAX := 40
+const VICTORY_FADE_DELAY := 0.5
+const VICTORY_FADE_DURATION := 2.0
 var ui_open := false
 var _has_ability_equipped := false
 var _bonus_labels: Dictionary = {}
 var _last_bonuses: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0]
+var _victory_fade_tween: Tween
 
 func _ready() -> void:
 	death_menu.visible = false
 	victory_menu.visible = false
+	victory_menu.modulate.a = 0.0
 	pause_menu.visible = false
 	equip_panel.visible = false
 	ability_slot_container.visible = false
@@ -299,9 +303,9 @@ func show_victory_menu(
 	kills: int = 0,
 	total_time_alive: float = 0.0,
 ) -> void:
-	victory_menu.visible = true
 	death_menu.visible = false
 	pause_menu.visible = false
+	set_ui_locked(true)
 	var is_true_victory := completed_location_1based >= CharacterMedalsManager.LOCATION_COUNT
 	victory_texture.texture = TRUE_WIN_MENU_TEX if is_true_victory else WIN_MENU_TEX
 	distance_travelled = snappedf(distance_travelled / 100, 0.1)
@@ -311,6 +315,16 @@ func show_victory_menu(
 
 	StatsManager.add_statistic_progress("lifetime", total_time_alive)
 	StatsManager.add_statistic_progress("distance_traveled", distance_travelled)
+
+	if _victory_fade_tween and _victory_fade_tween.is_valid():
+		_victory_fade_tween.kill()
+	victory_menu.modulate.a = 0.0
+	victory_menu.visible = true
+	_victory_fade_tween = create_tween()
+	_victory_fade_tween.tween_interval(VICTORY_FADE_DELAY)
+	_victory_fade_tween.tween_property(
+		victory_menu, "modulate:a", 1.0, VICTORY_FADE_DURATION
+	)
 
 
 func _toggle_pause() -> void:

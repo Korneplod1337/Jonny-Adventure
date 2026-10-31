@@ -221,7 +221,6 @@ func _refresh_orbit_aura_scales() -> void:
 
 func _deal_orbit_auras_damage() -> void:
 	_refresh_orbit_aura_scales()
-	var amount := _get_final_damage()
 	var ctrl := _get_or_create_orbit_ctrl()
 	if ctrl == null:
 		return
@@ -233,7 +232,7 @@ func _deal_orbit_auras_damage() -> void:
 	for entry in _orbit_auras:
 		var slot: int = int(entry.get("slot", 0))
 		var pos := ctrl.get_anchor_world_pos(slot)
-		_deal_aura_at(pos, radius, amount)
+		_deal_aura_at(pos, radius)
 
 
 func _base_aura_scale() -> float:
@@ -252,15 +251,14 @@ func _update_aura_scale() -> void:
 
 func _deal_aura_damage() -> void:
 	_update_aura_scale()
-	var amount := _get_final_damage()
-	_show_crit_effect()
 	var radius := _get_aura_radius()
 	if radius <= 0.0:
 		return
-	_deal_aura_at(global_position, radius, amount)
+	_deal_aura_at(global_position, radius)
+	_show_crit_effect()
 
 
-func _deal_aura_at(pos: Vector2, radius: float, amount: float) -> void:
+func _deal_aura_at(pos: Vector2, radius: float) -> void:
 	var space := get_world_2d().direct_space_state
 	var circle := CircleShape2D.new()
 	circle.radius = radius
@@ -279,6 +277,7 @@ func _deal_aura_at(pos: Vector2, radius: float, amount: float) -> void:
 		if body.is_in_group("player") or body.name == "Player":
 			continue
 		if body.has_method("hit"):
+			var amount := _get_final_damage(body)
 			DamageDealer.deal_damage(self, body, _build_damage_info(body, amount))
 
 

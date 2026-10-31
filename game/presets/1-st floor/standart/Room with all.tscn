@@ -220,12 +220,16 @@
 [ext_resource type="PackedScene" uid="uid://bl1pahmvt6i7o" path="res://game/objects/items/scenes/tier 3/MultRicochet.tscn" id="218_xiccb"]
 [ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn" id="219_ungww"]
 [ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/StarFruit.tscn" id="220_a7pxr"]
+[ext_resource type="PackedScene" uid="uid://dhwptqyeb31bf" path="res://game/objects/items/scenes/tier 3/Assassination.tscn" id="220_assass"]
+[ext_resource type="PackedScene" uid="uid://c1fvf8iifyg02" path="res://game/objects/items/scenes/tier 3/Ballista.tscn" id="220_ballista"]
+[ext_resource type="PackedScene" uid="uid://c0pugtld4j2i7" path="res://game/objects/items/scenes/tier 3/EfirBlade.tscn" id="220_efir"]
 [ext_resource type="PackedScene" uid="uid://c07ctvibvm14w" path="res://game/objects/Equipment/head/Saw_Mask.tscn" id="220_sawmask"]
 [ext_resource type="PackedScene" uid="uid://jj6gu75mw6f" path="res://game/objects/items/scenes/tier 2/SatelliteBuff.tscn" id="221_a7pxr"]
 [ext_resource type="PackedScene" uid="uid://dkir3dn6f6eve" path="res://game/objects/Equipment/head/Satellite.tscn" id="222_xiccb"]
 [ext_resource type="PackedScene" uid="uid://cthirdscene01" path="res://game/objects/Equipment/head/Third_Eye.tscn" id="223_third"]
 [ext_resource type="PackedScene" uid="uid://cluckyscene01" path="res://game/objects/Equipment/Chest/Lucky_Gold_Shield.tscn" id="224_lucky"]
 [ext_resource type="PackedScene" uid="uid://cdragscene01" path="res://game/objects/Equipment/Chest/Dragon_Shield.tscn" id="225_dragon"]
+[ext_resource type="PackedScene" uid="uid://bfeva2j1ji7ml" path="res://game/enemy/2-st floor pyramid/Strong_skull.tscn" id="227_tiolk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -1025,6 +1029,15 @@ position = Vector2(667, 125)
 [node name="SpaceTimeCircuit" parent="." unique_id=761673480 instance=ExtResource("219_ungww")]
 position = Vector2(-251, 555)
 
+[node name="Assassination" parent="." unique_id=761673481 instance=ExtResource("220_assass")]
+position = Vector2(-305, 555)
+
+[node name="Ballista" parent="." unique_id=761673482 instance=ExtResource("220_ballista")]
+position = Vector2(-359, 555)
+
+[node name="EfirBlade" parent="." unique_id=761673483 instance=ExtResource("220_efir")]
+position = Vector2(-413, 555)
+
 [node name="SatelliteBuff" parent="." unique_id=2125635162 instance=ExtResource("221_a7pxr")]
 position = Vector2(-959, -49)
 
@@ -1033,3 +1046,6 @@ position = Vector2(520, 125)
 
 [node name="Third Eye" parent="." unique_id=1535325804 instance=ExtResource("223_third")]
 position = Vector2(592, 125)
+
+[node name="EnemyStrongSkull" parent="." unique_id=1700580609 instance=ExtResource("227_tiolk")]
+position = Vector2(-620, -370)

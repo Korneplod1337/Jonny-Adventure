@@ -104,7 +104,7 @@ func _damage_body(body: Node) -> void:
 	if _player == null:
 		return
 
-	var amount := _roll_player_damage()
+	var amount := _roll_player_damage(body)
 	if amount <= 0.0:
 		return
 
@@ -131,7 +131,7 @@ func _damage_body(body: Node) -> void:
 	_spawn_hack(body, amount)
 
 
-func _roll_player_damage() -> float:
+func _roll_player_damage(target: Node = null) -> float:
 	_crit_sprite = -1
 	var base := StatManager.get_stat(_player, "damage") * PUDDLE_DAMAGE_MULT
 	if enchantment and enchantment.has_method("get_damage_low"):
@@ -157,6 +157,13 @@ func _roll_player_damage() -> float:
 				break
 		else:
 			break
+	if target != null and DamageDealer.try_assassination_first_hit(target):
+		if _crit_sprite < 4:
+			_crit_sprite += 1
+			total_crit += crit_bonus
+			if _crit_sprite == 4:
+				StatsManager.add_statistic_progress("Mega_crit", 1)
+				SoundManager.play_megacrit()
 	return base * total_crit
 
 

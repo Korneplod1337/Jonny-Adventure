@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c1fvf8iifyg02"]
+
+[ext_resource type="Script" uid="uid://b6yktfxa4hf5s" path="res://game/objects/items/scripts/ballista.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://l2lyr8nxkrkf" path="res://image/items/3 tier/balista.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://dx1fok8ftgyw4" path="res://game/interact_tools/Ineractable.tscn" id="3_interact"]
+[ext_resource type="PackedScene" uid="uid://b1o762ktgcwjx" path="res://game/objects/shadow/backlight.tscn" id="backlight_scn"]
+[ext_resource type="PackedScene" uid="uid://djfqyjlqt38vb" path="res://game/objects/shadow/shadow.tscn" id="shadow_scn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lh7he"]
+radius = 40.04997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oisx2"]
+radius = 19.0
+
+[node name="Ballista" type="Area2D" unique_id=2095445339]
+collision_layer = 0
+script = ExtResource("1_script")
+item_icon = ExtResource("2_tex")
+item_name = "Ballista"
+item_tooltip = "hand - by- ballista "
+item_tooltip2 = "+30% 1-st hit damage"
+item_id = "ballista"
+
+[node name="Interactable" parent="." unique_id=214833764 instance=ExtResource("3_interact")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=352114571]
+shape = SubResource("CircleShape2D_lh7he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=263916402]
+shape = SubResource("CircleShape2D_oisx2")
+
+[node name="Shadow" parent="." unique_id=1258304212 instance=ExtResource("shadow_scn")]
+position = Vector2(0, 20)
+scale = Vector2(0.5, 0.5)
+
+[node name="Backlight" parent="." unique_id=2050291407 instance=ExtResource("backlight_scn")]
+tier = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=818218701]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tex")

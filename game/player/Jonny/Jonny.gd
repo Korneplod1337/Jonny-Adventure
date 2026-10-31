@@ -24,7 +24,7 @@ var player_name = 'Jonny'
 	}
 
 var base_max_hp: 			int  = 3    #6
-var base_move_speed:			float = 250.0
+var base_move_speed:			float = 250.0 #380 при ср
 var base_luck: 				float = 0.2
 var base_magic: 				float = 0.0
 var base_damage: 			float = 25.0
@@ -237,6 +237,8 @@ func _try_use_ability() -> void:
 	current_ability.try_activate()
 
 func _input(_event: InputEvent) -> void:
+	if victory_controls:
+		return
 	if Input.is_action_just_pressed("Ability"):
 		_try_use_ability()
 	#if Input.is_action_just_pressed("button_K"):
@@ -253,6 +255,8 @@ func _input(_event: InputEvent) -> void:
 var movement_locked: bool = false
 ## Только WASD; стрельба/абилки остаются (WeakSkull boss mind-control).
 var walk_input_locked: bool = false
+## Победа: только движение и стрельба (абилка/взаимодействие выключены).
+var victory_controls: bool = false
 
 func set_movement_locked(locked: bool) -> void:
 	movement_locked = locked
@@ -263,6 +267,14 @@ func set_walk_input_locked(locked: bool) -> void:
 	walk_input_locked = locked
 	if locked:
 		velocity = Vector2.ZERO
+
+func set_victory_controls(enabled: bool) -> void:
+	victory_controls = enabled
+	var ic := get_node_or_null("InteractingComponents")
+	if ic:
+		ic.can_interact = not enabled
+		if enabled and ic.interact_label:
+			ic.interact_label.hide()
 
 func _process(delta: float) -> void: 
 	total_time_alive += delta

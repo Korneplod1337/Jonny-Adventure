@@ -559,13 +559,12 @@ func go_to_next_floor(hatch: Node2D) -> void:
 	refresh_minimap()
 
 
-func _finish_run_with_victory(hatch: Node2D, completed_location_1based: int, newly_unlocked_next: bool) -> void:
+func _finish_run_with_victory(_hatch: Node2D, completed_location_1based: int, newly_unlocked_next: bool) -> void:
 	_reset_player_interactions()
 	CharacterMedalsManager.try_unlock_joab_from_run()
-	var hatch_center := hatch.global_position
-	if player.has_method("play_hatch_exit"):
-		await player.play_hatch_exit(hatch_center)
-	player.visible = false
+	# Победа: игрок остаётся в комнате, только движение и стрельба.
+	if is_instance_valid(player) and player.has_method("set_victory_controls"):
+		player.set_victory_controls(true)
 	if is_instance_valid(hud_instance) and hud_instance.has_method("show_victory_menu"):
 		var distance := 0.0
 		var kills := 0
@@ -581,7 +580,6 @@ func _finish_run_with_victory(hatch: Node2D, completed_location_1based: int, new
 			kills,
 			time_alive,
 		)
-	get_tree().paused = true
 
 
 func regenerate_floor(new_floor: int) -> void:

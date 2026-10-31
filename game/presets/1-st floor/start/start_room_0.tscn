@@ -29,6 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://ci4paxr8kkjx2" path="res://game/objects/Equipment/Weapon/equip/Solaris_equip.tscn" id="27_iqmaw"]
 [ext_resource type="PackedScene" uid="uid://6xrfrxfwum25" path="res://game/objects/Equipment/Weapon/equip/Special_weapon_equip.tscn" id="28_p8hec"]
 [ext_resource type="PackedScene" uid="uid://c07ctvibvm14w" path="res://game/objects/Equipment/head/Saw_Mask.tscn" id="29_p8hec"]
+[ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/Assassination.tscn" id="30_f67eu"]
+[ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/Ballista.tscn" id="31_j72gn"]
+[ext_resource type="PackedScene" path="res://game/objects/items/scenes/tier 3/EfirBlade.tscn" id="32_kmixf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -240,3 +243,12 @@ position = Vector2(30, 250)
 
 [node name="SawMask" parent="." unique_id=870835453 instance=ExtResource("29_p8hec")]
 position = Vector2(-127, 7)
+
+[node name="Assassination" parent="." unique_id=1540749156 instance=ExtResource("30_f67eu")]
+position = Vector2(238, 22)
+
+[node name="Ballista" parent="." unique_id=1941040493 instance=ExtResource("31_j72gn")]
+position = Vector2(184, 22)
+
+[node name="EfirBlade" parent="." unique_id=160089736 instance=ExtResource("32_kmixf")]
+position = Vector2(130, 22)
