@@ -136,7 +136,7 @@ func notify_location_completed(
 		return
 	if completed_location_1based >= 1:
 		AchievementManager.unlock_achievement("unlock_arid_membrane")
-	if completed_location_1based >= 2:
+	if completed_location_1based >= 3:
 		AchievementManager.unlock_achievement("unlock_forest_gear")
 	if completed_location_1based >= 4:
 		AchievementManager.unlock_achievement("unlock_jovita")

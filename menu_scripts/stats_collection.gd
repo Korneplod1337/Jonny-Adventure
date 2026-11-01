@@ -3,10 +3,10 @@ extends ScrollContainer
 ## Set false to remove hover name popups without touching the rest of the page.
 const ENABLE_HOVER_TOOLTIP := true
 
-const ITEM_ICON_SIZE := 48
-const EQUIP_ICON_SIZE := 96
-const ITEM_COLUMNS := 16
-const EQUIP_COLUMNS := 10
+const ITEM_ICON_SIZE := 72
+const EQUIP_ICON_SIZE := 72
+const ITEM_COLUMNS := 14
+const EQUIP_COLUMNS := 14
 const TOOLTIP_FONT_SIZE := 32
 const TOOLTIP_OFFSET := Vector2(32, 40)
 
@@ -35,7 +35,11 @@ func _setup_grid(grid: GridContainer, columns: int) -> void:
 func rebuild() -> void:
 	_clear_grid(_items_grid)
 	_clear_grid(_equip_grid)
+	ItemManager.update_unlocks()
+	EquipManager.update_unlocks()
 
+	## Предметы: тип item, внутри по tier.
+	var item_entries: Array = []
 	var item_seen: Dictionary = {}
 	for pool in ItemManager.POOLS.values():
 		for item in pool:
@@ -43,15 +47,65 @@ func rebuild() -> void:
 			if item_seen.has(id):
 				continue
 			item_seen[id] = true
-			_add_icon(_items_grid, {"id": id, "scene": item.scene, "kind": "item"}, ITEM_ICON_SIZE)
+			if not ItemManager.is_unlocked(id):
+				continue
+			item_entries.append({
+				"id": id,
+				"scene": item.scene,
+				"kind": "item",
+				"tier": int(item.get("tier", 0)),
+			})
+	item_entries.sort_custom(func(a, b): return int(a.tier) < int(b.tier))
+	for entry in item_entries:
+		_add_icon(_items_grid, entry, ITEM_ICON_SIZE)
 
+	## Экип: weapons → head → chest → boots → ability; внутри группы по tier.
+	var equip_entries: Array = []
 	var equip_seen: Dictionary = {}
-	for equip in EquipManager.POOLS.get("all", []):
-		var id: String = equip.id
-		if equip_seen.has(id) or item_seen.has(id):
-			continue
-		equip_seen[id] = true
-		_add_icon(_equip_grid, {"id": id, "scene": equip.scene, "kind": "equip"}, EQUIP_ICON_SIZE)
+	for pool_name in ["all", "ability", "armory", "weapon", "treasure"]:
+		for equip in EquipManager.POOLS.get(pool_name, []):
+			var id: String = equip.id
+			if equip_seen.has(id) or item_seen.has(id):
+				continue
+			equip_seen[id] = true
+			if not EquipManager.is_unlocked(id):
+				continue
+			equip_entries.append({
+				"id": id,
+				"scene": equip.scene,
+				"kind": "equip",
+				"tier": int(equip.get("tier", 0)),
+				"type_order": _equip_type_order(equip.scene),
+			})
+	equip_entries.sort_custom(func(a, b):
+		if int(a.type_order) != int(b.type_order):
+			return int(a.type_order) < int(b.type_order)
+		return int(a.tier) < int(b.tier)
+	)
+	for entry in equip_entries:
+		_add_icon(_equip_grid, entry, EQUIP_ICON_SIZE)
+
+
+## 0 = weapon, 1 = head, 2 = chest, 3 = boots, 4 = ability
+func _equip_type_order(scene: PackedScene) -> int:
+	var inst: Node = scene.instantiate()
+	var t := ""
+	if "type" in inst:
+		t = str(inst.type)
+	inst.free()
+	match t:
+		"weapon":
+			return 0
+		"head":
+			return 1
+		"chest":
+			return 2
+		"boots":
+			return 3
+		"ability":
+			return 4
+		_:
+			return 5
 
 
 func _clear_grid(grid: GridContainer) -> void:
@@ -70,11 +124,12 @@ func _add_icon(grid: GridContainer, entry: Dictionary, icon_size: int) -> void:
 	rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 
-	var discovered := _is_discovered(entry)
-	if not discovered:
+	## Чёрный силуэт = разблокирован, но ещё не подобран; цвет = подобран.
+	var picked := _is_picked(entry)
+	if not picked:
 		rect.modulate = Color(0, 0, 0, 1)
 
-	if ENABLE_HOVER_TOOLTIP and discovered:
+	if ENABLE_HOVER_TOOLTIP and picked:
 		rect.mouse_filter = Control.MOUSE_FILTER_STOP
 		rect.mouse_entered.connect(_on_icon_hover.bind(str(visual.name)))
 		rect.mouse_exited.connect(_on_icon_unhover)
@@ -84,11 +139,11 @@ func _add_icon(grid: GridContainer, entry: Dictionary, icon_size: int) -> void:
 	grid.add_child(rect)
 
 
-func _is_discovered(entry: Dictionary) -> bool:
+func _is_picked(entry: Dictionary) -> bool:
 	var id: String = entry.id
 	if entry.kind == "item":
 		return ItemManager.is_discovered(id)
-	return EquipManager.is_picked(id) or ItemManager.is_discovered(id)
+	return EquipManager.is_picked(id)
 
 
 func _extract_visual(entry: Dictionary) -> Dictionary:

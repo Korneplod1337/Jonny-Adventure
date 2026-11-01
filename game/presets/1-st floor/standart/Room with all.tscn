@@ -176,7 +176,6 @@
 [ext_resource type="PackedScene" uid="uid://n0yseedxdttp" path="res://game/objects/items/scenes/tier 2/Planetary.tscn" id="171_3d4py"]
 [ext_resource type="PackedScene" uid="uid://cj5vqd251k2h8" path="res://game/objects/items/scenes/tier 2/Salamandra.tscn" id="172_akf5g"]
 [ext_resource type="PackedScene" uid="uid://caq1tkcui7crx" path="res://game/objects/items/scenes/tier 2/Scope.tscn" id="173_ql2qb"]
-[ext_resource type="PackedScene" uid="uid://buvm0xxu4d42i" path="res://game/objects/items/scenes/tier 2/SecondHeart.tscn" id="174_h6uh4"]
 [ext_resource type="PackedScene" uid="uid://sydlimfjnk7i" path="res://game/objects/items/scenes/tier 2/StarMap.tscn" id="175_1dbv8"]
 [ext_resource type="PackedScene" uid="uid://7x2gkv4ajax" path="res://game/objects/items/scenes/tier 2/Telescope.tscn" id="176_rmvc6"]
 [ext_resource type="PackedScene" uid="uid://cny6bkl1ykrc7" path="res://game/objects/items/scenes/tier 2/ToyCastle.tscn" id="177_ungww"]
@@ -223,13 +222,16 @@
 [ext_resource type="PackedScene" uid="uid://dhwptqyeb31bf" path="res://game/objects/items/scenes/tier 3/Assassination.tscn" id="220_assass"]
 [ext_resource type="PackedScene" uid="uid://c1fvf8iifyg02" path="res://game/objects/items/scenes/tier 3/Ballista.tscn" id="220_ballista"]
 [ext_resource type="PackedScene" uid="uid://c0pugtld4j2i7" path="res://game/objects/items/scenes/tier 3/EfirBlade.tscn" id="220_efir"]
+[ext_resource type="PackedScene" uid="uid://4x2xc0fs734t" path="res://game/objects/items/scenes/tier 3/Necronomicon.tscn" id="220_necro"]
 [ext_resource type="PackedScene" uid="uid://c07ctvibvm14w" path="res://game/objects/Equipment/head/Saw_Mask.tscn" id="220_sawmask"]
+[ext_resource type="PackedScene" uid="uid://cqbk05ed58vjh" path="res://game/objects/items/scenes/tier 3/Undead.tscn" id="220_undead"]
 [ext_resource type="PackedScene" uid="uid://jj6gu75mw6f" path="res://game/objects/items/scenes/tier 2/SatelliteBuff.tscn" id="221_a7pxr"]
 [ext_resource type="PackedScene" uid="uid://dkir3dn6f6eve" path="res://game/objects/Equipment/head/Satellite.tscn" id="222_xiccb"]
 [ext_resource type="PackedScene" uid="uid://cthirdscene01" path="res://game/objects/Equipment/head/Third_Eye.tscn" id="223_third"]
 [ext_resource type="PackedScene" uid="uid://cluckyscene01" path="res://game/objects/Equipment/Chest/Lucky_Gold_Shield.tscn" id="224_lucky"]
 [ext_resource type="PackedScene" uid="uid://cdragscene01" path="res://game/objects/Equipment/Chest/Dragon_Shield.tscn" id="225_dragon"]
 [ext_resource type="PackedScene" uid="uid://bfeva2j1ji7ml" path="res://game/enemy/2-st floor pyramid/Strong_skull.tscn" id="227_tiolk"]
+[ext_resource type="PackedScene" uid="uid://chff1n0f51c21" path="res://game/objects/items/scenes/tier 3/SecondHeart.tscn" id="232_4b377"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iup8g"]
 size = Vector2(2560, 1440)
@@ -783,7 +785,6 @@ position = Vector2(801, 781)
 
 [node name="KeresCall_equip" parent="." unique_id=453958885 instance=ExtResource("132_vdaq7")]
 position = Vector2(426, 1112)
-equip_tooltip = "Summon Keres demon"
 
 [node name="MariaCall_equip" parent="." unique_id=939035990 instance=ExtResource("133_u3xpl")]
 position = Vector2(312, 1113)
@@ -908,8 +909,8 @@ position = Vector2(-246, 309)
 [node name="Scope" parent="." unique_id=218130736 instance=ExtResource("173_ql2qb")]
 position = Vector2(-583, 373)
 
-[node name="SecondHeart" parent="." unique_id=1358123504 instance=ExtResource("174_h6uh4")]
-position = Vector2(-639, 369)
+[node name="SiegeHammer" parent="." unique_id=577486623 instance=ExtResource("195_a7pxr")]
+position = Vector2(-633, 368)
 
 [node name="StarMap" parent="." unique_id=1973571722 instance=ExtResource("175_1dbv8")]
 position = Vector2(-691, 367)
@@ -946,9 +947,6 @@ position = Vector2(-753, 371)
 
 [node name="CriticalFlower" parent="." unique_id=1688070179 instance=ExtResource("194_ungww")]
 position = Vector2(-757, 431)
-
-[node name="SiegeHammer" parent="." unique_id=577486623 instance=ExtResource("195_a7pxr")]
-position = Vector2(-752, 489)
 
 [node name="EnemyKnot" parent="." unique_id=1654487569 instance=ExtResource("184_oteyw")]
 position = Vector2(-486, -372)
@@ -1038,6 +1036,13 @@ position = Vector2(-359, 555)
 [node name="EfirBlade" parent="." unique_id=761673483 instance=ExtResource("220_efir")]
 position = Vector2(-413, 555)
 
+[node name="Undead" parent="." unique_id=761673484 instance=ExtResource("220_undead")]
+position = Vector2(-467, 555)
+item_tooltip2 = "Revive: 4s invuln+phase. +HP. Max HP -25%"
+
+[node name="Necronomicon" parent="." unique_id=761673485 instance=ExtResource("220_necro")]
+position = Vector2(-521, 555)
+
 [node name="SatelliteBuff" parent="." unique_id=2125635162 instance=ExtResource("221_a7pxr")]
 position = Vector2(-959, -49)
 
@@ -1049,3 +1054,7 @@ position = Vector2(592, 125)
 
 [node name="EnemyStrongSkull" parent="." unique_id=1700580609 instance=ExtResource("227_tiolk")]
 position = Vector2(-620, -370)
+
+[node name="SecondHeart2" parent="." unique_id=1861153008 instance=ExtResource("232_4b377")]
+position = Vector2(-575, 555)
+item_tooltip2 = "Revive once: 2s invuln. +HP"

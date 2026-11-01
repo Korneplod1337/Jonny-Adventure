@@ -18,8 +18,9 @@ script = ExtResource("1_script")
 item_icon = ExtResource("2_tex")
 item_name = "Ballista"
 item_tooltip = "hand - by- ballista "
-item_tooltip2 = "+30% 1-st hit damage"
+item_tooltip2 = "+40% 1-st hit damage"
 item_id = "ballista"
+effect_power = 0.4
 
 [node name="Interactable" parent="." unique_id=214833764 instance=ExtResource("3_interact")]
 

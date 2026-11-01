@@ -18,11 +18,19 @@ func _magic_t() -> float:
 
 
 func get_proc_chance() -> float:
+	var base: float
 	match level:
-		1: return 0.20
-		2: return 0.30
-		3: return 0.40
-		_: return 0.20
+		1: base = 0.20
+		2: base = 0.30
+		3: base = 0.40
+		_: base = 0.20
+	# Ball Lightning на игроке: +10% к первому вызову за стак (не зависит от оружия).
+	var tree := Engine.get_main_loop() as SceneTree
+	if tree:
+		var player := tree.get_first_node_in_group("player")
+		if player != null and "ball_lightning_proc_bonus" in player:
+			base += float(player.ball_lightning_proc_bonus)
+	return clampf(base, 0.0, 1.0)
 
 
 func get_piece_scale() -> float:

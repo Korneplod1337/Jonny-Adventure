@@ -2,7 +2,7 @@ extends Item
 
 ## Общий first-strike бонус с Guillotine.
 const MODIFIER_ID := "first_strike"
-const BONUS := 0.30
+var BONUS := effect_power
 
 
 func apply_item_effect() -> void:

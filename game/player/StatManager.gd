@@ -6,7 +6,11 @@ func get_stat(p: Node, stat: String) -> float :
 		"hp": 
 			var hp = int(p.base_max_hp + lerp(0.0, 9.0, (p.hit_points_level - 1.0) / 9.0))
 			hp += clampi(int(p.hp_bonus * 0.5), -10, 10) 							# 20
-			return hp 
+			var mult: float = 1.0
+			if "max_hp_mult" in p:
+				mult = float(p.max_hp_mult)
+			hp = int(floor(float(hp) * mult))
+			return maxi(hp, 0)
 		"move_speed":
 			var speed = p.base_move_speed + lerp(0.0, 225.0, (p.move_speed_level - 1.0) / 9.0)
 			speed *= clamp((1 + p.speed_bonus * 0.03), 0.4, 1.6) 					# 20

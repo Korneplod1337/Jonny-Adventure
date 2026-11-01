@@ -5,26 +5,18 @@ var picked_items: Dictionary = {}
 var discovered_items: Dictionary = {}
 var run_picked_items: Dictionary = {}
 var SAVE_PATH := "user://items.cfg"
-var DEFAULT_UNLOCKED := ["heal", "healblack", "healalt", 'healbig', 'lvlup', 'lvlup_def', 'lvlup_atk', 'spiderweb',
- "mindseye", "storybook", "boomerang", 'aegis', 'cross', 'bone', 'meat', 'beard',
- 'homuncules', 'seed', 'shine', 'pocketwatch', 'bomb', 'jetfuel', 'broom', 'sandclock',
- 'powerofdamage', 'cauldron', 'harmony', 'fountain', 'grail', 'stardust', 'sextant',
- 'exorcism', 'virus', 'basilisk',
- 'guillotine', 'wraith', 'target', 'radar',
- 'luckycoin', 'ez', 'petroglyph', 'forceshield', 'blueprint',
- 'guts', 'ouroboros', 'fernlucky', 'diamond', 'clover',
- 'magicgrimoire', 'manaflame', 'amplifier', 'blackbrand', 'desperado', 'wildwind',
- 'zerotohundred', 'salamandra', 'dragonheart', 'uranium', 'executionersaxe', 'eagleseye',
- 'laserscope', 'scope', 'hunter', 'astrolabia', 'planetary', 'telescope', 'lantern',
- 'balllightning', 'waterelemental', 'goldnugget', 'goldbar', 'well',
- 'starmap', 'secondheart', 'penetrating', 'mimic', 'treasuremap', 'opulence',
- 'gigantring', 'occult', 'markoftenebris', 'magicseal',
- 'genoremap', 'toycastle', 'ironmaiden',
- 'sacrosanct', 'crown', 'accelerator', 'cyborg',
- 'siegehammer', 'criticalflower', 'mathcircle', 'ricochet', 'multricochet',
- 'spacetimecircuit', 'starfruit', 'satellitebuff',
- 'assassination', 'ballista', 'efirblade',
- 'card6', 'card7', 'card8', 'card9', 'card10', 'cardjack', 'cardqueen', 'cardking', 'cardace',]
+## Стартово открытые + расходники. Остальное — через AchivStatsRegistry.ITEM_UNLOCKS.
+var DEFAULT_UNLOCKED := [
+	# расходники / lvlup
+	"heal", "healalt", "healblack", "healbig", "shield",
+	"lvlup", "lvlup_def", "lvlup_atk",
+	# стартовый набор
+	"cross", "beard", "jetfuel", "torch", "pocketwatch", "sextant", "virus", "ez",
+	"guillotine", "ouroboros", "magicgrimoire", "wildwind", "salamandra",
+	"executionersaxe", "laserscope", "telescope", "goldnugget", "joker", "starmap",
+	"gigantring", "storybook", "cyborg", "satellitebuff", "ricochet", "boomerang",
+	"undead", "secondheart",
+]
 var DEFAULT_PICK := ["heal"]
 
 const CARD_IDS := [
@@ -103,6 +95,7 @@ var POOLS := {
 		{"id": "target", 	"scene": preload("res://game/objects/items/scenes/tier 1/Target.tscn"), 	"tier": 1},
 		{"id": "radar", 		"scene": preload("res://game/objects/items/scenes/tier 1/Radar.tscn"), 	"tier": 1},
 		{"id": "ez", 		"scene": preload("res://game/objects/items/scenes/tier 1/EZ.tscn"), 		"tier": 1},
+		{"id": "torch", 		"scene": preload("uid://qx6z1k5ad0jc7"), 	"tier": 1},
 			#{"id": "powerofdamage", "scene": preload("uid://pw5y0j4zc9ib6"), "tier": 1},
 			#{"id": "basilisk", 	"scene": preload("uid://dxwwacpt1rply"), 	"tier": 1},
 			{"id": "luckycoin", 	"scene": preload("res://game/objects/items/scenes/tier 1/LuckyCoin.tscn"), "tier": 1},
@@ -112,8 +105,6 @@ var POOLS := {
 		
 		
 		#{"id": "storybook", 	"scene": preload("uid://m6oyxodimxew"), 		"tier": 2},
-		#{"id": "starmap", 		"scene": preload("res://game/objects/items/scenes/tier 2/StarMap.tscn"), "tier": 2},
-		#{"id": "secondheart", 	"scene": preload("res://game/objects/items/scenes/tier 2/SecondHeart.tscn"), "tier": 2},
 		#{"id": "penetrating", 	"scene": preload("res://game/objects/items/scenes/tier 2/Penetrating.tscn"), "tier": 2},
 		#{"id": "mimic", 			"scene": preload("res://game/objects/items/scenes/tier 2/Mimic_item.tscn"), "tier": 2},
 		#{"id": "treasuremap", 	"scene": preload("res://game/objects/items/scenes/tier 2/TreasureMap.tscn"), "tier": 2},
@@ -121,29 +112,25 @@ var POOLS := {
 		#{"id": "guts", 			"scene": preload("res://game/objects/items/scenes/tier 2/Guts.tscn"), "tier": 2},
 		{"id": "blackdeal", 		"scene": preload("res://game/objects/items/scenes/tier 2/BlackDeal.tscn"), "tier": 2},
 		#{"id": "ouroboros", 	"scene": preload("res://game/objects/items/scenes/tier 2/Ouroboros.tscn"), "tier": 2},
-		#{"id": "fernlucky", 	"scene": preload("res://game/objects/items/scenes/tier 2/FernLucky.tscn"), "tier": 2},
-		#{"id": "diamond", 		"scene": preload("res://game/objects/items/scenes/tier 2/Diamond.tscn"), "tier": 2},
+		{"id": "fernlucky", 	"scene": preload("res://game/objects/items/scenes/tier 2/FernLucky.tscn"), "tier": 2},
 		{"id": "clover", 		"scene": preload("res://game/objects/items/scenes/tier 2/Clover.tscn"), "tier": 2},
 		#{"id": "magicgrimoire","scene": preload("res://game/objects/items/scenes/tier 2/MagicGrimoire.tscn"), "tier": 2},
 		{"id": "manaflame", 		"scene": preload("res://game/objects/items/scenes/tier 2/ManaFlame.tscn"), "tier": 2},
-		#{"id": "amplifier", 	"scene": preload("res://game/objects/items/scenes/tier 2/Amplifier.tscn"), "tier": 2},
 		#{"id": "blackbrand", 	"scene": preload("res://game/objects/items/scenes/tier 2/BlackBrand.tscn"), "tier": 2},
 		#{"id": "desperado", 	"scene": preload("res://game/objects/items/scenes/tier 2/Desperado.tscn"), "tier": 2},
 		{"id": "wildwind", 		"scene": preload("res://game/objects/items/scenes/tier 2/WildWind.tscn"), "tier": 2},
 		#{"id": "zerotohundred","scene": preload("res://game/objects/items/scenes/tier 2/ZeroToHundred.tscn"), "tier": 2},
 		{"id": "salamandra", 	"scene": preload("res://game/objects/items/scenes/tier 2/Salamandra.tscn"), "tier": 2},
 		{"id": "dragonheart", 	"scene": preload("res://game/objects/items/scenes/tier 2/DragonHeart.tscn"), "tier": 2},
-		#{"id": "uranium", 		"scene": preload("res://game/objects/items/scenes/tier 2/Uranium.tscn"), "tier": 2},
 		#{"id": "executionersaxe", "scene": preload("res://game/objects/items/scenes/tier 2/ExecutionersAxe.tscn"), "tier": 2},
 		{"id": "eagleseye", 	"scene": preload("res://game/objects/items/scenes/tier 2/EaglesEye.tscn"), "tier": 2},
 		#{"id": "laserscope", 	"scene": preload("res://game/objects/items/scenes/tier 2/LaserScope.tscn"), "tier": 2},
-		#{"id": "scope", 		"scene": preload("res://game/objects/items/scenes/tier 2/Scope.tscn"), "tier": 2},
-		#{"id": "hunter", 		"scene": preload("res://game/objects/items/scenes/tier 2/Hunter.tscn"), "tier": 2},
+		{"id": "hunter", 		"scene": preload("res://game/objects/items/scenes/tier 2/Hunter.tscn"), "tier": 2},
 		{"id": "astrolabia", 	"scene": preload("res://game/objects/items/scenes/tier 2/Astrolabia.tscn"), "tier": 2},
 		#{"id": "planetary", 	"scene": preload("res://game/objects/items/scenes/tier 2/Planetary.tscn"), "tier": 2},
 		#{"id": "telescope", 	"scene": preload("res://game/objects/items/scenes/tier 2/Telescope.tscn"), "tier": 2},
 		#{"id": "lantern", 		"scene": preload("res://game/objects/items/scenes/tier 2/Lantern.tscn"), "tier": 2},
-		#{"id": "balllightning","scene": preload("res://game/objects/items/scenes/tier 2/BallLightning.tscn"), "tier": 2},
+		{"id": "balllightning","scene": preload("res://game/objects/items/scenes/tier 2/BallLightning.tscn"), "tier": 2},
 		#{"id": "waterelemental", "scene": preload("res://game/objects/items/scenes/tier 2/WaterElemental.tscn"), "tier": 2},
 		{"id": "goldnugget", 	"scene": preload("res://game/objects/items/scenes/tier 2/GoldNugget.tscn"), "tier": 2},
 		#{"id": "goldbar", 		"scene": preload("res://game/objects/items/scenes/tier 2/GoldBar.tscn"), "tier": 2},
@@ -152,29 +139,30 @@ var POOLS := {
 		#{"id": "occult", 		"scene": preload("res://game/objects/items/scenes/tier 2/Occult.tscn"), "tier": 2},
 		#{"id": "markoftenebris","scene": preload("res://game/objects/items/scenes/tier 2/MarkOfTenebris.tscn"), "tier": 2},
 		#{"id": "genomemap", 	"scene": preload("res://game/objects/items/scenes/tier 2/GenomeMap.tscn"), "tier": 2},
-		#{"id": "toycastle", 	"scene": preload("res://game/objects/items/scenes/tier 2/ToyCastle.tscn"), "tier": 2},
 		{"id": "ironmaiden", 	"scene": preload("res://game/objects/items/scenes/tier 2/IronMaiden.tscn"), "tier": 2},
-		#{"id": "sacrosanct", 	"scene": preload("res://game/objects/items/scenes/tier 2/Sacrosanct.tscn"), "tier": 2},
-		#{"id": "crown", 		"scene": preload("res://game/objects/items/scenes/tier 2/Crown.tscn"), "tier": 2},
-		#{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
-		#{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
-		{"id": "joker", 			"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
-		#{"id": "magicseal", 	"scene": preload("res://game/objects/items/scenes/tier 2/MagicSeal.tscn"), "tier": 2} treasure
-		{"id": "siegehammer", 	"scene": preload("res://game/objects/items/scenes/tier 2/SiegeHammer.tscn"), "tier": 2},
-		{"id": "criticalflower","scene": preload("res://game/objects/items/scenes/tier 2/CriticalFlower.tscn"), "tier": 2},
-		{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
+		#{"id": "siegehammer", 	"scene": preload("res://game/objects/items/scenes/tier 2/SiegeHammer.tscn"), "tier": 2},
+		#{"id": "criticalflower","scene": preload("res://game/objects/items/scenes/tier 2/CriticalFlower.tscn"), "tier": 2},
+		#{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
 		{"id": "ricochet", 		"scene": preload("res://game/objects/items/scenes/tier 2/Ricochet.tscn"), "tier": 2},
 		{"id": "satellitebuff", "scene": preload("res://game/objects/items/scenes/tier 2/SatelliteBuff.tscn"), "tier": 2, "weight": 0.0},
-		
-		
+			#{"id": "magicseal", 	"scene": preload("res://game/objects/items/scenes/tier 2/MagicSeal.tscn"), "tier": 2}
+			#{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
+			#{"id": "crown", 		"scene": preload("res://game/objects/items/scenes/tier 2/Crown.tscn"), "tier": 2},
+			#{"id": "sacrosanct", 	"scene": preload("res://game/objects/items/scenes/tier 2/Sacrosanct.tscn"), "tier": 2},
+			#{"id": "scope", 		"scene": preload("res://game/objects/items/scenes/tier 2/Scope.tscn"), "tier": 2},
+			#{"id": "amplifier", 	"scene": preload("res://game/objects/items/scenes/tier 2/Amplifier.tscn"), "tier": 2},
+			{"id": "diamond", 		"scene": preload("res://game/objects/items/scenes/tier 2/Diamond.tscn"), "tier": 2},
+			
 		#{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
 		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
-		{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
-		{"id": "starfruit", 	"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
+		#{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
+		{"id": "starfruit", 		"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
 		{"id": "assassination", "scene": preload("res://game/objects/items/scenes/tier 3/Assassination.tscn"), "tier": 3},
 		{"id": "ballista", 		"scene": preload("res://game/objects/items/scenes/tier 3/Ballista.tscn"), "tier": 3},
-		{"id": "efirblade", 	"scene": preload("res://game/objects/items/scenes/tier 3/EfirBlade.tscn"), "tier": 3},
-
+		#{"id": "efirblade", 	"scene": preload("res://game/objects/items/scenes/tier 3/EfirBlade.tscn"), "tier": 3},
+		#{"id": "necronomicon", 	"scene": preload("res://game/objects/items/scenes/tier 3/Necronomicon.tscn"), "tier": 3},
+			#{"id": "undead", 		"scene": preload("res://game/objects/items/scenes/tier 3/Undead.tscn"), "tier": 3},
+		
 		#{"id": "card6", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card6.tscn"), 		"tier": 4},
 		#{"id": "card7", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card7.tscn"), 		"tier": 4},
 		#{"id": "card8", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card8.tscn"), 		"tier": 4},
@@ -221,6 +209,7 @@ var POOLS := {
 		{"id": "target", 	"scene": preload("res://game/objects/items/scenes/tier 1/Target.tscn"), 	"tier": 1},
 		{"id": "radar", 		"scene": preload("res://game/objects/items/scenes/tier 1/Radar.tscn"), 	"tier": 1},
 		{"id": "ez", 		"scene": preload("res://game/objects/items/scenes/tier 1/EZ.tscn"), 		"tier": 1},
+		{"id": "torch", 		"scene": preload("uid://qx6z1k5ad0jc7"), 	"tier": 1},
 			{"id": "spiderweb", 	"scene": preload("uid://cgcss4ubm0tjd"), 	"tier": 1},
 			#{"id": "mindseye", 	"scene": preload("uid://b2l04uommikl0"), 	"tier": 1},
 			{"id": "aegis", 		"scene": preload("uid://ccrdfupi8hyq2"), 	"tier": 1}, 
@@ -229,13 +218,10 @@ var POOLS := {
 			{"id": "meat", 		"scene": preload("uid://fm5o0z4ps9yr6"), 	"tier": 1},
 			#{"id": "beard", 		"scene": preload("uid://gn6p1a5qt0zs7"), 	"tier": 1},
 			{"id": "pocketwatch","scene": preload("uid://kr0t5e9ux4dw1"), 	"tier": 1},
-			{"id": "torch", 		"scene": preload("uid://qx6z1k5ad0jc7"), 	"tier": 1},
 			#{"id": "jetfuel", 	"scene": preload("uid://mt2v7g1wz6fy3"), 	"tier": 1},
 		
 		
 		#{"id": "storybook", 	"scene": preload("uid://m6oyxodimxew"), 		"tier": 2},
-		#{"id": "starmap", 		"scene": preload("res://game/objects/items/scenes/tier 2/StarMap.tscn"), "tier": 2},
-		#{"id": "secondheart", 	"scene": preload("res://game/objects/items/scenes/tier 2/SecondHeart.tscn"), "tier": 2},
 		#{"id": "penetrating", 	"scene": preload("res://game/objects/items/scenes/tier 2/Penetrating.tscn"), "tier": 2},
 		#{"id": "mimic", 			"scene": preload("res://game/objects/items/scenes/tier 2/Mimic_item.tscn"), "tier": 2},
 		#{"id": "treasuremap", 	"scene": preload("res://game/objects/items/scenes/tier 2/TreasureMap.tscn"), "tier": 2},
@@ -243,29 +229,25 @@ var POOLS := {
 		#{"id": "guts", 			"scene": preload("res://game/objects/items/scenes/tier 2/Guts.tscn"), "tier": 2},
 		{"id": "blackdeal", 		"scene": preload("res://game/objects/items/scenes/tier 2/BlackDeal.tscn"), "tier": 2},
 		#{"id": "ouroboros", 	"scene": preload("res://game/objects/items/scenes/tier 2/Ouroboros.tscn"), "tier": 2},
-		#{"id": "fernlucky", 	"scene": preload("res://game/objects/items/scenes/tier 2/FernLucky.tscn"), "tier": 2},
-		#{"id": "diamond", 		"scene": preload("res://game/objects/items/scenes/tier 2/Diamond.tscn"), "tier": 2},
+		{"id": "fernlucky", 	"scene": preload("res://game/objects/items/scenes/tier 2/FernLucky.tscn"), "tier": 2},
 		{"id": "clover", 		"scene": preload("res://game/objects/items/scenes/tier 2/Clover.tscn"), "tier": 2},
 		#{"id": "magicgrimoire","scene": preload("res://game/objects/items/scenes/tier 2/MagicGrimoire.tscn"), "tier": 2},
 		{"id": "manaflame", 		"scene": preload("res://game/objects/items/scenes/tier 2/ManaFlame.tscn"), "tier": 2},
-		#{"id": "amplifier", 	"scene": preload("res://game/objects/items/scenes/tier 2/Amplifier.tscn"), "tier": 2},
 		#{"id": "blackbrand", 	"scene": preload("res://game/objects/items/scenes/tier 2/BlackBrand.tscn"), "tier": 2},
 		#{"id": "desperado", 	"scene": preload("res://game/objects/items/scenes/tier 2/Desperado.tscn"), "tier": 2},
 		{"id": "wildwind", 		"scene": preload("res://game/objects/items/scenes/tier 2/WildWind.tscn"), "tier": 2},
 		#{"id": "zerotohundred","scene": preload("res://game/objects/items/scenes/tier 2/ZeroToHundred.tscn"), "tier": 2},
 		{"id": "salamandra", 	"scene": preload("res://game/objects/items/scenes/tier 2/Salamandra.tscn"), "tier": 2},
 		{"id": "dragonheart", 	"scene": preload("res://game/objects/items/scenes/tier 2/DragonHeart.tscn"), "tier": 2},
-		#{"id": "uranium", 		"scene": preload("res://game/objects/items/scenes/tier 2/Uranium.tscn"), "tier": 2},
 		#{"id": "executionersaxe", "scene": preload("res://game/objects/items/scenes/tier 2/ExecutionersAxe.tscn"), "tier": 2},
 		{"id": "eagleseye", 	"scene": preload("res://game/objects/items/scenes/tier 2/EaglesEye.tscn"), "tier": 2},
 		#{"id": "laserscope", 	"scene": preload("res://game/objects/items/scenes/tier 2/LaserScope.tscn"), "tier": 2},
-		#{"id": "scope", 		"scene": preload("res://game/objects/items/scenes/tier 2/Scope.tscn"), "tier": 2},
-		#{"id": "hunter", 		"scene": preload("res://game/objects/items/scenes/tier 2/Hunter.tscn"), "tier": 2},
+		{"id": "hunter", 		"scene": preload("res://game/objects/items/scenes/tier 2/Hunter.tscn"), "tier": 2},
 		{"id": "astrolabia", 	"scene": preload("res://game/objects/items/scenes/tier 2/Astrolabia.tscn"), "tier": 2},
 		#{"id": "planetary", 	"scene": preload("res://game/objects/items/scenes/tier 2/Planetary.tscn"), "tier": 2},
 		#{"id": "telescope", 	"scene": preload("res://game/objects/items/scenes/tier 2/Telescope.tscn"), "tier": 2},
 		#{"id": "lantern", 		"scene": preload("res://game/objects/items/scenes/tier 2/Lantern.tscn"), "tier": 2},
-		#{"id": "balllightning","scene": preload("res://game/objects/items/scenes/tier 2/BallLightning.tscn"), "tier": 2},
+		{"id": "balllightning","scene": preload("res://game/objects/items/scenes/tier 2/BallLightning.tscn"), "tier": 2},
 		#{"id": "waterelemental", "scene": preload("res://game/objects/items/scenes/tier 2/WaterElemental.tscn"), "tier": 2},
 		{"id": "goldnugget", 	"scene": preload("res://game/objects/items/scenes/tier 2/GoldNugget.tscn"), "tier": 2},
 		#{"id": "goldbar", 		"scene": preload("res://game/objects/items/scenes/tier 2/GoldBar.tscn"), "tier": 2},
@@ -273,27 +255,39 @@ var POOLS := {
 		{"id": "gigantring", 	"scene": preload("res://game/objects/items/scenes/tier 2/GigantRing.tscn"), "tier": 2},
 		#{"id": "occult", 		"scene": preload("res://game/objects/items/scenes/tier 2/Occult.tscn"), "tier": 2},
 		#{"id": "markoftenebris","scene": preload("res://game/objects/items/scenes/tier 2/MarkOfTenebris.tscn"), "tier": 2},
-		#{"id": "magicseal", 	"scene": preload("res://game/objects/items/scenes/tier 2/MagicSeal.tscn"), "tier": 2},
 		#{"id": "genomemap", 	"scene": preload("res://game/objects/items/scenes/tier 2/GenomeMap.tscn"), "tier": 2},
-		#{"id": "toycastle", 	"scene": preload("res://game/objects/items/scenes/tier 2/ToyCastle.tscn"), "tier": 2},
 		{"id": "ironmaiden", 	"scene": preload("res://game/objects/items/scenes/tier 2/IronMaiden.tscn"), "tier": 2},
-		#{"id": "sacrosanct", 	"scene": preload("res://game/objects/items/scenes/tier 2/Sacrosanct.tscn"), "tier": 2},
-		#{"id": "crown", 		"scene": preload("res://game/objects/items/scenes/tier 2/Crown.tscn"), "tier": 2},
-		#{"id": "accelerator", 	"scene": preload("res://game/objects/items/scenes/tier 2/Accelerator.tscn"), "tier": 2},
-		#{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
-		{"id": "joker", 		"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
-		{"id": "siegehammer", 	"scene": preload("res://game/objects/items/scenes/tier 2/SiegeHammer.tscn"), "tier": 2},
-		{"id": "criticalflower","scene": preload("res://game/objects/items/scenes/tier 2/CriticalFlower.tscn"), "tier": 2},
-		{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
+		#{"id": "siegehammer", 	"scene": preload("res://game/objects/items/scenes/tier 2/SiegeHammer.tscn"), "tier": 2},
+		#{"id": "criticalflower","scene": preload("res://game/objects/items/scenes/tier 2/CriticalFlower.tscn"), "tier": 2},
+		#{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
 		{"id": "ricochet", 		"scene": preload("res://game/objects/items/scenes/tier 2/Ricochet.tscn"), "tier": 2},
 		{"id": "satellitebuff", "scene": preload("res://game/objects/items/scenes/tier 2/SatelliteBuff.tscn"), "tier": 2, "weight": 0.0},
+				#{"id": "toycastle", 	"scene": preload("res://game/objects/items/scenes/tier 2/ToyCastle.tscn"), "tier": 2},
+				#{"id": "cyborg", 		"scene": preload("res://game/objects/items/scenes/tier 2/Cyborg.tscn"), "tier": 2},
+				{"id": "joker", 			"scene": preload("res://game/objects/items/scenes/tier 2/Joker.tscn"), "tier": 2},
+				{"id": "uranium", 		"scene": preload("res://game/objects/items/scenes/tier 2/Uranium.tscn"), "tier": 2},
+				#{"id": "starmap", 		"scene": preload("res://game/objects/items/scenes/tier 2/StarMap.tscn"), "tier": 2},
+		
+		#{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
 		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
-		{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
-		{"id": "starfruit", 	"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
+		#{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
+		{"id": "starfruit", 		"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
 		{"id": "assassination", "scene": preload("res://game/objects/items/scenes/tier 3/Assassination.tscn"), "tier": 3},
 		{"id": "ballista", 		"scene": preload("res://game/objects/items/scenes/tier 3/Ballista.tscn"), "tier": 3},
-		{"id": "efirblade", 	"scene": preload("res://game/objects/items/scenes/tier 3/EfirBlade.tscn"), "tier": 3},
-
+		#{"id": "efirblade", 	"scene": preload("res://game/objects/items/scenes/tier 3/EfirBlade.tscn"), "tier": 3},
+		#{"id": "necronomicon", 	"scene": preload("res://game/objects/items/scenes/tier 3/Necronomicon.tscn"), "tier": 3},
+			{"id": "secondheart", 	"scene": preload("res://game/objects/items/scenes/tier 3/SecondHeart.tscn"), "tier": 3},
+		
+		#{"id": "card6", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card6.tscn"), 		"tier": 4},
+		#{"id": "card7", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card7.tscn"), 		"tier": 4},
+		#{"id": "card8", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card8.tscn"), 		"tier": 4},
+		#{"id": "card9", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card9.tscn"), 		"tier": 4},
+		#{"id": "card10", 	"scene": preload("res://game/objects/items/scenes/tier 4/Card10.tscn"), 		"tier": 4},
+		#{"id": "cardjack", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardJack.tscn"), 	"tier": 4},
+		#{"id": "cardqueen", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardQueen.tscn"), 	"tier": 4},
+		#{"id": "cardking", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardKing.tscn"), 	"tier": 4},
+		#{"id": "cardace", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardAce.tscn"), 	"tier": 4},
+	
 	],
 	"chest": [
 		{"id": "heal", 		"scene": preload("uid://baga6mxgrpf1s"), 	"tier": 0},
@@ -325,7 +319,69 @@ var POOLS := {
 		#{"id": "wraith", 	"scene": preload("res://game/objects/items/scenes/tier 1/Wraith.tscn"), 	"tier": 1},
 		{"id": "target", 	"scene": preload("res://game/objects/items/scenes/tier 1/Target.tscn"), 	"tier": 1},
 		{"id": "radar", 		"scene": preload("res://game/objects/items/scenes/tier 1/Radar.tscn"), 	"tier": 1},
+		{"id": "ez", 		"scene": preload("res://game/objects/items/scenes/tier 1/EZ.tscn"), 		"tier": 1},
+		{"id": "torch", 		"scene": preload("uid://qx6z1k5ad0jc7"), 	"tier": 1},
 		
+		#{"id": "storybook", 	"scene": preload("uid://m6oyxodimxew"), 		"tier": 2},
+		#{"id": "penetrating", 	"scene": preload("res://game/objects/items/scenes/tier 2/Penetrating.tscn"), "tier": 2},
+		#{"id": "mimic", 			"scene": preload("res://game/objects/items/scenes/tier 2/Mimic_item.tscn"), "tier": 2},
+		#{"id": "treasuremap", 	"scene": preload("res://game/objects/items/scenes/tier 2/TreasureMap.tscn"), "tier": 2},
+		{"id": "opulence", 		"scene": preload("res://game/objects/items/scenes/tier 2/Opulence.tscn"), "tier": 2},
+		#{"id": "guts", 			"scene": preload("res://game/objects/items/scenes/tier 2/Guts.tscn"), "tier": 2},
+		{"id": "blackdeal", 		"scene": preload("res://game/objects/items/scenes/tier 2/BlackDeal.tscn"), "tier": 2},
+		#{"id": "ouroboros", 	"scene": preload("res://game/objects/items/scenes/tier 2/Ouroboros.tscn"), "tier": 2},
+		{"id": "fernlucky", 	"scene": preload("res://game/objects/items/scenes/tier 2/FernLucky.tscn"), "tier": 2},
+		{"id": "clover", 		"scene": preload("res://game/objects/items/scenes/tier 2/Clover.tscn"), "tier": 2},
+		#{"id": "magicgrimoire","scene": preload("res://game/objects/items/scenes/tier 2/MagicGrimoire.tscn"), "tier": 2},
+		{"id": "manaflame", 		"scene": preload("res://game/objects/items/scenes/tier 2/ManaFlame.tscn"), "tier": 2},
+		#{"id": "blackbrand", 	"scene": preload("res://game/objects/items/scenes/tier 2/BlackBrand.tscn"), "tier": 2},
+		#{"id": "desperado", 	"scene": preload("res://game/objects/items/scenes/tier 2/Desperado.tscn"), "tier": 2},
+		{"id": "wildwind", 		"scene": preload("res://game/objects/items/scenes/tier 2/WildWind.tscn"), "tier": 2},
+		#{"id": "zerotohundred","scene": preload("res://game/objects/items/scenes/tier 2/ZeroToHundred.tscn"), "tier": 2},
+		{"id": "salamandra", 	"scene": preload("res://game/objects/items/scenes/tier 2/Salamandra.tscn"), "tier": 2},
+		{"id": "dragonheart", 	"scene": preload("res://game/objects/items/scenes/tier 2/DragonHeart.tscn"), "tier": 2},
+		#{"id": "executionersaxe", "scene": preload("res://game/objects/items/scenes/tier 2/ExecutionersAxe.tscn"), "tier": 2},
+		{"id": "eagleseye", 	"scene": preload("res://game/objects/items/scenes/tier 2/EaglesEye.tscn"), "tier": 2},
+		#{"id": "laserscope", 	"scene": preload("res://game/objects/items/scenes/tier 2/LaserScope.tscn"), "tier": 2},
+		{"id": "hunter", 		"scene": preload("res://game/objects/items/scenes/tier 2/Hunter.tscn"), "tier": 2},
+		{"id": "astrolabia", 	"scene": preload("res://game/objects/items/scenes/tier 2/Astrolabia.tscn"), "tier": 2},
+		#{"id": "planetary", 	"scene": preload("res://game/objects/items/scenes/tier 2/Planetary.tscn"), "tier": 2},
+		#{"id": "telescope", 	"scene": preload("res://game/objects/items/scenes/tier 2/Telescope.tscn"), "tier": 2},
+		#{"id": "lantern", 		"scene": preload("res://game/objects/items/scenes/tier 2/Lantern.tscn"), "tier": 2},
+		{"id": "balllightning","scene": preload("res://game/objects/items/scenes/tier 2/BallLightning.tscn"), "tier": 2},
+		#{"id": "waterelemental", "scene": preload("res://game/objects/items/scenes/tier 2/WaterElemental.tscn"), "tier": 2},
+		{"id": "goldnugget", 	"scene": preload("res://game/objects/items/scenes/tier 2/GoldNugget.tscn"), "tier": 2},
+		#{"id": "goldbar", 		"scene": preload("res://game/objects/items/scenes/tier 2/GoldBar.tscn"), "tier": 2},
+		{"id": "well", 			"scene": preload("res://game/objects/items/scenes/tier 2/Well.tscn"), "tier": 2},
+		{"id": "gigantring", 	"scene": preload("res://game/objects/items/scenes/tier 2/GigantRing.tscn"), "tier": 2},
+		#{"id": "occult", 		"scene": preload("res://game/objects/items/scenes/tier 2/Occult.tscn"), "tier": 2},
+		#{"id": "markoftenebris","scene": preload("res://game/objects/items/scenes/tier 2/MarkOfTenebris.tscn"), "tier": 2},
+		#{"id": "genomemap", 	"scene": preload("res://game/objects/items/scenes/tier 2/GenomeMap.tscn"), "tier": 2},
+		{"id": "ironmaiden", 	"scene": preload("res://game/objects/items/scenes/tier 2/IronMaiden.tscn"), "tier": 2},
+		#{"id": "siegehammer", 	"scene": preload("res://game/objects/items/scenes/tier 2/SiegeHammer.tscn"), "tier": 2},
+		#{"id": "criticalflower","scene": preload("res://game/objects/items/scenes/tier 2/CriticalFlower.tscn"), "tier": 2},
+		#{"id": "mathcircle", 	"scene": preload("res://game/objects/items/scenes/tier 2/MathCircle.tscn"), "tier": 2},
+		{"id": "ricochet", 		"scene": preload("res://game/objects/items/scenes/tier 2/Ricochet.tscn"), "tier": 2},
+		{"id": "satellitebuff", "scene": preload("res://game/objects/items/scenes/tier 2/SatelliteBuff.tscn"), "tier": 2, "weight": 0.0},
+			
+		#{"id": "boomerang", 	"scene": preload("uid://duqt5c8r3bui4"), 	"tier": 3},
+		{"id": "multricochet", 	"scene": preload("res://game/objects/items/scenes/tier 3/MultRicochet.tscn"), "tier": 3},
+		#{"id": "spacetimecircuit", "scene": preload("res://game/objects/items/scenes/tier 3/SpaceTimeCircuit.tscn"), "tier": 3},
+		{"id": "starfruit", 		"scene": preload("res://game/objects/items/scenes/tier 3/StarFruit.tscn"), "tier": 3},
+		{"id": "assassination", "scene": preload("res://game/objects/items/scenes/tier 3/Assassination.tscn"), "tier": 3},
+		{"id": "ballista", 		"scene": preload("res://game/objects/items/scenes/tier 3/Ballista.tscn"), "tier": 3},
+		#{"id": "efirblade", 	"scene": preload("res://game/objects/items/scenes/tier 3/EfirBlade.tscn"), "tier": 3},
+		#{"id": "necronomicon", 	"scene": preload("res://game/objects/items/scenes/tier 3/Necronomicon.tscn"), "tier": 3},
+		
+		#{"id": "card6", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card6.tscn"), 		"tier": 4},
+		#{"id": "card7", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card7.tscn"), 		"tier": 4},
+		#{"id": "card8", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card8.tscn"), 		"tier": 4},
+		#{"id": "card9", 		"scene": preload("res://game/objects/items/scenes/tier 4/Card9.tscn"), 		"tier": 4},
+		#{"id": "card10", 	"scene": preload("res://game/objects/items/scenes/tier 4/Card10.tscn"), 		"tier": 4},
+		#{"id": "cardjack", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardJack.tscn"), 	"tier": 4},
+		#{"id": "cardqueen", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardQueen.tscn"), 	"tier": 4},
+		#{"id": "cardking", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardKing.tscn"), 	"tier": 4},
+		#{"id": "cardace", 	"scene": preload("res://game/objects/items/scenes/tier 4/CardAce.tscn"), 	"tier": 4},
 		
 	],
 	"armory": [
@@ -477,14 +533,21 @@ func _on_achievement_unlocked(_popup_path: String) -> void:
 	save_config()
 
 func update_unlocks() -> void:
+	## Собираем, какие гейтнутые предметы сейчас открыты хотя бы одной ачивкой.
+	var gated_unlocked: Dictionary = {}
+	var gated_ids: Dictionary = {}
 	for ach_id in AchivStatsRegistry.ITEM_UNLOCKS.keys():
-		var unlocked := AchievementManager.is_unlocked(ach_id)
+		var ach_ok := AchievementManager.is_unlocked(ach_id)
 		for item_id in AchivStatsRegistry.ITEM_UNLOCKS[ach_id]:
-			if unlocked:
-				unlocked_items[item_id] = true
-			else:
-				# Снимаем с сейва, если предмет теперь гейтится достижением.
-				unlocked_items.erase(item_id)
+			gated_ids[item_id] = true
+			if ach_ok:
+				gated_unlocked[item_id] = true
+	for item_id in gated_ids.keys():
+		if gated_unlocked.has(item_id):
+			unlocked_items[item_id] = true
+		else:
+			# Снимаем с сейва, если предмет гейтится и ни одна ачивка ещё не открыта.
+			unlocked_items.erase(item_id)
 
 func get_spawn_weight(item: Dictionary) -> float:
 	if not is_unlocked(item.id):

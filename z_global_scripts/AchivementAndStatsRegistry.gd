@@ -283,10 +283,17 @@ const STANDALONE_ACHIEVEMENTS := {
 	},
 	"unlock_forest_gear": {
 		"name": "Rotting forest",
-		"desc": "Complete location 2 (Pyramid)",
+		"desc": "Complete location 3 (Rotting Forest)",
 		"goal": 1,
 		"menu_icon": "res://image/achievements/menu_achiv/unlock_forest_gear.png",
 		"hud_popup": "res://image/achievements/hud_achiv/unlock_forest_gear_hud.png",
+	},
+	"Anton": {
+		"name": "Anton",
+		"desc": "Talk to the same trader 10 times in a row",
+		"goal": 1,
+		"menu_icon": "res://image/achievements/menu_achiv/anton.png",
+		"hud_popup": "res://image/achievements/hud_achiv/anton_hud.png",
 	},
 }
 
@@ -307,32 +314,131 @@ const ITEM_PICKUP_STATS := {
 ## Разблокировка предметов в пулах ItemManager при получении достижения.
 ## Ключ — id достижения из achievement.id выше.
 const ITEM_UNLOCKS := {
-	"first_kill": ["torch"],
-	"cards_collector": ["joker"],
+	"Mega_crit": ["assassination", "ballista"],
+	"First time": ["target", "radar"],
+	"Anton": ["opulence"],
+	"100i": ["opulence", "fernlucky"],
+	"unlock_john": ["diamond"],
+	"manyluck": ["multricochet"],
+	"someluck": ["clover"],
+	"winner": ["hunter"],
+	"fCasino": ["balllightning"],
 	"unlock_joab": ["blackdeal"],
+	## Остальные предметы — по прогрессу локаций
+	"unlock_arid_membrane": [
+		"seed", "bomb", "broom", "sandclock", "harmony", "fountain", "stardust",
+		"luckycoin", "forceshield", "spiderweb",
+		"homuncules", "shine", "cauldron", "grail", "exorcism", "basilisk", "wraith",
+		"powerofdamage",
+	],
+	"unlock_forest_gear": [
+		"aegis", "meat", "manaflame", "dragonheart", "eagleseye", "astrolabia",
+		"well", "ironmaiden", "uranium", "starfruit",
+		"petroglyph", "blueprint", "guts", "blackbrand", "desperado", "zerotohundred",
+		"amplifier", "scope",
+	],
+	"unlock_jovita": [
+		"bone", "mindseye", "penetrating", "mimic", "treasuremap",
+		"occult", "markoftenebris", "magicseal", "genomemap", "toycastle",
+		"sacrosanct", "crown", "accelerator", "siegehammer", "criticalflower",
+		"mathcircle", "planetary", "lantern",
+	],
+	"unlock_jonnytta_alt": [
+		"waterelemental", "goldbar", "spacetimecircuit", "efirblade", "necronomicon",
+	],
+	## Tier 4 (карты)
+	"unlock_jonny_alt": [
+		"card6", "card7", "card8", "card9", "card10",
+		"cardjack", "cardqueen", "cardking", "cardace",
+	],
 }
 
 ## Разблокировка экипировки в пулах EquipManager при получении достижения.
 ## Ключ — id достижения из achievement.id выше.
+## Вес 0 в пуле = закрыто; при unlock ставится 10.
 const EQUIP_UNLOCKS := {
+	"Mega_crit": [
+		{"pool": "all", "equipment_id": "Death_shield"},
+	],
+	"Anton": [
+		{"pool": "all", "equipment_id": "Lucky_Gold_Shield"},
+	],
+	"manyluck": [
+		{"pool": "treasure", "equipment_id": "Wild_Boots"},
+		{"pool": "armory", "equipment_id": "Wild_Boots"},
+		{"pool": "all", "equipment_id": "Wild_Boots"},
+	],
+	"someluck": [
+		{"pool": "all", "equipment_id": "Lion_Shield"},
+	],
+	"shop_loyality": [
+		{"pool": "ability", "equipment_id": "GoldHoard"},
+	],
+	"bank_loyality": [
+		{"pool": "ability", "equipment_id": "TatteredTrade"},
+	],
+	"first_item": [
+		{"pool": "ability", "equipment_id": "MiromirGift"},
+	],
+	"honestwork": [
+		{"pool": "ability", "equipment_id": "MariaCall"},
+		{"pool": "ability", "equipment_id": "KeresCall"},
+	],
 	"long_distance": [
 		{"pool": "armory", "equipment_id": "Speed_boots"},
 		{"pool": "all", "equipment_id": "Speed_boots"},
+		{"pool": "ability", "equipment_id": "Surge"},
 	],
 	"bad_spear_kills": [
 		{"pool": "armory", "equipment_id": "EXSpear"},
 		{"pool": "weapon", "equipment_id": "EXSpear"},
 		{"pool": "all", "equipment_id": "EXSpear"},
+		{"pool": "ability", "equipment_id": "DoomedChance"},
 	],
 	"cards_collector": [
 		{"pool": "weapon", "equipment_id": "CardWeapon"},
 		{"pool": "all", "equipment_id": "CardWeapon"},
+	],
+	"unlock_joab": [
+		{"pool": "ability", "equipment_id": "PoisonotingPotion"},
+		{"pool": "all", "equipment_id": "special_weapon"},
+	],
+	"unlock_arid_membrane": [
+		{"pool": "weapon", "equipment_id": "arid_membrane"},
+		{"pool": "all", "equipment_id": "arid_membrane"},
+		{"pool": "all", "equipment_id": "Cleaving"},
+	],
+	"unlock_forest_gear": [
+		{"pool": "weapon", "equipment_id": "Jonny_shot_Alt"},
+		{"pool": "all", "equipment_id": "Jonny_shot_Alt"},
+		{"pool": "weapon", "equipment_id": "Nunchucks"},
+		{"pool": "all", "equipment_id": "Nunchucks"},
+		{"pool": "all", "equipment_id": "Axe"},
+		{"pool": "all", "equipment_id": "ShotGun"},
+		{"pool": "treasure", "equipment_id": "Surestrike"},
+		{"pool": "armory", "equipment_id": "Surestrike"},
+		{"pool": "all", "equipment_id": "Surestrike"},
+		## остальные способности (базовые Dodge/Dash/CrackedEruption/Ember открыты сразу)
+		{"pool": "ability", "equipment_id": "CoinRoulette"},
+		{"pool": "armory", "equipment_id": "CoinRoulette"},
+		{"pool": "ability", "equipment_id": "StealLife"},
+		{"pool": "ability", "equipment_id": "MiromirBlessing"},
+		{"pool": "ability", "equipment_id": "BoonOfKeres"},
+		{"pool": "ability", "equipment_id": "ThePilgrimage"},
+		{"pool": "ability", "equipment_id": "Expedition"},
 	],
 	"unlock_jovita": [
 		{"pool": "weapon", "equipment_id": "Scatterhand"},
 		{"pool": "all", "equipment_id": "Scatterhand"},
 		{"pool": "weapon", "equipment_id": "Sniper_Gun"},
 		{"pool": "all", "equipment_id": "Sniper_Gun"},
+		{"pool": "treasure", "equipment_id": "Spread_Shot"},
+		{"pool": "armory", "equipment_id": "Spread_Shot"},
+		{"pool": "all", "equipment_id": "Spread_Shot"},
+	],
+	"unlock_jonnytta_alt": [
+		{"pool": "armory", "equipment_id": "Satellite"},
+		{"pool": "all", "equipment_id": "Satellite"},
 	],
 	"unlock_jonny_alt": [
 		{"pool": "weapon", "equipment_id": "test_shot"},
@@ -346,16 +452,7 @@ const EQUIP_UNLOCKS := {
 		{"pool": "all", "equipment_id": "tome_of_fairy_tales"},
 		{"pool": "weapon", "equipment_id": "Magic pistol"},
 		{"pool": "all", "equipment_id": "Magic pistol"},
-	],
-	"unlock_arid_membrane": [
-		{"pool": "weapon", "equipment_id": "arid_membrane"},
-		{"pool": "all", "equipment_id": "arid_membrane"},
-	],
-	"unlock_forest_gear": [
-		{"pool": "weapon", "equipment_id": "Jonny_shot_Alt"},
-		{"pool": "all", "equipment_id": "Jonny_shot_Alt"},
-		{"pool": "weapon", "equipment_id": "Nunchucks"},
-		{"pool": "all", "equipment_id": "Nunchucks"},
+		{"pool": "ability", "equipment_id": "Shield"},
 	],
 }
 

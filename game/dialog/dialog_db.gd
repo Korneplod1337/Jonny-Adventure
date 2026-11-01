@@ -4,6 +4,10 @@ extends Node
 
 var is_dialog_open: bool = false
 
+## Anton: подряд idle-разговоры с одним и тем же торговцем (один экземпляр в комнате).
+var _anton_focus_id: int = 0
+var _anton_idle_streak: int = 0
+
 ## event_id → { trader, priority, dialog, trigger }
 ## trigger — имя метода в этом скрипте, возвращающего bool
 const EVENTS := {
@@ -435,11 +439,31 @@ func start_dialog(trader_id: String, focus_node: Node2D) -> void:
 	var dialog_id: String = str(pick.get("dialog_id", ""))
 	if dialog_id.is_empty() or not DIALOGS.has(dialog_id):
 		return
+	var event_id: String = str(pick.get("event_id", ""))
+	_track_anton_streak(event_id, focus_node)
 	is_dialog_open = true
 	var ui_scene: PackedScene = load("res://game/dialog/dialog_ui.tscn")
 	var ui = ui_scene.instantiate()
 	get_tree().root.add_child(ui)
-	ui.begin(trader_id, dialog_id, str(pick.get("event_id", "")), focus_node)
+	ui.begin(trader_id, dialog_id, event_id, focus_node)
+
+
+## Idle с тем же focus_node 10 раз подряд → Anton. Квест или другой торговец сбрасывает.
+func _track_anton_streak(event_id: String, focus_node: Node2D) -> void:
+	if AchievementManager.is_unlocked("Anton"):
+		return
+	if not event_id.is_empty():
+		_anton_focus_id = 0
+		_anton_idle_streak = 0
+		return
+	var focus_id: int = focus_node.get_instance_id() if focus_node and is_instance_valid(focus_node) else 0
+	if focus_id != 0 and focus_id == _anton_focus_id:
+		_anton_idle_streak += 1
+	else:
+		_anton_focus_id = focus_id
+		_anton_idle_streak = 1
+	if _anton_idle_streak >= 10:
+		AchievementManager.unlock_achievement("Anton")
 
 
 func apply_actions(actions: Array, focus_node: Node2D = null) -> bool:

@@ -65,6 +65,12 @@ var force_shield_charges: 	int = 0
 ## База 1; миникарта в HUD при minimap > 1 (StarMap даёт +1)
 var minimap: 				int = 1
 var revival_count: 			int = 0
+## Очередь возрождений: {pass_through: bool, immune_time: float}
+var _revival_charges: Array = []
+## Undead и др.: множитель итогового max HP (стакается умножением).
+var max_hp_mult: 			float = 1.0
+## Necronomicon: стаки; красные ≤ max_hp / 2^stacks (для max_hp<=0 — no-op).
+var necronomicon_stacks: 	int = 0
 var penetration_bonus: 		int = 0
 var hack_bonus: 				int = 0
 var ricochet_bonus: 			int = 0
@@ -77,6 +83,8 @@ var math_circle_amplitude: 	float = 0.0
 var math_circle_range_mult: 	float = 1.0
 ## Star Fruit: сколько раз применить сплит (×5 лучей, ×0.5 урон за стак)
 var star_fruit_stacks: 		int = 0
+## Ball Lightning: +0.10 к шансу первого прока Lightning за стак
+var ball_lightning_proc_bonus: float = 0.0
 ## Saw Mask: кат-сцена / без головы / блок Head до конца забега
 var saw_mask_active: 		bool = false
 var attack_locked: 			bool = false
@@ -603,7 +611,41 @@ func _add_live_hp(typ: String, amount: int) -> void:
 	if free_slots <= 0:
 		return
 	var add :int = min(amount, free_slots)
+	if typ == "red" and necronomicon_stacks > 0 and max_hp > 0:
+		var red_cap: int = _necronomicon_red_cap()
+		add = mini(add, maxi(0, red_cap - hp_list["red"]))
+		if add <= 0:
+			return
 	hp_list[typ] += add
+
+
+func _necronomicon_red_cap() -> int:
+	if necronomicon_stacks <= 0 or max_hp <= 0:
+		return max_hp
+	return max_hp >> mini(necronomicon_stacks, 30)
+
+
+func clamp_necronomicon_red() -> void:
+	if necronomicon_stacks <= 0 or max_hp <= 0:
+		return
+	var red_cap: int = _necronomicon_red_cap()
+	if hp_list["red"] > red_cap:
+		hp_list["red"] = red_cap
+
+
+func trim_live_hp_to_max() -> void:
+	if max_hp <= 0:
+		return
+	var live: int = hp_list["red"] + hp_list["green"]
+	while live > max_hp:
+		if hp_list["green"] > 0:
+			hp_list["green"] -= 1
+		elif hp_list["red"] > 0:
+			hp_list["red"] -= 1
+		else:
+			break
+		live -= 1
+	clamp_necronomicon_red()
 
 func die() -> void:
 	SoundManager.stop_all_sfx()
@@ -617,12 +659,32 @@ func die() -> void:
 	AchievementManager.unlock_achievement('First time')
 
 
-func try_revive() -> bool:
-	if revival_count <= 0:
-		return false
-	revival_count -= 1
+func add_revival(pass_through: bool = false, immune_time: float = 2.0, hp_bonus_cost: int = 0) -> void:
+	_revival_charges.append({
+		"pass_through": pass_through,
+		"immune_time": immune_time,
+		"hp_bonus_cost": hp_bonus_cost,
+	})
+	revival_count = _revival_charges.size()
 
-	hp_bonus -= 2
+
+func consume_revival_charge() -> bool:
+	if _revival_charges.is_empty():
+		revival_count = 0
+		return false
+	_revival_charges.pop_back()
+	revival_count = _revival_charges.size()
+	return true
+
+
+func try_revive() -> bool:
+	if _revival_charges.is_empty():
+		revival_count = 0
+		return false
+	var charge: Dictionary = _revival_charges.pop_front()
+	revival_count = _revival_charges.size()
+
+	hp_bonus -= int(charge.get("hp_bonus_cost", 0))
 	max_hp = int(StatManager.get_stat(self, "hp"))
 	hp_list["red"] = mini(1, maxi(max_hp, 0))
 	hp_list["green"] = 0
@@ -638,12 +700,13 @@ func try_revive() -> bool:
 	attack_locked = true
 	get_tree().create_timer(1.0).timeout.connect(_on_revive_attack_unlock)
 
+	var immune_time: float = float(charge.get("immune_time", 2.0))
 	invulnerable = true
-	imuneTimer.wait_time = 2.0
+	imuneTimer.wait_time = immune_time
 	imuneTimer.start()
 	_set_invuln_visual(true)
 
-	_revive_pass_through = true
+	_revive_pass_through = bool(charge.get("pass_through", false))
 	_update_enemy_collision()
 	_update_heartbeat_sfx()
 	_emit_stats_changed()
@@ -998,6 +1061,7 @@ func start_reload():
 
 # Сигнал изменения статов
 func _emit_stats_changed() -> void: 
+	clamp_necronomicon_red()
 	_emit_hp_visual_changed()
 	emit_signal("stats_changed", move_speed_level, luck_level, damage_level,\
 	 spread_level, range_level, hit_points_level, fire_rate_level, magic_level)

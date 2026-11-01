@@ -77,6 +77,7 @@ var secret_codes := {
 	"avtomatic123": "matic",
 	"dlc artbook": "artbook",
 	"easyysae": "easy",
+	"ieuunlock": "ieuunlock",
 }
 
 func _SecretCode_pressed() -> void:
@@ -96,11 +97,25 @@ func _SecretCode_pressed() -> void:
 			"easy":
 				_unlock_easy_difficulty()
 				print("Открыта лёгкая сложность")
+
+			"ieuunlock":
+				_unlock_all_items_and_equip()
+				print("Открыты все предметы и экипировка")
 		print("Верный код")
 		line_edit.clear()
 
 	else:
 		print("Неверный код")
+
+
+func _unlock_all_items_and_equip() -> void:
+	AchievementManager.force_unlock_all()
+	ItemManager.update_unlocks()
+	ItemManager.save_config()
+	EquipManager.update_unlocks()
+	var char_menu := get_parent().get_parent().get_node_or_null("Char_select_menu")
+	if char_menu and char_menu.has_method("update_character_unlocks"):
+		char_menu.update_character_unlocks()
 
 
 func _unlock_easy_difficulty() -> void:

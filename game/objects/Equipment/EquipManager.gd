@@ -24,17 +24,16 @@ var POOLS := {
 		 "tier": 1, "weight": 10.0},
 		{"id": "Dragon_Shield", "scene": preload("res://game/objects/Equipment/Chest/Dragon_Shield.tscn"),
 		 "tier": 2, "weight": 10.0},
-		
 		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		
 		
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 	
 	
 	
@@ -61,17 +60,17 @@ var POOLS := {
 		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
 		 "tier": 1, "weight": 0.0},
 		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Satellite", "scene": preload("res://game/objects/Equipment/head/Satellite.tscn"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 3, "weight": 0.0},
 
 		
 		{"id": "Dash", "scene": preload("res://game/objects/Equipment/Ability/equip/Dash_equip.tscn"),
@@ -79,7 +78,7 @@ var POOLS := {
 		{"id": "Dodge", "scene": preload("res://game/objects/Equipment/Ability/equip/Dodge_equip.tscn"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "CoinRoulette", "scene": preload("res://game/objects/Equipment/Ability/equip/CoinRoulette_equip.tscn"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "Ember", "scene": preload("res://game/objects/Equipment/Ability/equip/Ember_equip.tscn"),
 		 "tier": 1, "weight": 10.0},
 
@@ -107,39 +106,39 @@ var POOLS := {
 		{"id": "Dodge", "scene": preload("res://game/objects/Equipment/Ability/equip/Dodge_equip.tscn"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "CoinRoulette", "scene": preload("res://game/objects/Equipment/Ability/equip/CoinRoulette_equip.tscn"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "CrackedEruption", "scene": preload("res://game/objects/Equipment/Ability/equip/CrackedEruption_equip.tscn"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Ember", "scene": preload("res://game/objects/Equipment/Ability/equip/Ember_equip.tscn"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Shield", "scene": preload("res://game/objects/Equipment/Ability/equip/Shield_equip.tscn"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "StealLife", "scene": preload("res://game/objects/Equipment/Ability/equip/StealLife_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "TatteredTrade", "scene": preload("res://game/objects/Equipment/Ability/equip/TatteredTrade_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "DoomedChance", "scene": preload("res://game/objects/Equipment/Ability/equip/DoomedChance_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "MiromirBlessing", "scene": preload("res://game/objects/Equipment/Ability/equip/MiromirBlessing_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "BoonOfKeres", "scene": preload("res://game/objects/Equipment/Ability/equip/BoonOfKeres_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "Surge", "scene": preload("res://game/objects/Equipment/Ability/equip/Surge_equip.tscn"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "GoldHoard", "scene": preload("res://game/objects/Equipment/Ability/equip/GoldHoard_equip.tscn"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "ThePilgrimage", "scene": preload("res://game/objects/Equipment/Ability/equip/ThePilgrimage_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "Expedition", "scene": preload("res://game/objects/Equipment/Ability/equip/Expedition_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "MiromirGift", "scene": preload("res://game/objects/Equipment/Ability/equip/MiromirGift_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "KeresCall", "scene": preload("res://game/objects/Equipment/Ability/equip/KeresCall_equip.tscn"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 3, "weight": 0.0},
 		{"id": "MariaCall", "scene": preload("res://game/objects/Equipment/Ability/equip/MariaCall_equip.tscn"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 3, "weight": 0.0},
 		{"id": "PoisonotingPotion", "scene": preload("res://game/objects/Equipment/Ability/equip/PoisonotingPotion_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 	],
 	"all": [ # without ability
 		{"id": "Jonny_shot",   "scene": preload("uid://bwiytmmsxjtk5"),
@@ -166,7 +165,7 @@ var POOLS := {
 		{"id": "Solaris", "scene": preload("uid://ci4paxr8kkjx2"),
 		 "tier": 3, "weight": 0.0},
 		{"id": "Axe", "scene": preload("res://game/objects/Equipment/Weapon/equip/Axe_equip.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		
 		{"id": "Matchlock", "scene": preload("uid://d4b16tebiwudm"),
 		 "tier": 1, "weight": 10.0},
@@ -177,22 +176,22 @@ var POOLS := {
 		{"id": "Scatterhand", "scene": preload("uid://ixfqllfdouf6"),
 		 "tier": 2, "weight": 0.0},
 		{"id": "ShotGun", "scene": preload("uid://xi3j7etugnhg"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 3, "weight": 0.0},
 		{"id": "Magic pistol", "scene": preload("uid://c6exdflntaqki"),
 		 "tier": 3, "weight": 0.0},
 		{"id": "special_weapon", "scene": preload("res://game/objects/Equipment/Weapon/equip/Special_weapon_equip.tscn"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 3, "weight": 0.0},
 		
 		{"id": "Death_shield", "scene": preload("uid://bgibadaeek4on"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 3, "weight": 0.0},
 		{"id": "Cleaving", "scene": preload("uid://bdx03qht6dlwl"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "armory_plate", "scene": preload("res://game/objects/Equipment/Chest/Armory_plate.tscn"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Lion_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lion_Shield.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "Lucky_Gold_Shield", "scene": preload("res://game/objects/Equipment/Chest/Lucky_Gold_Shield.tscn"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "Dragon_Shield", "scene": preload("res://game/objects/Equipment/Chest/Dragon_Shield.tscn"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Accelerator_Cloak", "scene": preload("uid://c6snhkx0masi2"),
@@ -206,23 +205,23 @@ var POOLS := {
 		{"id": "Speed_boots", "scene": preload("uid://lcbyc42s480y"),
 		 "tier": 2, "weight": 0.0},
 		{"id": "Wild_Boots", "scene": preload("res://game/objects/Equipment/boots/Wild_Boots.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "Alchemists_glasses", "scene": preload("uid://8nlac1wigti"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Surestrike", "scene": preload("uid://rm084balo4ar"),
-		 "tier": 1, "weight": 10.0},
+		 "tier": 1, "weight": 0.0},
 		{"id": "lucky_head", "scene": preload("uid://b6vskrremanrc"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Iron_Maiden", "scene": preload("res://game/objects/Equipment/head/Iron_Maiden.tscn"),
 		 "tier": 2, "weight": 10.0},
 		{"id": "Spread_Shot", "scene": preload("res://game/objects/Equipment/head/Spread_Shot.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "Satellite", "scene": preload("res://game/objects/Equipment/head/Satellite.tscn"),
-		 "tier": 2, "weight": 10.0},
+		 "tier": 2, "weight": 0.0},
 		{"id": "Third_Eye", "scene": preload("res://game/objects/Equipment/head/Third_Eye.tscn"),
 		 "tier": 1, "weight": 10.0},
 		{"id": "Saw_Mask", "scene": preload("res://game/objects/Equipment/head/Saw_Mask.tscn"),
-		 "tier": 3, "weight": 10.0},
+		 "tier": 2, "weight": 10.0},
 	]
 }
 
@@ -419,6 +418,18 @@ func update_unlocks() -> void:
 		var unlocked := AchievementManager.is_unlocked(ach_id)
 		for rule in AchivStatsRegistry.EQUIP_UNLOCKS[ach_id]:
 			_set_equipment_weight(rule["pool"], rule["equipment_id"], 10.0 if unlocked else 0.0)
+
+
+func is_unlocked(equipment_id: String) -> bool:
+	var gated := false
+	for ach_id in AchivStatsRegistry.EQUIP_UNLOCKS.keys():
+		for rule in AchivStatsRegistry.EQUIP_UNLOCKS[ach_id]:
+			if str(rule["equipment_id"]) != equipment_id:
+				continue
+			gated = true
+			if AchievementManager.is_unlocked(ach_id):
+				return true
+	return not gated
 
 
 func _set_equipment_weight(pool_name: String, equipment_id: String, weight: float) -> void:

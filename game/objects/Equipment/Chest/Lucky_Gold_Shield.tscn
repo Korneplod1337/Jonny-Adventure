@@ -15,7 +15,7 @@ script = ExtResource("1_script")
 type = "chest"
 equip_icon = ExtResource("2_icon")
 equip_id = "Lucky_Gold_Shield"
-equip_tooltip = "Entering a standard room grants 1 coin"
+equip_tooltip = "Entering a special room grants 1 coin"
 interact_name = "Lucky Gold Shield"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

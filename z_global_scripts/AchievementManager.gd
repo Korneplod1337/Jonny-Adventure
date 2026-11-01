@@ -52,6 +52,20 @@ func check_achievement(key: String, stat_value: float) -> void:
 func unlock_achievement(key: String) -> void:
 	if not AchivStatsRegistry.TRACKING_ENABLED:
 		return
+	_unlock_achievement_internal(key)
+
+
+## Обходит TRACKING_ENABLED — для читкодов / дебага.
+func force_unlock_achievement(key: String) -> void:
+	_unlock_achievement_internal(key)
+
+
+func force_unlock_all() -> void:
+	for key in achievements.keys():
+		_unlock_achievement_internal(key)
+
+
+func _unlock_achievement_internal(key: String) -> void:
 	var ach = achievements.get(key)
 	if not ach or ach["unlocked"]:
 		return
@@ -63,7 +77,6 @@ func unlock_achievement(key: String) -> void:
 	# Всегда уведомляем слушателей (ItemManager / EquipManager / меню).
 	# HUD сам игнорирует пустой путь и "-".
 	achievement_unlocked.emit(ach["popup_window"])
-
 
 
 func is_unlocked(key: String) -> bool:
