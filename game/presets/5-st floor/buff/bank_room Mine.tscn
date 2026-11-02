@@ -245,9 +245,6 @@ position = Vector2(0, -298)
 scale = Vector2(2, 2)
 dir = Vector2(-1, 0)
 
-[node name="SecretBankDoor" parent="." unique_id=211003881 instance=ExtResource("5_e0ywr")]
-position = Vector2(-560, 40)
-
 [node name="Door_Right" parent="." unique_id=1424844174 instance=ExtResource("4_vanjv")]
 position = Vector2(578, -190)
 rotation = 1.5707964
@@ -307,5 +304,8 @@ shape = SubResource("CircleShape2D_bd253")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable_give" unique_id=1174715537]
 position = Vector2(-356, 57)
 shape = SubResource("CircleShape2D_bd253")
+
+[node name="SecretBankDoor2" parent="." unique_id=652326416 instance=ExtResource("5_e0ywr")]
+position = Vector2(-560, -190)
 
 [connection signal="body_entered" from="CameraBounds" to="." method="bounds_body_entered"]

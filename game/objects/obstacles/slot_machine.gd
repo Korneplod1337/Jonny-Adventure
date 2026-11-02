@@ -25,6 +25,10 @@ const DAMAGE_BLOCK := 40
 
 const COIN_SCENE := preload("res://game/objects/coins/Coin.tscn")
 const COIN_BAG_SCENE := preload("res://game/objects/coins/CoinBag.tscn")
+const HEAL_SCENE := preload("res://game/objects/items/scenes/tier 0/Potion Red.tscn")
+const SHIELD_SCENE := preload("res://game/objects/items/scenes/tier 0/Shield.tscn")
+## Instead of 1 coin on mini_money: chance to drop heal or shield.
+const MINI_MONEY_ITEM_CHANCE := 0.3
 
 @onready var interactable: Area2D = $Interactable
 @onready var machine_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -277,13 +281,25 @@ func _spawn_prize_deferred(prize: String, delay: float) -> void:
 func _spawn_prize(prize: String) -> void:
 	match prize:
 		"mini_money":
-			_eject_node(COIN_SCENE.instantiate())
+			if randf() < MINI_MONEY_ITEM_CHANCE:
+				_spawn_mini_money_item()
+			else:
+				_eject_node(COIN_SCENE.instantiate())
 		"money":
 			_eject_node(COIN_BAG_SCENE.instantiate())
 		"apple":
 			_spawn_item_prize()
 		"cherry":
 			_spawn_equip_prize()
+
+
+func _spawn_mini_money_item() -> void:
+	var scene: PackedScene = HEAL_SCENE if randf() < 0.5 else SHIELD_SCENE
+	var inst = scene.instantiate()
+	inst.where = "treasure"
+	inst.cost = 0
+	print("Мини-выигрыш: item вместо монетки (%s)" % ("heal" if scene == HEAL_SCENE else "shield"))
+	_eject_node(inst)
 
 
 func _spawn_item_prize() -> void:
