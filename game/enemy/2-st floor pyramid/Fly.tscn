@@ -95,8 +95,6 @@ hard_projectile_range = 450.0
 shots_per_volley = 4
 approach_stop_distance = 240.0
 projectile_scene = ExtResource("2_shot")
-hard_projectile_damage = 2
-cooldown_time = 0.6
 deals_melee_damage = false
 knockback_friction = 600.0
 
@@ -136,6 +134,7 @@ one_shot = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1103740991]
 position = Vector2(3, 0)
 sprite_frames = SubResource("SpriteFrames_fly")
+animation = &"shot"
 
 [node name="EffectAnchor" type="Marker2D" parent="." unique_id=1824600733]
 position = Vector2(0, -28)

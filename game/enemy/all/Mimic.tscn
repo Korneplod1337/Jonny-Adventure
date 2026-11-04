@@ -91,6 +91,7 @@ hard_move_speed = 200.0
 hard_base_hp = 120
 hard_projectile_speed = 400.0
 projectile_scene = ExtResource("2_shot")
+cooldown_time = 0.8
 use_pathfinding = true
 drop_coin_on_death = false
 

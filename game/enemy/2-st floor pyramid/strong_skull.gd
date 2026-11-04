@@ -12,7 +12,6 @@ enum Phase { CHASE, WINDUP }
 @export var hard_projectile_range: float = 450.0
 
 @export_group("Ability")
-@export var hard_ability_interval: float = 5.0
 @export var hard_windup_time: float = 1.0
 @export_range(0.0, 1.0) var shoot_chance: float = 0.5
 
@@ -20,11 +19,12 @@ const PROJECTILE_SPEED_MED_OFFSET := -25.0
 const PROJECTILE_SPEED_EASY_OFFSET := -50.0
 const PROJECTILE_RANGE_MED_OFFSET := -25.0
 const PROJECTILE_RANGE_EASY_OFFSET := -50.0
+const COOLDOWN_MED_OFFSET := 0.0
+const COOLDOWN_EASY_OFFSET := 0.0
 
 var projectile_speed: float = 350.0
 var projectile_range: float = 450.0
 var projectile_damage: int = 1
-var ability_interval: float = 5.0
 var windup_time: float = 1.0
 
 var phase := Phase.CHASE
@@ -37,11 +37,11 @@ func _ready() -> void:
 	super._ready()
 	# После WeakSkull._ready: движение сами (нужен windup без use_base_move).
 	use_base_move_towards_player = false
-	_ability_timer = ability_interval
+	_ability_timer = cooldown_time
 
 
 func _apply_level_buffs() -> void:
-	# WeakSkull: HP/speed; здесь поверх — projectile.
+	# WeakSkull: HP/speed; здесь поверх — projectile + cooldown.
 	super._apply_level_buffs()
 	projectile_damage = _scale_damage(hard_projectile_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
 	projectile_speed = _apply_difficulty_offset(
@@ -50,7 +50,7 @@ func _apply_level_buffs() -> void:
 	projectile_range = _apply_difficulty_offset(
 		hard_projectile_range, PROJECTILE_RANGE_MED_OFFSET, PROJECTILE_RANGE_EASY_OFFSET
 	)
-	ability_interval = hard_ability_interval
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
 	windup_time = hard_windup_time
 	if GameState.level_bufs[2][1]:
 		projectile_damage *= 2
@@ -112,7 +112,7 @@ func _process_windup(delta: float) -> void:
 
 func _finish_windup() -> void:
 	phase = Phase.CHASE
-	_ability_timer = ability_interval
+	_ability_timer = cooldown_time
 	_will_shoot = false
 	_update_locomotion_animation()
 

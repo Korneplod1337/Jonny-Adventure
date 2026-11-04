@@ -7,9 +7,10 @@ enum MoveState { IDLE, ROLL }
 
 @export_group("Random Move")
 @export var hard_roll_speed: float = 200.0
-@export var hard_idle_time_min: float = 2.0
-@export var hard_idle_time_max: float = 3.0
-@export var hard_roll_time: float = 2.0
+## Ритм от BaseEnemy.cooldown_time: roll/idle = cd * mult.
+@export var idle_min_cooldown_mult: float = 1.0
+@export var idle_max_cooldown_mult: float = 1.5
+@export var roll_cooldown_mult: float = 1.0
 @export var roll_bounce_window: float = 1.0
 @export var direction_step_degrees: float = 45.0
 
@@ -18,6 +19,8 @@ enum MoveState { IDLE, ROLL }
 @export var hard_damage: int = 1
 
 const DIRECTION_COUNT := 8
+const COOLDOWN_MED_OFFSET := 0.0
+const COOLDOWN_EASY_OFFSET := 0.0
 
 var roll_speed: float
 var idle_time_min: float
@@ -44,9 +47,10 @@ func _apply_level_buffs() -> void:
 	roll_speed = _scale_move_speed(
 		hard_roll_speed, _get_roll_speed_med_offset(), _get_roll_speed_easy_offset()
 	)
-	idle_time_min = hard_idle_time_min
-	idle_time_max = hard_idle_time_max
-	roll_time = hard_roll_time
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
+	idle_time_min = cooldown_time * idle_min_cooldown_mult
+	idle_time_max = cooldown_time * idle_max_cooldown_mult
+	roll_time = cooldown_time * roll_cooldown_mult
 	base_hp = _scale_hp(hard_base_hp, _get_hp_med_offset(), _get_hp_easy_offset())
 	damage = _scale_damage(hard_damage, _get_damage_med_offset(), _get_damage_easy_offset())
 	move_speed = roll_speed

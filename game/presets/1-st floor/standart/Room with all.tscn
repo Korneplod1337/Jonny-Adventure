@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b0gas5hwfpisf" path="res://game/objects/obstacles/rock.tscn" id="11_wgx4h"]
 [ext_resource type="PackedScene" uid="uid://bpxxvh07ciubm" path="res://game/objects/obstacles/rockSmall.tscn" id="12_pxgv3"]
 [ext_resource type="PackedScene" uid="uid://7wom6t7b0i7c" path="res://game/objects/obstacles/rockSmallest.tscn" id="13_7qtfd"]
+[ext_resource type="PackedScene" uid="uid://bvmeu3yiw5t3" path="res://game/objects/obstacles/shootable_wall.tscn" id="14_3j5bm"]
 [ext_resource type="PackedScene" uid="uid://bevlvruxr34ip" path="res://game/enemy/1-st floor basement/Worm.tscn" id="14_7khes"]
 [ext_resource type="PackedScene" uid="uid://ysk5cf5ryjby" path="res://game/enemy/1-st floor basement/Bat.tscn" id="15_x04md"]
 [ext_resource type="PackedScene" uid="uid://dkb1xb65dreb4" path="res://game/enemy/3-st floor forest/Hog.tscn" id="16_ltcm7"]
@@ -394,6 +395,9 @@ scale = Vector2(1, 1)
 position = Vector2(47, -19.5)
 scale = Vector2(1, 1)
 
+[node name="ShootableWall" parent="." unique_id=1515806871 instance=ExtResource("14_3j5bm")]
+position = Vector2(-1326, 288)
+
 [node name="EmenyWorm" parent="." unique_id=1655288545 instance=ExtResource("14_7khes")]
 position = Vector2(-139, -460)
 
@@ -722,7 +726,7 @@ burn_out_time = 100.0
 player_phy_damage = 0
 
 [node name="lightning" parent="." unique_id=1026476125 instance=ExtResource("107_0qir2")]
-position = Vector2(-1263, 821)
+position = Vector2(-1459, 285)
 mag_damage = 0
 active_duration = 20.0
 
@@ -1013,7 +1017,7 @@ position = Vector2(-1469, 439)
 position = Vector2(-1469, 359)
 
 [node name="EnemyMummy" parent="." unique_id=1656884698 instance=ExtResource("213_1bfo3")]
-position = Vector2(-559, -378)
+position = Vector2(-566, -378)
 
 [node name="MultRicochet" parent="." unique_id=2032193475 instance=ExtResource("218_xiccb")]
 position = Vector2(-141, 559)

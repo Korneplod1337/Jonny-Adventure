@@ -51,7 +51,7 @@ script = ExtResource("1_ia7e4")
 hard_move_step_distance = 125.0
 hard_move_speed = 50.0
 hard_base_hp = 75
-hard_cooldown_time = 1.6
+cooldown_time = 1.6
 dash_curve = ExtResource("2_2unst")
 
 

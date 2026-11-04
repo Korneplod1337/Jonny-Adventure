@@ -9,7 +9,6 @@ class_name EnemyBugSoldier
 @export var pellet_range: float = 220.0
 @export var pellet_scale: float = 0.5
 @export var firing_move_speed_mult: float = 0.22
-@export var pre_walk_afk: float = 1.0
 
 
 func _ready() -> void:
@@ -19,10 +18,6 @@ func _ready() -> void:
 
 func _get_shot_count() -> int:
 	return 2
-
-
-func _get_idle_pause_time() -> float:
-	return pre_walk_afk
 
 
 func _should_refresh_pathfinding() -> bool:

@@ -98,7 +98,7 @@ func _configure_spawned_fly(fly: EnemyFly) -> void:
 	fly.hard_projectile_damage = FLY_PROJECTILE_DAMAGE
 	fly.hard_damage = FLY_PROJECTILE_DAMAGE
 	fly.shots_per_volley = FLY_SHOTS
-	fly.hard_stand_time *= FLY_STAND_TIME_MULT
+	fly.cooldown_time *= FLY_STAND_TIME_MULT
 	fly.hard_base_hp = maxi(1, int(round(float(fly.hard_base_hp) * FLY_HP_MULT)))
 	fly.projectile_speed_factor = FLY_PROJECTILE_MULT
 	fly.projectile_visual_scale = FLY_PROJECTILE_MULT

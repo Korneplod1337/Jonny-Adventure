@@ -8,7 +8,6 @@ enum State { IDLE, AIMING, CHARGING }
 @export var hard_charge_damage: int = 2
 @export var hard_charge_speed: float = 420.0
 @export var hard_max_dash_distance: float = 520.0
-@export var hard_cooldown_time: float = 1.2
 @export var hard_aim_time: float = 2.0
 @export var charge_max_duration: float = 8.0
 
@@ -68,9 +67,7 @@ func _apply_level_buffs() -> void:
 	max_dash_distance = _apply_difficulty_offset(
 		hard_max_dash_distance, MAX_DASH_MED_OFFSET, MAX_DASH_EASY_OFFSET
 	) * GameState.enemy_ms_multiplier * GameState.time_flow_mult
-	cooldown_time = _scale_cooldown(
-		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
-	)
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
 	aim_time = hard_aim_time
 
 	super._apply_level_buffs()

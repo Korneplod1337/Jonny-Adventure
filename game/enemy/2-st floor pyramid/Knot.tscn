@@ -67,9 +67,10 @@ collision_layer = 4
 collision_mask = 182
 script = ExtResource("1_3mjkt")
 hard_roll_speed = 300.0
-hard_idle_time_min = 1.5
-hard_idle_time_max = 2.5
-hard_roll_time = 1.2
+cooldown_time = 1.2
+idle_min_cooldown_mult = 1.25
+idle_max_cooldown_mult = 2.0833333
+roll_cooldown_mult = 1.0
 hard_base_hp = 75
 
 [node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]

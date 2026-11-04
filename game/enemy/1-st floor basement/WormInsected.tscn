@@ -50,6 +50,7 @@ collision_mask = 182
 script = ExtResource("1_wxhpk")
 hard_base_hp = 75
 dash_curve = ExtResource("2_4f45e")
+cooldown_time = 0.8
 
 
 [node name="Shadow" parent="." unique_id=1792752795 instance=ExtResource("shadow_scn")]

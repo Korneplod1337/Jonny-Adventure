@@ -9,7 +9,6 @@ enum State { IDLE, WAIT_IDLE, STEP_MOVE, CHARGE_SHOT, SHOOT, SPAWN_EGG }
 @export_group("Stats")
 ## Скорость короткого отхода от игрока (с учётом сложности).
 @export var hard_move_speed: float = 90.0
-@export var hard_cooldown_time: float = 0.8
 @export var hard_projectile_damage: int = 1
 @export var hard_projectile_speed: float = 340.0
 @export var hard_projectile_range: float = 320.0
@@ -69,7 +68,7 @@ func _apply_level_buffs() -> void:
 	projectile_damage = _scale_damage(
 		hard_projectile_damage, QUEEN_PROJECTILE_DAMAGE_MED_OFFSET, QUEEN_PROJECTILE_DAMAGE_EASY_OFFSET
 	)
-	cooldown_time = _scale_cooldown(hard_cooldown_time, QUEEN_COOLDOWN_MED_OFFSET, QUEEN_COOLDOWN_EASY_OFFSET)
+	_apply_cooldown_buff(QUEEN_COOLDOWN_MED_OFFSET, QUEEN_COOLDOWN_EASY_OFFSET)
 	projectile_speed = _apply_difficulty_offset(
 		hard_projectile_speed,
 		QUEEN_PROJECTILE_SPEED_MED_OFFSET,

@@ -8,14 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://dk2be1gdyetpo" path="res://game/presets/1-st floor/start/start_room_0.tscn" id="4_bdqim"]
 [ext_resource type="PackedScene" uid="uid://dn81o08ltpimr" path="res://game/presets/1-st floor/standart/standart_room3.tscn" id="4_qso4u"]
 [ext_resource type="PackedScene" uid="uid://b777y3m4083ll" path="res://game/presets/1-st floor/bosses/hatch_boss_room.tscn" id="5_2xsro"]
-[ext_resource type="PackedScene" uid="uid://bfpw6t7witksl" path="res://game/presets/2-st floor/standart/2standart_room1.tscn" id="5_o8gq0"]
 [ext_resource type="PackedScene" uid="uid://cq1e35ccwm0yt" path="res://game/presets/1-st floor/start/start_room_END BETA.tscn" id="5_qso4u"]
 [ext_resource type="PackedScene" uid="uid://dk3llybmdb0fa" path="res://game/presets/1-st floor/standart/standart_room6.tscn" id="5_vurpx"]
 [ext_resource type="PackedScene" uid="uid://b7qvxj2i104cp" path="res://game/presets/1-st floor/shops/armory_room.tscn" id="6_2xsro"]
 [ext_resource type="PackedScene" uid="uid://ctpm02rpg8gfx" path="res://game/presets/1-st floor/buff/treasure_room.tscn" id="6_3jp2u"]
 [ext_resource type="PackedScene" uid="uid://qaqei0bykkdv" path="res://game/presets/1-st floor/standart/standart_room8.tscn" id="6_807ne"]
-[ext_resource type="PackedScene" uid="uid://bbeq5h2qu8ccq" path="res://game/presets/2-st floor/standart/2standart_room2.tscn" id="7_7t21y"]
-[ext_resource type="PackedScene" uid="uid://c1gdxt4ofn7do" path="res://game/presets/2-st floor/standart/2standart_room3.tscn" id="8_lge80"]
+[ext_resource type="PackedScene" uid="uid://duhniy55h60mp" path="res://game/presets/2-st floor/standart/2standart_room4.tscn" id="7_2cno3"]
 [ext_resource type="PackedScene" uid="uid://cmlobl77iwbor" path="res://game/presets/2-st floor/start/start_room_Egypt.tscn" id="9_o8gq0"]
 [ext_resource type="PackedScene" uid="uid://dr6irds3wlr0b" path="res://game/presets/3-st floor/standart/3standart_room1.tscn" id="10_g18b5"]
 [ext_resource type="PackedScene" uid="uid://cs61w8ntlmjw7" path="res://game/presets/1-st floor/dop/Gambling_room.tscn" id="10_iyqye"]
@@ -45,7 +43,7 @@
 [node name="Dungeon" type="Node" unique_id=1730459875]
 script = ExtResource("1_u4sk0")
 standard_room_presets_floor1 = Array[PackedScene]([ExtResource("2_2xsro"), ExtResource("3_1u0ww"), ExtResource("4_qso4u"), ExtResource("5_vurpx"), ExtResource("6_807ne")])
-standard_room_presets_floor2 = Array[PackedScene]([ExtResource("5_o8gq0"), ExtResource("7_7t21y"), ExtResource("8_lge80")])
+standard_room_presets_floor2 = Array[PackedScene]([ExtResource("7_2cno3")])
 standard_room_presets_floor3 = Array[PackedScene]([ExtResource("10_g18b5")])
 start_room_preset = Array[PackedScene]([ExtResource("3_0t1uw"), ExtResource("4_bdqim"), ExtResource("3_0t1uw"), ExtResource("3_0t1uw"), ExtResource("9_o8gq0"), ExtResource("9_o8gq0"), ExtResource("14_mdlc4"), ExtResource("14_mdlc4"), ExtResource("5_qso4u")])
 shop_room_preset = Array[PackedScene]([ExtResource("2_0t1uw"), ExtResource("15_u4fuk"), ExtResource("18_hky0l")])

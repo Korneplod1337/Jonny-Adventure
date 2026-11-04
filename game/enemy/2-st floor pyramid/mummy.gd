@@ -10,7 +10,6 @@ enum State { CHASE, ATTACK }
 @export var hard_damage: int = 1
 @export var hard_move_speed: float = 80.0
 @export var hard_attack_range: float = 48.0
-@export var hard_attack_cooldown: float = 0.7
 
 @export_group("Attack")
 ## Кадр атаки (0-based), на котором включается HitArea. 2 = 3-й спрайт.
@@ -26,11 +25,10 @@ const DAMAGE_MED_OFFSET := 0
 const DAMAGE_EASY_OFFSET := 0
 const ATTACK_RANGE_MED_OFFSET := -4.0
 const ATTACK_RANGE_EASY_OFFSET := -8.0
-const ATTACK_COOLDOWN_MED_OFFSET := 0.1
-const ATTACK_COOLDOWN_EASY_OFFSET := 0.2
+const COOLDOWN_MED_OFFSET := 0.1
+const COOLDOWN_EASY_OFFSET := 0.2
 
 var attack_range: float = 48.0
-var attack_cooldown: float = 0.7
 var state := State.CHASE
 var _attack_hit_dealt := false
 var _attack_cooldown_left := 0.0
@@ -71,9 +69,7 @@ func _apply_level_buffs() -> void:
 	attack_range = _apply_difficulty_offset(
 		hard_attack_range, ATTACK_RANGE_MED_OFFSET, ATTACK_RANGE_EASY_OFFSET
 	)
-	attack_cooldown = _scale_cooldown(
-		hard_attack_cooldown, ATTACK_COOLDOWN_MED_OFFSET, ATTACK_COOLDOWN_EASY_OFFSET
-	)
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
 	super._apply_level_buffs()
 
 
@@ -172,7 +168,7 @@ func _finish_attack() -> void:
 	_set_hit_area_enabled(false)
 	_attack_hit_dealt = false
 	state = State.CHASE
-	_attack_cooldown_left = attack_cooldown
+	_attack_cooldown_left = cooldown_time
 	if is_dead:
 		return
 	_play_walk_anim()

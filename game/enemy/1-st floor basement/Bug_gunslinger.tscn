@@ -156,6 +156,7 @@ collision_mask = 182
 script = ExtResource("1_wjlqy")
 hard_projectile_speed = 400.0
 projectile_scene = ExtResource("2_shot")
+cooldown_time = 1.0
 use_pathfinding = true
 stop_on_melee_hit = false
 melee_hit_cooldown = 1.0

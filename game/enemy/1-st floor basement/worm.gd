@@ -6,7 +6,6 @@ class_name Worm
 @export var hard_move_speed: float = 200.0
 @export var hard_base_hp: int = 100
 @export var hard_damage: int = 1
-@export var hard_cooldown_time: float = 0.8
 
 const MOVE_STEP_MED_OFFSET := -50.0
 const MOVE_STEP_EASY_OFFSET := -100.0
@@ -51,9 +50,7 @@ func _apply_level_buffs() -> void:
 	) * ms_mult
 	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
 	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
-	cooldown_time = _scale_cooldown(
-		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
-	)
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
 
 	super._apply_level_buffs()
 

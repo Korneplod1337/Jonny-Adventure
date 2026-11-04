@@ -11,13 +11,11 @@ enum AfterWait { SHOOT, FLY }
 @export var hard_move_speed: float = 185.0
 @export var hard_base_hp: int = 120
 @export var hard_damage: int = 2
-@export var hard_cooldown_time: float = 0.6
 @export var hard_projectile_speed: float = 380.0
 @export var hard_projectile_range: float = 420.0
 @export var hard_max_move_distance: float = 260.0
 @export var hard_fly_time_min: float = 1.2
 @export var hard_fly_time_max: float = 2.2
-@export var hard_stand_time: float = 1.0
 @export var shots_per_volley: int = 5
 @export var approach_stop_distance: float = 140.0
 @export var target_offset: float = 60.0
@@ -31,16 +29,18 @@ const HP_MED_OFFSET := -30
 const HP_EASY_OFFSET := -50
 const DAMAGE_MED_OFFSET := -0
 const DAMAGE_EASY_OFFSET := -1
-const COOLDOWN_MED_OFFSET := 0.15
-const COOLDOWN_EASY_OFFSET := 0.3
+## Смещение так, чтобы timer (cd/2+0.1) на med/easy совпал со старым 0.75/0.9.
+const COOLDOWN_MED_OFFSET := 0.3
+const COOLDOWN_EASY_OFFSET := 0.6
 const PROJECTILE_SPEED_MED_OFFSET := -40.0
 const PROJECTILE_SPEED_EASY_OFFSET := -80.0
 const PROJECTILE_RANGE_MED_OFFSET := -40.0
 const PROJECTILE_RANGE_EASY_OFFSET := -80.0
 const MAX_MOVE_DISTANCE_MED_OFFSET := -30.0
 const MAX_MOVE_DISTANCE_EASY_OFFSET := -60.0
+const TIMER_COOLDOWN_EXTRA := 0.1
 
-var stand_time: float = 1.5
+var stand_time: float = 1.0
 var fly_time_min: float = 1.2
 var fly_time_max: float = 2.2
 var max_move_distance: float = 260.0
@@ -69,6 +69,7 @@ func _ready() -> void:
 	deals_melee_damage = false
 	knockback_friction += 200.0
 	sprite.play("default")
+	cooldown_timer.wait_time = cooldown_time * 0.5 + TIMER_COOLDOWN_EXTRA
 
 
 func _apply_level_buffs() -> void:
@@ -78,9 +79,7 @@ func _apply_level_buffs() -> void:
 	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
 	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
 	projectile_damage = _scale_damage(hard_projectile_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
-	cooldown_time = _scale_cooldown(
-		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
-	)
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
 	projectile_speed = _apply_difficulty_offset(
 		hard_projectile_speed, PROJECTILE_SPEED_MED_OFFSET, PROJECTILE_SPEED_EASY_OFFSET
 	)
@@ -90,7 +89,8 @@ func _apply_level_buffs() -> void:
 	max_move_distance = _apply_difficulty_offset(
 		hard_max_move_distance, MAX_MOVE_DISTANCE_MED_OFFSET, MAX_MOVE_DISTANCE_EASY_OFFSET
 	)
-	stand_time = hard_stand_time
+	## stand = cd; стартовый CooldownTimer = cd/2 + 0.1
+	stand_time = cooldown_time
 	fly_time_min = hard_fly_time_min
 	fly_time_max = hard_fly_time_max
 	min_fly_time = hard_min_fly_time

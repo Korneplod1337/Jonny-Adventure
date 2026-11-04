@@ -16,7 +16,6 @@ enum State {
 @export var hard_move_speed: float = 170.0
 @export var hard_base_hp: int = 200
 @export var hard_damage: int = 1
-@export var hard_cooldown_time: float = 1.0
 @export var hard_projectile_speed: float = 300.0
 @export var hard_projectile_range: float = 600.0
 @export var max_turn_speed: float = 3.0 ## рад/сек, калибровка
@@ -28,7 +27,6 @@ enum State {
 @export var aim_time: float = 0.5
 @export var shot_interval: float = 0.5
 @export var after_fire_rotate_time: float = 0.5
-@export var hard_idle_after_showing: float = 1.5
 
 const MOVE_SPEED_MED_OFFSET := -20.0
 const MOVE_SPEED_EASY_OFFSET := -40.0
@@ -42,8 +40,7 @@ const PROJECTILE_SPEED_MED_OFFSET := -50.0
 const PROJECTILE_SPEED_EASY_OFFSET := -100.0
 const PROJECTILE_RANGE_MED_OFFSET := -50.0
 const PROJECTILE_RANGE_EASY_OFFSET := -100.0
-const IDLE_MED_OFFSET := 0.5
-const IDLE_EASY_OFFSET := 0.5
+const IDLE_AFTER_SHOWING_MULT := 1.5
 
 var state := State.IDLE
 var _invulnerable := false
@@ -78,18 +75,14 @@ func _apply_level_buffs() -> void:
 	projectile_damage = _scale_damage(
 		hard_projectile_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET
 	)
-	cooldown_time = _scale_cooldown(
-		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
-	)
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
 	projectile_speed = _apply_difficulty_offset(
 		hard_projectile_speed, PROJECTILE_SPEED_MED_OFFSET, PROJECTILE_SPEED_EASY_OFFSET
 	)
 	projectile_range = _apply_difficulty_offset(
 		hard_projectile_range, PROJECTILE_RANGE_MED_OFFSET, PROJECTILE_RANGE_EASY_OFFSET
 	)
-	_idle_after_showing = _apply_difficulty_offset(
-		hard_idle_after_showing, IDLE_MED_OFFSET, IDLE_EASY_OFFSET
-	)
+	_idle_after_showing = cooldown_time * IDLE_AFTER_SHOWING_MULT
 	match DungeonManager.difficulty:
 		"hard":
 			_max_shots = 5

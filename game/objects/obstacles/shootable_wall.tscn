@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bvmeu3yiw5t3"]
+
+[ext_resource type="Script" path="res://game/objects/obstacles/shootable_wall.gd" id="1_script"]
+[ext_resource type="Script" path="res://game/objects/obstacles/shootable_wall_hurtbox.gd" id="2_hurtbox"]
+[ext_resource type="Texture2D" uid="uid://8qrpfeygjwca" path="res://image/objects/obstacles/Shootable_walls1.png" id="3_idle"]
+[ext_resource type="Texture2D" uid="uid://bxn6e875siymf" path="res://image/objects/obstacles/Shootable_walls2.png" id="4_die1"]
+[ext_resource type="Texture2D" uid="uid://bacg18us6tcy3" path="res://image/objects/obstacles/Shootable_walls3.png" id="5_die2"]
+[ext_resource type="Texture2D" uid="uid://bayfaglqmfp8e" path="res://image/objects/obstacles/Shootable_walls4.png" id="6_die3"]
+[ext_resource type="Texture2D" uid="uid://wbdutiia4irg" path="res://image/objects/obstacles/Shootable_walls5.png" id="7_die4"]
+[ext_resource type="Texture2D" uid="uid://clqvuk6mmqqhj" path="res://image/objects/obstacles/Shootable_walls6.png" id="7_rrqqy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wall"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_die1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_die2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_die3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_die4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rrqqy")
+}],
+"loop": false,
+"name": &"die",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_idle")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(78, 38)
+
+[node name="ShootableWall" type="Node2D" unique_id=706110851]
+script = ExtResource("1_script")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=838869509]
+collision_layer = 36
+collision_mask = 17
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+freeze = true
+script = ExtResource("2_hurtbox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D" unique_id=482310720]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wall")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=187374283]
+shape = SubResource("RectangleShape2D_wall")

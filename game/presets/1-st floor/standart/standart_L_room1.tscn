@@ -153,7 +153,7 @@ scale = Vector2(3, 3)
 hard_base_hp = 350
 hard_charge_speed = 600.0
 hard_max_dash_distance = 1700.0
-hard_cooldown_time = 1.0
+cooldown_time = 1.0
 hard_aim_time = 4.0
 
 [node name="EmenyWorm" parent="." unique_id=1655288545 instance=ExtResource("8_pc25r")]

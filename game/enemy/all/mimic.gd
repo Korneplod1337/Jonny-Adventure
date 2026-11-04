@@ -7,7 +7,6 @@ enum Phase { DORMANT, ACTIVATING, CHASING, PREPARING_SHOT }
 @export var hard_move_speed: float = 140.0
 @export var hard_base_hp: int = 100
 @export var hard_damage: int = 1
-@export var hard_cooldown_time: float = 0.8
 @export var hard_projectile_speed: float = 300.0
 @export var hard_projectile_range: float = 350.0
 
@@ -63,9 +62,7 @@ func _apply_level_buffs() -> void:
 	projectile_damage = _scale_damage(
 		hard_projectile_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET
 	)
-	cooldown_time = _scale_cooldown(
-		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
-	)
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
 	projectile_speed = _apply_difficulty_offset(
 		hard_projectile_speed, PROJECTILE_SPEED_MED_OFFSET, PROJECTILE_SPEED_EASY_OFFSET
 	)

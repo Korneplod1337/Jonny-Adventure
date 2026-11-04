@@ -14,6 +14,7 @@ var effect_protection: float = 1
 var _pending_fire_hack: int = 0
 var _pending_fire_hack_dir: Vector2 = Vector2.RIGHT
 
+## Крутится в инспекторе. _apply_cooldown_buff() накидывает сложность + GameState.enemy_cooldown_multiplier.
 @export var cooldown_time: float = 1.5
 var base_hp: int = 50 
 var damage: int = 1
@@ -258,6 +259,12 @@ func _scale_move_speed(hard_speed: float, med_offset: float, easy_offset: float)
 
 func _scale_cooldown(hard_cd: float, med_offset: float, easy_offset: float) -> float:
 	return _apply_difficulty_offset(hard_cd, med_offset, easy_offset) * GameState.enemy_cooldown_multiplier
+
+
+## Скейл экспортированного cooldown_time (сложность + GameState.enemy_cooldown_multiplier).
+## Вызывать в _apply_level_buffs до вычисления таймингов от cooldown_time.
+func _apply_cooldown_buff(med_offset: float = 0.0, easy_offset: float = 0.0) -> void:
+	cooldown_time = _scale_cooldown(cooldown_time, med_offset, easy_offset)
 
 
 func _deal_melee_damage_to_player() -> bool:

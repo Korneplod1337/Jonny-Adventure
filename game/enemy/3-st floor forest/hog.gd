@@ -7,7 +7,6 @@ enum State { IDLE, AIMING, RESTING, CHARGING, RECOVERING }
 @export var hard_base_hp: int = 250
 @export var hard_charge_damage: int = 2
 @export var hard_charge_speed: float = 650.0
-@export var hard_cooldown_time: float = 1.2
 @export var hard_aim_time: float = 1.0
 @export var hard_rest_time: float = 0.5
 @export var hard_recover_time: float = 0.0
@@ -56,9 +55,7 @@ func _apply_level_buffs() -> void:
 	charge_speed = _scale_move_speed(
 		hard_charge_speed, CHARGE_SPEED_MED_OFFSET, CHARGE_SPEED_EASY_OFFSET
 	)
-	cooldown_time = _scale_cooldown(
-		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
-	)
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
 	aim_time = hard_aim_time
 	rest_time = _apply_difficulty_offset(
 		hard_rest_time, REST_TIME_MED_OFFSET, REST_TIME_EASY_OFFSET

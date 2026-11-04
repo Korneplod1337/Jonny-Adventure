@@ -7,12 +7,9 @@ enum State { IDLE, FLYING, PREPARING, RECOVERING }
 @export var hard_move_speed: float = 150.0
 @export var hard_base_hp: int = 80
 @export var hard_damage: int = 2
-@export var hard_cooldown_time: float = 0.8
 @export var hard_projectile_speed: float = 300.0
 @export var hard_projectile_range: float = 350.0
 @export var hard_max_move_distance: float = 200.0
-@export var hard_prepare_time: float = 0.4
-@export var hard_post_shoot_pause: float = 0.8
 @export var hard_fly_time_min: float = 1.5
 @export var hard_fly_time_max: float = 2.5
 @export var target_offset: float = 80.0
@@ -33,10 +30,6 @@ const PROJECTILE_RANGE_MED_OFFSET := -50.0
 const PROJECTILE_RANGE_EASY_OFFSET := -100.0
 const MAX_MOVE_DISTANCE_MED_OFFSET := -25.0
 const MAX_MOVE_DISTANCE_EASY_OFFSET := -50.0
-const PREPARE_TIME_MED_OFFSET := 0.05
-const PREPARE_TIME_EASY_OFFSET := 0.1
-const POST_SHOOT_PAUSE_MED_OFFSET := 0.0
-const POST_SHOOT_PAUSE_EASY_OFFSET := 0.2
 
 var prepare_time: float
 var post_shoot_pause: float
@@ -66,9 +59,7 @@ func _apply_level_buffs() -> void:
 	base_hp = _scale_hp(hard_base_hp, HP_MED_OFFSET, HP_EASY_OFFSET)
 	damage = _scale_damage(hard_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
 	projectile_damage = _scale_damage(hard_projectile_damage, DAMAGE_MED_OFFSET, DAMAGE_EASY_OFFSET)
-	cooldown_time = _scale_cooldown(
-		hard_cooldown_time, COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET
-	)
+	_apply_cooldown_buff(COOLDOWN_MED_OFFSET, COOLDOWN_EASY_OFFSET)
 	projectile_speed = _apply_difficulty_offset(
 		hard_projectile_speed, PROJECTILE_SPEED_MED_OFFSET, PROJECTILE_SPEED_EASY_OFFSET
 	)
@@ -78,12 +69,8 @@ func _apply_level_buffs() -> void:
 	max_move_distance = _apply_difficulty_offset(
 		hard_max_move_distance, MAX_MOVE_DISTANCE_MED_OFFSET, MAX_MOVE_DISTANCE_EASY_OFFSET
 	)
-	prepare_time = _apply_difficulty_offset(
-		hard_prepare_time, PREPARE_TIME_MED_OFFSET, PREPARE_TIME_EASY_OFFSET
-	)
-	post_shoot_pause = _apply_difficulty_offset(
-		hard_post_shoot_pause, POST_SHOOT_PAUSE_MED_OFFSET, POST_SHOOT_PAUSE_EASY_OFFSET
-	)
+	post_shoot_pause = cooldown_time
+	prepare_time = cooldown_time * 0.5
 	fly_time_min = hard_fly_time_min
 	fly_time_max = hard_fly_time_max
 

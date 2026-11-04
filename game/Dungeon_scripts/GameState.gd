@@ -126,10 +126,8 @@ func notify_room_cleared() -> void:
 var cost_multiplier := 1.0
 var cost_plus := 0.0
 var animated_world_speed := 1.0
-## Kalia Space-time: множитель «хода времени» (скорость игрока/врагов, фазы боссов, анимации)
-var time_flow_mult := 1.0
-## Шанс доп. монеты с врага поверх luck (Space-time circuit и т.п.)
-var extra_enemy_coin_chance := 0.0
+var time_flow_mult := 1.0 # Kalia Space-time: множитель «хода времени»
+var extra_enemy_coin_chance := 0.0 # Шанс доп. монеты с врага поверх luck (Space-time circuit и т.п.)
 
 signal prices_changed
 signal alchemists_glasses_changed
@@ -197,8 +195,8 @@ var enemy_ms_multiplier: float = 1.0
 var enemy_hp_multiplier: float = 1.0
 var enemy_dmg_multiplier: float = 1.0
 var enemy_cooldown_multiplier: float = 1.0
-## Iron Maiden: шанс взрыва врага при смерти (стакается)
-var iron_maiden_chance: float = 0.0
+var iron_maiden_chance: float = 0.0 ## Iron Maiden: шанс взрыва врага при смерти (стакается)
+
 #босс
 ## Игрушечный замок и т.п. — множители поверх Boss_*_buff
 var boss_hp_multiplier: float = 1.0
