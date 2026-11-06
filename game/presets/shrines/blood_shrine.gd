@@ -3,6 +3,7 @@ extends Node2D
 const SHRINE_SCENE := preload("res://game/presets/shrines/shrine.tscn")
 
 @onready var interactable: Area2D = $Interactable
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var knife: Node2D = $knife
 @onready var marker_chest: Marker2D = $MarkerChest
 
@@ -17,7 +18,21 @@ func _ready() -> void:
 		interactable.is_interactable = false
 		call_deferred("_replace_with_destroyed_shrine")
 		return
+	_face_player()
 	_spawn_locked_loot()
+
+
+func _face_player() -> void:
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	var face_left := player.global_position.x < global_position.x
+	sprite.flip_h = face_left
+	if knife == null:
+		return
+	var knife_sprite := knife.get_node_or_null("AnimatedSprite2D") as AnimatedSprite2D
+	if knife_sprite:
+		knife_sprite.flip_h = face_left
 
 
 func _replace_with_destroyed_shrine() -> void:

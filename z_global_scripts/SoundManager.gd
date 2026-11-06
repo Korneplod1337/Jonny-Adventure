@@ -2,7 +2,7 @@ extends Node
 
 const COIN_SFX := preload("res://sound/sound/coin_test.mp3")
 const TRACK_ARCADE := preload("res://sound/music/arcade.ogg")
-const TRACK_SOUNDTRACK_MB := preload("res://sound/music/soundtrack_mb.ogg")
+const TRACK_SOUNDTRACK_MB := preload("res://sound/music/arcade korneplod edit.ogg")
 const TRACK_CHEETAH_BOSS_EGYPT := preload("res://sound/music/cheetah_boss_swag_egypt_228_1337.ogg")
 const TRACK_FOREST1 := preload("res://sound/music/Forest1.wav")
 

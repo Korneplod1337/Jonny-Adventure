@@ -27,7 +27,15 @@ func _ready() -> void:
 	sprite.animation = "completion"
 	sprite.frame = 0
 	sprite.pause()
+	_face_player()
 	print("Шрайн: oblation (cost ", coin_cost, ")")
+
+
+func _face_player() -> void:
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	sprite.flip_h = player.global_position.x < global_position.x
 
 
 func _replace_with_destroyed_shrine() -> void:

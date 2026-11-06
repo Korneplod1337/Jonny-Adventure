@@ -10,6 +10,7 @@ const BASE_HP := 40
 const HP_PER_FLOOR := 15
 const KERES_MARIA_ON_BREAK := -5
 const WEAK_SKULL_CHANCE := 0.25
+const MAX_STAT_LEVEL := 10.0
 
 @onready var interactable: Area2D = $Interactable
 @onready var Shrn_animation: AnimatedSprite2D = $AnimatedSprite2D
@@ -18,6 +19,17 @@ const WEAK_SKULL_CHANCE := 0.25
 enum ShrineType {
 	hp, move_speed, luck, magic,
 	damage, spread, range, fire_rate
+}
+
+const STAT_LEVEL_PROPS := {
+	ShrineType.hp: "hit_points_level",
+	ShrineType.move_speed: "move_speed_level",
+	ShrineType.luck: "luck_level",
+	ShrineType.magic: "magic_level",
+	ShrineType.damage: "damage_level",
+	ShrineType.spread: "spread_level",
+	ShrineType.range: "range_level",
+	ShrineType.fire_rate: "fire_rate_level",
 }
 
 @export var shrine_type: int = -1
@@ -34,7 +46,6 @@ var _damage_flash_token: int = 0
 
 func _ready() -> void:
 	add_to_group("shrine")
-	Shrn_animation.flip_h = flip
 	interactable.interact = _on_interact
 	if not Shrn_animation.animation_finished.is_connected(_on_animation_finished):
 		Shrn_animation.animation_finished.connect(_on_animation_finished)
@@ -82,11 +93,12 @@ func _setup_normal_shrine() -> void:
 	interactable.is_interactable = true
 	_init_hp()
 	if shrine_type == -1:
-		selected_type = ShrineType.values()[randi() % ShrineType.size()]
+		selected_type = _pick_available_type()
 	else:
 		selected_type = ShrineType.values()[shrine_type]
 	Shrn_animation.animation = ShrineType.keys()[selected_type]
 	Shrn_animation.frame = 0
+	_face_player()
 	print("Шрайн: ", ShrineType.keys()[selected_type], " HP=", current_hp)
 
 
@@ -97,7 +109,34 @@ func _make_destroyed() -> void:
 	_init_hp()
 	Shrn_animation.animation = "broken"
 	Shrn_animation.frame = 0
+	_face_player()
 	print("Шрайн: broken HP=", current_hp)
+
+
+func _face_player() -> void:
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null:
+		Shrn_animation.flip_h = flip
+		return
+	Shrn_animation.flip_h = player.global_position.x < global_position.x
+
+
+func _pick_available_type() -> ShrineType:
+	var player := get_tree().get_first_node_in_group("player")
+	var available: Array[int] = []
+	for type_id in ShrineType.values():
+		if player == null or not _is_shrine_stat_maxed(player, type_id):
+			available.append(type_id)
+	if available.is_empty():
+		return ShrineType.values()[randi() % ShrineType.size()]
+	return available[randi() % available.size()] as ShrineType
+
+
+func _is_shrine_stat_maxed(player: Node, type_id: int) -> bool:
+	var prop: String = STAT_LEVEL_PROPS.get(type_id, "")
+	if prop.is_empty() or not (prop in player):
+		return false
+	return float(player.get(prop)) >= MAX_STAT_LEVEL
 
 
 func _init_hp() -> void:
