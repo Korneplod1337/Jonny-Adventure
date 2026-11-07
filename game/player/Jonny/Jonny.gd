@@ -106,7 +106,7 @@ const SAW_MASK_EXTRA_SPREAD_DEG := 18.0
 @export_range(1.0, 10.0, 1.0) var damage_level: 		float = 1.0
 @export_range(1.0, 10.0, 1.0) var spread_level: 		float = 1.0
 @export_range(1.0, 10.0, 1.0) var range_level: 		float = 1.0
-@export_range(1.0, 10.0, 1.0) var fire_rate_level: 	float = 3.0
+@export_range(1.0, 10.0, 1.0) var fire_rate_level: 	float = 4.0
 
 @onready var max_hp: 		= int(ST.get_stat(self, "hp"))
 @onready var move_speed: float	= ST.get_stat(self, "move_speed")

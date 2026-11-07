@@ -26,7 +26,7 @@ func _face_player() -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	if player == null:
 		return
-	var face_left := player.global_position.x < global_position.x
+	var face_left = player.global_position.x < global_position.x
 	sprite.flip_h = face_left
 	if knife == null:
 		return

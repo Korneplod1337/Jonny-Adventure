@@ -75,7 +75,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_2xadw")
 
 [node name="ChestSpawnPoint" type="Marker2D" parent="." unique_id=1431920777]
-position = Vector2(0, -40)
+position = Vector2(77, 125)
 gizmo_extents = 30.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1184620657]
@@ -194,11 +194,13 @@ position = Vector2(0, 69)
 
 [node name="Fly" parent="." unique_id=227024778 instance=ExtResource("9_23lhi")]
 position = Vector2(-1, -23)
+hard_damage = 1
+hard_fly_time_min = 2.2
+hard_fly_time_max = 3.2
+shots_per_volley = 3
 
 [node name="EnemyKnot" parent="." unique_id=1655288545 instance=ExtResource("10_kk542")]
-visible = false
 position = Vector2(-89, 0)
 
 [node name="EnemyKnot2" parent="." unique_id=980239919 instance=ExtResource("10_kk542")]
-visible = false
 position = Vector2(95, -1)
