@@ -15,6 +15,10 @@ func get_stat(p: Node, stat: String) -> float :
 			var speed = p.base_move_speed + lerp(0.0, 225.0, (p.move_speed_level - 1.0) / 9.0)
 			speed *= clamp((1 + p.speed_bonus * 0.03), 0.4, 1.6) 					# 20
 			speed += p.EquipMoveSpeedFlat
+			var move_mult: float = 1.0
+			if "EquipMoveSpeedMult" in p:
+				move_mult = float(p.EquipMoveSpeedMult)
+			speed *= move_mult
 			speed *= GameState.time_flow_mult
 			return speed 
 		"luck":

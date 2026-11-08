@@ -222,6 +222,8 @@ var POOLS := {
 		 "tier": 1, "weight": 10.0},
 		{"id": "Saw_Mask", "scene": preload("res://game/objects/Equipment/head/Saw_Mask.tscn"),
 		 "tier": 2, "weight": 10.0},
+		{"id": "White_Boots", "scene": preload("res://game/objects/Equipment/boots/White_Boots.tscn"),
+		 "tier": 1, "weight": 10.0},
 	]
 }
 
@@ -272,6 +274,8 @@ var equip_visuals := {
 		preload("uid://37cru6ygwhba"),
 	"Wild_Boots":
 		preload("res://image/equip/boots/Wild_boots.tres"),
+	"White_Boots":
+		preload("res://image/equip/boots/White_boots.tres"),
 	
 }
 

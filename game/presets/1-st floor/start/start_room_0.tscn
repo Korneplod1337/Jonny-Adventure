@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://c07ctvibvm14w" path="res://game/objects/Equipment/head/Saw_Mask.tscn" id="29_p8hec"]
 [ext_resource type="PackedScene" uid="uid://dhpj5kkmutejy" path="res://game/enemy/2-st floor pyramid/weak_skull.tscn" id="31_6cfgv"]
 [ext_resource type="PackedScene" uid="uid://bg8l17bqn1vun" path="res://game/enemy/2-st floor pyramid/Fly.tscn" id="31_f67eu"]
+[ext_resource type="PackedScene" uid="uid://bk4ss0jvt5nv2" path="res://game/objects/Equipment/boots/White_Boots.tscn" id="32_f67eu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85tg8"]
 size = Vector2(1280, 720)
@@ -248,3 +249,6 @@ position = Vector2(-540, 259)
 
 [node name="Fly" parent="." unique_id=227024778 instance=ExtResource("31_f67eu")]
 position = Vector2(140.00002, -7)
+
+[node name="White_Boots" parent="." unique_id=1985852713 instance=ExtResource("32_f67eu")]
+position = Vector2(-90, -25)

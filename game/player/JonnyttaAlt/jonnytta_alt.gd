@@ -96,4 +96,5 @@ func _spawn_scaled_shot(shot_dir: Vector2, angle_offset_deg: float, apply_abilit
 
 func _finalize_spawned_shot(shot: Node) -> void:
 	shot.scale *= WEAPON_SCALE_MULT
+	_on_shot_spawned_equips()
 	_apply_saw_mask_shot_effects(shot)

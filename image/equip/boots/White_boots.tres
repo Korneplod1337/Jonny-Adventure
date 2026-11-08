@@ -1,0 +1,78 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bk4ss0jvt5bc1"]
+
+[ext_resource type="Texture2D" uid="uid://cet4rd851usv5" path="res://image/equip/boots/white_boots11.png" id="1_afk1"]
+[ext_resource type="Texture2D" uid="uid://bmyu0jn2mol7w" path="res://image/equip/boots/white_boots12.png" id="2_afk2"]
+[ext_resource type="Texture2D" uid="uid://dgqqtw0y6dnyt" path="res://image/equip/boots/white_boots9.png" id="3_upafk1"]
+[ext_resource type="Texture2D" uid="uid://uhjdwuqjppnc" path="res://image/equip/boots/white_boots10.png" id="4_upafk2"]
+[ext_resource type="Texture2D" uid="uid://b6tmnt8857h30" path="res://image/equip/boots/white_boots7.png" id="5_wd1"]
+[ext_resource type="Texture2D" uid="uid://lwvi25ux4yqy" path="res://image/equip/boots/white_boots8.png" id="6_wd2"]
+[ext_resource type="Texture2D" uid="uid://kj8b5irkxal" path="res://image/equip/boots/white_boots1.png" id="7_h1"]
+[ext_resource type="Texture2D" uid="uid://ctk6iaiovdf6k" path="res://image/equip/boots/white_boots2.png" id="8_h2"]
+[ext_resource type="Texture2D" uid="uid://bklq6hocylw2r" path="res://image/equip/boots/white_boots3.png" id="9_h3"]
+[ext_resource type="Texture2D" uid="uid://0uoie0r1fnkg" path="res://image/equip/boots/white_boots4.png" id="10_h4"]
+[ext_resource type="Texture2D" uid="uid://bxahd5ykrbnul" path="res://image/equip/boots/white_boots5.png" id="11_wu1"]
+[ext_resource type="Texture2D" uid="uid://c17dstnvdr3up" path="res://image/equip/boots/white_boots6.png" id="12_wu2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_afk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_afk2")
+}],
+"loop": true,
+"name": &"afk_default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_upafk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_upafk2")
+}],
+"loop": true,
+"name": &"afk_up",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wd2")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_h2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_h4")
+}],
+"loop": true,
+"name": &"walk_h",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wu2")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]

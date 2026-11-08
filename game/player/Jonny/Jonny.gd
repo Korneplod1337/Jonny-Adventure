@@ -120,6 +120,10 @@ const SAW_MASK_EXTRA_SPREAD_DEG := 18.0
 var extra_fire_rate:float = 0
 var EquipFireRateBoost: float = 1.0
 var EquipMoveSpeedFlat: float = 0.0
+## Множитель скорости от эквипа (White Boots и т.п.)
+var EquipMoveSpeedMult: float = 1.0
+## Шанс полностью избежать урона (0..1+)
+var dodge_chance: float = 0.0
 var boomerang_bonus: int = 0
 
 var head_id: String
@@ -448,6 +452,11 @@ func take_damage(phy_damage: int = 0,
 				mag_damage: int = 0, clr_damage: int = 0, attacker: Node = null) -> void:
 	#return
 	if invulnerable or is_dashing:
+		return
+
+	var incoming_check := phy_damage + mag_damage + clr_damage
+	if incoming_check > 0 and dodge_chance > 0.0 and randf() < clampf(dodge_chance, 0.0, 1.0):
+		_start_invulnerability()
 		return
 	
 	if incoming_damage_cap >= 0:
@@ -875,7 +884,14 @@ func fire (shot_dir: Vector2) -> void:
 
 
 func _finalize_spawned_shot(shot: Node) -> void:
+	_on_shot_spawned_equips()
 	_apply_saw_mask_shot_effects(shot)
+
+
+func _on_shot_spawned_equips() -> void:
+	var white_boots := get_node_or_null("White_Boots")
+	if white_boots and white_boots.has_method("on_shot"):
+		white_boots.on_shot()
 
 
 func _apply_saw_mask_shot_effects(shot: Node) -> void:

@@ -198,6 +198,7 @@
 [ext_resource type="PackedScene" uid="uid://bl7cqej1s468g" path="res://game/objects/Equipment/boots/Wild_Boots.tscn" id="192_wild"]
 [ext_resource type="PackedScene" uid="uid://bex05fya70aea" path="res://game/objects/items/scenes/tier 2/Cyborg.tscn" id="193_4hvg8"]
 [ext_resource type="PackedScene" uid="uid://clri231r10cvt" path="res://game/objects/items/scenes/tier 2/MathCircle.tscn" id="193_rmvc6"]
+[ext_resource type="PackedScene" uid="uid://bk4ss0jvt5nv2" path="res://game/objects/Equipment/boots/White_Boots.tscn" id="193_white"]
 [ext_resource type="PackedScene" uid="uid://8dmpj13werc7" path="res://game/objects/items/scenes/tier 2/Sacrosanct.tscn" id="194_6sjhw"]
 [ext_resource type="PackedScene" uid="uid://6lbjtysv6p3g" path="res://game/objects/items/scenes/tier 2/CriticalFlower.tscn" id="194_ungww"]
 [ext_resource type="PackedScene" uid="uid://b8ncq2qn6c8qf" path="res://game/objects/items/scenes/tier 2/SiegeHammer.tscn" id="195_a7pxr"]
@@ -450,56 +451,56 @@ position = Vector2(-70, 303)
 position = Vector2(277, 474)
 
 [node name="CardWeapon_equip" parent="Pistol" unique_id=1614515199 instance=ExtResource("28_c0p64")]
-position = Vector2(454, 113)
+position = Vector2(454, 105)
 
 [node name="JonnyShot" parent="Pistol" unique_id=107431347 instance=ExtResource("29_iu86b")]
 position = Vector2(336, 0)
 
 [node name="tome_of_fairy_tales_equip" parent="Pistol" unique_id=1206245848 instance=ExtResource("30_0fqkp")]
-position = Vector2(338, 113)
+position = Vector2(338, 105)
 
 [node name="Matchlock" parent="Pistol" unique_id=855359828 instance=ExtResource("31_50yf1")]
-position = Vector2(0, 108)
+position = Vector2(0, 105)
 
 [node name="ShotGun" parent="Pistol" unique_id=1394341738 instance=ExtResource("32_gsdun")]
-position = Vector2(113, 2)
+position = Vector2(113, 0)
 
 [node name="Sniper" parent="Pistol" unique_id=980734253 instance=ExtResource("33_eyqfr")]
-position = Vector2(113, 110)
+position = Vector2(113, 105)
 
 [node name="Scatterhand" parent="Pistol" unique_id=1006274208 instance=ExtResource("34_gueb1")]
-position = Vector2(221, 113)
+position = Vector2(221, 105)
 
 [node name="Sword_equip" parent="Pistol" unique_id=956946821 instance=ExtResource("35_hxgw2")]
 position = Vector2(660, 0)
 
 [node name="Spear_equip" parent="Pistol" unique_id=113484293 instance=ExtResource("36_wa6gx")]
-position = Vector2(772, -2)
+position = Vector2(772, 0)
 
 [node name="EXSpear_equip" parent="Pistol" unique_id=608126380 instance=ExtResource("37_5ku8x")]
-position = Vector2(768, 113)
+position = Vector2(768, 105)
 equip_tooltip = "Worthy is the one who has gone through weakness. EX-spear"
 
 [node name="Nunchucks_equip" parent="Pistol" unique_id=22258957 instance=ExtResource("38_hgqf3")]
-position = Vector2(657, 112)
+position = Vector2(657, 105)
 
 [node name="TestShot" parent="Pistol" unique_id=652461765 instance=ExtResource("39_37q3n")]
-position = Vector2(446, 1)
+position = Vector2(446, 0)
 
 [node name="JonnyShotGreen" parent="Pistol" unique_id=849730534 instance=ExtResource("104_80cog")]
-position = Vector2(553, -1)
+position = Vector2(553, 0)
 
 [node name="Solaris_equip" parent="Pistol" unique_id=184505259 instance=ExtResource("109_0qir2")]
-position = Vector2(878, 112)
+position = Vector2(878, 105)
 
 [node name="arid membrane_equip" parent="Pistol" unique_id=279860601 instance=ExtResource("110_r0oqo")]
-position = Vector2(561, 111)
+position = Vector2(561, 105)
 
 [node name="Axe_equip" parent="Pistol" unique_id=1859475580 instance=ExtResource("111_1yr5r")]
-position = Vector2(880, 2)
+position = Vector2(880, 0)
 
 [node name="Equip_magic_bullet" parent="Pistol" unique_id=1003427081 instance=ExtResource("112_13bi0")]
-position = Vector2(223, 2)
+position = Vector2(223, 0)
 
 [node name="Alchemist\'s glasses" parent="." unique_id=563840944 instance=ExtResource("40_w41jv")]
 position = Vector2(48, 125)
@@ -689,6 +690,9 @@ position = Vector2(196, 339)
 
 [node name="Wild_Boots" parent="." unique_id=1482736905 instance=ExtResource("192_wild")]
 position = Vector2(275, 339)
+
+[node name="White_Boots" parent="." unique_id=1482736907 instance=ExtResource("193_white")]
+position = Vector2(354, 339)
 
 [node name="Cleaving" parent="." unique_id=1091059177 instance=ExtResource("101_80cog")]
 position = Vector2(196, 230)
@@ -977,7 +981,7 @@ position = Vector2(-579, 484)
 position = Vector2(-528, 488)
 
 [node name="Special_weapon" parent="." unique_id=327284959 instance=ExtResource("197_6sjhw")]
-position = Vector2(168, 586)
+position = Vector2(169, 579)
 
 [node name="PoisonotingPotion_equip" parent="." unique_id=875767875 instance=ExtResource("198_eealk")]
 position = Vector2(535, 893)

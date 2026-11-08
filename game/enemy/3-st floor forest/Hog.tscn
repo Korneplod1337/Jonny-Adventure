@@ -29,7 +29,7 @@ size = Vector2(50, 21)
 radius = 984.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hoiul"]
-size = Vector2(50, 26)
+size = Vector2(50, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17ibq"]
 animations = [{
@@ -131,7 +131,7 @@ shape = SubResource("CircleShape2D_2eqer")
 [node name="HitArea" type="Area2D" parent="." unique_id=2128093384]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=633407080]
-position = Vector2(2, 0)
+position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_hoiul")
 
 [node name="BlindTimer" type="Timer" parent="." unique_id=1995691531]
